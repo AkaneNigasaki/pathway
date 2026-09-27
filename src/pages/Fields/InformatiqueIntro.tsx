@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {ArrowUpRight} from "@phosphor-icons/react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { InformatiqueDiagram, ExplorePaths, BranchBanner } from "../../components/illustrations";
 import bannerStyles from "../../components/illustrations/BranchBanner.module.css";

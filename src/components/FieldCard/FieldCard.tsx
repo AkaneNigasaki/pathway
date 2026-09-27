@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
-import {Cpu, Scales, TrendUp, Bank, Flask, Stethoscope, Gear, PenNib, CompassTool, Megaphone, Users, type Icon, } from "@phosphor-icons/react";
+import { Cpu, Scale, TrendingUp, Landmark, FlaskConical, Stethoscope, Cog, PenTool, DraftingCompass, Megaphone, Users, type LucideIcon } from "lucide-react";
 import type { Field } from "../../types";
 import styles from "./FieldCard.module.css";
 
-const ICONS: Record<string, Icon> = {
+const ICONS: Record<string, LucideIcon> = {
   Cpu,
-  Scale: Scales,
-  TrendingUp: TrendUp,
-  Landmark: Bank,
-  FlaskConical: Flask,
+  Scale,
+  TrendingUp,
+  Landmark,
+  FlaskConical,
   Stethoscope,
-  Cog: Gear,
-  PenTool: PenNib,
-  DraftingCompass: CompassTool,
+  Cog,
+  PenTool,
+  DraftingCompass,
   Megaphone,
   Users,
 };
@@ -25,7 +25,7 @@ interface FieldCardProps {
 }
 
 export function FieldCard({ field, roadmapCount, skillCount, careerCount }: FieldCardProps) {
-  const Icon = ICONS[field.icon] ?? Cpu;
+  const FieldIcon = ICONS[field.icon] ?? Cpu;
   const empty = roadmapCount === 0;
 
   return (
@@ -37,7 +37,7 @@ export function FieldCard({ field, roadmapCount, skillCount, careerCount }: Fiel
     >
       <span className={styles.topRow}>
         <span className={styles.iconWrap} aria-hidden="true">
-          <Icon size={19} />
+          <FieldIcon size={19} />
         </span>
         <span className={styles.accentDot} aria-hidden="true" />
       </span>

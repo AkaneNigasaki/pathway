@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {Crosshair, CornersOut, Minus, Plus, ArrowCounterClockwise} from "@phosphor-icons/react";
+import { Crosshair, Expand, Minus, Plus, RotateCcw } from "lucide-react";
 import type { Roadmap, Skill } from "../../types";
 import type { ProgressMap } from "../../hooks/useProgress";
 import {
@@ -219,10 +219,10 @@ export function RoadmapMap({
         </button>
         <span className={styles.sep} aria-hidden="true" />
         <button type="button" onClick={resetView} aria-label="Réinitialiser la vue" title="Réinitialiser la vue">
-          <ArrowCounterClockwise size={15} />
+          <RotateCcw size={15} />
         </button>
         <button type="button" onClick={fitView} aria-label="Ajuster à l'écran" title="Ajuster à l'écran">
-          <CornersOut size={15} />
+          <Expand size={15} />
         </button>
         <span className={styles.sep} aria-hidden="true" />
         <button

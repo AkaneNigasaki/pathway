@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import {ArrowLeft, ArrowRight, Briefcase, Clock, Flag, Stack, MapTrifold as MapIcon, X} from "@phosphor-icons/react";
+import { ArrowRight, Briefcase, ChevronRight, Clock, Flag, Layers, Map as MapIcon, X } from "lucide-react";
 import { RoadmapMap } from "../../components/RoadmapGraph/RoadmapMap";
-import { RoadmapList } from "../../components/RoadmapGraph/RoadmapList";
+import { RoadmapTimeline } from "../../components/RoadmapGraph/RoadmapTimeline";
 import { SkillPanel } from "../../components/SkillPanel/SkillPanel";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { Reveal } from "../../components/Reveal/Reveal";
@@ -21,6 +21,8 @@ export function RoadmapDetail() {
   const roadmap = slug ? getRoadmap(slug) : undefined;
   const [selected, setSelected] = useState<Skill | null>(null);
   const [mapOpen, setMapOpen] = useState(false);
+  /** Vue principale : progression verticale. La carte reste accessible en second. */
+  const [view, setView] = useState<"timeline" | "map">("timeline");
   /** Branche mise en évidence sur la carte (?stage= ou chips d'étapes). */
   const [highlightStage, setHighlightStage] = useState<string | null>(null);
 
@@ -100,7 +102,7 @@ export function RoadmapDetail() {
   const scrollToStage = (stageId: string) => {
     const listEl = document.getElementById(`stage-${stageId}`);
     const target =
-      window.innerWidth <= 860 && listEl
+      view === "timeline" && listEl
         ? listEl
         : document.getElementById("roadmap-map");
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -114,9 +116,27 @@ export function RoadmapDetail() {
 
       <div className="container">
         <Reveal>
-          <Link to="/roadmaps" className={styles.back}>
-            <ArrowLeft size={15} aria-hidden="true" /> Toutes les roadmaps
-          </Link>
+          <nav className={styles.crumb} aria-label="Fil d'Ariane">
+            <Link to="/" className={styles.crumbLink}>Home</Link>
+            <ChevronRight size={14} aria-hidden="true" className={styles.crumbSep} />
+            {field && (
+              <>
+                <Link to={`/fields/${field.id}`} className={styles.crumbLink}>
+                  {field.name}
+                </Link>
+                <ChevronRight size={14} aria-hidden="true" className={styles.crumbSep} />
+              </>
+            )}
+            <span aria-current="page" className={styles.crumbCurrent}>
+              {roadmap.title}
+            </span>
+          </nav>
+          {field && (
+            <Link to={`/fields/${field.id}`} className={styles.crumbMobile}>
+              <ChevronRight size={16} aria-hidden="true" className={styles.crumbBack} />
+              {field.name}
+            </Link>
+          )}
         </Reveal>
 
         <Reveal className={styles.hero}>
@@ -139,7 +159,7 @@ export function RoadmapDetail() {
             </div>
             <dl className={styles.stats}>
               <div className={styles.stat}>
-                <dt><Stack size={14} aria-hidden="true" /> Compétences</dt>
+                <dt><Layers size={14} aria-hidden="true" /> Compétences</dt>
                 <dd className="mono">{total}</dd>
               </div>
               <div className={styles.stat}>
@@ -269,8 +289,38 @@ export function RoadmapDetail() {
           );
         })()}
 
-        <div className={styles.graphWrap} id="roadmap-map">
-          <div className={styles.mapDesktop}>
+        <div className={styles.viewBar}>
+          <p className={`${styles.roadmapKicker} mono`}>Roadmap</p>
+          <div className={styles.viewToggle} role="group" aria-label="Choisir la vue">
+            <button
+              type="button"
+              className={`${styles.viewBtn} ${view === "timeline" ? styles.viewOn : ""}`}
+              aria-pressed={view === "timeline"}
+              onClick={() => setView("timeline")}
+            >
+              Verticale
+            </button>
+            <button
+              type="button"
+              className={`${styles.viewBtn} ${view === "map" ? styles.viewOn : ""}`}
+              aria-pressed={view === "map"}
+              onClick={() => setView("map")}
+            >
+              Carte
+            </button>
+          </div>
+        </div>
+
+        {view === "timeline" ? (
+          <RoadmapTimeline
+            roadmap={roadmap}
+            status={status}
+            selectedId={selected?.id ?? null}
+            onSelect={setSelected}
+            onCycle={cycle}
+          />
+        ) : (
+          <div className={styles.graphWrap} id="roadmap-map">
             <RoadmapMap
               roadmap={roadmap}
               status={status}
@@ -278,15 +328,6 @@ export function RoadmapDetail() {
               onSelect={setSelected}
               onCycle={cycle}
               highlightStage={highlightStage}
-            />
-          </div>
-          <div className={styles.mapMobile}>
-            <RoadmapList
-              roadmap={roadmap}
-              status={status}
-              selectedId={selected?.id ?? null}
-              onSelect={setSelected}
-              onCycle={cycle}
             />
             <button
               type="button"
@@ -297,7 +338,7 @@ export function RoadmapDetail() {
               <MapIcon size={17} aria-hidden="true" /> Carte
             </button>
           </div>
-        </div>
+        )}
 
         {careers.length > 0 && (
           <Reveal className={styles.careers}>

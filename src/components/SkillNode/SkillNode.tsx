@@ -1,13 +1,13 @@
 import { memo } from "react";
-import {BracketsCurly, Stack, Check, Cloud, Compass, Lightbulb, Wrench} from "@phosphor-icons/react";
+import { Braces, Layers, Check, Cloud, Compass, Lightbulb, Wrench } from "lucide-react";
 import type { NodeType, Skill, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
 import styles from "./SkillNode.module.css";
 
 const TYPE_ICON: Record<NodeType, typeof Lightbulb> = {
   concept: Lightbulb,
-  language: BracketsCurly,
-  framework: Stack,
+  language: Braces,
+  framework: Layers,
   tool: Wrench,
   platform: Cloud,
   specialization: Compass,
@@ -99,7 +99,7 @@ export const SkillNode = memo(function SkillNode({
         title={cycleLabel}
       >
         <span key={state} className={styles.dot} aria-hidden="true">
-          {state === "done" && <Check size={11} weight="bold" />}
+          {state === "done" && <Check size={11} strokeWidth={2.5} />}
         </span>
       </button>
 

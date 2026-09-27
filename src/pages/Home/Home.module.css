@@ -4,12 +4,6 @@
   gap: 1.1rem;
 }
 
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-}
-
 .alt {
   background: var(--background-soft);
   border-block: 1px solid var(--border);
@@ -27,6 +21,7 @@
   gap: 0.5rem;
   font-weight: 600;
   font-size: 1rem;
+  min-height: 44px;
   padding: 0.8rem 1.5rem;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-full);
@@ -39,21 +34,45 @@
   border-color: var(--foreground);
 }
 
-/* Rail horizontal de métiers */
-.careerRail {
+/* ── Listes de chips : métiers et compétences ── */
+.chipList {
   display: flex;
-  gap: 1.1rem;
-  overflow-x: auto;
-  padding: 0.5rem 0.25rem 1.25rem;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.careerRail > div {
-  display: flex;
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--foreground);
+  transition: border-color 180ms ease, transform 180ms var(--ease-out);
 }
 
-/* Bandeau chiffres */
+.chip:hover {
+  border-color: var(--foreground);
+  transform: translateY(-1px);
+}
+
+.chipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--field-accent, var(--accent));
+  flex: none;
+}
+
+/* Bandeau chiffres (données réelles uniquement) */
 .stats {
   border-block: 1px solid var(--border);
   background: var(--surface);
@@ -85,73 +104,8 @@
   font-size: 0.95rem;
 }
 
-/* CTA final */
-.cta {
-  text-align: center;
-  max-width: 720px;
-  margin-inline: auto;
-  padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: var(--surface);
-}
-
-.ctaTitle {
-  font-size: var(--text-section);
-  letter-spacing: var(--tracking-display);
-  margin-bottom: 1.25rem;
-}
-
-.ctaLead {
-  color: var(--muted);
-  font-size: var(--text-lead);
-  max-width: 48ch;
-  margin: 0 auto 2.25rem;
-  line-height: 1.65;
-}
-
-.ctaActions {
-  display: flex;
-  gap: 0.85rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.ctaPrimary,
-.ctaSecondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-weight: 600;
-  padding: 0.9rem 1.7rem;
-  border-radius: var(--radius-full);
-  font-size: 0.98rem;
-  transition: transform 200ms var(--ease-out), background-color 200ms ease,
-    border-color 200ms ease;
-}
-
-.ctaPrimary {
-  background: var(--foreground);
-  color: var(--background);
-}
-
-.ctaPrimary:hover {
-  transform: translateY(-2px);
-}
-
-.ctaSecondary {
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
-}
-
-.ctaSecondary:hover {
-  transform: translateY(-2px);
-  border-color: var(--foreground);
-}
-
 @media (max-width: 1000px) {
-  .fieldGrid,
-  .cardGrid {
+  .fieldGrid {
     grid-template-columns: repeat(2, 1fr);
   }
   .statGrid {
@@ -160,15 +114,18 @@
 }
 
 @media (max-width: 640px) {
-  .fieldGrid,
-  .cardGrid {
+  .fieldGrid {
     grid-template-columns: 1fr;
   }
-  .ctaActions {
-    flex-direction: column;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .moreLink {
+    transition: none;
   }
-  .ctaPrimary,
-  .ctaSecondary {
-    justify-content: center;
+  .chip:hover,
+  .moreLink:hover {
+    transform: none;
   }
 }

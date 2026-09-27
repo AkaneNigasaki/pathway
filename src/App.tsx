@@ -11,6 +11,7 @@ import { RoadmapDetail } from "./pages/RoadmapDetail/RoadmapDetail";
 import { Careers } from "./pages/Careers/Careers";
 import { CareerDetail } from "./pages/Careers/CareerDetail";
 import { Explore } from "./pages/Explore/Explore";
+import { Skills } from "./pages/Skills/Skills";
 import { ProgressPage } from "./pages/Progress/ProgressPage";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { useTheme } from "./hooks/useTheme";
@@ -41,6 +42,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/skills" element={<Skills />} />
           <Route path="/fields" element={<Fields />} />
           <Route path="/fields/:id" element={<FieldDetail />} />
           <Route path="/roadmaps" element={<Roadmaps />} />

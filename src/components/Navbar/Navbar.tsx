@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import {List, Moon, MagnifyingGlass, Sun, User, X} from "@phosphor-icons/react";
+import { List, Moon, Search, Sun, User, X } from "lucide-react";
 import type { Theme } from "../../types";
 import styles from "./Navbar.module.css";
 
@@ -13,6 +13,7 @@ interface NavbarProps {
 const LINKS = [
   { to: "/explore", label: "Explore" },
   { to: "/roadmaps", label: "Roadmaps" },
+  { to: "/skills", label: "Skills" },
   { to: "/fields", label: "Filières" },
   { to: "/careers", label: "Métiers" },
   { to: "/progression", label: "Progression" },
@@ -90,7 +91,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               onClick={onOpenPalette}
               aria-label="Rechercher (Ctrl+K)"
             >
-              <MagnifyingGlass size={16} aria-hidden="true" />
+              <Search size={16} aria-hidden="true" />
               <span className={styles.searchLabel}>Rechercher</span>
               <kbd className={styles.kbd} aria-hidden="true">
                 ⌘K
@@ -161,7 +162,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
         </nav>
         <div className={styles.mobileFoot}>
           <button type="button" className={styles.mobileAction} onClick={onOpenPalette}>
-            <MagnifyingGlass size={16} aria-hidden="true" /> Rechercher
+            <Search size={16} aria-hidden="true" /> Rechercher
           </button>
           <button type="button" className={styles.mobileAction} onClick={onToggleTheme}>
             {theme === "light" ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}

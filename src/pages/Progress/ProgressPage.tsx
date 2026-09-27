@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import {ArrowRight, ArrowCounterClockwise, Trophy} from "@phosphor-icons/react";
+import { ArrowRight, RotateCcw, Trophy } from "lucide-react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { ROADMAPS } from "../../data/roadmaps";
@@ -102,7 +102,7 @@ export function ProgressPage() {
                           onClick={() => resetRoadmap(roadmap.id)}
                           aria-label={`Réinitialiser la progression ${roadmap.title}`}
                         >
-                          <ArrowCounterClockwise size={14} aria-hidden="true" /> Réinitialiser
+                          <RotateCcw size={14} aria-hidden="true" /> Réinitialiser
                         </button>
                       </div>
                     </article>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {ArrowUpRight} from "@phosphor-icons/react";
+import { ArrowUpRight } from "lucide-react";
 import type { Career } from "../../types";
 import { getField } from "../../data/fields";
 import styles from "./CareerCard.module.css";

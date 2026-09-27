@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import {ArrowLeft, ArrowUpRight, Brain, ShippingContainer, Cpu, Database, Globe, Lightbulb, ShieldCheck, Lightning, } from "@phosphor-icons/react";
+import { ArrowLeft, ArrowUpRight, Brain, Container, Cpu, Database, Globe, Lightbulb, ShieldCheck, Zap } from "lucide-react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { CareerCard } from "../../components/CareerCard/CareerCard";
@@ -16,9 +16,9 @@ import styles from "./FieldDetail.module.css";
 const PATH_ICONS: Record<GuidedPathIcon, typeof Globe> = {
   web: Globe,
   ai: Brain,
-  devops: ShippingContainer,
+  devops: Container,
   data: Database,
-  automation: Lightning,
+  automation: Zap,
   security: ShieldCheck,
   robotics: Cpu,
   foundations: Lightbulb,

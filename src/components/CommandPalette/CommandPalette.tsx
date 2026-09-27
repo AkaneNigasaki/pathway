@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {Briefcase, ArrowBendDownLeft, SquaresFour, MapTrifold, MagnifyingGlass, Lightning} from "@phosphor-icons/react";
+import { Briefcase, CornerDownLeft, LayoutGrid, Map, Search, Zap } from "lucide-react";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";
@@ -11,11 +11,11 @@ interface CommandPaletteProps {
   onClose: () => void;
 }
 
-const TYPE_META: Record<SearchItemType, { label: string; icon: typeof MapTrifold }> = {
-  roadmap: { label: "Roadmaps", icon: MapTrifold },
-  field: { label: "Filières", icon: SquaresFour },
+const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
+  roadmap: { label: "Roadmaps", icon: Map },
+  field: { label: "Filières", icon: LayoutGrid },
   career: { label: "Métiers", icon: Briefcase },
-  skill: { label: "Compétences", icon: Lightning },
+  skill: { label: "Compétences", icon: Zap },
 };
 
 const TYPE_ORDER: SearchItemType[] = ["roadmap", "field", "career", "skill"];
@@ -114,7 +114,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
         aria-label="Recherche globale"
       >
         <div className={styles.inputRow}>
-          <MagnifyingGlass size={18} aria-hidden="true" className={styles.inputIcon} />
+          <Search size={18} aria-hidden="true" className={styles.inputIcon} />
           <input
             ref={inputRef}
             type="text"
@@ -174,7 +174,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                           </span>
                         </span>
                         {i === active && (
-                          <ArrowBendDownLeft size={14} aria-hidden="true" className={styles.enterIcon} />
+                          <CornerDownLeft size={14} aria-hidden="true" className={styles.enterIcon} />
                         )}
                       </button>
                     );

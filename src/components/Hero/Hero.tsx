@@ -1,23 +1,30 @@
-import { Link } from "react-router-dom";
-import {ArrowDown, ArrowRight} from "@phosphor-icons/react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ArrowDown, Search } from "lucide-react";
 import styles from "./Hero.module.css";
 
-const FIELDS = [
-  { id: "informatique", label: "Informatique" },
-  { id: "droit", label: "Droit" },
-  { id: "economie", label: "Économie" },
-  { id: "finance", label: "Finance" },
-  { id: "design", label: "Design" },
-  { id: "sciences", label: "Sciences" },
+const EXPLORE_BY = [
+  { id: "field", label: "Filière", to: "/fields" },
+  { id: "career", label: "Métier", to: "/careers" },
+  { id: "skill", label: "Compétence", to: "/skills" },
+  { id: "tech", label: "Technologie", to: "/explore?type=skill" },
 ];
 
 /**
- * Hero : le contenu est visible par défaut. L'apparition en cascade est un
- * pur rehaussement CSS via @starting-style — aucune dépendance JS, aucun
- * état "loaded". Si les animations sont désactivées ou non supportées,
- * le contenu reste visible immédiatement.
+ * Hero : la recherche est l'élément principal. Le contenu est visible par
+ * défaut ; l'apparition en cascade est un pur rehaussement CSS via
+ * @starting-style — aucune dépendance JS, aucun état "loaded".
  */
 export function Hero() {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = query.trim();
+    navigate(q ? `/explore?q=${encodeURIComponent(q)}` : "/explore");
+  };
+
   return (
     <section className={styles.hero}>
       <div className="container">
@@ -27,41 +34,60 @@ export function Hero() {
             Pathway
           </p>
           <h1 className={styles.title} style={{ "--d": "90ms" } as React.CSSProperties}>
-            Construisez
-            <br />
-            votre parcours.
+            Build your path.
           </h1>
           <p className={styles.lead} style={{ "--d": "200ms" } as React.CSSProperties}>
-            Découvrez les compétences, les outils et les connaissances
-            qui composent votre futur métier.
+            Explore careers, fields and skills
+            <br />
+            through structured learning roadmaps.
           </p>
-          <div className={styles.actions} style={{ "--d": "320ms" } as React.CSSProperties}>
-            <Link to="/roadmaps" className={styles.primary}>
-              Explorer les roadmaps <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-            <Link to="/fields" className={styles.secondary}>
-              Explorer les filières
-            </Link>
-          </div>
+
+          <form
+            className={styles.searchForm}
+            style={{ "--d": "320ms" } as React.CSSProperties}
+            onSubmit={submit}
+            role="search"
+            aria-label="Recherche globale"
+          >
+            <Search size={20} aria-hidden="true" className={styles.searchIcon} />
+            <label htmlFor="hero-search" className={styles.srOnly}>
+              Search roadmaps, skills, technologies
+            </label>
+            <input
+              id="hero-search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search roadmaps..."
+              autoComplete="off"
+              aria-describedby="hero-search-hint"
+            />
+            <kbd className={styles.kbd} id="hero-search-hint" title="Command palette">
+              ⌘K
+            </kbd>
+          </form>
+
           <nav
-            className={styles.fieldNav}
-            aria-label="Filières populaires"
+            className={styles.exploreBy}
+            aria-label="Explorer par"
             style={{ "--d": "430ms" } as React.CSSProperties}
           >
-            {FIELDS.map((f, i) => (
-              <span key={f.id} className={styles.fieldLinkWrap}>
-                {i > 0 && <span className={styles.sep} aria-hidden="true">·</span>}
-                <Link to={`/fields/${f.id}`} className={styles.fieldLink}>
-                  {f.label}
-                </Link>
-              </span>
-            ))}
+            <span className={styles.exploreByLabel}>Explore by</span>
+            <ul className={styles.exploreByList}>
+              {EXPLORE_BY.map((e) => (
+                <li key={e.id}>
+                  <Link to={e.to} className={styles.exploreByLink}>
+                    {e.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
       </div>
 
       <div className={styles.hintWrap} aria-hidden="true">
-        <a href="#domaines" className={styles.hint} tabIndex={-1}>
+        <a href="#explore-fields" className={styles.hint} tabIndex={-1}>
           <span className={styles.hintText}>Scroll to explore</span>
           <ArrowDown size={14} className={styles.hintArrow} />
         </a>

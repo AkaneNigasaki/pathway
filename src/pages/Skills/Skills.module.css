@@ -1,0 +1,369 @@
+.page {
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 7rem);
+  min-height: 70vh;
+}
+
+.head {
+  margin-bottom: 2rem;
+  max-width: 760px;
+}
+
+.title {
+  font-size: var(--text-section);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 1.25rem;
+}
+
+.controls {
+  margin-bottom: 2.5rem;
+  max-width: 760px;
+}
+
+/* ── Recherche locale ─────────────────────────────── */
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 0.35rem 0.6rem 0.35rem 1.3rem;
+  box-shadow: var(--shadow-subtle);
+  margin-bottom: 1.4rem;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.searchBar:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-faint), var(--shadow-subtle);
+}
+
+.searchIcon {
+  color: var(--faint);
+  flex-shrink: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.searchBar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.05rem;
+  padding: 0.85rem 0;
+  min-width: 0;
+  color: var(--foreground);
+}
+
+.searchBar input:focus {
+  outline: none;
+}
+
+.searchBar input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clearSearch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.clearSearch:hover {
+  color: var(--foreground);
+  background: var(--surface-soft);
+}
+
+/* ── Filtres ──────────────────────────────────────── */
+
+.filterRows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.filterRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.filterLabel {
+  flex-shrink: 0;
+  width: 4.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  min-height: 2.5rem;
+  transition: transform 180ms var(--ease-out), border-color 180ms ease,
+    color 180ms ease, background-color 180ms ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  color: var(--foreground);
+  border-color: var(--border-strong);
+}
+
+.chip.on {
+  background: var(--foreground);
+  border-color: var(--foreground);
+  color: var(--background);
+}
+
+/* ── Groupes ──────────────────────────────────────── */
+
+.group {
+  margin-bottom: 2.75rem;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupTitle {
+  font-size: var(--text-title);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 1.1rem;
+}
+
+/* ── Grille dense ─────────────────────────────────── */
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  transition: transform 180ms var(--ease-out), border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-subtle);
+}
+
+.cardMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-size: 1.02rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.levelDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.levelDot.beginner {
+  background: #16a34a;
+}
+
+.levelDot.intermediate {
+  background: #d97706;
+}
+
+.levelDot.advanced {
+  background: #dc2626;
+}
+
+.chevron {
+  color: var(--faint);
+  flex-shrink: 0;
+  transition: transform 180ms var(--ease-out), color 180ms ease;
+}
+
+.card:hover .chevron {
+  transform: translateX(2px);
+  color: var(--accent);
+}
+
+/* ── État vide ────────────────────────────────────── */
+
+.empty {
+  max-width: 560px;
+  padding: 3rem 0;
+}
+
+.emptyTitle {
+  font-size: 1.35rem;
+  font-weight: 650;
+  color: var(--foreground);
+  margin-bottom: 0.6rem;
+}
+
+.emptyHint {
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.suggestion {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--foreground);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms var(--ease-out);
+}
+
+.suggestion:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.reset {
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  min-height: 2.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.reset:hover {
+  background: var(--surface-soft);
+}
+
+/* ── Responsive ───────────────────────────────────── */
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filterRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .filterLabel {
+    width: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mouvement réduit ─────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .card,
+  .chevron,
+  .suggestion,
+  .reset {
+    transition: none;
+  }
+
+  .chip:hover,
+  .card:hover,
+  .suggestion:hover {
+    transform: none;
+  }
+
+  .card:hover .chevron {
+    transform: none;
+  }
+}

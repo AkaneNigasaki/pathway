@@ -3,7 +3,7 @@
 }
 
 .head {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   max-width: 760px;
 }
 
@@ -13,6 +13,117 @@
   margin-bottom: 1.25rem;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Recherche locale ── */
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+
+.searchBar input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.95rem 1.25rem 0.95rem 3.1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--foreground);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.searchBar input::placeholder {
+  color: var(--faint);
+}
+
+.searchBar input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1.15rem;
+  color: var(--faint);
+  pointer-events: none;
+}
+
+/* ── Explore by category / by skills ── */
+.exploreBlock {
+  margin-bottom: 2.75rem;
+}
+
+.exploreTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: 1.1rem;
+}
+
+.chipList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: var(--foreground);
+  transition: border-color 180ms ease, transform 180ms var(--ease-out);
+}
+
+.tag:hover {
+  border-color: var(--foreground);
+  transform: translateY(-1px);
+}
+
+.chipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--field-accent, var(--accent));
+  flex: none;
+}
+
+.skillsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+.skillsLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ── Filtres ── */
 .filters {
   margin-bottom: 2.75rem;
 }
@@ -72,5 +183,50 @@
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── État vide ── */
+.empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.emptyTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.resetBtn {
+  min-height: 44px;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resetBtn:hover {
+  border-color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag,
+  .chip {
+    transition: none;
+  }
+  .tag:hover,
+  .chip:hover {
+    transform: none;
   }
 }

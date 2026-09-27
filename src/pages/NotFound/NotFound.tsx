@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {ArrowLeft, Compass} from "@phosphor-icons/react";
+import { ArrowLeft, Compass } from "lucide-react";
 import styles from "./NotFound.module.css";
 
 export function NotFound() {

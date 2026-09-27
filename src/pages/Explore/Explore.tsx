@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import {ArrowUpRight, Briefcase, SquaresFour, MapTrifold, MagnifyingGlass, X, Lightning} from "@phosphor-icons/react";
+import { ArrowUpRight, Briefcase, LayoutGrid, Map, Search, X, Zap } from "lucide-react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
@@ -8,21 +8,26 @@ import { FIELDS } from "../../data/fields";
 import { SKILL_LEVEL_LABEL } from "../../types";
 import styles from "./Explore.module.css";
 
-const TYPE_META: Record<SearchItemType, { label: string; icon: typeof MapTrifold }> = {
-  roadmap: { label: "Roadmaps", icon: MapTrifold },
-  skill: { label: "Compétences", icon: Lightning },
+const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
+  roadmap: { label: "Roadmaps", icon: Map },
+  skill: { label: "Compétences", icon: Zap },
   career: { label: "Métiers", icon: Briefcase },
-  field: { label: "Filières", icon: SquaresFour },
+  field: { label: "Filières", icon: LayoutGrid },
 };
+
+const SUGGESTIONS = ["React", "DevOps", "Python", "AI Engineer", "n8n"];
 
 const TYPE_ORDER: SearchItemType[] = ["roadmap", "skill", "career", "field"];
 
 export function Explore() {
   const [params, setParams] = useSearchParams();
   const initialQ = params.get("q") ?? "";
+  const initialType = params.get("type") ?? "all";
   const [query, setQuery] = useState(initialQ);
   const [fieldFilter, setFieldFilter] = useState("all");
-  const [typeFilter, setTypeFilter] = useState("all");
+  const [typeFilter, setTypeFilter] = useState(
+    ["roadmap", "skill", "career", "field"].includes(initialType) ? initialType : "all"
+  );
   const [levelFilter, setLevelFilter] = useState("all");
 
   const results = useMemo(() => {
@@ -63,7 +68,7 @@ export function Explore() {
 
         <Reveal delay={80}>
           <div className={styles.searchBar} role="search">
-            <MagnifyingGlass size={19} aria-hidden="true" className={styles.searchIcon} />
+            <Search size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="explore-search" className={styles.srOnly}>
               Rechercher
             </label>
@@ -135,7 +140,40 @@ export function Explore() {
 
           {grouped.length === 0 ? (
             <div className={styles.empty}>
-              <p>Aucun résultat. Essayez un autre mot-clé ou réinitialisez les filtres.</p>
+              <p className={styles.emptyTitle}>No roadmap found.</p>
+              <p className={styles.emptyHint}>Try searching for:</p>
+              <ul className={styles.emptySuggestions}>
+                {SUGGESTIONS.map((s) => (
+                  <li key={s}>
+                    <button
+                      type="button"
+                      className={styles.emptyChip}
+                      onClick={() => {
+                        setQuery(s);
+                        setFieldFilter("all");
+                        setTypeFilter("all");
+                        setLevelFilter("all");
+                      }}
+                    >
+                      {s}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {(query.trim() || hasFilters) && (
+                <button
+                  type="button"
+                  className={styles.reset}
+                  onClick={() => {
+                    clearQuery();
+                    setFieldFilter("all");
+                    setTypeFilter("all");
+                    setLevelFilter("all");
+                  }}
+                >
+                  Clear search
+                </button>
+              )}
             </div>
           ) : (
             grouped.map((g) => {

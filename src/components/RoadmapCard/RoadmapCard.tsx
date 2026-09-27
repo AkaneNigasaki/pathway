@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {ArrowUpRight, Clock, Stack} from "@phosphor-icons/react";
+import { ArrowUpRight, Clock, Layers } from "lucide-react";
 import type { Roadmap } from "../../types";
 import { getField } from "../../data/fields";
 import styles from "./RoadmapCard.module.css";
@@ -28,7 +28,7 @@ export function RoadmapCard({ roadmap, progress = 0 }: RoadmapCardProps) {
       <p className={styles.tagline}>{roadmap.tagline}</p>
       <div className={styles.meta}>
         <span className={styles.metaItem}>
-          <Stack size={13} aria-hidden="true" />
+          <Layers size={13} aria-hidden="true" />
           <span className="mono">{roadmap.skills.length}</span> compétences
         </span>
         <span className={styles.metaItem}>
