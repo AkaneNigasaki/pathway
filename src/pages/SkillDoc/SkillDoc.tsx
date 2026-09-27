@@ -12,7 +12,7 @@ import {
   LuWrench as Wrench,
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
-import { BrandIcon, hasBrandIcon } from "../../components/BrandIcon/BrandIcon";
+import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
 import { NotFound } from "../NotFound/NotFound";
 import { getRoadmap, skillMap } from "../../data/roadmaps";
 import { getSkillGuide } from "../../data/skill-guides";
@@ -78,9 +78,13 @@ export function SkillDoc() {
             <BookOpen size={13} aria-hidden="true" /> Documentation
           </p>
           <h1 className={styles.title}>
-            {hasBrandIcon(skill.id) && (
-              <BrandIcon skillId={skill.id} label={skill.name} size={40} className={styles.titleIcon} />
-            )}
+            <SkillIcon
+              skillId={skill.id}
+              nodeType={skill.type ?? "concept"}
+              label={skill.name}
+              size={40}
+              className={styles.titleIcon}
+            />
             {skill.name}
           </h1>
           <p className="section-lead">{skill.tagline}</p>

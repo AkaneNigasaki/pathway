@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { LuArrowUpRight as ArrowUpRight, LuBriefcase as Briefcase, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuX as X, LuZap as Zap } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
-import { BrandIcon, searchItemBrandIcon } from "../../components/BrandIcon/BrandIcon";
+import { SkillIcon, searchItemSkill } from "../../components/SkillIcon/SkillIcon";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { FIELDS } from "../../data/fields";
@@ -188,9 +188,14 @@ export function Explore() {
                           <span className={styles.resultText}>
                             <span className={styles.resultTitle}>
                               {(() => {
-                                const iconId = searchItemBrandIcon(item);
-                                return iconId ? (
-                                  <BrandIcon skillId={iconId} label={item.title} size={20} />
+                                const info = searchItemSkill(item);
+                                return info ? (
+                                  <SkillIcon
+                                    skillId={info.skillId}
+                                    nodeType={info.nodeType}
+                                    label={item.title}
+                                    size={20}
+                                  />
                                 ) : null;
                               })()}
                               {item.title}

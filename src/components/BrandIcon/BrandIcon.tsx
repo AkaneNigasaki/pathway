@@ -100,6 +100,9 @@ const BRAND_ICONS: Record<string, string> = {
   aws: awsSvg,
   gcp: gcpSvg,
   azure: azureSvg,
+  /** Alias : noms de compétences qui désignent la même technologie. */
+  "js-moderne": javascriptSvg,
+  "github-actions": githubSvg,
 };
 
 /** Variantes officielles pour fonds sombres (svgl.app). */
@@ -110,6 +113,7 @@ const BRAND_ICONS_DARK: Partial<Record<string, string>> = {
   kafka: kafkaDarkSvg,
   mysql: mysqlDarkSvg,
   mongodb: mongodbDarkSvg,
+  "github-actions": githubDarkSvg,
 };
 
 /**

@@ -4,7 +4,7 @@ import { LuBriefcase as Briefcase, LuCornerDownLeft as CornerDownLeft, LuLayoutG
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";
-import { BrandIcon, searchItemBrandIcon } from "../BrandIcon/BrandIcon";
+import { SkillIcon, searchItemSkill } from "../SkillIcon/SkillIcon";
 import styles from "./CommandPalette.module.css";
 
 interface CommandPaletteProps {
@@ -168,9 +168,14 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                         <span className={styles.itemText}>
                           <span className={styles.itemTitle}>
                             {(() => {
-                              const iconId = searchItemBrandIcon(item);
-                              return iconId ? (
-                                <BrandIcon skillId={iconId} label={item.title} size={18} />
+                              const info = searchItemSkill(item);
+                              return info ? (
+                                <SkillIcon
+                                  skillId={info.skillId}
+                                  nodeType={info.nodeType}
+                                  label={item.title}
+                                  size={18}
+                                />
                               ) : null;
                             })()}
                             {item.title}

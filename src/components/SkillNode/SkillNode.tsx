@@ -1,18 +1,9 @@
 import { memo } from "react";
-import { LuBraces as Braces, LuLayers as Layers, LuCheck as Check, LuCloud as Cloud, LuCompass as Compass, LuLightbulb as Lightbulb, LuWrench as Wrench } from "react-icons/lu";
+import { LuCheck as Check } from "react-icons/lu";
 import type { NodeType, Skill, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
-import { BrandIcon, hasBrandIcon } from "../BrandIcon/BrandIcon";
+import { SkillIcon } from "../SkillIcon/SkillIcon";
 import styles from "./SkillNode.module.css";
-
-const TYPE_ICON: Record<NodeType, typeof Lightbulb> = {
-  concept: Lightbulb,
-  language: Braces,
-  framework: Layers,
-  tool: Wrench,
-  platform: Cloud,
-  specialization: Compass,
-};
 
 const SHORT_LEVEL: Record<Skill["level"], string> = {
   beginner: "Déb.",
@@ -47,7 +38,6 @@ export const SkillNode = memo(function SkillNode({
   onHover,
 }: SkillNodeProps) {
   const type: NodeType = skill.type ?? "concept";
-  const TypeIcon = TYPE_ICON[type];
   const state = status ?? "todo";
 
   const cycleLabel =
@@ -77,16 +67,12 @@ export const SkillNode = memo(function SkillNode({
         title={`${skill.name} — ${skill.tagline} · ${SKILL_LEVEL_LABEL[skill.level]}`}
       >
         <span className={styles.topRow}>
-          {hasBrandIcon(skill.id) ? (
-            <BrandIcon skillId={skill.id} label={`${skill.name} — ${NODE_TYPE_LABEL[type]}`} size={18} />
-          ) : (
-            <TypeIcon
-              size={14}
-              className={styles.typeIcon}
-              aria-label={NODE_TYPE_LABEL[type]}
-              role="img"
-            />
-          )}
+          <SkillIcon
+            skillId={skill.id}
+            nodeType={type}
+            label={`${skill.name} — ${NODE_TYPE_LABEL[type]}`}
+            size={18}
+          />
           <span className={styles.level}>{SHORT_LEVEL[skill.level]}</span>
         </span>
         <span className={styles.name}>{skill.name}</span>

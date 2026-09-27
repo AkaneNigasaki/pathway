@@ -8,7 +8,7 @@ import { getNextSkills, skillMap } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
 import { getSkillGuide } from "../../data/skill-guides";
 import { FlowDiagram, SKILL_ILLUSTRATIONS } from "../illustrations";
-import { BrandIcon, hasBrandIcon } from "../BrandIcon/BrandIcon";
+import { SkillIcon } from "../SkillIcon/SkillIcon";
 import styles from "./SkillPanel.module.css";
 
 interface SkillPanelProps {
@@ -221,9 +221,12 @@ export function SkillPanel({
             {roadmap.title.toUpperCase()}
           </p>
           <h2 className={styles.name}>
-            {hasBrandIcon(skill.id) && (
-              <BrandIcon skillId={skill.id} label={skill.name} size={30} />
-            )}
+            <SkillIcon
+              skillId={skill.id}
+              nodeType={skill.type ?? "concept"}
+              label={skill.name}
+              size={30}
+            />
             {skill.name}
           </h2>
           <p className={styles.tagline}>{skill.tagline}</p>
