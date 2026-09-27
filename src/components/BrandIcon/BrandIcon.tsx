@@ -117,10 +117,11 @@ const BRAND_ICONS_DARK: Partial<Record<string, string>> = {
 };
 
 /**
- * Logos monochromes sombres sans variante officielle : rendus blancs
- * en thème sombre (traitement standard, comme le logo Next.js officiel).
+ * Logos sombres sans variante officielle : rendus blancs en thème sombre.
+ * Traitement standard (silhouette monochrome), vérifié lisible sur fond noir :
+ * le logo couleur d'origine est illisible à 18-20 px sur #000.
  */
-const WHITE_IN_DARK = new Set(["nextjs"]);
+const WHITE_IN_DARK = new Set(["nextjs", "aws", "azure", "cpp", "playwright"]);
 
 export function hasBrandIcon(skillId: string): boolean {
   return skillId in BRAND_ICONS;
