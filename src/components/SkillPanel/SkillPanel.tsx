@@ -1,9 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, Clock, Compass,
-  FlaskConical, Gauge, Lightbulb, ListChecks, Lock, Quote, Sparkles, Workflow, X,
-} from "lucide-react";
+import {ArrowRight, ArrowUpRight, BookOpen, Check, CaretRight, Clock, Compass, Flask, Gauge, Lightbulb, ListChecks, Lock, Quotes, Sparkle, FlowArrow, X, } from "@phosphor-icons/react";
 import type { Roadmap, Skill, SkillLevel, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
 import type { ProgressMap } from "../../hooks/useProgress";
@@ -178,7 +175,7 @@ export function SkillPanel({
   const typeLabel = NODE_TYPE_LABEL[skill.type ?? "concept"];
 
   return (
-    <div className={styles.root} style={{ "--accent": field?.accent } as React.CSSProperties}>
+    <div className={styles.root} style={{ "--field-accent": field?.accent } as React.CSSProperties}>
       <div
         className={`${styles.overlay} ${visible ? styles.show : ""}`}
         onClick={handleClose}
@@ -199,7 +196,7 @@ export function SkillPanel({
           onClick={handleClose}
           aria-label="Fermer le panneau"
         >
-          <X size={18} strokeWidth={2} aria-hidden="true" />
+          <X size={18} aria-hidden="true" />
         </button>
 
         <div ref={scrollRef} className={styles.scroll}>
@@ -207,7 +204,7 @@ export function SkillPanel({
             <Link to={`/fields/${roadmap.fieldId}`} onClick={handleClose}>
               {field?.name ?? roadmap.fieldId}
             </Link>
-            <ChevronRight size={12} aria-hidden="true" />
+            <CaretRight size={12} aria-hidden="true" />
             {stage ? (
               <Link to={`/roadmaps/${roadmap.slug}?stage=${stage.id}`} onClick={handleClose}>
                 {stage.label}
@@ -215,11 +212,11 @@ export function SkillPanel({
             ) : (
               <span>{skill.stage}</span>
             )}
-            <ChevronRight size={12} aria-hidden="true" />
+            <CaretRight size={12} aria-hidden="true" />
             <span aria-current="page">{skill.name}</span>
           </nav>
 
-          <p className={styles.eyebrow} style={{ color: field?.accent }}>
+          <p className={`${styles.eyebrow} fieldAccent`}>
             {roadmap.title.toUpperCase()}
           </p>
           <h2 className={styles.name}>{skill.name}</h2>
@@ -250,7 +247,7 @@ export function SkillPanel({
                   onClick={() => setStatus(skill.id, opt.value)}
                 >
                   {opt.value === "done" && (
-                    <Check size={13} strokeWidth={3} aria-hidden="true" />
+                    <Check size={13} weight="bold" aria-hidden="true" />
                   )}
                   {opt.label}
                 </button>
@@ -274,7 +271,7 @@ export function SkillPanel({
           {guide?.definition && (
             <section className={styles.block} aria-label="Définition">
               <h3 className={styles.blockTitle}>
-                <Quote size={13} aria-hidden="true" /> Définition
+                <Quotes size={13} aria-hidden="true" /> Définition
               </h3>
               <p className={styles.definition}>{guide.definition}</p>
             </section>
@@ -347,7 +344,7 @@ export function SkillPanel({
                           aria-hidden="true"
                         />
                         <span className={styles.prereqName}>{p.name}</span>
-                        <ChevronRight size={13} aria-hidden="true" />
+                        <CaretRight size={13} aria-hidden="true" />
                       </span>
                       <span className={styles.prereqNote}>
                         {guide?.prerequisiteNotes?.[p.id] ?? p.tagline}
@@ -378,7 +375,7 @@ export function SkillPanel({
                         onClick={() => setOpenConcept(open ? null : c.name)}
                       >
                         <code className="mono">{c.name}</code>
-                        <ChevronRight
+                        <CaretRight
                           size={14}
                           aria-hidden="true"
                           className={`${styles.accChevron} ${open ? styles.accChevronOpen : ""}`}
@@ -414,7 +411,7 @@ export function SkillPanel({
           {guide?.howItWorks && guide.howItWorks.length > 0 && (
             <section className={styles.block} aria-label={guide.howItWorksTitle ?? "Comment ça fonctionne"}>
               <h3 className={styles.blockTitle}>
-                <Workflow size={13} aria-hidden="true" />{" "}
+                <FlowArrow size={13} aria-hidden="true" />{" "}
                 {guide.howItWorksTitle ?? "Comment ça fonctionne"}
               </h3>
               <FlowDiagram
@@ -439,7 +436,7 @@ export function SkillPanel({
 
           <section className={styles.block} aria-label="Projets pratiques">
             <h3 className={styles.blockTitle}>
-              <FlaskConical size={13} aria-hidden="true" /> Mettez la compétence en pratique
+              <Flask size={13} aria-hidden="true" /> Mettez la compétence en pratique
             </h3>
             {projectsDetailed ? (
               <ol className={styles.projectsDetailed}>
@@ -484,7 +481,7 @@ export function SkillPanel({
           {suggestions.length > 0 && (
             <section className={styles.block} aria-label="Vous êtes prêt pour">
               <h3 className={styles.blockTitle}>
-                <Sparkles size={13} aria-hidden="true" /> Vous êtes prêt pour
+                <Sparkle size={13} aria-hidden="true" /> Vous êtes prêt pour
               </h3>
               <ul className={styles.suggestions}>
                 {suggestions.map(({ skill: s, reason, ready }) => (
@@ -521,7 +518,7 @@ export function SkillPanel({
                     className={`${styles.chip} ${styles.chipAccent}`}
                     onClick={() => goTo(r)}
                   >
-                    {r.name} <ChevronRight size={13} aria-hidden="true" />
+                    {r.name} <CaretRight size={13} aria-hidden="true" />
                   </button>
                 ))}
               </div>
@@ -534,7 +531,7 @@ export function SkillPanel({
               className={styles.completeCta}
               onClick={() => setStatus(skill.id, "done")}
             >
-              <Check size={16} strokeWidth={2.5} aria-hidden="true" />
+              <Check size={16} weight="bold" aria-hidden="true" />
               Marquer comme terminée
             </button>
           )}

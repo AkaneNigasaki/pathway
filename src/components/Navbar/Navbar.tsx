@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Menu, Moon, Search, Sun, User, X } from "lucide-react";
+import {List, Moon, MagnifyingGlass, Sun, User, X} from "@phosphor-icons/react";
 import type { Theme } from "../../types";
 import styles from "./Navbar.module.css";
 
@@ -90,7 +90,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               onClick={onOpenPalette}
               aria-label="Rechercher (Ctrl+K)"
             >
-              <Search size={16} strokeWidth={2} aria-hidden="true" />
+              <MagnifyingGlass size={16} aria-hidden="true" />
               <span className={styles.searchLabel}>Rechercher</span>
               <kbd className={styles.kbd} aria-hidden="true">
                 ⌘K
@@ -103,9 +103,9 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
             >
               {theme === "light" ? (
-                <Moon size={17} strokeWidth={1.8} aria-hidden="true" />
+                <Moon size={17} aria-hidden="true" />
               ) : (
-                <Sun size={17} strokeWidth={1.8} aria-hidden="true" />
+                <Sun size={17} aria-hidden="true" />
               )}
             </button>
             <button
@@ -114,7 +114,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               onClick={() => navigate("/progression")}
               aria-label="Mon profil et ma progression"
             >
-              <User size={17} strokeWidth={1.8} aria-hidden="true" />
+              <User size={17} aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -123,7 +123,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               aria-label="Ouvrir le menu"
               aria-expanded={menuOpen}
             >
-              <Menu size={18} strokeWidth={1.8} aria-hidden="true" />
+              <List size={18} aria-hidden="true" />
             </button>
           </div>
         </nav>
@@ -145,7 +145,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
             onClick={() => setMenuOpen(false)}
             aria-label="Fermer le menu"
           >
-            <X size={20} strokeWidth={1.8} aria-hidden="true" />
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
         <nav aria-label="Navigation mobile">
@@ -161,7 +161,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
         </nav>
         <div className={styles.mobileFoot}>
           <button type="button" className={styles.mobileAction} onClick={onOpenPalette}>
-            <Search size={16} aria-hidden="true" /> Rechercher
+            <MagnifyingGlass size={16} aria-hidden="true" /> Rechercher
           </button>
           <button type="button" className={styles.mobileAction} onClick={onToggleTheme}>
             {theme === "light" ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}

@@ -1,4 +1,5 @@
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import styles from "./Illustration.module.css";
 
 interface FlowPulseProps {
   /** Tracé SVG suivi par le point (attribut `path` de animateMotion). */
@@ -14,7 +15,7 @@ export function FlowPulse({ path, dur = 2.6 }: FlowPulseProps) {
   const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   if (reduceMotion) return null;
   return (
-    <circle r="4" fill="var(--accent, #5b8cff)" opacity="0.85" aria-hidden="true">
+    <circle r="4" className={styles.pulseDot} aria-hidden="true">
       <animateMotion dur={`${dur}s`} repeatCount="indefinite" path={path} />
     </circle>
   );

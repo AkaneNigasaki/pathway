@@ -237,3 +237,9 @@
     opacity: 0.9;
   }
 }
+
+/* Point du FlowPulse : var() interdit en attribut de présentation SVG. */
+.pulseDot {
+  fill: var(--accent, #5b8cff);
+  opacity: 0.85;
+}

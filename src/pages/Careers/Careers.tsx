@@ -51,7 +51,7 @@ export function Careers() {
                 onClick={() => setFieldFilter(f.id)}
                 aria-pressed={fieldFilter === f.id}
               >
-                <span className={styles.dot} style={{ background: f.accent }} aria-hidden="true" />
+                <span className={styles.dot} style={{ "--field-accent": f.accent } as React.CSSProperties} aria-hidden="true" />
                 {f.name}
               </button>
             ))}

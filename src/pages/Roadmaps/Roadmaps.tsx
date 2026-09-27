@@ -57,11 +57,11 @@ export function Roadmaps() {
                 className={`${styles.chip} ${fieldFilter === f.id ? styles.on : ""}`}
                 onClick={() => setFieldFilter(f.id)}
                 aria-pressed={fieldFilter === f.id}
-                style={fieldFilter === f.id ? { "--accent": f.accent } as React.CSSProperties : undefined}
+                style={fieldFilter === f.id ? { "--field-accent": f.accent } as React.CSSProperties : undefined}
               >
                 <span
                   className={styles.dot}
-                  style={{ background: f.accent }}
+                  style={{ "--field-accent": f.accent } as React.CSSProperties}
                   aria-hidden="true"
                 />
                 {f.name}

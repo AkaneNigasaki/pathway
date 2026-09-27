@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Briefcase, Clock, Flag, Layers, Map as MapIcon, X } from "lucide-react";
+import {ArrowLeft, ArrowRight, Briefcase, Clock, Flag, Stack, MapTrifold as MapIcon, X} from "@phosphor-icons/react";
 import { RoadmapMap } from "../../components/RoadmapGraph/RoadmapMap";
 import { RoadmapList } from "../../components/RoadmapGraph/RoadmapList";
 import { SkillPanel } from "../../components/SkillPanel/SkillPanel";
@@ -108,7 +108,7 @@ export function RoadmapDetail() {
   const total = roadmap.skills.length;
 
   return (
-    <div className={styles.page} style={{ "--accent": field?.accent } as React.CSSProperties}>
+    <div className={styles.page} style={{ "--field-accent": field?.accent } as React.CSSProperties}>
       <div className="scroll-progress" aria-hidden="true" />
 
       <div className="container">
@@ -119,7 +119,7 @@ export function RoadmapDetail() {
         </Reveal>
 
         <Reveal className={styles.hero}>
-          <p className={styles.field} style={{ color: field?.accent }}>
+          <p className={`${styles.field} fieldAccent`}>
             {field?.name.toUpperCase()}
           </p>
           <h1 className={styles.title}>{roadmap.title}</h1>
@@ -138,7 +138,7 @@ export function RoadmapDetail() {
             </div>
             <dl className={styles.stats}>
               <div className={styles.stat}>
-                <dt><Layers size={14} aria-hidden="true" /> Compétences</dt>
+                <dt><Stack size={14} aria-hidden="true" /> Compétences</dt>
                 <dd className="mono">{total}</dd>
               </div>
               <div className={styles.stat}>

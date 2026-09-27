@@ -1,5 +1,4 @@
 .card {
-  --accent: var(--accent);
   position: relative;
   display: flex;
   flex-direction: column;

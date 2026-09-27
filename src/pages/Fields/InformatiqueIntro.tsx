@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import {ArrowUpRight} from "@phosphor-icons/react";
 import { Reveal } from "../../components/Reveal/Reveal";
-import { InformatiqueDiagram, ExplorePaths } from "../../components/illustrations";
+import { InformatiqueDiagram, ExplorePaths, BranchBanner } from "../../components/illustrations";
+import bannerStyles from "../../components/illustrations/BranchBanner.module.css";
 import { getRoadmap, getSkill } from "../../data/roadmaps";
 import { getBranchGuide, INFORMATIQUE_INTRO } from "../../data/branch-guides";
 import styles from "./FieldDetail.module.css";
@@ -46,6 +47,7 @@ export function InformatiqueIntro() {
                   to={`/roadmaps/informatique?stage=${stage.id}`}
                   className={styles.branchCard}
                 >
+                  <BranchBanner branch={stage.id} className={`${bannerStyles.banner} ${styles.branchBanner}`} />
                   <span className={`${styles.branchNum} mono`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>

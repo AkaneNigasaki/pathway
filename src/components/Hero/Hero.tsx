@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import {ArrowDown, ArrowRight} from "@phosphor-icons/react";
 import styles from "./Hero.module.css";
 
 const FIELDS = [

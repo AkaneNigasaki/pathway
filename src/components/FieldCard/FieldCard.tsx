@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
-import {
-  Cpu, Scale, TrendingUp, Landmark, FlaskConical, Stethoscope,
-  Cog, PenTool, DraftingCompass, Megaphone, Users, type LucideIcon,
-} from "lucide-react";
+import {Cpu, Scales, TrendUp, Bank, Flask, Stethoscope, Gear, PenNib, CompassTool, Megaphone, Users, type Icon, } from "@phosphor-icons/react";
 import type { Field } from "../../types";
 import styles from "./FieldCard.module.css";
 
-const ICONS: Record<string, LucideIcon> = {
-  Cpu, Scale, TrendingUp, Landmark, FlaskConical, Stethoscope,
-  Cog, PenTool, DraftingCompass, Megaphone, Users,
+const ICONS: Record<string, Icon> = {
+  Cpu,
+  Scale: Scales,
+  TrendingUp: TrendUp,
+  Landmark: Bank,
+  FlaskConical: Flask,
+  Stethoscope,
+  Cog: Gear,
+  PenTool: PenNib,
+  DraftingCompass: CompassTool,
+  Megaphone,
+  Users,
 };
 
 interface FieldCardProps {
@@ -26,12 +32,12 @@ export function FieldCard({ field, roadmapCount, skillCount, careerCount }: Fiel
     <Link
       to={empty ? "/fields" : `/fields/${field.id}`}
       className={`${styles.card} ${empty ? styles.empty : ""}`}
-      style={{ "--accent": field.accent } as React.CSSProperties}
+      style={{ "--field-accent": field.accent } as React.CSSProperties}
       aria-label={`${field.name} — ${roadmapCount} roadmaps`}
     >
       <span className={styles.topRow}>
         <span className={styles.iconWrap} aria-hidden="true">
-          <Icon size={19} strokeWidth={1.7} />
+          <Icon size={19} />
         </span>
         <span className={styles.accentDot} aria-hidden="true" />
       </span>

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import {ArrowRight} from "@phosphor-icons/react";
 import { Hero } from "../../components/Hero/Hero";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { FieldCard } from "../../components/FieldCard/FieldCard";

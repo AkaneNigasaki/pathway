@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Compass } from "lucide-react";
+import {ArrowLeft, Compass} from "@phosphor-icons/react";
 import styles from "./NotFound.module.css";
 
 export function NotFound() {
@@ -7,7 +7,7 @@ export function NotFound() {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.inner}>
-          <Compass size={44} strokeWidth={1.2} aria-hidden="true" className={styles.icon} />
+          <Compass size={44} aria-hidden="true" className={styles.icon} />
           <p className={styles.code}>404</p>
           <h1 className={styles.title}>Ce parcours n'existe pas.</h1>
           <p className={styles.lead}>

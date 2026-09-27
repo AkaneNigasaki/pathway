@@ -174,7 +174,7 @@
 }
 
 .reset:hover {
-  color: #b91c1c;
+  color: var(--danger);
 }
 
 @media (max-width: 720px) {

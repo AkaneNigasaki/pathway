@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, RotateCcw, Trophy } from "lucide-react";
+import {ArrowRight, ArrowCounterClockwise, Trophy} from "@phosphor-icons/react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { ROADMAPS } from "../../data/roadmaps";
@@ -41,7 +41,7 @@ export function ProgressPage() {
 
         {entries.length === 0 ? (
           <Reveal className={styles.empty}>
-            <Trophy size={40} strokeWidth={1.2} aria-hidden="true" className={styles.emptyIcon} />
+            <Trophy size={40} aria-hidden="true" className={styles.emptyIcon} />
             <h2>Aucune progression pour le moment</h2>
             <p>
               Choisissez une roadmap et validez votre première compétence
@@ -75,10 +75,10 @@ export function ProgressPage() {
                   <Reveal key={roadmap.slug} delay={Math.min(i * 60, 300)}>
                     <article
                       className={styles.row}
-                      style={{ "--accent": field?.accent } as React.CSSProperties}
+                      style={{ "--field-accent": field?.accent } as React.CSSProperties}
                     >
                       <div className={styles.rowMain}>
-                        <p className={styles.rowField} style={{ color: field?.accent }}>
+                        <p className={`${styles.rowField} fieldAccent`}>
                           {field?.name.toUpperCase()}
                         </p>
                         <h2 className={styles.rowTitle}>
@@ -102,7 +102,7 @@ export function ProgressPage() {
                           onClick={() => resetRoadmap(roadmap.id)}
                           aria-label={`Réinitialiser la progression ${roadmap.title}`}
                         >
-                          <RotateCcw size={14} aria-hidden="true" /> Réinitialiser
+                          <ArrowCounterClockwise size={14} aria-hidden="true" /> Réinitialiser
                         </button>
                       </div>
                     </article>

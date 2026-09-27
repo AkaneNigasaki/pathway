@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, PlusCircle, Rocket } from "lucide-react";
+import {ArrowLeft, ArrowUpRight, CheckCircle, PlusCircle, Rocket} from "@phosphor-icons/react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { getCareer } from "../../data/careers";
 import { getField } from "../../data/fields";
@@ -17,7 +17,7 @@ export function CareerDetail() {
   const roadmap = getRoadmap(career.roadmapSlug);
 
   return (
-    <div className={styles.page} style={{ "--accent": field?.accent } as React.CSSProperties}>
+    <div className={styles.page} style={{ "--field-accent": field?.accent } as React.CSSProperties}>
       <div className="container">
         <Reveal>
           <Link to="/careers" className={styles.back}>
@@ -28,7 +28,7 @@ export function CareerDetail() {
         <div className={styles.layout}>
           <div>
             <Reveal>
-              <p className={styles.kicker} style={{ color: field?.accent }}>
+              <p className={`${styles.kicker} fieldAccent`}>
                 {field?.name.toUpperCase()} · {career.demand.toUpperCase()}
               </p>
               <h1 className={styles.title}>{career.title}</h1>
@@ -43,7 +43,7 @@ export function CareerDetail() {
 
             <Reveal className={styles.block}>
               <h2 className={styles.blockTitle}>
-                <CheckCircle2 size={16} aria-hidden="true" /> Compétences principales
+                <CheckCircle size={16} aria-hidden="true" /> Compétences principales
               </h2>
               <ul className={styles.skillList}>
                 {career.coreSkills.map((s) => (

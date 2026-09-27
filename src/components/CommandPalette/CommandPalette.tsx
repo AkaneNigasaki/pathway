@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Briefcase, CornerDownLeft, LayoutGrid, Map, Search, Zap } from "lucide-react";
+import {Briefcase, ArrowBendDownLeft, SquaresFour, MapTrifold, MagnifyingGlass, Lightning} from "@phosphor-icons/react";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";
@@ -11,11 +11,11 @@ interface CommandPaletteProps {
   onClose: () => void;
 }
 
-const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
-  roadmap: { label: "Roadmaps", icon: Map },
-  field: { label: "Filières", icon: LayoutGrid },
+const TYPE_META: Record<SearchItemType, { label: string; icon: typeof MapTrifold }> = {
+  roadmap: { label: "Roadmaps", icon: MapTrifold },
+  field: { label: "Filières", icon: SquaresFour },
   career: { label: "Métiers", icon: Briefcase },
-  skill: { label: "Compétences", icon: Zap },
+  skill: { label: "Compétences", icon: Lightning },
 };
 
 const TYPE_ORDER: SearchItemType[] = ["roadmap", "field", "career", "skill"];
@@ -114,7 +114,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
         aria-label="Recherche globale"
       >
         <div className={styles.inputRow}>
-          <Search size={18} strokeWidth={1.8} aria-hidden="true" className={styles.inputIcon} />
+          <MagnifyingGlass size={18} aria-hidden="true" className={styles.inputIcon} />
           <input
             ref={inputRef}
             type="text"
@@ -158,11 +158,11 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                         onClick={() => go(item)}
                       >
                         <span
-                          className={styles.itemIcon}
-                          style={field ? { color: field.accent } : undefined}
+                          className={`${styles.itemIcon} ${field ? "fieldAccent" : ""}`}
+                          style={field ? ({ "--field-accent": field.accent } as React.CSSProperties) : undefined}
                           aria-hidden="true"
                         >
-                          <Icon size={16} strokeWidth={1.8} />
+                          <Icon size={16} />
                         </span>
                         <span className={styles.itemText}>
                           <span className={styles.itemTitle}>{item.title}</span>
@@ -174,7 +174,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                           </span>
                         </span>
                         {i === active && (
-                          <CornerDownLeft size={14} aria-hidden="true" className={styles.enterIcon} />
+                          <ArrowBendDownLeft size={14} aria-hidden="true" className={styles.enterIcon} />
                         )}
                       </button>
                     );

@@ -1,9 +1,6 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import {
-  ArrowLeft, ArrowUpRight, Brain, Container, Cpu, Database, Globe,
-  Lightbulb, ShieldCheck, Zap,
-} from "lucide-react";
+import {ArrowLeft, ArrowUpRight, Brain, ShippingContainer, Cpu, Database, Globe, Lightbulb, ShieldCheck, Lightning, } from "@phosphor-icons/react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { CareerCard } from "../../components/CareerCard/CareerCard";
@@ -19,9 +16,9 @@ import styles from "./FieldDetail.module.css";
 const PATH_ICONS: Record<GuidedPathIcon, typeof Globe> = {
   web: Globe,
   ai: Brain,
-  devops: Container,
+  devops: ShippingContainer,
   data: Database,
-  automation: Zap,
+  automation: Lightning,
   security: ShieldCheck,
   robotics: Cpu,
   foundations: Lightbulb,
@@ -49,7 +46,7 @@ export function FieldDetail() {
     progressPercent(countDone(store[roadmapId]), total);
 
   return (
-    <div className={styles.page} style={{ "--accent": field.accent } as React.CSSProperties}>
+    <div className={styles.page} style={{ "--field-accent": field.accent } as React.CSSProperties}>
       <div className="container">
         <Reveal>
           <Link to="/fields" className={styles.back}>
@@ -100,7 +97,7 @@ export function FieldDetail() {
                       className={styles.pathCard}
                     >
                       <span className={styles.pathIcon} aria-hidden="true">
-                        <Icon size={20} strokeWidth={1.8} />
+                        <Icon size={20} />
                       </span>
                       <span className={styles.pathTitle}>{p.title}</span>
                       <span className={styles.pathPitch}>{p.pitch}</span>

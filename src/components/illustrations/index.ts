@@ -10,6 +10,7 @@ import { MlDiagram } from "./MlDiagram";
 import { CybersecurityDiagram } from "./CybersecurityDiagram";
 import { InformatiqueDiagram } from "./InformatiqueDiagram";
 import { ExplorePaths } from "./ExplorePaths";
+import { BranchBanner } from "./BranchBanner";
 
 /** Illustration dédiée associée à une compétence ou une branche. */
 export const SKILL_ILLUSTRATIONS: Record<SkillIllustration, ComponentType> = {
@@ -32,4 +33,5 @@ export {
   CybersecurityDiagram,
   InformatiqueDiagram,
   ExplorePaths,
+  BranchBanner,
 };

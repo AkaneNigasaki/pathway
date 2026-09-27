@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowUpRight, Briefcase, LayoutGrid, Map, Search, X, Zap } from "lucide-react";
+import {ArrowUpRight, Briefcase, SquaresFour, MapTrifold, MagnifyingGlass, X, Lightning} from "@phosphor-icons/react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
@@ -8,11 +8,11 @@ import { FIELDS } from "../../data/fields";
 import { SKILL_LEVEL_LABEL } from "../../types";
 import styles from "./Explore.module.css";
 
-const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
-  roadmap: { label: "Roadmaps", icon: Map },
-  skill: { label: "Compétences", icon: Zap },
+const TYPE_META: Record<SearchItemType, { label: string; icon: typeof MapTrifold }> = {
+  roadmap: { label: "Roadmaps", icon: MapTrifold },
+  skill: { label: "Compétences", icon: Lightning },
   career: { label: "Métiers", icon: Briefcase },
-  field: { label: "Filières", icon: LayoutGrid },
+  field: { label: "Filières", icon: SquaresFour },
 };
 
 const TYPE_ORDER: SearchItemType[] = ["roadmap", "skill", "career", "field"];
@@ -63,7 +63,7 @@ export function Explore() {
 
         <Reveal delay={80}>
           <div className={styles.searchBar} role="search">
-            <Search size={19} strokeWidth={1.8} aria-hidden="true" className={styles.searchIcon} />
+            <MagnifyingGlass size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="explore-search" className={styles.srOnly}>
               Rechercher
             </label>
