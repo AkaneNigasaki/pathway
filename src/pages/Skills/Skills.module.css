@@ -177,24 +177,47 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 1rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  border-radius: 9px;
   background: var(--surface);
   color: inherit;
   text-decoration: none;
   height: 100%;
-  transition: transform 180ms var(--ease-out), border-color 180ms ease,
-    box-shadow 180ms ease;
+  overflow: hidden;
+  transition: transform 300ms var(--ease-out), border-color 200ms ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent) 5%, transparent) 55%,
+    color-mix(in srgb, var(--accent) 20%, transparent) 100%
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-subtle);
+  transform: scale(1.04);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
 }
 
 .cardMain {
@@ -232,15 +255,15 @@
 }
 
 .levelDot.beginner {
-  background: #16a34a;
+  background: #1da85e;
 }
 
 .levelDot.intermediate {
-  background: #d97706;
+  background: #efbd0b;
 }
 
 .levelDot.advanced {
-  background: #dc2626;
+  background: #d9480f;
 }
 
 .chevron {
@@ -359,10 +382,9 @@
 
   .chip:hover,
   .card:hover,
-  .suggestion:hover {
-    transform: none;
-  }
-
+  .chip:active,
+  .card:active,
+  .suggestion:hover,
   .card:hover .chevron {
     transform: none;
   }

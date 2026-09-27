@@ -174,23 +174,45 @@
   padding: 0;
 }
 
+/* Pastille signature façon Softaims : bordure crème + couche jaune décalée */
 .exploreByLink {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0.55rem 1.15rem;
-  border: 1px solid var(--border);
+  padding: 0.55rem 1.4rem;
+  border: 1.3px solid var(--foreground);
   border-radius: var(--radius-full);
-  background: var(--surface);
+  background: transparent;
   color: var(--foreground);
   font-size: var(--text-small);
   font-weight: 600;
-  transition: border-color 180ms ease, transform 180ms var(--ease-out);
+  isolation: isolate;
+  transition: color 200ms ease, border-color 200ms ease;
 }
 
-.exploreByLink:hover {
-  border-color: var(--foreground);
-  transform: translateY(-1px);
+.exploreByLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--accent);
+  transform: translate(-4%, -9%) scale(0.97);
+  opacity: 0.85;
+  transition: transform 240ms var(--ease-out), opacity 240ms ease;
+}
+
+.exploreByLink:hover::after,
+.exploreByLink:focus-visible::after {
+  transform: translate(0, 0) scale(1);
+  opacity: 1;
+}
+
+.exploreByLink:hover,
+.exploreByLink:focus-visible {
+  color: #1c1811;
+  border-color: var(--accent);
 }
 
 /* ── Indicateur de scroll : CSS uniquement ── */
@@ -264,5 +286,41 @@
   }
   .hintWrap {
     display: none;
+  }
+}
+
+/* ── Hero façon Softaims : bandeau bleu marine en thème sombre ── */
+[data-theme="dark"] .hero {
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgb(239 189 11 / 0.08), transparent 60%),
+    var(--navy);
+  border-bottom: 1px solid rgb(249 244 219 / 0.12);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+[data-theme="dark"] .title,
+[data-theme="dark"] .lead {
+  color: var(--foreground);
+}
+
+[data-theme="dark"] .kicker {
+  background: rgb(0 0 0 / 0.25);
+  border-color: rgb(249 244 219 / 0.25);
+  color: var(--foreground);
+}
+
+[data-theme="dark"] .searchForm input {
+  background: #1e1b1b;
+  border: 1px solid rgb(249 244 219 / 0.35);
+  color: var(--foreground);
+}
+
+[data-theme="dark"] .searchForm input::placeholder {
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exploreByLink::after {
+    transition: none;
   }
 }

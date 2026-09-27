@@ -10,10 +10,9 @@ function initialTheme(): Theme {
   } catch {
     /* ignore */
   }
-  if (typeof window !== "undefined" && window.matchMedia) {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  return "light";
+  // Le style visuel de Pathway est sombre (référence Softaims) : défaut = dark,
+  // sauf préférence déjà enregistrée par l'utilisateur.
+  return "dark";
 }
 
 export function useTheme() {
@@ -23,7 +22,7 @@ export function useTheme() {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]')?.setAttribute(
       "content",
-      theme === "dark" ? "#0a0c10" : "#ffffff"
+      theme === "dark" ? "#000000" : "#fbf8ee"
     );
     try {
       localStorage.setItem(KEY, theme);

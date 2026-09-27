@@ -30,7 +30,15 @@ body {
 }
 
 h1,
-h2,
+h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
 h3,
 h4 {
   margin: 0;
@@ -38,6 +46,65 @@ h4 {
   line-height: 1.08;
   letter-spacing: var(--tracking-title);
   text-wrap: balance;
+}
+
+/* ── Bouton signature façon Softaims : pastille + couche jaune décalée ── */
+.btn-offset {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-full);
+  border: 1.3px solid var(--foreground);
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  isolation: isolate;
+  transition: color 240ms ease, border-color 240ms ease;
+}
+
+.btn-offset::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--accent);
+  transform: translate(-4%, -9%) scale(0.98);
+  opacity: 0.9;
+  transition: transform 260ms var(--ease-out), opacity 260ms ease;
+}
+
+.btn-offset:hover::after,
+.btn-offset:focus-visible::after {
+  transform: translate(0, 0) scale(1);
+  opacity: 1;
+}
+
+.btn-offset:hover,
+.btn-offset:focus-visible {
+  color: #1c1811;
+  border-color: var(--accent);
+}
+
+/* ── Motif grille fine sur fond noir (thème sombre) ── */
+[data-theme="dark"] body {
+  background-image:
+    linear-gradient(rgb(249 244 219 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(249 244 219 / 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-offset::after {
+    transition: none;
+  }
 }
 
 p {
