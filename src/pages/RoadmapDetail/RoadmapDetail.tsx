@@ -71,12 +71,10 @@ export function RoadmapDetail() {
     return roadmap.skills
       .filter(
         (s) =>
-          !status[s.id] &&
-          s.prerequisites.length > 0 &&
-          s.prerequisites.every((p) => status[p] === "done")
+          !status[s.id] && s.prerequisites.every((p) => status[p] === "done")
       )
       .sort((a, b) => skillDepth(roadmap, a.id) - skillDepth(roadmap, b.id))
-      .slice(0, 4);
+      .slice(0, 6);
   }, [roadmap, status]);
 
   if (!roadmap) return <NotFound />;
