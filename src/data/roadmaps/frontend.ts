@@ -1,0 +1,242 @@
+import type { Roadmap } from "../../types";
+
+export const frontendRoadmap: Roadmap = {
+  id: "frontend-developer",
+  slug: "frontend-developer",
+  fieldId: "informatique",
+  title: "Frontend Developer",
+  tagline: "De JavaScript aux architectures frontend modernes.",
+  description:
+    "Un parcours complet pour devenir développeur frontend : des fondations du web aux frameworks modernes, en passant par le testing, la performance et l'accessibilité. Chaque compétence se construit sur la précédente.",
+  levelLabel: "Débutant → Avancé",
+  duration: "8–12 mois",
+  careerSlugs: ["frontend-developer"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Le socle : comment le web fonctionne vraiment.",
+    },
+    {
+      id: "core",
+      label: "Cœur du métier",
+      description: "Les outils que vous utiliserez chaque jour.",
+    },
+    {
+      id: "depth",
+      label: "Approfondissement",
+      description: "Ce qui distingue un bon développeur d'un excellent.",
+    },
+    {
+      id: "expertise",
+      label: "Expertise",
+      description: "Penser en systèmes, pas en composants.",
+    },
+  ],
+  skills: [
+    {
+      id: "html",
+      name: "HTML",
+      tagline: "La structure sémantique du web.",
+      description:
+        "HTML est le langage de structure de toutes les pages web. Bien le maîtriser, c'est construire des bases sémantiques, accessibles et solides pour tout le reste.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Éléments sémantiques", "Formulaires", "Accessibilité native", "SEO technique", "DOM"],
+      projects: ["Page personnelle sémantique", "Formulaire accessible complet"],
+      resources: [
+        { title: "MDN — HTML", provider: "MDN Web Docs", url: "https://developer.mozilla.org/fr/docs/Web/HTML" },
+        { title: "HTML Living Standard", provider: "WHATWG", url: "https://html.spec.whatwg.org/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "css",
+      name: "CSS",
+      tagline: "Le langage du visuel et de la mise en page.",
+      description:
+        "CSS contrôle la présentation : layouts, typographie, animations. Sa maîtrise sépare les interfaces approximatives des interfaces précises.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Flexbox & Grid", "Cascade & spécificité", "Responsive design", "Variables CSS", "Animations"],
+      projects: ["Clone d'une landing page", "Système de grille responsive"],
+      resources: [
+        { title: "MDN — CSS", provider: "MDN Web Docs", url: "https://developer.mozilla.org/fr/docs/Web/CSS" },
+        { title: "CSS-Tricks — Guides", provider: "CSS-Tricks", url: "https://css-tricks.com/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "javascript",
+      name: "JavaScript",
+      tagline: "Le langage vivant du web.",
+      description:
+        "JavaScript apporte l'interactivité. Comprenez en profondeur les closures, le modèle asynchrone et le DOM avant de toucher à un framework.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: ["html", "css"],
+      concepts: ["Closures & scope", "Promesses & async/await", "DOM & événements", "Modules ES", "Prototypes"],
+      projects: ["Todo app sans framework", "Jeu du serpent en canvas"],
+      resources: [
+        { title: "MDN — JavaScript", provider: "MDN Web Docs", url: "https://developer.mozilla.org/fr/docs/Web/JavaScript" },
+        { title: "JavaScript.info", provider: "javascript.info", url: "https://javascript.info/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "typescript",
+      name: "TypeScript",
+      tagline: "Superset typé de JavaScript.",
+      description:
+        "TypeScript ajoute un système de types statiques à JavaScript. Il détecte les erreurs avant l'exécution et rend les bases de code maintenables à grande échelle.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["javascript"],
+      concepts: ["Generics", "Interfaces & types", "Union types", "Type guards", "Utility types"],
+      projects: ["API REST typée", "Migration d'un projet JS vers TS"],
+      resources: [
+        { title: "TypeScript Handbook", provider: "typescriptlang.org", url: "https://www.typescriptlang.org/docs/handbook/intro.html" },
+        { title: "Total TypeScript", provider: "totaltypescript.com", url: "https://www.totaltypescript.com/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "react",
+      name: "React",
+      tagline: "La bibliothèque UI dominante.",
+      description:
+        "React structure les interfaces en composants déclaratifs. Maîtrisez les hooks, le cycle de vie et la gestion d'état locale avant d'aller plus loin.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["javascript"],
+      concepts: ["Composants & props", "Hooks (useState, useEffect)", "Rendu conditionnel", "État local vs global", "Refs"],
+      projects: ["Application de notes avec recherche", "Galerie avec appels API"],
+      resources: [
+        { title: "React Docs", provider: "react.dev", url: "https://react.dev/" },
+        { title: "Epic React", provider: "epicreact.dev", url: "https://www.epicreact.dev/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "nextjs",
+      name: "Next.js",
+      tagline: "Le framework React production-ready.",
+      description:
+        "Next.js apporte le rendu serveur, le routing par fichiers et les optimisations de production. C'est le standard pour les applications React sérieuses.",
+      level: "advanced",
+      stage: "core",
+      prerequisites: ["react", "typescript"],
+      concepts: ["App Router", "SSR / SSG / ISR", "Server Components", "Middleware", "Optimisations images"],
+      projects: ["Blog avec SSG", "E-commerce avec panier et checkout"],
+      resources: [
+        { title: "Next.js Docs", provider: "nextjs.org", url: "https://nextjs.org/docs" },
+        { title: "Vercel Learn", provider: "vercel.com", url: "https://vercel.com/docs" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "testing",
+      name: "Testing",
+      tagline: "Prouver que ça marche, durablement.",
+      description:
+        "Les tests protègent contre les régressions et documentent les comportements. Tests unitaires, d'intégration et end-to-end : chaque niveau a son rôle.",
+      level: "intermediate",
+      stage: "depth",
+      prerequisites: ["javascript", "react"],
+      concepts: ["Tests unitaires (Vitest)", "Testing Library", "Tests E2E (Playwright)", "Mocks", "TDD"],
+      projects: ["Suite de tests pour une app existante", "Pipeline CI avec tests E2E"],
+      resources: [
+        { title: "Testing Library Docs", provider: "testing-library.com", url: "https://testing-library.com/" },
+        { title: "Playwright Docs", provider: "playwright.dev", url: "https://playwright.dev/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "state-management",
+      name: "State Management",
+      tagline: "Orchestrer les données de l'application.",
+      description:
+        "Quand l'état local ne suffit plus : stores, server state, caches. Choisir la bonne stratégie d'état est une décision d'architecture.",
+      level: "intermediate",
+      stage: "depth",
+      prerequisites: ["react"],
+      concepts: ["Zustand / Redux", "React Query (server state)", "Context vs stores", "Normalisation", "Persistance"],
+      projects: ["App avec cache serveur intelligent", "Refactor d'un état global chaotique"],
+      resources: [
+        { title: "TanStack Query Docs", provider: "tanstack.com", url: "https://tanstack.com/query/latest" },
+        { title: "Zustand Docs", provider: "zustand", url: "https://zustand.docs.pmnd.rs/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "performance",
+      name: "Performance",
+      tagline: "Chaque milliseconde compte.",
+      description:
+        "Core Web Vitals, code splitting, mémoïsation : la performance est une fonctionnalité. Mesurez d'abord, optimisez ensuite.",
+      level: "advanced",
+      stage: "depth",
+      prerequisites: ["react", "nextjs"],
+      concepts: ["Core Web Vitals", "Code splitting", "Mémoïsation", "Images & fonts", "Profiling"],
+      projects: ["Audit Lighthouse : 60 → 95+", "Optimisation d'une app lente"],
+      resources: [
+        { title: "web.dev — Performance", provider: "web.dev", url: "https://web.dev/performance/" },
+        { title: "React Profiler", provider: "react.dev", url: "https://react.dev/reference/react/Profiler" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "accessibility",
+      name: "Accessibilité",
+      tagline: "Le web pour tout le monde.",
+      description:
+        "L'accessibilité n'est pas une option : navigation clavier, ARIA, contrastes. Les bonnes pratiques profitent à tous les utilisateurs.",
+      level: "intermediate",
+      stage: "depth",
+      prerequisites: ["html", "css", "react"],
+      concepts: ["WCAG 2.2", "Navigation clavier", "ARIA", "Contrastes", "Lecteurs d'écran"],
+      projects: ["Audit a11y d'un site existant", "Composants accessibles (dialog, menu)"],
+      resources: [
+        { title: "WAI-ARIA", provider: "w3.org", url: "https://www.w3.org/WAI/standards-guidelines/aria/" },
+        { title: "A11y Project", provider: "a11yproject.com", url: "https://www.a11yproject.com/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "frontend-architecture",
+      name: "Architecture Frontend",
+      tagline: "Penser en systèmes, pas en pages.",
+      description:
+        "Modularité, frontières, patterns : concevoir des applications frontend qui restent maintenables quand l'équipe grandit.",
+      level: "advanced",
+      stage: "expertise",
+      prerequisites: ["typescript", "testing", "performance"],
+      concepts: ["Feature-based structure", "Design patterns", "Micro-frontends", "ADR", "Dette technique"],
+      projects: ["Refonte architecturale d'une app", "Rédaction d'ADRs"],
+      resources: [
+        { title: "Patterns.dev", provider: "patterns.dev", url: "https://www.patterns.dev/" },
+        { title: "Frontend Architecture", provider: "GitHub", url: "https://github.com/topics/frontend-architecture" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "design-systems",
+      name: "Design Systems",
+      tagline: "L'échelle par les composants.",
+      description:
+        "Tokens, composants, documentation : un design system aligne design et code et accélère toute l'organisation produit.",
+      level: "advanced",
+      stage: "expertise",
+      prerequisites: ["css", "react", "accessibility"],
+      concepts: ["Design tokens", "Storybook", "Documentation", "Versioning", "Gouvernance"],
+      projects: ["Bibliothèque de 15 composants documentés", "Migration d'une app vers le design system"],
+      resources: [
+        { title: "Storybook Docs", provider: "storybook.js.org", url: "https://storybook.js.org/docs" },
+        { title: "Radix UI", provider: "radix-ui.com", url: "https://www.radix-ui.com/" },
+      ],
+      duration: "4–6 semaines",
+    },
+  ],
+};

@@ -1,0 +1,147 @@
+/* ── Pathway native animation system ────────────────────────────────
+   CSS only. transform + opacity. No animation libraries. */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes edgeDraw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes nodePulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-soft);
+  }
+  100% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+}
+
+@keyframes shimmerBar {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Reusable micro-animation utilities */
+.anim-fade-in {
+  animation: fadeIn 400ms var(--ease-out) both;
+}
+.anim-slide-up {
+  animation: slideUp 500ms var(--ease-out) both;
+}
+.anim-scale-in {
+  animation: scaleIn 420ms var(--ease-out) both;
+}
+
+/* Stagger helper: set --d (delay) inline */
+.stagger {
+  animation-delay: var(--d, 0ms);
+}
+
+/* ── Scroll-driven progress bar (progressive enhancement) ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 90;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: scrollGrow linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes scrollGrow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: none;
+  }
+}

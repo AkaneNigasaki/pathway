@@ -1,0 +1,225 @@
+import type { Roadmap } from "../../types";
+
+export const financeRoadmap: Roadmap = {
+  id: "analyste-financier",
+  slug: "analyste-financier",
+  fieldId: "finance",
+  title: "Analyste financier",
+  tagline: "De la comptabilité à la valorisation d'entreprise.",
+  description:
+    "Lire un bilan comme une histoire, modéliser comme un ingénieur, recommander comme un stratège : le parcours complet de l'analyse financière.",
+  levelLabel: "Débutant → Avancé",
+  duration: "9–12 mois",
+  careerSlugs: ["analyste-financier"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Le langage des chiffres.",
+    },
+    {
+      id: "analysis",
+      label: "Analyse",
+      description: "Lire et interpréter la performance.",
+    },
+    {
+      id: "markets",
+      label: "Marchés",
+      description: "Comprendre où se forme la valeur.",
+    },
+    {
+      id: "expertise",
+      label: "Expertise",
+      description: "Décider et recommander.",
+    },
+  ],
+  skills: [
+    {
+      id: "comptabilite",
+      name: "Comptabilité",
+      tagline: "La grammaire de la finance.",
+      description:
+        "Bilan, compte de résultat, flux de trésorerie : sans comptabilité, l'analyse financière n'est que spéculation.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Partie double", "Bilan", "Compte de résultat", "Cash-flow", "PCG / IFRS"],
+      projects: ["Lecture de 3 bilans réels", "Construction des états financiers"],
+      resources: [
+        { title: "Compta-Facile", provider: "compta-facile.com", url: "https://www.compta-facile.com/" },
+        { title: "Autorité des normes comptables", provider: "anc.gouv.fr", url: "https://www.anc.gouv.fr/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "maths-fi",
+      name: "Mathématiques financières",
+      tagline: "Le temps, c'est de l'argent. Littéralement.",
+      description:
+        "Actualisation, intérêts composés, probabilités : les maths qui donnent un prix au temps et au risque.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Actualisation", "Intérêts composés", "Rentes", "Probabilités", "Statistiques"],
+      projects: ["Calculateur de TRI", "Tableau d'amortissement"],
+      resources: [
+        { title: "Khan Academy — Finance", provider: "khanacademy.org", url: "https://www.khanacademy.org/economics-finance-domain" },
+        { title: "Investopedia", provider: "investopedia.com", url: "https://www.investopedia.com/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "excel",
+      name: "Excel & Modélisation",
+      tagline: "L'atelier de l'analyste.",
+      description:
+        "Excel reste l'outil central : formules avancées, tableaux croisés, modèles propres et auditables.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Formules avancées", "TCD", "Mise en forme conditionnelle", "Modèles structurés", "Raccourcis"],
+      projects: ["Modèle financier propre", "Dashboard automatisé"],
+      resources: [
+        { title: "Excel-Pratique", provider: "excel-pratique.com", url: "https://www.excel-pratique.com/" },
+        { title: "Corporate Finance Institute", provider: "corporatefinanceinstitute.com", url: "https://corporatefinanceinstitute.com/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "analyse-financiere",
+      name: "Analyse financière",
+      tagline: "Diagnostiquer la santé d'une entreprise.",
+      description:
+        "Ratios, SIG, BFR : transformer des états financiers en diagnostic de performance et de solidité.",
+      level: "intermediate",
+      stage: "analysis",
+      prerequisites: ["comptabilite"],
+      concepts: ["Ratios clés", "SIG", "BFR & trésorerie", "Benchmarks sectoriels", "Diagnostic"],
+      projects: ["Diagnostic complet d'une entreprise cotée", "Comparaison sectorielle"],
+      resources: [
+        { title: "Vernimmen (référence)", provider: "vernimmen.net", url: "https://www.vernimmen.net/" },
+        { title: "AMF — Documents", provider: "amf-france.org", url: "https://www.amf-france.org/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "valorisation",
+      name: "Valorisation",
+      tagline: "Donner un prix à l'avenir.",
+      description:
+        "DCF, multiples, ANR : les méthodes pour estimer ce que vaut vraiment une entreprise.",
+      level: "intermediate",
+      stage: "analysis",
+      prerequisites: ["analyse-financiere", "excel"],
+      concepts: ["DCF", "WACC", "Multiples", "Analyse de sensibilité", "Terminal value"],
+      projects: ["DCF complet d'une entreprise", "Fourchette de valorisation"],
+      resources: [
+        { title: "Aswath Damodaran", provider: "NYU Stern", url: "https://pages.stern.nyu.edu/~adamodar/" },
+        { title: "Vernimmen — Évaluation", provider: "vernimmen.net", url: "https://www.vernimmen.net/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "modelisation",
+      name: "Modélisation financière",
+      tagline: "L'ingénierie du tableur.",
+      description:
+        "Modèles à 3 états, scénarios, LBO : construire des modèles robustes, lisibles et sans erreur.",
+      level: "intermediate",
+      stage: "analysis",
+      prerequisites: ["excel", "analyse-financiere"],
+      concepts: ["Modèle 3 états", "Scénarios", "Modèle LBO", "Audit de modèle", "Bonnes pratiques FAST"],
+      projects: ["Modèle LBO complet", "Audit d'un modèle existant"],
+      resources: [
+        { title: "FAST Standard", provider: "fast-standard.org", url: "https://www.fast-standard.org/" },
+        { title: "CFI — Modeling", provider: "corporatefinanceinstitute.com", url: "https://corporatefinanceinstitute.com/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "marches",
+      name: "Marchés financiers",
+      tagline: "Où se rencontrent l'offre et la demande de capital.",
+      description:
+        "Actions, obligations, dérivés : comprendre les instruments, les acteurs et la formation des prix.",
+      level: "intermediate",
+      stage: "markets",
+      prerequisites: ["maths-fi"],
+      concepts: ["Actions & obligations", "Dérivés", "Indices", "Microstructure", "Politique monétaire"],
+      projects: ["Suivi d'un portefeuille fictif", "Analyse d'une introduction en bourse"],
+      resources: [
+        { title: "Banque de France — ABC", provider: "banque-france.fr", url: "https://www.banque-france.fr/" },
+        { title: "Euronext Academy", provider: "euronext.com", url: "https://www.euronext.com/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "gestion-risque",
+      name: "Gestion du risque",
+      tagline: "Le rendement ne vaut que par son risque.",
+      description:
+        "VaR, diversification, couverture : mesurer et gérer le risque est le cœur du métier d'investisseur.",
+      level: "advanced",
+      stage: "markets",
+      prerequisites: ["marches", "maths-fi"],
+      concepts: ["VaR & CVaR", "Diversification", "Couverture", "Stress tests", "Bâle III"],
+      projects: ["Calcul de VaR d'un portefeuille", "Stratégie de couverture"],
+      resources: [
+        { title: "Risk.net", provider: "risk.net", url: "https://www.risk.net/" },
+        { title: "BIS", provider: "bis.org", url: "https://www.bis.org/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "python-finance",
+      name: "Python pour la finance",
+      tagline: "L'analyse à l'échelle.",
+      description:
+        "pandas, API de données, backtesting : automatiser l'analyse quand Excel atteint ses limites.",
+      level: "intermediate",
+      stage: "markets",
+      prerequisites: ["excel", "analyse-financiere"],
+      concepts: ["pandas finance", "API (yfinance)", "Backtesting", "Visualisation", "Notebooks"],
+      projects: ["Backtest d'une stratégie", "Screener d'actions automatisé"],
+      resources: [
+        { title: "QuantLib", provider: "quantlib.org", url: "https://www.quantlib.org/" },
+        { title: "Python for Finance (Hilpisch)", provider: "O'Reilly", url: "https://www.oreilly.com/library/view/python-for-finance/9781098105902/" },
+      ],
+      duration: "4 semaines",
+    },
+    {
+      id: "reporting",
+      name: "Reporting & Communication",
+      tagline: "Le chiffre ne parle pas tout seul.",
+      description:
+        "Notes d'analyse, présentations aux comités : transformer l'analyse en recommandations claires et actionnables.",
+      level: "intermediate",
+      stage: "expertise",
+      prerequisites: ["comptabilite", "excel"],
+      concepts: ["Notes d'analyse", "Data storytelling", "KPI", "Présentation", "Synthèse exécutive"],
+      projects: ["Note d'investissement complète", "Présentation au comité"],
+      resources: [
+        { title: "CFA Institute", provider: "cfainstitute.org", url: "https://www.cfainstitute.org/" },
+        { title: "Storytelling with Data", provider: "storytellingwithdata.com", url: "https://www.storytellingwithdata.com/" },
+      ],
+      duration: "3 semaines",
+    },
+    {
+      id: "investissement",
+      name: "Stratégie d'investissement",
+      tagline: "Décider avec conviction.",
+      description:
+        "Allocation d'actifs, thèses d'investissement, gestion de portefeuille : passer de l'analyse à la décision.",
+      level: "advanced",
+      stage: "expertise",
+      prerequisites: ["valorisation", "marches"],
+      concepts: ["Allocation d'actifs", "Thèse d'investissement", "Gestion de portefeuille", "ESG", "Due diligence"],
+      projects: ["Thèse d'investissement défendue", "Portefeuille modèle avec reporting"],
+      resources: [
+        { title: "CFA Program", provider: "cfainstitute.org", url: "https://www.cfainstitute.org/en/programs/cfa" },
+        { title: "Morningstar", provider: "morningstar.com", url: "https://www.morningstar.com/" },
+      ],
+      duration: "6–8 semaines",
+    },
+  ],
+};

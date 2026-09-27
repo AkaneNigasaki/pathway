@@ -1,0 +1,242 @@
+import type { Roadmap } from "../../types";
+
+export const backendRoadmap: Roadmap = {
+  id: "backend-developer",
+  slug: "backend-developer",
+  fieldId: "informatique",
+  title: "Backend Developer",
+  tagline: "Des API robustes aux systèmes distribués.",
+  description:
+    "Concevez la logique invisible des applications : API, bases de données, authentification, sécurité. Un parcours qui privilégie la rigueur de modélisation et la fiabilité en production.",
+  levelLabel: "Débutant → Avancé",
+  duration: "9–12 mois",
+  careerSlugs: ["backend-developer", "software-architect"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Les outils et réflexes de tout développeur.",
+    },
+    {
+      id: "core",
+      label: "Cœur du métier",
+      description: "Servir des données, en toute fiabilité.",
+    },
+    {
+      id: "depth",
+      label: "Approfondissement",
+      description: "Performance, sécurité, résilience.",
+    },
+    {
+      id: "expertise",
+      label: "Expertise",
+      description: "Concevoir des systèmes qui durent.",
+    },
+  ],
+  skills: [
+    {
+      id: "git",
+      name: "Git",
+      tagline: "L'historique, la collaboration, la confiance.",
+      description:
+        "Git est l'outil de versioning universel. Branches, merges, rebases : un historique propre est une forme de communication d'équipe.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Commits atomiques", "Branches & merges", "Rebase", "Pull requests", "Résolution de conflits"],
+      projects: ["Workflow Git propre sur un projet", "Contribution open source"],
+      resources: [
+        { title: "Pro Git (livre)", provider: "git-scm.com", url: "https://git-scm.com/book/fr/v2" },
+        { title: "Learn Git Branching", provider: "learngitbranching.js.org", url: "https://learngitbranching.js.org/" },
+      ],
+      duration: "1–2 semaines",
+    },
+    {
+      id: "linux",
+      name: "Linux & CLI",
+      tagline: "Le système où vit la production.",
+      description:
+        "La majorité des serveurs tournent sous Linux. Maîtriser le terminal, les permissions et les processus est indispensable.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Terminal & shell", "Permissions", "Processus & services", "SSH", "Scripting bash"],
+      projects: ["Serveur configuré de zéro", "Scripts d'automatisation"],
+      resources: [
+        { title: "Linux Journey", provider: "linuxjourney.com", url: "https://linuxjourney.com/" },
+        { title: "The Linux Command Line", provider: "linuxcommand.org", url: "https://linuxcommand.org/tlcl.php" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "python",
+      name: "Python",
+      tagline: "Lisibilité et écosystème immense.",
+      description:
+        "Python est le langage backend le plus polyvalent : lisible, doté d'un écosystème riche, idéal pour les API comme pour la data.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Syntaxe & types", "POO", "Environnements virtuels", "Gestion de paquets", "Asyncio"],
+      projects: ["CLI utilitaire", "Scraper avec gestion d'erreurs"],
+      resources: [
+        { title: "Python Docs (FR)", provider: "docs.python.org", url: "https://docs.python.org/fr/3/tutorial/" },
+        { title: "Real Python", provider: "realpython.com", url: "https://realpython.com/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "api-rest",
+      name: "API REST",
+      tagline: "Le contrat entre frontend et backend.",
+      description:
+        "Concevoir des API REST claires et prévisibles : ressources, verbes HTTP, codes de statut, pagination, versioning.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["python"],
+      concepts: ["Ressources & verbes HTTP", "Codes de statut", "Pagination", "Validation", "Documentation OpenAPI"],
+      projects: ["API CRUD complète (FastAPI)", "API documentée avec OpenAPI"],
+      resources: [
+        { title: "FastAPI Docs", provider: "fastapi.tiangolo.com", url: "https://fastapi.tiangolo.com/" },
+        { title: "REST API Tutorial", provider: "restapitutorial.com", url: "https://www.restapitutorial.com/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "sql",
+      name: "SQL & Bases relationnelles",
+      tagline: "Interroger les données avec précision.",
+      description:
+        "SQL reste le langage des données. Modélisation, jointures, index : comprendre comment les données vivent et s'interrogent.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["python"],
+      concepts: ["Modélisation & normalisation", "Jointures", "Index", "Transactions", "PostgreSQL"],
+      projects: ["Schéma e-commerce normalisé", "Requêtes analytiques complexes"],
+      resources: [
+        { title: "PostgreSQL Docs", provider: "postgresql.org", url: "https://www.postgresql.org/docs/" },
+        { title: "SQLBolt", provider: "sqlbolt.com", url: "https://sqlbolt.com/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "auth",
+      name: "Authentification & Sécurité",
+      tagline: "Protéger les accès, sans compromis.",
+      description:
+        "JWT, OAuth2, hachage de mots de passe, gestion des sessions : la sécurité des accès est non négociable.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["api-rest"],
+      concepts: ["JWT & sessions", "OAuth2 / OIDC", "Hachage (bcrypt, Argon2)", "RBAC", "OWASP Top 10"],
+      projects: ["Auth complète avec refresh tokens", "SSO avec provider OAuth"],
+      resources: [
+        { title: "OWASP", provider: "owasp.org", url: "https://owasp.org/" },
+        { title: "OAuth 2.0 Simplified", provider: "aaronparecki.com", url: "https://www.oauth.com/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "testing-api",
+      name: "Tests backend",
+      tagline: "La confiance, automatisée.",
+      description:
+        "Tests unitaires, d'intégration et de contrat : garantir que l'API se comporte comme promis, à chaque déploiement.",
+      level: "intermediate",
+      stage: "depth",
+      prerequisites: ["python", "api-rest"],
+      concepts: ["Pytest", "Fixtures", "Tests d'intégration", "Testcontainers", "Couverture utile"],
+      projects: ["Suite de tests à 80%+ sur une API", "Tests de contrat"],
+      resources: [
+        { title: "Pytest Docs", provider: "pytest.org", url: "https://docs.pytest.org/" },
+        { title: "Testcontainers", provider: "testcontainers.com", url: "https://testcontainers.com/" },
+      ],
+      duration: "3 semaines",
+    },
+    {
+      id: "caching",
+      name: "Caching & Performance",
+      tagline: "Servir vite, à grande échelle.",
+      description:
+        "Redis, stratégies de cache, requêtes optimisées : la performance backend se conçoit, elle ne s'improvise pas.",
+      level: "advanced",
+      stage: "depth",
+      prerequisites: ["api-rest", "sql"],
+      concepts: ["Redis", "Stratégies de cache", "N+1 & optimisation requêtes", "Pagination curseur", "Rate limiting"],
+      projects: ["Cache Redis sur endpoints chauds", "Optimisation : 2s → 80ms"],
+      resources: [
+        { title: "Redis Docs", provider: "redis.io", url: "https://redis.io/docs/" },
+        { title: "Use The Index, Luke", provider: "use-the-index-luke.com", url: "https://use-the-index-luke.com/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "messaging",
+      name: "Files de messages",
+      tagline: "Découpler pour scaler.",
+      description:
+        "RabbitMQ, Kafka : traiter en asynchrone, résister aux pics, découpler les services. Le cœur des architectures événementielles.",
+      level: "advanced",
+      stage: "depth",
+      prerequisites: ["api-rest"],
+      concepts: ["Queues & topics", "Idempotence", "Retry & DLQ", "Event-driven", "Kafka vs RabbitMQ"],
+      projects: ["Worker asynchrone d'envoi d'emails", "Pipeline événementiel"],
+      resources: [
+        { title: "RabbitMQ Tutorials", provider: "rabbitmq.com", url: "https://www.rabbitmq.com/tutorials" },
+        { title: "Kafka Docs", provider: "kafka.apache.org", url: "https://kafka.apache.org/documentation/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "docker",
+      name: "Docker",
+      tagline: "Ça marche sur ma machine, et partout ailleurs.",
+      description:
+        "Conteneuriser les applications : images, volumes, réseaux, Compose. Le standard du déploiement moderne.",
+      level: "intermediate",
+      stage: "depth",
+      prerequisites: ["linux"],
+      concepts: ["Images & layers", "Dockerfile", "Volumes & réseaux", "Docker Compose", "Multi-stage builds"],
+      projects: ["Stack complète en Compose", "Image optimisée < 100MB"],
+      resources: [
+        { title: "Docker Docs", provider: "docs.docker.com", url: "https://docs.docker.com/" },
+        { title: "Docker Curriculum", provider: "docker-curriculum.com", url: "https://docker-curriculum.com/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "observability",
+      name: "Observabilité",
+      tagline: "Voir ce qui se passe en production.",
+      description:
+        "Logs structurés, métriques, traces : comprendre le comportement réel du système pour diagnostiquer vite et bien.",
+      level: "advanced",
+      stage: "depth",
+      prerequisites: ["docker", "api-rest"],
+      concepts: ["Logs structurés", "Métriques (Prometheus)", "Tracing (OpenTelemetry)", "Alerting", "Dashboards"],
+      projects: ["Stack Prometheus + Grafana", "Tracing distribué sur 3 services"],
+      resources: [
+        { title: "OpenTelemetry Docs", provider: "opentelemetry.io", url: "https://opentelemetry.io/docs/" },
+        { title: "Prometheus Docs", provider: "prometheus.io", url: "https://prometheus.io/docs/" },
+      ],
+      duration: "3 semaines",
+    },
+    {
+      id: "system-design",
+      name: "System Design",
+      tagline: "Concevoir avant de construire.",
+      description:
+        "Scalabilité, disponibilité, trade-offs : l'art de concevoir des systèmes qui tiennent la charge et le temps.",
+      level: "advanced",
+      stage: "expertise",
+      prerequisites: ["api-rest", "sql", "auth", "caching"],
+      concepts: ["Load balancing", "Sharding & réplication", "CAP theorem", "Microservices vs monolithe", "ADR"],
+      projects: ["Design d'un système à 1M d'utilisateurs", "Revue d'architecture complète"],
+      resources: [
+        { title: "System Design Primer", provider: "GitHub", url: "https://github.com/donnemartin/system-design-primer" },
+        { title: "High Scalability", provider: "highscalability.com", url: "https://highscalability.com/" },
+      ],
+      duration: "5–6 semaines",
+    },
+  ],
+};

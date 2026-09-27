@@ -1,0 +1,242 @@
+import type { Roadmap } from "../../types";
+
+export const cybersecurityRoadmap: Roadmap = {
+  id: "cybersecurity-engineer",
+  slug: "cybersecurity-engineer",
+  fieldId: "informatique",
+  title: "Cybersecurity Engineer",
+  tagline: "Penser comme un attaquant, défendre comme un architecte.",
+  description:
+    "Réseaux, systèmes, web, cryptographie : un parcours méthodique pour comprendre les attaques avant d'apprendre à les contrer. La sécurité est une discipline, pas une checklist.",
+  levelLabel: "Intermédiaire → Avancé",
+  duration: "10–14 mois",
+  careerSlugs: ["cybersecurity-engineer"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Comprendre les systèmes avant de les attaquer.",
+    },
+    {
+      id: "offense",
+      label: "Sécurité offensive",
+      description: "Voir les failles comme un attaquant.",
+    },
+    {
+      id: "defense",
+      label: "Sécurité défensive",
+      description: "Détecter, répondre, durcir.",
+    },
+    {
+      id: "governance",
+      label: "Gouvernance",
+      description: "La sécurité à l'échelle de l'organisation.",
+    },
+  ],
+  skills: [
+    {
+      id: "networking",
+      name: "Réseaux",
+      tagline: "Le terrain de toutes les attaques.",
+      description:
+        "TCP/IP, DNS, routage : la plupart des attaques transitent par le réseau. Comprendre les paquets avant les exploits.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["TCP/IP & OSI", "DNS", "Wireshark", "Firewalls", "VPN"],
+      projects: ["Analyse de captures réseau", "Lab réseau segmenté"],
+      resources: [
+        { title: "Practical Networking", provider: "YouTube", url: "https://www.youtube.com/c/PracticalNetworking" },
+        { title: "Wireshark Docs", provider: "wireshark.org", url: "https://www.wireshark.org/docs/" },
+      ],
+      duration: "4 semaines",
+    },
+    {
+      id: "linux",
+      name: "Linux",
+      tagline: "Le système à durcir et à auditer.",
+      description:
+        "Permissions, processus, logs : Linux est à la fois la cible et l'outil principal du pentester comme du défenseur.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Permissions avancées", "Logs système", "Hardening", "Bash", "Conteneurs"],
+      projects: ["Hardening CIS d'un serveur", "Script d'audit automatisé"],
+      resources: [
+        { title: "Linux Journey", provider: "linuxjourney.com", url: "https://linuxjourney.com/" },
+        { title: "CIS Benchmarks", provider: "cisecurity.org", url: "https://www.cisecurity.org/cis-benchmarks" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "python",
+      name: "Python sécurité",
+      tagline: "Automatiser l'attaque et la défense.",
+      description:
+        "Scripting réseau, parsing de logs, outils sur mesure : Python est le couteau suisse des deux camps.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Sockets", "Scapy", "Parsing & regex", "Requests", "Automatisation"],
+      projects: ["Scanner de ports", "Analyseur de logs"],
+      resources: [
+        { title: "Black Hat Python", provider: "No Starch Press", url: "https://nostarch.com/blackhatpython2e" },
+        { title: "Scapy Docs", provider: "scapy.net", url: "https://scapy.net/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "web-security",
+      name: "Sécurité web",
+      tagline: "Là où vivent les vulnérabilités.",
+      description:
+        "XSS, injections, CSRF, SSRF : les failles web dominent les incidents. Comprendre HTTP en profondeur est le prérequis.",
+      level: "intermediate",
+      stage: "offense",
+      prerequisites: ["networking"],
+      concepts: ["OWASP Top 10", "XSS & injections", "Auth flaws", "Burp Suite", "SSRF"],
+      projects: ["Pentest d'une app vulnérable (DVWA)", "Write-up de 3 failles"],
+      resources: [
+        { title: "OWASP", provider: "owasp.org", url: "https://owasp.org/" },
+        { title: "PortSwigger Academy", provider: "portswigger.net", url: "https://portswigger.net/web-security" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "system-security",
+      name: "Sécurité système",
+      tagline: "Durcir ce qui tourne.",
+      description:
+        "Élévation de privilèges, malware, durcissement : comprendre comment les systèmes sont compromis pour mieux les protéger.",
+      level: "intermediate",
+      stage: "offense",
+      prerequisites: ["linux"],
+      concepts: ["Privesc", "Persistance", "EDR", "Hardening Windows/Linux", "AD basics"],
+      projects: ["Privesc sur machine vulnérable", "Baseline de durcissement"],
+      resources: [
+        { title: "HackTricks", provider: "hacktricks.xyz", url: "https://book.hacktricks.xyz/" },
+        { title: "TryHackMe", provider: "tryhackme.com", url: "https://tryhackme.com/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "cryptography",
+      name: "Cryptographie",
+      tagline: "Les maths de la confiance.",
+      description:
+        "Chiffrement symétrique et asymétrique, hachage, TLS : utiliser la crypto correctement, sans la réinventer.",
+      level: "intermediate",
+      stage: "offense",
+      prerequisites: ["python", "networking"],
+      concepts: ["AES / RSA", "Hachage & signatures", "TLS", "PKI", "Erreurs classiques"],
+      projects: ["Implémentation pédagogique d'AES", "Audit TLS d'un site"],
+      resources: [
+        { title: "Serious Cryptography", provider: "No Starch Press", url: "https://nostarch.com/seriouscrypto" },
+        { title: "CryptoPals", provider: "cryptopals.com", url: "https://cryptopals.com/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "pentest",
+      name: "Pentest",
+      tagline: "La méthode de l'attaquant éthique.",
+      description:
+        "Reconnaissance, exploitation, post-exploitation, rapport : le pentest est une discipline méthodique, pas du hacking sauvage.",
+      level: "advanced",
+      stage: "offense",
+      prerequisites: ["web-security", "system-security"],
+      concepts: ["Méthodologie PTES", "Reconnaissance", "Exploitation", "Pivoting", "Reporting"],
+      projects: ["Pentest complet en lab", "Rapport professionnel rédigé"],
+      resources: [
+        { title: "HackTheBox", provider: "hackthebox.com", url: "https://www.hackthebox.com/" },
+        { title: "PTES", provider: "pentest-standard.org", url: "http://www.pentest-standard.org/" },
+      ],
+      duration: "8–10 semaines",
+    },
+    {
+      id: "soc",
+      name: "SOC & Détection",
+      tagline: "Voir l'attaque quand elle arrive.",
+      description:
+        "SIEM, règles de détection, triage d'alertes : le Security Operations Center est le radar de l'organisation.",
+      level: "intermediate",
+      stage: "defense",
+      prerequisites: ["networking", "system-security"],
+      concepts: ["SIEM (Splunk, ELK)", "Règles Sigma", "Triage", "Threat intel", "MITRE ATT&CK"],
+      projects: ["Lab SIEM avec attaques simulées", "Règles de détection écrites"],
+      resources: [
+        { title: "MITRE ATT&CK", provider: "mitre.org", url: "https://attack.mitre.org/" },
+        { title: "Blue Team Labs", provider: "blueteamlabs.online", url: "https://blueteamlabs.online/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "forensics",
+      name: "Forensique",
+      tagline: "Reconstituer ce qui s'est passé.",
+      description:
+        "Analyse mémoire, disque, timeline : la forensique répond à la question « que s'est-il vraiment passé ? ».",
+      level: "advanced",
+      stage: "defense",
+      prerequisites: ["system-security", "linux"],
+      concepts: ["Acquisition", "Analyse mémoire", "Timeline", "Chaîne de custody", "Outils (Autopsy, Volatility)"],
+      projects: ["Investigation d'une image disque", "Rapport forensique"],
+      resources: [
+        { title: "Volatility Docs", provider: "volatilityfoundation.org", url: "https://www.volatilityfoundation.org/" },
+        { title: "SANS DFIR", provider: "sans.org", url: "https://www.sans.org/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "secure-coding",
+      name: "Secure Coding",
+      tagline: "Ne pas créer la faille.",
+      description:
+        "La sécurité commence au clavier : input validation, gestion des secrets, dépendances, revues de code sécurité.",
+      level: "intermediate",
+      stage: "defense",
+      prerequisites: ["python", "web-security"],
+      concepts: ["Validation des entrées", "Secrets management", "Dépendances (SCA)", "Code review sécu", "Threat modeling"],
+      projects: ["Audit de code d'un projet", "Threat model d'une app"],
+      resources: [
+        { title: "OWASP SAMM", provider: "owasp.org", url: "https://owaspsamm.org/" },
+        { title: "Semgrep", provider: "semgrep.dev", url: "https://semgrep.dev/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "cloud-security",
+      name: "Cloud Security",
+      tagline: "Sécuriser l'éphémère.",
+      description:
+        "IAM, posture, conteneurs : le cloud change la surface d'attaque. Shared responsibility model et CSPM.",
+      level: "advanced",
+      stage: "defense",
+      prerequisites: ["networking", "cryptography"],
+      concepts: ["IAM", "CSPM", "Sécurité conteneurs", "Logs cloud", "Zero Trust"],
+      projects: ["Audit IAM d'un compte", "Policy as code"],
+      resources: [
+        { title: "Cloud Security Alliance", provider: "cloudsecurityalliance.org", url: "https://cloudsecurityalliance.org/" },
+        { title: "Prowler", provider: "GitHub", url: "https://github.com/prowler-cloud/prowler" },
+      ],
+      duration: "4 semaines",
+    },
+    {
+      id: "governance",
+      name: "Gouvernance & Conformité",
+      tagline: "La sécurité comme organisation.",
+      description:
+        "ISO 27001, NIS2, gestion des risques : transformer la technique en politique durable à l'échelle de l'entreprise.",
+      level: "advanced",
+      stage: "governance",
+      prerequisites: ["soc", "secure-coding"],
+      concepts: ["ISO 27001", "NIS2 / DORA", "Gestion des risques", "Politiques", "Audits"],
+      projects: ["Analyse de risques EBIOS", "Plan de conformité"],
+      resources: [
+        { title: "ANSSI", provider: "ssi.gouv.fr", url: "https://www.ssi.gouv.fr/" },
+        { title: "ISO 27001", provider: "iso.org", url: "https://www.iso.org/standard/27001/" },
+      ],
+      duration: "4–5 semaines",
+    },
+  ],
+};

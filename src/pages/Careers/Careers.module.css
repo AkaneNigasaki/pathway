@@ -1,0 +1,84 @@
+.page {
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 7rem);
+}
+
+.head {
+  margin-bottom: 2.5rem;
+  max-width: 760px;
+}
+
+.title {
+  font-size: var(--text-section);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 1.25rem;
+}
+
+.filters {
+  margin-bottom: 2.75rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.55rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--muted);
+  transition: transform 180ms var(--ease-out), border-color 180ms ease,
+    color 180ms ease, background-color 180ms ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  color: var(--foreground);
+  border-color: var(--border-strong);
+}
+
+.chip.on {
+  background: var(--foreground);
+  border-color: var(--foreground);
+  color: var(--background);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.grid > div {
+  display: flex;
+}
+
+.grid > div > a {
+  flex: 1;
+  max-width: none;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

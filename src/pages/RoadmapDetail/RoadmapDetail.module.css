@@ -1,0 +1,248 @@
+.page {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(4rem, 8vw, 6rem);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  transition: color 180ms ease;
+}
+
+.back:hover {
+  color: var(--foreground);
+}
+
+.hero {
+  max-width: 860px;
+  margin-bottom: 1rem;
+}
+
+.field {
+  font-size: var(--text-meta);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: var(--text-lead);
+  font-weight: 500;
+  color: var(--foreground-soft);
+  margin-bottom: 1rem;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 64ch;
+  margin-bottom: 2.5rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  margin-bottom: 3rem;
+}
+
+.progressHint {
+  margin-top: 0.8rem;
+  font-size: var(--text-small);
+  color: var(--faint);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stat dt {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-small);
+  color: var(--faint);
+  order: 2;
+}
+
+.stat dd {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  order: 1;
+}
+
+.stat .level {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ── Bandeau des étapes ── */
+.stageStrip {
+  margin-bottom: 1rem;
+  position: sticky;
+  top: calc(var(--nav-height-scrolled) + 16px);
+  z-index: 40;
+}
+
+.stages {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  scrollbar-width: none;
+}
+
+.stages::-webkit-scrollbar {
+  display: none;
+}
+
+.stages li {
+  flex-shrink: 0;
+}
+
+.stageChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  white-space: nowrap;
+}
+
+.stageChip:hover {
+  background: var(--surface-soft);
+  color: var(--foreground);
+}
+
+.stageNum {
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+.stagePct {
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+.stageDone {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  background: var(--accent-faint);
+}
+
+.stageDone .stageNum,
+.stageDone .stagePct {
+  color: var(--accent);
+}
+
+.graphWrap {
+  margin-top: 1rem;
+}
+
+/* ── Métiers visés ── */
+.careers {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.careersTitle {
+  font-size: var(--text-title);
+  letter-spacing: var(--tracking-title);
+  margin-bottom: 1.5rem;
+}
+
+.careerList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.careerLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform 200ms var(--ease-out), border-color 200ms ease;
+}
+
+.careerLink:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.careerLink svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.careerLink span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.careerLink strong {
+  font-size: 1.02rem;
+  letter-spacing: -0.015em;
+}
+
+.careerLink small {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .careerList {
+    grid-template-columns: 1fr;
+  }
+}

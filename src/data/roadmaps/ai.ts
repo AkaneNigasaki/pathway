@@ -1,0 +1,225 @@
+import type { Roadmap } from "../../types";
+
+export const aiRoadmap: Roadmap = {
+  id: "ai-engineer",
+  slug: "ai-engineer",
+  fieldId: "informatique",
+  title: "AI Engineer",
+  tagline: "Du machine learning aux systèmes LLM en production.",
+  description:
+    "Le parcours de l'ingénieur IA : fondations mathématiques, machine learning classique, deep learning, puis les systèmes modernes basés sur les LLM — avec l'exigence de la mise en production.",
+  levelLabel: "Intermédiaire → Avancé",
+  duration: "10–14 mois",
+  careerSlugs: ["ai-engineer"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Maths, code et données : le triptyque.",
+    },
+    {
+      id: "ml",
+      label: "Machine Learning",
+      description: "Apprendre à partir des données.",
+    },
+    {
+      id: "dl",
+      label: "Deep Learning",
+      description: "Les réseaux de neurones en profondeur.",
+    },
+    {
+      id: "prod",
+      label: "IA en production",
+      description: "Des modèles aux systèmes fiables.",
+    },
+  ],
+  skills: [
+    {
+      id: "python",
+      name: "Python",
+      tagline: "La lingua franca de l'IA.",
+      description:
+        "Python domine l'écosystème IA : NumPy, pandas, PyTorch. Une maîtrise solide est le prérequis de tout le reste.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["NumPy", "pandas", "Environnements", "Notebooks", "Bonnes pratiques"],
+      projects: ["Analyse de dataset avec pandas", "Pipeline de preprocessing"],
+      resources: [
+        { title: "Python Data Science Handbook", provider: "jakevdp.github.io", url: "https://jakevdp.github.io/PythonDataScienceHandbook/" },
+        { title: "Kaggle Learn", provider: "kaggle.com", url: "https://www.kaggle.com/learn" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "maths",
+      name: "Mathématiques",
+      tagline: "Le langage des modèles.",
+      description:
+        "Algèbre linéaire, calcul différentiel, probabilités : comprendre ce que les modèles font vraiment, pas juste les appeler.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Algèbre linéaire", "Dérivées & gradients", "Probabilités", "Optimisation", "Statistiques bayésiennes"],
+      projects: ["Régression linéaire from scratch", "Descente de gradient visualisée"],
+      resources: [
+        { title: "Mathematics for ML (livre)", provider: "mml-book.github.io", url: "https://mml-book.github.io/" },
+        { title: "3Blue1Brown — Essence of calculus", provider: "YouTube", url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "git",
+      name: "Git & Collaboration",
+      tagline: "Versionner le code et les expériences.",
+      description:
+        "Les projets IA sont collaboratifs et expérimentaux : Git, revues de code et traçabilité des expériences sont essentiels.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Branches", "Revues de code", "DVC", "MLflow", "Reproductibilité"],
+      projects: ["Projet versionné avec expériences trackées", "Template de projet ML"],
+      resources: [
+        { title: "DVC Docs", provider: "dvc.org", url: "https://dvc.org/doc" },
+        { title: "MLflow Docs", provider: "mlflow.org", url: "https://mlflow.org/docs/latest/" },
+      ],
+      duration: "2 semaines",
+    },
+    {
+      id: "statistics",
+      name: "Statistiques",
+      tagline: "Décider sous incertitude.",
+      description:
+        "Tests d'hypothèses, intervalles de confiance, biais : les statistiques fondent l'évaluation rigoureuse des modèles.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: ["maths"],
+      concepts: ["Distributions", "Tests d'hypothèses", "Intervalles de confiance", "Biais & variance", "A/B testing"],
+      projects: ["Analyse A/B complète", "Étude de biais sur un dataset"],
+      resources: [
+        { title: "Seeing Theory", provider: "seeing-theory.brown.edu", url: "https://seeing-theory.brown.edu/" },
+        { title: "StatQuest", provider: "YouTube", url: "https://www.youtube.com/c/joshstarmer" },
+      ],
+      duration: "4 semaines",
+    },
+    {
+      id: "machine-learning",
+      name: "Machine Learning",
+      tagline: "Les algorithmes classiques, bien compris.",
+      description:
+        "Régression, arbres, SVM, clustering : avant le deep learning, maîtriser les fondamentaux qui résolvent 80% des problèmes.",
+      level: "intermediate",
+      stage: "ml",
+      prerequisites: ["python", "statistics"],
+      concepts: ["scikit-learn", "Validation croisée", "Feature engineering", "Régularisation", "Métriques"],
+      projects: ["Compétition Kaggle", "Modèle de churn from scratch"],
+      resources: [
+        { title: "Hands-On ML (Géron)", provider: "O'Reilly", url: "https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/" },
+        { title: "scikit-learn Docs", provider: "scikit-learn.org", url: "https://scikit-learn.org/stable/" },
+      ],
+      duration: "8–10 semaines",
+    },
+    {
+      id: "deep-learning",
+      name: "Deep Learning",
+      tagline: "Les réseaux de neurones en pratique.",
+      description:
+        "MLP, CNN, RNN, Transformers : comprendre les architectures et savoir entraîner des modèles avec PyTorch.",
+      level: "advanced",
+      stage: "dl",
+      prerequisites: ["machine-learning", "maths"],
+      concepts: ["PyTorch", "CNN", "Transformers", "Fonctions de perte", "Régularisation & tuning"],
+      projects: ["Classifieur d'images (CNN)", "Modèle de langue miniature"],
+      resources: [
+        { title: "PyTorch Tutorials", provider: "pytorch.org", url: "https://pytorch.org/tutorials/" },
+        { title: "Fast.ai", provider: "fast.ai", url: "https://www.fast.ai/" },
+      ],
+      duration: "8–10 semaines",
+    },
+    {
+      id: "nlp",
+      name: "NLP",
+      tagline: "Comprendre et générer le langage.",
+      description:
+        "Tokenization, embeddings, attention : le traitement du langage naturel est devenu central avec les LLM.",
+      level: "advanced",
+      stage: "dl",
+      prerequisites: ["deep-learning", "python"],
+      concepts: ["Tokenizers", "Embeddings", "Attention", "Hugging Face", "Fine-tuning"],
+      projects: ["Classifieur de sentiments", "Fine-tuning d'un petit modèle"],
+      resources: [
+        { title: "Hugging Face Course", provider: "huggingface.co", url: "https://huggingface.co/learn/nlp-course" },
+        { title: "Speech and Language Processing", provider: "web.stanford.edu", url: "https://web.stanford.edu/~jurafsky/slp3/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "computer-vision",
+      name: "Computer Vision",
+      tagline: "Voir et comprendre les images.",
+      description:
+        "Détection, segmentation, vision par transformers : donner aux machines la capacité d'interpréter le monde visuel.",
+      level: "advanced",
+      stage: "dl",
+      prerequisites: ["deep-learning"],
+      concepts: ["Détection d'objets (YOLO)", "Segmentation", "Vision Transformers", "Augmentation", "Déploiement edge"],
+      projects: ["Détecteur d'objets temps réel", "Segmentation d'images médicales"],
+      resources: [
+        { title: "Ultralytics Docs", provider: "docs.ultralytics.com", url: "https://docs.ultralytics.com/" },
+        { title: "PyTorch Vision", provider: "pytorch.org", url: "https://pytorch.org/vision/stable/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "llm-systems",
+      name: "Systèmes LLM",
+      tagline: "Au-delà du prompt : des systèmes.",
+      description:
+        "RAG, agents, function calling, évaluation : construire des applications LLM fiables, pas des démos fragiles.",
+      level: "advanced",
+      stage: "prod",
+      prerequisites: ["nlp", "deep-learning"],
+      concepts: ["RAG", "Agents & tools", "Prompt engineering système", "Vector DB", "Évaluation LLM"],
+      projects: ["Assistant RAG sur docs internes", "Agent multi-outils"],
+      resources: [
+        { title: "Anthropic Docs", provider: "docs.anthropic.com", url: "https://docs.anthropic.com/" },
+        { title: "LangChain Docs", provider: "python.langchain.com", url: "https://python.langchain.com/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "mlops",
+      name: "MLOps",
+      tagline: "L'IA qui tourne en production.",
+      description:
+        "Versioning des modèles, pipelines, monitoring de la dérive : le MLOps transforme des notebooks en systèmes fiables.",
+      level: "advanced",
+      stage: "prod",
+      prerequisites: ["machine-learning", "git"],
+      concepts: ["Pipelines (Kubeflow, Airflow)", "Model registry", "Monitoring & drift", "CI/CD pour ML", "Inférence optimisée"],
+      projects: ["Pipeline complet train → deploy", "Monitoring de dérive"],
+      resources: [
+        { title: "MLOps Zoomcamp", provider: "GitHub", url: "https://github.com/DataTalksClub/mlops-zoomcamp" },
+        { title: "Made With ML", provider: "madewithml.com", url: "https://madewithml.com/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "ai-safety",
+      name: "Évaluation & Fiabilité",
+      tagline: "Mesurer avant de déployer.",
+      description:
+        "Benchmarks, red-teaming, guardrails : évaluer rigoureusement les systèmes IA et leurs modes d'échec.",
+      level: "advanced",
+      stage: "prod",
+      prerequisites: ["llm-systems", "machine-learning"],
+      concepts: ["Benchmarks", "Red-teaming", "Guardrails", "Hallucinations", "Biais & fairness"],
+      projects: ["Suite d'évaluation d'un chatbot", "Rapport de risques d'un système"],
+      resources: [
+        { title: "OWASP Top 10 for LLM", provider: "owasp.org", url: "https://genai.owasp.org/" },
+        { title: "Anthropic Evaluations", provider: "docs.anthropic.com", url: "https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations" },
+      ],
+      duration: "3–4 semaines",
+    },
+  ],
+};

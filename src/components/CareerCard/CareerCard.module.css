@@ -1,0 +1,77 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 340px;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  scroll-snap-align: start;
+  transition: transform 220ms var(--ease-out), border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-subtle);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.demand {
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.arrow {
+  color: var(--faint);
+  transition: transform 200ms var(--ease-out), color 200ms ease;
+}
+
+.card:hover .arrow {
+  transform: translate(2px, -2px);
+  color: var(--accent);
+}
+
+.title {
+  font-size: 1.3rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.45rem;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.salary {
+  font-size: var(--text-small);
+  color: var(--foreground-soft);
+  font-weight: 600;
+}
+
+.roadmap {
+  font-size: var(--text-small);
+  color: var(--faint);
+}

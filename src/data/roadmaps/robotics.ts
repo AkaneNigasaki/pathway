@@ -1,0 +1,242 @@
+import type { Roadmap } from "../../types";
+
+export const roboticsRoadmap: Roadmap = {
+  id: "robotics-engineer",
+  slug: "robotics-engineer",
+  fieldId: "ingenierie",
+  title: "Robotics Engineer",
+  tagline: "De la mécanique aux robots autonomes.",
+  description:
+    "Mécatronique, contrôle, perception : un parcours exigeant à l'intersection du physique et du logiciel, jusqu'aux robots autonomes sur ROS.",
+  levelLabel: "Intermédiaire → Avancé",
+  duration: "12–18 mois",
+  careerSlugs: ["robotics-engineer"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Les sciences du mouvement et du code.",
+    },
+    {
+      id: "hardware",
+      label: "Matériel",
+      description: "Le corps du robot.",
+    },
+    {
+      id: "software",
+      label: "Logiciel",
+      description: "L'esprit du robot.",
+    },
+    {
+      id: "autonomy",
+      label: "Autonomie",
+      description: "Des robots qui décident.",
+    },
+  ],
+  skills: [
+    {
+      id: "maths",
+      name: "Mathématiques",
+      tagline: "Le langage du mouvement.",
+      description:
+        "Algèbre linéaire, cinématique, probabilités : les maths décrivent où est le robot et où il va.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Algèbre linéaire", "Géométrie 3D", "Probabilités", "Optimisation", "Filtrage"],
+      projects: ["Cinématique d'un bras 2D", "Simulation de trajectoire"],
+      resources: [
+        { title: "3Blue1Brown", provider: "YouTube", url: "https://www.youtube.com/c/3blue1brown" },
+        { title: "Modern Robotics (livre)", provider: "Northwestern", url: "https://modernrobotics.northwestern.edu/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "physique",
+      name: "Physique",
+      tagline: "Le monde auquel obéir.",
+      description:
+        "Mécanique, dynamique, capteurs : la physique contraint et guide toute conception robotique.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Mécanique du solide", "Dynamique", "Capteurs", "Actionneurs", "Énergétique"],
+      projects: ["Modèle dynamique simulé", "Caractérisation d'un moteur"],
+      resources: [
+        { title: "Khan Academy — Physique", provider: "khanacademy.org", url: "https://www.khanacademy.org/science/physics" },
+        { title: "MIT OCW — Mécanique", provider: "ocw.mit.edu", url: "https://ocw.mit.edu/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "python",
+      name: "Python",
+      tagline: "Le langage de la robotique moderne.",
+      description:
+        "ROS, NumPy, prototypage rapide : Python est l'outil quotidien du roboticien, avec C++ en renfort.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["NumPy", "POO", "Temps réel (notions)", "C++ (bases)", "Outils ROS"],
+      projects: ["Contrôleur simulé", "Interface capteur en Python"],
+      resources: [
+        { title: "ROS Tutorials", provider: "ros.org", url: "https://www.ros.org/blog/getting-started/" },
+        { title: "Python Robotics", provider: "GitHub", url: "https://github.com/AtsushiSakai/PythonRobotics" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "linux",
+      name: "Linux embarqué",
+      tagline: "Le système des robots.",
+      description:
+        "Les robots tournent sous Linux : terminal, réseau, temps réel, cross-compilation pour cibles embarquées.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Terminal", "Réseau", "Systemd", "Cross-compilation", "Raspberry Pi / Jetson"],
+      projects: ["Robot sur Raspberry Pi", "Image système reproductible"],
+      resources: [
+        { title: "Linux Journey", provider: "linuxjourney.com", url: "https://linuxjourney.com/" },
+        { title: "NVIDIA Jetson", provider: "nvidia.com", url: "https://www.nvidia.com/fr-fr/autonomous-machines/embedded-systems/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "electronique",
+      name: "Électronique",
+      tagline: "Le système nerveux.",
+      description:
+        "Circuits, microcontrôleurs, bus de communication : comprendre le hardware qui exécute le logiciel.",
+      level: "intermediate",
+      stage: "hardware",
+      prerequisites: ["physique"],
+      concepts: ["Circuits", "Arduino / ESP32", "I2C / SPI / UART", "Alimentation", "PCB (bases)"],
+      projects: ["Carte capteur sur ESP32", "Driver de moteur"],
+      resources: [
+        { title: "Arduino Docs", provider: "arduino.cc", url: "https://docs.arduino.cc/" },
+        { title: "All About Circuits", provider: "allaboutcircuits.com", url: "https://www.allaboutcircuits.com/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "mecanique",
+      name: "Mécanique",
+      tagline: "La structure qui bouge.",
+      description:
+        "CAO, cinématique, matériaux : concevoir des structures capables de bouger avec précision et fiabilité.",
+      level: "intermediate",
+      stage: "hardware",
+      prerequisites: ["physique", "maths"],
+      concepts: ["CAO (Fusion 360)", "Cinématique", "Impression 3D", "Matériaux", "Tolérances"],
+      projects: ["Bras robotique imprimé en 3D", "Assemblage CAO complet"],
+      resources: [
+        { title: "Autodesk Fusion", provider: "autodesk.com", url: "https://www.autodesk.com/products/fusion-360/" },
+        { title: "Modern Robotics", provider: "Northwestern", url: "https://modernrobotics.northwestern.edu/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "systemes-embarques",
+      name: "Systèmes embarqués",
+      tagline: "Le logiciel au plus près du hardware.",
+      description:
+        "Temps réel, microcontrôleurs, drivers : écrire du code qui parle directement aux capteurs et actionneurs.",
+      level: "advanced",
+      stage: "hardware",
+      prerequisites: ["electronique", "python"],
+      concepts: ["Temps réel", "RTOS", "Drivers", "Interruptions", "Débogage hardware"],
+      projects: ["Firmware de contrôle moteur", "Système temps réel"],
+      resources: [
+        { title: "FreeRTOS Docs", provider: "freertos.org", url: "https://www.freertos.org/" },
+        { title: "Embedded Artistry", provider: "embeddedartistry.com", url: "https://embeddedartistry.com/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "ros",
+      name: "ROS 2",
+      tagline: "Le framework de la robotique.",
+      description:
+        "Nodes, topics, services, URDF : ROS 2 est le standard pour construire des systèmes robotiques modulaires.",
+      level: "advanced",
+      stage: "software",
+      prerequisites: ["python", "linux"],
+      concepts: ["Nodes & topics", "Services & actions", "URDF", "Launch files", "Simulation Gazebo"],
+      projects: ["Robot simulé complet", "Stack ROS 2 multi-nodes"],
+      resources: [
+        { title: "ROS 2 Docs", provider: "docs.ros.org", url: "https://docs.ros.org/" },
+        { title: "The Construct", provider: "theconstruct.ai", url: "https://www.theconstruct.ai/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "controle",
+      name: "Contrôle",
+      tagline: "Bouger avec précision.",
+      description:
+        "PID, contrôle optimal, asservissement : la théorie qui transforme des consignes en mouvements précis.",
+      level: "advanced",
+      stage: "software",
+      prerequisites: ["maths", "mecanique"],
+      concepts: ["PID", "Espace d'état", "MPC", "Stabilité", "Identification"],
+      projects: ["PID réglé sur système réel", "Contrôleur MPC simulé"],
+      resources: [
+        { title: "Underactuated Robotics", provider: "MIT", url: "https://underactuated.mit.edu/" },
+        { title: "Brian Douglas — Control", provider: "YouTube", url: "https://www.youtube.com/c/BrianDouglas" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "perception",
+      name: "Perception",
+      tagline: "Voir et comprendre.",
+      description:
+        "Vision par ordinateur, LiDAR, fusion de capteurs : donner au robot une représentation du monde.",
+      level: "advanced",
+      stage: "autonomy",
+      prerequisites: ["python", "maths"],
+      concepts: ["OpenCV", "Détection (YOLO)", "LiDAR & SLAM", "Filtre de Kalman", "Fusion capteurs"],
+      projects: ["Suivi d'objet en temps réel", "Cartographie SLAM"],
+      resources: [
+        { title: "OpenCV Docs", provider: "opencv.org", url: "https://docs.opencv.org/" },
+        { title: "Probabilistic Robotics", provider: "MIT Press", url: "https://mitpress.mit.edu/9780262201629/probabilistic-robotics/" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "planification",
+      name: "Planification",
+      tagline: "Décider où aller.",
+      description:
+        "Planification de trajectoire, navigation, évitement d'obstacles : l'autonomie décisionnelle du robot.",
+      level: "advanced",
+      stage: "autonomy",
+      prerequisites: ["controle", "perception"],
+      concepts: ["A* & RRT", "Navigation (Nav2)", "Évitement d'obstacles", "Planification de tâches", "Incertitude"],
+      projects: ["Navigation autonome simulée", "Planificateur de trajectoire"],
+      resources: [
+        { title: "Nav2 Docs", provider: "navigation.ros.org", url: "https://navigation.ros.org/" },
+        { title: "Planning Algorithms", provider: "lavalle.pl", url: "http://planning.cs.uiuc.edu/" },
+      ],
+      duration: "5–6 semaines",
+    },
+    {
+      id: "integration",
+      name: "Intégration système",
+      tagline: "Le robot, en vrai.",
+      description:
+        "Assembler hardware, logiciel et autonomie en un système fiable : tests, sécurité, déploiement sur robot réel.",
+      level: "advanced",
+      stage: "autonomy",
+      prerequisites: ["ros", "systemes-embarques", "planification"],
+      concepts: ["Tests système", "Sécurité", "Téléopération", "Maintenance", "Documentation"],
+      projects: ["Robot mobile autonome complet", "Démonstration filmée"],
+      resources: [
+        { title: "ROS 2 — Best practices", provider: "docs.ros.org", url: "https://docs.ros.org/" },
+        { title: "Clearpath Robotics", provider: "clearpathrobotics.com", url: "https://clearpathrobotics.com/" },
+      ],
+      duration: "8–10 semaines",
+    },
+  ],
+};

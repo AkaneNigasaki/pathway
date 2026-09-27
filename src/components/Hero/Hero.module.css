@@ -1,0 +1,211 @@
+/* ── Hero : séquence d'apparition 100% CSS ── */
+
+.hero {
+  padding: clamp(5rem, 11vw, 9.5rem) 0 clamp(4rem, 8vw, 7rem);
+  position: relative;
+}
+
+.inner {
+  max-width: 880px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* État initial : invisible, décalé */
+.item {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* Au chargement : révélation en cascade via animation-delay uniquement */
+.loaded .item {
+  animation: heroReveal 760ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.loaded .item:nth-child(1) { animation-delay: 60ms; }
+.loaded .item:nth-child(2) { animation-delay: 160ms; }
+.loaded .item:nth-child(3) { animation-delay: 300ms; }
+.loaded .item:nth-child(4) { animation-delay: 440ms; }
+.loaded .item:nth-child(5) { animation-delay: 580ms; }
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--muted);
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  margin-bottom: 2rem;
+}
+
+.labelDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.title {
+  font-size: var(--text-hero);
+  letter-spacing: var(--tracking-display);
+  font-weight: 800;
+  line-height: 1.02;
+  margin-bottom: 1.75rem;
+}
+
+.subtitle {
+  font-size: var(--text-lead);
+  color: var(--muted);
+  max-width: 56ch;
+  line-height: 1.65;
+  margin-bottom: 2.75rem;
+}
+
+.searchWrap {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 1.75rem;
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 0.45rem 0.45rem 0.45rem 1.25rem;
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms var(--ease-out);
+}
+
+.searchBar:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-faint), var(--shadow-subtle);
+  transform: translateY(-1px);
+}
+
+.searchIcon {
+  color: var(--faint);
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+
+.searchBar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.05rem;
+  padding: 0.85rem 0;
+  min-width: 0;
+}
+
+.searchBar input:focus {
+  outline: none;
+}
+
+.searchBar input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.fakePlaceholder {
+  position: absolute;
+  left: 3.4rem;
+  right: 4.5rem;
+  text-align: left;
+  color: var(--faint);
+  font-size: 1.05rem;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 320ms ease, transform 320ms var(--ease-out);
+}
+
+.fakePlaceholder.phVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fakePlaceholder em {
+  font-style: normal;
+  color: var(--muted);
+}
+
+.searchCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--foreground);
+  color: var(--background);
+  transition: transform 200ms var(--ease-out), background-color 200ms ease;
+}
+
+.searchCta:hover {
+  transform: translateY(-1px) scale(1.03);
+}
+
+.searchCta:active {
+  transform: scale(0.97);
+}
+
+.suggestions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.suggLabel {
+  font-size: var(--text-small);
+  color: var(--faint);
+}
+
+.chip {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--foreground-soft);
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  transition: transform 180ms var(--ease-out), border-color 180ms ease, color 180ms ease;
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .title {
+    line-height: 1.05;
+  }
+  .fakePlaceholder {
+    left: 3.1rem;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,242 @@
+import type { Roadmap } from "../../types";
+
+export const uxRoadmap: Roadmap = {
+  id: "ux-designer",
+  slug: "ux-designer",
+  fieldId: "design",
+  title: "UX Designer",
+  tagline: "De la recherche utilisateur aux design systems.",
+  description:
+    "Comprendre les utilisateurs avant de dessiner : recherche, wireframes, prototypage, tests. Un parcours qui met la méthode avant l'esthétique — sans jamais l'oublier.",
+  levelLabel: "Débutant → Avancé",
+  duration: "7–10 mois",
+  careerSlugs: ["ux-designer"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Penser design avant de dessiner.",
+    },
+    {
+      id: "craft",
+      label: "Craft",
+      description: "Les outils et le geste.",
+    },
+    {
+      id: "method",
+      label: "Méthode",
+      description: "Recherche, tests, itérations.",
+    },
+    {
+      id: "scale",
+      label: "Échelle",
+      description: "Designer pour des organisations.",
+    },
+  ],
+  skills: [
+    {
+      id: "design-thinking",
+      name: "Design Thinking",
+      tagline: "Résoudre le bon problème.",
+      description:
+        "Empathie, définition, idéation, prototype, test : le processus qui évite de designer brillamment la mauvaise solution.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Empathie", "Problem framing", "Idéation", "Itération", "Double diamant"],
+      projects: ["Challenge design thinking en équipe", "Reformulation d'un brief"],
+      resources: [
+        { title: "IDEO Design Kit", provider: "designkit.org", url: "https://www.designkit.org/" },
+        { title: "NN/g Articles", provider: "nngroup.com", url: "https://www.nngroup.com/articles/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "typographie",
+      name: "Typographie",
+      tagline: "95% du design, c'est du texte.",
+      description:
+        "Hiérarchie, graisses, interlignage : la typographie est le fondement silencieux de toute interface lisible.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Hiérarchie", "Échelle typographique", "Lisibilité", "Pairing", "Webfonts"],
+      projects: ["Échelle typographique d'un produit", "Refonte typographique"],
+      resources: [
+        { title: "Practical Typography", provider: "practicaltypography.com", url: "https://practicaltypography.com/" },
+        { title: "Google Fonts", provider: "fonts.google.com", url: "https://fonts.google.com/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "couleur",
+      name: "Couleur & Hiérarchie visuelle",
+      tagline: "Guider l'œil avec intention.",
+      description:
+        "Théorie de la couleur, contrastes, hiérarchie : utiliser la couleur comme un langage, pas comme une décoration.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Théorie des couleurs", "Contrastes WCAG", "Palettes", "Hiérarchie", "Dark mode"],
+      projects: ["Palette accessible documentée", "Audit couleur d'une app"],
+      resources: [
+        { title: "Refactoring UI", provider: "refactoringui.com", url: "https://www.refactoringui.com/" },
+        { title: "Stark — Contrast", provider: "stark", url: "https://www.getstark.co/" },
+      ],
+      duration: "2 semaines",
+    },
+    {
+      id: "figma",
+      name: "Figma",
+      tagline: "L'atelier du designer produit.",
+      description:
+        "Auto-layout, variants, composants : maîtriser Figma, c'est parler couramment le langage des équipes produit.",
+      level: "beginner",
+      stage: "craft",
+      prerequisites: ["design-thinking"],
+      concepts: ["Auto-layout", "Composants & variants", "Styles", "Prototypage", "Dev Mode"],
+      projects: ["Maquette responsive complète", "Bibliothèque de composants"],
+      resources: [
+        { title: "Figma Learn", provider: "figma.com", url: "https://www.figma.com/resources/learn-design/" },
+        { title: "Figma Community", provider: "figma.com", url: "https://www.figma.com/community" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "ui-design",
+      name: "UI Design",
+      tagline: "Des interfaces claires et cohérentes.",
+      description:
+        "Grilles, espacements, états : l'UI design est une discipline de précision au service de la clarté.",
+      level: "intermediate",
+      stage: "craft",
+      prerequisites: ["typographie", "couleur", "figma"],
+      concepts: ["Grilles", "Espacement (8pt)", "États (hover, focus...)", "Iconographie", "Cohérence"],
+      projects: ["Refonte UI d'une app", "Écrans edge cases"],
+      resources: [
+        { title: "Refactoring UI (livre)", provider: "refactoringui.com", url: "https://www.refactoringui.com/" },
+        { title: "Material Design", provider: "m3.material.io", url: "https://m3.material.io/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "ux-research",
+      name: "UX Research",
+      tagline: "Écouter avant de décider.",
+      description:
+        "Entretiens, observations, surveys : la recherche transforme les opinions en preuves et les débats en décisions.",
+      level: "intermediate",
+      stage: "method",
+      prerequisites: ["design-thinking"],
+      concepts: ["Entretiens utilisateurs", "Personas & JTBD", "Surveys", "Analyse qualitative", "Biais"],
+      projects: ["Étude utilisateurs complète", "Synthèse d'insights"],
+      resources: [
+        { title: "NN/g Research", provider: "nngroup.com", url: "https://www.nngroup.com/articles/which-ux-research-methods/" },
+        { title: "Just Enough Research", provider: "abookapart.com", url: "https://abookapart.com/products/just-enough-research" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "wireframing",
+      name: "Wireframing & IA",
+      tagline: "Structurer avant de décorer.",
+      description:
+        "Architecture de l'information, user flows, wireframes : la structure porte l'expérience, le visuel la sert.",
+      level: "intermediate",
+      stage: "method",
+      prerequisites: ["ux-research", "figma"],
+      concepts: ["Architecture de l'information", "User flows", "Wireframes", "Card sorting", "Navigation"],
+      projects: ["Arborescence d'un site complexe", "User flows d'un parcours"],
+      resources: [
+        { title: "Information Architecture (Rosenfeld)", provider: "O'Reilly", url: "https://www.oreilly.com/library/view/information-architecture-4th/9781491919089/" },
+        { title: "NN/g IA", provider: "nngroup.com", url: "https://www.nngroup.com/articles/ia-study-guide/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "prototypage",
+      name: "Prototypage",
+      tagline: "Tester tôt, tester souvent.",
+      description:
+        "Du papier au prototype haute-fidélité : matérialiser les idées assez tôt pour les confronter au réel.",
+      level: "intermediate",
+      stage: "method",
+      prerequisites: ["wireframing", "ui-design"],
+      concepts: ["Fidélité adaptée", "Prototypes cliquables", "Tests utilisateurs", "Itération", "Handoff"],
+      projects: ["Prototype testé avec 5 utilisateurs", "Itérations documentées"],
+      resources: [
+        { title: "Sprint (Knapp)", provider: "Google Ventures", url: "https://www.thesprintbook.com/" },
+        { title: "Maze — Testing", provider: "maze.co", url: "https://maze.co/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "design-system",
+      name: "Design Systems",
+      tagline: "Designer à l'échelle.",
+      description:
+        "Tokens, composants, documentation, gouvernance : un design system aligne toute l'organisation sur un langage commun.",
+      level: "advanced",
+      stage: "scale",
+      prerequisites: ["ui-design", "figma"],
+      concepts: ["Design tokens", "Documentation", "Gouvernance", "Contribution model", "Mesure d'adoption"],
+      projects: ["Design system documenté", "Audit d'un DS existant"],
+      resources: [
+        { title: "Design Systems Handbook", provider: "designbetter.co", url: "https://www.designbetter.co/design-systems-handbook" },
+        { title: "Tokens Studio", provider: "tokens.studio", url: "https://tokens.studio/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "accessibilite-design",
+      name: "Accessibilité",
+      tagline: "Designer pour tout le monde.",
+      description:
+        "WCAG, contrastes, navigation clavier : l'accessibilité est une qualité du design, pas une contrainte.",
+      level: "intermediate",
+      stage: "scale",
+      prerequisites: ["ui-design", "ux-research"],
+      concepts: ["WCAG 2.2", "Contrastes", "Focus & clavier", "Motion", "Tests avec utilisateurs"],
+      projects: ["Audit d'accessibilité", "Composants accessibles"],
+      resources: [
+        { title: "A11y Project", provider: "a11yproject.com", url: "https://www.a11yproject.com/" },
+        { title: "WCAG", provider: "w3.org", url: "https://www.w3.org/WAI/standards-guidelines/wcag/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "motion-design",
+      name: "Motion Design",
+      tagline: "Le mouvement comme langage.",
+      description:
+        "Transitions, micro-interactions, chorégraphie : le motion guide l'attention et rend les interfaces vivantes.",
+      level: "advanced",
+      stage: "scale",
+      prerequisites: ["prototypage"],
+      concepts: ["Principes d'animation", "Easing", "Chorégraphie", "Reduced motion", "Prototypage animé"],
+      projects: ["Système de motion documenté", "Micro-interactions"],
+      resources: [
+        { title: "Material Motion", provider: "m3.material.io", url: "https://m3.material.io/styles/motion/overview" },
+        { title: "Laws of UX", provider: "lawsofux.com", url: "https://lawsofux.com/" },
+      ],
+      duration: "3 semaines",
+    },
+    {
+      id: "portfolio",
+      name: "Portfolio",
+      tagline: "Raconter son travail.",
+      description:
+        "Case studies, processus, résultats : un portfolio qui montre comment vous pensez, pas seulement ce que vous produisez.",
+      level: "advanced",
+      stage: "scale",
+      prerequisites: ["design-system", "prototypage", "ux-research"],
+      concepts: ["Case studies", "Storytelling", "Métriques", "Présentation", "Personal branding"],
+      projects: ["Portfolio avec 3 case studies", "Présentation orale"],
+      resources: [
+        { title: "Bestfolios", provider: "bestfolios.com", url: "https://www.bestfolios.com/" },
+        { title: "NN/g Portfolios", provider: "nngroup.com", url: "https://www.nngroup.com/articles/ux-portfolios/" },
+      ],
+      duration: "4–6 semaines",
+    },
+  ],
+};

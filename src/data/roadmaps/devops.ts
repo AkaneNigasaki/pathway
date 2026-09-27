@@ -1,0 +1,242 @@
+import type { Roadmap } from "../../types";
+
+export const devopsRoadmap: Roadmap = {
+  id: "devops-engineer",
+  slug: "devops-engineer",
+  fieldId: "informatique",
+  title: "DevOps Engineer",
+  tagline: "De l'infrastructure manuelle au platform engineering.",
+  description:
+    "Automatisez tout : du commit au déploiement en production. Linux, conteneurs, cloud, Kubernetes et infrastructure as code — le parcours de ceux qui rendent les livraisons ennuyeuses, dans le bon sens.",
+  levelLabel: "Intermédiaire → Avancé",
+  duration: "9–12 mois",
+  careerSlugs: ["devops-engineer"],
+  stages: [
+    {
+      id: "foundations",
+      label: "Fondations",
+      description: "Comprendre la machine avant de l'automatiser.",
+    },
+    {
+      id: "containers",
+      label: "Conteneurs & CI",
+      description: "Packager, tester, livrer.",
+    },
+    {
+      id: "cloud",
+      label: "Cloud & Orchestration",
+      description: "L'infrastructure comme code, à l'échelle.",
+    },
+    {
+      id: "platform",
+      label: "Platform Engineering",
+      description: "Construire la plateforme des autres équipes.",
+    },
+  ],
+  skills: [
+    {
+      id: "linux",
+      name: "Linux",
+      tagline: "Le système d'exploitation de la production.",
+      description:
+        "Processus, systemd, réseau, permissions : Linux est le terrain de jeu du DevOps. On ne peut pas automatiser ce qu'on ne comprend pas.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Filesystem & permissions", "systemd", "Réseau (iptables, ss)", "Scripting bash", "SSH & clés"],
+      projects: ["Hardening d'un serveur", "Scripts de provisioning"],
+      resources: [
+        { title: "Linux Journey", provider: "linuxjourney.com", url: "https://linuxjourney.com/" },
+        { title: "LPIC-1 (référence)", provider: "lpi.org", url: "https://www.lpi.org/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "git",
+      name: "Git avancé",
+      tagline: "Le workflow comme contrat d'équipe.",
+      description:
+        "Au-delà des bases : stratégies de branches, hooks, submodules, gestion des releases. Git est la colonne vertébrale du delivery.",
+      level: "beginner",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["GitFlow / trunk-based", "Hooks", "Tags & releases", "Bisect", "Monorepos"],
+      projects: ["Stratégie de branches documentée", "Release automatisée par tags"],
+      resources: [
+        { title: "Pro Git (FR)", provider: "git-scm.com", url: "https://git-scm.com/book/fr/v2" },
+        { title: "Trunk Based Development", provider: "trunkbaseddevelopment.com", url: "https://trunkbaseddevelopment.com/" },
+      ],
+      duration: "2 semaines",
+    },
+    {
+      id: "networking",
+      name: "Réseaux",
+      tagline: "Ce qui relie tout.",
+      description:
+        "TCP/IP, DNS, TLS, load balancing : 80% des incidents mystérieux sont des problèmes réseau. Comprenez les couches.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: [],
+      concepts: ["Modèle TCP/IP", "DNS", "TLS & certificats", "HTTP en profondeur", "Load balancing"],
+      projects: ["Debug d'un incident réseau simulé", "Reverse proxy avec TLS"],
+      resources: [
+        { title: "Practical Networking", provider: "YouTube", url: "https://www.youtube.com/c/PracticalNetworking" },
+        { title: "Cloudflare Learning", provider: "cloudflare.com", url: "https://www.cloudflare.com/learning/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "scripting",
+      name: "Scripting & Automatisation",
+      tagline: "Ne jamais faire deux fois à la main.",
+      description:
+        "Bash et Python pour automatiser : tout ce qui est répété trois fois devient un script versionné et testé.",
+      level: "intermediate",
+      stage: "foundations",
+      prerequisites: ["linux"],
+      concepts: ["Bash avancé", "Python ops", "Cron & schedulers", "Idempotence", "Gestion d'erreurs"],
+      projects: ["Runbook automatisé", "Script de backup avec rotation"],
+      resources: [
+        { title: "Bash Guide", provider: "mywiki.wooledge.org", url: "https://mywiki.wooledge.org/BashGuide" },
+        { title: "Automate the Boring Stuff", provider: "automatetheboringstuff.com", url: "https://automatetheboringstuff.com/" },
+      ],
+      duration: "2–3 semaines",
+    },
+    {
+      id: "docker",
+      name: "Docker",
+      tagline: "L'unité de déploiement moderne.",
+      description:
+        "Images reproductibles, Compose pour le local, registries : Docker a standardisé la façon de packager les applications.",
+      level: "intermediate",
+      stage: "containers",
+      prerequisites: ["linux"],
+      concepts: ["Dockerfile optimisé", "Multi-stage builds", "Registries", "Sécurité des images", "Compose"],
+      projects: ["Pipeline de build d'images", "Scan de vulnérabilités automatisé"],
+      resources: [
+        { title: "Docker Docs", provider: "docs.docker.com", url: "https://docs.docker.com/" },
+        { title: "Best practices", provider: "docs.docker.com", url: "https://docs.docker.com/build/building/best-practices/" },
+      ],
+      duration: "3 semaines",
+    },
+    {
+      id: "ci-cd",
+      name: "CI/CD",
+      tagline: "Chaque commit, un candidat à la production.",
+      description:
+        "Pipelines de build, test et déploiement : rendre la livraison si fluide qu'elle devient un non-événement.",
+      level: "intermediate",
+      stage: "containers",
+      prerequisites: ["git", "docker"],
+      concepts: ["GitHub Actions / GitLab CI", "Stratégies de déploiement", "Environnements", "Secrets", "Rollback"],
+      projects: ["Pipeline complet : test → build → deploy", "Blue/green deployment"],
+      resources: [
+        { title: "GitHub Actions Docs", provider: "docs.github.com", url: "https://docs.github.com/actions" },
+        { title: "GitLab CI Docs", provider: "docs.gitlab.com", url: "https://docs.gitlab.com/ee/ci/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "cloud",
+      name: "Cloud",
+      tagline: "L'infrastructure à la demande.",
+      description:
+        "Compute, stockage, réseau managé : comprendre les briques cloud et leurs trade-offs économiques avant d'orchestrer.",
+      level: "intermediate",
+      stage: "cloud",
+      prerequisites: ["networking", "linux"],
+      concepts: ["EC2 / Compute", "Stockage objet", "VPC & sous-réseaux", "IAM", "Coûts & FinOps"],
+      projects: ["VPC multi-AZ from scratch", "Budget et alertes de coûts"],
+      resources: [
+        { title: "AWS Docs", provider: "aws.amazon.com", url: "https://docs.aws.amazon.com/" },
+        { title: "Cloud Resume Challenge", provider: "cloudresumechallenge.dev", url: "https://cloudresumechallenge.dev/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "kubernetes",
+      name: "Kubernetes",
+      tagline: "L'orchestrateur devenu standard.",
+      description:
+        "Pods, deployments, services, ingress : Kubernetes orchestre les conteneurs à l'échelle. Exigeant, mais incontournable.",
+      level: "advanced",
+      stage: "cloud",
+      prerequisites: ["docker", "cloud"],
+      concepts: ["Pods & Deployments", "Services & Ingress", "ConfigMaps & Secrets", "Helm", "Autoscaling"],
+      projects: ["Cluster local (kind) multi-services", "Chart Helm réutilisable"],
+      resources: [
+        { title: "Kubernetes Docs", provider: "kubernetes.io", url: "https://kubernetes.io/docs/" },
+        { title: "K8s the Hard Way", provider: "GitHub", url: "https://github.com/kelseyhightower/kubernetes-the-hard-way" },
+      ],
+      duration: "6–8 semaines",
+    },
+    {
+      id: "iac",
+      name: "Infrastructure as Code",
+      tagline: "L'infrastructure versionnée et reproductible.",
+      description:
+        "Terraform / OpenTofu : déclarer l'infrastructure comme du code, la relire en PR, la détruire et la reconstruire à volonté.",
+      level: "advanced",
+      stage: "cloud",
+      prerequisites: ["cloud", "git"],
+      concepts: ["Terraform / OpenTofu", "State & backends", "Modules", "Plan & apply en CI", "Drift detection"],
+      projects: ["Infra complète en modules", "Pipeline Terraform avec plan en PR"],
+      resources: [
+        { title: "Terraform Docs", provider: "developer.hashicorp.com", url: "https://developer.hashicorp.com/terraform/docs" },
+        { title: "OpenTofu Docs", provider: "opentofu.org", url: "https://opentofu.org/docs/" },
+      ],
+      duration: "4–5 semaines",
+    },
+    {
+      id: "monitoring",
+      name: "Monitoring & Observabilité",
+      tagline: "Savoir avant que ça casse.",
+      description:
+        "Métriques, logs, traces, SLO : passer de la surveillance réactive à l'observabilité proactive.",
+      level: "advanced",
+      stage: "cloud",
+      prerequisites: ["kubernetes", "linux"],
+      concepts: ["Prometheus & Grafana", "Loki / ELK", "SLO & SLI", "Alerting", "On-call"],
+      projects: ["Stack d'observabilité complète", "Définition de SLO avec alertes"],
+      resources: [
+        { title: "SRE Book (Google)", provider: "sre.google", url: "https://sre.google/sre-book/table-of-contents/" },
+        { title: "Grafana Docs", provider: "grafana.com", url: "https://grafana.com/docs/" },
+      ],
+      duration: "3–4 semaines",
+    },
+    {
+      id: "devsecops",
+      name: "DevSecOps",
+      tagline: "La sécurité dans le pipeline, pas après.",
+      description:
+        "Shift-left security : scans, gestion des secrets, politiques : intégrer la sécurité à chaque étape du delivery.",
+      level: "advanced",
+      stage: "platform",
+      prerequisites: ["ci-cd", "kubernetes"],
+      concepts: ["SAST / DAST", "Scan d'images", "Gestion des secrets", "Policy as code", "SBOM"],
+      projects: ["Pipeline avec gates de sécurité", "Vault pour les secrets"],
+      resources: [
+        { title: "OWASP DevSecOps", provider: "owasp.org", url: "https://owasp.org/www-project-devsecops-guideline/" },
+        { title: "Trivy Docs", provider: "aquasec.com", url: "https://aquasecurity.github.io/trivy/" },
+      ],
+      duration: "3 semaines",
+    },
+    {
+      id: "platform-engineering",
+      name: "Platform Engineering",
+      tagline: "Le produit des équipes produit.",
+      description:
+        "Internal Developer Platforms, golden paths, self-service : construire la plateforme qui multiplie la vélocité des développeurs.",
+      level: "advanced",
+      stage: "platform",
+      prerequisites: ["kubernetes", "iac", "monitoring"],
+      concepts: ["IDP", "Golden paths", "Backstage", "GitOps (ArgoCD)", "DX"],
+      projects: ["Template de service self-service", "GitOps avec ArgoCD"],
+      resources: [
+        { title: "Platform Engineering", provider: "platformengineering.org", url: "https://platformengineering.org/" },
+        { title: "ArgoCD Docs", provider: "argo-cd.readthedocs.io", url: "https://argo-cd.readthedocs.io/" },
+      ],
+      duration: "5–6 semaines",
+    },
+  ],
+};
