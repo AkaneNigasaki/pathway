@@ -149,9 +149,6 @@ export function Skills() {
             Vous connaissez déjà une technologie ? Ouvrez-la directement :
             définition, prérequis, projets et ce qu&apos;apprendre ensuite.
           </p>
-        </Reveal>
-
-        <Reveal className={styles.controls} delay={80}>
           <div className={styles.searchBar} role="search">
             <Search size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="skills-search" className={styles.srOnly}>
@@ -176,7 +173,9 @@ export function Skills() {
               </button>
             )}
           </div>
+        </Reveal>
 
+        <Reveal className={styles.controls} delay={80}>
           <div className={styles.filterRows}>
             <div className={styles.filterRow}>
               <span className={styles.filterLabel} id="skills-level-label">

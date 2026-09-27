@@ -51,9 +51,6 @@ export function Roadmaps() {
             Des parcours structurés : définitions, prérequis, projets,
             progression et dépendances.
           </p>
-        </Reveal>
-
-        <Reveal delay={80}>
           <div className={styles.searchBar} role="search">
             <Search size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="roadmaps-search" className={styles.srOnly}>

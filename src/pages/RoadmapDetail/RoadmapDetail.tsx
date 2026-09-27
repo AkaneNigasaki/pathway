@@ -180,7 +180,7 @@ export function RoadmapDetail() {
 
         {nextUp.length > 0 && (
           <Reveal className={styles.nextUp}>
-            <h2 className={styles.nextUpTitle}>Prêtes à apprendre</h2>
+            <h2 className={styles.nextUpTitle}>Prochaines étapes</h2>
             <p className={styles.nextUpHint}>
               Vos prérequis sont validés : plusieurs directions s'ouvrent, à vous de choisir.
             </p>

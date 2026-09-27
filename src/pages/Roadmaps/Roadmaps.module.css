@@ -300,3 +300,12 @@
     #000;
   overflow: hidden;
 }
+
+/* Recherche intégrée à la carte d'en-tête */
+[data-theme="dark"] .head .searchBar {
+  margin-bottom: 0;
+}
+
+.head .section-lead {
+  margin-bottom: 1.5rem;
+}
