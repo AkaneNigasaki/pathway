@@ -8,6 +8,7 @@ import { dataScienceRoadmap } from "./dataScience";
 import { cybersecurityRoadmap } from "./cybersecurity";
 import { uxRoadmap } from "./ux";
 import { roboticsRoadmap } from "./robotics";
+import { typescriptRoadmap } from "./typescript";
 
 /**
  * Ajouter une roadmap = ajouter un module ici.
@@ -24,6 +25,7 @@ export const ROADMAPS: Roadmap[] = [
   cybersecurityRoadmap,
   uxRoadmap,
   roboticsRoadmap,
+  typescriptRoadmap,
 ];
 
 export const ROADMAP_MAP: Record<string, Roadmap> = Object.fromEntries(

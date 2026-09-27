@@ -92,6 +92,9 @@
   letter-spacing: -0.03em;
   margin-bottom: 0.4rem;
   padding-right: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .tagline {

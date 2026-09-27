@@ -9,6 +9,7 @@ import { GUIDES_DATA } from "./guides/part-data";
 import { GUIDES_DEVOPS } from "./guides/part-devops";
 import { GUIDES_CYBER } from "./guides/part-cyber";
 import { GUIDES_ROBOTICS } from "./guides/part-robotics";
+import { GUIDES_TYPESCRIPT } from "./guides/part-typescript";
 
 /**
  * Guides pédagogiques des compétences.
@@ -143,6 +144,7 @@ export const SKILL_GUIDES: Record<string, Record<string, SkillGuide>> = {
   "devops-engineer": GUIDES_DEVOPS,
   "cybersecurity-engineer": GUIDES_CYBER,
   "robotics-engineer": GUIDES_ROBOTICS,
+  typescript: GUIDES_TYPESCRIPT,
 };
 
 export function getSkillGuide(

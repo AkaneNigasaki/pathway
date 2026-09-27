@@ -2,6 +2,7 @@ import { memo } from "react";
 import { LuBraces as Braces, LuLayers as Layers, LuCheck as Check, LuCloud as Cloud, LuCompass as Compass, LuLightbulb as Lightbulb, LuWrench as Wrench } from "react-icons/lu";
 import type { NodeType, Skill, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
+import { LanguageIcon, hasLanguageIcon } from "../LanguageIcon/LanguageIcon";
 import styles from "./SkillNode.module.css";
 
 const TYPE_ICON: Record<NodeType, typeof Lightbulb> = {
@@ -76,12 +77,16 @@ export const SkillNode = memo(function SkillNode({
         title={`${skill.name} — ${skill.tagline} · ${SKILL_LEVEL_LABEL[skill.level]}`}
       >
         <span className={styles.topRow}>
-          <TypeIcon
-            size={14}
-            className={styles.typeIcon}
-            aria-label={NODE_TYPE_LABEL[type]}
-            role="img"
-          />
+          {hasLanguageIcon(skill.id) ? (
+            <LanguageIcon skillId={skill.id} label={`${skill.name} — ${NODE_TYPE_LABEL[type]}`} size={18} />
+          ) : (
+            <TypeIcon
+              size={14}
+              className={styles.typeIcon}
+              aria-label={NODE_TYPE_LABEL[type]}
+              role="img"
+            />
+          )}
           <span className={styles.level}>{SHORT_LEVEL[skill.level]}</span>
         </span>
         <span className={styles.name}>{skill.name}</span>

@@ -8,6 +8,7 @@ import { getNextSkills, skillMap } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
 import { getSkillGuide } from "../../data/skill-guides";
 import { FlowDiagram, SKILL_ILLUSTRATIONS } from "../illustrations";
+import { LanguageIcon, hasLanguageIcon } from "../LanguageIcon/LanguageIcon";
 import styles from "./SkillPanel.module.css";
 
 interface SkillPanelProps {
@@ -219,7 +220,12 @@ export function SkillPanel({
           <p className={`${styles.eyebrow} fieldAccent`}>
             {roadmap.title.toUpperCase()}
           </p>
-          <h2 className={styles.name}>{skill.name}</h2>
+          <h2 className={styles.name}>
+            {hasLanguageIcon(skill.id) && (
+              <LanguageIcon skillId={skill.id} label={skill.name} size={30} />
+            )}
+            {skill.name}
+          </h2>
           <p className={styles.tagline}>{skill.tagline}</p>
 
           <div className={styles.badges}>
