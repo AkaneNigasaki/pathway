@@ -1,4 +1,5 @@
 import type { SkillGuide } from "../skill-guides";
+import { LEARNING_TYPESCRIPT } from "./learning-typescript";
 
 /**
  * Guides pédagogiques — partie A : fondations & développement web.
@@ -660,6 +661,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ typescript
   typescript: {
+  learning: LEARNING_TYPESCRIPT,
   setup: {
     install: [
       "Installer en dépendance de dev : `npm install -D typescript`.",

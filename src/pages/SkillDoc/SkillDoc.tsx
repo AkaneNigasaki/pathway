@@ -17,6 +17,7 @@ import {
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { renderRichText } from "../../components/RichText/RichText";
+import { LearningPage } from "../../components/LearningPage/LearningPage";
 import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
 import { NotFound } from "../NotFound/NotFound";
 import { getRoadmap, skillMap } from "../../data/roadmaps";
@@ -51,22 +52,31 @@ export function SkillDoc() {
     note: guide?.prerequisiteNotes?.[id],
   }));
 
-  const sections: DocSection[] = [
-    { id: "definition", label: "Définition" },
-    ...(guide?.whyLearn ? [{ id: "pourquoi", label: "Pourquoi l'apprendre" }] : []),
-    { id: "environnement", label: "Environnement" },
-    ...(guide?.setup ? [{ id: "mise-en-place", label: "Mise en place" }] : []),
-    ...(guide?.howItWorks?.length
-      ? [{ id: "fonctionnement", label: guide.howItWorksTitle ?? "Comment ça fonctionne" }]
-      : []),
-    ...(concepts.length || skill.concepts.length
-      ? [{ id: "concepts", label: "Concepts clés" }]
-      : []),
-    ...(guide?.example ? [{ id: "exemple", label: "Exemple concret" }] : []),
-    ...(projects.length ? [{ id: "projets", label: "Projets pour pratiquer" }] : []),
-    ...(prereqs.length ? [{ id: "prerequis", label: "Prérequis" }] : []),
-    ...(skill.resources.length ? [{ id: "ressources", label: "Ressources" }] : []),
-  ];
+  const learningSections = guide?.learning ?? [];
+  const hasLearning = learningSections.length > 0;
+
+  const sections: DocSection[] = hasLearning
+    ? [
+        ...learningSections.map((s) => ({ id: `learn-${s.id}`, label: s.title })),
+        ...(prereqs.length ? [{ id: "prerequis", label: "Prérequis" }] : []),
+        ...(skill.resources.length ? [{ id: "ressources", label: "Ressources" }] : []),
+      ]
+    : [
+        { id: "definition", label: "Définition" },
+        ...(guide?.whyLearn ? [{ id: "pourquoi", label: "Pourquoi l'apprendre" }] : []),
+        { id: "environnement", label: "Environnement" },
+        ...(guide?.setup ? [{ id: "mise-en-place", label: "Mise en place" }] : []),
+        ...(guide?.howItWorks?.length
+          ? [{ id: "fonctionnement", label: guide.howItWorksTitle ?? "Comment ça fonctionne" }]
+          : []),
+        ...(concepts.length || skill.concepts.length
+          ? [{ id: "concepts", label: "Concepts clés" }]
+          : []),
+        ...(guide?.example ? [{ id: "exemple", label: "Exemple concret" }] : []),
+        ...(projects.length ? [{ id: "projets", label: "Projets pour pratiquer" }] : []),
+        ...(prereqs.length ? [{ id: "prerequis", label: "Prérequis" }] : []),
+        ...(skill.resources.length ? [{ id: "ressources", label: "Ressources" }] : []),
+      ];
 
   return (
     <div className={styles.page}>
@@ -134,6 +144,15 @@ export function SkillDoc() {
           </aside>
 
           <article className={styles.doc}>
+            {hasLearning ? (
+              <LearningPage
+                sections={learningSections}
+                roadmapSlug={roadmap.slug}
+                skillId={skill.id}
+                skillName={skill.name}
+              />
+            ) : (
+              <>
             <Reveal>
               <section id="definition" className={styles.section} aria-label="Définition">
                 <h2 className={styles.h2}>Définition</h2>
@@ -350,6 +369,9 @@ export function SkillDoc() {
                   </ol>
                 </section>
               </Reveal>
+            )}
+
+              </>
             )}
 
             {prereqs.length > 0 && (

@@ -42,7 +42,54 @@ export type SkillGuide = Pick<
   setup?: SkillSetup;
   /** URL de la documentation officielle de la technologie. */
   docsUrl?: string;
+  /**
+   * Page d'apprentissage complète (« Learning Page ») : sections structurées
+   * en 3 niveaux d'information avec divulgation progressive. Quand ce champ
+   * est présent, la page /docs affiche l'expérience Learning Page.
+   */
+  learning?: LearningSection[];
 };
+
+/**
+ * Niveau d'information d'une section :
+ * 1 = Aperçu (30 secondes, comprendre le sujet),
+ * 2 = Pratique (5-15 minutes, installer, configurer, premiers exemples),
+ * 3 = Approfondi (concepts avancés, architecture, cas limites, performance).
+ */
+export type LearningLevel = 1 | 2 | 3;
+
+/**
+ * Blocs de contenu d'une section de Learning Page. Tous les textes
+ * supportent le code inline entre backticks (rendu via renderRichText).
+ */
+export type LearningBlock =
+  /** Paragraphe de texte. */
+  | { kind: "text"; text: string }
+  /** Commande expliquée : jamais une commande sans explication. */
+  | { kind: "command"; label: string; command: string; why: string; verify?: string }
+  /** Extrait de code avec langage affiché et bouton copier. */
+  | { kind: "code"; language: string; title?: string; code: string }
+  /** Liste à puces simple. */
+  | { kind: "list"; items: string[] }
+  /** Fiche champ/valeur (ex. une option tsconfig, un éditeur, une commande CLI). */
+  | { kind: "fields"; title?: string; fields: { label: string; value: string }[] }
+  /** Tableau comparatif. */
+  | { kind: "table"; headers: string[]; rows: string[][] }
+  /** Schéma en texte préformaté (arbres, flux verticaux). */
+  | { kind: "diagram"; title?: string; lines: string[] }
+  /** Tutoriel pas à pas. */
+  | { kind: "steps"; steps: { title: string; detail: string }[] };
+
+/** Une section de Learning Page : titre, niveau, blocs de contenu. */
+export interface LearningSection {
+  /** Identifiant stable pour l'ancre (ex. "installation"). */
+  id: string;
+  title: string;
+  level: LearningLevel;
+  /** Chapeau optionnel affiché sous le titre. */
+  intro?: string;
+  blocks: LearningBlock[];
+}
 
 /**
  * Informations pratiques pour démarrer avec une technologie :
