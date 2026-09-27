@@ -63,7 +63,7 @@ export function Home() {
             <p className="eyebrow">Explore by field</p>
             <h2 className="section-title" id="fields-title">Choisissez un domaine</h2>
             <p className="section-lead">
-              Onze filières, des dizaines de parcours. Choisissez un point de départ,
+              Huit filières, des dizaines de parcours. Choisissez un point de départ,
               Pathway trace la suite.
             </p>
           </Reveal>
