@@ -6,9 +6,6 @@ import { devopsRoadmap } from "./devops";
 import { aiRoadmap } from "./ai";
 import { dataScienceRoadmap } from "./dataScience";
 import { cybersecurityRoadmap } from "./cybersecurity";
-import { droitRoadmap } from "./droit";
-import { financeRoadmap } from "./finance";
-import { economieRoadmap } from "./economie";
 import { uxRoadmap } from "./ux";
 import { roboticsRoadmap } from "./robotics";
 
@@ -25,9 +22,6 @@ export const ROADMAPS: Roadmap[] = [
   aiRoadmap,
   dataScienceRoadmap,
   cybersecurityRoadmap,
-  droitRoadmap,
-  financeRoadmap,
-  economieRoadmap,
   uxRoadmap,
   roboticsRoadmap,
 ];

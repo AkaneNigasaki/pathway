@@ -59,14 +59,11 @@ export function Explore() {
   return (
     <div className={styles.page}>
       <div className="container">
-        <Reveal className={styles.head}>
+        <Reveal className={`${styles.head} header-card`}>
           <p className="eyebrow">Explore</p>
           <h1 className={styles.title}>Rechercher une compétence,
             <br />
             une filière ou un métier.</h1>
-        </Reveal>
-
-        <Reveal delay={80}>
           <div className={styles.searchBar} role="search">
             <Search size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="explore-search" className={styles.srOnly}>
@@ -77,7 +74,7 @@ export function Explore() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Essayez « TypeScript », « Droit fiscal », « DevOps »…"
+              placeholder="Essayez « TypeScript », « Docker », « DevOps »…"
               autoComplete="off"
             />
             {query && (

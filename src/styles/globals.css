@@ -313,3 +313,29 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px var(--surface) inset;
   transition: background-color 9999s ease-in-out 0s;
 }
+
+/* ── Carte d'en-tête sombre (thème sombre) : texture technique + contenu ── */
+[data-theme="dark"] .header-card {
+  position: relative;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.55)),
+    url("../assets/backgrounds/section-bg.webp") center / cover no-repeat,
+    #000;
+  overflow: hidden;
+}
+
+.header-card .section-lead {
+  margin-bottom: 1.5rem;
+}
+
+.header-card .section-lead:last-child {
+  margin-bottom: 0;
+}
+
+[data-theme="dark"] .header-card .searchBar {
+  margin-bottom: 0;
+}

@@ -286,25 +286,7 @@
   }
 }
 
-/* ── Fond technique subtil sur l'en-tête (thème sombre) ── */
-[data-theme="dark"] .head {
-  position: relative;
-  padding: 2.5rem 2rem;
-  margin: 0 0 2.5rem;
-  max-width: none;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background:
-    linear-gradient(rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.55)),
-    url("../../assets/backgrounds/section-bg.webp") center / cover no-repeat,
-    #000;
-  overflow: hidden;
-}
 
-/* Recherche intégrée à la carte d'en-tête */
-[data-theme="dark"] .head .searchBar {
-  margin-bottom: 0;
-}
 
 .head .section-lead {
   margin-bottom: 1.5rem;

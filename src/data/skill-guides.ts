@@ -9,9 +9,6 @@ import { GUIDES_DATA } from "./guides/part-data";
 import { GUIDES_DEVOPS } from "./guides/part-devops";
 import { GUIDES_CYBER } from "./guides/part-cyber";
 import { GUIDES_ROBOTICS } from "./guides/part-robotics";
-import { GUIDES_DROIT } from "./guides/part-droit";
-import { GUIDES_FINANCE } from "./guides/part-finance";
-import { GUIDES_ECO } from "./guides/part-eco";
 
 /**
  * Guides pédagogiques des compétences.
@@ -36,7 +33,10 @@ export type SkillGuide = Pick<
   | "example"
   | "projectsDetailed"
   | "illustration"
->;
+> & {
+  /** Checklist d'installation / mise en place (page documentation). */
+  environment?: string[];
+};
 
 /** Guide de référence rédigé à la main (modèle pour les autres entrées). */
 const N8N_GUIDE: SkillGuide = {
@@ -143,9 +143,6 @@ export const SKILL_GUIDES: Record<string, Record<string, SkillGuide>> = {
   "devops-engineer": GUIDES_DEVOPS,
   "cybersecurity-engineer": GUIDES_CYBER,
   "robotics-engineer": GUIDES_ROBOTICS,
-  "droit-des-affaires": GUIDES_DROIT,
-  "analyste-financier": GUIDES_FINANCE,
-  economiste: GUIDES_ECO,
 };
 
 export function getSkillGuide(

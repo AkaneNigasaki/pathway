@@ -139,7 +139,36 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.docCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
   margin-bottom: 1.75rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-strong);
+  background: var(--surface-soft);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--foreground);
+  transition: border-color var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard),
+    transform var(--dur-short) var(--ease-standard);
+}
+
+.docCta:hover {
+  border-color: var(--accent);
+  background: var(--accent-faint);
+  transform: translateY(-1px);
+}
+
+.docCta svg:first-child {
+  color: var(--accent);
 }
 
 .statusOpt {

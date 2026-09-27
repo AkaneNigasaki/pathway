@@ -16,33 +16,6 @@ export const FIELDS: Field[] = [
     icon: "Cpu",
   },
   {
-    id: "droit",
-    name: "Droit",
-    tagline: "Raisonner juste",
-    description:
-      "Maîtrisez le raisonnement juridique, des principes fondamentaux aux spécialisations les plus pointues du droit des affaires.",
-    accent: "#b91c1c",
-    icon: "Scale",
-  },
-  {
-    id: "economie",
-    name: "Économie",
-    tagline: "Comprendre les mécanismes",
-    description:
-      "Comprenez les forces qui gouvernent les marchés, les politiques publiques et la croissance, de la micro à la macro.",
-    accent: "#16a34a",
-    icon: "TrendingUp",
-  },
-  {
-    id: "finance",
-    name: "Finance",
-    tagline: "Lire la valeur",
-    description:
-      "De la comptabilité aux marchés financiers : développez une lecture rigoureuse, chiffrée et disciplinée de la valeur.",
-    accent: "#0d9488",
-    icon: "Landmark",
-  },
-  {
     id: "sciences",
     name: "Sciences",
     tagline: "La méthode avant tout",

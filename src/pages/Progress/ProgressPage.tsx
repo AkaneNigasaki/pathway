@@ -28,7 +28,7 @@ export function ProgressPage() {
   return (
     <div className={styles.page}>
       <div className="container">
-        <Reveal className={styles.head}>
+        <Reveal className={`${styles.head} header-card`}>
           <p className="eyebrow">Progression</p>
           <h1 className={styles.title}>Votre parcours,
             <br />

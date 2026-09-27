@@ -1,0 +1,546 @@
+.page {
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(4rem, 8vw, 6rem);
+  scroll-margin-top: 0;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+  font-size: var(--text-small);
+  color: var(--muted);
+}
+
+.crumb a {
+  color: var(--muted);
+  transition: color var(--dur-short) var(--ease-standard);
+}
+
+.crumb a:hover {
+  color: var(--accent);
+}
+
+.crumb [aria-current="page"] {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.head {
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: var(--text-hero);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 0.75rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+/* ── Sommaire ── */
+.toc {
+  position: sticky;
+  top: calc(var(--nav-height-scrolled) + 28px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: 1.25rem 1.1rem;
+}
+
+.tocTitle {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.toc a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  transition: color var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard);
+}
+
+.toc a:hover {
+  color: var(--foreground);
+  background: var(--surface-soft);
+}
+
+.tocNum {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--accent-solid, var(--accent));
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Corps de la documentation ── */
+.doc {
+  min-width: 0;
+  max-width: 760px;
+}
+
+.section {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  scroll-margin-top: calc(var(--nav-height-scrolled) + 32px);
+}
+
+.h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.h2 svg {
+  color: var(--accent);
+  flex: none;
+}
+
+.lead {
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+
+.doc p {
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.hint {
+  font-size: var(--text-small);
+}
+
+/* ── Checklist environnement ── */
+.checklist {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.checklist li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  line-height: 1.6;
+  color: var(--foreground);
+  transition: border-color var(--dur-short) var(--ease-standard),
+    transform var(--dur-short) var(--ease-standard);
+}
+
+.checklist li:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  border-radius: var(--radius-full);
+  background: var(--accent-faint);
+  color: var(--accent-solid, var(--accent));
+  margin-top: 0.1rem;
+}
+
+/* ── Étapes numérotées ── */
+.steps {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.65;
+  color: var(--foreground);
+}
+
+.steps li:last-child {
+  border-bottom: none;
+}
+
+.stepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: none;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ── Tableau des concepts ── */
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.table thead th {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--surface-soft);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr {
+  transition: background-color var(--dur-short) var(--ease-standard);
+}
+
+.table tbody tr:hover {
+  background: var(--surface-soft);
+}
+
+.table tbody th {
+  font-weight: 650;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+
+.table td {
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--faint);
+  font-style: italic;
+}
+
+/* ── Exemple : flux ── */
+.exampleTitle {
+  font-weight: 650;
+  color: var(--foreground);
+  font-size: 1.05rem;
+}
+
+.flow {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow li > span:first-child {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.flowArrow {
+  color: var(--accent);
+  flex: none;
+}
+
+/* ── Projets ── */
+.projects {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: border-color var(--dur-short) var(--ease-standard),
+    transform var(--dur-short) var(--ease-standard);
+}
+
+.project:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.projectNum {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.projectTitle {
+  margin: 0 0 0.3rem !important;
+  font-weight: 650;
+  color: var(--foreground) !important;
+}
+
+.projectFlow {
+  margin: 0 !important;
+  font-size: var(--text-small);
+  font-family: var(--font-mono);
+}
+
+/* ── Prérequis ── */
+.prereqs {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.prereqs li {
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.prereqLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 650;
+  color: var(--foreground);
+  transition: color var(--dur-short) var(--ease-standard);
+}
+
+.prereqLink:hover {
+  color: var(--accent);
+}
+
+.prereqName {
+  font-weight: 650;
+  color: var(--foreground);
+}
+
+.prereqNote {
+  margin: 0.4rem 0 0 !important;
+  font-size: var(--text-small);
+}
+
+/* ── Ressources ── */
+.resources {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.resources a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: border-color var(--dur-short) var(--ease-standard),
+    transform var(--dur-short) var(--ease-standard);
+}
+
+.resources a:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.resTitle {
+  font-weight: 650;
+  color: var(--foreground);
+}
+
+.resProvider {
+  font-size: var(--text-small);
+  color: var(--faint);
+  margin-right: auto;
+}
+
+.resources a svg {
+  color: var(--accent);
+  flex: none;
+}
+
+/* ── Pied de page ── */
+.next {
+  margin-top: 1rem;
+  padding: 1.75rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+
+.next p {
+  margin: 0 0 1rem !important;
+  color: var(--muted);
+}
+
+.nextCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: #1a1a1a;
+  font-weight: 700;
+  transition: transform var(--dur-short) var(--ease-standard),
+    box-shadow var(--dur-short) var(--ease-standard);
+}
+
+.nextCta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .toc {
+    position: static;
+    order: 2;
+  }
+
+  .table tbody th {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checklist li,
+  .project,
+  .resources a,
+  .nextCta,
+  .toc a {
+    transition: none;
+  }
+
+  .checklist li:hover,
+  .project:hover,
+  .resources a:hover {
+    transform: none;
+  }
+}

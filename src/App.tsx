@@ -13,6 +13,7 @@ import { CareerDetail } from "./pages/Careers/CareerDetail";
 import { Explore } from "./pages/Explore/Explore";
 import { Skills } from "./pages/Skills/Skills";
 import { ProgressPage } from "./pages/Progress/ProgressPage";
+import { SkillDoc } from "./pages/SkillDoc/SkillDoc";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { useTheme } from "./hooks/useTheme";
 import { useKeyboardShortcut } from "./hooks/useKeyboardShortcut";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/fields/:id" element={<FieldDetail />} />
           <Route path="/roadmaps" element={<Roadmaps />} />
           <Route path="/roadmaps/:slug" element={<RoadmapDetail />} />
+          <Route path="/docs/:roadmapSlug/:skillId" element={<SkillDoc />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:slug" element={<CareerDetail />} />
           <Route path="/progression" element={<ProgressPage />} />

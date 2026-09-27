@@ -21,7 +21,7 @@ export function Careers() {
   return (
     <div className={styles.page}>
       <div className="container">
-        <Reveal className={styles.head}>
+        <Reveal className={`${styles.head} header-card`}>
           <p className="eyebrow">Métiers</p>
           <h1 className={styles.title}>Quel métier
             <br />

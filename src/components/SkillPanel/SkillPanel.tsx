@@ -255,6 +255,16 @@ export function SkillPanel({
             })}
           </div>
 
+          <Link
+            to={`/docs/${roadmap.slug}/${skill.id}`}
+            className={styles.docCta}
+            onClick={onClose}
+          >
+            <BookOpen size={15} aria-hidden="true" />
+            Documentation complète
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+
           <section className={styles.block} aria-label="Introduction">
             <h3 className={styles.blockTitle}>
               <BookOpen size={13} aria-hidden="true" /> Introduction

@@ -24,9 +24,9 @@ export function Fields() {
   return (
     <div className={styles.page}>
       <div className="container">
-        <Reveal className={styles.head}>
+        <Reveal className={`${styles.head} header-card`}>
           <p className="eyebrow">Filières</p>
-          <h1 className={styles.title}>Onze domaines,
+          <h1 className={styles.title}>{FIELDS.length} domaines,
             <br />
             une infinité de parcours.</h1>
           <p className="section-lead">

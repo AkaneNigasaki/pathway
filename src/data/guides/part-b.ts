@@ -3900,6 +3900,13 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "C et C++ sont les langages du système et de l’embarqué : gestion manuelle de la mémoire, performance maximale, contrôle total sur le matériel. Ils sont derrière les OS, les moteurs de jeu et les microcontrôleurs.",
     whyLearn:
       "Le C/C++ enseigne ce que les langages managés cachent : mémoire, pointeurs, compilation. Indispensable pour l’embarqué, les systèmes et la performance — et une école de rigueur pour tout programmeur.",
+    environment: [
+      "Installer un compilateur : GCC (Linux), Clang (macOS) ou MSVC via Visual Studio (Windows). Vérifier avec `g++ --version`.",
+      "Installer VS Code + l'extension C/C++ officielle (coloration, débogueur, IntelliSense).",
+      "Pour les projets : installer CMake, le standard pour compiler des projets C++ multi-fichiers.",
+      "Compiler un premier programme : `g++ main.cpp -o main -Wall -Wextra` puis `./main`. Activer les warnings dès le jour 1.",
+      "Apprendre GDB (ou le débogueur de VS Code) : points d'arrêt, inspection mémoire, pile d'appels.",
+    ],
     conceptDetails: [
       {
         name: "Pointeurs",
