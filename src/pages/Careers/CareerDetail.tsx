@@ -1,14 +1,15 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Briefcase, CircleCheck, CirclePlus, FolderKanban, Layers } from "lucide-react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { CAREERS, getCareer } from "../../data/careers";
 import { getField } from "../../data/fields";
-import { getRoadmap, skillDepth } from "../../data/roadmaps";
+import { getRoadmap } from "../../data/roadmaps";
 import { NotFound } from "../NotFound/NotFound";
 import styles from "./CareerDetail.module.css";
 
-/** Types de nœuds considérés comme des technologies. */
-const TECH_TYPES = ["tool", "framework", "platform", "language"];
+/** Normalisation pour apparier les noms (« Next.js » → « nextjs »). */
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 
 export function CareerDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -19,13 +20,18 @@ export function CareerDetail() {
   const field = getField(career.fieldId);
   const roadmap = getRoadmap(career.roadmapSlug);
 
-  /** Technologies : outils, frameworks, plateformes et langages de la roadmap. */
-  const technologies = roadmap
-    ? roadmap.skills
-        .filter((s) => TECH_TYPES.includes(s.type ?? ""))
-        .sort((a, b) => skillDepth(roadmap, a.id) - skillDepth(roadmap, b.id))
-        .slice(0, 10)
-    : [];
+  /**
+   * Technologies : les coreSkills du métier appariés par nom normalisé
+   * aux compétences de sa roadmap → deep links réels, aucune donnée inventée.
+   * Masqué si aucun appariement (ex. métiers aux skills conceptuels).
+   */
+  const technologies = useMemo(() => {
+    if (!roadmap) return [];
+    return career.coreSkills.flatMap((name) => {
+      const skill = roadmap.skills.find((s) => norm(s.name) === norm(name));
+      return skill ? [{ label: name, id: skill.id }] : [];
+    });
+  }, [roadmap, career]);
 
   /** Métiers liés : même filière, hors métier courant. */
   const related = CAREERS.filter(
@@ -105,7 +111,7 @@ export function CareerDetail() {
                         to={`/roadmaps/${roadmap.slug}?skill=${t.id}`}
                         className={styles.techChip}
                       >
-                        {t.name}
+                        {t.label}
                       </Link>
                     </li>
                   ))}
