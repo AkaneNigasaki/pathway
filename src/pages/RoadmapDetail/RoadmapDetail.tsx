@@ -8,6 +8,7 @@ import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { getRoadmap, countProjects, getSkill, skillDepth } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
+import { getBranchGuide } from "../../data/branch-guides";
 import { CAREER_MAP } from "../../data/careers";
 import { useProgress, progressPercent } from "../../hooks/useProgress";
 import type { Skill } from "../../types";
@@ -212,6 +213,61 @@ export function RoadmapDetail() {
             </ol>
           </nav>
         </Reveal>
+
+        {highlightStage && (() => {
+          const activeStage = roadmap.stages.find((s) => s.id === highlightStage);
+          if (!activeStage) return null;
+          const branchGuide = getBranchGuide(activeStage.id);
+          const stageSkills = roadmap.skills
+            .filter((s) => s.stage === activeStage.id)
+            .sort((a, b) => skillDepth(roadmap, a.id) - skillDepth(roadmap, b.id));
+          const stageIndex = roadmap.stages.findIndex((s) => s.id === activeStage.id);
+          const entrySkill = branchGuide?.entrySkillId
+            ? getSkill(roadmap, branchGuide.entrySkillId)
+            : undefined;
+          return (
+            <section className={styles.stageIntro} aria-label={`Introduction : ${activeStage.label}`}>
+              <p className={`${styles.stageIntroEyebrow} mono`}>
+                {stageIndex >= 0 ? `ÉTAPE ${String(stageIndex + 1).padStart(2, "0")}` : "ÉTAPE"}
+              </p>
+              <h2 className={styles.stageIntroTitle}>{activeStage.label}</h2>
+              <p className={styles.stageIntroText}>
+                {branchGuide?.intro ?? activeStage.description}
+              </p>
+              {entrySkill && (
+                <button
+                  type="button"
+                  className={styles.stageIntroEntry}
+                  onClick={() => setSelected(entrySkill)}
+                >
+                  Point d'entrée recommandé : {entrySkill.name} <ArrowRight size={14} aria-hidden="true" />
+                </button>
+              )}
+              {stageSkills.length > 0 && (
+                <>
+                  <h3 className={styles.stageIntroSub}>Ce que vous allez apprendre</h3>
+                  <ul className={styles.stageIntroSkills}>
+                    {stageSkills.map((s) => (
+                      <li key={s.id}>
+                        <button
+                          type="button"
+                          className={styles.stageIntroSkill}
+                          onClick={() => setSelected(s)}
+                        >
+                          <span
+                            className={`${styles.stageIntroDot} ${status[s.id] === "done" ? styles.stageIntroDotDone : ""}`}
+                            aria-hidden="true"
+                          />
+                          {s.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </section>
+          );
+        })()}
 
         <div className={styles.graphWrap} id="roadmap-map">
           <div className={styles.mapDesktop}>

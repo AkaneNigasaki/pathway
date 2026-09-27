@@ -52,6 +52,9 @@ export const RoadmapList = memo(function RoadmapList({
                 {done}/{stageSkills.length}
               </span>
             </header>
+            {stage.description && (
+              <p className={styles.stageDesc}>{stage.description}</p>
+            )}
             <div className={styles.nodes}>
               {stageSkills.map((s) => (
                 <SkillNode

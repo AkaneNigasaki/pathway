@@ -1,12 +1,23 @@
 import type { Skill } from "../types";
 import { GUIDES_A } from "./guides/part-a";
 import { GUIDES_B } from "./guides/part-b";
+import { GUIDES_FRONTEND } from "./guides/part-frontend";
+import { GUIDES_BACKEND } from "./guides/part-backend";
+import { GUIDES_UX } from "./guides/part-ux";
+import { GUIDES_AI } from "./guides/part-ai";
+import { GUIDES_DATA } from "./guides/part-data";
+import { GUIDES_DEVOPS } from "./guides/part-devops";
+import { GUIDES_CYBER } from "./guides/part-cyber";
+import { GUIDES_ROBOTICS } from "./guides/part-robotics";
+import { GUIDES_DROIT } from "./guides/part-droit";
+import { GUIDES_FINANCE } from "./guides/part-finance";
+import { GUIDES_ECO } from "./guides/part-eco";
 
 /**
  * Guides pédagogiques des compétences.
  *
- * Chaque entrée enrichit une compétence existante (désignée par son `id`)
- * avec un contenu éditorial structuré. Tous les champs sont optionnels :
+ * Chaque entrée enrichit une compétence existante (désignée par le slug
+ * de sa roadmap et son `id`) avec un contenu éditorial structuré. Tous les champs sont optionnels :
  * le SkillPanel n'affiche que les sections pour lesquelles des données
  * existent, en repli sur les champs de base (`description`, `concepts`,
  * `projects`, `tagline`) quand le guide est partiel.
@@ -112,15 +123,34 @@ const N8N_GUIDE: SkillGuide = {
 };
 
 /**
- * Tous les guides pédagogiques, indexés par id de compétence.
- * `n8n` garde sa version rédigée à la main comme référence.
+ * Tous les guides pédagogiques, indexés par slug de roadmap puis par id
+ * de compétence. L'indexation par roadmap est volontaire : certains ids
+ * (ex. `python`, `git`, `linux`) existent dans plusieurs roadmaps avec un
+ * contenu adapté à chaque parcours. `n8n` garde sa version rédigée à la
+ * main comme référence (roadmap Informatique).
  */
-export const SKILL_GUIDES: Record<string, SkillGuide> = {
-  ...GUIDES_A,
-  ...GUIDES_B,
-  n8n: N8N_GUIDE,
+export const SKILL_GUIDES: Record<string, Record<string, SkillGuide>> = {
+  informatique: {
+    ...GUIDES_A,
+    ...GUIDES_B,
+    n8n: N8N_GUIDE,
+  },
+  "frontend-developer": GUIDES_FRONTEND,
+  "backend-developer": GUIDES_BACKEND,
+  "ux-designer": GUIDES_UX,
+  "ai-engineer": GUIDES_AI,
+  "data-scientist": GUIDES_DATA,
+  "devops-engineer": GUIDES_DEVOPS,
+  "cybersecurity-engineer": GUIDES_CYBER,
+  "robotics-engineer": GUIDES_ROBOTICS,
+  "droit-des-affaires": GUIDES_DROIT,
+  "analyste-financier": GUIDES_FINANCE,
+  economiste: GUIDES_ECO,
 };
 
-export function getSkillGuide(skillId: string): SkillGuide | undefined {
-  return SKILL_GUIDES[skillId];
+export function getSkillGuide(
+  roadmapSlug: string,
+  skillId: string
+): SkillGuide | undefined {
+  return SKILL_GUIDES[roadmapSlug]?.[skillId];
 }

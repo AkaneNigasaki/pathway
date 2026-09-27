@@ -67,7 +67,7 @@ export function SkillPanel({
   const map = useMemo(() => skillMap(roadmap), [roadmap]);
   const field = getField(roadmap.fieldId);
   const status = statusMap[skill.id] ?? null;
-  const guide = getSkillGuide(skill.id);
+  const guide = getSkillGuide(roadmap.slug, skill.id);
   const stage = roadmap.stages.find((s) => s.id === skill.stage);
   const Illustration = guide?.illustration ? SKILL_ILLUSTRATIONS[guide.illustration] : null;
   const conceptDetails = guide?.conceptDetails ?? [];

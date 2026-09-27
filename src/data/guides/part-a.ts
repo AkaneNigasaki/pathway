@@ -823,6 +823,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Des serveurs distants loués à la demande via internet, au lieu de machines physiques à gérer.",
       },
     ],
+    howItWorksTitle: "De la pensée au programme",
+    howItWorks: ["IDÉE", "ALGORITHME", "CODE", "COMPILATION", "EXÉCUTION", "RÉSULTAT"],
+    example: {
+      title: "Afficher une page web",
+      steps: [
+        "Clic sur un lien dans le navigateur",
+        "Requête réseau vers un serveur distant",
+        "Le serveur exécute un programme",
+        "Réponse HTML reçue par le navigateur",
+        "Interprétation et affichage à l'écran",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Cartographier le trajet d'un clic",
+        flow: "Clic → Réseau → Serveur → Programme → HTML → Écran",
+      },
+      {
+        title: "Expliquer la machine à un débutant",
+        flow: "Binaire → Processeur → OS → Programme → Application",
+      },
+      {
+        title: "Installer Linux sur une machine virtuelle",
+        flow: "Image ISO → VirtualBox → Installation → Terminal → Premier script",
+      },
+    ],
   },
 
   // ------------------------------------------------------------ algorithms
@@ -865,6 +891,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Pseudocode",
         definition:
           "Décrire un algorithme en langage naturel structuré avant de l'écrire dans un vrai langage.",
+      },
+    ],
+    howItWorksTitle: "Le cycle de résolution d'un problème",
+    howItWorks: ["PROBLÈME", "DÉCOMPOSITION", "PSEUDOCODE", "IMPLÉMENTATION", "TEST", "ANALYSE"],
+    example: {
+      title: "Trier une liste de contacts",
+      steps: [
+        "Données en entrée : 10 000 noms",
+        "Choisir un algorithme de tri adapté",
+        "Comparer et échanger les éléments",
+        "Vérifier que l'ordre final est correct",
+        "Mesurer le temps d'exécution",
+        "Comparer avec un autre algorithme",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Implémenter deux tris et les comparer",
+        flow: "Tri à bulles → Benchmark → Tri rapide → Comparaison O(n²) vs O(n log n)",
+      },
+      {
+        title: "Résoudre 20 problèmes d'algorithmique",
+        flow: "Énoncé → Pseudocode → Code → Tests → Analyse de complexité",
+      },
+      {
+        title: "Visualiser un tri pas à pas",
+        flow: "Tableau → Animation des échanges → Affichage du résultat",
       },
     ],
   },
@@ -911,6 +964,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Nœuds et arêtes : réseaux sociaux, cartes routières, dépendances entre tâches.",
       },
     ],
+    howItWorksTitle: "Choisir la bonne structure",
+    howItWorks: ["BESOIN", "OPÉRATIONS", "CANDIDATS", "COMPARAISON", "CHOIX", "IMPLÉMENTATION"],
+    example: {
+      title: "Un annuaire de contacts",
+      steps: [
+        "Besoin : retrouver un contact par son nom",
+        "Table de hachage : clé nom → fiche contact",
+        "Recherche en temps quasi constant",
+        "Ajout et suppression directs",
+        "Itération sur les valeurs pour tout afficher",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Implémenter une table de hachage",
+        flow: "Tableau → Fonction de hachage → Gestion des collisions → Tests",
+      },
+      {
+        title: "File d'attente d'imprimante",
+        flow: "Requêtes → File FIFO → Traitement → Résultat",
+      },
+      {
+        title: "Modéliser un réseau social en graphe",
+        flow: "Utilisateurs → Nœuds → Amitiés → Arêtes → Parcours",
+      },
+    ],
   },
 
   // ------------------------------------------------------------------ bash
@@ -953,6 +1032,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Expressions régulières",
         definition:
           "Décrire des motifs de texte pour chercher, filtrer et remplacer avec précision.",
+      },
+    ],
+    howItWorksTitle: "Le cycle d'un script Bash",
+    howItWorks: ["COMMANDE", "PIPE", "SCRIPT", "VARIABLES", "BOUCLE", "AUTOMATISATION"],
+    example: {
+      title: "Nettoyer un dossier de téléchargements",
+      steps: [
+        "Lister les fichiers avec ls",
+        "Filtrer par extension avec grep",
+        "Déplacer chaque fichier avec une boucle for",
+        "Écrire le tout dans un script .sh",
+        "Planifier l'exécution avec cron",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Script de sauvegarde quotidienne",
+        flow: "Dossier → Archive tar → Compression → Copie distante",
+      },
+      {
+        title: "Renommage en masse de fichiers",
+        flow: "Fichiers → Boucle → Expression régulière → Nouveau nom",
+      },
+      {
+        title: "Script de déploiement",
+        flow: "Git pull → Build → Copie → Redémarrage → Vérification",
       },
     ],
   },
@@ -999,6 +1104,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Acheminer les paquets d'un réseau à l'autre jusqu'à leur destination.",
       },
     ],
+    howItWorksTitle: "Le voyage d'un paquet",
+    howItWorks: ["APPLICATION", "TCP", "IP", "ROUTEURS", "SERVEUR", "RÉPONSE"],
+    example: {
+      title: "Ouvrir un site web",
+      steps: [
+        "Saisie de l'URL dans le navigateur",
+        "Résolution DNS : nom → adresse IP",
+        "Connexion TCP sur le port 443",
+        "Requête HTTPS chiffrée",
+        "Paquets routés à travers internet",
+        "Page reçue, déchiffrée et affichée",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Analyser du trafic avec Wireshark",
+        flow: "Capture → Filtres → Paquets TCP → Requêtes DNS",
+      },
+      {
+        title: "Configurer un réseau local",
+        flow: "Routeur → DHCP → Adresses IP → Test ping",
+      },
+      {
+        title: "Diagnostiquer une panne réseau",
+        flow: "ping → traceroute → Vérification DNS → Test des ports",
+      },
+    ],
   },
 
   // -------------------------------------------------------------- databases
@@ -1041,6 +1173,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Sauvegarde",
         definition:
           "Protéger les données contre la perte : dumps réguliers, réplication, restauration testée.",
+      },
+    ],
+    howItWorksTitle: "De la question à la donnée",
+    howItWorks: ["REQUÊTE", "PARSER", "PLAN", "INDEX", "STOCKAGE", "RÉSULTAT"],
+    example: {
+      title: "Lister les commandes d'un client",
+      steps: [
+        "Requête SQL avec jointure clients/commandes",
+        "Le moteur choisit un plan via les index",
+        "Lecture des pages de données sur disque",
+        "Filtrage, tri et agrégation",
+        "Résultat retourné à l'application",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Modéliser une base e-commerce",
+        flow: "Entités → Relations → Schéma SQL → Contraintes d'intégrité",
+      },
+      {
+        title: "Comparer SQL et NoSQL sur un cas concret",
+        flow: "Même besoin → Deux modèles → Requêtes → Benchmark",
+      },
+      {
+        title: "Sauvegarde automatisée",
+        flow: "Dump → Compression → Stockage distant → Test de restauration",
       },
     ],
   },
@@ -1087,6 +1245,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Les éléments de base : p, a, img, ul, table, section — le vocabulaire du document.",
       },
     ],
+    howItWorksTitle: "Du document à la page",
+    howItWorks: ["BALISE", "STRUCTURE", "SÉMANTIQUE", "FORMULAIRE", "MÉDIAS", "ACCESSIBILITÉ"],
+    example: {
+      title: "Une page d'article de blog",
+      steps: [
+        "En-tête avec navigation sémantique",
+        "Article avec titres hiérarchisés",
+        "Images avec texte alternatif",
+        "Formulaire de commentaire labellisé",
+        "Pied de page avec informations",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Page personnelle sémantique",
+        flow: "Structure → Sections → Liens → Validation W3C",
+      },
+      {
+        title: "Formulaire accessible complet",
+        flow: "Champs → Labels → Validation native → Messages d'erreur",
+      },
+      {
+        title: "Recette de cuisine en HTML",
+        flow: "Article → Listes d'ingrédients → Tableau nutritionnel",
+      },
+    ],
   },
 
   // ------------------------------------------------------------------- css
@@ -1128,6 +1312,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Media queries",
         definition:
           "Adapter le style selon la taille de l'écran : la base du responsive design.",
+      },
+    ],
+    howItWorksTitle: "De la règle au rendu",
+    howItWorks: ["SÉLECTEUR", "CASCADE", "BOX MODEL", "LAYOUT", "RESPONSIVE", "RENDU"],
+    example: {
+      title: "Styler une carte produit",
+      steps: [
+        "Sélectionner la carte par sa classe",
+        "Définir le box model : padding, bordure",
+        "Centrer le contenu verticalement",
+        "Ajouter un état hover distinct",
+        "Adapter la carte en mobile via media query",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Reproduire une maquette",
+        flow: "Maquette → Structure HTML → Styles → Ajustements pixel-perfect",
+      },
+      {
+        title: "Design system miniature",
+        flow: "Variables → Boutons → Cartes → Documentation",
+      },
+      {
+        title: "Thème clair/sombre",
+        flow: "Custom properties → Bascule → Transitions douces",
       },
     ],
   },
@@ -1172,6 +1382,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Concurrence",
         definition:
           "Promise.all, race, allSettled : orchestrer plusieurs opérations en parallèle proprement.",
+      },
+    ],
+    howItWorksTitle: "Le cycle de l'event loop",
+    howItWorks: ["CALL STACK", "TÂCHE", "FILE D'ATTENTE", "PROMESSE", "RÉSOLUTION", "CALLBACK"],
+    example: {
+      title: "Charger un profil utilisateur",
+      steps: [
+        "Clic sur le bouton de chargement",
+        "fetch() retourne une promesse",
+        "Le programme continue sans bloquer",
+        "La réponse arrive : la promesse se résout",
+        "Le .then() s'exécute avec les données",
+        "Le profil s'affiche dans la page",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Client API avec retry",
+        flow: "Requête → Échec → Attente → Nouvelle tentative → Succès",
+      },
+      {
+        title: "Chargement parallèle de ressources",
+        flow: "3 promesses → Promise.all → Rendu combiné",
+      },
+      {
+        title: "File de tâches séquentielles",
+        flow: "Liste → async/await → Barre de progression → Résultat",
       },
     ],
   },
@@ -1219,6 +1456,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Annuler une requête en cours avec AbortController : éviter les réponses périmées.",
       },
     ],
+    howItWorksTitle: "Le cycle d'un appel API",
+    howItWorks: ["REQUÊTE", "HEADERS", "ENVOI", "RÉPONSE", "JSON", "ERREUR"],
+    example: {
+      title: "Afficher la météo d'une ville",
+      steps: [
+        "Saisie du nom de la ville",
+        "GET vers l'API météo avec la clé",
+        "Réponse 200 avec le JSON",
+        "Extraction de la température et de l'icône",
+        "Affichage dans l'interface",
+        "Message d'erreur si la ville est inconnue",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Dashboard météo",
+        flow: "Champ de recherche → API → Cartes → Rafraîchissement auto",
+      },
+      {
+        title: "Client GitHub API paginé",
+        flow: "Requête → Pagination → Liste des dépôts → Détails",
+      },
+      {
+        title: "Formulaire avec envoi JSON",
+        flow: "Champs → POST → Validation serveur → Confirmation",
+      },
+    ],
   },
 
   // ------------------------------------------------------------------- dom
@@ -1263,6 +1527,32 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Encapsuler le markup et le style d'un composant pour l'isoler du reste de la page.",
       },
     ],
+    howItWorksTitle: "De l'événement à la mise à jour",
+    howItWorks: ["SÉLECTION", "ÉCOUTE", "ÉVÉNEMENT", "LECTURE", "MODIFICATION", "RENDU"],
+    example: {
+      title: "Un compteur de clics",
+      steps: [
+        "Sélectionner le bouton et l'affichage",
+        "Écouter l'événement click",
+        "Incrémenter la valeur au clic",
+        "Mettre à jour le texte du compteur",
+        "Le navigateur repeint la page",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Liste de tâches interactive",
+        flow: "Champ → Ajout → Suppression → Sauvegarde locale",
+      },
+      {
+        title: "Galerie avec lightbox",
+        flow: "Miniatures → Clic → Overlay → Navigation clavier",
+      },
+      {
+        title: "Drag & drop natif",
+        flow: "Événements souris → Position → Dépôt → Réorganisation",
+      },
+    ],
   },
 
   // ------------------------------------------------------------------- npm
@@ -1305,6 +1595,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Lockfiles",
         definition:
           "Figer les versions exactes installées pour des environnements reproductibles.",
+      },
+    ],
+    howItWorksTitle: "Le cycle de vie d'une dépendance",
+    howItWorks: ["RECHERCHE", "INSTALL", "LOCKFILE", "SCRIPTS", "BUILD", "PUBLISH"],
+    example: {
+      title: "Ajouter une librairie de dates",
+      steps: [
+        "Recherche du paquet sur le registre npm",
+        "npm install date-fns",
+        "Version exacte figée dans package-lock.json",
+        "Import dans le code source",
+        "Le script de build l'inclut dans le bundle",
+        "Mise à jour contrôlée selon semver",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Publier un package",
+        flow: "Code → package.json → npm publish → Installation de test",
+      },
+      {
+        title: "Auditer les dépendances d'un projet",
+        flow: "npm audit → Vulnérabilités → Mises à jour → Tests",
+      },
+      {
+        title: "Automatiser avec des scripts",
+        flow: "dev → build → test → lint → prepublish",
       },
     ],
   },
@@ -1352,6 +1669,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Compiler une bibliothèque publiable plutôt qu'une application : un autre mode de build.",
       },
     ],
+    howItWorksTitle: "Du fichier au navigateur",
+    howItWorks: ["SOURCE", "DEV SERVER", "ESM", "HMR", "BUILD", "BUNDLE"],
+    example: {
+      title: "Démarrer un projet React",
+      steps: [
+        "npm create vite@latest",
+        "Le dev server démarre en millisecondes",
+        "Les modules sont servis à la demande",
+        "Chaque modification s'applique sans recharger (HMR)",
+        "npm run build produit le bundle final",
+        "Fichiers minifiés prêts à déployer",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Scaffolder un projet React + Vite",
+        flow: "Template → Composants → HMR → Build de production",
+      },
+      {
+        title: "Écrire un plugin Vite",
+        flow: "Hook → Transformation → Test → Publication",
+      },
+      {
+        title: "Migrer un projet depuis un bundler lent",
+        flow: "Config → Plugins équivalents → Build → Comparaison des temps",
+      },
+    ],
   },
 
   // ---------------------------------------------------------------- nextjs
@@ -1396,6 +1740,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Build optimisé et adapté aux plateformes serverless : du commit à la production en quelques minutes.",
       },
     ],
+    howItWorksTitle: "De la route au rendu",
+    howItWorks: ["ROUTE", "SERVER", "RENDU", "HYDRATATION", "NAVIGATION", "CACHE"],
+    example: {
+      title: "Une page de blog",
+      steps: [
+        "Visite de /blog/mon-article",
+        "Le serveur génère le HTML",
+        "La page s'affiche immédiatement",
+        "Hydratation : React prend le relais",
+        "La navigation suivante est instantanée",
+        "Le contenu est mis en cache",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Blog avec génération statique",
+        flow: "Markdown → Pages statiques → Build → Déploiement",
+      },
+      {
+        title: "E-commerce avec panier",
+        flow: "Catalogue → Panier → Checkout → API routes",
+      },
+      {
+        title: "Dashboard authentifié",
+        flow: "Middleware → Session → Server Components → Données",
+      },
+    ],
   },
 
   // --------------------------------------------------------------- tailwind
@@ -1437,6 +1808,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "JIT",
         definition:
           "Compilation à la volée : seules les classes réellement utilisées sont générées dans le CSS final.",
+      },
+    ],
+    howItWorksTitle: "De la classe au style",
+    howItWorks: ["CLASSE", "UTILITAIRE", "VARIANTE", "JIT", "CSS FINAL", "DESIGN"],
+    example: {
+      title: "Une carte responsive",
+      steps: [
+        "Structure HTML sémantique",
+        "Classes flex, gap, p-6 pour la mise en forme",
+        "Variante md: pour l'affichage desktop",
+        "Variante dark: pour le mode sombre",
+        "Le moteur JIT génère le CSS minimal",
+        "Carte cohérente sur tous les écrans",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Landing page complète",
+        flow: "Maquette → Sections → Responsive → Dark mode",
+      },
+      {
+        title: "Design system avec Tailwind",
+        flow: "Config → Design tokens → Composants → Documentation",
+      },
+      {
+        title: "Refonte d'un CSS spaghetti",
+        flow: "Audit → Utilitaires → Suppression du CSS mort",
       },
     ],
   },
@@ -1483,6 +1881,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Mesurer la part du code exercée par les tests : un indicateur utile, pas un objectif en soi.",
       },
     ],
+    howItWorksTitle: "Le cycle du test",
+    howItWorks: ["CAS", "ARRANGE", "ACT", "ASSERT", "MOCK", "CI"],
+    example: {
+      title: "Tester un calcul de panier",
+      steps: [
+        "Définir le cas : panier avec 3 articles",
+        "Préparer les données de test",
+        "Appeler calculerTotal()",
+        "Vérifier le résultat attendu",
+        "Simuler l'API de prix avec un mock",
+        "Le test tourne à chaque commit en CI",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Suite de tests pour une app existante",
+        flow: "Unitaires → Intégration → E2E → Mesure du coverage",
+      },
+      {
+        title: "Développer un module en TDD",
+        flow: "Test rouge → Code minimal → Test vert → Refactor",
+      },
+      {
+        title: "Pipeline CI avec tests E2E",
+        flow: "Push → Tests → Build → Déploiement",
+      },
+    ],
   },
 
   // ---------------------------------------------------------------- github
@@ -1524,6 +1949,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Actions",
         definition:
           "Automatiser tests, builds et déploiements à chaque push : la CI/CD intégrée.",
+      },
+    ],
+    howItWorksTitle: "Le cycle d'une contribution",
+    howItWorks: ["FORK", "BRANCHE", "COMMITS", "PULL REQUEST", "REVIEW", "MERGE"],
+    example: {
+      title: "Corriger un bug en open source",
+      steps: [
+        "Fork du dépôt sur son compte",
+        "Création de la branche fix/typo-bouton",
+        "Commit de la correction",
+        "Pull request avec description claire",
+        "Discussion et review du mainteneur",
+        "Fusion dans la branche principale",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Contribuer à l'open source",
+        flow: "Issue → Fork → Pull request → Review → Merge",
+      },
+      {
+        title: "Gérer un projet en équipe",
+        flow: "Issues → Branches → Pull requests → Releases",
+      },
+      {
+        title: "Soigner son profil GitHub",
+        flow: "README → Projets épinglés → Contributions → Pages",
       },
     ],
   },
@@ -1568,6 +2020,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
         name: "Mocks",
         definition:
           "Simuler une API pas encore implémentée pour développer le client en parallèle.",
+      },
+    ],
+    howItWorksTitle: "Du brouillon à la collection testée",
+    howItWorks: ["REQUÊTE", "VARIABLES", "TESTS", "COLLECTION", "RUNNER", "DOC"],
+    example: {
+      title: "Tester une API de connexion",
+      steps: [
+        "POST /login avec email et mot de passe",
+        "Test : le statut doit être 200",
+        "Extraction du token dans une variable",
+        "Réutilisation du token sur /profile",
+        "Lancement de toute la collection d'un coup",
+        "Génération de la documentation",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Collection de tests d'API",
+        flow: "Endpoints → Tests automatisés → Environnements → CI",
+      },
+      {
+        title: "Documenter une API publique",
+        flow: "Collection → Exemples → Publication → Partage",
+      },
+      {
+        title: "Mocker une API pas encore prête",
+        flow: "Schéma → Serveur mock → Développement parallèle",
       },
     ],
   },
@@ -1616,6 +2095,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Logs, métriques, suivi d'erreurs : savoir ce qui se passe vraiment en production.",
       },
     ],
+    howItWorksTitle: "De l'idée au produit en ligne",
+    howItWorks: ["MODÈLE", "API", "FRONTEND", "AUTH", "DÉPLOIEMENT", "MONITORING"],
+    example: {
+      title: "Une app de notes partagées",
+      steps: [
+        "Schéma : utilisateurs, notes, partages",
+        "API REST : CRUD + authentification",
+        "Frontend : éditeur et liste des notes",
+        "Connexion via tokens",
+        "Déploiement du frontend et du backend",
+        "Logs et suivi d'erreurs en production",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "SaaS complet de A à Z",
+        flow: "Modèle → API → Interface → Auth → Paiement → Déploiement",
+      },
+      {
+        title: "App temps réel avec websockets",
+        flow: "Serveur socket → Rooms → Frontend réactif → Tests",
+      },
+      {
+        title: "Clone simplifié d'un service connu",
+        flow: "Maquette → API → Frontend → Mise en ligne",
+      },
+    ],
   },
 
   // ---------------------------------------------------------- accessibility
@@ -1659,6 +2165,33 @@ export const GUIDES_A: Record<string, SkillGuide> = {
           "Un indicateur visible montre toujours où se trouve le clavier : ne jamais le masquer.",
       },
     ],
+    howItWorksTitle: "Le parcours d'un utilisateur au clavier",
+    howItWorks: ["TAB", "FOCUS", "LECTURE", "ACTION", "FEEDBACK", "VALIDATION"],
+    example: {
+      title: "Remplir un formulaire au clavier",
+      steps: [
+        "Tabulation jusqu'au premier champ",
+        "L'indicateur de focus est visible",
+        "Le lecteur d'écran annonce le label",
+        "Saisie puis validation avec Entrée",
+        "Les erreurs sont annoncées clairement",
+        "Confirmation de la soumission",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Auditer un site existant",
+        flow: "Lighthouse → Navigation clavier → Lecteur d'écran → Corrections",
+      },
+      {
+        title: "Construire un composant 100% accessible",
+        flow: "Sémantique → ARIA → Gestion du focus → Tests",
+      },
+      {
+        title: "Checklist d'accessibilité d'équipe",
+        flow: "Critères WCAG → Revue de code → CI → Documentation",
+      },
+    ],
   },
 
   // ============================================================ TIER 3
@@ -1670,6 +2203,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Le responsive design adapte une interface à toutes les tailles d'écran : du mobile 360 px à l'écran 4K, via media queries, unités fluides et approche mobile-first.",
     whyLearn:
       "Plus de la moitié du trafic web est mobile. Une interface qui casse sur petit écran perd ses utilisateurs : le responsive n'est plus une option, c'est la façon standard de construire.",
+    conceptDetails: [
+      {
+        name: "Media queries",
+        definition: "Des règles CSS qui s'appliquent selon la largeur de l'écran, l'orientation ou la densité de pixels.",
+      },
+      {
+        name: "Mobile-first",
+        definition: "Concevoir d'abord pour le petit écran, puis enrichir pour les grands : la contrainte force la clarté.",
+      },
+      {
+        name: "Unités fluides",
+        definition: "%, vw, rem, clamp() : des dimensions qui s'adaptent au contexte au lieu de pixels fixes.",
+      },
+      {
+        name: "Breakpoints",
+        definition: "Les largeurs seuils où la mise en page change : à choisir selon le contenu, pas selon l'appareil.",
+      },
+      {
+        name: "Images responsives",
+        definition: "srcset et sizes : servir la bonne taille d'image selon l'écran pour ne pas gaspiller de bande passante.",
+      },
+      {
+        name: "Viewport",
+        definition: "La meta viewport indique au navigateur mobile la largeur réelle à utiliser : sans elle, le site s'affiche zoomé.",
+      },
+    ],
+    howItWorksTitle: "Le cycle d'adaptation d'une page",
+    howItWorks: ["MOBILE", "FLUIDE", "BREAKPOINT", "GRILLE", "IMAGES", "TEST"],
+    example: {
+      title: "Une landing page mobile-first",
+      steps: [
+        "Maquette mobile 360 px en colonne unique",
+        "Contenu fluide qui remplit la largeur",
+        "Breakpoint 768 px : passage à deux colonnes",
+        "Breakpoint 1024 px : grille complète",
+        "Images adaptées via srcset",
+        "Test sur trois tailles d'écran réelles",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Rendre un site existant responsive",
+        flow: "Audit → Meta viewport → Media queries → Tests multi-écrans",
+      },
+      {
+        title: "Maquette mobile-first complète",
+        flow: "Mobile → Breakpoints → Desktop → Polissage",
+      },
+      {
+        title: "Grille d'images adaptative",
+        flow: "srcset → Lazy loading → Layout fluide",
+      },
+    ],
   },
 
   // --------------------------------------------------------------- flexbox
@@ -1678,6 +2264,58 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Flexbox est le module CSS de mise en page unidimensionnel : il aligne, distribue et ordonne des éléments le long d'un axe, avec un contrôle fin de l'alignement et de l'espace.",
     whyLearn:
       "C'est l'outil quotidien du layout : barres de navigation, cartes, centrages verticaux. Quelques propriétés suffisent à résoudre la grande majorité des problèmes d'alignement.",
+    conceptDetails: [
+      {
+        name: "Axes",
+        definition: "L'axe principal et l'axe transversal : toute la logique Flexbox part de là, selon flex-direction.",
+      },
+      {
+        name: "Alignement",
+        definition: "align-items et justify-content placent les éléments sur les deux axes : le centrage vertical devient trivial.",
+      },
+      {
+        name: "Distribution",
+        definition: "Répartir l'espace libre entre les éléments : space-between, space-around, espacements réguliers.",
+      },
+      {
+        name: "Ordre",
+        definition: "order modifie l'ordre visuel sans toucher au HTML : pratique, mais à manier avec prudence pour l'accessibilité.",
+      },
+      {
+        name: "Wrap",
+        definition: "flex-wrap autorise le passage à la ligne : la base des grilles flexibles.",
+      },
+      {
+        name: "Flex sizing",
+        definition: "flex-grow, flex-shrink, flex-basis : comment chaque élément grandit, rétrécit et définit sa taille de départ.",
+      },
+    ],
+    howItWorksTitle: "De l'axe au centrage",
+    howItWorks: ["CONTAINER", "AXE", "DIRECTION", "ALIGNEMENT", "ESPACE", "CENTRAGE"],
+    example: {
+      title: "Une barre de navigation",
+      steps: [
+        "Conteneur en display: flex",
+        "Logo à gauche, liens à droite",
+        "justify-content: space-between",
+        "Alignement vertical avec align-items: center",
+        "Passage en colonne sur mobile",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Barre de navigation complexe",
+        flow: "Logo → Liens → Bouton d'action → Version mobile",
+      },
+      {
+        title: "Galerie flexible",
+        flow: "Wrap → Espacements → Ratios d'image → Effet hover",
+      },
+      {
+        title: "Le centrage parfait",
+        flow: "Conteneur → Axes → Contenu centré horizontalement et verticalement",
+      },
+    ],
   },
 
   // -------------------------------------------------------------- css-grid
@@ -1686,6 +2324,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "CSS Grid est le système de mise en page bidimensionnel : lignes et colonnes définissent une grille où placer les éléments, pour des layouts complexes en quelques lignes.",
     whyLearn:
       "Grid excelle là où Flexbox atteint ses limites : dashboards, mises en page magazine, grilles responsives. Les deux sont complémentaires, pas concurrents.",
+    conceptDetails: [
+      {
+        name: "Grilles",
+        definition: "grid-template-columns et rows définissent la structure : des pistes fixes, flexibles (fr) ou automatiques.",
+      },
+      {
+        name: "Zones",
+        definition: "grid-template-areas nomme des régions (header, sidebar, main) : la mise en page devient lisible.",
+      },
+      {
+        name: "Placement",
+        definition: "Placer un élément sur des lignes précises : grid-column: 1 / 3, avec des chevauchements contrôlés.",
+      },
+      {
+        name: "Grilles implicites",
+        definition: "Les lignes et colonnes créées automatiquement quand le contenu dépasse la grille déclarée.",
+      },
+      {
+        name: "Subgrid",
+        definition: "Une grille imbriquée qui hérite des pistes de son parent : l'alignement parfait des cartes.",
+      },
+      {
+        name: "Responsive",
+        definition: "repeat(auto-fit, minmax(250px, 1fr)) : des grilles qui s'adaptent sans media queries.",
+      },
+    ],
+    howItWorksTitle: "De la grille au layout",
+    howItWorks: ["PISTES", "ZONES", "PLACEMENT", "GAPS", "IMPLICITE", "RESPONSIVE"],
+    example: {
+      title: "Un dashboard admin",
+      steps: [
+        "Grille de 12 colonnes",
+        "Zone header sur toute la largeur",
+        "Sidebar sur 3 colonnes",
+        "Cartes de statistiques en auto-fit",
+        "Graphiques sur 8 colonnes",
+        "Réorganisation en colonne sur mobile",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Dashboard en grille",
+        flow: "Zones nommées → Placement → Version responsive",
+      },
+      {
+        title: "Layout magazine",
+        flow: "Grille → Chevauchements → Typographie éditoriale",
+      },
+      {
+        title: "Galerie dense",
+        flow: "Auto-flow → Remplissage dense → Ratios variés",
+      },
+    ],
   },
 
   // -------------------------------------------------------- css-animations
@@ -1694,6 +2385,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Les animations CSS (transitions et keyframes) ajoutent du mouvement aux interfaces : micro-interactions, feedbacks visuels, changements d'état fluides — sans JavaScript.",
     whyLearn:
       "L'animation guide l'attention et rend les changements d'état compréhensibles. Utilisée avec mesure, et dans le respect de prefers-reduced-motion, elle améliore réellement l'expérience.",
+    conceptDetails: [
+      {
+        name: "Transitions",
+        definition: "Animer le passage d'un état à un autre (hover, ouverture) : simple, déclaratif, performant.",
+      },
+      {
+        name: "Keyframes",
+        definition: "@keyframes décrit une séquence d'étapes : pour les animations complexes et en boucle.",
+      },
+      {
+        name: "Easing",
+        definition: "La courbe d'accélération (ease-out, cubic-bezier) : c'est elle qui rend un mouvement naturel ou mécanique.",
+      },
+      {
+        name: "Performance",
+        definition: "Animer transform et opacity uniquement : ce sont les propriétés que le GPU compose sans recalcul de layout.",
+      },
+      {
+        name: "prefers-reduced-motion",
+        definition: "La media query qui respecte les utilisateurs sensibles au mouvement : réduire ou couper les animations.",
+      },
+      {
+        name: "Micro-interactions",
+        definition: "De petits feedbacks (bouton qui réagit, toggle qui glisse) qui rendent l'interface vivante et compréhensible.",
+      },
+    ],
+    howItWorksTitle: "Du déclencheur au mouvement",
+    howItWorks: ["ÉTAT", "DÉCLENCHEUR", "TRANSITION", "EASING", "GPU", "FEEDBACK"],
+    example: {
+      title: "Un bouton avec feedback",
+      steps: [
+        "État de repos du bouton",
+        "Hover : transition douce de la couleur",
+        "Clic : léger scale via transform",
+        "Easing ease-out pour un mouvement naturel",
+        "Animation désactivée si reduced-motion",
+        "Retour fluide à l'état initial",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Bibliothèque de micro-interactions",
+        flow: "Boutons → Toggles → Tooltips → Documentation",
+      },
+      {
+        title: "Loader animé en pur CSS",
+        flow: "Keyframes → Boucle infinie → Optimisation GPU",
+      },
+      {
+        title: "Menu animé et accessible",
+        flow: "Transition → Gestion du focus → prefers-reduced-motion",
+      },
+    ],
   },
 
   // ------------------------------------------------------------ js-modules
@@ -1702,6 +2446,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Les modules ES (import/export) découpent une application JavaScript en fichiers indépendants qui déclarent explicitement leurs dépendances.",
     whyLearn:
       "C'est la base de tout projet moderne : organisation, réutilisation, tree-shaking par les bundlers. Sans modules, pas de React, pas de Vite, pas d'écosystème.",
+    conceptDetails: [
+      {
+        name: "import/export",
+        definition: "La syntaxe qui déclare ce qu'un fichier expose et ce qu'il consomme : le contrat entre modules.",
+      },
+      {
+        name: "ES Modules",
+        definition: "Le système natif du navigateur et de Node.js : statique, analysable, sans outil.",
+      },
+      {
+        name: "Bundlers",
+        definition: "Vite, webpack ou Rollup assemblent les modules en fichiers optimisés pour la production.",
+      },
+      {
+        name: "Tree-shaking",
+        definition: "Éliminer le code importé mais jamais utilisé : des bundles plus légers, automatiquement.",
+      },
+      {
+        name: "Dépendances",
+        definition: "Le graphe d'imports d'un projet : qui dépend de qui, et détecter les cycles.",
+      },
+      {
+        name: "Barrel files",
+        definition: "Des index.ts qui réexportent un dossier : des imports propres, à manier avec mesure.",
+      },
+    ],
+    howItWorksTitle: "Du fichier au bundle",
+    howItWorks: ["FICHIER", "EXPORT", "IMPORT", "GRAPHE", "BUNDLE", "TREE-SHAKING"],
+    example: {
+      title: "Découper une app en modules",
+      steps: [
+        "Repérer les responsabilités : API, UI, utilitaires",
+        "Créer api.js avec ses exports",
+        "Importer les fonctions dans app.js",
+        "Le bundler construit le graphe de dépendances",
+        "Tree-shaking du code inutilisé",
+        "Un seul bundle optimisé en sortie",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Refactorer une app en modules",
+        flow: "Monolithe → Découpage → Imports explicites → Tests",
+      },
+      {
+        title: "Publier un package npm",
+        flow: "Modules → Build → package.json → Publication",
+      },
+      {
+        title: "Nettoyer les imports d'un projet",
+        flow: "Barrel files → Aliases → Suppression des cycles",
+      },
+    ],
   },
 
   // ------------------------------------------------------------------ pnpm
@@ -1710,6 +2507,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "pnpm est un gestionnaire de paquets compatible npm, plus rapide et plus économe : un store global unique évite de dupliquer les dépendances, avec un support natif des monorepos.",
     whyLearn:
       "Des installations en quelques secondes et des node_modules propres changent le quotidien, surtout sur les gros projets et monorepos. La migration depuis npm est quasi transparente.",
+    conceptDetails: [
+      {
+        name: "Store global",
+        definition: "Un seul dossier content-adressable pour toutes les versions : fini les gigaoctets dupliqués.",
+      },
+      {
+        name: "Monorepos",
+        definition: "Plusieurs paquets dans un seul dépôt, avec des dépendances locales liées proprement.",
+      },
+      {
+        name: "Workspaces",
+        definition: "Le mécanisme pnpm-workspace.yaml qui relie les paquets d'un monorepo entre eux.",
+      },
+      {
+        name: "Vitesse",
+        definition: "Installations en quelques secondes grâce au store global et aux liens durs.",
+      },
+      {
+        name: "Compatibilité npm",
+        definition: "Mêmes commandes, même registre, même package.json : la migration est quasi transparente.",
+      },
+      {
+        name: "Lockfile",
+        definition: "pnpm-lock.yaml fige l'arbre exact des dépendances pour des installations reproductibles.",
+      },
+    ],
+    howItWorksTitle: "De l'install au store partagé",
+    howItWorks: ["INSTALL", "RÉSOLUTION", "STORE", "LIENS", "WORKSPACE", "LOCKFILE"],
+    example: {
+      title: "Migrer un projet npm vers pnpm",
+      steps: [
+        "Supprimer node_modules",
+        "Importer depuis le package-lock existant",
+        "pnpm install : secondes au lieu de minutes",
+        "Vérifier que tous les scripts passent",
+        "Commiter le pnpm-lock.yaml",
+        "Mettre la CI en cache sur le store",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Migrer un projet npm → pnpm",
+        flow: "Import → Install → Tests → Mise à jour de la CI",
+      },
+      {
+        title: "Monorepo avec workspaces",
+        flow: "Dossiers → pnpm-workspace.yaml → Dépendances locales",
+      },
+      {
+        title: "CI optimisée",
+        flow: "Cache du store → Install éclair → Build → Test",
+      },
+    ],
   },
 
   // ---------------------------------------------------------------- eslint
@@ -1718,6 +2568,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "ESLint analyse statiquement le code JavaScript/TypeScript : il détecte les erreurs probables, les mauvaises pratiques et impose un style cohérent en équipe.",
     whyLearn:
       "Il attrape les bugs avant l'exécution et met fin aux débats de style. Intégré à l'éditeur et à la CI, c'est un filet de sécurité permanent.",
+    conceptDetails: [
+      {
+        name: "Règles",
+        definition: "Chaque règle détecte un problème précis : variable inutilisée, comparaison dangereuse, import manquant.",
+      },
+      {
+        name: "Configs",
+        definition: "Des ensembles prêts à l'emploi (recommended, TypeScript, React) : une base solide en quelques lignes.",
+      },
+      {
+        name: "Plugins",
+        definition: "Des règles spécialisées par écosystème : React Hooks, imports, accessibilité.",
+      },
+      {
+        name: "Flat config",
+        definition: "Le format moderne eslint.config.js : explicite, composable, sans héritage magique.",
+      },
+      {
+        name: "CI",
+        definition: "Faire échouer le pipeline sur une erreur de lint : la qualité devient non négociable.",
+      },
+      {
+        name: "Autofix",
+        definition: "--fix corrige automatiquement ce qui est sûr : le linter répare, pas seulement signale.",
+      },
+    ],
+    howItWorksTitle: "Du code au verdict",
+    howItWorks: ["FICHIER", "PARSE", "RÈGLES", "DIAGNOSTIC", "AUTOFIX", "CI"],
+    example: {
+      title: "Attraper un bug avant l'exécution",
+      steps: [
+        "Écriture d'un useEffect sans tableau de dépendances",
+        "ESLint signale la règle exhaustive-deps",
+        "Le message explique le risque concret",
+        "Correction manuelle ou via --fix",
+        "Le hook se comporte correctement",
+        "La CI bloque les futures régressions",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Configurer ESLint sur un projet",
+        flow: "Flat config → Plugins → Règles d'équipe → Intégration IDE",
+      },
+      {
+        title: "Créer une règle custom",
+        flow: "AST → Visiteur → Tests → Plugin interne",
+      },
+      {
+        title: "Durcir une CI existante",
+        flow: "Lint → Erreurs bloquantes → Rapports lisibles",
+      },
+    ],
   },
 
   // --------------------------------------------------------------- prettier
@@ -1726,6 +2629,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Prettier est un formateur de code : il réécrit automatiquement le code selon des règles fixes — indentation, guillemets, points-virgules — à chaque sauvegarde.",
     whyLearn:
       "Fini les débats sur les espaces en code review : le style est uniforme et automatique. Combiné à ESLint, il couvre la forme pendant qu'ESLint couvre le fond.",
+    conceptDetails: [
+      {
+        name: "Formatage",
+        definition: "Indentation, guillemets, virgules : Prettier réécrit le code de façon déterministe.",
+      },
+      {
+        name: "Config",
+        definition: "Quelques options (.prettierrc) : largeur de ligne, point-virgules. Le reste n'est pas négociable, c'est le principe.",
+      },
+      {
+        name: "Hooks pre-commit",
+        definition: "lint-staged + husky : formater uniquement les fichiers modifiés avant chaque commit.",
+      },
+      {
+        name: "Intégration IDE",
+        definition: "Format on save : le code se range tout seul pendant qu'on écrit.",
+      },
+      {
+        name: "ESLint",
+        definition: "ESLint couvre les erreurs, Prettier la forme : les deux se complètent sans se marcher dessus.",
+      },
+      {
+        name: "CI",
+        definition: "Un check --check en CI garantit que tout le code commité est bien formaté.",
+      },
+    ],
+    howItWorksTitle: "Du code brut au code formaté",
+    howItWorks: ["ÉDITION", "SAVE", "PARSE", "RÉÉCRITURE", "COMMIT", "CI"],
+    example: {
+      title: "Mettre fin à un débat de style",
+      steps: [
+        "Deux développeurs, deux styles d'indentation",
+        "Prettier configuré une seule fois",
+        "Format on save activé dans l'éditeur",
+        "Le code devient uniforme partout",
+        "Les reviews parlent de logique, plus d'espaces",
+        "Le hook pre-commit verrouille le tout",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Configurer les pre-commit hooks",
+        flow: "Husky → lint-staged → Prettier → Test du hook",
+      },
+      {
+        title: "Uniformiser un vieux projet",
+        flow: "Config → Formatage global → Commit dédié → CI",
+      },
+      {
+        title: "Prettier + ESLint sans conflit",
+        flow: "Séparation forme/fond → Config compatible → Vérification CI",
+      },
+    ],
   },
 
   // ------------------------------------------------------------ react-hooks
@@ -1734,6 +2690,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Les Hooks (useState, useEffect, useRef, useMemo…) sont les fonctions qui donnent aux composants React accès à l'état, aux effets de bord et au cycle de vie.",
     whyLearn:
       "C'est la grammaire moderne de React : tout l'écosystème actuel s'écrit avec des hooks. Bien les comprendre — surtout useEffect — évite la majorité des bugs React.",
+    conceptDetails: [
+      {
+        name: "useState",
+        definition: "Déclarer un état local : une valeur et sa fonction de mise à jour, avec re-rendu à chaque changement.",
+      },
+      {
+        name: "useEffect",
+        definition: "Synchroniser avec l'extérieur (API, timers, DOM) après le rendu : le hook le plus puissant et le plus piégeux.",
+      },
+      {
+        name: "useRef",
+        definition: "Une boîte mutable qui survit aux rendus sans en déclencher : timers, éléments DOM, valeurs précédentes.",
+      },
+      {
+        name: "useMemo",
+        definition: "Mémoriser un calcul coûteux : ne le refaire que quand ses dépendances changent.",
+      },
+      {
+        name: "Custom hooks",
+        definition: "Extraire de la logique réutilisable (useFetch, useLocalStorage) : la vraie puissance des hooks.",
+      },
+      {
+        name: "Règles des hooks",
+        definition: "Toujours au niveau racine, jamais dans des conditions : l'ordre d'appel doit rester stable entre les rendus.",
+      },
+    ],
+    howItWorksTitle: "Du rendu à la synchronisation",
+    howItWorks: ["RENDU", "ÉTAT", "EFFET", "SYNCHRO", "NETTOYAGE", "RE-RENDU"],
+    example: {
+      title: "Charger des données au montage",
+      steps: [
+        "Le composant est monté",
+        "useEffect se déclenche une fois",
+        "Appel fetch vers l'API",
+        "useState stocke le résultat",
+        "Re-rendu avec les données affichées",
+        "Cleanup : annule la requête si démonté",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Bibliothèque de hooks customs",
+        flow: "useFetch → useDebounce → useLocalStorage → Tests",
+      },
+      {
+        title: "Refactorer des classes vers les hooks",
+        flow: "Lifecycle → useEffect → Cleanup → Simplification",
+      },
+      {
+        title: "Formulaire piloté par hooks",
+        flow: "useState → Validation → useEffect → Soumission",
+      },
+    ],
   },
 
   // ------------------------------------------------------------ react-state
@@ -1742,6 +2751,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Le state management organise l'état d'une application quand l'état local ne suffit plus : Context, Zustand, Redux Toolkit, React Query — chacun à son niveau.",
     whyLearn:
       "Choisir le bon outil évite le prop drilling comme la sur-ingénierie. Comprendre la distinction entre état client et état serveur (le cache) clarifie toute l'architecture frontend.",
+    conceptDetails: [
+      {
+        name: "État local/global",
+        definition: "Local (useState) pour un composant, global pour ce qui est partagé : choisir le niveau minimal suffisant.",
+      },
+      {
+        name: "Context",
+        definition: "La solution native pour éviter le prop drilling : simple, mais re-rend tous les consommateurs.",
+      },
+      {
+        name: "Zustand",
+        definition: "Un store externe minimaliste : sélecteurs fins, pas de boilerplate, le choix pragmatique actuel.",
+      },
+      {
+        name: "Redux Toolkit",
+        definition: "Le standard historique, modernisé : slices, thunks, DevTools — pour les états complexes en équipe.",
+      },
+      {
+        name: "React Query",
+        definition: "Gérer l'état serveur comme un cache : fetching, invalidation, retry — pas comme un état local.",
+      },
+      {
+        name: "Cache serveur",
+        definition: "Les données du serveur ont un cycle de vie (frais, périmé) : les traiter comme du cache change tout.",
+      },
+    ],
+    howItWorksTitle: "De la donnée à l'interface",
+    howItWorks: ["SOURCE", "NIVEAU", "STORE", "SÉLECTEUR", "MISE À JOUR", "SYNCHRO"],
+    example: {
+      title: "Un panier e-commerce",
+      steps: [
+        "État local : quantité dans le composant",
+        "État global : panier partagé via Zustand",
+        "État serveur : catalogue via React Query",
+        "Ajout → mise à jour optimiste de l'UI",
+        "Sélecteurs : seuls les composants concernés re-rendent",
+        "Persistance du panier en localStorage",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "App avec cache serveur intelligent",
+        flow: "React Query → Invalidation → UI optimiste → Retry",
+      },
+      {
+        title: "Refactor d'un état global chaotique",
+        flow: "Audit → Niveaux d'état → Store adapté → Migration",
+      },
+      {
+        title: "Comparatif de solutions",
+        flow: "Context → Zustand → Redux Toolkit → Benchmark",
+      },
+    ],
   },
 
   // ------------------------------------------------------------ react-forms
@@ -1750,6 +2812,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Les formulaires React gèrent la saisie utilisateur : état des champs, validation, messages d'erreur, soumission — un domaine où les détails font la qualité.",
     whyLearn:
       "Les formulaires sont partout et bourrés de cas limites : validation, accessibilité, UX d'erreur. Les maîtriser change concrètement la qualité perçue d'une application.",
+    conceptDetails: [
+      {
+        name: "Controlled inputs",
+        definition: "React pilote la valeur de chaque champ via l'état : contrôle total, au prix de re-rendus.",
+      },
+      {
+        name: "Validation",
+        definition: "Vérifier à la saisie, au blur, à la soumission : synchrone pour le format, asynchrone pour l'unicité.",
+      },
+      {
+        name: "React Hook Form",
+        definition: "La librairie de référence : inputs non contrôlés, validation intégrée, excellentes performances.",
+      },
+      {
+        name: "Erreurs",
+        definition: "Des messages précis, liés au champ via aria-describedby, affichés au bon moment.",
+      },
+      {
+        name: "UX",
+        definition: "Feedback immédiat, états de chargement, soumission idempotente : un formulaire doit rassurer.",
+      },
+      {
+        name: "Accessibilité",
+        definition: "Labels associés, ordre de tabulation, annonce des erreurs : le test ultime de l'accessibilité.",
+      },
+    ],
+    howItWorksTitle: "De la saisie à la soumission",
+    howItWorks: ["CHAMP", "SAISIE", "VALIDATION", "ERREUR", "SOUMISSION", "CONFIRMATION"],
+    example: {
+      title: "Inscription avec validation",
+      steps: [
+        "Champs contrôlés : email et mot de passe",
+        "Validation du format pendant la saisie",
+        "Vérification d'unicité via l'API",
+        "Erreurs annoncées près de chaque champ",
+        "Soumission avec état de chargement",
+        "Confirmation et redirection",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Formulaire multi-étapes validé",
+        flow: "Étapes → Validation par étape → Progression → Récapitulatif",
+      },
+      {
+        title: "Upload de fichiers avec progression",
+        flow: "Fichiers → Envoi par morceaux → Barre → Nouvelle tentative",
+      },
+      {
+        title: "Formulaire 100% accessible",
+        flow: "Labels → ARIA → Navigation clavier → Tests",
+      },
+    ],
   },
 
   // ---------------------------------------------------------------- vitest
@@ -1758,6 +2873,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Vitest est le runner de tests pensé pour l'écosystème Vite : rapide, API compatible Jest, watch mode et interface de debug soignée.",
     whyLearn:
       "Tester devient agréable quand c'est instantané : Vitest s'intègre naturellement aux projets Vite et couvre tests unitaires et d'intégration sans configuration lourde.",
+    conceptDetails: [
+      {
+        name: "Assertions",
+        definition: "expect(...).toBe(...) : déclarer le comportement attendu, de façon lisible.",
+      },
+      {
+        name: "Mocks",
+        definition: "vi.fn() et vi.mock() : simuler modules et fonctions pour isoler le code testé.",
+      },
+      {
+        name: "Watch",
+        definition: "Le mode watch relance les tests concernés à chaque sauvegarde : un feedback instantané.",
+      },
+      {
+        name: "Coverage",
+        definition: "Mesurer la part du code exercée par les tests : viser les chemins critiques, pas 100%.",
+      },
+      {
+        name: "UI",
+        definition: "L'interface @vitest/ui pour explorer et déboguer les tests visuellement.",
+      },
+      {
+        name: "Snapshots",
+        definition: "Figer une sortie avec toMatchSnapshot : détecter les changements involontaires.",
+      },
+    ],
+    howItWorksTitle: "Du test au verdict",
+    howItWorks: ["FICHIER", "WATCH", "EXÉCUTION", "ASSERTION", "MOCK", "RAPPORT"],
+    example: {
+      title: "Tester un hook custom",
+      steps: [
+        "Écrire le test avec renderHook",
+        "Assertion sur l'état initial",
+        "Simuler une action utilisateur",
+        "Vérifier le nouvel état",
+        "Mocker l'appel API sous-jacent",
+        "Coverage du hook à 100%",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Tester des hooks customs",
+        flow: "Cas d'usage → Mocks → Assertions → Coverage",
+      },
+      {
+        title: "Atteindre 80% de coverage",
+        flow: "Audit → Tests manquants → Mocks → Intégration CI",
+      },
+      {
+        title: "Migrer de Jest vers Vitest",
+        flow: "Config → API compatibles → Mocks → Benchmark",
+      },
+    ],
   },
 
   // ------------------------------------------------------------- playwright
@@ -1766,6 +2934,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Playwright automatise de vrais navigateurs (Chromium, Firefox, WebKit) pour tester une application comme un utilisateur : clics, formulaires, navigation.",
     whyLearn:
       "Les tests E2E attrapent ce que les tests unitaires manquent : les parcours réels, les régressions visuelles, les intégrations. Playwright est devenu la référence pour des suites fiables, y compris en CI.",
+    conceptDetails: [
+      {
+        name: "Navigateurs",
+        definition: "Chromium, Firefox et WebKit pilotés réellement : de vrais moteurs, pas de simulation.",
+      },
+      {
+        name: "Sélecteurs",
+        definition: "getByRole, getByLabel : cibler comme un utilisateur, pas comme le DOM — des tests résistants.",
+      },
+      {
+        name: "Assertions",
+        definition: "Des attentes auto-retry (toBeVisible) : fini les tests instables à cause du timing.",
+      },
+      {
+        name: "Fixtures",
+        definition: "Préparer l'état (connexion, données) avant chaque test : des scénarios isolés et reproductibles.",
+      },
+      {
+        name: "CI",
+        definition: "Lancer la suite sur chaque pull request, en parallèle sur plusieurs navigateurs.",
+      },
+      {
+        name: "Debug",
+        definition: "Trace viewer, mode headed, codegen : rejouer un échec pas à pas.",
+      },
+    ],
+    howItWorksTitle: "Du scénario au rapport",
+    howItWorks: ["SCÉNARIO", "NAVIGATEUR", "ACTIONS", "ASSERTIONS", "TRACE", "CI"],
+    example: {
+      title: "Tester un parcours d'achat",
+      steps: [
+        "Ouverture de la boutique (fixture)",
+        "Ajout d'un article au panier",
+        "Passage au checkout",
+        "Remplissage du formulaire",
+        "Assertion : page de confirmation visible",
+        "Trace enregistrée en cas d'échec",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Suite E2E d'un parcours d'achat",
+        flow: "Scénarios → Fixtures → CI → Rapports HTML",
+      },
+      {
+        title: "Tests visuels de régression",
+        flow: "Screenshots → Comparaison → Seuils de tolérance",
+      },
+      {
+        title: "Matrice multi-navigateurs",
+        flow: "Chromium → Firefox → WebKit → Résultats consolidés",
+      },
+    ],
   },
 
   // -------------------------------------------------------------- web-perf
@@ -1774,6 +2995,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "La performance web mesure et optimise la vitesse ressentie : Core Web Vitals, temps de chargement, fluidité — via code splitting, lazy loading, cache et images optimisées.",
     whyLearn:
       "La vitesse est une fonctionnalité : elle impacte conversion, SEO et rétention. Mesurer d'abord avec Lighthouse, optimiser ensuite — jamais l'inverse.",
+    conceptDetails: [
+      {
+        name: "Core Web Vitals",
+        definition: "LCP, INP, CLS : les trois métriques qui mesurent vitesse d'affichage, réactivité et stabilité visuelle.",
+      },
+      {
+        name: "Lighthouse",
+        definition: "L'audit de référence : un score, des opportunités chiffrées — à lancer avant toute optimisation.",
+      },
+      {
+        name: "Code splitting",
+        definition: "Découper le bundle et ne charger que le nécessaire : dynamic import() par route.",
+      },
+      {
+        name: "Lazy loading",
+        definition: "Charger images et composants à la demande : loading='lazy', IntersectionObserver.",
+      },
+      {
+        name: "Cache",
+        definition: "Cache HTTP, service workers, CDN : ne pas retélécharger ce qui n'a pas changé.",
+      },
+      {
+        name: "Images",
+        definition: "Formats modernes (WebP, AVIF), srcset, dimensions explicites : souvent le plus gros gain.",
+      },
+    ],
+    howItWorksTitle: "De la mesure à l'optimisation",
+    howItWorks: ["MESURE", "AUDIT", "GOULOT", "OPTIMISATION", "RE-MESURE", "BUDGET"],
+    example: {
+      title: "Passer Lighthouse de 60 à 95",
+      steps: [
+        "Audit initial : LCP à 4,2 secondes",
+        "Images non optimisées identifiées",
+        "Conversion en WebP avec srcset",
+        "Code splitting par route",
+        "LCP à 1,8 s, score de 95",
+        "Budget de performance ajouté en CI",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Audit Lighthouse : 60 → 95+",
+        flow: "Mesure → Images → Splitting → Cache → Vérification",
+      },
+      {
+        title: "Optimiser une app lente",
+        flow: "Profilage → Goulots → Correctifs → Suivi continu",
+      },
+      {
+        title: "Budgets de performance en CI",
+        flow: "Seuils → Lighthouse CI → Alertes automatiques",
+      },
+    ],
   },
 
   // -------------------------------------------------------- frontend-archi
@@ -1782,6 +3056,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "L'architecture frontend organise le code quand projets et équipes grandissent : monorepos, design systems, découpage par fonctionnalités, conventions partagées.",
     whyLearn:
       "Un projet qui grandit sans architecture devient ingérable. Ces patterns — feature-sliced, design systems documentés, monorepos — gardent une base de code compréhensible à dix comme à cent développeurs.",
+    conceptDetails: [
+      {
+        name: "Monorepos",
+        definition: "Un seul dépôt pour apps et librairies partagées : cohérence des versions, refactors transverses.",
+      },
+      {
+        name: "Design systems",
+        definition: "Composants, tokens et documentation partagés : la source unique de vérité visuelle.",
+      },
+      {
+        name: "Feature-Sliced",
+        definition: "Découper par fonctionnalité (app, pages, features, entities) plutôt que par type de fichier.",
+      },
+      {
+        name: "Micro-frontends",
+        definition: "Des équipes autonomes qui déploient leurs morceaux d'interface indépendamment.",
+      },
+      {
+        name: "Conventions",
+        definition: "Nommage, structure, imports : des règles écrites qui évitent les débats permanents.",
+      },
+      {
+        name: "Documentation",
+        definition: "ADRs, README vivants, Storybook : l'architecture se lit, elle ne se devine pas.",
+      },
+    ],
+    howItWorksTitle: "Du chaos à la structure",
+    howItWorks: ["CROISSANCE", "DOULEUR", "DÉCOUPAGE", "CONVENTIONS", "PARTAGE", "GOUVERNANCE"],
+    example: {
+      title: "Structurer une app qui grandit",
+      steps: [
+        "100 composants dans un seul dossier",
+        "Découpage par fonctionnalités",
+        "Extraction du design system",
+        "Conventions d'imports écrites",
+        "Documentation des décisions (ADRs)",
+        "Onboarding d'un nouveau dev en un jour",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Monorepo avec Turborepo",
+        flow: "Apps → Packages partagés → Pipeline → Cache",
+      },
+      {
+        title: "Design system documenté",
+        flow: "Tokens → Composants → Storybook → Versioning",
+      },
+      {
+        title: "Migration vers feature-sliced",
+        flow: "Audit → Découpage → Migration progressive",
+      },
+    ],
   },
 
   // ---------------------------------------------------------- react-native
@@ -1790,6 +3117,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "React Native permet de créer des applications mobiles iOS et Android avec React : le code JavaScript pilote des composants d'interface réellement natifs.",
     whyLearn:
       "Un seul code pour deux plateformes, avec des compétences React existantes : c'est la voie la plus directe du web vers le mobile pour un développeur frontend.",
+    conceptDetails: [
+      {
+        name: "Composants natifs",
+        definition: "View, Text, FlatList : du JavaScript qui pilote de vrais composants iOS et Android.",
+      },
+      {
+        name: "Navigation",
+        definition: "React Navigation : stacks, tabs, drawers — la navigation mobile a ses propres patterns.",
+      },
+      {
+        name: "APIs natives",
+        definition: "Caméra, géolocalisation, notifications : accessibles via des modules natifs ou Expo.",
+      },
+      {
+        name: "Build",
+        definition: "Compiler en .apk et .ipa : certificats, provisioning, profils — la partie la moins glamour.",
+      },
+      {
+        name: "Stores",
+        definition: "App Store et Play Store : review, métadonnées, releases progressives.",
+      },
+      {
+        name: "OTA",
+        definition: "Over-the-air : pousser des correctifs JavaScript sans repasser par les stores.",
+      },
+    ],
+    howItWorksTitle: "Du composant au store",
+    howItWorks: ["CODE", "BRIDGE", "NATIF", "BUILD", "TEST", "STORE"],
+    example: {
+      title: "Une app de notes synchronisée",
+      steps: [
+        "Liste des notes en FlatList",
+        "Écran d'édition de note",
+        "Stockage local avec AsyncStorage",
+        "Synchronisation via API REST",
+        "Build iOS et Android",
+        "Publication avec mises à jour OTA",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "App de notes synchronisée",
+        flow: "Interface → Stockage local → Sync API → Builds",
+      },
+      {
+        title: "Clone d'une app existante",
+        flow: "Maquette → Navigation → APIs natives → Polish",
+      },
+      {
+        title: "App avec notifications push",
+        flow: "Permissions → Push → Deep links → Tests",
+      },
+    ],
   },
 
   // ---------------------------------------------------------------- flutter
@@ -1798,6 +3178,59 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Flutter est le framework UI de Google (langage Dart) : il dessine lui-même chaque pixel, pour des applications mobiles, web et desktop depuis une seule base de code.",
     whyLearn:
       "Son moteur de rendu maison garantit un visuel identique partout et des performances élevées. Une alternative crédible quand on vise le multiplateforme sans passer par les technologies web.",
+    conceptDetails: [
+      {
+        name: "Dart",
+        definition: "Le langage de Flutter : typé, compilé en natif, avec hot reload pendant le développement.",
+      },
+      {
+        name: "Widgets",
+        definition: "Tout est widget : boutons, layouts, l'app elle-même — une arborescence reconstruite à chaque changement d'état.",
+      },
+      {
+        name: "State",
+        definition: "setState pour le local, Provider/Riverpod/Bloc pour le partagé : choisir selon la complexité.",
+      },
+      {
+        name: "Navigation",
+        definition: "Navigator 2.0 : piles de routes, deep links, transitions personnalisées.",
+      },
+      {
+        name: "Packages",
+        definition: "pub.dev : des milliers de packages (caméra, cartes, Firebase) prêts à l'emploi.",
+      },
+      {
+        name: "Build",
+        definition: "Un seul code vers iOS, Android, web et desktop : flutter build pour chaque cible.",
+      },
+    ],
+    howItWorksTitle: "Du widget à l'app",
+    howItWorks: ["WIDGET", "ÉTAT", "REBUILD", "NAVIGATION", "PACKAGE", "BUILD"],
+    example: {
+      title: "Une app météo multiplateforme",
+      steps: [
+        "Arborescence de widgets pour l'UI",
+        "Écran de recherche de ville",
+        "Appel à l'API météo",
+        "setState reconstruit l'interface",
+        "Navigation vers les détails",
+        "Build Android et iOS depuis le même code",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "App météo multiplateforme",
+        flow: "Interface → API → État → Builds Android/iOS",
+      },
+      {
+        title: "Portfolio app",
+        flow: "Design → Animations → Versions web + mobile",
+      },
+      {
+        title: "App avec Firebase",
+        flow: "Auth → Firestore → Notifications → Release",
+      },
+    ],
   },
 
   // --------------------------------------------------------------- electron
@@ -1806,5 +3239,58 @@ export const GUIDES_A: Record<string, SkillGuide> = {
       "Electron emballe une application web (HTML/CSS/JS) dans un shell desktop : Chromium pour l'interface, Node.js pour le système — c'est la stack de VS Code, Discord et Slack.",
     whyLearn:
       "Il permet de livrer une vraie application desktop avec des compétences web. Le revers : un coût mémoire à assumer — d'où l'importance de comprendre son architecture main/renderer avant de l'adopter.",
+    conceptDetails: [
+      {
+        name: "Main/Renderer",
+        definition: "Le processus main (Node.js : fenêtres, système) et les renderers (Chromium : l'UI) : deux mondes séparés.",
+      },
+      {
+        name: "IPC",
+        definition: "Inter-Process Communication : le pont sécurisé entre l'UI et le système, via contextBridge et preload.",
+      },
+      {
+        name: "Packaging",
+        definition: "electron-builder : produire des installateurs .exe, .dmg et .AppImage signés.",
+      },
+      {
+        name: "Auto-update",
+        definition: "Livrer les nouvelles versions sans réinstallation manuelle.",
+      },
+      {
+        name: "APIs natives",
+        definition: "Menus, tray, notifications, presse-papiers : l'intégration au système d'exploitation.",
+      },
+      {
+        name: "Performance",
+        definition: "Un Chromium par fenêtre : limiter les renderers, éviter les fuites mémoire, mesurer.",
+      },
+    ],
+    howItWorksTitle: "Du web au desktop",
+    howItWorks: ["WEB APP", "MAIN", "RENDERER", "IPC", "PACKAGE", "UPDATE"],
+    example: {
+      title: "Un éditeur de notes desktop",
+      steps: [
+        "Partir d'une app web existante",
+        "Main : crée la fenêtre de l'application",
+        "Renderer : affiche l'éditeur",
+        "IPC : sauvegarde des fichiers sur disque",
+        "Packaging en installateur signé",
+        "Auto-update à chaque release",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Éditeur de notes desktop",
+        flow: "UI web → IPC → Fichiers locaux → Packaging",
+      },
+      {
+        title: "Wrapper desktop d'une PWA",
+        flow: "URL → Fenêtre native → Menus → Distribuable",
+      },
+      {
+        title: "App avec icône système",
+        flow: "Tray → Menus contextuels → Notifications → Tests",
+      },
+    ],
   },
 };

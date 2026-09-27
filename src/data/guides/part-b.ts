@@ -962,6 +962,32 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Comprendre pourquoi le code vectorisé est rapide : mémoire contiguë, boucles en C, parallélisme.",
       },
     ],
+    howItWorksTitle: "Du tableau Python au calcul vectorisé",
+    howItWorks: ["TABLEAU PYTHON", "NDARRAY", "VECTORISATION", "BROADCASTING", "BOUCLES C", "RÉSULTAT"],
+    example: {
+      title: "Normaliser une image",
+      steps: [
+        "Image RVB",
+        "Chargement en ndarray",
+        "Conversion en float",
+        "Division par 255",
+        "Tableau normalisé",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Benchmark boucles vs NumPy",
+        flow: "Listes Python → Version avec boucles → Version NumPy → Mesure du temps → Comparatif",
+      },
+      {
+        title: "Traitement d’images en tableaux",
+        flow: "Image → ndarray → Filtres vectorisés → Export → Galerie traitée",
+      },
+      {
+        title: "Calcul matriciel pour le ML",
+        flow: "Données → Matrices → Produit matriciel → Résolution → Prédictions",
+      },
+    ],
   },
   // ---------------------------------------------------------------- pandas
   pandas: {
@@ -1003,6 +1029,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "IO",
         definition:
           "Lire et écrire CSV, Excel, Parquet, SQL : pandas est la porte d’entrée de presque tous les datasets.",
+      },
+    ],
+    howItWorksTitle: "Du fichier brut au tableau exploitable",
+    howItWorks: ["FICHIER", "LECTURE", "DATAFRAME", "NETTOYAGE", "TRANSFORMATION", "AGRÉGATION", "EXPORT"],
+    example: {
+      title: "Analyser des ventes e-commerce",
+      steps: [
+        "CSV des commandes",
+        "Lecture avec pandas",
+        "Suppression des doublons",
+        "GroupBy par mois",
+        "Chiffre d’affaires",
+        "Graphique",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Nettoyer un dataset sale",
+        flow: "CSV brut → Valeurs manquantes → Doublons → Types → Dataset propre",
+      },
+      {
+        title: "Analyse exploratoire complète",
+        flow: "Dataset → Profilage → Jointures → Agrégations → Rapport",
+      },
+      {
+        title: "Pipeline de séries temporelles",
+        flow: "Séries temporelles → Resampling → Tendances → Prévisions → Dashboard",
       },
     ],
   },
@@ -1048,6 +1101,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Tirer un échantillon représentatif d’une population : la condition de toute généralisation.",
       },
     ],
+    howItWorksTitle: "De la donnée à la conclusion fiable",
+    howItWorks: ["QUESTION", "ÉCHANTILLON", "DISTRIBUTION", "HYPOTHÈSE", "TEST", "INTERVALLE", "CONCLUSION"],
+    example: {
+      title: "Analyser un A/B test",
+      steps: [
+        "Deux versions",
+        "Groupes aléatoires",
+        "Taux de conversion",
+        "Test statistique",
+        "Significativité",
+        "Décision",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Étude statistique d’un dataset",
+        flow: "Dataset → Distributions → Corrélations → Intervalles → Conclusions",
+      },
+      {
+        title: "A/B test analysé proprement",
+        flow: "Hypothèse → Échantillonnage → Collecte → Test → Décision",
+      },
+      {
+        title: "Détecter les biais",
+        flow: "Données → Échantillon → Biais identifiés → Correction → Résultats fiables",
+      },
+    ],
   },
   // ----------------------------------------------------------- scikit-learn
   "scikit-learn": {
@@ -1089,6 +1169,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Preprocessing",
         definition:
           "Préparer les données : mise à l’échelle, encodage des catégories, imputation — souvent décisif.",
+      },
+    ],
+    howItWorksTitle: "Du dataset au modèle évalué",
+    howItWorks: ["DONNÉES", "PREPROCESSING", "SPLIT", "ENTRAÎNEMENT", "VALIDATION", "MÉTRIQUES", "PRÉDICTION"],
+    example: {
+      title: "Prédire des prix immobiliers",
+      steps: [
+        "Dataset de logements",
+        "Encodage des variables",
+        "Régression linéaire",
+        "Validation croisée",
+        "Erreur mesurée",
+        "Prédiction",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Pipeline de classification complet",
+        flow: "Dataset → Preprocessing → Pipeline → Grid search → Modèle évalué",
+      },
+      {
+        title: "Comparatif de modèles",
+        flow: "Données → Plusieurs estimators → Cross-validation → Métriques → Meilleur modèle",
+      },
+      {
+        title: "Détection de fraude",
+        flow: "Transactions → Features → Classification → Seuil → Alertes",
       },
     ],
   },
@@ -1135,6 +1242,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Sauvegarder et reprendre l’entraînement : indispensable pour les runs longs.",
       },
     ],
+    howItWorksTitle: "Du tenseur au modèle entraîné",
+    howItWorks: ["TENSEURS", "MODULE", "FORWARD", "PERTE", "BACKWARD", "OPTIMISEUR", "CHECKPOINT"],
+    example: {
+      title: "Classifieur d’images simple",
+      steps: [
+        "Dataset MNIST",
+        "DataLoader",
+        "Réseau convolutif",
+        "Boucle d’entraînement",
+        "Précision mesurée",
+        "Sauvegarde du modèle",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Réseau de neurones from scratch",
+        flow: "Tenseurs → Module custom → Boucle d’entraînement → GPU → Modèle entraîné",
+      },
+      {
+        title: "Fine-tuner un modèle",
+        flow: "Modèle pré-entraîné → Dataset → Fine-tuning → Évaluation → Déploiement",
+      },
+      {
+        title: "Classifieur entraîné sur GPU",
+        flow: "Dataset → DataLoader → Entraînement GPU → Checkpoints → Évaluation",
+      },
+    ],
   },
   // ----------------------------------------------------------- transformers
   transformers: {
@@ -1176,6 +1310,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Inférence",
         definition:
           "Faire générer du texte à un modèle entraîné : gestion de la mémoire, de la latence et des coûts.",
+      },
+    ],
+    howItWorksTitle: "Du texte aux tokens à la prédiction",
+    howItWorks: ["TEXTE", "TOKENISATION", "EMBEDDINGS", "ATTENTION", "COUCHES", "PRÉDICTION", "DÉCODAGE"],
+    example: {
+      title: "Résumer un article",
+      steps: [
+        "Article long",
+        "Tokenisation",
+        "Modèle BART",
+        "Inférence",
+        "Résumé généré",
+        "Évaluation",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Fine-tuner un modèle Hugging Face",
+        flow: "Dataset → Tokenizer → Fine-tuning → Évaluation → Modèle adapté",
+      },
+      {
+        title: "Chatbot avec un modèle open source",
+        flow: "Modèle → Prompt → Inférence → Mémoire → Chatbot",
+      },
+      {
+        title: "Traduction automatique",
+        flow: "Phrases → Tokenizer → Modèle seq2seq → Inférence → Texte traduit",
       },
     ],
   },
@@ -1222,6 +1383,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Assembler ingestion, indexation, recherche et génération en un système maintenable et observable.",
       },
     ],
+    howItWorksTitle: "De la question à la réponse sourcée",
+    howItWorks: ["QUESTION", "EMBEDDING", "RECHERCHE", "CHUNKS", "CONTEXTE", "LLM", "RÉPONSE"],
+    example: {
+      title: "Chatbot sur une documentation",
+      steps: [
+        "Documents PDF",
+        "Découpage en chunks",
+        "Index vectoriel",
+        "Question utilisateur",
+        "Passages retrouvés",
+        "Réponse avec sources",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Chatbot sur votre documentation",
+        flow: "Docs → Chunking → Embeddings → Base vectorielle → Chatbot",
+      },
+      {
+        title: "Moteur de recherche sémantique",
+        flow: "Corpus → Index → Requête → Similarité → Résultats",
+      },
+      {
+        title: "Pipeline RAG évalué",
+        flow: "Questions test → Réponses → Métriques → Ajustements → Pipeline fiable",
+      },
+    ],
   },
   // -------------------------------------------------------- computer-vision
   "computer-vision": {
@@ -1265,6 +1453,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Optimiser pour la latence : modèles légers, quantization, déploiement edge pour la vidéo en direct.",
       },
     ],
+    howItWorksTitle: "Du pixel à la scène comprise",
+    howItWorks: ["IMAGE", "PRÉTRAITEMENT", "CNN", "FEATURES", "DÉTECTION", "BOÎTES", "DÉCISION"],
+    example: {
+      title: "Détecter des objets en temps réel",
+      steps: [
+        "Flux webcam",
+        "Modèle YOLO",
+        "Inférence par frame",
+        "Boîtes englobantes",
+        "Labels",
+        "Alertes",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Détecteur d’objets temps réel",
+        flow: "Caméra → Prétraitement → YOLO → Tracking → Interface",
+      },
+      {
+        title: "Tri automatique de photos",
+        flow: "Photos → Classification → Tags → Dossiers → Galerie triée",
+      },
+      {
+        title: "Segmentation d’images médicales",
+        flow: "Scans → Annotation → U-Net → Masques → Diagnostic assisté",
+      },
+    ],
   },
   // ------------------------------------------------------------------- nlp
   nlp: {
@@ -1306,6 +1521,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Évaluation",
         definition:
           "Mesurer sur des jeux de test annotés : le NLP se juge sur données réelles, pas sur des exemples choisis.",
+      },
+    ],
+    howItWorksTitle: "Du texte brut à l’information extraite",
+    howItWorks: ["TEXTE", "NETTOYAGE", "TOKENISATION", "EMBEDDINGS", "MODÈLE", "EXTRACTION", "RÉSULTAT"],
+    example: {
+      title: "Analyser des sentiments clients",
+      steps: [
+        "Avis clients",
+        "Nettoyage du texte",
+        "Classification",
+        "Scores de sentiment",
+        "Agrégation",
+        "Rapport",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Analyseur de sentiments",
+        flow: "Avis → Prétraitement → Modèle → Scores → Dashboard",
+      },
+      {
+        title: "Résumeur d’articles",
+        flow: "Articles → Extraction → Résumé → Évaluation → Flux automatisé",
+      },
+      {
+        title: "Extracteur d’entités nommées",
+        flow: "Documents → Tokenisation → NER → Entités → Base structurée",
       },
     ],
   },
@@ -1353,6 +1595,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "La méthode : ping, traceroute, dig, tcpdump — isoler la couche en faute, méthodiquement.",
       },
     ],
+    howItWorksTitle: "Le voyage d’un paquet sur le réseau",
+    howItWorks: ["RÉSOLUTION DNS", "CONNEXION TCP", "DÉCOUPAGE", "ROUTAGE", "COMMUTATION", "RÉASSEMBLAGE"],
+    example: {
+      title: "Un site qui ne répond plus",
+      steps: [
+        "Ping de la passerelle",
+        "Vérification DNS",
+        "Traceroute vers la cible",
+        "Analyse des routes",
+        "Contrôle du firewall",
+        "Restauration du service",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Maquette réseau GNS3",
+        flow: "Plan d’adressage → VLAN → Routage inter-VLAN → Tests de connectivité",
+      },
+      {
+        title: "Segmentation d’un LAN",
+        flow: "Sous-réseaux → ACL firewall → Isolement des services → Supervision",
+      },
+      {
+        title: "Diagnostic de panne",
+        flow: "Symptôme → Ping → Traceroute → Logs → Correctif documenté",
+      },
+    ],
   },
   // --------------------------------------------------------- github-actions
   "github-actions": {
@@ -1397,6 +1666,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Exécuter un job sur plusieurs versions (Node 18/20/22) en une seule déclaration.",
       },
     ],
+    howItWorksTitle: "Du push au déploiement automatique",
+    howItWorks: ["PUSH", "TRIGGER", "RUNNER", "JOBS", "STEPS", "ARTEFACTS", "DÉPLOIEMENT"],
+    example: {
+      title: "Pipeline CI d’une API Node",
+      steps: [
+        "Lint du code",
+        "Tests unitaires",
+        "Build de l’application",
+        "Construction de l’image Docker",
+        "Push vers le registry",
+        "Déploiement en staging",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "CI lint + test + build",
+        flow: "Push → Lint → Tests → Build → Badge de statut",
+      },
+      {
+        title: "Déploiement auto sur VPS",
+        flow: "Tag → Build image → Push GHCR → SSH → Redémarrage du service",
+      },
+      {
+        title: "Matrice multi-versions",
+        flow: "Matrix Node → Tests parallèles → Artefacts → Release GitHub",
+      },
+    ],
   },
   // -------------------------------------------------------------- gitlab-ci
   "gitlab-ci": {
@@ -1437,6 +1733,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Auto DevOps",
         definition:
           "Des pipelines préconfigurés qui détectent le type de projet : un point de départ rapide.",
+      },
+    ],
+    howItWorksTitle: "Du commit à la mise en production",
+    howItWorks: ["COMMIT", "PIPELINE", "STAGES", "JOBS", "RUNNERS", "ENVIRONNEMENTS", "DÉPLOIEMENT"],
+    example: {
+      title: "Review app sur une merge request",
+      steps: [
+        "Merge request ouverte",
+        "Pipeline déclenchée",
+        "Build et tests",
+        "Review app déployée",
+        "Revue par l’équipe",
+        "Merge → production",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Pipeline avec review apps",
+        flow: "MR → Build → Tests → Review app → Merge → Prod",
+      },
+      {
+        title: "Environnements protégés",
+        flow: "Dev → Staging → Approbation manuelle → Production",
+      },
+      {
+        title: "Migration depuis GitHub Actions",
+        flow: "Audit des workflows → Traduction du YAML → Runners → Validation",
       },
     ],
   },
@@ -1483,6 +1806,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Le réseau privé virtuel : isoler ses ressources, contrôler le trafic entrant et sortant.",
       },
     ],
+    howItWorksTitle: "D’une idée à une infrastructure AWS",
+    howItWorks: ["VPC", "EC2", "S3", "RDS", "IAM", "LAMBDA", "CLOUDFRONT"],
+    example: {
+      title: "Héberger un site statique sur S3",
+      steps: [
+        "Bucket S3 créé",
+        "Fichiers uploadés",
+        "Politique d’accès configurée",
+        "Distribution CloudFront",
+        "Certificat TLS",
+        "Enregistrement DNS",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Site statique sur S3",
+        flow: "Bucket → Upload → CloudFront → Domaine → HTTPS",
+      },
+      {
+        title: "API serverless avec Lambda",
+        flow: "API Gateway → Lambda → DynamoDB → Déploiement",
+      },
+      {
+        title: "Stack VPC complète",
+        flow: "VPC → EC2 → RDS → Load balancer → Auto Scaling",
+      },
+    ],
   },
   // --------------------------------------------------------------- ansible
   ansible: {
@@ -1525,6 +1875,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Galaxy",
         definition:
           "Le hub de rôles communautaires : réutiliser plutôt que réécrire.",
+      },
+    ],
+    howItWorksTitle: "D’un inventaire à une flotte configurée",
+    howItWorks: ["INVENTAIRE", "PLAYBOOK", "SSH", "MODULES", "TÂCHES", "IDEMPOTENCE", "RÉSULTAT"],
+    example: {
+      title: "Provisionner un VPS complet",
+      steps: [
+        "Inventaire des hôtes",
+        "Utilisateurs et clés SSH",
+        "Installation de Nginx",
+        "Certificat TLS",
+        "Application déployée",
+        "Vérification des services",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Provisionner un VPS",
+        flow: "Inventaire → Playbook → Connexion SSH → Serveur prêt",
+      },
+      {
+        title: "Rôle Ansible réutilisable",
+        flow: "Rôle → Variables → Tests Molecule → Publication Galaxy",
+      },
+      {
+        title: "Secrets avec Vault",
+        flow: "Playbook → Vault chiffré → Pipeline CI → Déploiement sécurisé",
       },
     ],
   },
@@ -1571,6 +1948,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Journaliser les accès et les erreurs : la matière première du diagnostic et de la sécurité.",
       },
     ],
+    howItWorksTitle: "De la requête au service backend",
+    howItWorks: ["REQUÊTE", "TLS", "SERVER BLOCK", "REVERSE PROXY", "UPSTREAM", "CACHE", "RÉPONSE"],
+    example: {
+      title: "Reverse proxy multi-applications",
+      steps: [
+        "Domaines pointés",
+        "Server blocks configurés",
+        "Proxy vers les backends",
+        "TLS avec Let’s Encrypt",
+        "Compression activée",
+        "Logs centralisés",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Reverse proxy multi-apps",
+        flow: "DNS → Server blocks → Upstreams → Services",
+      },
+      {
+        title: "HTTPS avec Let’s Encrypt",
+        flow: "Nginx → Certbot → Renouvellement auto → Redirection 443",
+      },
+      {
+        title: "Load balancing",
+        flow: "Upstreams → Health checks → Répartition → Basculement",
+      },
+    ],
   },
   // ------------------------------------------------------------ prometheus
   prometheus: {
@@ -1614,6 +2018,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Gérer la durée de conservation : les métriques haute résolution coûtent cher en stockage.",
       },
     ],
+    howItWorksTitle: "De l’exporter à l’alerte",
+    howItWorks: ["EXPORTERS", "SCRAPE", "STOCKAGE TSDB", "PROMQL", "RÈGLES", "ALERTMANAGER", "NOTIFICATION"],
+    example: {
+      title: "Superviser un cluster Kubernetes",
+      steps: [
+        "Exporters déployés",
+        "Targets découvertes",
+        "Métriques collectées",
+        "Dashboards Grafana",
+        "Règles d’alerte",
+        "Notification Slack",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Superviser un serveur",
+        flow: "Node exporter → Scrape → Requêtes PromQL → Dashboard",
+      },
+      {
+        title: "Superviser un cluster",
+        flow: "kube-prometheus → Targets → Règles → Grafana",
+      },
+      {
+        title: "Alertes avec Alertmanager",
+        flow: "Seuils → Règles → Alertmanager → Routage → Astreinte",
+      },
+    ],
   },
   // ------------------------------------------------------------- postgresql
   postgresql: {
@@ -1654,6 +2085,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "EXPLAIN",
         definition:
           "Lire les plans d’exécution : comprendre ce que fait vraiment une requête pour l’optimiser.",
+      },
+    ],
+    howItWorksTitle: "De la requête SQL au résultat",
+    howItWorks: ["CONNEXION", "PARSE", "PLANIFICATEUR", "INDEX", "EXÉCUTION", "RÉSULTAT"],
+    example: {
+      title: "Recherche produit instantanée",
+      steps: [
+        "Requête utilisateur",
+        "Index GIN",
+        "Recherche full-text",
+        "Tri par pertinence",
+        "Résultats en JSON",
+        "Affichage",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Schéma e-commerce optimisé",
+        flow: "Modélisation → Migrations → Index → Contraintes → EXPLAIN",
+      },
+      {
+        title: "Recherche full-text sur un catalogue",
+        flow: "Données → ts_vector → Index GIN → API de recherche → Tuning",
+      },
+      {
+        title: "Réplication primaire / réplica",
+        flow: "Configuration → Streaming → Réplica lecture → Bascule → Monitoring",
       },
     ],
   },
@@ -1699,6 +2157,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "La plateforme managée officielle : cluster en quelques clics, backups, monitoring intégrés.",
       },
     ],
+    howItWorksTitle: "Du document au résultat d’agrégation",
+    howItWorks: ["DOCUMENT", "COLLECTION", "REQUÊTE", "INDEX", "AGRÉGATION", "RÉSULTAT"],
+    example: {
+      title: "Catalogue produit flexible",
+      steps: [
+        "Document JSON",
+        "Collection produits",
+        "Index composé",
+        "Pipeline d’agrégation",
+        "Jointure $lookup",
+        "Résultat paginé",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "API REST avec Mongoose",
+        flow: "Modèles → Validation → CRUD → Index → Déploiement",
+      },
+      {
+        title: "Dashboard analytique",
+        flow: "Données → Pipeline d’agrégation → Facettes → API → Frontend",
+      },
+      {
+        title: "Replica set local",
+        flow: "Configuration → Réplication → Bascule → Monitoring",
+      },
+    ],
   },
   // ----------------------------------------------------------------- redis
   redis: {
@@ -1740,6 +2225,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Cluster",
         definition:
           "Partitionner les données sur plusieurs nœuds : scaler au-delà d’une machine.",
+      },
+    ],
+    howItWorksTitle: "Le cycle de vie d’une clé en cache",
+    howItWorks: ["SET", "TTL", "LECTURE", "HIT", "MISS", "INVALIDATION", "EXPIRATION"],
+    example: {
+      title: "Cache d’API avec invalidation",
+      steps: [
+        "Requête API",
+        "Clé en cache",
+        "Hit ou miss",
+        "TTL de 5 minutes",
+        "Invalidation à l’écriture",
+        "Données fraîches",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Cache de session",
+        flow: "Connexion → SETEX → Lecture → TTL → Expiration",
+      },
+      {
+        title: "Leaderboard temps réel",
+        flow: "Scores → Sorted set → Classement → Pub/Sub → Temps réel",
+      },
+      {
+        title: "Rate limiter",
+        flow: "Compteur → Fenêtre glissante → Blocage → Headers → Tests",
       },
     ],
   },
@@ -1785,6 +2297,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Les deux standards : Airflow orchestre les tâches, dbt transforme en SQL versionné et testé.",
       },
     ],
+    howItWorksTitle: "De la source brute au dashboard",
+    howItWorks: ["INGESTION", "STOCKAGE BRUT", "CHARGEMENT", "TRANSFORMATION", "ORCHESTRATION", "CONSOMMATION"],
+    example: {
+      title: "Pipeline ELT quotidien",
+      steps: [
+        "Extraction via API",
+        "Stockage brut S3",
+        "Chargement du warehouse",
+        "Transformation dbt",
+        "Tests de qualité",
+        "Dashboard BI",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Pipeline ELT avec dbt",
+        flow: "Sources → Extraction → Modèles dbt → Tests → Orchestration",
+      },
+      {
+        title: "Warehouse analytique",
+        flow: "Schéma en étoile → Chargement → Agrégats → BI → Documentation",
+      },
+      {
+        title: "Streaming temps réel",
+        flow: "Kafka → Transformation → Sink → Monitoring → Alertes",
+      },
+    ],
   },
   // ----------------------------------------------------------------- kafka
   kafka: {
@@ -1826,6 +2365,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Connect",
         definition:
           "Les connecteurs source/sink : brancher bases, fichiers et APIs sans écrire de code.",
+      },
+    ],
+    howItWorksTitle: "Le parcours d’un événement",
+    howItWorks: ["PRODUCER", "TOPIC", "PARTITION", "BROKER", "CONSUMER GROUP", "OFFSET"],
+    example: {
+      title: "Suivi de commandes en temps réel",
+      steps: [
+        "Événement commande",
+        "Topic orders",
+        "Partition par client",
+        "Consumer group",
+        "Traitement",
+        "Offset commité",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Pipeline de logs temps réel",
+        flow: "Producer → Topic → Consumer → Stockage → Dashboard",
+      },
+      {
+        title: "Event sourcing minimal",
+        flow: "Événements → Topics → Projection → Replay → Snapshot",
+      },
+      {
+        title: "Connecteur base vers warehouse",
+        flow: "Kafka Connect → Schema Registry → Sink → Validation",
       },
     ],
   },
@@ -1871,6 +2437,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Contrôler quelles origines peuvent appeler l’API depuis un navigateur : ni trop ouvert, ni cassé.",
       },
     ],
+    howItWorksTitle: "Le cycle d’une requête sécurisée",
+    howItWorks: ["REQUÊTE", "VALIDATION", "SESSION", "EN-TÊTES", "SORTIE", "JOURNAL"],
+    example: {
+      title: "Durcir un formulaire de connexion",
+      steps: [
+        "Requête POST",
+        "Validation des entrées",
+        "Requête paramétrée",
+        "Session sécurisée",
+        "En-têtes HTTP",
+        "Journalisation",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Sécuriser une app DVWA",
+        flow: "Scan → Exploitation → Correctif → Re-test → Rapport",
+      },
+      {
+        title: "Audit d’en-têtes de sécurité",
+        flow: "Inventaire → Analyse → CSP et HSTS → Déploiement → Vérification",
+      },
+      {
+        title: "Revue de code sécurisée",
+        flow: "Checklist OWASP → Revue → Correctifs → Tests → Documentation",
+      },
+    ],
   },
   // ----------------------------------------------------------------- owasp
   owasp: {
@@ -1912,6 +2505,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Veille",
         definition:
           "Suivre l’évolution du Top 10 : les risques changent avec les architectures (API, cloud).",
+      },
+    ],
+    howItWorksTitle: "D’une faille à sa correction",
+    howItWorks: ["IDENTIFICATION", "EXPLOITATION", "PREUVE", "REMÉDIATION", "VÉRIFICATION", "VEILLE"],
+    example: {
+      title: "Corriger une injection SQL",
+      steps: [
+        "Catégorie A03 du Top 10",
+        "Payload d’injection",
+        "Preuve d’exploitation",
+        "Requête paramétrée",
+        "Test de non-régression",
+        "Documentation",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Exploiter puis corriger chaque faille",
+        flow: "Lab → Exploitation → Correctif → Vérification",
+      },
+      {
+        title: "Checklist d’audit",
+        flow: "Top 10 → Tests → Findings → Priorisation → Rapport",
+      },
+      {
+        title: "Pipeline SAST et DAST",
+        flow: "CI → Scan statique → Scan dynamique → Gate → Correctifs",
       },
     ],
   },
@@ -1961,6 +2581,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Travailler avec un cadre (PTES, OWASP Testing Guide) : un pentest est un processus, pas de l’improvisation.",
       },
     ],
+    howItWorksTitle: "Les phases d’un test d’intrusion",
+    howItWorks: ["RECONNAISSANCE", "SCANNING", "EXPLOITATION", "POST-EXPLOITATION", "REPORTING", "REMÉDIATION"],
+    example: {
+      title: "Pentest d’une VM vulnérable",
+      steps: [
+        "Reconnaissance passive",
+        "Scan de ports",
+        "Énumération",
+        "Exploitation",
+        "Élévation de privilèges",
+        "Rapport",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Pentest d’un lab vulnérable",
+        flow: "Scope → Recon → Exploitation → Post-exploit → Rapport",
+      },
+      {
+        title: "Rapport de pentest professionnel",
+        flow: "Findings → CVSS → Preuves → Recommandations → Re-test",
+      },
+      {
+        title: "Chaîne d’attaque complète",
+        flow: "Phishing simulé → Accès initial → Mouvement latéral → Timeline",
+      },
+    ],
   },
   // ------------------------------------------------------------------- ros
   ros: {
@@ -2002,6 +2649,34 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Navigation",
         definition:
           "La stack de navigation autonome : cartographie, localisation, planification de trajectoire.",
+      },
+    ],
+    howItWorksTitle: "Du capteur au mouvement du robot",
+    howItWorks: ["CAPTEUR", "TOPIC", "NODE", "TRAITEMENT", "COMMANDE", "ACTIONNEUR"],
+    example: {
+      title: "Robot simulé qui navigue",
+      steps: [
+        "Robot dans Gazebo",
+        "Topic /scan du LiDAR",
+        "Node de cartographie",
+        "Plan global",
+        "Plan local",
+        "Commande /cmd_vel",
+        "Robot en mouvement",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Premier robot simulé",
+        flow: "URDF → Gazebo → Nodes ROS → Topics → Simulation",
+      },
+      {
+        title: "Robot qui navigue",
+        flow: "LiDAR → SLAM → Stack navigation → Trajectoire → Déplacement",
+      },
+      {
+        title: "Bras robotique contrôlé",
+        flow: "URDF du bras → Services ROS → Planification → Commande → Mouvement réel",
       },
     ],
   },
@@ -2048,6 +2723,34 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Déboguer avec oscilloscope, analyseur logique, JTAG : quand le printf ne suffit plus.",
       },
     ],
+    howItWorksTitle: "Du code source au microcontrôleur",
+    howItWorks: ["SOURCE", "CROSS-COMPILATION", "FLASH", "BOOT", "BOUCLE PRINCIPALE", "INTERRUPTIONS"],
+    example: {
+      title: "Firmware Arduino/ESP32",
+      steps: [
+        "Capteur de température",
+        "Code Arduino",
+        "Compilation croisée",
+        "Upload du firmware",
+        "Mesure périodique",
+        "Envoi en Wi-Fi",
+        "Données sur dashboard",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Firmware Arduino/ESP32",
+        flow: "Capteur → Code C → Flash → Mesures → Port série",
+      },
+      {
+        title: "Objet connecté complet",
+        flow: "ESP32 → Wi-Fi → MQTT → Broker → Dashboard",
+      },
+      {
+        title: "Multitâche temps réel",
+        flow: "FreeRTOS → Tâches → Files → Capteurs → Actuateurs",
+      },
+    ],
   },
   // ------------------------------------------------------------------ make
   make: {
@@ -2092,6 +2795,34 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "Gérer les échecs : routes d’erreur, retries, notifications — l’automation fiable se prévoit.",
       },
     ],
+    howItWorksTitle: "Comment fonctionne un scénario Make",
+    howItWorks: ["ÉVÉNEMENT", "SCÉNARIO", "MODULE", "FILTRE", "ROUTEUR", "ACTION"],
+    example: {
+      title: "Synchroniser CRM et newsletter",
+      steps: [
+        "Nouveau contact CRM",
+        "Module déclencheur",
+        "Recherche de doublon",
+        "Filtre de validation",
+        "Inscription newsletter",
+        "Tag mis à jour",
+        "Log d’exécution",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Synchroniser CRM et newsletter",
+        flow: "CRM → Déclencheur → Filtre → Newsletter → Confirmation",
+      },
+      {
+        title: "Pipeline de qualification de leads",
+        flow: "Formulaire → Enrichissement → Score → Routeur → CRM",
+      },
+      {
+        title: "Traitement de factures",
+        flow: "Gmail → OCR → Validation → Comptabilité → Archive",
+      },
+    ],
   },
   // ---------------------------------------------------------------- zapier
   zapier: {
@@ -2132,6 +2863,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
         name: "Tables",
         definition:
           "Stocker des données simples dans Zapier : une mini-base pour les automatisations.",
+      },
+    ],
+    howItWorksTitle: "Comment fonctionne un Zap",
+    howItWorks: ["ÉVÉNEMENT", "TRIGGER", "DONNÉES", "FILTRE", "ACTION", "HISTORIQUE"],
+    example: {
+      title: "Sauvegarde auto de pièces jointes",
+      steps: [
+        "Email reçu",
+        "Trigger Gmail",
+        "Filtre pièce jointe",
+        "Upload vers Drive",
+        "Ligne ajoutée dans Sheets",
+        "Notification Slack",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Alertes automatiques",
+        flow: "Source → Trigger → Filtre → Action → Notification",
+      },
+      {
+        title: "Sauvegarde auto de pièces jointes",
+        flow: "Gmail → Filtre → Drive → Sheets → Archive",
+      },
+      {
+        title: "Reporting hebdomadaire",
+        flow: "Planification → Collecte → Formatage → Email → Équipe",
       },
     ],
   },
@@ -2177,6 +2935,33 @@ export const GUIDES_B: Record<string, SkillGuide> = {
           "L’infrastructure de clés publiques : autorités de certification, chaînes de confiance, révocation.",
       },
     ],
+    howItWorksTitle: "D’un message clair à un message vérifié",
+    howItWorks: ["GÉNÉRATION DE CLÉS", "CHIFFREMENT", "TRANSMISSION", "DÉCHIFFREMENT", "SIGNATURE", "VÉRIFICATION"],
+    example: {
+      title: "Échanger un message chiffré avec GPG",
+      steps: [
+        "Génération de la paire de clés",
+        "Partage de la clé publique",
+        "Chiffrement du message",
+        "Envoi",
+        "Déchiffrement",
+        "Vérification de la signature",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Chiffrer des messages avec GPG",
+        flow: "Clés → Chiffrement → Signature → Échange → Vérification",
+      },
+      {
+        title: "Analyser un certificat TLS",
+        flow: "Capture → Chaîne de confiance → Expiration → Algorithmes → Rapport",
+      },
+      {
+        title: "Mini PKI maison",
+        flow: "CA racine → Certificats → Révocation → Déploiement → Rotation",
+      },
+    ],
   },
   // ============================================================ TIER 3 ===
   // ------------------------------------------------------------- tensorflow
@@ -2185,6 +2970,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "TensorFlow est la plateforme de machine learning de Google : un écosystème complet (Keras, TF Serving, TF Lite) pour entraîner et déployer des modèles en production, du serveur au mobile.",
     whyLearn:
       "TensorFlow excelle là où PyTorch est plus recherche : déploiement industrialisé, mobile et embarqué, pipelines de production. Le connaître ouvre les environnements Google Cloud et les équipes ML orientées production.",
+    conceptDetails: [
+      {
+        name: "Keras",
+        definition:
+          "L’API haut niveau de TensorFlow : construire et entraîner un réseau de neurones en quelques lignes de code lisible.",
+      },
+      {
+        name: "Graphes",
+        definition:
+          "La représentation compilée du calcul : TensorFlow transforme le modèle en graphe optimisé pour une exécution rapide.",
+      },
+      {
+        name: "TF Serving",
+        definition:
+          "Le serveur de déploiement de modèles : exposer un modèle entraîné via une API gRPC ou REST, versionné et scalable.",
+      },
+      {
+        name: "TF Lite",
+        definition:
+          "Le format allégé pour mobile et embarqué : exécuter un modèle sur téléphone ou microcontrôleur, sans serveur.",
+      },
+      {
+        name: "Pipelines",
+        definition:
+          "Les pipelines de données et d’entraînement reproductibles : de l’ingestion à l’évaluation, automatisés de bout en bout.",
+      },
+      {
+        name: "Distribution",
+        definition:
+          "L’entraînement réparti sur plusieurs GPU ou machines : réduire le temps d’entraînement des grands modèles.",
+      },
+    ],
+    howItWorksTitle: "Du modèle Keras au service en production",
+    howItWorks: ["DONNÉES", "KERAS", "ENTRAÎNEMENT", "GRAPHE", "EXPORT", "SERVING", "INFÉRENCE"],
+    example: {
+      title: "Classifier des images en production",
+      steps: [
+        "Dataset d’images",
+        "Modèle Keras",
+        "Entraînement",
+        "Export SavedModel",
+        "TF Serving",
+        "API de prédiction",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Modèle déployé en production",
+        flow: "Dataset → Keras → Entraînement → TF Serving → API",
+      },
+      {
+        title: "Classification d’images",
+        flow: "Images → CNN → Entraînement → Évaluation → Modèle packagé",
+      },
+      {
+        title: "Inférence mobile avec TF Lite",
+        flow: "Modèle → Conversion → Optimisation → App mobile → Inférence locale",
+      },
+    ],
   },
   // ----------------------------------------------------------------- mlops
   mlops: {
@@ -2192,6 +3036,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Le MLOps applique les principes DevOps au machine learning : versionner données et modèles, automatiser l’entraînement et le déploiement, surveiller les modèles en production.",
     whyLearn:
       "Un modèle qui reste dans un notebook ne crée aucune valeur. Le MLOps est ce qui transforme une expérimentation en produit fiable : sans lui, les projets ML meurent en phase pilote.",
+    conceptDetails: [
+      {
+        name: "Versioning",
+        definition:
+          "Tracer chaque version du modèle, des données et du code : reproduire n’importe quelle prédiction passée à l’identique.",
+      },
+      {
+        name: "Pipelines",
+        definition:
+          "Les chaînes automatisées d’entraînement : données, features, entraînement, évaluation, exécutées de façon reproductible.",
+      },
+      {
+        name: "Déploiement",
+        definition:
+          "Mettre un modèle à disposition : API, batch ou embarqué, avec rollback possible en cas de problème.",
+      },
+      {
+        name: "Monitoring",
+        definition:
+          "Surveiller le modèle en production : qualité des prédictions, latence, dérive des données d’entrée.",
+      },
+      {
+        name: "Feature stores",
+        definition:
+          "Le répertoire central des features : les mêmes transformations en entraînement et en production, sans décalage.",
+      },
+      {
+        name: "CI/CD ML",
+        definition:
+          "L’intégration et le déploiement continus appliqués au ML : tester et livrer les modèles comme du code.",
+      },
+    ],
+    howItWorksTitle: "Du notebook au modèle surveillé en production",
+    howItWorks: ["EXPÉRIMENTATION", "VERSIONING", "PIPELINE", "CI/CD", "DÉPLOIEMENT", "MONITORING", "RÉENTRAÎNEMENT"],
+    example: {
+      title: "Surveiller la dérive d’un modèle",
+      steps: [
+        "Modèle en production",
+        "Logs de prédictions",
+        "Comparaison statistique",
+        "Dérive détectée",
+        "Alerte",
+        "Réentraînement",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Pipeline ML de bout en bout",
+        flow: "Données → Entraînement → Registry → Déploiement → Monitoring",
+      },
+      {
+        title: "Monitoring de dérive de modèle",
+        flow: "Prédictions → Métriques → Dérive → Alerte → Réentraînement",
+      },
+      {
+        title: "CI/CD pour le ML",
+        flow: "Commit → Tests → Entraînement → Validation → Déploiement auto",
+      },
+    ],
   },
   // ------------------------------------------------------- container-registry
   "container-registry": {
@@ -2199,6 +3102,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Un container registry est un dépôt qui stocke, versionne et distribue les images de conteneurs : le point de passage entre le build et le déploiement, avec scan de vulnérabilités et gestion des accès.",
     whyLearn:
       "Aucun déploiement sérieux ne se fait sans registry : c’est lui qui garantit que la production exécute exactement l’image testée, et qui sécurise la chaîne d’approvisionnement logicielle.",
+    conceptDetails: [
+      {
+        name: "Tags",
+        definition:
+          "Une étiquette posée sur une image : « latest » pour le développement, un numéro semver pour une version déployable et traçable.",
+      },
+      {
+        name: "Vulnérabilités",
+        definition:
+          "Les registres scannent chaque couche de l’image et listent les CVE connues : un rapport à consulter avant chaque déploiement.",
+      },
+      {
+        name: "Permissions",
+        definition:
+          "Les permissions contrôlent qui peut lire, écrire ou administrer le registre : dépôt public, privé, ou accès limité à une équipe.",
+      },
+      {
+        name: "GHCR",
+        definition:
+          "Le registre de conteneurs de GitHub, intégré aux repositories et aux workflows Actions : push authentifié par token.",
+      },
+      {
+        name: "Docker Hub",
+        definition:
+          "Le registre public de référence : des millions d’images officielles et communautaires, point de départ de presque tous les Dockerfiles.",
+      },
+      {
+        name: "Nettoyage",
+        definition:
+          "La purge régulière des tags obsolètes et des images non utilisées : elle limite le stockage, les coûts et la surface d’attaque.",
+      },
+    ],
+    howItWorksTitle: "Du build à la distribution d’image",
+    howItWorks: ["BUILD", "TAG", "PUSH", "SCAN", "SIGNATURE", "PULL", "DÉPLOIEMENT"],
+    example: {
+      title: "Publier une image versionnée",
+      steps: [
+        "Build en local",
+        "Tag semver",
+        "Push vers GHCR",
+        "Scan de vulnérabilités",
+        "Validation du rapport",
+        "Pull en CI",
+        "Déploiement",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Publier une image versionnée",
+        flow: "Build → Tag → Push GHCR → Référence épinglée",
+      },
+      {
+        title: "Scanner ses images",
+        flow: "Push → Scan → Rapport CVE → Correctif → Rebuild",
+      },
+      {
+        title: "Politique de nettoyage",
+        flow: "Tags datés → Règles de rétention → Purge → Coûts maîtrisés",
+      },
+    ],
   },
   // ------------------------------------------------------------------ helm
   helm: {
@@ -2206,6 +3169,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Helm est le gestionnaire de paquets de Kubernetes : il package des applications en « charts » versionnés et paramétrables, installables et mis à jour en une commande au lieu de YAML écrits à la main.",
     whyLearn:
       "Helm évite de maintenir des centaines de fichiers YAML : un chart paramétrable déploie la même application en dev, staging et prod. C’est le standard pour distribuer et opérer des apps sur Kubernetes.",
+    conceptDetails: [
+      {
+        name: "Charts",
+        definition:
+          "Un chart est un paquet Helm : l’ensemble des manifestes Kubernetes d’une application, versionné et partageable.",
+      },
+      {
+        name: "Values",
+        definition:
+          "Le fichier values.yaml contient les paramètres d’un chart : image, replicas, ressources — ce qui change entre dev et prod.",
+      },
+      {
+        name: "Templates",
+        definition:
+          "Les templates sont des manifestes YAML avec des variables : Helm les rend avec les values pour générer les ressources finales.",
+      },
+      {
+        name: "Releases",
+        definition:
+          "Une release est une instance installée d’un chart : chaque upgrade crée une révision, avec rollback en une commande.",
+      },
+      {
+        name: "Repositories",
+        definition:
+          "Les repositories hébergent des charts partageables, publics ou privés : le catalogue d’où l’on installe Prometheus, Redis ou ingress-nginx.",
+      },
+      {
+        name: "Hooks",
+        definition:
+          "Les hooks exécutent des jobs à des moments précis du cycle de vie (pré-install, post-upgrade) : migrations de base, sauvegardes, tests.",
+      },
+    ],
+    howItWorksTitle: "Du chart au déploiement Kubernetes",
+    howItWorks: ["CHART", "VALUES", "TEMPLATE", "RENDER", "RELEASE", "INSTALL", "UPGRADE"],
+    example: {
+      title: "Créer un chart pour son application",
+      steps: [
+        "Scaffolding du chart",
+        "Templates paramétrés",
+        "Values par défaut",
+        "Lint et tests",
+        "Packaging",
+        "Install sur le cluster",
+        "Upgrade",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Créer un chart pour son app",
+        flow: "Chart → Templates → Values → Install → Release",
+      },
+      {
+        title: "Déployer une stack via charts publics",
+        flow: "Repo → Recherche → Values custom → Install → Upgrade",
+      },
+      {
+        title: "Releases multi-environnements",
+        flow: "Values dev → Values prod → Diff → Rollback",
+      },
+    ],
   },
   // ---------------------------------------------------------- k8s-operators
   "k8s-operators": {
@@ -2213,6 +3236,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Les Operators sont des contrôleurs Kubernetes qui pilotent des applications complexes (bases de données, files) : ils étendent l’API Kubernetes avec des ressources custom et une logique de réconciliation automatique.",
     whyLearn:
       "Les Operators sont le niveau expert de Kubernetes : ils encapsulent l’expertise opérationnelle d’une application en code. Les comprendre, c’est passer d’utilisateur à concepteur de plateformes.",
+    conceptDetails: [
+      {
+        name: "CRD",
+        definition:
+          "Une Custom Resource Definition étend l’API Kubernetes avec un nouveau type d’objet : la base sur laquelle un opérateur agit.",
+      },
+      {
+        name: "Contrôleurs",
+        definition:
+          "Un contrôleur observe les ressources et agit en conséquence : il traduit l’état désiré en actions concrètes sur le cluster.",
+      },
+      {
+        name: "Reconciliation",
+        definition:
+          "La boucle de réconciliation compare en permanence l’état réel à l’état désiré et corrige les écarts : scale, redémarre, reprovisionne.",
+      },
+      {
+        name: "OLM",
+        definition:
+          "L’Operator Lifecycle Manager gère l’installation, les mises à jour et les dépendances des opérateurs sur un cluster.",
+      },
+      {
+        name: "Patterns",
+        definition:
+          "Les patterns d’opérateurs codifient les bonnes pratiques : un opérateur par application, état stocké dans les CR, actions idempotentes.",
+      },
+      {
+        name: "SDK",
+        definition:
+          "L’Operator SDK fournit les outils pour générer un opérateur : scaffolding, génération de CRD, tests et packaging.",
+      },
+    ],
+    howItWorksTitle: "D’une ressource custom à une application pilotée",
+    howItWorks: ["CRD", "RESSOURCE", "WATCH", "RECONCILE", "ÉTAT DÉSIRÉ", "ACTIONS", "ÉTAT RÉEL"],
+    example: {
+      title: "Opérateur pour une base de données",
+      steps: [
+        "CRD définie",
+        "Opérateur déployé",
+        "Ressource créée",
+        "Provisionnement automatique",
+        "Sauvegardes planifiées",
+        "Failover testé",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "CRD custom déployée",
+        flow: "Schéma CRD → Ressource YAML → Validation → kubectl",
+      },
+      {
+        title: "Opérateur pour une base de données",
+        flow: "CRD → Contrôleur → Réconciliation → Sauvegardes auto",
+      },
+      {
+        title: "Packager avec OLM",
+        flow: "Bundle → Catalogue → Installation → Mises à jour gérées",
+      },
+    ],
   },
   // ----------------------------------------------------------------- azure
   azure: {
@@ -2220,6 +3302,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Azure est la plateforme cloud de Microsoft : forte intégration avec l’écosystème Microsoft (Active Directory, Office, .NET), cloud hybride et services IA.",
     whyLearn:
       "Azure domine dans les entreprises utilisatrices de Microsoft : savoir y déployer (VM, App Service, Entra ID) ouvre un immense marché de l’emploi, notamment dans les grands comptes et le secteur public.",
+    conceptDetails: [
+      {
+        name: "VM",
+        definition:
+          "Une machine virtuelle Azure : un serveur Windows ou Linux à la demande, dimensionnable, facturé à l’usage.",
+      },
+      {
+        name: "App Service",
+        definition:
+          "La plateforme d’hébergement managée pour applications web et API : déploiement Git, slots de staging, TLS intégré.",
+      },
+      {
+        name: "Entra ID",
+        definition:
+          "Le service d’identité d’Azure (ex-Azure AD) : authentification unique, MFA et accès conditionnel pour utilisateurs et applications.",
+      },
+      {
+        name: "Blob Storage",
+        definition:
+          "Le stockage objet d’Azure pour fichiers, médias et sauvegardes : hiérarchisé en niveaux d’accès chaud, froid et archive.",
+      },
+      {
+        name: "Functions",
+        definition:
+          "Le serverless d’Azure : du code exécuté à l’événement, sans serveur à gérer, facturé à l’exécution.",
+      },
+      {
+        name: "Hybride",
+        definition:
+          "Le modèle hybride connecte le datacenter existant au cloud Azure : VPN, ExpressRoute et Azure Arc pour une gestion unifiée.",
+      },
+    ],
+    howItWorksTitle: "D’un abonnement à une application hébergée",
+    howItWorks: ["ABONNEMENT", "RESOURCE GROUP", "RÉSEAU VNET", "COMPUTE", "IDENTITÉS", "DÉPLOIEMENT", "SUPERVISION"],
+    example: {
+      title: "Déployer une app .NET",
+      steps: [
+        "Code .NET",
+        "App Service créé",
+        "Pipeline CI/CD",
+        "Base SQL Azure",
+        "Entra ID configuré",
+        "Domaine custom",
+        "Supervision activée",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Déployer une app .NET",
+        flow: "Code → Build → App Service → SQL Azure → Domaine",
+      },
+      {
+        title: "Fonctions serverless",
+        flow: "Functions → Déclencheurs → Blob Storage → Intégrations",
+      },
+      {
+        title: "Infrastructure hybride",
+        flow: "On-premise → VPN/ExpressRoute → Arc → Gestion unifiée",
+      },
+    ],
   },
   // ------------------------------------------------------------------- gcp
   gcp: {
@@ -2227,6 +3369,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "GCP (Google Cloud Platform) est le cloud né de l’infrastructure de Google : excellence sur Kubernetes (GKE), la data (BigQuery) et la simplicité réseau.",
     whyLearn:
       "GCP est le choix naturel pour le Kubernetes managé et l’analytique à grande échelle. Ses concepts se transfèrent aux autres clouds, et BigQuery reste une référence pour la data.",
+    conceptDetails: [
+      {
+        name: "GCE",
+        definition:
+          "Google Compute Engine : des machines virtuelles haute performance, avec remises automatiques sur usage soutenu.",
+      },
+      {
+        name: "GKE",
+        definition:
+          "Google Kubernetes Engine : Kubernetes managé par Google, en mode Standard ou Autopilot où les nœuds sont gérés pour vous.",
+      },
+      {
+        name: "BigQuery",
+        definition:
+          "L’entrepôt de données serverless de Google : des requêtes SQL sur des pétaoctets en quelques secondes, sans infrastructure à gérer.",
+      },
+      {
+        name: "Cloud Run",
+        definition:
+          "La plateforme serverless pour conteneurs : déployez une image, elle scale à zéro puis monte en charge automatiquement.",
+      },
+      {
+        name: "IAM",
+        definition:
+          "Identity and Access Management : qui peut faire quoi sur quelles ressources, avec le principe du moindre privilège.",
+      },
+      {
+        name: "Réseau",
+        definition:
+          "Le réseau mondial de Google : un seul VPC global, des sous-réseaux régionaux, pare-feu et Cloud NAT intégrés.",
+      },
+    ],
+    howItWorksTitle: "D’un projet à une application conteneurisée",
+    howItWorks: ["PROJET", "RÉSEAU VPC", "COMPUTE", "CONTENEURS", "IAM", "DONNÉES", "OBSERVABILITÉ"],
+    example: {
+      title: "App conteneurisée sur Cloud Run",
+      steps: [
+        "Image Docker",
+        "Artifact Registry",
+        "Service Cloud Run",
+        "Variables d’environnement",
+        "Domaine custom",
+        "Autoscaling",
+        "Logs centralisés",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "App conteneurisée sur Cloud Run",
+        flow: "Image → Registry → Cloud Run → Domaine → HTTPS",
+      },
+      {
+        title: "Pipeline data BigQuery",
+        flow: "Données → Cloud Storage → BigQuery → Requêtes SQL → Dashboard",
+      },
+      {
+        title: "Cluster GKE",
+        flow: "VPC → GKE Autopilot → Workloads → Ingress → Monitoring",
+      },
+    ],
   },
   // --------------------------------------------------------------- grafana
   grafana: {
@@ -2234,6 +3436,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Grafana est la plateforme de visualisation de l’observabilité : elle transforme métriques, logs et traces en dashboards lisibles, avec alerting intégré.",
     whyLearn:
       "Des métriques sans visualisation ne servent à personne. Grafana est le standard pour rendre l’état des systèmes lisible par toute l’équipe — et pour construire une culture d’alerting pertinente plutôt que bruyante.",
+    conceptDetails: [
+      {
+        name: "Dashboards",
+        definition:
+          "Les vues qui assemblent plusieurs panels : la synthèse visuelle de l’état d’un système, partageable à toute l’équipe.",
+      },
+      {
+        name: "Datasources",
+        definition:
+          "Les connexions vers les sources de données (Prometheus, Loki, SQL…) : Grafana interroge, il ne stocke rien lui-même.",
+      },
+      {
+        name: "Alertes",
+        definition:
+          "Les règles qui surveillent une métrique et notifient (Slack, PagerDuty) quand un seuil est franchi.",
+      },
+      {
+        name: "Variables",
+        definition:
+          "Les paramètres dynamiques d’un dashboard (environnement, instance) : un seul dashboard pour toute l’infrastructure.",
+      },
+      {
+        name: "Panels",
+        definition:
+          "Les blocs de visualisation (graphique, jauge, table) : chacun exécute une requête contre une datasource.",
+      },
+      {
+        name: "Provisioning",
+        definition:
+          "Déclarer dashboards et datasources en fichiers versionnés : les déployer via Git plutôt qu’à la main.",
+      },
+    ],
+    howItWorksTitle: "De la métrique au dashboard d’alerte",
+    howItWorks: ["DATASOURCE", "REQUÊTE", "PANEL", "DASHBOARD", "VARIABLE", "ALERTE", "NOTIFICATION"],
+    example: {
+      title: "Dashboard SRE complet",
+      steps: [
+        "Prometheus en datasource",
+        "Panels latence et erreurs",
+        "Variables d’environnement",
+        "Seuils d’alerte",
+        "Règles configurées",
+        "Notifications Slack",
+        "Dashboard partagé à l’équipe",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Dashboard SRE complet",
+        flow: "Prometheus → Datasource → Panels → Variables → Dashboard",
+      },
+      {
+        title: "Alerting multi-sources",
+        flow: "Métriques + Logs → Règles → Alertmanager → Astreinte",
+      },
+      {
+        title: "Dashboards versionnés",
+        flow: "JSON → Provisioning → Git → Déploiement → Infra as code",
+      },
+    ],
   },
   // ---------------------------------------------------- platform-engineering
   "platform-engineering": {
@@ -2241,6 +3503,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Le platform engineering industrialise le DevOps : construire des plateformes internes (IDP) qui offrent aux développeurs du self-service (environnements, déploiements, observabilité) via des « golden paths ».",
     whyLearn:
       "C’est l’évolution naturelle du DevOps à l’échelle : au lieu que chaque équipe réinvente son infrastructure, une équipe plateforme fournit des briques standard. Le sommet actuel des carrières infra.",
+    conceptDetails: [
+      {
+        name: "IDP",
+        definition:
+          "Internal Developer Platform : l’ensemble des outils et APIs self-service qui permettent à un développeur de livrer sans attendre l’équipe infra.",
+      },
+      {
+        name: "Self-service",
+        definition:
+          "Le principe clé de la plateforme : le développeur provisionne lui-même environnements, bases et déploiements, sans ticket.",
+      },
+      {
+        name: "Golden paths",
+        definition:
+          "Les chemins standardisés et supportés (templates, pipelines) : la voie rapide et sécurisée pour mettre en production.",
+      },
+      {
+        name: "Backstage",
+        definition:
+          "Le portail open source de Spotify : catalogue de services, documentation et scaffolding réunis au même endroit.",
+      },
+      {
+        name: "GitOps",
+        definition:
+          "Git comme source de vérité : tout changement d’infrastructure passe par une pull request, puis est déployé automatiquement.",
+      },
+      {
+        name: "DX",
+        definition:
+          "Developer Experience : la mesure d’une plateforme — réduire la friction entre une idée et sa mise en production.",
+      },
+    ],
+    howItWorksTitle: "De la demande développeur au déploiement self-service",
+    howItWorks: ["BESOIN", "GOLDEN PATH", "IDP", "SELF-SERVICE", "GITOPS", "OBSERVABILITÉ"],
+    example: {
+      title: "Portail développeur minimal",
+      steps: [
+        "Backstage déployé",
+        "Catalogue de services",
+        "Template de scaffold",
+        "Création du repo",
+        "Pipeline générée",
+        "Déploiement auto",
+        "Documentation à jour",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Portail développeur minimal",
+        flow: "Backstage → Catalogue → Templates → Self-service",
+      },
+      {
+        title: "Pipeline GitOps complète",
+        flow: "Commit → CI → Git → ArgoCD → Cluster",
+      },
+      {
+        title: "Golden path applicatif",
+        flow: "Template → Environnements → Observabilité → Standards",
+      },
+    ],
   },
   // ----------------------------------------------------------------- mysql
   mysql: {
@@ -2248,6 +3570,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "MySQL est le système de gestion de base de données relationnelle le plus répandu : simple, rapide, il propulse une immense partie du web historique (WordPress et Cie).",
     whyLearn:
       "MySQL reste incontournable : des millions de sites en production l’utilisent. Le connaître — avec ses différences face à PostgreSQL — est indispensable pour maintenir l’existant et choisir en connaissance de cause.",
+    conceptDetails: [
+      {
+        name: "InnoDB",
+        definition:
+          "Le moteur de stockage par défaut : transactions ACID, verrouillage au niveau ligne, clés étrangères.",
+      },
+      {
+        name: "Index",
+        definition:
+          "Une structure B-tree qui accélère les recherches : à créer sur les colonnes filtrées et jointes, avec modération sur les tables très écrites.",
+      },
+      {
+        name: "Réplication",
+        definition:
+          "Un primaire propage ses écritures vers des réplicas en lecture : scale-out des lectures et bascule en cas de panne.",
+      },
+      {
+        name: "Optimisation",
+        definition:
+          "EXPLAIN, index, requêtes réécrites, buffer pool : mesurer avant d’optimiser, vérifier après.",
+      },
+      {
+        name: "Sauvegarde",
+        definition:
+          "mysqldump pour les petites bases, sauvegardes physiques pour les grosses : tester la restauration, pas seulement la sauvegarde.",
+      },
+      {
+        name: "Sécurité",
+        definition:
+          "Comptes à privilèges minimaux, mot de passe root, TLS, suppression des comptes anonymes et de la base de test.",
+      },
+    ],
+    howItWorksTitle: "De la requête à la ligne retournée",
+    howItWorks: ["CONNEXION", "PARSE", "OPTIMISEUR", "MOTEUR INNODB", "LECTURE", "RÉSULTAT"],
+    example: {
+      title: "Optimiser une boutique WordPress",
+      steps: [
+        "Requêtes lentes",
+        "Slow query log",
+        "Index manquants",
+        "EXPLAIN",
+        "Cache applicatif",
+        "Temps de réponse divisé",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Base WordPress optimisée",
+        flow: "Audit → Index → Cache → Configuration → Monitoring",
+      },
+      {
+        title: "Migration vers PostgreSQL",
+        flow: "Schéma → Conversion → Données → Tests → Bascule",
+      },
+      {
+        title: "Réplication primaire / réplica",
+        flow: "Configuration → GTID → Réplica → Bascule → Supervision",
+      },
+    ],
   },
   // --------------------------------------------------------------- rabbitmq
   rabbitmq: {
@@ -2255,6 +3636,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "RabbitMQ est un broker de messages robuste : il découple les services via des files d’attente, absorbe les pics de charge et garantit la livraison des messages.",
     whyLearn:
       "RabbitMQ est la façon éprouvée de rendre des architectures résilientes : workers asynchrones, notifications, découplage. Plus simple que Kafka pour les files classiques, il reste un standard du messaging.",
+    conceptDetails: [
+      {
+        name: "Queues",
+        definition:
+          "Une file stocke les messages en attente de traitement : FIFO, durable si configurée ainsi, consommée par un ou plusieurs workers.",
+      },
+      {
+        name: "Exchanges",
+        definition:
+          "Le routeur qui reçoit les messages publiés et les distribue aux files selon des règles : direct, topic, fanout, headers.",
+      },
+      {
+        name: "Routing",
+        definition:
+          "La clé de routage détermine quelle file reçoit chaque message : le binding lie une clé à une file.",
+      },
+      {
+        name: "ACK",
+        definition:
+          "L’acquittement confirme le traitement : sans ACK, le message est renvoyé à un autre consommateur.",
+      },
+      {
+        name: "Persistance",
+        definition:
+          "Les messages et files durables survivent au redémarrage du broker : écrits sur disque, pas seulement en mémoire.",
+      },
+      {
+        name: "Clustering",
+        definition:
+          "Plusieurs nœuds partagent la charge et assurent la haute disponibilité : les files miroir répliquent les messages.",
+      },
+    ],
+    howItWorksTitle: "De la publication à l’acquittement",
+    howItWorks: ["PUBLISH", "EXCHANGE", "ROUTING", "QUEUE", "DELIVERY", "ACK"],
+    example: {
+      title: "Envoi d’emails asynchrone",
+      steps: [
+        "Inscription utilisateur",
+        "Publication du message",
+        "Exchange direct",
+        "File emails",
+        "Worker",
+        "ACK et suppression",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Workers asynchrones",
+        flow: "Publisher → Exchange → Queue → Worker → ACK",
+      },
+      {
+        title: "Notifications découplées",
+        flow: "Événements → Topic exchange → Files par canal → Workers → Retry",
+      },
+      {
+        title: "Cluster haute disponibilité",
+        flow: "Nœuds → Files miroir → Bascule → Monitoring",
+      },
+    ],
   },
   // -------------------------------------------------------------- analytics
   analytics: {
@@ -2262,6 +3702,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "La data analytics est l’analyse décisionnelle : avec SQL et des outils BI, transformer des données en dashboards, KPIs et réponses aux questions business.",
     whyLearn:
       "L’analytics est la voie la plus directe vers un métier data : pas de modèles complexes, mais des réponses fiables aux questions qui pilotent l’entreprise. C’est aussi le socle de la data science.",
+    conceptDetails: [
+      {
+        name: "SQL avancé",
+        definition:
+          "Aller au-delà du SELECT : fenêtres analytiques, CTE, agrégations complexes pour répondre aux questions business.",
+      },
+      {
+        name: "BI",
+        definition:
+          "La business intelligence : transformer les données brutes en indicateurs exploitables pour la décision.",
+      },
+      {
+        name: "Dashboards",
+        definition:
+          "Les tableaux de bord interactifs : visualiser les KPI en temps réel, filtrables par les utilisateurs métier.",
+      },
+      {
+        name: "KPI",
+        definition:
+          "Les indicateurs clés de performance : les quelques métriques qui pilotent réellement l’activité.",
+      },
+      {
+        name: "Nettoyage",
+        definition:
+          "Préparer les données avant analyse : doublons, valeurs manquantes, formats incohérents.",
+      },
+      {
+        name: "Présentation",
+        definition:
+          "Raconter les résultats : un insight sans narration claire ne déclenche aucune décision.",
+      },
+    ],
+    howItWorksTitle: "De la question business au dashboard",
+    howItWorks: ["QUESTION", "DONNÉES", "SQL", "NETTOYAGE", "AGRÉGATION", "VISUALISATION", "DÉCISION"],
+    example: {
+      title: "Dashboard KPI e-commerce",
+      steps: [
+        "Base de commandes",
+        "Requêtes SQL",
+        "KPI calculés",
+        "Dashboard BI",
+        "Filtres interactifs",
+        "Revue hebdo",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Dashboard KPI e-commerce",
+        flow: "Données → SQL → Modèle BI → Dashboard → Décisions",
+      },
+      {
+        title: "Rapport automatisé",
+        flow: "Requêtes → Agrégations → Template → Envoi planifié → Stakeholders",
+      },
+      {
+        title: "Analyse de cohorte",
+        flow: "Événements → Cohortes → Rétention → Insights → Recommandations",
+      },
+    ],
   },
   // ------------------------------------------------------------------ siem
   siem: {
@@ -2269,6 +3768,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Un SIEM (Security Information and Event Management) centralise les logs de toute l’infrastructure, corrèle les événements et détecte les attaques en temps réel : les yeux du SOC.",
     whyLearn:
       "Sans centralisation des logs, une attaque passe inaperçue pendant des mois. Le SIEM est le cœur de la détection : savoir écrire des règles de détection pertinentes est une compétence clé des analystes SOC.",
+    conceptDetails: [
+      {
+        name: "Logs",
+        definition:
+          "La matière première : événements système, réseau et applicatifs, collectés et horodatés depuis toutes les sources.",
+      },
+      {
+        name: "Corrélation",
+        definition:
+          "Relier des événements isolés entre eux — même IP, même utilisateur, fenêtre de temps — pour révéler une attaque.",
+      },
+      {
+        name: "Règles",
+        definition:
+          "Des conditions qui déclenchent des alertes : seuils, séquences, listes noires — le cœur de la détection.",
+      },
+      {
+        name: "Wazuh/Splunk",
+        definition:
+          "Les plateformes SIEM de référence : Wazuh en open source auto-hébergé, Splunk en solution entreprise.",
+      },
+      {
+        name: "Triage",
+        definition:
+          "Qualifier une alerte — vrai positif, faux positif, criticité — avant d’escalader vers l’équipe de réponse.",
+      },
+      {
+        name: "Dashboards",
+        definition:
+          "Les vues qui résument la posture sécurité : alertes par criticité, top sources, tendances — pour le pilotage quotidien.",
+      },
+    ],
+    howItWorksTitle: "Du log brut à l’alerte qualifiée",
+    howItWorks: ["COLLECTE", "NORMALISATION", "CORRÉLATION", "RÈGLE", "ALERTE", "TRIAGE"],
+    example: {
+      title: "Détecter une connexion suspecte",
+      steps: [
+        "Logs d’authentification",
+        "Collecte centralisée",
+        "Corrélation d’événements",
+        "Règle déclenchée",
+        "Alerte qualifiée",
+        "Investigation",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "SIEM maison avec Wazuh",
+        flow: "Agents → Collecte → Règles → Alertes → Dashboard",
+      },
+      {
+        title: "Règles de détection custom",
+        flow: "Scénario → Source de logs → Règle → Test → Tuning",
+      },
+      {
+        title: "Runbook de triage",
+        flow: "Alertes → Qualification → Escalade → Documentation → Métriques",
+      },
+    ],
   },
   // ------------------------------------------------------- incident-response
   "incident-response": {
@@ -2276,6 +3834,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "La réponse aux incidents est la gestion de crise sécurité : contenir l’attaque, éradiquer la menace, récupérer les systèmes, puis tirer les leçons. Elle s’appuie sur des playbooks préparés à l’avance.",
     whyLearn:
       "La question n’est pas « si » mais « quand » un incident surviendra. Savoir réagir méthodiquement sous pression — plutôt qu’improviser — fait la différence entre un incident contenu et une crise majeure.",
+    conceptDetails: [
+      {
+        name: "Playbooks",
+        definition:
+          "Des procédures pas-à-pas par scénario — ransomware, phishing, fuite de données : qui fait quoi, dans quel ordre, avec quels outils.",
+      },
+      {
+        name: "Confinement",
+        definition:
+          "Isoler les systèmes affectés du réseau sans les éteindre : stopper la propagation tout en préservant les preuves.",
+      },
+      {
+        name: "Forensique",
+        definition:
+          "L’analyse des traces — disque, mémoire, logs — pour comprendre le vecteur d’entrée, l’étendue et la chronologie de l’attaque.",
+      },
+      {
+        name: "Communication",
+        definition:
+          "Informer les parties prenantes au bon moment : direction, juridique, clients, autorités — avec des messages préparés à l’avance.",
+      },
+      {
+        name: "Retour d’expérience",
+        definition:
+          "La revue post-incident : ce qui a fonctionné, ce qui a raté, les actions correctives — sans blâmer.",
+      },
+      {
+        name: "Préparation",
+        definition:
+          "Le travail en amont : playbooks testés, sauvegardes vérifiées, rôles définis, exercices de simulation réguliers.",
+      },
+    ],
+    howItWorksTitle: "Le cycle de vie d’un incident",
+    howItWorks: ["PRÉPARATION", "DÉTECTION", "CONFINEMENT", "ÉRADICATION", "RÉCUPÉRATION", "RETOUR D’EXPÉRIENCE"],
+    example: {
+      title: "Ransomware sur un poste",
+      steps: [
+        "Détection EDR",
+        "Isolement réseau",
+        "Analyse forensique",
+        "Éradication",
+        "Restauration",
+        "Retour d’expérience",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Simuler une réponse à incident",
+        flow: "Scénario → Tabletop → Chronologie → Décisions → Débrief",
+      },
+      {
+        title: "Rédiger un playbook",
+        flow: "Scénario → Rôles → Procédures → Contacts → Test",
+      },
+      {
+        title: "Kit forensique",
+        flow: "Images disque → Timeline → IOC → Rapport → Leçons",
+      },
+    ],
   },
   // ------------------------------------------------------------------- cpp
   cpp: {
@@ -2283,6 +3900,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "C et C++ sont les langages du système et de l’embarqué : gestion manuelle de la mémoire, performance maximale, contrôle total sur le matériel. Ils sont derrière les OS, les moteurs de jeu et les microcontrôleurs.",
     whyLearn:
       "Le C/C++ enseigne ce que les langages managés cachent : mémoire, pointeurs, compilation. Indispensable pour l’embarqué, les systèmes et la performance — et une école de rigueur pour tout programmeur.",
+    conceptDetails: [
+      {
+        name: "Pointeurs",
+        definition:
+          "Les adresses mémoire manipulées directement : la base du C, source de sa puissance comme de ses bugs.",
+      },
+      {
+        name: "Mémoire",
+        definition:
+          "La gestion manuelle (new/delete, RAII) : allouer, libérer, éviter fuites et corruptions.",
+      },
+      {
+        name: "POO",
+        definition:
+          "Classes, héritage, polymorphisme : organiser le code en objets avec un coût d’abstraction quasi nul.",
+      },
+      {
+        name: "Templates",
+        definition:
+          "La programmation générique : écrire du code indépendant du type, résolu à la compilation.",
+      },
+      {
+        name: "STL",
+        definition:
+          "La bibliothèque standard (vector, map, algorithms) : des conteneurs et algorithmes éprouvés, à connaître avant de réinventer.",
+      },
+      {
+        name: "Compilation",
+        definition:
+          "Le pipeline préprocesseur → compilation → édition de liens : comprendre les erreurs et optimiser le binaire.",
+      },
+    ],
+    howItWorksTitle: "Du source au binaire natif",
+    howItWorks: ["SOURCE", "PRÉPROCESSEUR", "COMPILATION", "ÉDITION DE LIENS", "BINAIRE", "EXÉCUTION"],
+    example: {
+      title: "Driver pour microcontrôleur",
+      steps: [
+        "Datasheet du périphérique",
+        "Registres identifiés",
+        "Code C bare metal",
+        "Compilation croisée",
+        "Flash du firmware",
+        "Périphérique piloté",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Moteur de jeu minimal",
+        flow: "Boucle de jeu → Entités → Rendu → Build → Exécutable",
+      },
+      {
+        title: "Parseur de protocole binaire",
+        flow: "Buffer → Pointeurs → Machine d’états → Tests → Benchmarks",
+      },
+      {
+        title: "Driver pour microcontrôleur",
+        flow: "Datasheet → Registres → Code C → Flash → Hardware",
+      },
+    ],
   },
   // ------------------------------------------------------------ electronics
   electronics: {
@@ -2290,6 +3966,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "L’électronique est la compréhension du hardware : tension, courant, composants, lecture de schémas. Elle explique ce qui se passe physiquement dans la machine que le logiciel pilote.",
     whyLearn:
       "Pour la robotique et l’embarqué, le logiciel seul ne suffit pas : il faut comprendre capteurs, alimentations et signaux. L’électronique est le pont entre le code et le monde physique.",
+    conceptDetails: [
+      {
+        name: "Circuits",
+        definition:
+          "Les lois de base (Ohm, Kirchhoff) : calculer courant, tension et puissance dans une maille.",
+      },
+      {
+        name: "Composants",
+        definition:
+          "Résistances, condensateurs, transistors, diodes : le rôle de chacun et comment les dimensionner.",
+      },
+      {
+        name: "Numérique",
+        definition:
+          "La logique binaire et les portes : comment des 0 et des 1 deviennent des calculs.",
+      },
+      {
+        name: "Signaux",
+        definition:
+          "Analogique contre numérique, PWM, bruit : la forme réelle des tensions dans un circuit.",
+      },
+      {
+        name: "Alimentation",
+        definition:
+          "Fournir une tension stable et suffisante : régulateurs, découplage, dimensionnement du courant.",
+      },
+      {
+        name: "Schémas",
+        definition:
+          "Le langage de l’électronique : symboles, nets, masses — lire un schéma avant de câbler.",
+      },
+    ],
+    howItWorksTitle: "Du schéma au circuit qui fonctionne",
+    howItWorks: ["SCHÉMA", "COMPOSANTS", "BREADBOARD", "ALIMENTATION", "MESURES", "DEBUG"],
+    example: {
+      title: "Monter un circuit sur breadboard",
+      steps: [
+        "Schéma du montage",
+        "Composants rassemblés",
+        "Câblage breadboard",
+        "Alimentation 5 V",
+        "Vérification au multimètre",
+        "LED allumée",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Monter un circuit sur breadboard",
+        flow: "Schéma → Composants → Breadboard → Alimentation → Mesures",
+      },
+      {
+        title: "Alimentation régulée",
+        flow: "Transformateur → Redressement → Régulateur → Filtrage → 5 V stable",
+      },
+      {
+        title: "Capteur câblé à un microcontrôleur",
+        flow: "Datasheet → Schéma → Câblage → Code → Mesures",
+      },
+    ],
   },
   // --------------------------------------------------------------- sensors
   sensors: {
@@ -2297,6 +4032,66 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "Les capteurs sont les sens des machines : ils convertissent le monde physique (distance, température, mouvement, image) en signaux numériques exploitables par le logiciel.",
     whyLearn:
       "Aucun robot ni objet connecté ne fonctionne sans capteurs : les choisir, les calibrer et filtrer leur bruit est au cœur de tout projet embarqué ou robotique.",
+    conceptDetails: [
+      {
+        name: "Types de capteurs",
+        definition:
+          "Température, distance (ultrasons, LiDAR), IMU, pression, caméras : choisir selon la grandeur mesurée et la précision requise.",
+      },
+      {
+        name: "ADC",
+        definition:
+          "Le convertisseur analogique-numérique : transformer une tension continue en valeur discrète, avec une résolution à connaître.",
+      },
+      {
+        name: "Calibration",
+        definition:
+          "Corriger les biais du capteur (offset, gain) par comparaison avec une référence : sans elle, les mesures dérivent.",
+      },
+      {
+        name: "Bruit",
+        definition:
+          "Les fluctuations parasites de la mesure : les quantifier, puis les réduire par moyennage ou filtrage.",
+      },
+      {
+        name: "Fusion",
+        definition:
+          "Combiner plusieurs capteurs (accéléromètre + gyroscope) pour une estimation plus fiable qu’aucun capteur seul.",
+      },
+      {
+        name: "Protocoles",
+        definition:
+          "I2C, SPI, UART, 1-Wire : les bus qui transportent les mesures du capteur au microcontrôleur.",
+      },
+    ],
+    howItWorksTitle: "Du phénomène physique à la donnée",
+    howItWorks: ["PHÉNOMÈNE", "CAPTEUR", "SIGNAL", "ADC", "CALIBRATION", "FILTRAGE", "DONNÉE"],
+    example: {
+      title: "Station météo connectée",
+      steps: [
+        "Capteurs BME280",
+        "Câblage I2C",
+        "Lecture brute",
+        "Calibration des offsets",
+        "Moyennage des mesures",
+        "Envoi MQTT",
+        "Dashboard météo",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Station météo connectée",
+        flow: "Capteurs → ESP32 → MQTT → Broker → Dashboard",
+      },
+      {
+        title: "Robot suiveur de ligne",
+        flow: "Capteurs IR → Seuils → Calibration → Boucle → Moteurs",
+      },
+      {
+        title: "Centrale inertielle filtrée",
+        flow: "IMU → Bruit → Filtre de Kalman → Angles → Affichage",
+      },
+    ],
   },
   // --------------------------------------------------------- control-systems
   "control-systems": {
@@ -2304,6 +4099,65 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "L’asservissement (control systems) est la théorie du contrôle : boucles de régulation, correcteurs PID, stabilité. Faire en sorte qu’une machine atteigne précisément sa consigne malgré les perturbations.",
     whyLearn:
       "Un drone qui reste stable, un moteur qui tourne à vitesse constante, un bras qui atteint sa cible : tout repose sur l’asservissement. C’est la théorie qui transforme un prototype en machine fiable.",
+    conceptDetails: [
+      {
+        name: "PID",
+        definition:
+          "Le correcteur proportionnel-intégral-dérivé : réagir à l’erreur présente, passée et future pour atteindre la consigne.",
+      },
+      {
+        name: "Boucles",
+        definition:
+          "Boucle ouverte contre boucle fermée : mesurer la sortie et corriger en continu, le principe de tout asservissement.",
+      },
+      {
+        name: "Stabilité",
+        definition:
+          "Garantir que le système converge sans osciller ni diverger : marges de gain et de phase, réglage des gains.",
+      },
+      {
+        name: "Modélisation",
+        definition:
+          "Décrire le système par des équations (fonction de transfert) pour prédire son comportement avant de régler.",
+      },
+      {
+        name: "Filtrage",
+        definition:
+          "Nettoyer la mesure avant de l’utiliser : un capteur bruité injecté dans une boucle rend le système instable.",
+      },
+      {
+        name: "Simulation",
+        definition:
+          "Tester le correcteur sur un modèle (Python, MATLAB) avant le hardware : régler sans rien casser.",
+      },
+    ],
+    howItWorksTitle: "De la consigne à la régulation stable",
+    howItWorks: ["CONSIGNE", "MESURE", "ERREUR", "CORRECTEUR", "COMMANDE", "SYSTÈME"],
+    example: {
+      title: "Réguler un moteur en PID",
+      steps: [
+        "Moteur + encodeur",
+        "Consigne de vitesse",
+        "Erreur mesurée",
+        "Réglage des gains PID",
+        "Commande PWM",
+        "Vitesse stable",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Réguler un moteur en PID",
+        flow: "Encodeur → Erreur → PID → PWM → Vitesse stable",
+      },
+      {
+        title: "Régulation de température",
+        flow: "Capteur → Consigne → PID → Chauffage → Stabilité",
+      },
+      {
+        title: "Simuler un drone",
+        flow: "Modèle → Boucles → PID → Perturbations → Stabilité",
+      },
+    ],
   },
   // -------------------------------------------------------------- robotics
   robotics: {
@@ -2311,5 +4165,64 @@ export const GUIDES_B: Record<string, SkillGuide> = {
       "La robotique combine perception, décision et action : des machines qui comprennent leur environnement (capteurs, vision) et agissent dessus (moteurs, bras) de façon autonome.",
     whyLearn:
       "La robotique est la synthèse de l’informatique, de l’électronique et de l’IA : le domaine le plus complet techniquement. Industrie, logistique, médical — les robots autonomes sont un secteur en forte croissance.",
+    conceptDetails: [
+      {
+        name: "Perception",
+        definition:
+          "Comprendre l’environnement via capteurs et caméras : détection d’obstacles, reconnaissance d’objets.",
+      },
+      {
+        name: "Planification",
+        definition:
+          "Calculer une trajectoire du point A au point B en évitant les obstacles : A*, RRT, planification de mouvement.",
+      },
+      {
+        name: "SLAM",
+        definition:
+          "Localisation et cartographie simultanées : construire la carte tout en s’y localisant.",
+      },
+      {
+        name: "Contrôle",
+        definition:
+          "Transformer une trajectoire planifiée en commandes moteurs précises, malgré les perturbations.",
+      },
+      {
+        name: "IA embarquée",
+        definition:
+          "Exécuter des modèles (détection, vision) directement sur le robot, avec des ressources limitées.",
+      },
+      {
+        name: "Sécurité",
+        definition:
+          "Arrêts d’urgence, zones de sécurité, limitation de vitesse : un robot physique ne doit jamais blesser.",
+      },
+    ],
+    howItWorksTitle: "De la perception à l’action",
+    howItWorks: ["PERCEPTION", "CARTOGRAPHIE", "PLANIFICATION", "CONTRÔLE", "ACTIONNEURS", "BOUCLE"],
+    example: {
+      title: "Robot mobile autonome",
+      steps: [
+        "Châssis + moteurs",
+        "LiDAR embarqué",
+        "Cartographie SLAM",
+        "Planification de trajectoire",
+        "Évitement d’obstacles",
+        "Navigation autonome",
+      ],
+    },
+    projectsDetailed: [
+      {
+        title: "Robot téléopéré",
+        flow: "Châssis → ROS → Téléopération → Capteurs → Contrôle manuel",
+      },
+      {
+        title: "Robot mobile autonome",
+        flow: "Châssis → Capteurs → SLAM → Navigation → Autonomie",
+      },
+      {
+        title: "Bras robotique avec vision",
+        flow: "Caméra → Détection → Cinématique → Contrôle → Saisie",
+      },
+    ],
   },
 };

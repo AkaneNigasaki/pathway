@@ -203,6 +203,104 @@
   color: var(--accent);
 }
 
+/* ── Introduction de la branche sélectionnée ── */
+.stageIntro {
+  margin: 0 0 1.25rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.stageIntroEyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-solid);
+}
+
+.stageIntroTitle {
+  margin: 0 0 0.6rem;
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.stageIntroText {
+  margin: 0 0 1rem;
+  max-width: 62ch;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.stageIntroEntry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.25rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: var(--accent-faint);
+  color: var(--foreground);
+  font-size: 0.86rem;
+  font-weight: 550;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.stageIntroEntry:hover {
+  border-color: var(--accent);
+}
+
+.stageIntroSub {
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.stageIntroSkills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.stageIntroSkill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.85rem;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.stageIntroSkill:hover {
+  border-color: var(--accent);
+  background: var(--accent-faint);
+}
+
+.stageIntroDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  flex-shrink: 0;
+}
+
+.stageIntroDotDone {
+  background: var(--accent);
+}
+
 .graphWrap {
   margin-top: 1rem;
   scroll-margin-top: 100px;
