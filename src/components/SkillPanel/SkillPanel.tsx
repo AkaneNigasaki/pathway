@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, Clock, Compass, FlaskConical, Gauge, Lightbulb, ListChecks, Lock, Quote, Sparkles, Workflow, X } from "lucide-react";
+import { LuArrowRight as ArrowRight, LuArrowUpRight as ArrowUpRight, LuBookOpen as BookOpen, LuCheck as Check, LuChevronRight as ChevronRight, LuClock as Clock, LuCompass as Compass, LuFlaskConical as FlaskConical, LuGauge as Gauge, LuLightbulb as Lightbulb, LuListChecks as ListChecks, LuLock as Lock, LuQuote as Quote, LuSparkles as Sparkles, LuWorkflow as Workflow, LuX as X } from "react-icons/lu";
 import type { Roadmap, Skill, SkillLevel, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
 import type { ProgressMap } from "../../hooks/useProgress";

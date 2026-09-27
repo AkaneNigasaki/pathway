@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Braces, Layers, Check, Cloud, Compass, Lightbulb, Wrench } from "lucide-react";
+import { LuBraces as Braces, LuLayers as Layers, LuCheck as Check, LuCloud as Cloud, LuCompass as Compass, LuLightbulb as Lightbulb, LuWrench as Wrench } from "react-icons/lu";
 import type { NodeType, Skill, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
 import styles from "./SkillNode.module.css";

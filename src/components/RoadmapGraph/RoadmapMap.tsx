@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Crosshair, Expand, Minus, Plus, RotateCcw } from "lucide-react";
+import { LuCrosshair as Crosshair, LuExpand as Expand, LuMinus as Minus, LuPlus as Plus, LuRotateCcw as RotateCcw } from "react-icons/lu";
 import type { Roadmap, Skill } from "../../types";
 import type { ProgressMap } from "../../hooks/useProgress";
 import {

@@ -39,6 +39,17 @@ h2 {
   text-wrap: balance;
 }
 
+/* Défilement fluide natif (jamais de hijacking) */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 h3,
 h4 {
   margin: 0;
@@ -282,4 +293,23 @@ img {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ── Base commune des champs ── */
+input {
+  font-family: inherit;
+  color-scheme: light dark;
+}
+
+input::placeholder {
+  font-family: inherit;
+}
+
+/* Autofill : évite le fond jaune/blanc imposé par le navigateur */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--foreground);
+  -webkit-box-shadow: 0 0 0 1000px var(--surface) inset;
+  transition: background-color 9999s ease-in-out 0s;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { ArrowRight, Briefcase, ChevronRight, Clock, Flag, Layers, Map as MapIcon, X } from "lucide-react";
+import { LuArrowRight as ArrowRight, LuBriefcase as Briefcase, LuChevronRight as ChevronRight, LuClock as Clock, LuFlag as Flag, LuLayers as Layers, LuMap as MapIcon, LuX as X } from "react-icons/lu";
 import { RoadmapMap } from "../../components/RoadmapGraph/RoadmapMap";
 import { RoadmapTimeline } from "../../components/RoadmapGraph/RoadmapTimeline";
 import { SkillPanel } from "../../components/SkillPanel/SkillPanel";
@@ -370,7 +370,6 @@ export function RoadmapDetail() {
             className={styles.mapClose}
             onClick={() => setMapOpen(false)}
             aria-label="Fermer la carte"
-            autoFocus
           >
             <X size={18} aria-hidden="true" />
           </button>

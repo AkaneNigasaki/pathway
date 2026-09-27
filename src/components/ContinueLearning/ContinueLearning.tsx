@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { LuArrowRight as ArrowRight } from "react-icons/lu";
 import { ROADMAPS, skillDepth } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
 import { countDone, progressPercent, useAllProgress } from "../../hooks/useProgress";

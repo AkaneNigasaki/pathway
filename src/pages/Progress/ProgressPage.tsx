@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, RotateCcw, Trophy } from "lucide-react";
+import { LuArrowRight as ArrowRight, LuRotateCcw as RotateCcw, LuTrophy as Trophy } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { ROADMAPS } from "../../data/roadmaps";

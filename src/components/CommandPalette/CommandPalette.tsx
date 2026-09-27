@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Briefcase, CornerDownLeft, LayoutGrid, Map, Search, Zap } from "lucide-react";
+import { LuBriefcase as Briefcase, LuCornerDownLeft as CornerDownLeft, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuZap as Zap } from "react-icons/lu";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";

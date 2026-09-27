@@ -100,18 +100,36 @@
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--foreground);
+  caret-color: var(--accent);
   box-shadow: var(--shadow-subtle);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+  transition: border-color var(--dur-short) var(--ease-standard),
+    box-shadow var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard);
 }
 
 .searchForm input::placeholder {
   color: var(--faint);
+  transition: color var(--dur-short) var(--ease-standard);
+}
+
+.searchForm input:hover {
+  border-color: var(--faint);
+  background: var(--surface-soft);
 }
 
 .searchForm input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px var(--accent-faint);
+}
+
+.searchForm input:focus::placeholder {
+  color: color-mix(in srgb, var(--faint) 60%, transparent);
+}
+
+.searchForm:focus-within .searchIcon {
+  color: var(--accent);
 }
 
 .searchIcon {
@@ -120,6 +138,7 @@
   color: var(--faint);
   pointer-events: none;
   flex: none;
+  transition: color var(--dur-short) var(--ease-standard);
 }
 
 .kbd {
@@ -292,7 +311,8 @@
 /* ── Hero façon Softaims : bandeau bleu marine en thème sombre ── */
 [data-theme="dark"] .hero {
   background:
-    radial-gradient(1200px 500px at 50% -10%, rgb(239 189 11 / 0.08), transparent 60%),
+    linear-gradient(rgb(26 24 96 / 0.55), rgb(26 24 96 / 0.35)),
+    url("../../assets/backgrounds/hero-bg.webp") center / cover no-repeat,
     var(--navy);
   border-bottom: 1px solid rgb(249 244 219 / 0.12);
   margin-bottom: clamp(2.5rem, 5vw, 4rem);

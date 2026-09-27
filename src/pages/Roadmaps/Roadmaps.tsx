@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Search } from "lucide-react";
+import { LuArrowRight as ArrowRight, LuSearch as Search } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { FIELDS, getField } from "../../data/fields";

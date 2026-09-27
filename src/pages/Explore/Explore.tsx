@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowUpRight, Briefcase, LayoutGrid, Map, Search, X, Zap } from "lucide-react";
+import { LuArrowUpRight as ArrowUpRight, LuBriefcase as Briefcase, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuX as X, LuZap as Zap } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
@@ -79,7 +79,6 @@ export function Explore() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Essayez « TypeScript », « Droit fiscal », « DevOps »…"
               autoComplete="off"
-              autoFocus
             />
             {query && (
               <button type="button" className={styles.clear} onClick={clearQuery} aria-label="Effacer la recherche">

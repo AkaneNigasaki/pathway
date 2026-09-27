@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Brain, Container, Cpu, Database, Globe, Lightbulb, ShieldCheck, Zap } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuArrowUpRight as ArrowUpRight, LuBrain as Brain, LuContainer as Container, LuCpu as Cpu, LuDatabase as Database, LuGlobe as Globe, LuLightbulb as Lightbulb, LuShieldCheck as ShieldCheck, LuZap as Zap } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { CareerCard } from "../../components/CareerCard/CareerCard";

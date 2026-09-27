@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { ArrowRight, List, Moon, Search, Sun, User, X } from "lucide-react";
+import { LuArrowRight as ArrowRight, LuList as List, LuMoon as Moon, LuSearch as Search, LuSun as Sun, LuUser as User, LuX as X } from "react-icons/lu";
 import type { Theme } from "../../types";
 import { ROADMAPS } from "../../data/roadmaps";
 import { getField } from "../../data/fields";

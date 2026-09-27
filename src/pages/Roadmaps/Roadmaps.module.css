@@ -33,13 +33,37 @@
 
 .searchBar input {
   width: 100%;
-  font-size: 1rem;
-  padding: 0.95rem 1.25rem 0.95rem 3.1rem;
+  font-size: 1.02rem;
+  padding: 1rem 1.25rem 1rem 3.2rem;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--foreground);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+  caret-color: var(--accent);
+  transition: border-color var(--dur-short) var(--ease-standard),
+    box-shadow var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard);
+}
+
+.searchBar input::placeholder {
+  color: var(--faint);
+  transition: color var(--dur-short) var(--ease-standard);
+}
+
+.searchBar input:hover {
+  border-color: var(--faint);
+  background: var(--surface-soft);
+}
+
+.searchBar input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px var(--accent-faint);
+}
+
+.searchBar input:focus::placeholder {
+  color: color-mix(in srgb, var(--faint) 60%, transparent);
 }
 
 .searchBar input::placeholder {
@@ -260,4 +284,19 @@
   .chip:hover {
     transform: none;
   }
+}
+
+/* ── Fond technique subtil sur l'en-tête (thème sombre) ── */
+[data-theme="dark"] .head {
+  position: relative;
+  padding: 2.5rem 2rem;
+  margin: 0 0 2.5rem;
+  max-width: none;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.55)),
+    url("../../assets/backgrounds/section-bg.webp") center / cover no-repeat,
+    #000;
+  overflow: hidden;
 }

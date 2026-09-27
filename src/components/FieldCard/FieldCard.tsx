@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { Cpu, Scale, TrendingUp, Landmark, FlaskConical, Stethoscope, Cog, PenTool, DraftingCompass, Megaphone, Users, type LucideIcon } from "lucide-react";
+import { LuCpu as Cpu, LuScale as Scale, LuTrendingUp as TrendingUp, LuLandmark as Landmark, LuFlaskConical as FlaskConical, LuStethoscope as Stethoscope, LuCog as Cog, LuPenTool as PenTool, LuDraftingCompass as DraftingCompass, LuMegaphone as Megaphone, LuUsers as Users } from "react-icons/lu";
+import type { IconType } from "react-icons";
 import type { Field } from "../../types";
 import styles from "./FieldCard.module.css";
 
-const ICONS: Record<string, LucideIcon> = {
+const ICONS: Record<string, IconType> = {
   Cpu,
   Scale,
   TrendingUp,

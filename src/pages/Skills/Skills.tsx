@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Search, X } from "lucide-react";
+import { LuChevronRight as ChevronRight, LuSearch as Search, LuX as X } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { getRoadmap, getSkill } from "../../data/roadmaps";
 import { NODE_TYPE_LABEL, SKILL_LEVEL_LABEL } from "../../types";

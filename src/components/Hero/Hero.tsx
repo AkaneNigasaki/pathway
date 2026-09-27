@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowDown, Search } from "lucide-react";
+import { LuArrowDown as ArrowDown, LuSearch as Search } from "react-icons/lu";
 import styles from "./Hero.module.css";
 
 const EXPLORE_BY = [

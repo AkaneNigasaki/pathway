@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Compass } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuCompass as Compass } from "react-icons/lu";
 import styles from "./NotFound.module.css";
 
 export function NotFound() {

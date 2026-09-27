@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { LuArrowUpRight as ArrowUpRight } from "react-icons/lu";
 import type { Career } from "../../types";
 import { getField } from "../../data/fields";
 import styles from "./CareerCard.module.css";

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Clock, Layers } from "lucide-react";
+import { LuArrowUpRight as ArrowUpRight, LuClock as Clock, LuLayers as Layers } from "react-icons/lu";
 import type { Roadmap } from "../../types";
 import { getField } from "../../data/fields";
 import styles from "./RoadmapCard.module.css";

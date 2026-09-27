@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { ArrowDown } from "lucide-react";
+import { LuArrowDown as ArrowDown } from "react-icons/lu";
 import type { Roadmap, Skill } from "../../types";
 import type { ProgressMap } from "../../hooks/useProgress";
 import { skillDepth } from "../../data/roadmaps";

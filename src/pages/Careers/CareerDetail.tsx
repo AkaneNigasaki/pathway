@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Briefcase, CircleCheck, CirclePlus, FolderKanban, Layers } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuArrowUpRight as ArrowUpRight, LuBriefcase as Briefcase, LuCircleCheck as CircleCheck, LuCirclePlus as CirclePlus, LuFolderKanban as FolderKanban, LuLayers as Layers } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { CAREERS, getCareer } from "../../data/careers";
 import { getField } from "../../data/fields";
