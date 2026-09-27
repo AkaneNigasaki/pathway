@@ -6,6 +6,26 @@ import type { SkillGuide } from "../skill-guides";
  */
 export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
   "js-moderne": {
+  setup: {
+    install: [
+      "Installer Node.js LTS depuis nodejs.org (ou via nvm : `nvm install --lts`).",
+      "Vérifier l'installation : `node -v` et `npm -v` dans un terminal.",
+    ],
+    configure: [
+      "Initialiser le projet : `npm init -y`.",
+      "Ajouter `\"type\": \"module\"` dans package.json pour utiliser import/export natifs.",
+    ],
+    workflow: [
+      "Exécuter un fichier : `node app.js`.",
+      "Découper le code en modules ES (`import` / `export`).",
+      "Tester les nouveautés (optional chaining `?.`, nullish `??`) directement en console Node.",
+    ],
+    editors: [
+      "VS Code : coloration et IntelliSense JavaScript intégrés, sans extension.",
+      "Extensions utiles : ESLint, Prettier.",
+      "Alternatives : WebStorm (tout intégré), Zed (rapide et léger).",
+    ],
+  },
     definition:
       "JavaScript moderne désigne le JavaScript des standards ES2015 et suivants : modules, classes, promesses, async/await, destructuration. C'est le langage que TypeScript étend — chaque fichier TypeScript valide est d'abord du JavaScript valide.",
     whyLearn:
@@ -61,6 +81,30 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   installation: {
+  setup: {
+    install: [
+      "Installer Node.js LTS depuis nodejs.org.",
+      "Créer le dossier projet puis `npm init -y`.",
+      "Installer TypeScript en dépendance de dev : `npm install -D typescript`.",
+      "Vérifier : `npx tsc --version`.",
+    ],
+    configure: [
+      "Générer le tsconfig : `npx tsc --init`.",
+      "Régler `target: ES2022`, `module: NodeNext`, `strict: true`.",
+      "Définir `rootDir: src` et `outDir: dist` pour séparer sources et build.",
+    ],
+    workflow: [
+      "Compiler : `npx tsc` ; vérifier sans émettre : `npx tsc --noEmit`.",
+      "Développement continu : `npx tsc --watch`.",
+      "Ajouter des scripts npm : `\"build\": \"tsc\"`, `\"typecheck\": \"tsc --noEmit\"`.",
+    ],
+    editors: [
+      "VS Code (recommandé) : le meilleur support TypeScript du marché, intégré.",
+      "Extensions : Error Lens, Pretty TypeScript Errors, ESLint, Prettier.",
+      "Forcer la version du workspace : `Ctrl+Maj+P` → « TypeScript: Select TypeScript Version » → Use Workspace Version.",
+      "Alternative : WebStorm, excellent support TS natif.",
+    ],
+  },
     definition:
       "Installer TypeScript consiste à disposer de Node.js, du gestionnaire npm, puis du compilateur tsc dans un projet initialisé avec un package.json. À la fin, un fichier .ts compile vers du JavaScript exécutable.",
     whyLearn:
@@ -119,6 +163,25 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   tsc: {
+  setup: {
+    install: [
+      "Inclus dans le paquet `typescript` : `npm install -D typescript`.",
+      "Aucune installation globale nécessaire : on l'appelle via `npx tsc`.",
+    ],
+    configure: [
+      "Tout se pilote depuis tsconfig.json : fichiers inclus, cible, niveau de strictness.",
+      "Options clés : `noEmit` (vérifier sans compiler), `watch`, `declaration` (générer les .d.ts).",
+    ],
+    workflow: [
+      "Vérification rapide : `npx tsc --noEmit`.",
+      "Mettre `tsc --noEmit` dans la CI : aucun code mal typé ne passe.",
+      "Ne jamais masquer une erreur avec `as any` : corriger le type, pas le compilateur.",
+    ],
+    editors: [
+      "VS Code : les erreurs tsc s'affichent en direct dans l'éditeur.",
+      "Aligner la version TS de VS Code sur celle du projet (Use Workspace Version).",
+    ],
+  },
     definition:
       "TSC (TypeScript Compiler) est le compilateur officiel : il lit les fichiers .ts, vérifie la cohérence des types, puis émet du JavaScript. Il effectue deux tâches distinctes — vérifier et transpiler — qu'il faut comprendre séparément.",
     whyLearn:
@@ -178,6 +241,26 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   tsconfig: {
+  setup: {
+    install: [
+      "Généré automatiquement : `npx tsc --init`.",
+    ],
+    configure: [
+      "`strict: true` : active tous les contrôles stricts d'un coup.",
+      "`target: ES2022` : JavaScript moderne en sortie.",
+      "`module` + `moduleResolution: NodeNext` : imports compatibles Node.",
+      "`include: [\"src\"]`, `exclude: [\"node_modules\", \"dist\"]`.",
+      "`outDir: dist`, `rootDir: src`, `sourceMap: true` pour debugger le TS d'origine.",
+    ],
+    workflow: [
+      "Un tsconfig par paquet dans un monorepo, liés par `references` + `tsc -b`.",
+      "Valider le fichier avec `npx tsc --showConfig` (configuration résolue).",
+    ],
+    editors: [
+      "VS Code applique le tsconfig du projet automatiquement.",
+      "Autocomplétion des options grâce au schéma JSON intégré.",
+    ],
+  },
     definition:
       "tsconfig.json est le fichier de configuration du compilateur : il déclare quels fichiers compiler, avec quelles options de rigueur et vers quelle cible. C'est le contrat qualité du projet.",
     whyLearn:
@@ -236,6 +319,29 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   editeur: {
+  setup: {
+    install: [
+      "Télécharger VS Code depuis code.visualstudio.com (Windows, macOS, Linux).",
+      "L'installer via le gestionnaire de paquets pour les mises à jour auto : `winget`, `brew` ou dépôt apt.",
+    ],
+    configure: [
+      "`settings.json` : `\"editor.formatOnSave\": true`, `\"editor.defaultFormatter\": \"esbenp.prettier-vscode\"`.",
+      "Régler `editor.tabSize: 2` pour le JS/TS.",
+      "Activer `typescript.preferGoToSourceDefinition` pour naviguer au source plutôt qu'aux .d.ts.",
+    ],
+    workflow: [
+      "Terminal intégré (`Ctrl+``) : compiler sans quitter l'éditeur.",
+      "Déboguer avec un `launch.json` : points d'arrêt directs dans le .ts.",
+      "Palette de commandes `Ctrl+Maj+P` : tout est accessible au clavier.",
+      "Renommer un symbole avec `F2` : le refactoring suit les types.",
+    ],
+    editors: [
+      "VS Code : le meilleur support TypeScript, gratuit.",
+      "Extensions indispensables : ESLint, Prettier, Error Lens, GitLens, Pretty TypeScript Errors.",
+      "WebStorm : alternative payante, tout intégré sans extensions.",
+      "Zed ou Neovim : pour les machines légères ou les puristes du clavier.",
+    ],
+  },
     definition:
       "L'outillage éditeur (VS Code en pratique) exploite le serveur de langage TypeScript : erreurs soulignées en temps réel, autocomplétion contextuelle, renommage et navigation sûrs dans tout le projet.",
     whyLearn:
@@ -289,6 +395,22 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   "types-base": {
+  setup: {
+    install: [
+      "Aucune installation supplémentaire : les types de base sont natifs à TypeScript.",
+    ],
+    configure: [
+      "Activer `strict: true` dans tsconfig.json pour que les types soient vraiment vérifiés.",
+    ],
+    workflow: [
+      "Typer les paramètres et retours de fonctions ; laisser l'inférence faire le reste.",
+      "Survoler une variable pour voir le type inféré par le compilateur.",
+      "Lire chaque erreur de type comme une information, pas comme une punition.",
+    ],
+    editors: [
+      "VS Code : infobulle de type au survol, `F12` pour aller à la définition du type.",
+    ],
+  },
     definition:
       "Les types de base annotent les valeurs : string, number, boolean, tableaux, tuples, enums, ainsi que les types spéciaux any, unknown et never. L'inférence permet souvent de ne pas tout écrire explicitement.",
     whyLearn:
@@ -347,6 +469,23 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   interfaces: {
+  setup: {
+    install: [
+      "Natif à TypeScript, rien à installer.",
+    ],
+    configure: [
+      "Convention : nommer les interfaces en PascalCase (`User`, `ApiResponse`).",
+      "Préférer `interface` pour les objets, `type` pour les unions et utilitaires.",
+    ],
+    workflow: [
+      "Définir les formes de données (API, props) avant d'écrire la logique.",
+      "Étendre avec `extends`, composer avec l'intersection `&`.",
+    ],
+    editors: [
+      "VS Code : « Implement interface » génère le squelette d'une classe.",
+      "Renommage `F2` : toutes les utilisations suivent.",
+    ],
+  },
     definition:
       "Les interfaces (et les alias de type) décrivent la forme des objets : quelles propriétés, de quel type, obligatoires ou non. Elles transforment des objets anonymes en contrats explicites.",
     whyLearn:
@@ -406,6 +545,22 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   fonctions: {
+  setup: {
+    install: [
+      "Natif à TypeScript, rien à installer.",
+    ],
+    configure: [
+      "Avec `strict`, les paramètres implicites `any` sont interdits : tout est typé.",
+    ],
+    workflow: [
+      "Typer paramètres et valeur de retour : `(a: number, b: number): number`.",
+      "Utiliser les signatures de surcharge pour les API à formes multiples.",
+      "Préférer les fonctions fléchées typées pour les callbacks.",
+    ],
+    editors: [
+      "VS Code : l'autocomplétion suggère les paramètres attendus pendant la frappe.",
+    ],
+  },
     definition:
       "Typer les fonctions, c'est décrire leurs paramètres et leur valeur de retour, gérer les paramètres optionnels et, si besoin, déclarer plusieurs signatures via les surcharges. Chaque appel est alors vérifié.",
     whyLearn:
@@ -467,6 +622,22 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
 };
 const EXTRA: Record<string, SkillGuide> = {
   unions: {
+  setup: {
+    install: [
+      "Natif à TypeScript, rien à installer.",
+    ],
+    configure: [
+      "`strictNullChecks` (inclus dans `strict`) rend les unions avec `null` / `undefined` explicites.",
+    ],
+    workflow: [
+      "Modéliser les états finis : `type Status = \"idle\" | \"loading\" | \"error\"`.",
+      "Réduire avec `typeof`, `in` ou les fonctions garde (`isString(x): x is string`).",
+      "Laisser le compilateur signaler les cas non traités dans un `switch`.",
+    ],
+    editors: [
+      "VS Code : le narrowing est visible — le type affiné s'affiche au survol après un test.",
+    ],
+  },
     definition:
       "Les union types expriment qu'une valeur peut être de plusieurs types (`string | number`) ; les types littéraux restreignent à des valeurs exactes (`'draft' | 'published'`). Le narrowing permet au compilateur de resserrer le type au fil des vérifications.",
     whyLearn:
@@ -528,6 +699,22 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   generiques: {
+  setup: {
+    install: [
+      "Natif à TypeScript, rien à installer.",
+    ],
+    configure: [
+      "Contraindre avec `extends` : `function first<T extends { id: string }>(arr: T[])`.",
+      "Fournir des défauts : `interface Box<T = string>`.",
+    ],
+    workflow: [
+      "Créer des fonctions utilitaires réutilisables sans perdre le typage.",
+      "Typer les wrappers : fetch générique, cache, store.",
+    ],
+    editors: [
+      "VS Code : l'inférence des génériques s'affiche au survol de l'appel.",
+    ],
+  },
     definition:
       "Les génériques paramètrent les types : `function identity<T>(x: T): T` fonctionne pour n'importe quel T tout en conservant le typage précis. C'est l'abstraction au niveau des types.",
     whyLearn:
@@ -582,6 +769,22 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   "utility-types": {
+  setup: {
+    install: [
+      "Natifs, disponibles sans import.",
+    ],
+    configure: [
+      "Rien à configurer : `Partial`, `Pick`, `Omit`, `Record`, `ReturnType` sont globaux.",
+    ],
+    workflow: [
+      "Dériver des variantes : `Partial<User>` pour un formulaire d'édition.",
+      "`Pick<User, \"id\" | \"name\">` pour exposer un sous-ensemble.",
+      "`Record<string, T>` pour les dictionnaires typés.",
+    ],
+    editors: [
+      "VS Code : `Ctrl+clic` sur `Partial` ouvre sa définition dans lib.es5.d.ts.",
+    ],
+  },
     definition:
       "Les utility types sont des types prédéfinis qui transforment d'autres types : Partial rend tout optionnel, Pick extrait un sous-ensemble, Omit en retire, Record construit des dictionnaires typés.",
     whyLearn:
@@ -641,6 +844,22 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   "types-avances": {
+  setup: {
+    install: [
+      "Natifs à TypeScript, rien à installer.",
+    ],
+    configure: [
+      "Monter `target` à ES2019+ pour les motifs avancés bien supportés.",
+    ],
+    workflow: [
+      "Mapped types : transformer un type existant (`{ [K in keyof T]: boolean }`).",
+      "Conditional types : `T extends U ? X : Y` pour la logique de types.",
+      "Lire les types des bibliothèques (Zod, tRPC) : c'est la meilleure école.",
+    ],
+    editors: [
+      "VS Code + extension Pretty TypeScript Errors : rend les erreurs de types complexes lisibles.",
+    ],
+  },
     definition:
       "Les types avancés programment le système de types : les mapped types transforment chaque propriété, les conditional types branchent selon une condition, infer extrait des types, les template literal types calculent des chaînes.",
     whyLearn:
@@ -700,6 +919,22 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   modules: {
+  setup: {
+    install: [
+      "Natif ; l'écosystème npm fournit les modules tiers.",
+    ],
+    configure: [
+      "`moduleResolution: NodeNext` + `\"type\": \"module\"` : imports ES modernes.",
+      "Utiliser les `paths` du tsconfig pour les alias (`@/*` vers `src/*`).",
+    ],
+    workflow: [
+      "Un module = une responsabilité ; exposer l'API publique via un `index.ts` (barrel).",
+      "Imports relatifs courts grâce aux alias de chemins.",
+    ],
+    editors: [
+      "VS Code : auto-import automatique, déplacement de fichier qui réécrit les imports.",
+    ],
+  },
     definition:
       "Les modules organisent le code en fichiers aux dépendances explicites : import et export, stratégies de résolution, barrel files pour simplifier les imports, fichiers de déclaration pour typer l'existant.",
     whyLearn:
@@ -754,6 +989,22 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   strict: {
+  setup: {
+    install: [
+      "Natif : c'est une option du compilateur, rien à installer.",
+    ],
+    configure: [
+      "`strict: true` dans tsconfig.json (active strictNullChecks, noImplicitAny, etc.).",
+      "Aller plus loin : `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`.",
+    ],
+    workflow: [
+      "Corriger les erreurs une à une en activant le strict sur un projet existant.",
+      "Bannir `any` : utiliser `unknown` + narrowing quand le type est inconnu.",
+    ],
+    editors: [
+      "VS Code : chaque violation du mode strict est soulignée en direct pendant la frappe.",
+    ],
+  },
     definition:
       "Le mode strict active les vérifications les plus rigoureuses de tsc, dont strictNullChecks : null et undefined deviennent des valeurs à traiter explicitement, et l'implicite any est interdit.",
     whyLearn:
@@ -810,6 +1061,25 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   outillage: {
+  setup: {
+    install: [
+      "ESLint : `npm install -D eslint @eslint/js typescript-eslint`.",
+      "Prettier : `npm install -D prettier`.",
+      "Vitest : `npm install -D vitest`.",
+    ],
+    configure: [
+      "`eslint.config.js` avec le preset recommandé de `typescript-eslint`.",
+      "`.prettierrc` : `singleQuote: true, semi: true` (ou les choix de l'équipe).",
+      "`vitest.config.ts` minimal pour les tests unitaires.",
+    ],
+    workflow: [
+      "`npm run lint`, `npm run format`, `npm test` : les trois portes de la CI.",
+      "Corriger le lint avant de committer, pas après.",
+    ],
+    editors: [
+      "VS Code : extensions ESLint (correction à la sauvegarde), Prettier (formatage à la sauvegarde), Vitest (lancer les tests depuis l'éditeur).",
+    ],
+  },
     definition:
       "L'outillage complète les types : ESLint avec le parser TypeScript détecte les mauvaises pratiques, Prettier uniformise le format, Vitest ou Jest exécutent des tests typés, la CI enchaîne le tout à chaque commit.",
     whyLearn:
@@ -871,6 +1141,25 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   migration: {
+  setup: {
+    install: [
+      "`npm install -D typescript` dans le projet JS existant.",
+      "Vérifier que Node et les dépendances sont à jour avant de migrer.",
+    ],
+    configure: [
+      "Créer un tsconfig avec `allowJs: true`, `checkJs: false` au départ.",
+      "Activer `checkJs: true` puis `strict: true` fichier par fichier.",
+    ],
+    workflow: [
+      "Renommer les fichiers `.js` → `.ts` un par un, en commençant par les feuilles (sans dépendants).",
+      "Ajouter les `@types/*` manquants : `npm install -D @types/node`.",
+      "Chaque fichier migré doit compiler avant de passer au suivant.",
+    ],
+    editors: [
+      "VS Code : le mode `checkJs` affiche déjà les erreurs dans les .js.",
+      "Utiliser « Rename Symbol » (`F2`) pour fiabiliser les renommages pendant la migration.",
+    ],
+  },
     definition:
       "Migrer un projet JavaScript vers TypeScript se fait par étapes : autoriser le JS dans la compilation (allowJs), typer module par module en commençant par les feuilles du graphe de dépendances, puis resserrer jusqu'au mode strict.",
     whyLearn:

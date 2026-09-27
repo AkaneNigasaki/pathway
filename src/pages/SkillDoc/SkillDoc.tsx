@@ -7,8 +7,12 @@ import {
   LuCheck as Check,
   LuChevronRight as ChevronRight,
   LuClock as Clock,
+  LuDownload as Download,
+  LuLaptop as Laptop,
   LuListChecks as ListChecks,
+  LuSettings as Settings,
   LuTable as Table,
+  LuTerminal as Terminal,
   LuWrench as Wrench,
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
@@ -50,6 +54,7 @@ export function SkillDoc() {
     { id: "definition", label: "Définition" },
     ...(guide?.whyLearn ? [{ id: "pourquoi", label: "Pourquoi l'apprendre" }] : []),
     { id: "environnement", label: "Environnement" },
+    ...(guide?.setup ? [{ id: "mise-en-place", label: "Mise en place" }] : []),
     ...(guide?.howItWorks?.length
       ? [{ id: "fonctionnement", label: guide.howItWorksTitle ?? "Comment ça fonctionne" }]
       : []),
@@ -153,6 +158,88 @@ export function SkillDoc() {
                 </ul>
               </section>
             </Reveal>
+
+            {guide?.setup && (
+              <Reveal>
+                <section id="mise-en-place" className={styles.section} aria-label="Mise en place">
+                  <h2 className={styles.h2}>
+                    <Download size={18} aria-hidden="true" /> Mise en place
+                  </h2>
+                  <p className={styles.hint}>
+                    Installer, configurer et travailler avec {skill.name} au quotidien :
+                    commandes concrètes, configuration essentielle et éditeurs recommandés.
+                  </p>
+                  {guide.setup.install && guide.setup.install.length > 0 && (
+                    <>
+                      <h3 className={styles.subhead}>
+                        <Download size={15} aria-hidden="true" /> Installation
+                      </h3>
+                      <ul className={styles.checklist}>
+                        {guide.setup.install.map((step, i) => (
+                          <li key={i}>
+                            <span className={styles.check} aria-hidden="true">
+                              <Check size={14} />
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {guide.setup.configure && guide.setup.configure.length > 0 && (
+                    <>
+                      <h3 className={styles.subhead}>
+                        <Settings size={15} aria-hidden="true" /> Configuration
+                      </h3>
+                      <ul className={styles.checklist}>
+                        {guide.setup.configure.map((step, i) => (
+                          <li key={i}>
+                            <span className={styles.check} aria-hidden="true">
+                              <Check size={14} />
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {guide.setup.workflow && guide.setup.workflow.length > 0 && (
+                    <>
+                      <h3 className={styles.subhead}>
+                        <Terminal size={15} aria-hidden="true" /> Travail quotidien
+                      </h3>
+                      <ul className={styles.checklist}>
+                        {guide.setup.workflow.map((step, i) => (
+                          <li key={i}>
+                            <span className={styles.check} aria-hidden="true">
+                              <Check size={14} />
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {guide.setup.editors && guide.setup.editors.length > 0 && (
+                    <>
+                      <h3 className={styles.subhead}>
+                        <Laptop size={15} aria-hidden="true" /> Éditeurs recommandés
+                      </h3>
+                      <ul className={styles.checklist}>
+                        {guide.setup.editors.map((step, i) => (
+                          <li key={i}>
+                            <span className={styles.check} aria-hidden="true">
+                              <Check size={14} />
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </section>
+              </Reveal>
+            )}
 
             {guide?.howItWorks && guide.howItWorks.length > 0 && (
               <Reveal>

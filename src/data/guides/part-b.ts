@@ -14,6 +14,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 1 ===
   // ---------------------------------------------------------------- python
   python: {
+  setup: {
+    install: [
+      "Installer Python 3 depuis python.org, ou `brew install python3` / `winget install Python.Python.3`.",
+      "Vérifier : `python3 --version`, puis mettre pip à jour : `pip install --upgrade pip`.",
+    ],
+    configure: [
+      "Créer un environnement virtuel par projet : `python3 -m venv .venv`.",
+      "L'activer : `source .venv/bin/activate` (Linux/macOS) ou `.\\.venv\\Scripts\\activate` (Windows).",
+      "Figer les dépendances : `pip freeze > requirements.txt`, les restaurer : `pip install -r requirements.txt`.",
+    ],
+    workflow: [
+      "Exécuter : `python script.py` ; tester une expression : REPL avec `python3` seul.",
+      "Installer un paquet : `pip install requests` (dans le venv activé).",
+      "Toujours travailler dans le venv : l'invite affiche `(.venv)` quand il est actif.",
+    ],
+    editors: [
+      "VS Code : extension « Python » (Microsoft) + « Pylance » — exécution, debug, sélection d'interpréteur (`Ctrl+Maj+P` → « Python: Select Interpreter »).",
+      "Alternative : PyCharm (gestion des venv intégrée).",
+    ],
+  },
     definition:
       "Python est un langage de programmation généraliste conçu pour être lisible et simple à écrire. Sa syntaxe claire et son écosystème immense (data, IA, web, automatisation) en font le langage le plus utilisé pour la data science et le machine learning.",
     whyLearn:
@@ -84,6 +104,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------- machine-learning
   "machine-learning": {
+  setup: {
+    install: [
+      "Installer la stack scientifique : `pip install scikit-learn pandas numpy matplotlib jupyter`.",
+      "Alternative tout-en-un : la distribution Anaconda (Python + 300 paquets scientifiques).",
+    ],
+    configure: [
+      "Travailler en notebooks `.ipynb` : un par expérience, avec un dossier `data/` pour les jeux de données.",
+      "Figer l'environnement : `pip freeze > requirements.txt` pour la reproductibilité.",
+      "Fixer `random_state=42` dans les modèles pour des résultats reproductibles.",
+    ],
+    workflow: [
+      "Lancer : `jupyter lab`, charger un jeu d'essai : `from sklearn.datasets import load_iris`.",
+      "Découper : `train_test_split(X, y, test_size=0.2)`, entraîner : `model.fit(X_train, y_train)`.",
+      "Évaluer : `model.score(X_test, y_test)`, tracer les courbes avec `matplotlib`.",
+    ],
+    editors: [
+      "VS Code : extension « Jupyter » (Microsoft) — notebooks natifs dans l'éditeur.",
+      "Alternatives : JupyterLab dans le navigateur, PyCharm (édition Pro : support notebooks).",
+    ],
+  },
     illustration: "ml",
     definition:
       "Le machine learning est la branche de l’intelligence artificielle où l’on entraîne des modèles à partir de données, au lieu de coder les règles à la main. Le modèle détecte des motifs dans les exemples qu’on lui montre, puis généralise à des cas inédits.",
@@ -164,6 +204,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- deep-learning
   "deep-learning": {
+  setup: {
+    install: [
+      "Choisir un framework : `pip install torch torchvision jupyter matplotlib` (PyTorch) ou `pip install tensorflow`.",
+      "GPU : pilote NVIDIA + version CUDA du framework (`torch.cuda.is_available()` doit répondre True).",
+      "Sans GPU local : utiliser Google Colab (GPU gratuit en notebook).",
+    ],
+    configure: [
+      "Dossiers : `data/` (jeux de données), `checkpoints/` (poids sauvegardés), notebooks `.ipynb` par expérience.",
+      "Vérifier le GPU au début de chaque notebook : `torch.cuda.is_available()` ou `tf.config.list_physical_devices('GPU')`.",
+      "Fixer les graines (`random`, `numpy`, framework) pour des runs comparables.",
+    ],
+    workflow: [
+      "Prototyper en notebook : charger un batch, vérifier les dimensions (`x.shape`).",
+      "Entraîner par epochs en surveillant la loss ; sauvegarder : `torch.save(model.state_dict(), 'checkpoints/e1.pt')`.",
+      "Évaluer sur le jeu de test, ajuster hyperparamètres (learning rate, batch size), réentraîner.",
+    ],
+    editors: [
+      "VS Code : extension « Jupyter » (Microsoft) — standard pour l'expérimentation.",
+      "Alternatives : Google Colab (GPU gratuit), PyCharm.",
+    ],
+  },
     definition:
       "Le deep learning est la sous-branche du machine learning qui utilise des réseaux de neurones à plusieurs couches. Ces architectures apprennent elles-mêmes les représentations utiles — contours dans une image, motifs dans du texte — sans features conçues à la main.",
     whyLearn:
@@ -318,6 +379,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- docker
   docker: {
+  setup: {
+    install: [
+      "Installer Docker Desktop depuis docker.com (Windows/macOS), ou le moteur sur Linux via la documentation officielle.",
+      "Vérifier : `docker --version` et `docker run hello-world`.",
+    ],
+    configure: [
+      "Écrire le `Dockerfile` (image de base, `COPY`, `RUN`, `CMD`).",
+      "Ajouter un `.dockerignore` (dépendances, `.git`, fichiers locaux).",
+      "Décrire les services multi-conteneurs dans `compose.yaml`.",
+    ],
+    workflow: [
+      "Construire l'image : `docker build -t mon-app .`.",
+      "Lancer : `docker run -p 3000:3000 mon-app`.",
+      "Orchestrer en local : `docker compose up --build`.",
+      "Inspecter : `docker ps`, `docker logs -f <conteneur>`, `docker exec -it <conteneur> sh`.",
+    ],
+    editors: [
+      "VS Code + extension « Docker » (Dockerfile, compose, conteneurs).",
+      "Alternatives : lazydocker (TUI terminal), JetBrains Gateway.",
+    ],
+  },
     definition:
       "Docker est une plateforme de conteneurisation : elle empaquette une application et toutes ses dépendances (bibliothèques, runtime, configuration) dans un conteneur isolé et portable. Le conteneur s’exécute de façon identique sur n’importe quelle machine équipée de Docker.",
     whyLearn:
@@ -458,6 +540,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ kubernetes
   kubernetes: {
+  setup: {
+    install: [
+      "Installer `kubectl` : `brew install kubectl`.",
+      "Créer un cluster local : `minikube start` (ou `kind create cluster`, ou le Kubernetes de Docker Desktop).",
+      "Vérifier : `kubectl cluster-info` et `kubectl get nodes`.",
+    ],
+    configure: [
+      "Écrire les manifests YAML : `deployment.yaml`, `service.yaml`.",
+      "Basculer de contexte : `kubectl config use-context <nom>`.",
+      "Externaliser la configuration : `ConfigMap`, `Secret`.",
+    ],
+    workflow: [
+      "Appliquer les manifests : `kubectl apply -f k8s/`.",
+      "Observer : `kubectl get pods`, `kubectl describe pod <nom>`.",
+      "Lire les logs : `kubectl logs -f deploy/<nom>`.",
+      "Exposer en local : `kubectl port-forward svc/<nom> 8080:80`.",
+    ],
+    editors: [
+      "VS Code + extensions « Kubernetes » et « YAML ».",
+      "Alternatives : k9s (TUI terminal), Lens (interface graphique).",
+    ],
+  },
     definition:
       "Kubernetes est une plateforme d’orchestration de conteneurs : elle déploie, met à l’échelle et supervise automatiquement des centaines de conteneurs répartis sur plusieurs machines. Si un conteneur tombe, Kubernetes le remplace ; si la charge augmente, il en ajoute.",
     whyLearn:
@@ -537,6 +641,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- terraform
   terraform: {
+  setup: {
+    install: [
+      "Installer : `brew install terraform` (ou le binaire depuis developer.hashicorp.com).",
+      "Vérifier : `terraform version`.",
+    ],
+    configure: [
+      "Déclarer les ressources dans `main.tf` et le provider (`required_providers`).",
+      "Paramétrer avec `variables.tf` et les valeurs dans `terraform.tfvars` (non commité si secrets).",
+      "Stocker l'état à distance (bucket S3, Terraform Cloud) dès qu'on travaille à plusieurs.",
+    ],
+    workflow: [
+      "Initialiser : `terraform init`.",
+      "Formater et valider : `terraform fmt` puis `terraform validate`.",
+      "Prévisualiser : `terraform plan`.",
+      "Appliquer / détruire : `terraform apply`, `terraform destroy`.",
+    ],
+    editors: [
+      "VS Code + extension « HashiCorp Terraform ».",
+      "Alternatives : JetBrains (plugin Terraform), Neovim + terraform-ls.",
+    ],
+  },
     definition:
       "Terraform est un outil d’infrastructure as code : on décrit l’infrastructure (serveurs, réseaux, bases, DNS) dans des fichiers de configuration versionnés, et Terraform crée, modifie ou détruit les ressources pour correspondre à cette description.",
     whyLearn:
@@ -609,6 +734,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- cybersecurity
   cybersecurity: {
+  setup: {
+    install: [
+      "VirtualBox ou VMware sur la machine hôte.",
+      "Télécharger l'ISO Kali Linux (kali.org) et créer une VM dédiée.",
+      "Règle absolue : ne jamais tester un réseau ou un système tiers sans autorisation écrite.",
+    ],
+    configure: [
+      "Réseau VM en « Host-only » ou NAT isolé pour les laboratoires.",
+      "Snapshot de la VM avant chaque exercice.",
+      "Cibles d'entraînement légales : Metasploitable, DVWA, Hack The Box, TryHackMe.",
+    ],
+    workflow: [
+      "Reconnaissance (lab uniquement) : `nmap -sV 192.168.x.x`.",
+      "Énumération : `gobuster`, `hydra` sur les cibles autorisées.",
+      "Documenter : `mkdir -p ~/labs/cible-01` et noter chaque commande et résultat.",
+    ],
+    editors: [
+      "VS Code + « Python » (Microsoft) pour écrire les scripts d'automatisation.",
+      "Alternatives : terminal Kali natif, Burp Suite (analyse web), Wireshark (analyse réseau).",
+    ],
+  },
     illustration: "cybersecurity",
     definition:
       "La cybersécurité est la discipline qui protège les systèmes d’information contre les accès non autorisés, les altérations et les interruptions. Elle combine technique (chiffrement, pare-feu, détection), processus (audits, réponse aux incidents) et facteur humain.",
@@ -841,6 +987,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ data-science
   "data-science": {
+  setup: {
+    install: [
+      "Python 3.11+ : `python3 --version`.",
+      "Stack de base : `pip install numpy pandas matplotlib scikit-learn jupyterlab`.",
+      "Vérifier : `jupyter lab --version`.",
+    ],
+    configure: [
+      "Environnement virtuel : `python -m venv .venv && source .venv/bin/activate`.",
+      "Épingler : `pip freeze > requirements.txt`.",
+      "Noyau Jupyter du venv : `python -m ipykernel install --user --name ds`.",
+    ],
+    workflow: [
+      "Lancer : `jupyter lab`.",
+      "Explorer : `df.describe()`, `df.info()`, `df.plot()`.",
+      "Nettoyer les sorties des notebooks avant de committer.",
+      "Séparer : un notebook d'exploration, un script `train.py` reproductible.",
+    ],
+    editors: [
+      "VS Code + « Jupyter » (Microsoft) et « Python » (Microsoft).",
+      "Alternatives : JupyterLab (navigateur), PyCharm, Google Colab (cloud).",
+    ],
+  },
     definition:
       "La data science est la discipline qui transforme des données brutes en décisions : explorer, nettoyer, modéliser avec des statistiques et du machine learning, puis communiquer les résultats de façon actionnable.",
     whyLearn:
@@ -922,6 +1090,25 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 2 ===
   // ----------------------------------------------------------------- numpy
   numpy: {
+  setup: {
+    install: [
+      "Dans un venv Python : `pip install numpy`.",
+      "Vérifier : `python -c \"import numpy; print(numpy.__version__)\"`.",
+    ],
+    configure: [
+      "Rien à configurer : `import numpy as np` suffit après installation.",
+      "Ajouter `numpy` à `requirements.txt` pour figer la version du projet.",
+    ],
+    workflow: [
+      "Créer des tableaux : `np.array([1, 2, 3])`, `np.zeros((3, 3))`, `np.arange(10)`.",
+      "Calculs vectorisés : `a * 2`, `np.sqrt(a)` — sans boucle Python.",
+      "Inspecter : `a.shape`, `a.dtype`, `a.mean()`.",
+    ],
+    editors: [
+      "VS Code : extensions « Python » et « Jupyter » (Microsoft) pour manipuler les tableaux en notebook.",
+      "Alternative : PyCharm, avec visualiseur de tableaux intégré.",
+    ],
+  },
     definition:
       "NumPy est la bibliothèque de calcul numérique de Python : elle apporte les tableaux n-dimensionnels et des opérations mathématiques rapides, exécutées en C sous le capot.",
     whyLearn:
@@ -991,6 +1178,25 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- pandas
   pandas: {
+  setup: {
+    install: [
+      "Dans un venv Python : `pip install pandas` (installe numpy avec).",
+      "Vérifier : `python -c \"import pandas; print(pandas.__version__)\"`.",
+    ],
+    configure: [
+      "Rien à configurer ; ajuster l'affichage si besoin : `pd.set_option('display.max_rows', 100)`.",
+      "Ajouter `pandas` à `requirements.txt`.",
+    ],
+    workflow: [
+      "Charger : `df = pd.read_csv('data.csv')` (aussi `read_excel`, `read_json`, `read_parquet`).",
+      "Explorer : `df.head()`, `df.info()`, `df.describe()`.",
+      "Transformer : `df.groupby('col').mean()`, `df[df['x'] > 0]`, `df.to_csv('out.csv', index=False)`.",
+    ],
+    editors: [
+      "VS Code : extensions « Python » et « Jupyter » (Microsoft) — le visualiseur de DataFrame intégré est idéal.",
+      "Alternatives : PyCharm, ou JupyterLab directement dans le navigateur.",
+    ],
+  },
     definition:
       "Pandas est la bibliothèque Python de manipulation de données tabulaires : elle apporte les DataFrames — des tables avec lignes et colonnes nommées — et des outils pour les nettoyer, transformer et analyser.",
     whyLearn:
@@ -1131,6 +1337,25 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------- scikit-learn
   "scikit-learn": {
+  setup: {
+    install: [
+      "`pip install scikit-learn` (dépendances numpy/scipy installées automatiquement).",
+      "Vérifier : `python -c \"import sklearn; print(sklearn.__version__)\"`.",
+    ],
+    configure: [
+      "Aucun fichier de config : l'API est uniforme (`fit` / `predict` / `score`).",
+      "Fixer `random_state` sur les modèles et les splits pour la reproductibilité.",
+    ],
+    workflow: [
+      "Découper : `from sklearn.model_selection import train_test_split` puis `X_train, X_test, y_train, y_test = train_test_split(X, y)`.",
+      "Entraîner : `from sklearn.ensemble import RandomForestClassifier` → `clf = RandomForestClassifier()` → `clf.fit(X_train, y_train)`.",
+      "Prédire et évaluer : `clf.predict(X_test)`, `clf.score(X_test, y_test)`.",
+    ],
+    editors: [
+      "VS Code : extensions « Python » et « Jupyter » (Microsoft).",
+      "Alternative : PyCharm.",
+    ],
+  },
     definition:
       "Scikit-learn est la bibliothèque Python de référence pour le machine learning classique : régression, classification, clustering, avec une API uniforme et une documentation exemplaire.",
     whyLearn:
@@ -1201,6 +1426,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- pytorch
   pytorch: {
+  setup: {
+    install: [
+      "CPU : `pip install torch` (suivre pytorch.org/get-started pour la commande exacte selon l'OS).",
+      "GPU NVIDIA : `pip install torch --index-url https://download.pytorch.org/whl/cu121` (adapter `cu121` à la version CUDA).",
+      "Vérifier : `python -c \"import torch; print(torch.cuda.is_available())\"`.",
+    ],
+    configure: [
+      "Choisir l'appareil une fois : `device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')`.",
+      "Déplacer modèle et tenseurs : `model.to(device)`, `x.to(device)`.",
+      "Ajouter `torchvision` si vision : `pip install torchvision` (même index CUDA).",
+    ],
+    workflow: [
+      "Tenseurs : `torch.tensor([1., 2.])`, `torch.randn(3, 3)`.",
+      "Données : `from torch.utils.data import DataLoader`, itérer par batch.",
+      "Boucle d'entraînement : `loss.backward()` → `optimizer.step()` → `optimizer.zero_grad()`.",
+    ],
+    editors: [
+      "VS Code : extensions « Python » et « Jupyter » (Microsoft).",
+      "Alternative : PyCharm.",
+    ],
+  },
     definition:
       "PyTorch est le framework de deep learning préféré de la recherche : dynamique, pythonique, il permet de construire et d’entraîner des réseaux de neurones avec une grande flexibilité.",
     whyLearn:
@@ -1413,6 +1659,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------- computer-vision
   "computer-vision": {
+  setup: {
+    install: [
+      "`pip install opencv-python numpy matplotlib` (le paquet s'importe avec `import cv2`).",
+      "Ajouter un framework DL : `pip install torch torchvision` ou `pip install tensorflow`.",
+      "Vérifier : `python -c \"import cv2; print(cv2.__version__)\"`.",
+    ],
+    configure: [
+      "Dossier `images/` pour les fichiers de test ; index `0` = webcam par défaut.",
+      "Rien d'autre à configurer : OpenCV fonctionne dès l'installation.",
+    ],
+    workflow: [
+      "Lire et afficher : `img = cv2.imread('photo.jpg')`, `cv2.imshow('vue', img)`, `cv2.waitKey(0)`.",
+      "Attention : OpenCV lit en BGR — convertir pour matplotlib : `cv2.cvtColor(img, cv2.COLOR_BGR2RGB)`.",
+      "Vidéo/webcam : `cap = cv2.VideoCapture(0)`, lire les frames en boucle, libérer avec `cap.release()`.",
+    ],
+    editors: [
+      "VS Code : extensions « Python » et « Jupyter » (Microsoft) pour visualiser les images en notebook.",
+      "Alternative : PyCharm.",
+    ],
+  },
     definition:
       "La computer vision apprend aux machines à interpréter les images et les vidéos : classifier, détecter des objets, segmenter des scènes. Des caméras de sécurité aux voitures autonomes, c’est l’IA qui voit.",
     whyLearn:
@@ -1483,6 +1749,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- nlp
   nlp: {
+  setup: {
+    install: [
+      "Créer un environnement virtuel : `python -m venv .venv` puis `source .venv/bin/activate`.",
+      "Installer spaCy et un modèle : `pip install spacy` puis `python -m spacy download fr_core_news_sm`.",
+      "Installer les Transformers : `pip install transformers torch`.",
+      "Optionnel : `pip install nltk` pour les outils classiques du TAL.",
+    ],
+    configure: [
+      "Fixer les versions dans `requirements.txt` (`pip freeze > requirements.txt`).",
+      "Télécharger les données NLTK utiles : `python -c \"import nltk; nltk.download('punkt')\"`.",
+      "Stocker les modèles lourds hors du dépôt (dossier `models/` ignoré par Git).",
+    ],
+    workflow: [
+      "Tester un pipeline spaCy : `python -c \"import spacy; nlp = spacy.load('fr_core_news_sm'); print([(t.text, t.pos_) for t in nlp('Bonjour le monde')])\"`.",
+      "Charger un modèle Hugging Face : `from transformers import pipeline; ner = pipeline('ner', model='Jean-Baptiste/camembert-ner')`.",
+      "Évaluer sur un jeu de test avant chaque changement de modèle ou de paramètres.",
+    ],
+    editors: [
+      "VS Code + extensions « Python » et « Jupyter » pour les notebooks d'expérimentation.",
+      "Alternatives : JupyterLab (exploration interactive), PyCharm (projets lourds).",
+    ],
+  },
     definition:
       "Le NLP (traitement du langage naturel) apprend aux machines à comprendre et produire du texte : classification, extraction d’entités, résumé, traduction. Avec les Transformers, il a fusionné avec l’ère des LLMs.",
     whyLearn:
@@ -1625,6 +1913,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------- github-actions
   "github-actions": {
+  setup: {
+    install: [
+      "Aucune installation : GitHub Actions est inclus dans chaque dépôt GitHub.",
+      "Installer la CLI GitHub pour piloter à distance : `brew install gh` puis `gh auth login`.",
+    ],
+    configure: [
+      "Créer le workflow dans `.github/workflows/ci.yml`.",
+      "Déclarer le déclencheur (`on: [push, pull_request]`) et l'image (`runs-on: ubuntu-latest`).",
+      "Stocker les secrets dans `Settings > Secrets and variables > Actions`, lus via `${{ secrets.NOM }}`.",
+    ],
+    workflow: [
+      "Lister les exécutions : `gh run list`.",
+      "Suivre un run en direct : `gh run watch`.",
+      "Déclencher manuellement : `gh workflow run ci.yml`.",
+      "Itérer : pousser sur une branche, lire les logs, corriger le YAML.",
+    ],
+    editors: [
+      "VS Code + extension « GitHub Actions » (autocomplétion du YAML).",
+      "Alternatives : édition directe sur github.com, Neovim + plugin YAML.",
+    ],
+  },
     definition:
       "GitHub Actions est le système CI/CD intégré à GitHub : des workflows décrits en YAML qui s’exécutent à chaque push, pull request ou planification, avec un marketplace d’actions réutilisables.",
     whyLearn:
@@ -1696,6 +2005,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- gitlab-ci
   "gitlab-ci": {
+  setup: {
+    install: [
+      "Aucune installation : GitLab CI est inclus dans chaque projet GitLab.",
+      "Installer la CLI GitLab pour piloter à distance : `brew install glab` puis `glab auth login`.",
+    ],
+    configure: [
+      "Déclarer le pipeline dans `.gitlab-ci.yml` à la racine.",
+      "Définir les étapes (`stages: [test, build, deploy]`) et l'image Docker (`image: node:20`).",
+      "Stocker les secrets dans `Settings > CI/CD > Variables` (les marquer masked/protected).",
+    ],
+    workflow: [
+      "Lister les pipelines : `glab ci list`.",
+      "Voir un pipeline : `glab ci view`.",
+      "Relancer un job en échec depuis l'UI ou via `glab ci retry`.",
+      "Tester la syntaxe avec l'éditeur de pipeline intégré avant de pousser.",
+    ],
+    editors: [
+      "VS Code + extension « GitLab Workflow ».",
+      "Alternatives : Web IDE de GitLab, éditeur de pipeline intégré.",
+    ],
+  },
     definition:
       "GitLab CI est le CI/CD natif de GitLab : un seul outil pour le code, les pipelines, les registries et le déploiement, configuré dans un fichier .gitlab-ci.yml.",
     whyLearn:
@@ -1765,6 +2095,29 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- aws
   aws: {
+  setup: {
+    install: [
+      "Créer un compte sur aws.amazon.com (offre gratuite 12 mois sur de nombreux services).",
+      "Installer la CLI : `brew install awscli`.",
+      "Configurer : `aws configure` (clé d'accès, région par défaut).",
+      "Vérifier : `aws sts get-caller-identity`.",
+    ],
+    configure: [
+      "Activer une alerte de facturation : console `Billing > Budgets` (budget à 0 € / 1 $).",
+      "Comprendre la facturation : chaque service est facturé à l'usage, vérifier `Billing > Bills` régulièrement.",
+      "Choisir une région proche (`eu-west-3` Paris) via `aws configure set region`.",
+      "Ne jamais commiter les clés : elles vivent dans `~/.aws/credentials`.",
+    ],
+    workflow: [
+      "Lister les buckets S3 : `aws s3 ls`.",
+      "Lister les instances EC2 : `aws ec2 describe-instances`.",
+      "Déployer via la console ou l'IaC (Terraform), éviter les clics manuels répétés.",
+    ],
+    editors: [
+      "VS Code + extension « AWS Toolkit ».",
+      "Alternatives : console web AWS, CloudShell intégré au navigateur.",
+    ],
+  },
     definition:
       "AWS (Amazon Web Services) est la plateforme cloud la plus complète : des centaines de services pour calculer, stocker, mettre en réseau et déployer, à la demande et à l’échelle mondiale.",
     whyLearn:
@@ -1836,6 +2189,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- ansible
   ansible: {
+  setup: {
+    install: [
+      "Installer : `pip install ansible` ou `brew install ansible`.",
+      "Vérifier : `ansible --version`.",
+    ],
+    configure: [
+      "Déclarer les serveurs dans `inventory.ini` (ou `hosts`).",
+      "Régler les options dans `ansible.cfg` (utilisateur, clé SSH).",
+      "Écrire les playbooks en YAML (`site.yml`) avec rôles réutilisables.",
+    ],
+    workflow: [
+      "Tester la connectivité : `ansible all -i inventory.ini -m ping`.",
+      "Exécuter : `ansible-playbook -i inventory.ini site.yml`.",
+      "Chiffrer les secrets : `ansible-vault encrypt secrets.yml`.",
+      "Mode dry-run : `ansible-playbook --check site.yml`.",
+    ],
+    editors: [
+      "VS Code + extension « Ansible » (Red Hat).",
+      "Alternatives : édition YAML simple, `ansible-lint` en CI.",
+    ],
+  },
     definition:
       "Ansible est un outil d’automatisation de la configuration : il exécute des tâches sur des flottes de serveurs via SSH, sans agent à installer, à partir de playbooks YAML lisibles.",
     whyLearn:
@@ -1907,6 +2281,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- nginx
   nginx: {
+  setup: {
+    install: [
+      "Installer : `sudo apt install nginx` (Debian/Ubuntu) ou `brew install nginx` (macOS).",
+      "Vérifier : `nginx -v`.",
+    ],
+    configure: [
+      "Configuration principale : `nginx.conf` (ou `/etc/nginx/sites-available/` sur Debian).",
+      "Déclarer un reverse proxy : bloc `server` + `location / { proxy_pass http://localhost:3000; }`.",
+      "Toujours tester avant de recharger : `nginx -t`.",
+    ],
+    workflow: [
+      "Recharger sans coupure : `nginx -s reload` (ou `sudo systemctl reload nginx`).",
+      "Lire les logs : `/var/log/nginx/access.log` et `error.log`.",
+      "Déboguer : augmenter `error_log` en mode `debug` temporairement.",
+    ],
+    editors: [
+      "VS Code + extension « Remote - SSH » pour éditer la conf sur le serveur.",
+      "Alternatives : édition directe en SSH avec nano/vim.",
+    ],
+  },
     definition:
       "Nginx est un serveur web et reverse proxy ultra-performant : il reçoit les requêtes HTTP, les route vers les bonnes applications, chiffre en TLS et répartit la charge. Il est devant une immense partie du web.",
     whyLearn:
@@ -1978,6 +2372,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ prometheus
   prometheus: {
+  setup: {
+    install: [
+      "Installer : `brew install prometheus` ou le binaire depuis prometheus.io.",
+      "Alternative Docker : `docker run -p 9090:9090 prom/prometheus`.",
+      "Vérifier : ouvrir http://localhost:9090.",
+    ],
+    configure: [
+      "Déclarer les cibles dans `prometheus.yml` (`scrape_configs`).",
+      "Exposer `/metrics` sur chaque application surveillée.",
+      "Définir des règles d'alerte dans `rules.yml` (optionnel au début).",
+    ],
+    workflow: [
+      "Vérifier les cibles : onglet Status > Targets (http://localhost:9090/targets).",
+      "Requêter en PromQL : `up`, `rate(http_requests_total[5m])`.",
+      "Explorer les métriques avant d'écrire des alertes.",
+    ],
+    editors: [
+      "VS Code + extension « Remote - SSH » pour éditer `prometheus.yml` sur le serveur.",
+      "Alternatives : interface web Prometheus, Grafana pour la visualisation.",
+    ],
+  },
     definition:
       "Prometheus est le système de supervision par métriques devenu standard : il collecte des séries temporelles (CPU, latence, erreurs), permet de les interroger avec PromQL et déclenche des alertes.",
     whyLearn:
@@ -2048,6 +2463,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- postgresql
   postgresql: {
+  setup: {
+    install: [
+      "Installer : `brew install postgresql` puis `brew services start postgresql` (ou `sudo apt install postgresql`).",
+      "Alternative Docker : `docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=secret postgres`.",
+      "Vérifier : `psql --version`.",
+    ],
+    configure: [
+      "Créer base et utilisateur : `createdb <nom>` et `createuser <nom>`.",
+      "Réglages serveur dans `postgresql.conf`, accès réseau dans `pg_hba.conf`.",
+      "Stocker l'URL de connexion (`postgres://user:pass@localhost:5432/db`) en variable d'environnement.",
+    ],
+    workflow: [
+      "Ouvrir le client : `psql -U postgres`.",
+      "Explorer : `\\l` (bases), `\\dt` (tables), `\\d <table>` (schéma).",
+      "Sauvegarder / restaurer : `pg_dump <db> > backup.sql`, `psql <db> < backup.sql`.",
+    ],
+    editors: [
+      "VS Code + extension « PostgreSQL » (Chris Kolkman).",
+      "Alternatives : DBeaver, pgAdmin, psql en terminal.",
+    ],
+  },
     definition:
       "PostgreSQL est le système de gestion de base de données relationnelle open source le plus avancé : robuste, extensible, conforme aux standards SQL, avec des fonctions modernes (JSON, recherche plein texte, géospatial).",
     whyLearn:
@@ -2117,6 +2553,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- mongodb
   mongodb: {
+  setup: {
+    install: [
+      "Via Docker : `docker run --name mongo -p 27017:27017 -d mongo:7`.",
+      "Natif : paquet `mongodb-org` depuis le dépôt officiel (Debian/Ubuntu, voir mongodb.com).",
+      "Vérifier : `mongosh --version`.",
+    ],
+    configure: [
+      "Fichier `mongod.conf` (`/etc/mongod.conf`) : `net.bindIp`, `storage.dbPath`.",
+      "Créer un admin : `db.createUser({user:\"admin\", pwd:\"...\", roles:[\"root\"]})` dans la base `admin`.",
+      "Activer l'authentification : `security.authorization: enabled`.",
+    ],
+    workflow: [
+      "Shell : `mongosh \"mongodb://localhost:27017\"`.",
+      "Requêtes : `show dbs`, `db.users.find()`, `db.users.createIndex({email:1})`.",
+      "Sauvegarder : `mongodump --out=./dump` ; restaurer : `mongorestore ./dump`.",
+    ],
+    editors: [
+      "VS Code + « MongoDB for VS Code » (MongoDB, officiel) : playgrounds et exploration.",
+      "Alternatives : MongoDB Compass (GUI officiel), Studio 3T.",
+    ],
+  },
     definition:
       "MongoDB est la base de données documentaire la plus populaire : elle stocke des documents JSON-like sans schéma rigide, avec un scaling horizontal natif et un langage d’agrégation puissant.",
     whyLearn:
@@ -2187,6 +2644,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- redis
   redis: {
+  setup: {
+    install: [
+      "Via Docker : `docker run --name redis -p 6379:6379 -d redis:7`.",
+      "Natif : `sudo apt install redis-server`.",
+      "Vérifier : `redis-cli ping` (répond `PONG`).",
+    ],
+    configure: [
+      "Fichier `redis.conf` : `bind`, `port 6379`, `requirepass <mot-de-passe>`.",
+      "Persistance : `appendonly yes` (AOF) pour ne pas perdre les données.",
+      "Mémoire : `maxmemory 256mb` et `maxmemory-policy allkeys-lru`.",
+    ],
+    workflow: [
+      "CLI : `redis-cli` puis `SET`, `GET`, `EXPIRE`, `TTL`.",
+      "Inspecter : `INFO`, `KEYS prefix:*` (développement uniquement).",
+      "Observer en direct : `redis-cli MONITOR` ; vider (dev) : `FLUSHDB`.",
+    ],
+    editors: [
+      "VS Code + « Redis for VS Code » (Redis, officiel) : explorer les clés, exécuter des commandes.",
+      "Alternatives : RedisInsight (GUI officiel), Another Redis Desktop Manager.",
+    ],
+  },
     definition:
       "Redis est un stockage clé-valeur en mémoire, ultra-rapide : il sert de cache, de gestionnaire de sessions, de file de messages et de compteur temps réel pour les applications à forte charge.",
     whyLearn:
@@ -2257,6 +2735,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------- data-engineering
   "data-engineering": {
+  setup: {
+    install: [
+      "Docker Desktop (indispensable pour Airflow, Spark ou Kafka en local).",
+      "Python 3.11+ : `python3 --version`.",
+      "Librairies de base : `pip install pandas pyarrow sqlalchemy`.",
+    ],
+    configure: [
+      "Environnement virtuel : `python -m venv .venv && source .venv/bin/activate`.",
+      "Dépendances épinglées dans `requirements.txt` ou `pyproject.toml`.",
+      "Connexions aux bases dans un fichier `.env` (jamais commité).",
+    ],
+    workflow: [
+      "Lancer un pipeline : `python pipeline.py`.",
+      "Explorer un fichier local : `pip install duckdb` puis `duckdb data.duckdb`.",
+      "Orchestrer en local : Airflow via Docker Compose (fichier officiel sur airflow.apache.org).",
+      "Valider les données en sortie : compter les lignes, vérifier les valeurs nulles.",
+    ],
+    editors: [
+      "VS Code + « Python » (Microsoft) et « Jupyter » (Microsoft).",
+      "Alternatives : PyCharm, DBeaver (explorer les bases), interface web d'Airflow (navigateur).",
+    ],
+  },
     definition:
       "Le data engineering est la discipline qui rend les données utilisables à l’échelle : ingérer des sources hétérogènes, les transformer, les orchestrer en pipelines fiables et les livrer aux analystes et aux modèles.",
     whyLearn:
@@ -2327,6 +2827,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- kafka
   kafka: {
+  setup: {
+    install: [
+      "Via Docker (image officielle, mode KRaft, sans ZooKeeper) : `docker run -p 9092:9092 -d apache/kafka:3.8`.",
+      "Vérifier : `kafka-topics.sh --bootstrap-server localhost:9092 --list`.",
+    ],
+    configure: [
+      "En Docker : variables `KAFKA_*` ; en natif : `server.properties` (`advertised.listeners`, `num.partitions`).",
+      "Créer un topic : `kafka-topics.sh --create --topic events --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1`.",
+    ],
+    workflow: [
+      "Produire : `kafka-console-producer.sh --topic events --bootstrap-server localhost:9092`.",
+      "Consommer : `kafka-console-consumer.sh --topic events --from-beginning --bootstrap-server localhost:9092`.",
+      "Inspecter : `kafka-topics.sh --describe --topic events --bootstrap-server localhost:9092`.",
+    ],
+    editors: [
+      "VS Code : pas d'extension officielle requise, le terminal suffit.",
+      "Interface web : Kafka UI ou Kafdrop en conteneur Docker pour visualiser topics et messages.",
+      "Alternative : Conduktor Desktop.",
+    ],
+  },
     definition:
       "Kafka est une plateforme de streaming d’événements distribuée : elle ingère des millions d’événements par seconde, les stocke durablement et les redistribue aux consommateurs. La colonne vertébrale des architectures event-driven.",
     whyLearn:
@@ -2537,6 +3057,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- pentesting
   pentesting: {
+  setup: {
+    install: [
+      "Kali Linux en VM (kali.org) : inclut déjà Nmap, Metasploit, Burp Suite.",
+      "Mettre à jour : `sudo apt update && sudo apt full-upgrade -y`.",
+      "Tester uniquement des cibles autorisées (lab personnel, programmes bug bounty).",
+    ],
+    configure: [
+      "Lab isolé : VM cible (ex. Metasploitable2) en réseau host-only.",
+      "Metasploit : `msfconsole` puis `db_status` pour vérifier la base.",
+      "Notes : un dossier par cible (`~/pentest/cible-01/`).",
+    ],
+    workflow: [
+      "Scan : `nmap -A <cible-lab>`.",
+      "Exploitation (cible autorisée) : `msfconsole` → `use exploit/...` → `set RHOSTS ...` → `run`.",
+      "Rapport : pour chaque finding, noter l'outil, la commande exacte et le résultat.",
+    ],
+    editors: [
+      "VS Code + « Python » (Microsoft) pour les scripts et les rapports.",
+      "Alternatives : Burp Suite (web), terminal + `tmux` pour les sessions longues.",
+    ],
+  },
     definition:
       "Le pentest (test d’intrusion) est le hacking éthique et méthodique : simuler une attaque réelle, avec autorisation, pour trouver les failles avant les attaquants et documenter comment les corriger.",
     whyLearn:
@@ -2611,6 +3152,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- ros
   ros: {
+  setup: {
+    install: [
+      "ROS 2 (Jazzy, Ubuntu 24.04) : ajouter le dépôt `packages.ros.org` (voir docs.ros.org).",
+      "`sudo apt install ros-jazzy-desktop`.",
+      "Sourcer l'environnement : `source /opt/ros/jazzy/setup.bash` ; vérifier : `ros2 --help`.",
+    ],
+    configure: [
+      "Workspace : `mkdir -p ~/ros2_ws/src && cd ~/ros2_ws && colcon build`.",
+      "Ajouter `source /opt/ros/jazzy/setup.bash` et `source ~/ros2_ws/install/setup.bash` dans `~/.bashrc`.",
+      "Créer un paquet : `ros2 pkg create --build-type ament_python mon_paquet`.",
+    ],
+    workflow: [
+      "Lancer un nœud : `ros2 run mon_paquet mon_noeud`.",
+      "Lister : `ros2 node list`, `ros2 topic list` ; écouter : `ros2 topic echo /chatter`.",
+      "Simuler : Gazebo (`sudo apt install ros-jazzy-ros-gz`).",
+      "Visualiser : `rviz2`.",
+    ],
+    editors: [
+      "VS Code + « ROS » (Microsoft) et « C/C++ » (Microsoft).",
+      "Alternatives : terminaux multiples + `rqt`, RViz (inclus dans ROS).",
+    ],
+  },
     definition:
       "ROS (Robot Operating System) est l’écosystème standard de la robotique : un middleware qui fait communiquer les composants d’un robot (capteurs, moteurs, algorithmes) via des messages, avec des outils de simulation et de visualisation.",
     whyLearn:
@@ -2682,6 +3245,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- embedded
   embedded: {
+  setup: {
+    install: [
+      "Toolchain ARM : `sudo apt install gcc-arm-none-eabi`.",
+      "Alternative Arduino : installer l'Arduino IDE ou PlatformIO.",
+      "Flash/debug : `sudo apt install openocd`.",
+    ],
+    configure: [
+      "Projet PlatformIO : `pio init --board <carte>` ; régler `platformio.ini` (`platform`, `board`, `framework`).",
+      "Bare-metal : `Makefile` + script de link dédié à la cible.",
+      "Port série : ajouter l'utilisateur au groupe `dialout` (`sudo usermod -aG dialout $USER`).",
+    ],
+    workflow: [
+      "Compiler : `pio run` ; flasher : `pio run -t upload`.",
+      "Console série : `pio device monitor -b 115200`.",
+      "Debug : `openocd` + `gdb-multiarch` connecté à la cible.",
+    ],
+    editors: [
+      "VS Code + « PlatformIO IDE » (PlatformIO) et « C/C++ » (Microsoft).",
+      "Alternatives : STM32CubeIDE (officiel ST), Arduino IDE 2.",
+    ],
+  },
     definition:
       "Les systèmes embarqués sont des ordinateurs dédiés intégrés à un objet : microcontrôleurs, firmware, contraintes de temps réel et d’énergie. C’est le code qui fait bouger le monde physique.",
     whyLearn:
@@ -2754,6 +3338,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ make
   make: {
+  setup: {
+    install: [
+      "SaaS : créer un compte sur make.com, rien à installer.",
+      "Application mobile Make (optionnel) pour suivre les exécutions.",
+    ],
+    configure: [
+      "Connecter les applications : « Connections » → OAuth ou clé API.",
+      "Organisation : inviter l'équipe dans « Organization ».",
+      "Variables réutilisables : « Variables » au niveau du scénario.",
+    ],
+    workflow: [
+      "Créer un scénario : module déclencheur (ex. Webhook) → modules d'action.",
+      "Tester : « Run once », inspecter les bundles d'entrée/sortie.",
+      "Planifier : « Scheduling » (ex. toutes les 15 minutes).",
+      "Suivre les erreurs : « History » et notifications.",
+    ],
+    editors: [
+      "Éditeur visuel web de Make (navigateur).",
+      "VS Code pour préparer le JSON ou le JavaScript des modules HTTP.",
+      "Alternative : Postman pour tester les API avant de les brancher.",
+    ],
+  },
     definition:
       "Make (ex-Integromat) est une plateforme d’automatisation visuelle : on assemble des scénarios en reliant des modules qui représentent des applications, sans écrire de code.",
     whyLearn:
@@ -2826,6 +3432,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- zapier
   zapier: {
+  setup: {
+    install: [
+      "SaaS : créer un compte sur zapier.com, rien à installer.",
+      "Optionnel : extension navigateur Zapier (Chrome) pour créer des Zaps depuis une page web.",
+    ],
+    configure: [
+      "Connecter les applications : « My Apps » → authentification OAuth ou clé API.",
+      "Organiser : dossiers et équipes dans « Settings ».",
+    ],
+    workflow: [
+      "Créer un Zap : Trigger (ex. « New Email ») → Action(s).",
+      "Tester chaque étape : « Test step » avant d'activer.",
+      "Activer : interrupteur « On » ; surveiller : « Zap History ».",
+      "Étapes avancées : « Code by Zapier » (Python ou JavaScript).",
+    ],
+    editors: [
+      "Éditeur web de Zapier (navigateur).",
+      "VS Code pour écrire et tester le code des étapes « Code by Zapier ».",
+      "Alternative : Postman pour tester les webhooks.",
+    ],
+  },
     definition:
       "Zapier est le pionnier de l’automatisation no-code : il connecte plus de 6000 applications via des « Zaps » — un déclencheur dans une app provoque des actions dans d’autres, sans écrire de code.",
     whyLearn:
@@ -2966,6 +3593,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 3 ===
   // ------------------------------------------------------------- tensorflow
   tensorflow: {
+  setup: {
+    install: [
+      "`pip install tensorflow` (CPU et GPU dans le même paquet depuis TF 2.x).",
+      "Vérifier : `python -c \"import tensorflow as tf; print(tf.__version__)\"`.",
+      "GPU : installer pilote NVIDIA + CUDA/cuDNN compatibles, puis `tf.config.list_physical_devices('GPU')`.",
+    ],
+    configure: [
+      "Rien d'obligatoire : Keras est intégré (`tf.keras`).",
+      "Limiter la mémoire GPU si besoin : `tf.config.experimental.set_memory_growth(gpu, True)`.",
+      "Fixer la graine : `tf.random.set_seed(42)` pour la reproductibilité.",
+    ],
+    workflow: [
+      "Construire : `model = tf.keras.Sequential([tf.keras.layers.Dense(64, activation='relu'), tf.keras.layers.Dense(10)])`.",
+      "Compiler et entraîner : `model.compile(optimizer='adam', loss='mse')` puis `model.fit(X, y, epochs=10)`.",
+      "Évaluer et sauvegarder : `model.evaluate(X_test, y_test)`, `model.save('mon_modele.keras')`.",
+    ],
+    editors: [
+      "VS Code : extensions « Python » et « Jupyter » (Microsoft).",
+      "Alternative : Google Colab (notebooks avec GPU gratuit) ou PyCharm.",
+    ],
+  },
     definition:
       "TensorFlow est la plateforme de machine learning de Google : un écosystème complet (Keras, TF Serving, TF Lite) pour entraîner et déployer des modèles en production, du serveur au mobile.",
     whyLearn:
@@ -3032,6 +3680,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- mlops
   mlops: {
+  setup: {
+    install: [
+      "Installer MLflow : `pip install mlflow`.",
+      "Installer DVC pour versionner les données : `pip install dvc`.",
+      "Conteneuriser avec Docker : voir la fiche Docker.",
+    ],
+    configure: [
+      "Initialiser DVC dans le dépôt : `dvc init`.",
+      "Déclarer le backend de suivi MLflow (`mlruns/` local ou serveur distant).",
+      "Versionner les jeux de données : `dvc add data/`, jamais de CSV dans Git.",
+    ],
+    workflow: [
+      "Lancer l'interface MLflow : `mlflow ui` (puis http://localhost:5000).",
+      "Logger paramètres et métriques dans le code d'entraînement (`mlflow.log_param`, `mlflow.log_metric`).",
+      "Comparer les runs dans l'UI et enregistrer le meilleur modèle (`mlflow.register_model`).",
+      "Reconstruire l'image d'inférence et la tester avant déploiement.",
+    ],
+    editors: [
+      "VS Code + extensions « Python » et « Docker ».",
+      "Alternatives : JupyterLab pour l'expérimentation, interface web MLflow pour le suivi.",
+    ],
+  },
     definition:
       "Le MLOps applique les principes DevOps au machine learning : versionner données et modèles, automatiser l’entraînement et le déploiement, surveiller les modèles en production.",
     whyLearn:
@@ -3165,6 +3835,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ helm
   helm: {
+  setup: {
+    install: [
+      "Installer Helm : `brew install helm` (ou le binaire depuis helm.sh).",
+      "Vérifier : `helm version`.",
+    ],
+    configure: [
+      "Structure d'un chart : `Chart.yaml`, `values.yaml`, dossier `templates/`.",
+      "Paramétrer via `values.yaml` (image, replicas, ingress).",
+      "Surcharger à l'installation avec `--set` ou `-f values-prod.yaml`.",
+    ],
+    workflow: [
+      "Ajouter un dépôt : `helm repo add bitnami https://charts.bitnami.com/bitnami` puis `helm repo update`.",
+      "Installer : `helm install <nom> bitnami/<chart>`.",
+      "Mettre à jour : `helm upgrade <nom> bitnami/<chart> -f values.yaml`.",
+      "Lister / désinstaller : `helm list`, `helm uninstall <nom>`.",
+    ],
+    editors: [
+      "VS Code + extension « Kubernetes » (support des charts Helm).",
+      "Alternatives : édition YAML simple, templates testés avec `helm template`.",
+    ],
+  },
     definition:
       "Helm est le gestionnaire de paquets de Kubernetes : il package des applications en « charts » versionnés et paramétrables, installables et mis à jour en une commande au lieu de YAML écrits à la main.",
     whyLearn:
@@ -3298,6 +3989,29 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- azure
   azure: {
+  setup: {
+    install: [
+      "Créer un compte sur azure.microsoft.com (compte gratuit + crédits d'essai).",
+      "Installer la CLI : `brew install azure-cli`.",
+      "Se connecter : `az login`.",
+      "Vérifier : `az account list`.",
+    ],
+    configure: [
+      "Sélectionner l'abonnement : `az account set --subscription <id>`.",
+      "Créer un groupe de ressources : `az group create --name <rg> --location francecentral`.",
+      "Comprendre la facturation : `Cost Management` dans le portail, créer un budget avec alerte.",
+      "Stocker les secrets dans Azure Key Vault, jamais en clair.",
+    ],
+    workflow: [
+      "Lister les groupes : `az group list`.",
+      "Lister les VM : `az vm list -o table`.",
+      "Déployer via Bicep/Terraform plutôt qu'en cliquant dans le portail.",
+    ],
+    editors: [
+      "VS Code + extensions « Azure CLI Tools » et « Azure Resources ».",
+      "Alternatives : portail Azure, Azure Cloud Shell.",
+    ],
+  },
     definition:
       "Azure est la plateforme cloud de Microsoft : forte intégration avec l’écosystème Microsoft (Active Directory, Office, .NET), cloud hybride et services IA.",
     whyLearn:
@@ -3365,6 +4079,29 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- gcp
   gcp: {
+  setup: {
+    install: [
+      "Créer un compte sur cloud.google.com (essai gratuit avec crédits).",
+      "Installer le SDK : `brew install --cask google-cloud-sdk`.",
+      "Initialiser : `gcloud init` (authentification + projet).",
+      "Vérifier : `gcloud auth login` et `gcloud projects list`.",
+    ],
+    configure: [
+      "Définir le projet : `gcloud config set project <project-id>`.",
+      "Définir la zone : `gcloud config set compute/zone europe-west1-b`.",
+      "Comprendre la facturation : associer un compte de facturation, créer un budget avec alertes.",
+      "Activer uniquement les API nécessaires (`gcloud services enable`).",
+    ],
+    workflow: [
+      "Lister les instances : `gcloud compute instances list`.",
+      "Voir la configuration active : `gcloud config list`.",
+      "Déployer via Terraform ou Cloud Build plutôt qu'en cliquant dans la console.",
+    ],
+    editors: [
+      "VS Code + extension « Cloud Code ».",
+      "Alternatives : console Google Cloud, Cloud Shell.",
+    ],
+  },
     definition:
       "GCP (Google Cloud Platform) est le cloud né de l’infrastructure de Google : excellence sur Kubernetes (GKE), la data (BigQuery) et la simplicité réseau.",
     whyLearn:
@@ -3432,6 +4169,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- grafana
   grafana: {
+  setup: {
+    install: [
+      "Installer : `brew install grafana` ou via Docker : `docker run -p 3000:3000 grafana/grafana`.",
+      "Vérifier : ouvrir http://localhost:3000 (identifiants par défaut `admin` / `admin`).",
+    ],
+    configure: [
+      "Ajouter Prometheus comme source de données (`Configuration > Data sources`).",
+      "Importer un dashboard communautaire via son ID (ex. Node Exporter).",
+      "Sauvegarder les dashboards en JSON versionnés dans Git.",
+    ],
+    workflow: [
+      "Explorer : `Explore` pour tester des requêtes PromQL ad hoc.",
+      "Créer des panels (graph, stat, table) reliés aux métriques utiles.",
+      "Configurer des alertes sur les seuils critiques (latence, erreurs, disque).",
+    ],
+    editors: [
+      "Interface web Grafana (création visuelle des dashboards).",
+      "VS Code pour versionner les JSON de dashboards et le provisioning.",
+    ],
+  },
     definition:
       "Grafana est la plateforme de visualisation de l’observabilité : elle transforme métriques, logs et traces en dashboards lisibles, avec alerting intégré.",
     whyLearn:
@@ -3499,6 +4256,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------- platform-engineering
   "platform-engineering": {
+  setup: {
+    install: [
+      "Installer Docker et `kubectl` (voir fiches Docker et Kubernetes).",
+      "Créer un cluster local : `kind create cluster`.",
+      "Installer Terraform : `brew install terraform`.",
+    ],
+    configure: [
+      "Organiser la plateforme en mono-dépôt (`platform/` : clusters, modules, charts).",
+      "Définir les « golden paths » : templates de service, pipelines CI de référence.",
+      "Centraliser la configuration partagée (versions, politiques) dans le dépôt.",
+    ],
+    workflow: [
+      "Prototyper localement : `kind create cluster`, `terraform apply`, `kubectl apply -f`.",
+      "Fournir aux équipes des templates plutôt que des clusters à la main.",
+      "Mesurer l'adoption : temps de mise en route d'un nouveau service, tickets récurrents.",
+    ],
+    editors: [
+      "VS Code + extensions « Docker », « Kubernetes », « HashiCorp Terraform ».",
+      "Alternatives : portail développeur (ex. Backstage) côté consommateurs de la plateforme.",
+    ],
+  },
     definition:
       "Le platform engineering industrialise le DevOps : construire des plateformes internes (IDP) qui offrent aux développeurs du self-service (environnements, déploiements, observabilité) via des « golden paths ».",
     whyLearn:
@@ -3566,6 +4344,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- mysql
   mysql: {
+  setup: {
+    install: [
+      "Via Docker : `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8`.",
+      "Natif (Debian/Ubuntu) : `sudo apt install mysql-server`.",
+      "Vérifier : `mysql --version`.",
+    ],
+    configure: [
+      "Sécuriser l'installation : `sudo mysql_secure_installation`.",
+      "Fichier `my.cnf` (`/etc/mysql/my.cnf`) : régler `bind-address` et `max_connections`.",
+      "Créer base et utilisateur : `CREATE DATABASE app; CREATE USER 'app'@'%' IDENTIFIED BY 'secret'; GRANT ALL ON app.* TO 'app'@'%';`.",
+    ],
+    workflow: [
+      "Se connecter : `mysql -u app -p`.",
+      "Sauvegarder : `mysqldump -u root -p app > backup.sql` ; restaurer : `mysql -u root -p app < backup.sql`.",
+      "Analyser une requête lente : `EXPLAIN SELECT ...;`.",
+      "Lister : `SHOW DATABASES;`, `SHOW TABLES;`.",
+    ],
+    editors: [
+      "VS Code + extension « MySQL » (Weijan Chen) : explorer, requêtes, résultats.",
+      "Alternatives : DBeaver (gratuit, multi-bases), MySQL Workbench (officiel), TablePlus.",
+    ],
+  },
     definition:
       "MySQL est le système de gestion de base de données relationnelle le plus répandu : simple, rapide, il propulse une immense partie du web historique (WordPress et Cie).",
     whyLearn:
@@ -3632,6 +4432,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- rabbitmq
   rabbitmq: {
+  setup: {
+    install: [
+      "Via Docker (avec console d'admin) : `docker run --name rabbitmq -p 5672:5672 -p 15672:15672 -d rabbitmq:4-management`.",
+      "Vérifier : `docker exec rabbitmq rabbitmq-diagnostics ping`.",
+    ],
+    configure: [
+      "Console d'admin : `http://localhost:15672` (guest/guest, localhost uniquement par défaut).",
+      "Créer un utilisateur : `rabbitmqctl add_user app secret` puis `rabbitmqctl set_permissions -p / app \".*\" \".*\" \".*\"`.",
+      "Fichier `rabbitmq.conf` : `listeners.tcp.local`, `loopback_users`.",
+    ],
+    workflow: [
+      "Déclarer exchanges et files via la console web ou `rabbitmqadmin`.",
+      "Publier/consommer depuis le code : `amqplib` (Node.js) ou `pika` (Python).",
+      "Surveiller : `rabbitmqctl list_queues name messages consumers`.",
+    ],
+    editors: [
+      "VS Code : le terminal et la console web intégrée suffisent.",
+      "Alternative : Postman ou `curl` pour tester les endpoints de l'API de management.",
+    ],
+  },
     definition:
       "RabbitMQ est un broker de messages robuste : il découple les services via des files d’attente, absorbe les pics de charge et garantit la livraison des messages.",
     whyLearn:
@@ -3698,6 +4518,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- analytics
   analytics: {
+  setup: {
+    install: [
+      "Python 3.11+ : `pip install pandas matplotlib seaborn jupyterlab`.",
+      "Alternative R : `sudo apt install r-base`.",
+      "SQL embarqué : `pip install duckdb`.",
+    ],
+    configure: [
+      "Environnement virtuel + `requirements.txt` épinglé.",
+      "Arborescence : `data/` (brutes), `notebooks/`, `reports/`.",
+      "`.gitignore` : exclure les CSV volumineux de `data/`.",
+    ],
+    workflow: [
+      "Agréger : `df.groupby(...).agg(...)`.",
+      "Interroger un CSV en SQL : `duckdb -c \"SELECT ... FROM 'data.csv'\"`.",
+      "Exporter un graphique : `plt.savefig(\"fig.png\", dpi=150)`.",
+    ],
+    editors: [
+      "VS Code + « Jupyter » (Microsoft).",
+      "Alternatives : DBeaver (SQL), Metabase ou Power BI (tableaux de bord).",
+    ],
+  },
     definition:
       "La data analytics est l’analyse décisionnelle : avec SQL et des outils BI, transformer des données en dashboards, KPIs et réponses aux questions business.",
     whyLearn:
@@ -3764,6 +4605,26 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ siem
   siem: {
+  setup: {
+    install: [
+      "Wazuh (open source) : déployer via le script d'installation officiel sur une VM Ubuntu (voir documentation wazuh.com).",
+      "Alternative : essai gratuit de Splunk.",
+    ],
+    configure: [
+      "Agents : installer `wazuh-agent` sur les machines surveillées, les enregistrer via `manage_agents`.",
+      "Règles personnalisées : `/var/ossec/etc/rules/local_rules.xml`.",
+      "Alertes : configurer e-mail ou webhook dans `ossec.conf`.",
+    ],
+    workflow: [
+      "Tableau de bord : `https://<serveur>:443`, onglet « Discover » pour chercher dans les logs.",
+      "Trier les alertes par niveau (priorité aux niveaux 7+).",
+      "Créer une règle de test, générer l'événement, vérifier l'alerte.",
+    ],
+    editors: [
+      "VS Code + « XML » (Red Hat) pour éditer les règles et `ossec.conf`.",
+      "Alternatives : interface web de Wazuh, Graylog (autre SIEM open source).",
+    ],
+  },
     definition:
       "Un SIEM (Security Information and Event Management) centralise les logs de toute l’infrastructure, corrèle les événements et détecte les attaques en temps réel : les yeux du SOC.",
     whyLearn:
@@ -3896,6 +4757,28 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- cpp
   cpp: {
+  setup: {
+    install: [
+      "Linux : `sudo apt install build-essential` (g++, gdb, make).",
+      "Alternative LLVM : `sudo apt install clang`.",
+      "Windows : « Build Tools for Visual Studio » (charge de travail C++).",
+      "Vérifier : `g++ --version`.",
+    ],
+    configure: [
+      "Fichier `CMakeLists.txt` : `cmake_minimum_required`, `project()`, `set(CMAKE_CXX_STANDARD 20)`.",
+      "Configurer et compiler : `cmake -B build && cmake --build build`.",
+      "Debug : compiler avec `-g`, déboguer avec `gdb ./build/app`.",
+    ],
+    workflow: [
+      "Compiler un fichier : `g++ -std=c++20 -Wall -Wextra main.cpp -o app`.",
+      "Exécuter : `./app`.",
+      "Déboguer : `gdb ./app` puis `break main`, `run`, `print var`.",
+    ],
+    editors: [
+      "VS Code (recommandé) + « C/C++ » (Microsoft) et « CMake Tools » (Microsoft).",
+      "Alternatives : CLion (JetBrains), Visual Studio (Windows), Qt Creator.",
+    ],
+  },
     definition:
       "C et C++ sont les langages du système et de l’embarqué : gestion manuelle de la mémoire, performance maximale, contrôle total sur le matériel. Ils sont derrière les OS, les moteurs de jeu et les microcontrôleurs.",
     whyLearn:
@@ -4168,6 +5051,27 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- robotics
   robotics: {
+  setup: {
+    install: [
+      "ROS 2 desktop : `sudo apt install ros-jazzy-desktop` (voir `ros`).",
+      "Simulateur : `sudo apt install ros-jazzy-ros-gz` (Gazebo).",
+      "Python : `pip install numpy`.",
+    ],
+    configure: [
+      "Workspace colcon : `~/ros2_ws` (voir `ros`).",
+      "Description du robot : `description/urdf/robot.urdf`.",
+      "Monde de simulation : fichier `.sdf` ou `.world` pour Gazebo.",
+    ],
+    workflow: [
+      "Lancer la simulation : `ros2 launch mon_robot sim.launch.py`.",
+      "Visualiser : `rviz2` ; capteurs : `ros2 topic echo /scan`.",
+      "Téléopérer : `ros2 run teleop_twist_keyboard teleop_twist_keyboard`.",
+    ],
+    editors: [
+      "VS Code + « ROS » (Microsoft) pour les nœuds.",
+      "Alternatives : Gazebo (simulation), RViz (visualisation, inclus ROS), PyCharm (nœuds Python).",
+    ],
+  },
     definition:
       "La robotique combine perception, décision et action : des machines qui comprennent leur environnement (capteurs, vision) et agissent dessus (moteurs, bras) de façon autonome.",
     whyLearn:

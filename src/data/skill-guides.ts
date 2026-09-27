@@ -37,10 +37,53 @@ export type SkillGuide = Pick<
 > & {
   /** Checklist d'installation / mise en place (page documentation). */
   environment?: string[];
+  /** Mise en place détaillée : installation, configuration, flux de travail, éditeurs. */
+  setup?: SkillSetup;
 };
+
+/**
+ * Informations pratiques pour démarrer avec une technologie :
+ * comment l'installer, la configurer, travailler avec au quotidien
+ * (éditeur, scripts, debug) et quels éditeurs / extensions choisir.
+ * Tous les champs sont optionnels : seules les sections renseignées
+ * sont affichées sur la page documentation.
+ */
+export interface SkillSetup {
+  /** Étapes d'installation, commandes concrètes. */
+  install?: string[];
+  /** Configuration essentielle du projet. */
+  configure?: string[];
+  /** Flux de travail quotidien : scripts, debug, bonnes habitudes. */
+  workflow?: string[];
+  /** Éditeurs / IDE recommandés et extensions exactes. */
+  editors?: string[];
+}
 
 /** Guide de référence rédigé à la main (modèle pour les autres entrées). */
 const N8N_GUIDE: SkillGuide = {
+  setup: {
+    install: [
+      "Via npm : `npm install -g n8n` (Node.js 18+ requis).",
+      "Via Docker : `docker run -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n`.",
+      "Vérifier : `n8n --version`.",
+    ],
+    configure: [
+      "Variables d'environnement (fichier `.env`) : `N8N_HOST`, `N8N_PORT`, `N8N_ENCRYPTION_KEY`.",
+      "Base SQLite par défaut (`~/.n8n/database.sqlite`) ; en production : `DB_TYPE=postgresdb` + `DB_POSTGRESDB_*`.",
+      "Identifiants des services : créés dans « Credentials », jamais en dur dans les nœuds.",
+    ],
+    workflow: [
+      "Lancer : `n8n start` ; interface : `http://localhost:5678`.",
+      "Tester un déclencheur : nœud Webhook → « Listen for Test Event ».",
+      "Déboguer : exécuter nœud par nœud, inspecter le JSON d'entrée/sortie.",
+      "Historique : onglet « Executions ».",
+    ],
+    editors: [
+      "Interface web intégrée : l'éditeur visuel de workflows suffit au quotidien.",
+      "VS Code pour développer des nœuds personnalisés (TypeScript).",
+      "Alternative : logs via `docker logs` si déployé en conteneur.",
+    ],
+  },
     illustration: "n8n",
     definition:
       "n8n est une plateforme d'automatisation de workflows : elle connecte des applications et des services entre eux pour exécuter des séquences d'actions automatiques, sans développer manuellement chaque intégration.",

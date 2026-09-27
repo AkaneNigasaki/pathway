@@ -297,6 +297,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- git
   git: {
+  setup: {
+    install: [
+      "`sudo apt install git` (Debian/Ubuntu) ou `brew install git` (macOS).",
+      "Windows : Git pour Windows depuis git-scm.com.",
+      "Vérifier : `git --version`.",
+    ],
+    configure: [
+      "Déclarer son identité : `git config --global user.name` et `git config --global user.email`.",
+      "Branche par défaut : `git config --global init.defaultBranch main`.",
+      "Authentification sans mot de passe : `ssh-keygen -t ed25519`, puis ajouter la clé publique sur l'hébergeur.",
+    ],
+    workflow: [
+      "Cycle quotidien : `git status`, `git add`, `git commit -m`.",
+      "Branches : `git switch -c feature/x`, `git merge`, `git pull --rebase`.",
+      "Historique et annulation : `git log --oneline --graph`, `git restore`, `git revert`.",
+    ],
+    editors: [
+      "VS Code : Git intégré dans la vue Source Control, extension GitLens pour l'historique.",
+      "Alternatives : GitHub Desktop (interface simple), lazygit (dans le terminal).",
+    ],
+  },
     definition:
       "Git est un système de gestion de versions : il enregistre l'historique des modifications d'un projet sous forme de commits, permet de travailler sur des branches parallèles et de fusionner le travail de plusieurs personnes.",
     whyLearn:
@@ -367,6 +388,28 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------- linux
   linux: {
+  setup: {
+    install: [
+      "Natif à la plupart des distributions : rien à installer.",
+      "Sur Windows, utiliser WSL2 : `wsl --install` dans un PowerShell administrateur.",
+      "Choisir une distribution stable pour débuter : Ubuntu LTS ou Debian.",
+    ],
+    configure: [
+      "Mettre à jour les paquets : `sudo apt update && sudo apt upgrade`.",
+      "Choisir le shell par défaut : `chsh -s /bin/bash`.",
+      "Travailler avec un utilisateur non-root et `sudo` pour l'administration.",
+    ],
+    workflow: [
+      "Naviguer et inspecter : `pwd`, `ls -la`, `cd`, `cat`, `less`.",
+      "Gérer fichiers et droits : `cp`, `mv`, `rm`, `mkdir`, `chmod`, `chown`.",
+      "Chercher et filtrer : `find`, `grep -r`, `ps aux`, `df -h`.",
+    ],
+    editors: [
+      "VS Code : extension WSL ou Remote - SSH pour éditer directement sur la machine Linux.",
+      "En terminal : `nano` pour débuter, Vim pour un usage avancé.",
+      "Alternative : GNOME Text Editor ou Kate selon l'environnement de bureau.",
+    ],
+  },
     definition:
       "Linux est un système d'exploitation libre qui fait tourner la majorité des serveurs, du cloud et des outils de développement. L'utiliser, c'est naviguer en ligne de commande : fichiers, permissions, processus, paquets.",
     whyLearn:
@@ -437,6 +480,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- sql
   sql: {
+  setup: {
+    install: [
+      "Aucune installation : SQL est un langage, pas un logiciel.",
+      "Installer un SGBD pour pratiquer : PostgreSQL (`sudo apt install postgresql`) ou SQLite (`sqlite3 base.db`).",
+      "Vérifier : `psql --version` ou `sqlite3 --version`.",
+    ],
+    configure: [
+      "PostgreSQL : créer un rôle et une base avec `createuser` et `createdb`.",
+      "Stocker la connexion dans `DATABASE_URL` ou un fichier `.env` (jamais commité).",
+      "Client graphique optionnel : DBeaver ou pgAdmin.",
+    ],
+    workflow: [
+      "`SELECT`, `WHERE`, `JOIN`, `GROUP BY` : l'essentiel du quotidien.",
+      "Faire évoluer le schéma avec `ALTER TABLE`, via des migrations versionnées.",
+      "Tester chaque requête sur une copie des données, jamais en production.",
+    ],
+    editors: [
+      "VS Code : extension SQLTools pour exécuter des requêtes depuis l'éditeur.",
+      "DBeaver (multi-SGBD, gratuit) ou pgAdmin (PostgreSQL) en client dédié.",
+    ],
+  },
     definition:
       "SQL (Structured Query Language) est le langage standard pour interroger et manipuler les bases de données relationnelles : sélectionner, filtrer, joindre et agréger des données.",
     whyLearn:
@@ -506,6 +570,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ javascript
   javascript: {
+  setup: {
+    install: [
+      "Installer Node.js LTS depuis nodejs.org (ou via nvm : `nvm install --lts`).",
+      "Vérifier : `node -v` et `npm -v`.",
+      "Côté navigateur : rien à installer, la console (F12) suffit.",
+    ],
+    configure: [
+      "Initialiser le projet : `npm init -y`.",
+      "Ajouter `\"type\": \"module\"` dans `package.json` pour `import` / `export` natifs.",
+    ],
+    workflow: [
+      "Exécuter un fichier : `node app.js`.",
+      "Découper le code en modules ES (`import` / `export`).",
+      "Déboguer : `console.log` ciblés ou le débogueur VS Code (F5).",
+    ],
+    editors: [
+      "VS Code : support JavaScript intégré, sans extension.",
+      "Extensions utiles : ESLint, Prettier, Error Lens.",
+      "Alternatives : WebStorm (tout intégré), Zed (rapide et léger).",
+    ],
+  },
     definition:
       "JavaScript est le langage de programmation du web : il rend les pages interactives dans le navigateur et, via Node.js, fait tourner des serveurs, des outils et des applications complètes.",
     whyLearn:
@@ -575,6 +660,28 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ typescript
   typescript: {
+  setup: {
+    install: [
+      "Installer en dépendance de dev : `npm install -D typescript`.",
+      "Vérifier : `npx tsc --version`.",
+      "Aucune installation globale nécessaire : on l'appelle via `npx tsc`.",
+    ],
+    configure: [
+      "Générer le config : `npx tsc --init` → `tsconfig.json`.",
+      "Base saine : `strict: true`, `target: ES2022`.",
+      "Séparer sources et build : `rootDir: src`, `outDir: dist`.",
+    ],
+    workflow: [
+      "Vérifier sans émettre : `npx tsc --noEmit` ; dev continu : `npx tsc --watch`.",
+      "Scripts npm : `\"build\": \"tsc\"`, `\"typecheck\": \"tsc --noEmit\"`.",
+      "Mettre `tsc --noEmit` dans la CI : aucun code mal typé ne passe.",
+    ],
+    editors: [
+      "VS Code (recommandé) : le meilleur support TypeScript du marché, intégré.",
+      "Extensions : Error Lens, ESLint, Prettier.",
+      "Forcer la version du workspace : `Ctrl+Maj+P` → TypeScript: Select TypeScript Version → Use Workspace Version.",
+    ],
+  },
     definition:
       "TypeScript est JavaScript avec un système de types statiques : on décrit la forme des données, et le compilateur détecte les erreurs avant l'exécution.",
     whyLearn:
@@ -644,6 +751,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------- react
   react: {
+  setup: {
+    install: [
+      "Via Vite : `npm create vite@latest mon-app -- --template react-ts`, puis `npm install`.",
+      "Alternative : `npx create-next-app@latest` pour un framework complet.",
+      "Démarrer : `npm run dev`.",
+    ],
+    configure: [
+      "Point d'entrée `src/main.tsx`, composant racine `src/App.tsx`.",
+      "Aucun fichier de config React : tout passe par `vite.config.ts` et `tsconfig.json`.",
+    ],
+    workflow: [
+      "Composants fonctions + hooks : `useState`, `useEffect`, `useMemo`.",
+      "État partagé : remonter l'état ou Context ; données serveur via une bibliothèque dédiée.",
+      "Découper en petits composants nommés par leur rôle, un fichier par composant.",
+    ],
+    editors: [
+      "VS Code : support TSX intégré.",
+      "Extensions : ES7+ React snippets, ESLint.",
+      "React Developer Tools (extension navigateur) pour inspecter l'arbre des composants.",
+    ],
+  },
     definition:
       "React est une bibliothèque JavaScript pour construire des interfaces utilisateur par composants : des briques réutilisables qui décrivent l'UI en fonction de l'état, et se mettent à jour automatiquement quand il change.",
     whyLearn:
@@ -715,6 +843,29 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- nodejs
   nodejs: {
+  setup: {
+    install: [
+      "Installer Node.js LTS depuis nodejs.org, ou via nvm : `nvm install --lts`.",
+      "Vérifier : `node -v` et `npm -v`.",
+      "Sur Windows, préférer l'installeur officiel ou `winget install OpenJS.NodeJS.LTS`.",
+    ],
+    configure: [
+      "Épingler la version par projet : fichier `.nvmrc` contenant par ex. `20`.",
+      "Déclarer la version minimale dans `package.json` : `\"engines\": { \"node\": \">=20\" }`.",
+      "Choisir le système de modules : `\"type\": \"module\"` pour import/export natifs.",
+    ],
+    workflow: [
+      "Exécuter un script : `node app.js` ; rechargement auto : `node --watch app.js`.",
+      "Scripts projet : `npm run dev`, `npm run start` définis dans `package.json`.",
+      "REPL rapide : taper `node` seul pour tester une expression.",
+      "Installer une dépendance : `npm install <paquet>` ; exécutable local : `npx <commande>`.",
+    ],
+    editors: [
+      "VS Code : support Node.js intégré, débogage via `launch.json` sans extension.",
+      "Extensions utiles : ESLint, Prettier.",
+      "Alternatives : WebStorm (débogueur Node avancé), Zed (léger).",
+    ],
+  },
     definition:
       "Node.js est un environnement d'exécution qui fait tourner JavaScript hors du navigateur, côté serveur. Il excelle dans les opérations d'entrées/sorties grâce à son modèle non bloquant piloté par événements.",
     whyLearn:
@@ -994,6 +1145,28 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ bash
   bash: {
+  setup: {
+    install: [
+      "Natif à Linux et macOS : rien à installer.",
+      "Sur Windows : via WSL2 (`wsl --install`) ou Git Bash, fourni avec Git pour Windows.",
+      "Vérifier : `bash --version`.",
+    ],
+    configure: [
+      "Personnaliser l'invite dans `~/.bashrc` via la variable `PS1`.",
+      "Centraliser alias et fonctions dans `~/.bash_aliases` ou `~/.bashrc`.",
+      "Recharger la configuration : `source ~/.bashrc`.",
+    ],
+    workflow: [
+      "Rendre un script exécutable : `chmod +x script.sh`, puis `./script.sh`.",
+      "Enchaîner les commandes : pipes `|`, redirections `>`, `>>`, opérateurs `&&` et `||`.",
+      "Déboguer : `bash -x script.sh` ou `set -x` en début de script.",
+    ],
+    editors: [
+      "VS Code : extensions Bash IDE et ShellCheck (diagnostics en direct).",
+      "Valider avant d'exécuter : `shellcheck script.sh`.",
+      "Alternative : Vim, avec coloration syntaxique shell intégrée.",
+    ],
+  },
     definition:
       "Bash est le langage du shell Linux : il permet d'enchaîner des commandes, de manipuler des fichiers et d'écrire des scripts qui automatisent les tâches.",
     whyLearn:
@@ -1205,6 +1378,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ html
   html: {
+  setup: {
+    install: [
+      "Natif au navigateur : rien à installer.",
+      "Un navigateur récent suffit : Chrome, Firefox ou Edge.",
+    ],
+    configure: [
+      "Pas de configuration : un fichier `index.html` s'ouvre directement dans le navigateur.",
+      "Structurer le projet : un dossier par projet, assets dans `assets/`.",
+    ],
+    workflow: [
+      "Écrire une structure sémantique : `header`, `main`, `section`, `footer`.",
+      "Inspecter et ajuster : outils de développement (F12), onglet Éléments.",
+      "Accessibilité : attributs `alt`, hiérarchie des titres `h1` → `h2`, labels sur les formulaires.",
+    ],
+    editors: [
+      "VS Code : coloration et Emmet intégrés (`!` + Tab génère le squelette).",
+      "Extensions utiles : Live Server (rechargement auto), HTMLHint.",
+      "Alternative : WebStorm.",
+    ],
+  },
     definition:
       "HTML est le langage de balisage qui structure le contenu des pages web : titres, paragraphes, liens, images, formulaires — avec une sémantique que navigateurs et lecteurs d'écran comprennent.",
     whyLearn:
@@ -1275,6 +1468,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- css
   css: {
+  setup: {
+    install: [
+      "Natif au navigateur : rien à installer.",
+      "Se lie au HTML via `<link rel=\"stylesheet\" href=\"style.css\">`.",
+    ],
+    configure: [
+      "Organiser les styles : `styles/` avec `base.css`, `layout.css`, `components.css` — ou un seul `style.css` pour débuter.",
+      "Centraliser couleurs et espacements dans des variables CSS (`:root`).",
+    ],
+    workflow: [
+      "Ajuster en direct : F12, onglet Styles, puis reporter dans le fichier.",
+      "Mobile-first : écrire le mobile d'abord, `@media (min-width: ...)` ensuite.",
+      "Éviter `!important` : comprendre la spécificité à la place.",
+    ],
+    editors: [
+      "VS Code : IntelliSense CSS intégré.",
+      "Extensions : CSS Peek (aller à la définition), Tailwind CSS IntelliSense si utilisé.",
+      "Alternative : WebStorm.",
+    ],
+  },
     definition:
       "CSS est le langage qui met en forme les pages web : couleurs, typographies, espacements, positionnement et mises en page.",
     whyLearn:
@@ -1557,6 +1770,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- npm
   npm: {
+  setup: {
+    install: [
+      "Fourni avec Node.js : rien à installer séparément.",
+      "Mettre à jour npm lui-même : `npm install -g npm`.",
+      "Vérifier : `npm -v`.",
+    ],
+    configure: [
+      "Initialiser : `npm init -y` (crée `package.json`).",
+      "Déclarer les scripts dans `package.json` : `dev`, `build`, `test`, `lint`.",
+      "Réglages avancés (registre, préfixe global) dans `.npmrc`.",
+    ],
+    workflow: [
+      "Installer : `npm install` ; ajouter : `npm install <paquet>` ; dev : `npm install -D <paquet>`.",
+      "Lancer : `npm run dev`, `npm run build`, `npm test`.",
+      "Maintenir : `npm audit` pour les vulnérabilités, `npm update` pour les mises à jour.",
+    ],
+    editors: [
+      "VS Code : vue NPM Scripts intégrée à l'explorateur pour lancer les scripts.",
+      "Extension npm Intellisense (autocomplétion des modules dans `import`).",
+    ],
+  },
     definition:
       "npm est le gestionnaire de paquets de l'écosystème JavaScript : il installe des bibliothèques depuis un registre de plusieurs millions de paquets, gère les versions et automatise les scripts.",
     whyLearn:
@@ -1628,6 +1862,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ vite
   vite: {
+  setup: {
+    install: [
+      "Créer un projet : `npm create vite@latest mon-app`.",
+      "Choisir le template (vanilla, react, vue…), puis `cd mon-app && npm install`.",
+      "Démarrer : `npm run dev`.",
+    ],
+    configure: [
+      "Fichier `vite.config.ts` : plugins, alias `@` vers `src`, proxy API (`server.proxy`).",
+      "Variables d'environnement : préfixe `VITE_`, fichier `.env`.",
+    ],
+    workflow: [
+      "Développement : `npm run dev` (démarrage instantané, HMR).",
+      "Production : `npm run build` → dossier `dist/`, puis `npm run preview` pour vérifier.",
+    ],
+    editors: [
+      "VS Code : aucun plugin requis, tout passe par le terminal.",
+      "Extensions utiles selon le template : ESLint, Prettier.",
+      "Alternatives : WebStorm, Zed.",
+    ],
+  },
     definition:
       "Vite est l'outil de build moderne de l'écosystème JS : serveur de développement instantané grâce aux modules ES natifs, rechargement à chaud éclair, build de production optimisé.",
     whyLearn:
@@ -1700,6 +1954,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- nextjs
   nextjs: {
+  setup: {
+    install: [
+      "Créer l'app : `npx create-next-app@latest mon-app` (choisir TypeScript et App Router).",
+      "Démarrer : `npm run dev`.",
+    ],
+    configure: [
+      "Fichier `next.config.ts` pour les options du framework.",
+      "Routes : dossiers dans `app/` — `page.tsx` pour une page, `layout.tsx` pour un layout.",
+      "Secrets et URLs : `.env.local` (jamais commité).",
+    ],
+    workflow: [
+      "`npm run dev`, `npm run build`, `npm start` en production.",
+      "Server Components par défaut ; `\"use client\"` en haut du fichier pour l'interactivité.",
+      "Données : `fetch` côté serveur avec cache et revalidation.",
+    ],
+    editors: [
+      "VS Code : support TSX intégré.",
+      "Extensions : ESLint (la config Next.js est incluse à la création), Prettier.",
+      "Alternative : WebStorm.",
+    ],
+  },
     definition:
       "Next.js est le framework React de référence pour la production : rendu côté serveur, génération statique, App Router, routes API et déploiement simplifié.",
     whyLearn:
@@ -1771,6 +2046,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- tailwind
   tailwind: {
+  setup: {
+    install: [
+      "Via Vite : `npm install -D tailwindcss @tailwindcss/vite`, puis ajouter le plugin dans `vite.config.ts`.",
+      "Avec Next.js : option proposée directement par `create-next-app`.",
+    ],
+    configure: [
+      "CSS d'entrée : `@import \"tailwindcss\";` dans `src/index.css` (Tailwind v4).",
+      "Thème : bloc `@theme` dans le CSS pour couleurs et polices personnalisées.",
+      "Contenu scanné automatiquement en v4 : rien à déclarer.",
+    ],
+    workflow: [
+      "Classes utilitaires dans le JSX : `flex`, `gap-4`, `md:grid-cols-2`.",
+      "Responsive : préfixes `sm:`, `md:`, `lg:` sur les mêmes classes.",
+      "Ne pas construire de noms de classes par concaténation : ils ne seraient pas détectés.",
+    ],
+    editors: [
+      "VS Code : extension Tailwind CSS IntelliSense (autocomplétion officielle).",
+      "Alternative : WebStorm, avec support Tailwind natif.",
+    ],
+  },
     definition:
       "Tailwind CSS est un framework de classes utilitaires : on style directement dans le HTML (flex, pt-4, text-center) au lieu d'écrire du CSS personnalisé.",
     whyLearn:
@@ -1912,6 +2207,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- github
   github: {
+  setup: {
+    install: [
+      "Installer Git : `git --version` pour vérifier (git-scm.com si absent).",
+      "Créer un compte sur github.com.",
+      "Installer la CLI officielle : `gh` (via `winget`, `brew` ou apt), puis `gh auth login`.",
+    ],
+    configure: [
+      "Identité : `git config --global user.name \"Nom\"` et `git config --global user.email \"email\"`.",
+      "Clé SSH : `ssh-keygen -t ed25519`, puis ajouter la clé publique dans GitHub → Settings → SSH keys.",
+      "Fichier `.gitignore` : `node_modules/`, `.env`, `dist/` dès le premier commit.",
+    ],
+    workflow: [
+      "Cloner : `gh repo clone user/repo` ou `git clone <url>`.",
+      "Branche de travail : `git checkout -b feature/x`, puis `git add`, `git commit -m`, `git push -u origin feature/x`.",
+      "Ouvrir la pull request : `gh pr create`, la suivre : `gh pr status`.",
+    ],
+    editors: [
+      "VS Code : extensions « GitHub Pull Requests » (GitHub) et GitLens pour l'historique.",
+      "Alternative : GitHub Desktop (interface graphique officielle).",
+    ],
+  },
     definition:
       "GitHub est la plateforme qui héberge le code Git et organise le travail d'équipe : pull requests, code review, issues, automatisation.",
     whyLearn:
@@ -1982,6 +2298,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- postman
   postman: {
+  setup: {
+    install: [
+      "Télécharger Postman depuis postman.com, ou `brew install --cask postman` sur macOS.",
+      "Créer un compte (gratuit) pour synchroniser collections et environnements.",
+    ],
+    configure: [
+      "Créer un environnement : variables `{{baseUrl}}`, `{{token}}` pour basculer local/prod.",
+      "Organiser les requêtes en collections, une par API.",
+      "Exporter en JSON (`collection.json`) pour versionner ou partager.",
+    ],
+    workflow: [
+      "Construire une requête GET/POST, envoyer, inspecter statut et JSON de réponse.",
+      "Ajouter des assertions dans l'onglet Tests : `pm.test(\"statut 200\", () => pm.response.to.have.status(200));`.",
+      "Enchaîner avec le Collection Runner ; en CI : `npm install -g newman` puis `newman run collection.json`.",
+    ],
+    editors: [
+      "Postman est sa propre application ; alternative légère dans VS Code : extensions « Thunder Client » ou « REST Client ».",
+      "Autres outils réels : Insomnia, Bruno (open source).",
+    ],
+  },
     definition:
       "Postman est l'atelier des APIs : envoyer des requêtes HTTP, les organiser en collections, les automatiser et les documenter.",
     whyLearn:
@@ -2053,6 +2389,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- fullstack
   fullstack: {
+  setup: {
+    install: [
+      "Installer Node.js LTS (`nvm install --lts`) pour le backend et les outils frontend.",
+      "Installer PostgreSQL (ou démarrer léger avec SQLite : `npm install sqlite3`).",
+      "Créer l'API : `npm init -y` puis `npm install express` et `npm install dotenv`.",
+    ],
+    configure: [
+      "Fichier `.env` (jamais commité) : `DATABASE_URL`, `PORT`, clés secrètes — chargé via `dotenv`.",
+      "`package.json` : scripts `\"dev\": \"node --watch server.js\"` et `\"start\": \"node server.js\"`.",
+      "CORS côté API pour autoriser le frontend local (`http://localhost:5173`).",
+    ],
+    workflow: [
+      "Lancer l'API : `npm run dev`, puis tester les routes avec Postman ou `curl`.",
+      "Créer le frontend (Vite, Next.js…), brancher les appels via `fetch('/api/...')`.",
+      "Itérer : endpoint → test manuel → composant frontend → vérification navigateur.",
+    ],
+    editors: [
+      "VS Code : extensions ESLint, Prettier, et « Thunder Client » ou « REST Client » pour tester l'API sans quitter l'éditeur.",
+      "Alternative : WebStorm, avec client HTTP intégré.",
+    ],
+  },
     definition:
       "Full stack désigne la capacité à construire une application de bout en bout : base de données, API backend, interface frontend et déploiement.",
     whyLearn:
@@ -2503,6 +2860,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ pnpm
   pnpm: {
+  setup: {
+    install: [
+      "Via npm : `npm install -g pnpm`.",
+      "Alternative : `corepack enable` puis `corepack prepare pnpm@latest --activate`.",
+      "Vérifier : `pnpm -v`.",
+    ],
+    configure: [
+      "Mêmes `package.json` et scripts que npm : migration transparente.",
+      "Le store global partagé évite les doublons : voir `pnpm store path`.",
+      "Réglages dans `.npmrc`, comme npm.",
+    ],
+    workflow: [
+      "Équivalents directs : `pnpm install`, `pnpm add <paquet>`, `pnpm add -D <paquet>`, `pnpm dev`.",
+      "Monorepo : `pnpm -r <commande>` (récursif) et `pnpm --filter <paquet>`.",
+    ],
+    editors: [
+      "VS Code : mêmes extensions que pour npm, rien de spécifique.",
+      "`package.json` reste le standard : aucun fichier propre à pnpm à éditer.",
+    ],
+  },
     definition:
       "pnpm est un gestionnaire de paquets compatible npm, plus rapide et plus économe : un store global unique évite de dupliquer les dépendances, avec un support natif des monorepos.",
     whyLearn:
@@ -2564,6 +2941,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- eslint
   eslint: {
+  setup: {
+    install: [
+      "Installer en dépendance de dev : `npm install -D eslint`.",
+      "Assistant d'initialisation : `npx eslint --init`.",
+      "Ajouter les plugins du stack : `typescript-eslint`, `eslint-plugin-react`.",
+    ],
+    configure: [
+      "Fichier `eslint.config.js` (format « flat config », standard depuis ESLint 9).",
+      "Étendre `eslint:recommended` puis ajuster les règles (`rules`) au projet.",
+    ],
+    workflow: [
+      "Vérifier : `npx eslint .` ; corriger automatiquement : `npx eslint . --fix`.",
+      "Script npm : `\"lint\": \"eslint .\"`.",
+      "Faire échouer la CI si le lint échoue.",
+    ],
+    editors: [
+      "VS Code : extension ESLint (soulignage en direct, correction à l'enregistrement).",
+      "Activer la correction au save via `editor.codeActionsOnSave`.",
+    ],
+  },
     definition:
       "ESLint analyse statiquement le code JavaScript/TypeScript : il détecte les erreurs probables, les mauvaises pratiques et impose un style cohérent en équipe.",
     whyLearn:
@@ -2625,6 +3022,27 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- prettier
   prettier: {
+  setup: {
+    install: [
+      "Installer en dépendance de dev : `npm install -D prettier`.",
+      "Vérifier : `npx prettier --version`.",
+      "Aucune installation globale nécessaire : on l'appelle via `npx`.",
+    ],
+    configure: [
+      "Fichier `.prettierrc` (ou clé `\"prettier\"` dans `package.json`) : `semi`, `singleQuote`, `printWidth`.",
+      "Exclure via `.prettierignore` : `dist/`, `*.min.js`, fichiers générés.",
+      "Éviter les conflits avec ESLint : ajouter `eslint-config-prettier`.",
+    ],
+    workflow: [
+      "Formater : `npx prettier --write .` ; contrôler sans modifier : `npx prettier --check .`.",
+      "Script npm : `\"format\": \"prettier --write .\"`.",
+      "Ne jamais débattre du style en revue : Prettier tranche.",
+    ],
+    editors: [
+      "VS Code : extension Prettier - Code formatter.",
+      "La définir comme formateur par défaut (`editor.defaultFormatter`) avec `formatOnSave`.",
+    ],
+  },
     definition:
       "Prettier est un formateur de code : il réécrit automatiquement le code selon des règles fixes — indentation, guillemets, points-virgules — à chaque sauvegarde.",
     whyLearn:
@@ -2869,6 +3287,26 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- vitest
   vitest: {
+  setup: {
+    install: [
+      "Installer en dépendance de dev : `npm install -D vitest`.",
+      "Interface visuelle optionnelle : `npm install -D @vitest/ui`.",
+      "DOM en tests : `npm install -D jsdom` si besoin.",
+    ],
+    configure: [
+      "Dans `vite.config.ts` : bloc `test: { environment: \"jsdom\" }` pour les composants.",
+      "Fichiers `*.test.ts` / `*.spec.ts` détectés par défaut, sans autre réglage.",
+    ],
+    workflow: [
+      "`npx vitest` (mode watch), `npx vitest run` (une passe, pour la CI).",
+      "Script npm : `\"test\": \"vitest run\"`.",
+      "API compatible Jest : `describe`, `it` / `test`, `expect`.",
+    ],
+    editors: [
+      "VS Code : extension Vitest (lancer et déboguer les tests depuis l'éditeur).",
+      "Alternative : WebStorm, avec intégration Vitest native.",
+    ],
+  },
     definition:
       "Vitest est le runner de tests pensé pour l'écosystème Vite : rapide, API compatible Jest, watch mode et interface de debug soignée.",
     whyLearn:
@@ -2930,6 +3368,28 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------- playwright
   playwright: {
+  setup: {
+    install: [
+      "Installer Node.js LTS, puis initialiser : `npm init playwright@latest` (crée tests/, playwright.config.ts et installe le paquet).",
+      "Installer les navigateurs : `npx playwright install` (Chromium, Firefox, WebKit).",
+      "Vérifier : `npx playwright test` lance la suite d'exemple.",
+    ],
+    configure: [
+      "`playwright.config.ts` : `testDir: './tests'`, `use: { baseURL: 'http://localhost:3000' }`.",
+      "Déclarer les projets navigateurs : `projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }]`.",
+      "Option `webServer` pour démarrer l'app avant les tests en CI.",
+    ],
+    workflow: [
+      "Lancer les tests : `npx playwright test` ; un seul fichier : `npx playwright test login.spec.ts`.",
+      "Mode interactif : `npx playwright test --ui` ; debug pas à pas : `npx playwright test --debug`.",
+      "Générer un test en naviguant : `npx playwright codegen http://localhost:3000`.",
+      "Consulter le rapport HTML : `npx playwright show-report`.",
+    ],
+    editors: [
+      "VS Code : extension « Playwright Test for VSCode » (Microsoft) — lance et débugue les tests depuis l'éditeur.",
+      "Alternative : WebStorm, support Playwright intégré.",
+    ],
+  },
     definition:
       "Playwright automatise de vrais navigateurs (Chromium, Firefox, WebKit) pour tester une application comme un utilisateur : clics, formulaires, navigation.",
     whyLearn:
@@ -3113,6 +3573,29 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------- react-native
   "react-native": {
+  setup: {
+    install: [
+      "Installer Node.js LTS.",
+      "Créer le projet avec Expo (voie recommandée) : `npx create-expo-app@latest MonApp`.",
+      "Installer l'app Expo Go sur le téléphone, ou un émulateur via Android Studio / Xcode.",
+    ],
+    configure: [
+      "`app.json` : nom, slug, icône et splash de l'application.",
+      "`eas.json` : profils de build (development, preview, production) via EAS.",
+      "Installer EAS CLI si besoin de builds cloud : `npm install -g eas-cli`.",
+    ],
+    workflow: [
+      "Démarrer : `npx expo start`, scanner le QR code avec Expo Go.",
+      "Build natif local : `npx expo run:android` / `npx expo run:ios`.",
+      "Build cloud : `eas build --platform android` (nécessite un compte Expo).",
+      "Rechargement à chaud : sauvegarder suffit, l'app se met à jour.",
+    ],
+    editors: [
+      "VS Code : extension « React Native Tools » (Microsoft) pour lancer et déboguer.",
+      "Android Studio : indispensable pour l'émulateur Android et le SDK.",
+      "Alternative : WebStorm, support React Native intégré.",
+    ],
+  },
     definition:
       "React Native permet de créer des applications mobiles iOS et Android avec React : le code JavaScript pilote des composants d'interface réellement natifs.",
     whyLearn:
@@ -3174,6 +3657,28 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- flutter
   flutter: {
+  setup: {
+    install: [
+      "Télécharger le SDK Flutter depuis docs.flutter.dev et l'ajouter au PATH.",
+      "Installer Android Studio (SDK Android + émulateur).",
+      "Diagnostiquer : `flutter doctor`, puis accepter les licences : `flutter doctor --android-licenses`.",
+    ],
+    configure: [
+      "`pubspec.yaml` : nom, version, dépendances et assets (images, polices).",
+      "Android Studio → SDK Manager : installer la plateforme Android cible.",
+      "Sur macOS pour iOS : Xcode depuis l'App Store.",
+    ],
+    workflow: [
+      "Créer : `flutter create mon_app`, lancer : `flutter run` (choisir l'appareil).",
+      "Ajouter un paquet : `flutter pub add http` ; installer : `flutter pub get`.",
+      "Analyser : `flutter analyze` ; produire l'APK : `flutter build apk`.",
+    ],
+    editors: [
+      "VS Code : extension « Flutter » (Dart Code) — run, debug, hot reload.",
+      "Android Studio : plugin Flutter officiel, émulateur intégré.",
+      "Le hot reload (`r` dans le terminal) applique les changements instantanément.",
+    ],
+  },
     definition:
       "Flutter est le framework UI de Google (langage Dart) : il dessine lui-même chaque pixel, pour des applications mobiles, web et desktop depuis une seule base de code.",
     whyLearn:
@@ -3235,6 +3740,28 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- electron
   electron: {
+  setup: {
+    install: [
+      "Installer Node.js LTS.",
+      "Installer Electron en dev : `npm install -D electron`.",
+      "Vérifier : `npx electron --version`.",
+    ],
+    configure: [
+      "`package.json` : `\"main\": \"main.js\"` désigne le processus principal.",
+      "`main.js` : crée la fenêtre via `new BrowserWindow({ width: 1200, height: 800 })`.",
+      "`preload.js` : pont sécurisé entre Node et la page (`contextBridge`), avec `contextIsolation: true`.",
+    ],
+    workflow: [
+      "Lancer l'app : `npx electron .` (script `\"start\": \"electron .\"`).",
+      "Déboguer le rendu avec les DevTools Chromium intégrés (`win.webContents.openDevTools()`).",
+      "Packager : `npm install -D electron-builder`, configurer `build` dans package.json, puis `npx electron-builder`.",
+    ],
+    editors: [
+      "VS Code : support JS/TS intégré, débogage du processus main via `launch.json`.",
+      "Extensions utiles : ESLint, Prettier.",
+      "Alternative : WebStorm.",
+    ],
+  },
     definition:
       "Electron emballe une application web (HTML/CSS/JS) dans un shell desktop : Chromium pour l'interface, Node.js pour le système — c'est la stack de VS Code, Discord et Slack.",
     whyLearn:
