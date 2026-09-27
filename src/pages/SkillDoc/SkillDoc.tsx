@@ -16,6 +16,7 @@ import {
   LuWrench as Wrench,
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
+import { renderRichText } from "../../components/RichText/RichText";
 import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
 import { NotFound } from "../NotFound/NotFound";
 import { getRoadmap, skillMap } from "../../data/roadmaps";
@@ -101,6 +102,17 @@ export function SkillDoc() {
             </li>
             <li>{roadmap.title}</li>
           </ul>
+          {guide?.docsUrl && (
+            <a
+              href={guide.docsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.docsLink}
+            >
+              <BookOpen size={14} aria-hidden="true" /> Documentation officielle
+              <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+          )}
         </Reveal>
 
         <div className={styles.layout}>
@@ -125,7 +137,7 @@ export function SkillDoc() {
             <Reveal>
               <section id="definition" className={styles.section} aria-label="Définition">
                 <h2 className={styles.h2}>Définition</h2>
-                <p className={styles.lead}>{guide?.definition ?? skill.description}</p>
+                <p className={styles.lead}>{renderRichText(guide?.definition ?? skill.description)}</p>
               </section>
             </Reveal>
 
@@ -133,7 +145,7 @@ export function SkillDoc() {
               <Reveal>
                 <section id="pourquoi" className={styles.section} aria-label="Pourquoi l'apprendre">
                   <h2 className={styles.h2}>Pourquoi l'apprendre</h2>
-                  <p>{guide.whyLearn}</p>
+                  <p>{renderRichText(guide.whyLearn)}</p>
                 </section>
               </Reveal>
             )}
@@ -152,7 +164,7 @@ export function SkillDoc() {
                       <span className={styles.check} aria-hidden="true">
                         <Check size={14} />
                       </span>
-                      <span>{step}</span>
+                      <span>{renderRichText(step)}</span>
                     </li>
                   ))}
                 </ul>
@@ -180,7 +192,7 @@ export function SkillDoc() {
                             <span className={styles.check} aria-hidden="true">
                               <Check size={14} />
                             </span>
-                            <span>{step}</span>
+                            <span>{renderRichText(step)}</span>
                           </li>
                         ))}
                       </ul>
@@ -197,7 +209,7 @@ export function SkillDoc() {
                             <span className={styles.check} aria-hidden="true">
                               <Check size={14} />
                             </span>
-                            <span>{step}</span>
+                            <span>{renderRichText(step)}</span>
                           </li>
                         ))}
                       </ul>
@@ -214,7 +226,7 @@ export function SkillDoc() {
                             <span className={styles.check} aria-hidden="true">
                               <Check size={14} />
                             </span>
-                            <span>{step}</span>
+                            <span>{renderRichText(step)}</span>
                           </li>
                         ))}
                       </ul>
@@ -231,7 +243,7 @@ export function SkillDoc() {
                             <span className={styles.check} aria-hidden="true">
                               <Check size={14} />
                             </span>
-                            <span>{step}</span>
+                            <span>{renderRichText(step)}</span>
                           </li>
                         ))}
                       </ul>
@@ -255,7 +267,7 @@ export function SkillDoc() {
                         <span className={styles.stepNum} aria-hidden="true">
                           {i + 1}
                         </span>
-                        <span>{step}</span>
+                        <span>{renderRichText(step)}</span>
                       </li>
                     ))}
                   </ol>
@@ -282,7 +294,7 @@ export function SkillDoc() {
                           ? concepts.map((c) => (
                               <tr key={c.name}>
                                 <th scope="row">{c.name}</th>
-                                <td>{c.definition}</td>
+                                <td>{renderRichText(c.definition)}</td>
                               </tr>
                             ))
                           : skill.concepts.map((c) => (
@@ -302,11 +314,11 @@ export function SkillDoc() {
               <Reveal>
                 <section id="exemple" className={styles.section} aria-label="Exemple concret">
                   <h2 className={styles.h2}>Exemple concret</h2>
-                  <p className={styles.exampleTitle}>{guide.example.title}</p>
+                  <p className={styles.exampleTitle}>{renderRichText(guide.example.title)}</p>
                   <ol className={styles.flow} aria-label={`Flux : ${guide.example.title}`}>
                     {guide.example.steps.map((s, i) => (
                       <li key={i}>
-                        <span>{s}</span>
+                        <span>{renderRichText(s)}</span>
                         {i < guide.example!.steps.length - 1 && (
                           <ArrowRight size={14} aria-hidden="true" className={styles.flowArrow} />
                         )}
@@ -330,8 +342,8 @@ export function SkillDoc() {
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <div>
-                          <p className={styles.projectTitle}>{p.title}</p>
-                          {p.flow && <p className={styles.projectFlow}>{p.flow}</p>}
+                          <p className={styles.projectTitle}>{renderRichText(p.title)}</p>
+                          {p.flow && <p className={styles.projectFlow}>{renderRichText(p.flow)}</p>}
                         </div>
                       </li>
                     ))}
@@ -355,7 +367,7 @@ export function SkillDoc() {
                         ) : (
                           <span className={styles.prereqName}>{id}</span>
                         )}
-                        {note && <p className={styles.prereqNote}>{note}</p>}
+                        {note && <p className={styles.prereqNote}>{renderRichText(note)}</p>}
                       </li>
                     ))}
                   </ul>

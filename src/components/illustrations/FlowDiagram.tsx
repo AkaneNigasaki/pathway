@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { renderRichText } from "../RichText/RichText";
 import { useIntersectionReveal } from "../../hooks/useIntersectionReveal";
 import styles from "./Illustration.module.css";
 
@@ -27,7 +28,7 @@ export function FlowDiagram({ steps, accentEnds = false, label }: FlowDiagramPro
               className={`${styles.flowStep} ${accent ? styles.flowStepAccent : ""} mono`}
               style={{ transitionDelay: `${i * 130}ms` }}
             >
-              {step}
+              {renderRichText(step)}
             </div>
           </Fragment>
         );

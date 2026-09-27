@@ -10,6 +10,7 @@ import { GUIDES_DEVOPS } from "./guides/part-devops";
 import { GUIDES_CYBER } from "./guides/part-cyber";
 import { GUIDES_ROBOTICS } from "./guides/part-robotics";
 import { GUIDES_TYPESCRIPT } from "./guides/part-typescript";
+import { OFFICIAL_DOCS } from "./guides/official-docs";
 
 /**
  * Guides pédagogiques des compétences.
@@ -39,6 +40,8 @@ export type SkillGuide = Pick<
   environment?: string[];
   /** Mise en place détaillée : installation, configuration, flux de travail, éditeurs. */
   setup?: SkillSetup;
+  /** URL de la documentation officielle de la technologie. */
+  docsUrl?: string;
 };
 
 /**
@@ -189,6 +192,19 @@ export const SKILL_GUIDES: Record<string, Record<string, SkillGuide>> = {
   "robotics-engineer": GUIDES_ROBOTICS,
   typescript: GUIDES_TYPESCRIPT,
 };
+
+/**
+ * Injecte l'URL de documentation officielle dans chaque guide concerné.
+ * Les concepts sans source officielle n'ont pas d'entrée dans OFFICIAL_DOCS
+ * et n'affichent donc aucun lien.
+ */
+for (const [key, docsUrl] of Object.entries(OFFICIAL_DOCS)) {
+  const [roadmapSlug, skillId] = key.split(":");
+  const guide = SKILL_GUIDES[roadmapSlug]?.[skillId];
+  if (guide && !guide.docsUrl) {
+    guide.docsUrl = docsUrl;
+  }
+}
 
 export function getSkillGuide(
   roadmapSlug: string,

@@ -568,3 +568,24 @@
     transform: none;
   }
 }
+
+/* Lien vers la documentation officielle, sous les métadonnées. */
+.docsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: #0c0c0c;
+  font-weight: 700;
+  font-size: var(--text-small);
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.docsLink:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}

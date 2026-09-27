@@ -8,6 +8,7 @@ import { getNextSkills, skillMap } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
 import { getSkillGuide } from "../../data/skill-guides";
 import { FlowDiagram, SKILL_ILLUSTRATIONS } from "../illustrations";
+import { renderRichText } from "../RichText/RichText";
 import { SkillIcon } from "../SkillIcon/SkillIcon";
 import styles from "./SkillPanel.module.css";
 
@@ -292,7 +293,7 @@ export function SkillPanel({
               <h3 className={styles.blockTitle}>
                 <Quote size={13} aria-hidden="true" /> Définition
               </h3>
-              <p className={styles.definition}>{guide.definition}</p>
+              <p className={styles.definition}>{renderRichText(guide.definition)}</p>
             </section>
           )}
 
@@ -301,7 +302,7 @@ export function SkillPanel({
               <h3 className={styles.blockTitle}>
                 <Compass size={13} aria-hidden="true" /> Pourquoi l'apprendre ?
               </h3>
-              <p className={styles.whyText}>{guide.whyLearn}</p>
+              <p className={styles.whyText}>{renderRichText(guide.whyLearn)}</p>
             </section>
           )}
 
@@ -402,7 +403,7 @@ export function SkillPanel({
                       </button>
                       {open && (
                         <p id={panelId} className={styles.accDef}>
-                          {c.definition}
+                          {renderRichText(c.definition)}
                         </p>
                       )}
                     </div>
@@ -443,7 +444,7 @@ export function SkillPanel({
           {guide?.example && (
             <section className={styles.block} aria-label="Exemple concret">
               <h3 className={styles.blockTitle}>
-                <Lightbulb size={13} aria-hidden="true" /> Exemple : {guide.example.title}
+                <Lightbulb size={13} aria-hidden="true" /> Exemple : {renderRichText(guide.example.title)}
               </h3>
               <FlowDiagram
                 steps={guide.example.steps}
