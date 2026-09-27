@@ -60,6 +60,9 @@ export function Footer() {
         <div className={styles.bottom}>
           <span>© 2026 Pathway</span>
           <span className={styles.made}>Conçu pour les curieux.</span>
+          <span className={styles.made}>
+            Icônes des concepts : Flat Color Icons (MIT), via Iconify.
+          </span>
         </div>
       </div>
     </footer>
