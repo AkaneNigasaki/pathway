@@ -1,15 +1,30 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import {
+  ArrowLeft, ArrowUpRight, Brain, Container, Cpu, Database, Globe,
+  Lightbulb, ShieldCheck, Zap,
+} from "lucide-react";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { CareerCard } from "../../components/CareerCard/CareerCard";
 import { getField } from "../../data/fields";
-import { getRoadmapsByField } from "../../data/roadmaps";
+import { getRoadmap, getRoadmapsByField, getSkill } from "../../data/roadmaps";
 import { CAREERS } from "../../data/careers";
-import { useAllProgress, progressPercent } from "../../hooks/useProgress";
+import { getGuidedPaths, type GuidedPathIcon } from "../../data/guided-paths";
+import { useAllProgress, progressPercent, countDone } from "../../hooks/useProgress";
 import { NotFound } from "../NotFound/NotFound";
 import styles from "./FieldDetail.module.css";
+
+const PATH_ICONS: Record<GuidedPathIcon, typeof Globe> = {
+  web: Globe,
+  ai: Brain,
+  devops: Container,
+  data: Database,
+  automation: Zap,
+  security: ShieldCheck,
+  robotics: Cpu,
+  foundations: Lightbulb,
+};
 
 export function FieldDetail() {
   const { id } = useParams<{ id: string }>();
@@ -21,12 +36,16 @@ export function FieldDetail() {
     () => (field ? CAREERS.filter((c) => c.fieldId === field.id) : []),
     [field]
   );
+  const guidedPaths = useMemo(
+    () => (field ? getGuidedPaths(field.id) : []),
+    [field]
+  );
 
   if (!field) return <NotFound />;
 
   const skillCount = roadmaps.reduce((n, r) => n + r.skills.length, 0);
   const progressOf = (roadmapId: string, total: number) =>
-    progressPercent((store[roadmapId] ?? []).length, total);
+    progressPercent(countDone(store[roadmapId]), total);
 
   return (
     <div className={styles.page} style={{ "--accent": field.accent } as React.CSSProperties}>
@@ -56,6 +75,43 @@ export function FieldDetail() {
             </div>
           </dl>
         </Reveal>
+
+        {guidedPaths.length > 0 && (
+          <section aria-label="Parcours guidés" className={styles.pathsSection}>
+            <Reveal className="section-head">
+              <h2 className={styles.sectionTitle}>Parcours guidés</h2>
+              <p className={styles.sectionHint}>
+                Huit directions, un point de départ concret chacune. Choisissez
+                la vôtre : la carte s'ouvre sur la première compétence.
+              </p>
+            </Reveal>
+            <div className={styles.pathsGrid}>
+              {guidedPaths.map((p, i) => {
+                const Icon = PATH_ICONS[p.icon];
+                const roadmap = getRoadmap(p.roadmapSlug);
+                const entry = roadmap ? getSkill(roadmap, p.entrySkillId) : undefined;
+                return (
+                  <Reveal key={p.id} delay={Math.min(i * 50, 300)}>
+                    <Link
+                      to={`/roadmaps/${p.roadmapSlug}?skill=${p.entrySkillId}`}
+                      className={styles.pathCard}
+                    >
+                      <span className={styles.pathIcon} aria-hidden="true">
+                        <Icon size={20} strokeWidth={1.8} />
+                      </span>
+                      <span className={styles.pathTitle}>{p.title}</span>
+                      <span className={styles.pathPitch}>{p.pitch}</span>
+                      <span className={styles.pathEntry}>
+                        Départ : {entry?.name ?? p.entrySkillId}
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </span>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {roadmaps.length > 0 ? (
           <section aria-label={`Roadmaps ${field.name}`}>

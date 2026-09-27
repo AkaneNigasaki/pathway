@@ -10,7 +10,7 @@ import { FIELDS } from "../../data/fields";
 import { ROADMAPS, totalSkills } from "../../data/roadmaps";
 import { CAREERS } from "../../data/careers";
 import { useCountUp } from "../../hooks/useCountUp";
-import { useAllProgress } from "../../hooks/useProgress";
+import { countDone, useAllProgress } from "../../hooks/useProgress";
 import { progressPercent } from "../../hooks/useProgress";
 import styles from "./Home.module.css";
 
@@ -47,7 +47,7 @@ export function Home() {
   const progressOf = (slug: string) => {
     const r = ROADMAPS.find((x) => x.slug === slug);
     if (!r) return 0;
-    return progressPercent((store[r.id] ?? []).length, r.skills.length);
+    return progressPercent(countDone(store[r.id]), r.skills.length);
   };
 
   return (
@@ -55,7 +55,7 @@ export function Home() {
       <Hero />
 
       {/* ── Filières ── */}
-      <section className="section" aria-labelledby="fields-title">
+      <section className="section" id="domaines" aria-labelledby="fields-title">
         <div className="container">
           <Reveal className="section-head">
             <p className="eyebrow">Domaines</p>

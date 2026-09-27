@@ -5,7 +5,7 @@ import { Reveal } from "../../components/Reveal/Reveal";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { ROADMAPS } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
-import { useAllProgress, progressPercent } from "../../hooks/useProgress";
+import { countDone, countInProgress, useAllProgress, progressPercent } from "../../hooks/useProgress";
 import styles from "./ProgressPage.module.css";
 
 export function ProgressPage() {
@@ -13,10 +13,11 @@ export function ProgressPage() {
 
   const entries = useMemo(() => {
     return ROADMAPS.map((r) => {
-      const done = (store[r.id] ?? []).length;
-      return { roadmap: r, done, percent: progressPercent(done, r.skills.length) };
+      const done = countDone(store[r.id]);
+      const active = countInProgress(store[r.id]);
+      return { roadmap: r, done, active, percent: progressPercent(done, r.skills.length) };
     })
-      .filter((e) => e.done > 0)
+      .filter((e) => e.done > 0 || e.active > 0)
       .sort((a, b) => b.percent - a.percent);
   }, [store]);
 
@@ -68,7 +69,7 @@ export function ProgressPage() {
             </Reveal>
 
             <div className={styles.list}>
-              {entries.map(({ roadmap, done, percent }, i) => {
+              {entries.map(({ roadmap, done, active, percent }, i) => {
                 const field = getField(roadmap.fieldId);
                 return (
                   <Reveal key={roadmap.slug} delay={Math.min(i * 60, 300)}>
@@ -85,6 +86,9 @@ export function ProgressPage() {
                         </h2>
                         <p className={styles.rowMeta}>
                           <span className="mono">{done}</span> / {roadmap.skills.length} compétences
+                          {active > 0 && (
+                            <> · <span className="mono">{active}</span> en cours</>
+                          )}
                         </p>
                         <ProgressBar value={percent} size="sm" />
                       </div>

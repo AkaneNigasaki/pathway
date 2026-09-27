@@ -134,53 +134,50 @@
   margin-bottom: 1.75rem;
 }
 
-.toggleBtn {
+/* ── Contrôle de statut à 3 états ── */
+.statusGroup {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.statusOpt {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  width: 100%;
   justify-content: center;
-  padding: 0.9rem 1.25rem;
+  gap: 0.45rem;
+  padding: 0.75rem 0.5rem;
   border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-strong);
+  border: 1.5px solid var(--border);
   font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 2.25rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  background: var(--surface);
   transition: transform 180ms var(--ease-out), background-color 200ms ease,
     border-color 200ms ease, color 200ms ease;
 }
 
-.toggleBtn:hover {
+.statusOpt:hover {
   transform: translateY(-1px);
-  border-color: var(--accent);
+  border-color: var(--border-strong);
+  color: var(--foreground);
 }
 
-.toggleBtn:active {
-  transform: scale(0.99);
+.statusOpt:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.toggleCheck {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border-strong);
-  color: transparent;
-  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+.statusActive {
+  background: var(--foreground);
+  border-color: var(--foreground);
+  color: var(--background);
 }
 
-.toggleBtn.isDone {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
-.toggleBtn.isDone .toggleCheck {
-  background: rgb(255 255 255 / 0.22);
-  border-color: transparent;
-  color: #fff;
+.statusActive:hover {
+  color: var(--background);
+  border-color: var(--foreground);
 }
 
 .block {
@@ -309,6 +306,136 @@
 .resource svg {
   color: var(--faint);
   flex-shrink: 0;
+}
+
+/* ── Mini pastilles de statut dans les chips ── */
+.miniDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  flex-shrink: 0;
+}
+
+.dotTodo {
+  background: transparent;
+}
+
+.dotActive {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.dotDone {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.chipDone {
+  opacity: 0.75;
+}
+
+.count {
+  margin-left: auto;
+  font-size: 0.68rem;
+  color: var(--faint);
+  font-weight: 600;
+}
+
+/* ── Suggestions « Que apprendre ensuite ? » ── */
+.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-align: left;
+  transition: transform 180ms var(--ease-out), border-color 180ms ease;
+}
+
+.suggestion:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.suggestion svg {
+  color: var(--faint);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.suggestionMain {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.suggestionName {
+  font-weight: 600;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestionReason {
+  font-size: 0.75rem;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.suggestionLocked {
+  opacity: 0.8;
+}
+
+.suggestionLocked .suggestionReason {
+  color: var(--muted);
+}
+
+/* ── Projets numérotés ── */
+.projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  counter-reset: project;
+}
+
+.projects li {
+  position: relative;
+  padding-left: 2.4rem;
+  font-size: 0.95rem;
+  color: var(--foreground-soft);
+  line-height: 1.55;
+  counter-increment: project;
+}
+
+.projects li::before {
+  content: counter(project, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
 /* ── Mobile : bottom sheet ── */

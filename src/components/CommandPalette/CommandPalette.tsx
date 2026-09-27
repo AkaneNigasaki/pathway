@@ -166,7 +166,12 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                         </span>
                         <span className={styles.itemText}>
                           <span className={styles.itemTitle}>{item.title}</span>
-                          <span className={styles.itemSub}>{item.subtitle}</span>
+                          <span className={styles.itemSub}>
+                            {item.subtitle}
+                            {item.breadcrumb && (
+                              <span className={styles.itemCrumb}>{item.breadcrumb}</span>
+                            )}
+                          </span>
                         </span>
                         {i === active && (
                           <CornerDownLeft size={14} aria-hidden="true" className={styles.enterIcon} />

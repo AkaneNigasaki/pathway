@@ -1,0 +1,45 @@
+/* ── Roadmap verticale (mobile) ── */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.stage {
+  scroll-margin-top: 120px;
+}
+
+.stageHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stageNum {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--faint);
+}
+
+.stageLabel {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+  flex: 1;
+}
+
+.stageCount {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--faint);
+}
+
+.nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}

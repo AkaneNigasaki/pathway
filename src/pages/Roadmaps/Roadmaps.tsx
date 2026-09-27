@@ -3,7 +3,7 @@ import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { FIELDS } from "../../data/fields";
 import { ROADMAPS } from "../../data/roadmaps";
-import { useAllProgress, progressPercent } from "../../hooks/useProgress";
+import { useAllProgress, progressPercent, countDone } from "../../hooks/useProgress";
 import styles from "./Roadmaps.module.css";
 
 export function Roadmaps() {
@@ -24,7 +24,7 @@ export function Roadmaps() {
   );
 
   const progressOf = (roadmapId: string, total: number) =>
-    progressPercent((store[roadmapId] ?? []).length, total);
+    progressPercent(countDone(store[roadmapId]), total);
 
   return (
     <div className={styles.page}>

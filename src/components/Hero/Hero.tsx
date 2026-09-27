@@ -1,122 +1,70 @@
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowRight, Search } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import styles from "./Hero.module.css";
 
-const PLACEHOLDERS = [
-  "Développement Web",
-  "Intelligence artificielle",
-  "Droit des affaires",
-  "Finance",
-  "Robotique",
-  "Économie",
+const FIELDS = [
+  { id: "informatique", label: "Informatique" },
+  { id: "droit", label: "Droit" },
+  { id: "economie", label: "Économie" },
+  { id: "finance", label: "Finance" },
+  { id: "design", label: "Design" },
+  { id: "sciences", label: "Sciences" },
 ];
 
-const SUGGESTIONS = [
-  { label: "Frontend Developer", to: "/roadmaps/frontend-developer" },
-  { label: "AI Engineer", to: "/roadmaps/ai-engineer" },
-  { label: "DevOps", to: "/roadmaps/devops-engineer" },
-  { label: "Droit des affaires", to: "/roadmaps/droit-des-affaires" },
-];
-
+/**
+ * Hero : le contenu est visible par défaut. L'apparition en cascade est un
+ * pur rehaussement CSS via @starting-style — aucune dépendance JS, aucun
+ * état "loaded". Si les animations sont désactivées ou non supportées,
+ * le contenu reste visible immédiatement.
+ */
 export function Hero() {
-  const [loaded, setLoaded] = useState(false);
-  const [query, setQuery] = useState("");
-  const [phIndex, setPhIndex] = useState(0);
-  const [phVisible, setPhVisible] = useState(true);
-  const navigate = useNavigate();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  // Séquence d'apparition : une classe, des animation-delay. 100% CSS.
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => setLoaded(true));
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  // Placeholder dynamique avec fondu.
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setPhVisible(false);
-      window.setTimeout(() => {
-        setPhIndex((i) => (i + 1) % PLACEHOLDERS.length);
-        setPhVisible(true);
-      }, 320);
-    }, 3200);
-    return () => window.clearInterval(id);
-  }, []);
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    navigate(query.trim() ? `/explore?q=${encodeURIComponent(query.trim())}` : "/explore");
-  };
-
   return (
-    <section className={`${styles.hero} ${loaded ? styles.loaded : ""}`}>
+    <section className={styles.hero}>
       <div className="container">
         <div className={styles.inner}>
-          <p className={`${styles.item} ${styles.label}`}>
-            <span className={styles.labelDot} aria-hidden="true" />
-            Plateforme d'apprentissage
+          <p className={styles.kicker} style={{ "--d": "0ms" } as React.CSSProperties}>
+            <span className={styles.kickerDot} aria-hidden="true" />
+            Pathway
           </p>
-          <h1 className={`${styles.item} ${styles.title}`}>
+          <h1 className={styles.title} style={{ "--d": "90ms" } as React.CSSProperties}>
             Construisez
             <br />
             votre parcours.
           </h1>
-          <p className={`${styles.item} ${styles.subtitle}`}>
-            Explorez les compétences, les métiers et les connaissances
-            nécessaires pour transformer votre objectif en parcours concret.
+          <p className={styles.lead} style={{ "--d": "200ms" } as React.CSSProperties}>
+            Découvrez les compétences, les outils et les connaissances
+            qui composent votre futur métier.
           </p>
-
-          <form
-            className={`${styles.item} ${styles.searchWrap}`}
-            onSubmit={submit}
-            role="search"
-            aria-label="Recherche Pathway"
-          >
-            <div className={styles.searchBar}>
-              <Search size={20} strokeWidth={1.8} className={styles.searchIcon} aria-hidden="true" />
-              <label htmlFor="hero-search" className={styles.srOnly}>
-                Que souhaitez-vous apprendre ?
-              </label>
-              <input
-                id="hero-search"
-                ref={inputRef}
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder=""
-                aria-label="Que souhaitez-vous apprendre ?"
-                autoComplete="off"
-              />
-              {!query && (
-                <span
-                  className={`${styles.fakePlaceholder} ${phVisible ? styles.phVisible : ""}`}
-                  aria-hidden="true"
-                >
-                  Que souhaitez-vous apprendre ? <em>{PLACEHOLDERS[phIndex]}</em>
-                </span>
-              )}
-              <button type="submit" className={styles.searchCta} aria-label="Lancer la recherche">
-                <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
-              </button>
-            </div>
-          </form>
-
-          <div className={`${styles.item} ${styles.suggestions}`}>
-            <span className={styles.suggLabel}>Populaire :</span>
-            {SUGGESTIONS.map((s) => (
-              <button
-                key={s.label}
-                type="button"
-                className={styles.chip}
-                onClick={() => navigate(s.to)}
-              >
-                {s.label}
-              </button>
-            ))}
+          <div className={styles.actions} style={{ "--d": "320ms" } as React.CSSProperties}>
+            <Link to="/roadmaps" className={styles.primary}>
+              Explorer les roadmaps <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+            <Link to="/fields" className={styles.secondary}>
+              Explorer les filières
+            </Link>
           </div>
+          <nav
+            className={styles.fieldNav}
+            aria-label="Filières populaires"
+            style={{ "--d": "430ms" } as React.CSSProperties}
+          >
+            {FIELDS.map((f, i) => (
+              <span key={f.id} className={styles.fieldLinkWrap}>
+                {i > 0 && <span className={styles.sep} aria-hidden="true">·</span>}
+                <Link to={`/fields/${f.id}`} className={styles.fieldLink}>
+                  {f.label}
+                </Link>
+              </span>
+            ))}
+          </nav>
         </div>
+      </div>
+
+      <div className={styles.hintWrap} aria-hidden="true">
+        <a href="#domaines" className={styles.hint} tabIndex={-1}>
+          <span className={styles.hintText}>Scroll to explore</span>
+          <ArrowDown size={14} className={styles.hintArrow} />
+        </a>
       </div>
     </section>
   );

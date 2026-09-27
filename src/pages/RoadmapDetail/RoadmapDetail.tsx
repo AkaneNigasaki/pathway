@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { ArrowLeft, Briefcase, Clock, Flag, Layers } from "lucide-react";
-import { RoadmapGraph } from "../../components/RoadmapGraph/RoadmapGraph";
+import { ArrowLeft, ArrowRight, Briefcase, Clock, Flag, Layers, Map as MapIcon, X } from "lucide-react";
+import { RoadmapMap } from "../../components/RoadmapGraph/RoadmapMap";
+import { RoadmapList } from "../../components/RoadmapGraph/RoadmapList";
 import { SkillPanel } from "../../components/SkillPanel/SkillPanel";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 import { Reveal } from "../../components/Reveal/Reveal";
-import { getRoadmap, countProjects, getSkill } from "../../data/roadmaps";
+import { getRoadmap, countProjects, getSkill, skillDepth } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
 import { CAREER_MAP } from "../../data/careers";
 import { useProgress, progressPercent } from "../../hooks/useProgress";
@@ -18,8 +19,11 @@ export function RoadmapDetail() {
   const [searchParams, setSearchParams] = useSearchParams();
   const roadmap = slug ? getRoadmap(slug) : undefined;
   const [selected, setSelected] = useState<Skill | null>(null);
+  const [mapOpen, setMapOpen] = useState(false);
 
-  const { completed, toggle } = useProgress(roadmap?.id ?? "");
+  const { status, cycle, setStatus, doneCount, inProgressCount } = useProgress(
+    roadmap?.id ?? ""
+  );
   const field = roadmap ? getField(roadmap.fieldId) : undefined;
 
   // Ouverture directe d'une compétence via ?skill= (command palette, recherche).
@@ -36,9 +40,19 @@ export function RoadmapDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmap]);
 
+  // Verrouille le scroll quand la carte plein écran est ouverte.
+  useEffect(() => {
+    if (!mapOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mapOpen]);
+
   const percent = useMemo(
-    () => (roadmap ? progressPercent(completed.size, roadmap.skills.length) : 0),
-    [completed, roadmap]
+    () => (roadmap ? progressPercent(doneCount, roadmap.skills.length) : 0),
+    [doneCount, roadmap]
   );
 
   const careers = useMemo(
@@ -51,11 +65,32 @@ export function RoadmapDetail() {
     [roadmap]
   );
 
+  /** Suggestions globales : prêtes à apprendre, classées par profondeur. */
+  const nextUp = useMemo(() => {
+    if (!roadmap) return [];
+    return roadmap.skills
+      .filter(
+        (s) =>
+          !status[s.id] &&
+          s.prerequisites.length > 0 &&
+          s.prerequisites.every((p) => status[p] === "done")
+      )
+      .sort((a, b) => skillDepth(roadmap, a.id) - skillDepth(roadmap, b.id))
+      .slice(0, 4);
+  }, [roadmap, status]);
+
   if (!roadmap) return <NotFound />;
 
   const scrollToStage = (stageId: string) => {
-    document.getElementById(`stage-${stageId}`)?.scrollIntoView({ behavior: "smooth" });
+    const listEl = document.getElementById(`stage-${stageId}`);
+    const target =
+      window.innerWidth <= 860 && listEl
+        ? listEl
+        : document.getElementById("roadmap-map");
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const total = roadmap.skills.length;
 
   return (
     <div className={styles.page} style={{ "--accent": field?.accent } as React.CSSProperties}>
@@ -80,13 +115,16 @@ export function RoadmapDetail() {
             <div className={styles.progressBlock}>
               <ProgressBar value={percent} label="Progression" size="lg" />
               <p className={styles.progressHint}>
-                {completed.size} compétence{completed.size > 1 ? "s" : ""} validée{completed.size > 1 ? "s" : ""} sur {roadmap.skills.length}
+                {doneCount} terminée{doneCount > 1 ? "s" : ""}
+                {inProgressCount > 0 &&
+                  ` · ${inProgressCount} en cours`}
+                {" "}sur {total}
               </p>
             </div>
             <dl className={styles.stats}>
               <div className={styles.stat}>
                 <dt><Layers size={14} aria-hidden="true" /> Compétences</dt>
-                <dd className="mono">{roadmap.skills.length}</dd>
+                <dd className="mono">{total}</dd>
               </div>
               <div className={styles.stat}>
                 <dt><Flag size={14} aria-hidden="true" /> Projets</dt>
@@ -104,12 +142,37 @@ export function RoadmapDetail() {
           </div>
         </Reveal>
 
+        {nextUp.length > 0 && (
+          <Reveal className={styles.nextUp}>
+            <h2 className={styles.nextUpTitle}>Prêtes à apprendre</h2>
+            <p className={styles.nextUpHint}>
+              Vos prérequis sont validés : plusieurs directions s'ouvrent, à vous de choisir.
+            </p>
+            <div className={styles.suggestGrid}>
+              {nextUp.map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  className={styles.suggestCard}
+                  onClick={() => setSelected(s)}
+                >
+                  <span className={styles.suggestName}>{s.name}</span>
+                  <span className={styles.suggestTag}>{s.tagline}</span>
+                  <span className={styles.suggestGo}>
+                    Explorer <ArrowRight size={14} aria-hidden="true" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          </Reveal>
+        )}
+
         <Reveal className={styles.stageStrip} delay={80}>
           <nav aria-label="Étapes du parcours">
             <ol className={styles.stages}>
               {roadmap.stages.map((stage, i) => {
                 const stageSkills = roadmap.skills.filter((s) => s.stage === stage.id);
-                const done = stageSkills.filter((s) => completed.has(s.id)).length;
+                const done = stageSkills.filter((s) => status[s.id] === "done").length;
                 const allDone = done === stageSkills.length && stageSkills.length > 0;
                 return (
                   <li key={stage.id}>
@@ -129,14 +192,33 @@ export function RoadmapDetail() {
           </nav>
         </Reveal>
 
-        <div className={styles.graphWrap}>
-          <RoadmapGraph
-            roadmap={roadmap}
-            completed={completed}
-            selectedId={selected?.id ?? null}
-            onSelect={setSelected}
-            onToggle={toggle}
-          />
+        <div className={styles.graphWrap} id="roadmap-map">
+          <div className={styles.mapDesktop}>
+            <RoadmapMap
+              roadmap={roadmap}
+              status={status}
+              selectedId={selected?.id ?? null}
+              onSelect={setSelected}
+              onCycle={cycle}
+            />
+          </div>
+          <div className={styles.mapMobile}>
+            <RoadmapList
+              roadmap={roadmap}
+              status={status}
+              selectedId={selected?.id ?? null}
+              onSelect={setSelected}
+              onCycle={cycle}
+            />
+            <button
+              type="button"
+              className={styles.mapFab}
+              onClick={() => setMapOpen(true)}
+              aria-label="Ouvrir la carte en plein écran"
+            >
+              <MapIcon size={17} aria-hidden="true" /> Carte
+            </button>
+          </div>
         </div>
 
         {careers.length > 0 && (
@@ -157,12 +239,39 @@ export function RoadmapDetail() {
         )}
       </div>
 
+      {mapOpen && (
+        <div
+          className={styles.mapOverlay}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Carte des connaissances en plein écran"
+        >
+          <button
+            type="button"
+            className={styles.mapClose}
+            onClick={() => setMapOpen(false)}
+            aria-label="Fermer la carte"
+            autoFocus
+          >
+            <X size={18} aria-hidden="true" />
+          </button>
+          <RoadmapMap
+            roadmap={roadmap}
+            status={status}
+            selectedId={selected?.id ?? null}
+            onSelect={setSelected}
+            onCycle={cycle}
+            fullscreen
+          />
+        </div>
+      )}
+
       {selected && (
         <SkillPanel
           skill={selected}
           roadmap={roadmap}
-          completed={completed.has(selected.id)}
-          onToggle={toggle}
+          statusMap={status}
+          setStatus={setStatus}
           onSelect={setSelected}
           onClose={() => setSelected(null)}
         />

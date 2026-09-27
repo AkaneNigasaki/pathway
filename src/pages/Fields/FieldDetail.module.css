@@ -137,8 +137,85 @@
   border-color: var(--foreground);
 }
 
+/* ── Parcours guidés ── */
+.pathsSection {
+  margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.sectionHint {
+  color: var(--muted);
+  font-size: 0.98rem;
+  max-width: 62ch;
+  margin: 0.6rem 0 1.75rem;
+}
+
+.pathsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.pathCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  height: 100%;
+  padding: 1.35rem 1.3rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform 200ms var(--ease-out), border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.pathCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-subtle);
+}
+
+.pathIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--accent-faint);
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.pathTitle {
+  font-weight: 650;
+  font-size: 1.02rem;
+  letter-spacing: -0.015em;
+}
+
+.pathPitch {
+  font-size: 0.87rem;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.pathEntry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
 @media (max-width: 1000px) {
   .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pathsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -146,6 +223,12 @@
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+  .pathsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pathPitch {
+    display: none;
   }
   .stats {
     gap: 2rem;

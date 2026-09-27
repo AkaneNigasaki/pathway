@@ -1,62 +1,114 @@
-import { forwardRef } from "react";
-import { Check } from "lucide-react";
-import type { Skill } from "../../types";
-import { SKILL_LEVEL_LABEL } from "../../types";
+import { memo } from "react";
+import { Braces, Boxes, Check, Cloud, Compass, Lightbulb, Wrench } from "lucide-react";
+import type { NodeType, Skill, SkillStatus } from "../../types";
+import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
 import styles from "./SkillNode.module.css";
+
+const TYPE_ICON: Record<NodeType, typeof Lightbulb> = {
+  concept: Lightbulb,
+  language: Braces,
+  framework: Boxes,
+  tool: Wrench,
+  platform: Cloud,
+  specialization: Compass,
+};
+
+const SHORT_LEVEL: Record<Skill["level"], string> = {
+  beginner: "Déb.",
+  intermediate: "Interm.",
+  advanced: "Avancé",
+};
 
 interface SkillNodeProps {
   skill: Skill;
-  completed: boolean;
+  status: SkillStatus | null;
   selected: boolean;
+  dimmed: boolean;
   unlocked: boolean;
   onSelect: (skill: Skill) => void;
-  onToggle: (skillId: string) => void;
+  onCycle: (skillId: string) => void;
+  onHover: (skillId: string | null) => void;
 }
 
 /**
- * Un node de compétence du graphe.
- * - clic sur le node → ouvre le panneau détaillé
- * - clic sur le cercle → bascule "terminé"
+ * Nœud de la carte : identifiable au premier regard.
+ * Pastille de statut, icône de type, titre, tagline, niveau.
+ * La pastille cycle : non commencé → en cours → terminé.
  */
-export const SkillNode = forwardRef<HTMLDivElement, SkillNodeProps>(function SkillNode(
-  { skill, completed, selected, unlocked, onSelect, onToggle },
-  ref
-) {
+export const SkillNode = memo(function SkillNode({
+  skill,
+  status,
+  selected,
+  dimmed,
+  unlocked,
+  onSelect,
+  onCycle,
+  onHover,
+}: SkillNodeProps) {
+  const type: NodeType = skill.type ?? "concept";
+  const TypeIcon = TYPE_ICON[type];
+  const state = status ?? "todo";
+
+  const cycleLabel =
+    state === "todo"
+      ? `Marquer « ${skill.name} » en cours`
+      : state === "in-progress"
+        ? `Marquer « ${skill.name} » comme terminée`
+        : `Réinitialiser « ${skill.name} »`;
+
   return (
     <div
-      ref={ref}
-      className={`${styles.nodeWrap} ${completed ? styles.done : ""} ${
-        selected ? styles.selected : ""
+      className={`${styles.node} ${styles[state]} ${selected ? styles.selected : ""} ${
+        dimmed ? styles.dimmed : ""
       } ${unlocked ? styles.unlocked : ""}`}
+      data-node={skill.id}
+      data-type={type}
+      onMouseEnter={() => onHover(skill.id)}
+      onMouseLeave={() => onHover(null)}
+      onFocus={() => onHover(skill.id)}
+      onBlur={() => onHover(null)}
     >
       <button
         type="button"
-        className={styles.node}
+        className={styles.main}
         onClick={() => onSelect(skill)}
-        aria-label={`${skill.name} — ${SKILL_LEVEL_LABEL[skill.level]}. Voir le détail.`}
         aria-pressed={selected}
+        title={`${skill.name} — ${skill.tagline} · ${SKILL_LEVEL_LABEL[skill.level]}`}
       >
-        <span className={styles.level}>{SKILL_LEVEL_LABEL[skill.level]}</span>
-        <span className={styles.name}>{skill.name}</span>
-        <span className={styles.meta}>
-          <span className="mono">{skill.concepts.length}</span> concepts
-          <span aria-hidden="true"> · </span>
-          {skill.duration}
+        <span className={styles.topRow}>
+          <TypeIcon
+            size={14}
+            strokeWidth={1.8}
+            className={styles.typeIcon}
+            aria-label={NODE_TYPE_LABEL[type]}
+            role="img"
+          />
+          <span className={styles.level}>{SHORT_LEVEL[skill.level]}</span>
         </span>
+        <span className={styles.name}>{skill.name}</span>
+        <span className={styles.tagline}>{skill.tagline}</span>
       </button>
+
       <button
         type="button"
-        className={styles.check}
+        className={styles.statusBtn}
         onClick={(e) => {
           e.stopPropagation();
-          onToggle(skill.id);
+          onCycle(skill.id);
         }}
-        aria-label={completed ? `Marquer ${skill.name} comme à faire` : `Marquer ${skill.name} comme terminée`}
-        aria-pressed={completed}
-        title={completed ? "Marquer comme à faire" : "Marquer comme terminée"}
+        aria-label={cycleLabel}
+        title={cycleLabel}
       >
-        <Check size={14} strokeWidth={3} aria-hidden="true" />
+        <span key={state} className={styles.dot} aria-hidden="true">
+          {state === "done" && <Check size={11} strokeWidth={3} />}
+        </span>
       </button>
+
+      {unlocked && (
+        <span className={styles.nextBadge} aria-hidden="true">
+          Prêt
+        </span>
+      )}
     </div>
   );
 });

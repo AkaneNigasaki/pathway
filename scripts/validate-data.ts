@@ -3,6 +3,7 @@ import { ROADMAPS } from "../src/data/roadmaps";
 import { FIELDS } from "../src/data/fields";
 import { CAREERS } from "../src/data/careers";
 import { SEARCH_INDEX } from "../src/data/search";
+import { NODE_TYPE_LABEL } from "../src/types";
 
 let errors = 0;
 const fail = (msg: string) => {
@@ -26,6 +27,11 @@ for (const r of ROADMAPS) {
       if (!skillIds.has(dep)) fail(`${r.slug}: "${s.id}" dépend d'une compétence inconnue "${dep}"`);
       if (dep === s.id) fail(`${r.slug}: "${s.id}" dépend d'elle-même`);
     }
+    for (const rel of s.relatedSkills ?? []) {
+      if (!skillIds.has(rel)) fail(`${r.slug}: "${s.id}" liée à une compétence inconnue "${rel}"`);
+      if (rel === s.id) fail(`${r.slug}: "${s.id}" liée à elle-même`);
+    }
+    if (s.type && !(s.type in NODE_TYPE_LABEL)) fail(`${r.slug}: "${s.id}" type inconnu "${s.type}"`);
     for (const proj of s.projects) {
       if (typeof proj !== "string" || !proj.trim())
         fail(`${r.slug}: projet invalide dans "${s.id}" → ${JSON.stringify(proj)}`);

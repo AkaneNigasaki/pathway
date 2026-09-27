@@ -157,7 +157,12 @@ export function Explore() {
                                 <em className={styles.level}>{SKILL_LEVEL_LABEL[item.level]}</em>
                               )}
                             </span>
-                            <span className={styles.resultSub}>{item.subtitle}</span>
+                            <span className={styles.resultSub}>
+                              {item.subtitle}
+                              {item.breadcrumb && (
+                                <span className={styles.resultCrumb}>{item.breadcrumb}</span>
+                              )}
+                            </span>
                           </span>
                           <ArrowUpRight size={16} aria-hidden="true" className={styles.resultArrow} />
                         </Link>

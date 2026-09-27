@@ -1,13 +1,43 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { SkillStatus } from "../types";
 
 const KEY = "pathway:progress:v1";
 
-type ProgressStore = Record<string, string[]>;
+/** skillId -> statut ("in-progress" | "done"). Absent = non commencé. */
+export type ProgressMap = Record<string, SkillStatus>;
+type ProgressStore = Record<string, ProgressMap>;
+
+/**
+ * Migration : l'ancien format stockait un tableau d'ids terminés.
+ * Converti en { id: "done" } à la lecture.
+ */
+function normalize(value: unknown): ProgressMap {
+  if (Array.isArray(value)) {
+    const map: ProgressMap = {};
+    for (const id of value) {
+      if (typeof id === "string") map[id] = "done";
+    }
+    return map;
+  }
+  if (value && typeof value === "object") {
+    const map: ProgressMap = {};
+    for (const [id, s] of Object.entries(value as Record<string, unknown>)) {
+      if (s === "done" || s === "in-progress") map[id] = s;
+    }
+    return map;
+  }
+  return {};
+}
 
 function readStore(): ProgressStore {
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return JSON.parse(raw) as ProgressStore;
+    if (raw) {
+      const parsed = JSON.parse(raw) as Record<string, unknown>;
+      const store: ProgressStore = {};
+      for (const [k, v] of Object.entries(parsed)) store[k] = normalize(v);
+      return store;
+    }
   } catch {
     /* ignore */
   }
@@ -22,29 +52,38 @@ function writeStore(store: ProgressStore) {
   }
 }
 
-/**
- * Progression persistée par roadmap. Écoute les changements cross-onglets
- * et expose un compteur pour forcer le rafraîchissement.
- */
+function countBy(map: ProgressMap, s: SkillStatus): number {
+  let n = 0;
+  for (const v of Object.values(map)) if (v === s) n++;
+  return n;
+}
+
+export function countDone(map: ProgressMap | undefined): number {
+  return map ? countBy(map, "done") : 0;
+}
+
+export function countInProgress(map: ProgressMap | undefined): number {
+  return map ? countBy(map, "in-progress") : 0;
+}
+
 let listeners = 0;
 
+/**
+ * Progression à 3 états par roadmap : non commencé / en cours / terminé.
+ * Persistée en localStorage, synchronisée entre onglets et instances.
+ */
 export function useProgress(roadmapId: string) {
-  const [completed, setCompleted] = useState<Set<string>>(() => {
-    const store = readStore();
-    return new Set(store[roadmapId] ?? []);
+  const [status, setStatusState] = useState<ProgressMap>(() => {
+    return readStore()[roadmapId] ?? {};
   });
   const [, setTick] = useState(0);
   const idRef = useRef(roadmapId);
   idRef.current = roadmapId;
 
-  // Sync cross-onglets + cross-instances
   useEffect(() => {
     listeners += 1;
     const onStorage = (e: StorageEvent) => {
-      if (e.key === KEY) {
-        const store = readStore();
-        setCompleted(new Set(store[idRef.current] ?? []));
-      }
+      if (e.key === KEY) setStatusState(readStore()[idRef.current] ?? {});
     };
     const onCustom = () => setTick((t) => t + 1);
     window.addEventListener("storage", onStorage);
@@ -56,19 +95,23 @@ export function useProgress(roadmapId: string) {
     };
   }, []);
 
-  const persist = useCallback((next: Set<string>) => {
-    const store = readStore();
-    store[roadmapId] = [...next];
-    writeStore(store);
-    window.dispatchEvent(new Event("pathway:progress"));
-  }, [roadmapId]);
+  const persist = useCallback(
+    (next: ProgressMap) => {
+      const store = readStore();
+      if (Object.keys(next).length === 0) delete store[roadmapId];
+      else store[roadmapId] = next;
+      writeStore(store);
+      window.dispatchEvent(new Event("pathway:progress"));
+    },
+    [roadmapId]
+  );
 
-  const toggle = useCallback(
-    (skillId: string) => {
-      setCompleted((prev) => {
-        const next = new Set(prev);
-        if (next.has(skillId)) next.delete(skillId);
-        else next.add(skillId);
+  const setStatus = useCallback(
+    (skillId: string, s: SkillStatus | null) => {
+      setStatusState((prev) => {
+        const next = { ...prev };
+        if (s === null) delete next[skillId];
+        else next[skillId] = s;
         persist(next);
         return next;
       });
@@ -76,18 +119,38 @@ export function useProgress(roadmapId: string) {
     [persist]
   );
 
+  /** Cycle : non commencé → en cours → terminé → non commencé. */
+  const cycle = useCallback(
+    (skillId: string) => {
+      const cur = status[skillId] ?? null;
+      const next: SkillStatus | null =
+        cur === null ? "in-progress" : cur === "in-progress" ? "done" : null;
+      setStatus(skillId, next);
+    },
+    [status, setStatus]
+  );
+
   const reset = useCallback(() => {
     const store = readStore();
     delete store[roadmapId];
     writeStore(store);
-    setCompleted(new Set());
+    setStatusState({});
     window.dispatchEvent(new Event("pathway:progress"));
-  }, [roadmapId, persist]);
+  }, [roadmapId]);
 
-  return { completed, toggle, reset, isComplete: (id: string) => completed.has(id) };
+  return {
+    status,
+    statusOf: (id: string): SkillStatus | null => status[id] ?? null,
+    setStatus,
+    cycle,
+    reset,
+    doneCount: countBy(status, "done"),
+    inProgressCount: countBy(status, "in-progress"),
+    isDone: (id: string) => status[id] === "done",
+  };
 }
 
-/** Progression agrégée de toutes les roadmaps (page Progression). */
+/** Progression agrégée de toutes les roadmaps (page Progression, accueil). */
 export function useAllProgress() {
   const [store, setStore] = useState<ProgressStore>(readStore);
 
@@ -115,7 +178,7 @@ export function useAllProgress() {
   return { store, resetRoadmap };
 }
 
-export function progressPercent(completedCount: number, total: number): number {
+export function progressPercent(doneCount: number, total: number): number {
   if (total === 0) return 0;
-  return Math.round((completedCount / total) * 100);
+  return Math.round((doneCount / total) * 100);
 }
