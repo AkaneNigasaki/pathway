@@ -174,8 +174,14 @@ img {
   --accent: color-mix(in srgb, var(--field-accent) 58%, #ffffff);
 }
 
-/* Texte teinté de l'accent de filière (lisible dans les deux thèmes) */
+/* Texte teinté de l'accent de filière (lisible dans les deux thèmes).
+   En clair, l'accent est légèrement rabattu vers le texte pour garantir
+   le contraste ; en sombre, --accent est déjà éclairci dans le scope. */
 .fieldAccent {
+  color: color-mix(in srgb, var(--accent) 78%, var(--foreground));
+}
+
+[data-theme="dark"] .fieldAccent {
   color: var(--accent);
 }
 

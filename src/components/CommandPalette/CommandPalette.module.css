@@ -157,7 +157,7 @@
 .itemCrumb {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--border-strong);
+  color: var(--muted);
   margin-left: 0.6rem;
   white-space: nowrap;
 }

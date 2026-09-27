@@ -144,7 +144,7 @@
 }
 
 .sep {
-  color: var(--border-strong);
+  color: var(--muted);
   margin-inline: 0.55rem;
   user-select: none;
 }

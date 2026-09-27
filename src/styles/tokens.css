@@ -8,7 +8,7 @@
   --foreground: #111111;
   --foreground-soft: #3a3a3a;
   --muted: #6b6b6b;
-  --faint: #9a9a9a;
+  --faint: #767676;
   --border: #e8e8e8;
   --border-strong: #d6d6d6;
   --accent: #2563eb;
@@ -59,7 +59,7 @@
   --foreground: #f2f4f7;
   --foreground-soft: #d4d9e0;
   --muted: #9aa3af;
-  --faint: #6b7280;
+  --faint: #9aa3af;
   --border: #222834;
   --border-strong: #313947;
   --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
