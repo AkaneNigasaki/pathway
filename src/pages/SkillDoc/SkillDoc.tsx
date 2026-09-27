@@ -12,6 +12,7 @@ import {
   LuWrench as Wrench,
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
+import { BrandIcon, hasBrandIcon } from "../../components/BrandIcon/BrandIcon";
 import { NotFound } from "../NotFound/NotFound";
 import { getRoadmap, skillMap } from "../../data/roadmaps";
 import { getSkillGuide } from "../../data/skill-guides";
@@ -76,7 +77,12 @@ export function SkillDoc() {
           <p className="eyebrow">
             <BookOpen size={13} aria-hidden="true" /> Documentation
           </p>
-          <h1 className={styles.title}>{skill.name}</h1>
+          <h1 className={styles.title}>
+            {hasBrandIcon(skill.id) && (
+              <BrandIcon skillId={skill.id} label={skill.name} size={40} className={styles.titleIcon} />
+            )}
+            {skill.name}
+          </h1>
           <p className="section-lead">{skill.tagline}</p>
           <ul className={styles.meta} aria-label="Informations">
             <li>{SKILL_LEVEL_LABEL[skill.level]}</li>

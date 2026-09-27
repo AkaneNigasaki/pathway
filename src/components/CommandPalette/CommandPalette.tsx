@@ -4,7 +4,7 @@ import { LuBriefcase as Briefcase, LuCornerDownLeft as CornerDownLeft, LuLayoutG
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";
-import { LanguageIcon, searchItemLanguageIcon } from "../LanguageIcon/LanguageIcon";
+import { BrandIcon, searchItemBrandIcon } from "../BrandIcon/BrandIcon";
 import styles from "./CommandPalette.module.css";
 
 interface CommandPaletteProps {
@@ -168,9 +168,9 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                         <span className={styles.itemText}>
                           <span className={styles.itemTitle}>
                             {(() => {
-                              const iconId = searchItemLanguageIcon(item);
+                              const iconId = searchItemBrandIcon(item);
                               return iconId ? (
-                                <LanguageIcon skillId={iconId} label={item.title} size={18} />
+                                <BrandIcon skillId={iconId} label={item.title} size={18} />
                               ) : null;
                             })()}
                             {item.title}
