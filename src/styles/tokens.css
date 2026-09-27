@@ -1,49 +1,60 @@
-/* ── Pathway design tokens — style Softaims : sombre chaud, crème, jaune doré ── */
+/* ── Pathway design tokens — Flat Design : bleu vif, pastels, surfaces plates ── */
 
 :root {
-  --background: #fbf8ee;
-  --background-soft: #f5f1e3;
+  --background: #f6f5fa;
+  --background-soft: #efedf6;
   --surface: #ffffff;
-  --surface-soft: #f4f0e1;
-  --foreground: #1c1811;
-  --foreground-soft: #3d372a;
-  --muted: #6f675a;
-  --faint: #8a8172;
-  --border: #e7e0cd;
-  --border-strong: #d5cbaa;
-  --accent: #8f6b00;
-  --accent-solid: var(--accent);
-  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
-  --accent-faint: color-mix(in srgb, var(--accent) 5%, transparent);
-  --success: #1da85e;
-  --danger: #b91c1c;
+  --surface-soft: #f1eff8;
+  --foreground: #16161e;
+  --foreground-soft: #2c2c3a;
+  --muted: #5f5f76;
+  --faint: #8e8ea6;
+  --border: #e8e6f1;
+  --border-strong: #d5d2e6;
 
-  --navy: #1a1860;
+  /* Primaire : bleu vif (boutons, liens, focus) */
+  --accent: #2e2ee6;
+  --accent-solid: var(--accent);
+  --accent-ink: #ffffff;
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-faint: color-mix(in srgb, var(--accent) 6%, transparent);
+
+  /* Pastels plats (cartes, chips, panneaux) */
+  --tint-lavender: #ddbdf5;
+  --tint-blue: #bfe3f9;
+  --tint-peach: #f7c8d9;
+  --tint-mint: #bfe9d2;
+
+  --success: #1da85e;
+  --danger: #d92d20;
 
   --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Paytone One", "Outfit", -apple-system, sans-serif;
+  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
   --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
     "Liberation Mono", monospace;
 
-  --text-hero: clamp(3.5rem, 8vw, 7rem);
-  --text-section: clamp(2.5rem, 5vw, 4.5rem);
-  --text-title: clamp(1.75rem, 3vw, 2.75rem);
+  --text-hero: clamp(3rem, 7vw, 5.5rem);
+  --text-section: clamp(2.25rem, 4.5vw, 3.75rem);
+  --text-title: clamp(1.6rem, 2.8vw, 2.4rem);
   --text-lead: clamp(1.05rem, 1.6vw, 1.25rem);
   --text-body: 1rem;
   --text-small: 0.875rem;
   --text-meta: 0.75rem;
 
-  --tracking-display: -0.045em;
-  --tracking-title: -0.03em;
+  --tracking-display: -0.03em;
+  --tracking-title: -0.025em;
   --tracking-body: -0.011em;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 999px;
 
-  --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 16px rgb(0 0 0 / 0.05);
+  /* Flat : ombres quasi inexistantes */
+  --shadow-subtle: 0 1px 2px rgb(23 23 60 / 0.05);
+  --shadow-lift: 0 12px 32px rgb(23 23 60 / 0.1);
 
   --ease-out: cubic-bezier(0.05, 0.7, 0.1, 1); /* M3 emphasized decelerate */
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1); /* M3 emphasized */
@@ -62,22 +73,34 @@
 }
 
 [data-theme="dark"] {
-  --background: #000000;
-  --background-soft: #0c0c0c;
-  --surface: #0c0c0c;
-  --surface-soft: #141414;
-  --foreground: #f9f4db;
-  --foreground-soft: #ece5c6;
-  --muted: #b3aa8d;
-  --faint: #877f66;
-  --border: #242424;
-  --border-strong: #3a3a3a;
-  --accent: #efbd0b;
+  --background: #0a0c14;
+  --background-soft: #101423;
+  --surface: #161b2e;
+  --surface-soft: #1d2438;
+  --foreground: #f4f5fb;
+  --foreground-soft: #dfe3f2;
+  --muted: #a3abd0;
+  --faint: #6f7899;
+  --border: #232a44;
+  --border-strong: #303a5c;
+
+  /* Primaire sombre : lavande (pastilles sur carte marine, comme la réf) */
+  --accent: #b9a5f7;
+  --accent-solid: var(--accent);
+  --accent-ink: #1b1530;
   --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
-  --accent-faint: color-mix(in srgb, var(--accent) 7%, transparent);
+  --accent-faint: color-mix(in srgb, var(--accent) 8%, transparent);
+
+  --tint-lavender: #39335c;
+  --tint-blue: #27405c;
+  --tint-peach: #5c2f42;
+  --tint-mint: #23483a;
+
   --success: #1da85e;
   --danger: #f87171;
-  --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+
+  --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-lift: 0 16px 40px rgb(0 0 0 / 0.45);
 }
 
 /* Smooth theme transition — surfaces only, never * */

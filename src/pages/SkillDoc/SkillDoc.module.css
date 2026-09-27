@@ -250,7 +250,7 @@
   flex: none;
   border-radius: var(--radius-full);
   background: var(--accent);
-  color: #1a1a1a;
+  color: var(--accent-ink);
   font-weight: 700;
   font-size: 0.85rem;
 }
@@ -503,7 +503,7 @@
   padding: 0.8rem 1.6rem;
   border-radius: var(--radius-full);
   background: var(--accent);
-  color: #1a1a1a;
+  color: var(--accent-ink);
   font-weight: 700;
   transition: transform var(--dur-short) var(--ease-standard),
     box-shadow var(--dur-short) var(--ease-standard);

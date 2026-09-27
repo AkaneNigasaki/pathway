@@ -46,18 +46,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
-  background: var(--background-soft);
-  border: 1px solid var(--border);
-  color: var(--foreground-soft);
-  transition: color 220ms ease, border-color 220ms ease;
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--tint-lavender), var(--tint-blue));
+  color: #1c1c2e;
+  transition: transform 220ms var(--ease-out);
+}
+
+[data-theme="dark"] .iconWrap {
+  color: var(--foreground);
 }
 
 .card:hover .iconWrap {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  transform: scale(1.06) rotate(-4deg);
 }
 
 .accentDot {

@@ -26,16 +26,16 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
 }
 
 h1,
 h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-display);
   text-wrap: balance;
 }
 
@@ -59,56 +59,42 @@ h4 {
   text-wrap: balance;
 }
 
-/* ── Bouton signature façon Softaims : pastille + couche jaune décalée ── */
+/* ── Bouton signature flat : pastille pleine, bleu vif / lavande ── */
 .btn-offset {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   min-height: 52px;
-  padding: 0.85rem 2rem;
+  padding: 0.85rem 2.1rem;
   border-radius: var(--radius-full);
-  border: 1.3px solid var(--foreground);
-  background: transparent;
-  color: var(--foreground);
+  border: none;
+  background: var(--accent);
+  color: var(--accent-ink);
   font-family: var(--font-display);
   font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 0.01em;
   cursor: pointer;
-  isolation: isolate;
-  transition: color 240ms ease, border-color 240ms ease;
-}
-
-.btn-offset::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: var(--accent);
-  transform: translate(-4%, -9%) scale(0.98);
-  opacity: 0.9;
-  transition: transform 260ms var(--ease-out), opacity 260ms ease;
-}
-
-.btn-offset:hover::after,
-.btn-offset:focus-visible::after {
-  transform: translate(0, 0) scale(1);
-  opacity: 1;
+  transition: transform var(--dur-short) var(--ease-standard),
+    filter var(--dur-short) var(--ease-standard);
 }
 
 .btn-offset:hover,
 .btn-offset:focus-visible {
-  color: #1c1811;
-  border-color: var(--accent);
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.btn-offset:active {
+  transform: translateY(0);
 }
 
 /* ── Motif grille fine sur fond noir (thème sombre) ── */
 [data-theme="dark"] body {
   background-image:
-    linear-gradient(rgb(249 244 219 / 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(249 244 219 / 0.025) 1px, transparent 1px);
+    linear-gradient(rgb(120 120 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(120 120 255 / 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
@@ -314,7 +300,18 @@ input:-webkit-autofill:focus {
   transition: background-color 9999s ease-in-out 0s;
 }
 
-/* ── Carte d'en-tête sombre (thème sombre) : texture technique + contenu ── */
+/* ── Carte d'en-tête : pastel flat en clair, texture technique en sombre ── */
+.header-card {
+  position: relative;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(120deg, var(--tint-lavender), var(--tint-blue));
+  overflow: hidden;
+}
+
 [data-theme="dark"] .header-card {
   position: relative;
   padding: 2.5rem 2rem;
@@ -338,4 +335,21 @@ input:-webkit-autofill:focus {
 
 [data-theme="dark"] .header-card .searchBar {
   margin-bottom: 0;
+}
+
+/* ── Pastille d'icône pastel (signature flat design) ── */
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--tint-lavender), var(--tint-blue));
+  color: #1c1c2e;
+}
+
+[data-theme="dark"] .icon-chip {
+  color: var(--foreground);
 }
