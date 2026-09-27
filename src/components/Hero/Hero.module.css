@@ -303,10 +303,10 @@
 
 [data-theme="dark"] .hero {
   background:
-    linear-gradient(rgb(10 12 20 / 0.55), rgb(10 12 20 / 0.35)),
+    linear-gradient(rgb(26 24 96 / 0.55), rgb(26 24 96 / 0.35)),
     url("../../assets/backgrounds/hero-bg.webp") center / cover no-repeat,
-    var(--background-soft);
-  border-bottom: 1px solid var(--border);
+    var(--navy);
+  border-bottom: 1px solid rgb(249 244 219 / 0.12);
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 

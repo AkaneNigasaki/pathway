@@ -73,34 +73,37 @@
 }
 
 [data-theme="dark"] {
-  --background: #0a0c14;
-  --background-soft: #101423;
-  --surface: #161b2e;
-  --surface-soft: #1d2438;
-  --foreground: #f4f5fb;
-  --foreground-soft: #dfe3f2;
-  --muted: #a3abd0;
-  --faint: #6f7899;
-  --border: #232a44;
-  --border-strong: #303a5c;
+  --background: #000000;
+  --background-soft: #0c0c0c;
+  --surface: #0c0c0c;
+  --surface-soft: #141414;
+  --foreground: #f9f4db;
+  --foreground-soft: #ece5c6;
+  --muted: #b3aa8d;
+  --faint: #877f66;
+  --border: #242424;
+  --border-strong: #3a3a3a;
 
-  /* Primaire sombre : lavande (pastilles sur carte marine, comme la réf) */
-  --accent: #b9a5f7;
+  /* Primaire sombre : jaune doré Softaims */
+  --accent: #efbd0b;
   --accent-solid: var(--accent);
-  --accent-ink: #1b1530;
-  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
-  --accent-faint: color-mix(in srgb, var(--accent) 8%, transparent);
+  --accent-ink: #1c1811;
+  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  --accent-faint: color-mix(in srgb, var(--accent) 7%, transparent);
 
-  --tint-lavender: #39335c;
-  --tint-blue: #27405c;
-  --tint-peach: #5c2f42;
-  --tint-mint: #23483a;
+  --navy: #1a1860;
+
+  /* Pastilles dorées sombres (chips d'icônes) */
+  --tint-lavender: #4a3a12;
+  --tint-blue: #6b5210;
+  --tint-peach: #4a2c14;
+  --tint-mint: #1e4030;
 
   --success: #1da85e;
   --danger: #f87171;
 
-  --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-lift: 0 16px 40px rgb(0 0 0 / 0.45);
+  --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lift: 0 8px 24px rgb(0 0 0 / 0.35);
 }
 
 /* Smooth theme transition — surfaces only, never * */

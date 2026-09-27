@@ -93,8 +93,8 @@ h4 {
 /* ── Motif grille fine sur fond noir (thème sombre) ── */
 [data-theme="dark"] body {
   background-image:
-    linear-gradient(rgb(120 120 255 / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(120 120 255 / 0.05) 1px, transparent 1px);
+    linear-gradient(rgb(249 244 219 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(249 244 219 / 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 

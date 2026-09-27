@@ -215,11 +215,18 @@
 .mobileLinks li {
   opacity: 0;
   transform: translateY(14px);
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+  transition-delay: var(--d, 0ms);
 }
 
 .mobileMenu.open .mobileLinks li {
-  animation: slideUp 450ms var(--ease-out) forwards;
-  animation-delay: var(--d, 0ms);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* À la fermeture : les liens disparaissent sans délai */
+.mobileMenu:not(.open) .mobileLinks li {
+  transition-delay: 0ms;
 }
 
 .mobileLink {
@@ -385,6 +392,12 @@
   .dropItem,
   .dropTitle {
     transition: none;
+  }
+  /* Les liens du menu mobile restent toujours visibles sans animation */
+  .mobileLinks li {
+    transition: none;
+    opacity: 1;
+    transform: none;
   }
   .hasDrop:hover .drop,
   .hasDrop:focus-within .drop,
