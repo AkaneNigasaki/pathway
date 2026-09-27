@@ -244,6 +244,19 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
+  animation: stageIntroIn 380ms var(--ease-out);
+  transform-origin: top center;
+}
+
+@keyframes stageIntroIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .stageIntroEyebrow {
@@ -587,5 +600,11 @@
   }
   .careerList {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stageIntro {
+    animation: none;
   }
 }

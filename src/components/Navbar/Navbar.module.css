@@ -20,7 +20,7 @@
   padding-inline: clamp(1rem, 4vw, 2rem);
   pointer-events: none;
   height: var(--nav-height);
-  transition: height 300ms var(--ease-out);
+  transition: height 480ms var(--ease-spring);
 }
 
 .scrolled {
@@ -38,8 +38,9 @@
   border-radius: var(--radius-full);
   background: transparent;
   border: 1px solid transparent;
-  transition: padding 300ms var(--ease-out), height 300ms var(--ease-out),
-    background-color 300ms ease, border-color 300ms ease;
+  box-shadow: 0 0 0 rgb(0 0 0 / 0);
+  transition: padding 480ms var(--ease-spring), height 480ms var(--ease-spring),
+    background-color 420ms ease, border-color 420ms ease, box-shadow 420ms ease;
 }
 
 .scrolled .inner {
@@ -48,6 +49,11 @@
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-color: var(--border);
+  box-shadow: 0 10px 36px rgb(0 0 0 / 0.16);
+}
+
+[data-theme="dark"] .scrolled .inner {
+  box-shadow: 0 10px 36px rgb(0 0 0 / 0.5);
 }
 
 .logo {
@@ -258,5 +264,131 @@
   }
   .menuBtn {
     display: inline-flex;
+  }
+}
+
+/* ── Méga-menu « Roadmaps » au survol ── */
+.hasDrop {
+  position: relative;
+}
+
+.drop {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  min-width: 540px;
+  max-width: min(560px, calc(100vw - 3rem));
+  padding: 0.55rem;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.22);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(10px) scale(0.98);
+  transform-origin: top center;
+  transition: opacity 200ms ease, transform 280ms var(--ease-spring),
+    visibility 0s 280ms;
+}
+
+.hasDrop:hover .drop,
+.hasDrop:focus-within .drop,
+.drop.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+  transition: opacity 200ms ease, transform 280ms var(--ease-spring),
+    visibility 0s 0s;
+}
+
+/* Pont invisible : évite la rupture du survol entre le lien et le panneau */
+.drop::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+
+.dropHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.55rem 0.8rem 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.dropHead a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--accent-solid, var(--accent));
+}
+
+.dropHead a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dropGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  transition: background-color 160ms ease;
+}
+
+.dropItem:hover {
+  background: var(--surface-soft);
+}
+
+.dropTitle {
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  transition: color 160ms ease;
+}
+
+.dropItem:hover .dropTitle {
+  color: var(--accent-solid, var(--accent));
+}
+
+.dropMeta {
+  font-size: 0.74rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .inner,
+  .drop,
+  .dropItem,
+  .dropTitle {
+    transition: none;
+  }
+  .hasDrop:hover .drop,
+  .hasDrop:focus-within .drop,
+  .drop.open {
+    transform: translateX(-50%);
   }
 }

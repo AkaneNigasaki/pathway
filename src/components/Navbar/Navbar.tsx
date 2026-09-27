@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { List, Moon, Search, Sun, User, X } from "lucide-react";
+import { ArrowRight, List, Moon, Search, Sun, User, X } from "lucide-react";
 import type { Theme } from "../../types";
+import { ROADMAPS } from "../../data/roadmaps";
+import { getField } from "../../data/fields";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -70,18 +72,68 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
           </Link>
 
           <ul className={styles.links}>
-            {LINKS.map((l) => (
-              <li key={l.to}>
-                <NavLink
-                  to={l.to}
-                  className={({ isActive }) =>
-                    `${styles.link} ${isActive ? styles.active : ""}`
-                  }
+            {LINKS.map((l) =>
+              l.to === "/roadmaps" ? (
+                <li
+                  key={l.to}
+                  className={styles.hasDrop}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") {
+                      (e.currentTarget.querySelector("a") as HTMLAnchorElement)?.focus();
+                      e.currentTarget.blur();
+                    }
+                  }}
                 >
-                  {l.label}
-                </NavLink>
-              </li>
-            ))}
+                  <NavLink
+                    to={l.to}
+                    aria-haspopup="true"
+                    className={({ isActive }) =>
+                      `${styles.link} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    {l.label}
+                  </NavLink>
+                  <div className={styles.drop} role="menu" aria-label="Toutes les roadmaps">
+                    <div className={styles.dropHead}>
+                      <span>Toutes les roadmaps</span>
+                      <Link to="/roadmaps">
+                        Voir tout <ArrowRight size={12} aria-hidden="true" />
+                      </Link>
+                    </div>
+                    <ul className={styles.dropGrid}>
+                      {ROADMAPS.map((r) => {
+                        const field = getField(r.fieldId);
+                        return (
+                          <li key={r.slug} role="none">
+                            <Link
+                              to={`/roadmaps/${r.slug}`}
+                              className={styles.dropItem}
+                              role="menuitem"
+                            >
+                              <span className={styles.dropTitle}>{r.title}</span>
+                              <span className={styles.dropMeta}>
+                                {field ? field.name : ""} · {r.skills.length} compétences
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </li>
+              ) : (
+                <li key={l.to}>
+                  <NavLink
+                    to={l.to}
+                    className={({ isActive }) =>
+                      `${styles.link} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    {l.label}
+                  </NavLink>
+                </li>
+              )
+            )}
           </ul>
 
           <div className={styles.actions}>
