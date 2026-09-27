@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
-  ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, Clock, FlaskConical,
-  ListChecks, Lock, Sparkles, X,
+  ArrowRight, ArrowUpRight, BookOpen, Check, ChevronRight, Clock, Compass,
+  FlaskConical, Gauge, Lightbulb, ListChecks, Lock, Quote, Sparkles, Workflow, X,
 } from "lucide-react";
-import type { Roadmap, Skill, SkillStatus } from "../../types";
+import type { Roadmap, Skill, SkillLevel, SkillStatus } from "../../types";
 import { SKILL_LEVEL_LABEL, NODE_TYPE_LABEL } from "../../types";
 import type { ProgressMap } from "../../hooks/useProgress";
 import { getNextSkills, skillMap } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
+import { getSkillGuide } from "../../data/skill-guides";
+import { FlowDiagram, SKILL_ILLUSTRATIONS } from "../illustrations";
 import styles from "./SkillPanel.module.css";
 
 interface SkillPanelProps {
@@ -31,10 +34,21 @@ const STATUS_OPTIONS: { value: SkillStatus | null; label: string }[] = [
   { value: "done", label: "Terminée" },
 ];
 
+const COMPLEXITY: Record<SkillLevel, string> = {
+  beginner: "Accessible",
+  intermediate: "Modérée",
+  advanced: "Élevée",
+};
+
+const LEVELS: SkillLevel[] = ["beginner", "intermediate", "advanced"];
+
 /**
- * Panneau de détail d'une compétence : drawer (desktop) / bottom sheet (mobile).
- * - Statut à 3 états, prérequis et dépendances cliquables
- * - « Que apprendre ensuite ? » : plusieurs options classées, jamais une direction unique
+ * Panneau de détail d'une compétence : un guide pédagogique complet.
+ * - Fil d'Ariane (où se situe la compétence)
+ * - Introduction, définition, pourquoi l'apprendre, niveau
+ * - Prérequis expliqués, concepts clés (accordéon), diagrammes de flux
+ * - Exemple concret, projets progressifs, ressources
+ * - « Vous êtes prêt pour » : suggestions classées
  * - Focus trap + restauration du focus
  */
 export function SkillPanel({
@@ -46,6 +60,7 @@ export function SkillPanel({
   onClose,
 }: SkillPanelProps) {
   const [visible, setVisible] = useState(false);
+  const [openConcept, setOpenConcept] = useState<string | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -55,6 +70,11 @@ export function SkillPanel({
   const map = useMemo(() => skillMap(roadmap), [roadmap]);
   const field = getField(roadmap.fieldId);
   const status = statusMap[skill.id] ?? null;
+  const guide = getSkillGuide(skill.id);
+  const stage = roadmap.stages.find((s) => s.id === skill.stage);
+  const Illustration = guide?.illustration ? SKILL_ILLUSTRATIONS[guide.illustration] : null;
+  const conceptDetails = guide?.conceptDetails ?? [];
+  const projectsDetailed = guide?.projectsDetailed;
 
   const prereqSkills = skill.prerequisites
     .map((id) => map[id])
@@ -101,17 +121,19 @@ export function SkillPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Navigation interne (prérequis, suggestions…) : le panneau reste monté,
-  // on le ré-affiche et on remonte en haut.
+  // Navigation interne : le panneau reste monté, on le ré-affiche,
+  // on remonte en haut et on referme l'accordéon.
   useEffect(() => {
     if (firstSkill.current) {
       firstSkill.current = false;
       return;
     }
+    setOpenConcept(null);
     scrollRef.current?.scrollTo({ top: 0 });
     const raf = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(raf);
   }, [skill.id]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -181,6 +203,22 @@ export function SkillPanel({
         </button>
 
         <div ref={scrollRef} className={styles.scroll}>
+          <nav aria-label="Où se situe cette compétence" className={styles.crumb}>
+            <Link to={`/fields/${roadmap.fieldId}`} onClick={handleClose}>
+              {field?.name ?? roadmap.fieldId}
+            </Link>
+            <ChevronRight size={12} aria-hidden="true" />
+            {stage ? (
+              <Link to={`/roadmaps/${roadmap.slug}?stage=${stage.id}`} onClick={handleClose}>
+                {stage.label}
+              </Link>
+            ) : (
+              <span>{skill.stage}</span>
+            )}
+            <ChevronRight size={12} aria-hidden="true" />
+            <span aria-current="page">{skill.name}</span>
+          </nav>
+
           <p className={styles.eyebrow} style={{ color: field?.accent }}>
             {roadmap.title.toUpperCase()}
           </p>
@@ -220,42 +258,233 @@ export function SkillPanel({
             })}
           </div>
 
-          <p className={styles.description}>{skill.description}</p>
+          <section className={styles.block} aria-label="Introduction">
+            <h3 className={styles.blockTitle}>
+              <BookOpen size={13} aria-hidden="true" /> Introduction
+            </h3>
+            <p className={styles.description}>{skill.description}</p>
+          </section>
+
+          {Illustration && (
+            <div className={styles.illusWrap}>
+              <Illustration />
+            </div>
+          )}
+
+          {guide?.definition && (
+            <section className={styles.block} aria-label="Définition">
+              <h3 className={styles.blockTitle}>
+                <Quote size={13} aria-hidden="true" /> Définition
+              </h3>
+              <p className={styles.definition}>{guide.definition}</p>
+            </section>
+          )}
+
+          {guide?.whyLearn && (
+            <section className={styles.block} aria-label="Pourquoi l'apprendre">
+              <h3 className={styles.blockTitle}>
+                <Compass size={13} aria-hidden="true" /> Pourquoi l'apprendre ?
+              </h3>
+              <p className={styles.whyText}>{guide.whyLearn}</p>
+            </section>
+          )}
+
+          <section className={styles.block} aria-label="Niveau de difficulté">
+            <h3 className={styles.blockTitle}>
+              <Gauge size={13} aria-hidden="true" /> Niveau
+            </h3>
+            <div className={styles.levelRow} role="img" aria-label={`Niveau : ${SKILL_LEVEL_LABEL[skill.level]}`}>
+              {LEVELS.map((l) => (
+                <span
+                  key={l}
+                  className={`${styles.levelDot} ${skill.level === l ? styles.levelDotActive : ""}`}
+                  aria-hidden="true"
+                >
+                  <span className={styles.dot} />
+                  {SKILL_LEVEL_LABEL[l]}
+                </span>
+              ))}
+            </div>
+            <dl className={styles.meta}>
+              <div>
+                <dt>Temps recommandé</dt>
+                <dd>{skill.duration}</dd>
+              </div>
+              <div>
+                <dt>Prérequis</dt>
+                <dd>
+                  {prereqSkills.length === 0
+                    ? "Aucun — point d'entrée"
+                    : `${prereqSkills.length} compétence${prereqSkills.length > 1 ? "s" : ""}`}
+                </dd>
+              </div>
+              <div>
+                <dt>Complexité</dt>
+                <dd>{COMPLEXITY[skill.level]}</dd>
+              </div>
+            </dl>
+          </section>
 
           {prereqSkills.length > 0 && (
-            <section className={styles.block} aria-label="Prérequis">
+            <section className={styles.block} aria-label="Prérequis expliqués">
               <h3 className={styles.blockTitle}>
-                <Lock size={13} aria-hidden="true" /> Prérequis
+                <Lock size={13} aria-hidden="true" /> Avant de commencer
                 <span className={`${styles.count} mono`}>
                   {prereqsDone}/{prereqSkills.length}
                 </span>
               </h3>
-              <div className={styles.chips}>
+              <ul className={styles.prereqs}>
                 {prereqSkills.map((p) => (
-                  <button
-                    key={p.id}
-                    type="button"
-                    className={`${styles.chip} ${
-                      statusMap[p.id] === "done" ? styles.chipDone : ""
-                    }`}
-                    onClick={() => goTo(p)}
-                  >
-                    <span
-                      className={`${styles.miniDot} ${statusDotClass(statusMap[p.id])}`}
-                      aria-hidden="true"
-                    />
-                    {p.name}
-                    <ChevronRight size={13} aria-hidden="true" />
-                  </button>
+                  <li key={p.id}>
+                    <button
+                      type="button"
+                      className={styles.prereq}
+                      onClick={() => goTo(p)}
+                    >
+                      <span className={styles.prereqHead}>
+                        <span
+                          className={`${styles.miniDot} ${statusDotClass(statusMap[p.id])}`}
+                          aria-hidden="true"
+                        />
+                        <span className={styles.prereqName}>{p.name}</span>
+                        <ChevronRight size={13} aria-hidden="true" />
+                      </span>
+                      <span className={styles.prereqNote}>
+                        {guide?.prerequisiteNotes?.[p.id] ?? p.tagline}
+                      </span>
+                    </button>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </section>
           )}
 
-          {suggestions.length > 0 && (
-            <section className={styles.block} aria-label="Que apprendre ensuite">
+          {conceptDetails.length > 0 ? (
+            <section className={styles.block} aria-label="Concepts clés">
               <h3 className={styles.blockTitle}>
-                <Sparkles size={13} aria-hidden="true" /> Que apprendre ensuite ?
+                <ListChecks size={13} aria-hidden="true" /> Concepts clés
+              </h3>
+              <div className={styles.accordion}>
+                {conceptDetails.map((c, i) => {
+                  const open = openConcept === c.name;
+                  const panelId = `concept-${skill.id}-${i}`;
+                  return (
+                    <div key={c.name} className={styles.accItem}>
+                      <button
+                        type="button"
+                        className={styles.accButton}
+                        aria-expanded={open}
+                        aria-controls={panelId}
+                        onClick={() => setOpenConcept(open ? null : c.name)}
+                      >
+                        <code className="mono">{c.name}</code>
+                        <ChevronRight
+                          size={14}
+                          aria-hidden="true"
+                          className={`${styles.accChevron} ${open ? styles.accChevronOpen : ""}`}
+                        />
+                      </button>
+                      {open && (
+                        <p id={panelId} className={styles.accDef}>
+                          {c.definition}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ) : (
+            skill.concepts.length > 0 && (
+              <section className={styles.block} aria-label="Concepts clés">
+                <h3 className={styles.blockTitle}>
+                  <ListChecks size={13} aria-hidden="true" /> Concepts
+                </h3>
+                <ul className={styles.list}>
+                  {skill.concepts.map((c) => (
+                    <li key={c} className={styles.concept}>
+                      <code className="mono">{c}</code>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )
+          )}
+
+          {guide?.howItWorks && guide.howItWorks.length > 0 && (
+            <section className={styles.block} aria-label={guide.howItWorksTitle ?? "Comment ça fonctionne"}>
+              <h3 className={styles.blockTitle}>
+                <Workflow size={13} aria-hidden="true" />{" "}
+                {guide.howItWorksTitle ?? "Comment ça fonctionne"}
+              </h3>
+              <FlowDiagram
+                steps={guide.howItWorks}
+                label={`${guide.howItWorksTitle ?? "Fonctionnement"} de ${skill.name}`}
+              />
+            </section>
+          )}
+
+          {guide?.example && (
+            <section className={styles.block} aria-label="Exemple concret">
+              <h3 className={styles.blockTitle}>
+                <Lightbulb size={13} aria-hidden="true" /> Exemple : {guide.example.title}
+              </h3>
+              <FlowDiagram
+                steps={guide.example.steps}
+                accentEnds
+                label={`Exemple concret : ${guide.example.title}`}
+              />
+            </section>
+          )}
+
+          <section className={styles.block} aria-label="Projets pratiques">
+            <h3 className={styles.blockTitle}>
+              <FlaskConical size={13} aria-hidden="true" /> Mettez la compétence en pratique
+            </h3>
+            {projectsDetailed ? (
+              <ol className={styles.projectsDetailed}>
+                {projectsDetailed.map((p) => (
+                  <li key={p.title}>
+                    <span className={styles.projectTitle}>{p.title}</span>
+                    {p.flow && <span className={`${styles.projectFlow} mono`}>{p.flow}</span>}
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <ol className={styles.projects}>
+                {skill.projects.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ol>
+            )}
+          </section>
+
+          <section className={styles.block} aria-label="Ressources">
+            <h3 className={styles.blockTitle}>
+              <BookOpen size={13} aria-hidden="true" /> Ressources
+            </h3>
+            <ul className={styles.resources}>
+              {skill.resources.map((r) => (
+                <li key={r.url}>
+                  <a
+                    href={r.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.resource}
+                  >
+                    <span className={styles.resourceTitle}>{r.title}</span>
+                    <span className={styles.resourceProvider}>{r.provider}</span>
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {suggestions.length > 0 && (
+            <section className={styles.block} aria-label="Vous êtes prêt pour">
+              <h3 className={styles.blockTitle}>
+                <Sparkles size={13} aria-hidden="true" /> Vous êtes prêt pour
               </h3>
               <ul className={styles.suggestions}>
                 {suggestions.map(({ skill: s, reason, ready }) => (
@@ -281,52 +510,6 @@ export function SkillPanel({
             </section>
           )}
 
-          <section className={styles.block} aria-label="Concepts clés">
-            <h3 className={styles.blockTitle}>
-              <ListChecks size={13} aria-hidden="true" /> Concepts
-            </h3>
-            <ul className={styles.list}>
-              {skill.concepts.map((c) => (
-                <li key={c} className={styles.concept}>
-                  <code className="mono">{c}</code>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className={styles.block} aria-label="Projets">
-            <h3 className={styles.blockTitle}>
-              <FlaskConical size={13} aria-hidden="true" /> Projets
-            </h3>
-            <ol className={styles.projects}>
-              {skill.projects.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ol>
-          </section>
-
-          <section className={styles.block} aria-label="Ressources">
-            <h3 className={styles.blockTitle}>
-              <BookOpen size={13} aria-hidden="true" /> Ressources
-            </h3>
-            <ul className={styles.resources}>
-              {skill.resources.map((r) => (
-                <li key={r.url}>
-                  <a
-                    href={r.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.resource}
-                  >
-                    <span className={styles.resourceTitle}>{r.title}</span>
-                    <span className={styles.resourceProvider}>{r.provider}</span>
-                    <ArrowUpRight size={14} aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-
           {relatedSkills.length > 0 && (
             <section className={styles.block} aria-label="Compétences liées">
               <h3 className={styles.blockTitle}>Compétences liées</h3>
@@ -343,6 +526,17 @@ export function SkillPanel({
                 ))}
               </div>
             </section>
+          )}
+
+          {status !== "done" && (
+            <button
+              type="button"
+              className={styles.completeCta}
+              onClick={() => setStatus(skill.id, "done")}
+            >
+              <Check size={16} strokeWidth={2.5} aria-hidden="true" />
+              Marquer comme terminée
+            </button>
           )}
         </div>
       </aside>

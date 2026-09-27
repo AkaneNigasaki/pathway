@@ -13,6 +13,7 @@ import { CAREERS } from "../../data/careers";
 import { getGuidedPaths, type GuidedPathIcon } from "../../data/guided-paths";
 import { useAllProgress, progressPercent, countDone } from "../../hooks/useProgress";
 import { NotFound } from "../NotFound/NotFound";
+import { InformatiqueIntro } from "./InformatiqueIntro";
 import styles from "./FieldDetail.module.css";
 
 const PATH_ICONS: Record<GuidedPathIcon, typeof Globe> = {
@@ -75,6 +76,8 @@ export function FieldDetail() {
             </div>
           </dl>
         </Reveal>
+
+        {field.id === "informatique" && <InformatiqueIntro />}
 
         {guidedPaths.length > 0 && (
           <section aria-label="Parcours guidés" className={styles.pathsSection}>

@@ -192,6 +192,17 @@
   color: var(--accent);
 }
 
+.stageActive {
+  color: var(--foreground);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: var(--accent-faint);
+}
+
+.stageActive .stageNum,
+.stageActive .stagePct {
+  color: var(--accent);
+}
+
 .graphWrap {
   margin-top: 1rem;
   scroll-margin-top: 100px;

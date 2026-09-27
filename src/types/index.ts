@@ -30,6 +30,34 @@ export interface SkillResource {
   url: string;
 }
 
+/** Concept clé d'une compétence, avec sa définition pédagogique. */
+export interface SkillConcept {
+  name: string;
+  definition: string;
+}
+
+/** Exemple concret : un flux réel que l'utilisateur peut visualiser. */
+export interface SkillExample {
+  title: string;
+  steps: string[];
+}
+
+/** Projet pratique progressif, avec son flux de réalisation. */
+export interface SkillProject {
+  title: string;
+  /** Flux de réalisation, ex. "Formulaire → n8n → API → Base de données". */
+  flow?: string;
+}
+
+/** Illustration SVG dédiée disponible pour une compétence ou une branche. */
+export type SkillIllustration =
+  | "api"
+  | "n8n"
+  | "devops"
+  | "ml"
+  | "cybersecurity"
+  | "informatique";
+
 export interface Skill {
   id: string;
   name: string;
@@ -46,6 +74,25 @@ export interface Skill {
   projects: string[];
   resources: SkillResource[];
   duration: string;
+  // --- Contenu pédagogique (optionnel, fusionné depuis skill-guides.ts) ---
+  /** Définition courte : « Qu'est-ce que c'est ? » */
+  definition?: string;
+  /** Pourquoi apprendre cette compétence : son rôle dans le domaine. */
+  whyLearn?: string;
+  /** Explication de chaque prérequis : skillId → ce qu'il faut en retenir. */
+  prerequisiteNotes?: Record<string, string>;
+  /** Concepts clés avec définitions (prioritaire sur `concepts`). */
+  conceptDetails?: SkillConcept[];
+  /** Étapes du fonctionnement, rendues en diagramme de flux. */
+  howItWorks?: string[];
+  /** Titre de la section « Comment ça fonctionne ». */
+  howItWorksTitle?: string;
+  /** Exemple concret sous forme de flux. */
+  example?: SkillExample;
+  /** Projets détaillés (prioritaire sur `projects`). */
+  projectsDetailed?: SkillProject[];
+  /** Illustration SVG dédiée. */
+  illustration?: SkillIllustration;
 }
 
 /** État de progression d'une compétence : absent = non commencé. */

@@ -438,6 +438,317 @@
   color: var(--accent);
 }
 
+/* ── Fil d'Ariane : où se situe la compétence ── */
+.crumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-size: var(--text-small);
+  color: var(--faint);
+  margin-bottom: 1.4rem;
+}
+
+.crumb a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.crumb a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.crumb [aria-current="page"] {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.crumb svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* ── Définition : bloc éditorial ── */
+.definition {
+  font-size: 1.04rem;
+  line-height: 1.7;
+  color: var(--foreground);
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.whyText {
+  color: var(--foreground-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Niveau : pastilles + méta ── */
+.levelRow {
+  display: flex;
+  gap: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.levelDot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--faint);
+}
+
+.levelDot .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+}
+
+.levelDotActive {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.levelDotActive .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-faint);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.meta > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.meta dt {
+  font-size: var(--text-small);
+  color: var(--faint);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.meta dd {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground-soft);
+  text-align: right;
+}
+
+/* ── Prérequis expliqués ── */
+.prereqs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.prereq {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform 180ms var(--ease-out), border-color 180ms ease;
+}
+
+.prereq:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+}
+
+.prereqHead {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+
+.prereqHead svg {
+  margin-left: auto;
+  color: var(--faint);
+  flex-shrink: 0;
+}
+
+.prereqName {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.prereqNote {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.55;
+  padding-left: 1.35rem;
+}
+
+/* ── Concepts clés : accordéon ── */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.accItem + .accItem {
+  border-top: 1px solid var(--border);
+}
+
+.accButton {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  transition: background-color 160ms ease;
+}
+
+.accButton:hover {
+  background: var(--background-soft);
+}
+
+.accButton code {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.accChevron {
+  margin-left: auto;
+  color: var(--faint);
+  flex-shrink: 0;
+  transition: transform 220ms var(--ease-out);
+}
+
+.accChevronOpen {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+
+.accDef {
+  margin: 0;
+  padding: 0 1rem 0.95rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--foreground-soft);
+  animation: accIn 240ms ease;
+}
+
+@keyframes accIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Illustration dédiée ── */
+.illusWrap {
+  margin: -0.5rem 0 2rem;
+}
+
+.illusWrap figure {
+  margin: 0;
+}
+
+/* ── Projets détaillés ── */
+.projectsDetailed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  counter-reset: project;
+}
+
+.projectsDetailed li {
+  position: relative;
+  padding: 0.85rem 1rem 0.85rem 3rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  counter-increment: project;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.projectsDetailed li::before {
+  content: counter(project, decimal-leading-zero);
+  position: absolute;
+  left: 1rem;
+  top: 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.projectTitle {
+  font-weight: 600;
+  font-size: 0.93rem;
+}
+
+.projectFlow {
+  font-size: 0.78rem;
+  color: var(--faint);
+}
+
+/* ── CTA final ── */
+.completeCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 180ms var(--ease-out), filter 180ms ease;
+}
+
+.completeCta:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
 /* ── Mobile : bottom sheet ── */
 @media (max-width: 720px) {
   .panel {

@@ -20,6 +20,8 @@ export function RoadmapDetail() {
   const roadmap = slug ? getRoadmap(slug) : undefined;
   const [selected, setSelected] = useState<Skill | null>(null);
   const [mapOpen, setMapOpen] = useState(false);
+  /** Branche mise en évidence sur la carte (?stage= ou chips d'étapes). */
+  const [highlightStage, setHighlightStage] = useState<string | null>(null);
 
   const { status, cycle, setStatus, doneCount, inProgressCount } = useProgress(
     roadmap?.id ?? ""
@@ -39,6 +41,21 @@ export function RoadmapDetail() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmap]);
+
+  // Navigation directe vers une branche via ?stage= (cartes de la page filière).
+  useEffect(() => {
+    if (!roadmap) return;
+    const stageId = searchParams.get("stage");
+    if (stageId && roadmap.stages.some((s) => s.id === stageId)) {
+      setHighlightStage(stageId);
+      const t = window.setTimeout(() => {
+        scrollToStage(stageId);
+        setSearchParams({}, { replace: true });
+      }, 400);
+      return () => window.clearTimeout(t);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roadmap, searchParams]);
 
   // Verrouille le scroll quand la carte plein écran est ouverte.
   useEffect(() => {
@@ -176,8 +193,14 @@ export function RoadmapDetail() {
                   <li key={stage.id}>
                     <button
                       type="button"
-                      className={`${styles.stageChip} ${allDone ? styles.stageDone : ""}`}
-                      onClick={() => scrollToStage(stage.id)}
+                      className={`${styles.stageChip} ${allDone ? styles.stageDone : ""} ${
+                        highlightStage === stage.id ? styles.stageActive : ""
+                      }`}
+                      aria-pressed={highlightStage === stage.id}
+                      onClick={() => {
+                        setHighlightStage((prev) => (prev === stage.id ? null : stage.id));
+                        scrollToStage(stage.id);
+                      }}
                     >
                       <span className={`${styles.stageNum} mono`}>{String(i + 1).padStart(2, "0")}</span>
                       <span className={styles.stageName}>{stage.label}</span>
@@ -198,6 +221,7 @@ export function RoadmapDetail() {
               selectedId={selected?.id ?? null}
               onSelect={setSelected}
               onCycle={cycle}
+              highlightStage={highlightStage}
             />
           </div>
           <div className={styles.mapMobile}>
@@ -259,6 +283,7 @@ export function RoadmapDetail() {
             selectedId={selected?.id ?? null}
             onSelect={setSelected}
             onCycle={cycle}
+            highlightStage={highlightStage}
             fullscreen
           />
         </div>

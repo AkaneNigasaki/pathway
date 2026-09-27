@@ -29,6 +29,8 @@ interface RoadmapMapProps {
   onCycle: (skillId: string) => void;
   /** Plein écran (overlay mobile). */
   fullscreen?: boolean;
+  /** Branche mise en évidence (les autres sont estompées). */
+  highlightStage?: string | null;
 }
 
 /**
@@ -45,6 +47,7 @@ export function RoadmapMap({
   onSelect,
   onCycle,
   fullscreen = false,
+  highlightStage = null,
 }: RoadmapMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -169,6 +172,18 @@ export function RoadmapMap({
     return new Set([selectedId, ...anc, ...desc]);
   }, [roadmap, selectedId, focus, byId]);
 
+  // ── Branche mise en évidence (?stage=, chips d'étapes) ──
+  const stageSet = useMemo(() => {
+    if (!highlightStage) return null;
+    const ids = roadmap.skills
+      .filter((s) => s.stage === highlightStage)
+      .map((s) => s.id);
+    return ids.length > 0 ? new Set(ids) : null;
+  }, [roadmap, highlightStage]);
+
+  // La sélection prime sur la mise en évidence de branche.
+  const activeSet = kept ?? stageSet;
+
   const edges = useMemo(() => {
     const list: { key: string; d: string; from: string; to: string }[] = [];
     for (const s of roadmap.skills) {
@@ -251,8 +266,8 @@ export function RoadmapMap({
           >
             {edges.map((e) => {
               const hot = hoverId !== null && (e.from === hoverId || e.to === hoverId);
-              const inKept = kept !== null && kept.has(e.from) && kept.has(e.to);
-              const faded = kept !== null && !inKept;
+              const inKept = activeSet !== null && activeSet.has(e.from) && activeSet.has(e.to);
+              const faded = activeSet !== null && !inKept;
               return (
                 <path
                   key={e.key}
@@ -290,7 +305,7 @@ export function RoadmapMap({
                           skill={s}
                           status={status[s.id] ?? null}
                           selected={selectedId === s.id}
-                          dimmed={kept !== null && !kept.has(s.id)}
+                          dimmed={activeSet !== null && !activeSet.has(s.id)}
                           unlocked={isUnlocked(s)}
                           onSelect={onSelect}
                           onCycle={onCycle}
