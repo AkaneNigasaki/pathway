@@ -10,6 +10,9 @@
   background-size: 28px 28px;
   background-color: var(--background);
   overflow: hidden;
+  /* `clip` ne crée pas de scroll container : la toolbar en `sticky`
+     reste ancrée au scroll de la page (fallback: `hidden` ci-dessus). */
+  overflow: clip;
 }
 
 .map.fullscreen {
@@ -20,11 +23,14 @@
 
 /* ── Barre d'outils ── */
 .toolbar {
-  position: absolute;
-  top: 14px;
-  left: 14px;
+  /* Sticky (et non absolute) : quand la bande des étapes est épinglée en
+     haut, la toolbar glisse juste en dessous au lieu de passer dessous. */
+  position: sticky;
+  top: calc(var(--nav-height-scrolled, 58px) + 84px);
   z-index: 5;
   display: inline-flex;
+  width: fit-content;
+  margin: 14px 0 0 14px;
   align-items: center;
   gap: 2px;
   padding: 4px;
