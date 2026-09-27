@@ -1,60 +1,58 @@
-/* ── Pathway design tokens — Flat Design : bleu vif, pastels, surfaces plates ── */
+/* ── Pathway design tokens — langage Google (about.google) ── */
 
 :root {
-  --background: #f6f5fa;
-  --background-soft: #efedf6;
+  --background: #ffffff;
+  --background-soft: #f8f9fa;
   --surface: #ffffff;
-  --surface-soft: #f1eff8;
-  --foreground: #16161e;
-  --foreground-soft: #2c2c3a;
-  --muted: #5f5f76;
-  --faint: #8e8ea6;
-  --border: #e8e6f1;
-  --border-strong: #d5d2e6;
+  --surface-soft: #f8f9fa;
+  --foreground: #202124;
+  --foreground-soft: #3c4043;
+  --muted: #5f6368;
+  --faint: #80868b;
+  --border: #dadce0;
+  --border-strong: #bdc1c6;
 
-  /* Primaire : bleu vif (boutons, liens, focus) */
-  --accent: #2e2ee6;
+  /* Primaire : bleu Google (boutons, liens, focus) */
+  --accent: #1a73e8;
   --accent-solid: var(--accent);
   --accent-ink: #ffffff;
-  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
-  --accent-faint: color-mix(in srgb, var(--accent) 6%, transparent);
+  --accent-soft: #e8f0fe;
+  --accent-faint: #f6fafe;
 
-  /* Pastels plats (cartes, chips, panneaux) */
-  --tint-lavender: #ddbdf5;
-  --tint-blue: #bfe3f9;
-  --tint-peach: #f7c8d9;
-  --tint-mint: #bfe9d2;
+  /* Pastilles tonales (chips d'icônes, panneaux) */
+  --tint-lavender: #e8f0fe;
+  --tint-blue: #d2e3fc;
+  --tint-peach: #fce8e6;
+  --tint-mint: #e6f4ea;
 
-  --success: #1da85e;
-  --danger: #d92d20;
+  --success: #1e8e3e;
+  --danger: #d93025;
 
-  --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif;
+  --font-sans: "Roboto", Arial, Helvetica, sans-serif;
+  --font-display: "Poppins", "Google Sans", Arial, Helvetica, sans-serif;
   --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
     "Liberation Mono", monospace;
 
-  --text-hero: clamp(3rem, 7vw, 5.5rem);
-  --text-section: clamp(2.25rem, 4.5vw, 3.75rem);
-  --text-title: clamp(1.6rem, 2.8vw, 2.4rem);
-  --text-lead: clamp(1.05rem, 1.6vw, 1.25rem);
+  --text-hero: clamp(2.25rem, 5vw, 3.75rem);
+  --text-section: clamp(1.75rem, 4vw, 3rem);
+  --text-title: clamp(1.5rem, 2.5vw, 2.25rem);
+  --text-lead: clamp(1rem, 1.5vw, 1.125rem);
   --text-body: 1rem;
   --text-small: 0.875rem;
   --text-meta: 0.75rem;
 
-  --tracking-display: -0.03em;
-  --tracking-title: -0.025em;
-  --tracking-body: -0.011em;
+  --tracking-display: -0.5px;
+  --tracking-title: -0.25px;
+  --tracking-body: 0;
 
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-full: 999px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 48px;
 
-  /* Flat : ombres quasi inexistantes */
-  --shadow-subtle: 0 1px 2px rgb(23 23 60 / 0.05);
-  --shadow-lift: 0 12px 32px rgb(23 23 60 / 0.1);
+  /* Google : bordures fines, ombres rares et douces */
+  --shadow-subtle: 0 1px 2px rgb(60 64 67 / 0.08);
+  --shadow-lift: 0 1px 3px rgb(60 64 67 / 0.15), 0 4px 12px rgb(60 64 67 / 0.1);
 
   --ease-out: cubic-bezier(0.05, 0.7, 0.1, 1); /* M3 emphasized decelerate */
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1); /* M3 emphasized */

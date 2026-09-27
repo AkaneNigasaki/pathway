@@ -48,9 +48,9 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, var(--tint-lavender), var(--tint-blue));
-  color: #1c1c2e;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: #1967d2;
   transition: transform 220ms var(--ease-out);
 }
 

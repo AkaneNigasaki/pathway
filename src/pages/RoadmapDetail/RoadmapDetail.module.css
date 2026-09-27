@@ -229,15 +229,25 @@
 }
 
 .stageActive {
-  color: var(--accent-ink);
+  color: #1967d2;
   border-color: transparent;
-  background: var(--accent);
+  background: var(--accent-soft);
 }
 
 .stageActive .stageNum,
 .stageActive .stagePct {
-  color: var(--accent-ink);
+  color: #1967d2;
   opacity: 0.75;
+}
+
+[data-theme="dark"] .stageActive {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+
+[data-theme="dark"] .stageActive .stageNum,
+[data-theme="dark"] .stageActive .stagePct {
+  color: var(--accent-ink);
 }
 
 /* ── Introduction de la branche sélectionnée ── */

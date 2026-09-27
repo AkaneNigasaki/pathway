@@ -15,7 +15,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   font-size: var(--text-body);
-  line-height: 1.6;
+  line-height: 1.5;
   letter-spacing: var(--tracking-body);
   color: var(--foreground);
   background: var(--background);
@@ -33,8 +33,8 @@ h1,
 h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 800;
-  line-height: 1.05;
+  font-weight: 400;
+  line-height: 1.2;
   letter-spacing: var(--tracking-display);
   text-wrap: balance;
 }
@@ -59,35 +59,36 @@ h4 {
   text-wrap: balance;
 }
 
-/* ── Bouton signature flat : pastille pleine, bleu vif / lavande ── */
+/* ── Bouton Google : pastille pleine #1a73e8, 48px, weight 500 ── */
 .btn-offset {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 52px;
-  padding: 0.85rem 2.1rem;
+  min-height: 48px;
+  min-width: 96px;
+  padding: 12px 24px;
   border-radius: var(--radius-full);
-  border: none;
+  border: 1px solid transparent;
   background: var(--accent);
   color: var(--accent-ink);
   font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
   cursor: pointer;
-  transition: transform var(--dur-short) var(--ease-standard),
-    filter var(--dur-short) var(--ease-standard);
+  transition: filter var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard);
 }
 
 .btn-offset:hover,
 .btn-offset:focus-visible {
-  transform: translateY(-2px);
-  filter: brightness(1.06);
+  filter: brightness(0.94);
 }
 
 .btn-offset:active {
-  transform: translateY(0);
+  filter: brightness(0.9);
 }
 
 /* ── Motif grille fine sur fond noir (thème sombre) ── */
@@ -300,15 +301,14 @@ input:-webkit-autofill:focus {
   transition: background-color 9999s ease-in-out 0s;
 }
 
-/* ── Carte d'en-tête : pastel flat en clair, texture technique en sombre ── */
+/* ── Carte d'en-tête : blanc bordure fine en clair, texture technique en sombre ── */
 .header-card {
   position: relative;
   padding: 2.5rem 2rem;
   margin-bottom: 2.5rem;
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background:
-    linear-gradient(120deg, var(--tint-lavender), var(--tint-blue));
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -345,9 +345,9 @@ input:-webkit-autofill:focus {
   width: 2.75rem;
   height: 2.75rem;
   flex: none;
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--tint-lavender), var(--tint-blue));
-  color: #1c1c2e;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: #1967d2;
 }
 
 [data-theme="dark"] .icon-chip {

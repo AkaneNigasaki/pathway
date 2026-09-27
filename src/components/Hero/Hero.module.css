@@ -197,14 +197,14 @@
 .exploreByLink {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 0.55rem 1.4rem;
+  min-height: 48px;
+  padding: 12px 24px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-full);
   background: var(--surface);
-  color: var(--foreground);
+  color: var(--accent);
   font-size: var(--text-small);
-  font-weight: 600;
+  font-weight: 500;
   transition: background-color var(--dur-short) var(--ease-standard),
     color var(--dur-short) var(--ease-standard),
     border-color var(--dur-short) var(--ease-standard),
@@ -293,10 +293,10 @@
   }
 }
 
-/* ── Hero flat : panneau pastel en clair, carte marine texturée en sombre ── */
+/* ── Hero Google : panneau bleu très pâle en clair, navy texturé en sombre ── */
 .hero {
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  background: linear-gradient(135deg, var(--tint-lavender), var(--tint-blue));
+  background: #e8f0fe;
   border-bottom: 1px solid var(--border);
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
