@@ -48,6 +48,8 @@ interface SkillIconProps {
   label: string;
   size?: number;
   className?: string;
+  /** Quand l'icône est adjacente au nom en texte : la masquer aux lecteurs d'écran. */
+  decorative?: boolean;
 }
 
 /**
@@ -57,9 +59,9 @@ interface SkillIconProps {
  * sinon icône sémantique Lucide du concept,
  * sinon icône générique du type de nœud.
  */
-export function SkillIcon({ skillId, nodeType = "concept", label, size = 18, className = "" }: SkillIconProps) {
+export function SkillIcon({ skillId, nodeType = "concept", label, size = 18, className = "", decorative = false }: SkillIconProps) {
   if (hasBrandIcon(skillId)) {
-    return <BrandIcon skillId={skillId} label={label} size={size} className={className} />;
+    return <BrandIcon skillId={skillId} label={label} size={size} className={className} decorative={decorative} />;
   }
   const conceptImage = CONCEPT_IMAGES[skillId];
   if (conceptImage) {
@@ -67,8 +69,7 @@ export function SkillIcon({ skillId, nodeType = "concept", label, size = 18, cla
       <span
         className={`${styles.icon} ${className}`}
         style={{ width: size, height: size } as CSSProperties}
-        role="img"
-        aria-label={label}
+        {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": label })}
       >
         <img src={conceptImage} alt="" aria-hidden="true" draggable={false} />
       </span>
@@ -80,8 +81,7 @@ export function SkillIcon({ skillId, nodeType = "concept", label, size = 18, cla
     <span
       className={`${styles.icon} ${className}`}
       style={style}
-      role="img"
-      aria-label={label}
+      {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": label })}
     >
       <ConceptIcon size={size} aria-hidden="true" />
     </span>

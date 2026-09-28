@@ -176,6 +176,7 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                                   nodeType={info.nodeType}
                                   label={item.title}
                                   size={18}
+                                  decorative
                                 />
                               ) : null;
                             })()}

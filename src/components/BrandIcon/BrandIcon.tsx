@@ -122,16 +122,22 @@ interface BrandIconProps {
   label: string;
   size?: number;
   className?: string;
+  /** Quand l'icône est adjacente au nom en texte : la masquer aux lecteurs d'écran. */
+  decorative?: boolean;
 }
 
-export function BrandIcon({ skillId, label, size = 18, className = "" }: BrandIconProps) {
+export function BrandIcon({ skillId, label, size = 18, className = "", decorative = false }: BrandIconProps) {
   const src = BRAND_ICONS[skillId];
   if (!src) return null;
   const style = { width: size, height: size } as CSSProperties;
   const classes = [styles.icon];
   if (className) classes.push(className);
   return (
-    <span className={classes.join(" ")} style={style} role="img" aria-label={label}>
+    <span
+      className={classes.join(" ")}
+      style={style}
+      {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": label })}
+    >
       <img src={src} alt="" aria-hidden="true" draggable={false} />
     </span>
   );

@@ -227,6 +227,7 @@ export function SkillPanel({
               nodeType={skill.type ?? "concept"}
               label={skill.name}
               size={30}
+              decorative
             />
             {skill.name}
           </h2>

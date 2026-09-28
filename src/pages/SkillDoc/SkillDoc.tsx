@@ -100,6 +100,7 @@ export function SkillDoc() {
               label={skill.name}
               size={40}
               className={styles.titleIcon}
+              decorative
             />
             {skill.name}
           </h1>

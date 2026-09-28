@@ -196,6 +196,7 @@ export function Explore() {
                                     nodeType={info.nodeType}
                                     label={item.title}
                                     size={20}
+                                    decorative
                                   />
                                 ) : null;
                               })()}
