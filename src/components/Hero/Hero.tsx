@@ -51,14 +51,14 @@ export function Hero() {
           >
             <Search size={20} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="hero-search" className={styles.srOnly}>
-              Search roadmaps, skills, technologies
+              Rechercher une roadmap, une compétence, une technologie
             </label>
             <input
               id="hero-search"
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search roadmaps..."
+              placeholder="Rechercher une roadmap…"
               autoComplete="off"
               aria-describedby="hero-search-hint"
             />

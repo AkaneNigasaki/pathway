@@ -124,7 +124,7 @@ export function Home() {
       <section className="section" aria-labelledby="skills-title">
         <div className="container">
           <Reveal className="section-head">
-            <p className="eyebrow">Explore by skills</p>
+            <p className="eyebrow">Explorer par compétence</p>
             <h2 className="section-title" id="skills-title">Vous connaissez la technologie ?</h2>
             <p className="section-lead">
               Trouvez immédiatement le parcours d'une technologie —

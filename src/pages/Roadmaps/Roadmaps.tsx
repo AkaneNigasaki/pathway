@@ -54,14 +54,14 @@ export function Roadmaps() {
           <div className={styles.searchBar} role="search">
             <Search size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="roadmaps-search" className={styles.srOnly}>
-              Search roadmaps
+              Rechercher une roadmap
             </label>
             <input
               id="roadmaps-search"
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search roadmaps..."
+              placeholder="Rechercher une roadmap…"
               autoComplete="off"
             />
           </div>
@@ -69,7 +69,7 @@ export function Roadmaps() {
 
         {/* ── Explore by category ── */}
         <Reveal className={styles.exploreBlock}>
-          <h2 className={styles.exploreTitle}>Explore by category</h2>
+          <h2 className={styles.exploreTitle}>Explorer par catégorie</h2>
           <ul className={styles.chipList} aria-label="Roadmaps par métier">
             {CAREERS.map((c) => {
               const field = getField(c.fieldId);
@@ -91,7 +91,7 @@ export function Roadmaps() {
 
         {/* ── Explore by skills ── */}
         <Reveal className={styles.exploreBlock}>
-          <h2 className={styles.exploreTitle}>Explore by skills</h2>
+          <h2 className={styles.exploreTitle}>Explorer par compétence</h2>
           <ul className={styles.chipList} aria-label="Roadmaps par compétence">
             {SKILL_CHIPS.map((s) => (
               <li key={s.url}>
