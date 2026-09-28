@@ -188,9 +188,10 @@ function SectionView({
     if (!focused) return;
     setOpen(true);
     window.setTimeout(() => {
-      document
-        .getElementById(`learn-${section.id}`)
-        ?.scrollIntoView({ block: "start" });
+      const el = document.getElementById(`learn-${section.id}`);
+      if (!el) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     }, 80);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focused]);

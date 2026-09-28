@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   LuArrowLeft as ArrowLeft,
@@ -38,6 +38,7 @@ export function SkillDoc() {
   const guide = getSkillGuide(roadmapSlug, skillId);
   const [level, setLevel] = useState<LearningLevel>(1);
   const { hash } = useLocation();
+  const navigate = useNavigate();
   // Section visée par l'ancre (recherche, sommaire, lien partagé).
   const focusId = hash.replace(/^#/, "") || null;
 
@@ -149,6 +150,9 @@ export function SkillDoc() {
               level={level}
               onSelect={(s) => {
                 if (s.level && s.level > level) setLevel(s.level);
+                // Passe par le hash : le niveau monte si besoin, la section
+                // se déplie et la page cadre son en-tête (même flux que la palette).
+                navigate({ hash: s.id });
               }}
             />
             <Link to={`/roadmaps/${roadmap.slug}`} className={styles.backLink}>

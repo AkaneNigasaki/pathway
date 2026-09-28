@@ -23,10 +23,6 @@ const STAGE: Record<LearningLevel, { name: string; hint: string }> = {
   3: { name: "Approfondi", hint: "En profondeur" },
 };
 
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 /**
  * Sommaire d'une page documentation sous forme de graphe de nœuds,
  * façon roadmap : une colonne vertébrale verticale, un nœud par section,
@@ -54,18 +50,9 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
 
   const go = (e: React.MouseEvent, section: MapSection) => {
     e.preventDefault();
+    // Le parent met le hash à jour : le niveau bascule si besoin,
+    // la section se déplie et la page cadre son en-tête.
     onSelect(section);
-    // Laisse le temps au changement de niveau de rendre la section,
-    // puis défile jusqu'à elle.
-    window.setTimeout(() => {
-      const el = document.getElementById(section.id);
-      if (!el) return;
-      el.scrollIntoView({
-        behavior: prefersReducedMotion() ? "auto" : "smooth",
-        block: "start",
-      });
-      window.history.replaceState(null, "", `#${section.id}`);
-    }, 60);
   };
 
   let lastStage = 0;
