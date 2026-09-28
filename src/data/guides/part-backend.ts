@@ -1,4 +1,14 @@
 import type { SkillGuide } from "../skill-guides";
+import { LEARNING_CSHARP } from "./learning-csharp";
+import { LEARNING_LINUX } from "./learning-linux";
+import { LEARNING_DOCKER } from "./learning-docker";
+import { LEARNING_SQL } from "./learning-sql";
+import { LEARNING_GIT } from "./learning-git";
+import { LEARNING_DJANGO } from "./learning-django";
+import { LEARNING_GO } from "./learning-go";
+import { LEARNING_ASPNET } from "./learning-aspnet";
+import { LEARNING_RUST } from "./learning-rust";
+import { LEARNING_JAVA } from "./learning-java";
 
 /**
  * Guides pédagogiques — backend : parcours Backend Developer.
@@ -16,6 +26,7 @@ import type { SkillGuide } from "../skill-guides";
 export const GUIDES_BACKEND: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ git
   git: {
+    learning: LEARNING_GIT,
     definition:
       "Git est un système de gestion de versions distribué : il enregistre l'historique des modifications d'un projet, permet de travailler en branches parallèles et de fusionner le travail de plusieurs personnes.",
     whyLearn:
@@ -73,6 +84,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ linux
   linux: {
+    learning: LEARNING_LINUX,
     definition:
       "Linux est le système d'exploitation de la quasi-totalité des serveurs : le maîtriser via le terminal, c'est administrer les machines où le code tourne réellement en production.",
     whyLearn:
@@ -248,6 +260,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ sql
   sql: {
+    learning: LEARNING_SQL,
     definition:
       "SQL (Structured Query Language) est le langage d'interrogation des bases de données relationnelles : il permet de définir, lire et modifier des données structurées en tables liées entre elles.",
     whyLearn:
@@ -556,6 +569,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ docker
   docker: {
+    learning: LEARNING_DOCKER,
     definition:
       "Docker conteneurise les applications : il embarque le code et toutes ses dépendances dans une image portable qui s'exécute de façon identique sur n'importe quelle machine.",
     whyLearn:
@@ -741,4 +755,579 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
       },
     ],
   },
+
+  // ------------------------------------------------------------------ csharp
+  csharp: {
+    learning: LEARNING_CSHARP,
+    "conceptDetails": [
+      {
+        "definition": "Le système de types distingue types valeur (struct, int) et types référence (class) : comprendre cette différence explique la plupart des comportements surprenants du langage.",
+        "name": "Types & classes"
+      },
+      {
+        "definition": "Language Integrated Query : interroger des collections (filtrage, tri, projection) avec une syntaxe déclarative intégrée au langage, exécutée en mémoire ou traduite en SQL.",
+        "name": "LINQ"
+      },
+      {
+        "definition": "La programmation asynchrone sans callback hell : `async`/`await` suspend l'exécution en attendant une opération d'entrée-sortie tout en libérant le thread pour d'autres tâches.",
+        "name": "Async/await"
+      },
+      {
+        "definition": "Les types référence nullables (`string?`) et l'analyse de nullabilité du compilateur détectent les déréférencements nuls avant l'exécution.",
+        "name": "Nullable"
+      },
+      {
+        "definition": "Des types immuables à sémantique de valeur, déclarés en une ligne, idéaux pour les modèles de données et les objets de transfert.",
+        "name": "Records"
+      },
+      {
+        "definition": "Le filtrage par motif (expressions `switch`, opérateur `is`) remplace les cascades de `if` et de conversions par des tests de forme lisibles et vérifiés par le compilateur.",
+        "name": "Pattern matching"
+      }
+    ],
+    "definition": "C# (prononcé « C sharp ») est un langage moderne et typé statiquement, conçu par Microsoft : il associe la productivité d'un langage managé (ramasse-miettes, bibliothèque standard riche) à une syntaxe expressive. Il est le langage principal de la plateforme .NET, utilisé pour le web (ASP.NET Core), le jeu vidéo (Unity), le desktop et le mobile.",
+    "environment": [
+      "SDK .NET (LTS) installé et `dotnet` dans le PATH",
+      "Un terminal (PowerShell, bash ou zsh)",
+      "VS Code + extension « C# Dev Kit », Visual Studio ou JetBrains Rider",
+      "Un débogueur configuré (inclus dans les trois IDE ci-dessus)",
+      "Git pour versionner le projet"
+    ],
+    "example": {
+      "steps": [
+        "Créer le projet avec `dotnet new webapi -n TasksApi` puis entrer dans le dossier.",
+        "Lancer avec `dotnet run` et ouvrir l'URL affichée pour vérifier que le contrôleur d'exemple répond.",
+        "Ajouter un `record TaskItem(int Id, string Title, bool Done)` et un contrôleur avec des endpoints GET et POST en mémoire.",
+        "Relancer avec `dotnet run`, tester les endpoints (créer puis lister des tâches) et observer les logs de requêtes."
+      ],
+      "title": "Créer une API de gestion de tâches"
+    },
+    "howItWorks": [
+      "SOURCE",
+      "COMPILATION",
+      "IL",
+      "JIT",
+      "CLR"
+    ],
+    "howItWorksTitle": "Du code source à l'exécution",
+    "prerequisiteNotes": {
+      "python": "Les bases de la programmation (variables, fonctions, boucles) se transfèrent directement à C#."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "Lecture clavier → Calculs avec types valeur → Affichage formaté → `dotnet run` pour tester",
+        "title": "Convertisseur d'unités en console"
+      },
+      {
+        "flow": "`dotnet new webapi` → Modèles `record` → Contrôleurs CRUD → Tests des endpoints",
+        "title": "API REST de bibliothèque"
+      },
+      {
+        "flow": "API + base de données → Authentification → Validation des entrées → Déploiement",
+        "title": "Application complète avec persistance"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Créez un projet console avec `dotnet new console -n HelloWorld` : la commande génère un dossier contenant un fichier `.csproj` (qui décrit le framework cible et les dépendances) et un `Program.cs` — la présence du `.csproj` prouve que le projet est bien structuré.",
+        "Ajoutez un `.gitignore` adapté avec `dotnet new gitignore` à la racine : les dossiers `bin/` et `obj/` créés par la compilation seront exclus du versionnement — vérifiez-le avec `git status` après une première compilation."
+      ],
+      "editors": [
+        "VS Code avec l'extension « C# Dev Kit » (Microsoft) : coloration, IntelliSense, débogage et gestion des projets .NET.",
+        "Visual Studio (Windows/macOS) : l'IDE complet de Microsoft, le plus intégré à .NET.",
+        "JetBrains Rider : l'alternative multiplateforme, appréciée pour son analyse de code et son débogueur."
+      ],
+      "install": [
+        "Installez le SDK .NET depuis `dotnet.microsoft.com` (prenez la version LTS la plus récente) : une fois installé, `dotnet --version` doit afficher le numéro de version dans un terminal fraîchement ouvert.",
+        "Vérifiez que la CLI est dans le PATH : fermez puis rouvrez le terminal et relancez `dotnet --version` — si la commande est introuvable, ajoutez le dossier d'installation du SDK au PATH."
+      ],
+      "workflow": [
+        "Compilez et exécutez d'un coup avec `dotnet run` dans le dossier du projet : la sortie du programme s'affiche dans le terminal, ce qui valide tout le cycle édition-compilation-exécution.",
+        "Créez une API web avec `dotnet new webapi -n TasksApi` : ce modèle génère un projet ASP.NET Core avec un contrôleur d'exemple — lancez-le avec `dotnet run` et ouvrez l'URL affichée pour vérifier que le serveur répond."
+      ]
+    },
+    "whyLearn": "C# ouvre l'écosystème .NET : backend web avec ASP.NET Core, jeux avec Unity (l'un des moteurs les plus utilisés au monde), applications desktop et cloud. Le langage évolue vite, reste très demandé en entreprise, et sa syntaxe moderne (LINQ, async/await, records) en fait un excellent langage principal."
+  }
+,
+  // ------------------------------------------------------------------ java
+  java: {
+    learning: LEARNING_JAVA,
+    "conceptDetails": [
+      {
+        "definition": "Le code Java est compilé en bytecode, un format intermédiaire exécuté par la JVM : c'est ce qui rend Java portable et optimisable à chaud par le compilateur JIT.",
+        "name": "JVM & bytecode"
+      },
+      {
+        "definition": "Classes, héritage, interfaces et polymorphisme : Java est le langage de référence de la programmation orientée objet, avec une discipline stricte d'encapsulation.",
+        "name": "POO"
+      },
+      {
+        "definition": "List, Set, Map et leurs implémentations (ArrayList, HashMap...) : choisir la bonne collection selon l'usage est la compétence Java la plus rentable.",
+        "name": "Collections"
+      },
+      {
+        "definition": "Les streams traitent les collections de façon déclarative (filter, map, reduce) et les lambdas fournissent des fonctions anonymes concises pour les callbacks.",
+        "name": "Streams & lambdas"
+      },
+      {
+        "definition": "Le modèle d'exceptions vérifiées force à traiter les erreurs prévisibles : `try`/`catch`/`finally` et la hiérarchie Throwable structurent la gestion d'erreurs.",
+        "name": "Exceptions"
+      },
+      {
+        "definition": "Les gestionnaires de build déclarent les dépendances, compilent, testent et empaquettent le projet : `pom.xml` pour Maven, scripts Kotlin ou Groovy pour Gradle.",
+        "name": "Maven/Gradle"
+      }
+    ],
+    "definition": "Java est un langage orienté objet, typé statiquement, qui compile vers un bytecode exécuté par la machine virtuelle Java (JVM) : « écrire une fois, exécuter partout ». Il domine le backend d'entreprise, Android et les systèmes à forte charge depuis près de trente ans.",
+    "environment": [
+      "Un JDK LTS (Adoptium Temurin ou Oracle) avec `java` et `javac` dans le PATH",
+      "La variable `JAVA_HOME` pointant vers le dossier du JDK (requise par Maven/Gradle et certains IDE)",
+      "Un terminal",
+      "IntelliJ IDEA, VS Code + « Extension Pack for Java » ou Eclipse",
+      "Maven ou Gradle pour les projets multi-fichiers",
+      "Git pour versionner le projet"
+    ],
+    "example": {
+      "steps": [
+        "Écrire `Main.java` contenant `public class Main` avec une méthode `main` qui affiche un message.",
+        "Compiler avec `javac Main.java` : aucune sortie et un fichier `Main.class` créé = succès.",
+        "Exécuter avec `java Main` (sans `.class`) et vérifier que le message s'affiche.",
+        "Modifier le message, recompiler, réexécuter : ce cycle manuel est le fondement de tout build Java."
+      ],
+      "title": "Compiler et exécuter son premier programme"
+    },
+    "howItWorks": [
+      "SOURCE",
+      "JAVAC",
+      "BYTECODE",
+      "JVM",
+      "JIT"
+    ],
+    "howItWorksTitle": "Du .java au bytecode",
+    "prerequisiteNotes": {
+      "python": "Les bases de la programmation (variables, fonctions, POO) se transfèrent directement à Java."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "Classes `Contact`/`Carnet` → Collections `ArrayList`/`HashMap` → Menu texte → Compilation `javac`",
+        "title": "Carnet d'adresses en console"
+      },
+      {
+        "flow": "Structure Maven → Couche service → Tests unitaires → Build `mvn compile`",
+        "title": "API REST avec Maven"
+      },
+      {
+        "flow": "Threads et `synchronized` → File d'attente concurrente → Gestion des exceptions → Tests de charge",
+        "title": "Système de réservation multithreadé"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Compilez à la main pour comprendre la chaîne : `javac Main.java` produit `Main.class` (le bytecode) sans afficher de sortie en cas de succès — l'apparition du fichier `.class` est la preuve que la compilation a réussi.",
+        "Exécutez avec `java Main` (sans l'extension `.class`) : la JVM charge le bytecode et lance la méthode `main` — la sortie du programme confirme que tout fonctionne.",
+        "Pour les projets réels, ajoutez un outil de build : Maven, vérifié par `mvn -v` puis utilisé avec `mvn compile` pour compiler selon le `pom.xml`, ou Gradle, vérifié par `gradle -v`."
+      ],
+      "editors": [
+        "IntelliJ IDEA (édition Community gratuite) : l'IDE Java de référence, avec le meilleur support Maven/Gradle et un excellent débogueur.",
+        "VS Code avec l'« Extension Pack for Java » (Microsoft) : une alternative légère avec compilation, tests et débogage intégrés.",
+        "Eclipse : l'IDE historique, encore très présent en entreprise."
+      ],
+      "install": [
+        "Installez un JDK : Adoptium Temurin (gratuit, open source) ou Oracle JDK, en version LTS — les deux fournissent `java` et `javac`, vérifiez le JDK actif avec `java -version`.",
+        "Confirmez la présence du compilateur avec `javac -version` : si `java` répond mais pas `javac`, vous avez installé un JRE seul — réinstallez un JDK complet."
+      ],
+      "workflow": [
+        "Cycle quotidien en ligne de commande : éditez, compilez avec `javac`, exécutez avec `java` — ce cycle manuel rend visible ce que les IDE automatisent.",
+        "Avec Maven, `mvn compile` compile les sources selon la structure standard `src/main/java` : un BUILD SUCCESS confirme que le projet est sain.",
+        "Nommez toujours le fichier comme la classe publique (`Main.java` pour `class Main`) : `javac` refuse de compiler sinon, et cette convention est la base de l'organisation du code Java."
+      ]
+    },
+    "whyLearn": "Java reste le langage roi de l'entreprise : banques, assurances et grandes plateformes tournent dessus, et son écosystème (Spring, Maven, JVM) est immense. L'apprendre, c'est aussi maîtriser la JVM, les threads et la programmation orientée objet à grande échelle."
+  }
+,
+  // ------------------------------------------------------------------ rust
+  rust: {
+    learning: LEARNING_RUST,
+    "conceptDetails": [
+      {
+        "definition": "Chaque valeur a un propriétaire unique ; quand il sort de portée, la valeur est libérée : pas de ramasse-miettes, pas de libération manuelle, pas de double libération.",
+        "name": "Ownership"
+      },
+      {
+        "definition": "On peut emprunter une valeur par référence immuable (plusieurs lecteurs) ou mutable (un seul écrivain) : le compilateur refuse toute combinaison dangereuse.",
+        "name": "Borrowing"
+      },
+      {
+        "definition": "Les durées de vie annotent combien de temps une référence reste valide : elles garantissent à la compilation qu'aucune référence ne survit à sa donnée.",
+        "name": "Lifetimes"
+      },
+      {
+        "definition": "L'équivalent des interfaces : un trait déclare un comportement partagé que les types implémentent, avec polymorphisme statique (génériques) ou dynamique.",
+        "name": "Traits"
+      },
+      {
+        "definition": "Pas d'exceptions : les erreurs récupérables sont des valeurs `Result<T, E>` et l'absence de valeur des `Option<T>`, forcées à être traitées explicitement.",
+        "name": "Gestion d'erreurs"
+      },
+      {
+        "definition": "Le gestionnaire de paquets et de build officiel : il crée les projets, résout les dépendances (crates.io), compile, teste et formate.",
+        "name": "Cargo"
+      }
+    ],
+    "definition": "Rust est un langage système qui garantit la sécurité mémoire sans ramasse-miettes, grâce à son système d'ownership vérifié à la compilation. Il vise les performances du C++ avec des garanties fortes : pas de data races, pas de pointeurs nuls, pas de fuites faciles.",
+    "environment": [
+      "rustup avec la toolchain stable, `cargo` et `rustc` dans le PATH",
+      "Un terminal",
+      "VS Code + « rust-analyzer » ou RustRover",
+      "Un débogueur natif (l'extension CodeLLDB sous VS Code, ou celui intégré à RustRover)",
+      "Git pour versionner le projet"
+    ],
+    "example": {
+      "steps": [
+        "Créer le projet avec `cargo new fileinfo` et ouvrir `src/main.rs`.",
+        "Lancer avec `cargo run` : la compilation initiale puis l'exécution prouvent que la toolchain fonctionne.",
+        "Ajouter une fonction qui lit les arguments (`std::env::args`) et affiche des statistiques sur un fichier, puis tester avec `cargo run -- fichier.txt`.",
+        "Ajouter un test unitaire, le valider avec `cargo test`, puis nettoyer le style avec `cargo fmt` et `cargo clippy`."
+      ],
+      "title": "Créer un outil en ligne de commande"
+    },
+    "howItWorks": [
+      "SOURCE",
+      "RUSTC",
+      "LLVM",
+      "BINAIRE",
+      "EXÉCUTION"
+    ],
+    "howItWorksTitle": "Compilation native directe",
+    "prerequisiteNotes": {
+      "python": "Les bases de la programmation aident, mais Rust impose de réapprendre la gestion mémoire."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "`cargo new` → Lecture de fichiers → `cargo test` → `cargo run` pour valider",
+        "title": "Utilitaire CLI de statistiques"
+      },
+      {
+        "flow": "API publique propre → Documentation `///` → Tests d'intégration → `cargo clippy` sans avertissement",
+        "title": "Bibliothèque avec tests"
+      },
+      {
+        "flow": "Gestion d'erreurs `Result` → Concurrence sans data races → Binaire natif rapide",
+        "title": "Outil système concurrent"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Créez un projet avec `cargo new hello` : cela génère un `Cargo.toml` (le manifeste : nom, version, dépendances) et un `src/main.rs` — la présence du `Cargo.toml` confirme que Cargo gère le projet.",
+        "Compilez avec `cargo build` : la première compilation télécharge les dépendances et produit le binaire dans `target/debug/` — un binaire exécutable prouve que la toolchain est complète."
+      ],
+      "editors": [
+        "VS Code avec l'extension « rust-analyzer » : complétion, diagnostics en temps réel et refactorings — l'outil quasi obligatoire du développeur Rust.",
+        "RustRover (JetBrains) : l'IDE dédié, avec débogueur intégré et excellent support Cargo."
+      ],
+      "install": [
+        "Installez Rust via rustup, l'installateur officiel, avec `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` : il télécharge et installe la toolchain stable — acceptez l'installation par défaut quand le script le propose.",
+        "Vérifiez l'installation dans un nouveau terminal avec `rustc --version` (le compilateur) et `cargo --version` (le gestionnaire de build) : les deux doivent afficher un numéro de version.",
+        "Si les commandes sont introuvables, rechargez l'environnement du shell (le script modifie votre fichier de profil) : fermez puis rouvrez le terminal et relancez `cargo --version`."
+      ],
+      "workflow": [
+        "Développez avec `cargo run` : il recompile si nécessaire puis exécute — la sortie du programme valide le cycle complet.",
+        "Testez avec `cargo test` : il compile et exécute les tests unitaires du projet — un rapport « ok » confirme que le code se comporte comme attendu.",
+        "Gardez un code propre avec `cargo fmt` (formate le code selon le style officiel, vérifiez le diff avec git) et `cargo clippy` (signale les constructions douteuses : zéro avertissement = code idiomatique)."
+      ]
+    },
+    "whyLearn": "Rust est le langage le plus apprécié des développeurs depuis des années et s'impose dans les systèmes, l'embarqué, le WebAssembly et l'infrastructure (déjà adopté dans le noyau Linux). L'apprendre transforme votre rapport à la mémoire et à la concurrence, même dans d'autres langages."
+  }
+,
+  // ------------------------------------------------------------------ go
+  go: {
+    learning: LEARNING_GO,
+    "conceptDetails": [
+      {
+        "definition": "Les goroutines sont des fonctions exécutées en concurrence, légères (quelques Ko) : on en lance des milliers. Les channels échangent des données entre elles en toute sécurité.",
+        "name": "Goroutines & channels"
+      },
+      {
+        "definition": "Une interface déclare un ensemble de méthodes ; tout type qui les implémente la satisfait implicitement, sans déclaration explicite. C'est la clé de la composition en Go.",
+        "name": "Interfaces"
+      },
+      {
+        "definition": "Le système de modules (`go.mod` / `go.sum`) gère les dépendances versionnées depuis 2018 : fini le `GOPATH` obligatoire, chaque projet est autonome et reproductible.",
+        "name": "Modules Go"
+      },
+      {
+        "definition": "Pas d'exceptions : les fonctions retournent `(valeur, error)` et l'appelant vérifie `if err != nil`. Verbeux, mais chaque point de défaillance est visible.",
+        "name": "Gestion d'erreurs"
+      },
+      {
+        "definition": "Exceptionnellement riche : HTTP, JSON, crypto, templates, tests… La plupart des projets Go n'ont besoin que d'elle, ce qui limite les dépendances externes.",
+        "name": "Bibliothèque standard"
+      },
+      {
+        "definition": "Le paquet `testing` intégré suffit : fonctions `TestXxx`, benchmarks `BenchmarkXxx`, `go test ./...` pour tout exécuter. Le testing est une pratique culturelle forte en Go.",
+        "name": "Tests"
+      }
+    ],
+    "definition": "Go est un langage compilé, statiquement typé, créé chez Google : sa simplicité volontaire, sa compilation rapide et son exécution en binaire unique en font un choix standard pour les APIs, les outils CLI et les systèmes distribués. Il embarque la concurrence comme un citoyen de première classe avec les goroutines.",
+    "environment": [
+      "Go installé depuis go.dev/dl, `go version` répond dans le terminal",
+      "Un dossier de projet initialisé avec `go mod init` (fichier `go.mod` présent)",
+      "VS Code + extension \"Go\" (golang) ou GoLand",
+      "`go fmt` et `go vet` exécutables depuis le terminal"
+    ],
+    "example": {
+      "steps": [
+        "Créer le dossier du projet et l'initialiser avec `go mod init exemple.com/monapi`",
+        "Écrire un `main.go` qui enregistre un handler sur `/hello` avec le paquet `net/http`",
+        "Lancer avec `go run .` puis vérifier la réponse dans le navigateur ou avec `curl http://localhost:8080/hello`",
+        "Ajouter un test `TestHello` dans `main_test.go` et le valider avec `go test ./...`",
+        "Compiler le binaire final avec `go build -o monapi .` et le lancer avec `./monapi`"
+      ],
+      "title": "Une API HTTP minimaliste"
+    },
+    "howItWorks": [
+      "SOURCE",
+      "MODULE",
+      "COMPILE",
+      "BINAIRE",
+      "GOROUTINES",
+      "EXÉCUTE"
+    ],
+    "howItWorksTitle": "Du code source au binaire",
+    "prerequisiteNotes": {
+      "python": "Les bases de la programmation (fonctions, structures de données) se transfèrent directement à Go."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "Arguments (`os.Args`) → Stockage en fichier JSON → Sous-commandes add/list → `go build` → Binaire partageable",
+        "title": "CLI de notes en terminal"
+      },
+      {
+        "flow": "Serveur `net/http` → Handlers JSON → Goroutines pour tâches de fond → Channels pour résultats → Tests `go test`",
+        "title": "API REST avec concurrence"
+      },
+      {
+        "flow": "Worker pool de goroutines → Channels de jobs/résultats → Contexte avec timeout → `go vet` + benchmarks → Binaire optimisé",
+        "title": "Scraper concurrent avec rate limiting"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Le fichier `go.mod` centralise la configuration du projet : module, version de Go, dépendances. Éditez-le rarement à la main, préférez `go get` / `go mod tidy`.",
+        "Activez le formatage automatique à l'enregistrement dans votre éditeur : Go exige un style unique imposé par `gofmt`, c'est une convention non négociable de la communauté.",
+        "Les variables d'environnement `GOPATH` et `GOMODCACHE` contrôlent où sont stockés modules et binaires ; laissez les valeurs par défaut sauf besoin spécifique."
+      ],
+      "editors": [
+        "VS Code + l'extension `\"Go\"` (publiée par golang) : complétion, navigation, debug Delve, formatage à l'enregistrement — la configuration la plus répandue.",
+        "`GoLand` (JetBrains) : IDE payant très complet, excellent refactoring et intégration des tests ; vérifiez la version d'évaluation gratuite sur le site de JetBrains."
+      ],
+      "install": [
+        "Téléchargez l'installeur officiel pour votre OS depuis go.dev/dl, puis vérifiez avec `go version` : le terminal doit afficher la version installée (ex. `go1.24.x`).",
+        "Initialisez un module avec `go mod init exemple.com/monapp` dans un dossier vide : cela crée un fichier `go.mod` qui déclare le nom du module et la version de Go ; vérifiez qu'il existe avec `ls go.mod` (ou `dir`).",
+        "Ajoutez une dépendance via `go get <module>` : le fichier `go.mod` se met à jour et `go.sum` fige les versions ; lancez ensuite `go mod tidy` pour nettoyer les dépendances inutilisées."
+      ],
+      "workflow": [
+        "Développement itératif : `go run .` compile et exécute le paquet courant en une seule commande — idéal pour tester un changement sans produire de binaire.",
+        "Production : `go build -o monapp .` produit un binaire natif autonome ; exécutez `./monapp` pour vérifier qu'il démarre sans erreur.",
+        "Tests : `go test ./...` exécute tous les tests du projet et de ses sous-paquets ; un résultat `ok` par paquet confirme que tout passe.",
+        "Qualité systématique : `go fmt ./...` reformate tout le code et `go vet ./...` détecte les constructions suspectes (erreurs d'arguments, `printf` mal formés). Lancez les deux avant chaque commit."
+      ]
+    },
+    "whyLearn": "Go offre un rapport productivité-performance rare : syntaxe réduite à l'essentiel, démarrage quasi instantané, et un modèle de concurrence (goroutines, channels) bien plus accessible que les threads classiques. C'est le langage des infrastructures modernes — conteneurs, proxies, API haute charge — et un excellent second langage après Python ou JavaScript."
+  }
+,
+  // ------------------------------------------------------------------ aspnet
+  aspnet: {
+    learning: LEARNING_ASPNET,
+    "conceptDetails": [
+      {
+        "definition": "Chaîne de composants qui traitent chaque requête dans l'ordre (authentification, logs, erreurs) : on l'assemble dans `Program.cs` avec `app.Use...`, et chacun peut court-circuiter le pipeline.",
+        "name": "Middleware"
+      },
+      {
+        "definition": "Depuis .NET 6, on déclare des endpoints en quelques lignes (`app.MapGet(...)`) sans contrôleur : idéal pour les microservices et les prototypes, sans sacrifier la puissance.",
+        "name": "Minimal APIs"
+      },
+      {
+        "definition": "Le conteneur intégré fournit les dépendances (services, `DbContext`) aux constructeurs : durées de vie `Transient`, `Scoped`, `Singleton` à choisir selon l'usage.",
+        "name": "Dependency Injection"
+      },
+      {
+        "definition": "ORM officiel : on décrit les entités en C#, EF Core génère le SQL. Les migrations versionnent le schéma de base et se pilotent avec `dotnet ef`.",
+        "name": "Entity Framework Core"
+      },
+      {
+        "definition": "Support natif des JWT, cookies et fournisseurs externes (OAuth/OIDC) via des schémas configurables : `AddAuthentication().AddJwtBearer(...)` reste le point d'entrée standard des API.",
+        "name": "Authentification"
+      },
+      {
+        "definition": "Système hiérarchique : `appsettings.json`, variables d'environnement, secrets utilisateur. On y accède via `IConfiguration` ou le pattern Options typé.",
+        "name": "Configuration"
+      }
+    ],
+    "definition": "ASP.NET Core est le framework web de la plateforme .NET : il permet de construire des API REST, des applications web et des microservices en C#, avec un pipeline de middleware modulaire et des performances parmi les meilleures du marché.",
+    "environment": [
+      "SDK .NET installé, `dotnet --version` répond dans le terminal",
+      "Projet créé via `dotnet new webapi -n MonApi`",
+      "Outil EF Core installé (`dotnet ef --version` répond)",
+      "Visual Studio, VS Code + `\"C# Dev Kit\"`, ou JetBrains Rider"
+    ],
+    "example": {
+      "steps": [
+        "Créer le projet avec `dotnet new webapi -n MonApi` et le lancer avec `dotnet run`",
+        "Ajouter un contrôleur `TodosController` exposant `GET /todos` et `POST /todos`",
+        "Définir l'entité `Todo`, générer la migration avec `dotnet ef migrations add Initiale` puis `dotnet ef database update`",
+        "Tester les endpoints avec `dotnet watch run` actif et des requêtes HTTP (Swagger intégré en développement)",
+        "Protéger `POST /todos` avec l'authentification JWT"
+      ],
+      "title": "Une API de tâches (todo)"
+    },
+    "howItWorks": [
+      "REQUÊTE",
+      "MIDDLEWARE",
+      "ROUTAGE",
+      "CONTRÔLEUR",
+      "EF CORE",
+      "RÉPONSE"
+    ],
+    "howItWorksTitle": "Le voyage d'une requête",
+    "prerequisiteNotes": {
+      "csharp": "ASP.NET Core se programme en C# : classes, async/await et LINQ sont le quotidien."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "`dotnet new webapi` → Contrôleur → Réponses JSON → Tests manuels → Documentation Swagger",
+        "title": "API CRUD simple"
+      },
+      {
+        "flow": "Entity Framework Core → Migrations → JWT → Validation des entrées → Gestion d'erreurs centralisée (middleware)",
+        "title": "API avec base de données et auth"
+      },
+      {
+        "flow": "Minimal APIs → Redis (cache) → `IHostedService` pour tâches de fond → Logs structurés → Déploiement en conteneur",
+        "title": "Microservice avec cache et background jobs"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Le fichier `appsettings.json` centralise la configuration (chaînes de connexion, clés API) : utilisez `appsettings.Development.json` pour les valeurs locales et ne versionnez jamais les secrets.",
+        "Enregistrez vos services dans `Program.cs` via le conteneur d'injection de dépendances (`builder.Services.Add...`) : c'est le point d'entrée unique de la configuration de l'application.",
+        "Créez une migration initiale avec `dotnet ef migrations add Initiale` : un dossier `Migrations` apparaît ; appliquez-la avec `dotnet ef database update` et vérifiez que la base contient les tables."
+      ],
+      "editors": [
+        "`Visual Studio` (Windows/Mac) : l'IDE historique de l'écosystème .NET, templates et debug intégrés — vérifiez l'édition Community gratuite sur le site Microsoft.",
+        "VS Code + extension `\"C# Dev Kit\"` (Microsoft) : léger et multiplateforme, avec IntelliSense et debug C# complets.",
+        "`JetBrains Rider` : alternative payante très appréciée pour sa vitesse et son analyse de code poussée."
+      ],
+      "install": [
+        "Installez le SDK .NET (version LTS recommandée) depuis le site officiel Microsoft, puis vérifiez avec `dotnet --version` : le terminal doit afficher le numéro de version du SDK.",
+        "Créez une API avec `dotnet new webapi -n MonApi` : cela génère un projet minimal fonctionnel ; entrez dans le dossier avec `cd MonApi` et listez les fichiers pour vérifier la structure.",
+        "Pour Entity Framework Core, installez l'outil CLI avec `dotnet tool install --global dotnet-ef`, puis vérifiez avec `dotnet ef --version`."
+      ],
+      "workflow": [
+        "Développement quotidien : `dotnet watch run` relance automatiquement l'application à chaque modification de fichier (rechargement à chaud) — vérifiez dans la console que le rebuild se déclenche après une sauvegarde.",
+        "Compilation et exécution simple : `dotnet run` compile puis démarre l'application ; l'URL d'écoute s'affiche dans la console.",
+        "Évolutions de schéma : modifiez vos entités, puis `dotnet ef migrations add <Nom>` suivi de `dotnet ef database update` pour synchroniser la base de données."
+      ]
+    },
+    "whyLearn": "ASP.NET Core domine le développement d'entreprise et excelle dans les API performantes : typage fort de C#, outillage de premier ordre, et Entity Framework Core qui rend l'accès aux données productif sans sacrifier le contrôle. C'est aussi la porte d'entrée vers l'écosystème .NET complet (desktop, mobile, cloud Azure)."
+  }
+,
+  // ------------------------------------------------------------------ django
+  django: {
+    learning: LEARNING_DJANGO,
+    "conceptDetails": [
+      {
+        "definition": "Les modèles sont des classes Python qui décrivent les tables : l'ORM traduit `Article.objects.filter(...)` en SQL. On manipule la base sans écrire une ligne de SQL.",
+        "name": "Modèles & ORM"
+      },
+      {
+        "definition": "Les vues (fonctions ou classes) reçoivent la requête et retournent la réponse ; `urls.py` associe chaque chemin d'URL à une vue. Le routage est explicite et lisible.",
+        "name": "Vues & URLs"
+      },
+      {
+        "definition": "Le moteur de templates génère le HTML avec héritage (`{% extends %}`), boucles et filtres : la présentation reste séparée de la logique, avec échappement anti-XSS par défaut.",
+        "name": "Templates"
+      },
+      {
+        "definition": "Interface d'administration générée automatiquement à partir des modèles : CRUD complet, filtres et permissions, sans écrire de code. Un atout majeur pour les back-offices.",
+        "name": "Admin Django"
+      },
+      {
+        "definition": "Chaque changement de modèle génère un fichier de migration versionné (`makemigrations`), appliqué avec `migrate` : le schéma de base évolue de façon traçable et réversible.",
+        "name": "Migrations"
+      },
+      {
+        "definition": "Système d'utilisateurs, groupes et permissions intégré : inscription, connexion, sessions et décorateurs `@login_required` fonctionnent dès l'installation.",
+        "name": "Auth"
+      }
+    ],
+    "definition": "Django est le framework web « batteries included » de Python : ORM, admin auto-générée, authentification, migrations et système de templates sont intégrés d'origine. Sa devise, « le framework web pour perfectionnistes sous pression », résume sa philosophie : productivité sans magie obscure.",
+    "environment": [
+      "Python 3 installé, environnement virtuel `.venv` créé et activé",
+      "Django installé (`python -m django --version` répond)",
+      "Projet créé (`django-admin startproject`), base initialisée (`migrate`)",
+      "VS Code + extension `\"Python\"` (Microsoft) ou PyCharm"
+    ],
+    "example": {
+      "steps": [
+        "Créer le projet avec `django-admin startproject monsite`, puis une app avec `python manage.py startapp blog`",
+        "Définir le modèle `Article` (titre, contenu, date), générer et appliquer les migrations (`makemigrations` puis `migrate`)",
+        "Créer un superutilisateur avec `python manage.py createsuperuser` et publier des articles via l'admin sur `/admin`",
+        "Écrire une vue qui liste les articles et un template qui les affiche, câblés dans `urls.py`",
+        "Lancer avec `python manage.py runserver` et vérifier le rendu sur http://127.0.0.1:8000"
+      ],
+      "title": "Un mini-blog"
+    },
+    "howItWorks": [
+      "URL",
+      "VUE",
+      "MODÈLE",
+      "ORM",
+      "TEMPLATE",
+      "RÉPONSE"
+    ],
+    "howItWorksTitle": "Le cycle requête-réponse",
+    "prerequisiteNotes": {
+      "python": "Django est un framework Python : modules, classes et environnements virtuels sont requis."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "Modèles → Migrations → Admin configurée → Vues + templates → Publication d'articles",
+        "title": "Blog avec admin"
+      },
+      {
+        "flow": "Auth intégrée → Inscription/connexion → Profils → Permissions par objet → Formulaires Django",
+        "title": "Application avec comptes utilisateurs"
+      },
+      {
+        "flow": "Django REST Framework → Sérialiseurs → Endpoints → Auth par token → Consommation depuis un client JS",
+        "title": "API REST + frontend"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Le fichier `settings.py` centralise la configuration : `INSTALLED_APPS` liste les applications actives, `DATABASES` la connexion, `TEMPLATES` le moteur de rendu. Adaptez `ALLOWED_HOSTS` et `DEBUG` selon l'environnement.",
+        "Créez un compte administrateur avec `python manage.py createsuperuser` : répondez aux invites (nom, email, mot de passe) puis connectez-vous sur `/admin` pour vérifier.",
+        "Les fichiers statiques et médias se configurent via `STATIC_URL` / `MEDIA_URL` : en développement Django les sert automatiquement, en production ils sont collectés avec `collectstatic`."
+      ],
+      "editors": [
+        "VS Code + l'extension `\"Python\"` (Microsoft) : IntelliSense, debug, détection automatique du venv — la combinaison la plus courante pour Django.",
+        "`PyCharm` (JetBrains) : support Django natif (templates, ORM, run configurations) ; l'édition Community est gratuite, la Professional ajoute le support web complet."
+      ],
+      "install": [
+        "Créez un environnement virtuel isolé avec `python -m venv .venv` : un dossier `.venv` apparaît à la racine ; c'est lui qui contiendra les paquets du projet, séparés du Python système.",
+        "Activez le venv (`source .venv/bin/activate` sur Linux/macOS, `.venv\\Scripts\\activate` sur Windows) : votre prompt affiche `(.venv)`, signe que l'environnement est actif — vérifiez avec `which python` (ou `where python`).",
+        "Installez Django dans le venv actif avec `pip install django`, puis vérifiez avec `python -m django --version` : le numéro de version doit s'afficher.",
+        "Créez le projet avec `django-admin startproject monsite` : un dossier `monsite` contenant `manage.py` et les réglages apparaît ; initialisez la base avec `python manage.py migrate`."
+      ],
+      "workflow": [
+        "Serveur de développement : `python manage.py runserver` démarre l'application avec rechargement automatique ; ouvrez http://127.0.0.1:8000 dans le navigateur pour vérifier qu'elle répond.",
+        "Évolution du schéma : modifiez vos modèles, générez la migration avec `python manage.py makemigrations`, inspectez-la, puis appliquez avec `python manage.py migrate`.",
+        "Console interactive : `python manage.py shell` ouvre un shell Python avec le projet chargé — idéal pour tester l'ORM (`MonModel.objects.all()`) avant d'écrire du code."
+      ]
+    },
+    "whyLearn": "Django permet de passer d'une idée à une application complète (base de données, back-office, authentification) en un temps record, avec des conventions solides qui structurent les projets. C'est le framework de référence pour les MVP, les CMS, les SaaS et les API adossées à l'écosystème Python (data, IA)."
+  }
+,
 };

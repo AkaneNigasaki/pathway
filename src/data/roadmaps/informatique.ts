@@ -582,6 +582,94 @@ const DEVELOPPEMENT: Skill[] = [
     [DOC("Documentation Electron", "OpenJS", "https://www.electronjs.org/docs/latest"), DOC("Tutoriel — Electron", "OpenJS", "https://www.electronjs.org/docs/latest/tutorial/tutorial-first-app")],
     "1 mois", ["nodejs"]
   ),
+  S(
+    "csharp",
+    "C#",
+    "Le langage de l'écosystème .NET",
+    "Le langage moderne de Microsoft : typé, élégant, multi-paradigme. Au cœur de .NET pour le web, le desktop, le mobile et le jeu vidéo.",
+    "intermediate", "developpement", "language", ["algorithms"],
+    ["Types & classes", "LINQ", "Async/await", "Nullable", "Records", "Pattern matching"],
+    ["API REST avec ASP.NET Core", "Application console de gestion", "Mini-jeu 2D avec Unity"],
+    [DOC("Documentation C#", "Microsoft", "https://learn.microsoft.com/fr-fr/dotnet/csharp/"), DOC("Télécharger .NET", "Microsoft", "https://dotnet.microsoft.com/download")],
+    "2 mois", ["aspnet", "java"]
+  ),
+  S(
+    "java",
+    "Java",
+    "Le pilier de l'entreprise",
+    "Le langage des systèmes critiques : banques, assurances, Android. Robuste, portable grâce à la JVM, avec un écosystème immense.",
+    "intermediate", "developpement", "language", ["algorithms"],
+    ["JVM & bytecode", "POO", "Collections", "Streams & lambdas", "Exceptions", "Maven/Gradle"],
+    ["API REST avec Spring Boot", "Application de gestion avec base SQL", "Outil CLI robuste"],
+    [DOC("Dev.java — apprendre Java", "Oracle", "https://dev.java/learn/"), DOC("Documentation Java SE", "Oracle", "https://docs.oracle.com/en/java/javase/")],
+    "2 mois", ["csharp"]
+  ),
+  S(
+    "rust",
+    "Rust",
+    "Performance sans compromis",
+    "Le langage système qui concilie vitesse du C et sécurité mémoire garantie à la compilation. Plébiscité pour l'infra, l'embarqué et le WebAssembly.",
+    "advanced", "developpement", "language", ["algorithms"],
+    ["Ownership", "Borrowing", "Lifetimes", "Traits", "Gestion d'erreurs", "Cargo"],
+    ["Outil CLI performant", "Serveur HTTP minimal", "Module WebAssembly"],
+    [DOC("The Rust Book", "rust-lang.org", "https://doc.rust-lang.org/book/"), DOC("Rust by Example", "rust-lang.org", "https://doc.rust-lang.org/rust-by-example/")],
+    "3 mois", ["cpp", "go"]
+  ),
+  S(
+    "go",
+    "Go",
+    "La simplicité qui scale",
+    "Le langage de Google pour le backend et l'infra : compilation éclair, concurrence native, déploiement en un binaire. Docker et Kubernetes sont écrits en Go.",
+    "intermediate", "developpement", "language", ["algorithms"],
+    ["Goroutines & channels", "Interfaces", "Modules Go", "Gestion d'erreurs", "Bibliothèque standard", "Tests"],
+    ["API REST avec la stdlib", "Worker concurrent", "Outil CLI distribuable"],
+    [DOC("Documentation Go", "go.dev", "https://go.dev/doc/"), DOC("A Tour of Go", "go.dev", "https://go.dev/tour/")],
+    "1 mois", ["rust", "docker"]
+  ),
+  S(
+    "vue",
+    "Vue",
+    "Le framework progressif",
+    "Le framework JavaScript progressif : adoptable par touches, réactivité fine, courbe d'apprentissage douce. Très présent en Europe et en Asie.",
+    "intermediate", "developpement", "framework", ["javascript"],
+    ["Réactivité", "Composants", "Directives", "Composition API", "Vue Router", "Pinia"],
+    ["SPA avec Vue Router", "Dashboard avec Pinia", "Site vitrine avec Nuxt"],
+    [DOC("Guide Vue", "vuejs.org", "https://vuejs.org/guide/introduction.html"), DOC("Pinia — store officiel", "pinia.vuejs.org", "https://pinia.vuejs.org/")],
+    "1 mois", ["react", "angular"]
+  ),
+  S(
+    "angular",
+    "Angular",
+    "Le framework entreprise",
+    "Le framework complet de Google : tout est inclus (routing, formulaires, HTTP, DI). Le choix historique des grandes organisations.",
+    "intermediate", "developpement", "framework", ["typescript"],
+    ["Composants", "Services & DI", "RxJS", "Formulaires", "Router", "Signals"],
+    ["Application CRUD complète", "Dashboard avec formulaires réactifs", "Bibliothèque de composants"],
+    [DOC("Documentation Angular", "angular.dev", "https://angular.dev/"), DOC("Tutoriel — Angular", "angular.dev", "https://angular.dev/tutorials/learn-angular")],
+    "2 mois", ["react", "vue"]
+  ),
+  S(
+    "aspnet",
+    "ASP.NET Core",
+    "Le web côté Microsoft",
+    "Le framework web de .NET : APIs haute performance, MVC, Blazor. Cross-platform depuis sa réécriture, très présent en entreprise.",
+    "intermediate", "developpement", "framework", ["csharp"],
+    ["Middleware", "Minimal APIs", "Dependency Injection", "Entity Framework Core", "Authentification", "Configuration"],
+    ["API REST avec EF Core", "Application MVC complète", "Backend avec authentification JWT"],
+    [DOC("Documentation ASP.NET Core", "Microsoft", "https://learn.microsoft.com/fr-fr/aspnet/core/"), DOC("Tutoriels .NET", "Microsoft", "https://dotnet.microsoft.com/learn")],
+    "2 mois", ["csharp", "nodejs"]
+  ),
+  S(
+    "django",
+    "Django",
+    "Le web Python batteries incluses",
+    "Le framework Python historique : ORM, admin auto-générée, auth intégrée. Le plus rapide pour passer d'une idée à une app complète.",
+    "intermediate", "developpement", "framework", ["python"],
+    ["Modèles & ORM", "Vues & URLs", "Templates", "Admin Django", "Migrations", "Auth"],
+    ["Blog avec interface d'admin", "Site e-commerce simplifié", "API avec Django REST Framework"],
+    [DOC("Documentation Django", "Django", "https://docs.djangoproject.com/fr/"), DOC("Tutoriel — Django", "Django", "https://docs.djangoproject.com/fr/intro/tutorial01/")],
+    "1 mois", ["python", "nodejs"]
+  ),
 ];
 
 const IA: Skill[] = [
@@ -950,6 +1038,17 @@ const INFRASTRUCTURE: Skill[] = [
     ["Portail développeur minimal", "Pipeline GitOps complète"],
     [DOC("Platform Engineering — CNCF", "CNCF", "https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/"), DOC("ArgoCD — GitOps", "CNCF", "https://argo-cd.readthedocs.io/")],
     "3 mois", ["kubernetes"]
+  ),
+  S(
+    "devops",
+    "DevOps",
+    "Culture, pipelines et fiabilité",
+    "La discipline qui rapproche dev et ops : automatisation, CI/CD, infrastructure as code, observabilité. Livrer vite, livrer sûr.",
+    "intermediate", "infrastructure", "concept", ["git", "linux"],
+    ["CI/CD", "Infrastructure as code", "Conteneurs", "Monitoring", "GitOps", "Culture DevOps"],
+    ["Pipeline CI/CD complet d'un projet", "Infrastructure as code d'une app", "Monitoring avec alertes"],
+    [DOC("DevOps — Microsoft Learn", "Microsoft", "https://learn.microsoft.com/fr-fr/devops/"), DOC("CI/CD — Atlassian", "Atlassian", "https://www.atlassian.com/fr/continuous-delivery")],
+    "2 mois", ["cicd", "docker", "kubernetes"]
   ),
 ];
 

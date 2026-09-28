@@ -1,5 +1,8 @@
 import type { SkillGuide } from "../skill-guides";
 
+import { LEARNING_STATISTICS } from "./learning-statistics";
+import { LEARNING_SQL } from "./learning-sql";
+import { LEARNING_ML } from "./learning-ml";
 /**
  * Guides pédagogiques — Data : roadmap Data Scientist.
  *
@@ -73,6 +76,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ sql
   sql: {
+    learning: LEARNING_SQL,
     definition:
       "SQL (Structured Query Language) est le langage pour interroger les bases de données relationnelles : sélectionner, filtrer, joindre et agréger des données avec une syntaxe déclarative — on décrit le résultat voulu, pas comment l'obtenir.",
     whyLearn:
@@ -130,6 +134,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ statistics
   statistics: {
+    learning: LEARNING_STATISTICS,
     definition:
       "Les statistiques fournissent les outils pour décrire des données, quantifier l'incertitude et tester des hypothèses : moyennes, distributions, tests, régressions. Sans elles, une analyse n'est qu'une opinion avec des graphiques.",
     whyLearn:
@@ -313,6 +318,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ machine-learning
   "machine-learning": {
+    learning: LEARNING_ML,
     definition:
       "Le machine learning apprend des motifs à partir de données pour prédire : qui va résilier, quel prix pratiquer, quelle transaction est frauduleuse. En data science, il prolonge l'analyse quand les règles manuelles ne suffisent plus.",
     whyLearn:

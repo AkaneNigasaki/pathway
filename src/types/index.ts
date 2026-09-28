@@ -147,7 +147,7 @@ export interface Career {
   salaryRange: string;
 }
 
-export type SearchItemType = "roadmap" | "field" | "career" | "skill";
+export type SearchItemType = "roadmap" | "field" | "career" | "skill" | "learning";
 
 export interface SearchItem {
   type: SearchItemType;

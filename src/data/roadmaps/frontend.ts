@@ -238,5 +238,39 @@ export const frontendRoadmap: Roadmap = {
       ],
       duration: "4–6 semaines",
     },
+    {
+      id: "vue",
+      name: "Vue",
+      tagline: "Le framework progressif.",
+      description:
+        "Vue est le framework JavaScript progressif : adoptable par touches, réactivité fine, courbe d'apprentissage douce. Une excellente alternative à React, très présente en Europe et en Asie.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["javascript"],
+      concepts: ["Réactivité", "Composants & props", "Composition API", "Vue Router", "Pinia", "Single-File Components"],
+      projects: ["SPA avec routing et store", "Dashboard avec Pinia"],
+      resources: [
+        { title: "Guide Vue", provider: "vuejs.org", url: "https://vuejs.org/guide/introduction.html" },
+        { title: "Pinia Docs", provider: "pinia.vuejs.org", url: "https://pinia.vuejs.org/" },
+      ],
+      duration: "4–6 semaines",
+    },
+    {
+      id: "angular",
+      name: "Angular",
+      tagline: "Le framework complet de Google.",
+      description:
+        "Angular est le framework tout-inclus de Google : routing, formulaires, HTTP et injection de dépendances fournis d'office. Le choix historique des grandes organisations et des applications critiques.",
+      level: "intermediate",
+      stage: "core",
+      prerequisites: ["typescript"],
+      concepts: ["Composants", "Services & injection de dépendances", "RxJS de base", "Router", "Formulaires réactifs", "Signals"],
+      projects: ["Application CRUD avec services", "Formulaires réactifs validés"],
+      resources: [
+        { title: "Angular Docs", provider: "angular.dev", url: "https://angular.dev/" },
+        { title: "Tutoriel Angular", provider: "angular.dev", url: "https://angular.dev/tutorials/learn-angular" },
+      ],
+      duration: "6–8 semaines",
+    },
   ],
 };

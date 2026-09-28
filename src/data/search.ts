@@ -2,8 +2,32 @@ import type { SearchItem } from "../types";
 import { FIELDS } from "./fields";
 import { ROADMAPS } from "./roadmaps";
 import { CAREERS } from "./careers";
+import { getSkillGuide } from "./skill-guides";
+import type { LearningBlock } from "./skill-guides";
 
-/** Index de recherche global : roadmaps, filières, métiers, compétences. */
+/** Texte indexable d'un bloc de Learning Page (concepts, commandes, erreurs, projets…). */
+function blockKeywords(b: LearningBlock): string {
+  switch (b.kind) {
+    case "text":
+      return b.text;
+    case "command":
+      return `${b.label} ${b.command} ${b.why} ${b.verify ?? ""}`;
+    case "code":
+      return `${b.title ?? ""} ${b.code}`.slice(0, 500);
+    case "list":
+      return b.items.join(" ");
+    case "fields":
+      return `${b.title ?? ""} ${b.fields.map((f) => `${f.label} ${f.value}`).join(" ")}`;
+    case "table":
+      return `${b.headers.join(" ")} ${b.rows.map((r) => r.join(" ")).join(" ")}`;
+    case "diagram":
+      return `${b.title ?? ""} ${b.lines.join(" ")}`;
+    case "steps":
+      return b.steps.map((s) => `${s.title} ${s.detail}`).join(" ");
+  }
+}
+
+/** Index de recherche global : roadmaps, filières, métiers, compétences, sections de guides. */
 export function buildSearchIndex(): SearchItem[] {
   const items: SearchItem[] = [];
   const fieldName = (id: string) => FIELDS.find((f) => f.id === id)?.name ?? id;
@@ -47,6 +71,30 @@ export function buildSearchIndex(): SearchItem[] {
         fieldId: r.fieldId,
         roadmapSlug: r.slug,
       });
+    }
+    // Sections des Learning Pages : concepts, commandes, erreurs, projets, outils.
+    for (const s of r.skills) {
+      const guide = getSkillGuide(r.slug, s.id);
+      const learning = guide?.learning;
+      if (!learning?.length) continue;
+      for (const section of learning) {
+        const keywords = [section.title, section.intro ?? "", ...section.blocks.map(blockKeywords)]
+          .join(" ")
+          .toLowerCase()
+          .slice(0, 2500);
+        items.push({
+          type: "learning",
+          id: `learning:${r.slug}:${s.id}:${section.id}`,
+          title: section.title,
+          subtitle: s.name,
+          breadcrumb: `${r.title} → ${s.name}`,
+          keywords,
+          url: `/docs/${r.slug}/${s.id}#learn-${section.id}`,
+          level: s.level,
+          fieldId: r.fieldId,
+          roadmapSlug: r.slug,
+        });
+      }
     }
   }
 

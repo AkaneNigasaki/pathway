@@ -1,4 +1,10 @@
 import type { SkillGuide } from "../skill-guides";
+import { LEARNING_HTML } from "./learning-html";
+import { LEARNING_CSS } from "./learning-css";
+import { LEARNING_JAVASCRIPT } from "./learning-javascript";
+import { LEARNING_REACT } from "./learning-react";
+import { LEARNING_ANGULAR } from "./learning-angular";
+import { LEARNING_VUE } from "./learning-vue";
 
 /**
  * Guides pédagogiques — frontend : parcours Frontend Developer.
@@ -16,6 +22,7 @@ import type { SkillGuide } from "../skill-guides";
 export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ html
   html: {
+    learning: LEARNING_HTML,
     definition:
       "HTML (HyperText Markup Language) est le langage de balisage qui structure le contenu des pages web : titres, paragraphes, liens, images, formulaires. Chaque élément décrit le sens du contenu, pas son apparence.",
     whyLearn:
@@ -73,6 +80,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ css
   css: {
+    learning: LEARNING_CSS,
     definition:
       "CSS (Cascading Style Sheets) est le langage qui décrit la présentation des pages web : mise en page, couleurs, typographie, espacements et animations. Il sépare le fond (HTML) de la forme.",
     whyLearn:
@@ -130,6 +138,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ javascript
   javascript: {
+    learning: LEARNING_JAVASCRIPT,
     definition:
       "JavaScript est le langage de programmation du web : il rend les pages interactives en manipulant le DOM, en réagissant aux événements et en dialoguant avec des serveurs via des APIs.",
     whyLearn:
@@ -252,6 +261,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ react
   react: {
+    learning: LEARNING_REACT,
     definition:
       "React est une bibliothèque JavaScript pour construire des interfaces à partir de composants : des fonctions qui décrivent l'UI en fonction de l'état, et que React met à jour efficacement quand l'état change.",
     whyLearn:
@@ -750,4 +760,202 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
       },
     ],
   },
+
+  // ------------------------------------------------------------------ vue
+  vue: {
+    learning: LEARNING_VUE,
+    "conceptDetails": [
+      {
+        "definition": "Le cœur de Vue : `ref()` et `reactive()` encapsulent des valeurs dans des proxies JavaScript qui notifient le framework à chaque modification, déclenchant un re-rendu ciblé sans manipulation manuelle du DOM.",
+        "name": "Réactivité"
+      },
+      {
+        "definition": "Unités d'interface autonomes (fichiers `.vue`) qui reçoivent des données via les props et signalent les événements vers le parent via `emit`. Ils se composent comme des briques pour former des pages entières.",
+        "name": "Composants"
+      },
+      {
+        "definition": "Attributs spéciaux du template qui ajoutent du comportement au DOM : `v-if` pour le rendu conditionnel, `v-for` pour les listes, `v-model` pour la liaison bidirectionnelle des formulaires, `v-bind` et `v-on` pour les attributs et événements.",
+        "name": "Directives"
+      },
+      {
+        "definition": "Le style moderne d'écriture des composants avec `<script setup>` : `ref`, `computed` et `watch` organisent la logique par fonctionnalité plutôt que par option, et facilitent sa réutilisation via les composables.",
+        "name": "Composition API"
+      },
+      {
+        "definition": "Le routeur officiel : il associe des URL à des composants, gère les paramètres et les routes imbriquées, et protège les pages via des gardes de navigation. Le chargement différé des routes garde le bundle initial léger.",
+        "name": "Vue Router"
+      },
+      {
+        "definition": "Le store officiel de Vue : il centralise l'état partagé (utilisateur connecté, panier, préférences) avec des `stores` composés d'état, de getters calculés et d'actions. Remplace les props qui descendraient sur dix niveaux.",
+        "name": "Pinia"
+      }
+    ],
+    "definition": "Vue.js est un framework JavaScript progressif pour construire des interfaces utilisateur à partir de composants : un template déclaratif se lie à un état réactif, et Vue synchronise le DOM automatiquement quand l'état change. Il s'adopte par incréments, d'une simple portion de page à une application complète avec routage et store.",
+    "environment": [
+      "Node.js LTS installé et vérifié via `node --version`",
+      "npm fonctionnel, vérifié via `npm --version`",
+      "Git disponible pour versionner le projet (`git --version`)",
+      "Un navigateur récent (Chrome ou Firefox) pour tester le rendu",
+      "VS Code avec l'extension « Vue (Official) », ou WebStorm"
+    ],
+    "example": {
+      "steps": [
+        "Générez le projet avec `npm create vue@latest` puis démarrez-le avec `npm run dev`",
+        "Créez un composant `TodoList.vue` : un `ref([])` stocke les tâches, un `ref('')` la recherche",
+        "Liez un champ de recherche avec `v-model` et filtrez la liste via un `computed`",
+        "Affichez les tâches avec `v-for` et un bouton qui bascule leur état via un gestionnaire d'événement `@click`",
+        "Vérifiez dans le navigateur : chaque frappe filtre instantanément la liste, sans rechargement"
+      ],
+      "title": "Une liste de tâches filtrable"
+    },
+    "howItWorks": [
+      "ÉTAT RÉACTIF",
+      "PROXY",
+      "TEMPLATE",
+      "VIRTUAL DOM",
+      "DIFF",
+      "PATCH"
+    ],
+    "howItWorksTitle": "De l'état au DOM",
+    "prerequisiteNotes": {
+      "javascript": "Maîtriser le DOM, les événements et les modules ES : Vue s'appuie directement dessus."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "Scaffolding create-vue → Composant de recherche (v-model) → Appel API météo → Affichage conditionnel (v-if) → Build de production",
+        "title": "Application météo avec recherche de ville"
+      },
+      {
+        "flow": "Vue Router (routes articles/auteurs) → Pinia (articles, favoris) → Composables (fetch réutilisable) → Formulaires commentés (v-model) → Déploiement statique",
+        "title": "Blog avec routage et état global"
+      },
+      {
+        "flow": "WebSocket dans un composable → Store Pinia synchronisé → Graphiques mis à jour par la réactivité → Routes protégées par gardes → Tests et build optimisé",
+        "title": "Tableau de bord temps réel"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Chaque composant est un fichier `.vue` en trois blocs : `<template>` pour le markup, `<script setup>` pour la logique, `<style scoped>` pour le CSS isolé au composant. C'est la convention Single-File Component à respecter dès le départ.",
+        "Le fichier `vite.config.ts` centralise la configuration du build : plugins Vue, alias de chemins (ex. `@` vers `src/`). Ajoutez-y l'alias `@` pour éviter les chemins relatifs profonds dès les premiers imports.",
+        "Si vous avez activé TypeScript lors du scaffolding, `tsconfig.json` règle le typage des templates et des props : laissez la configuration générée en place tant que vous ne savez pas exactement ce que vous changez."
+      ],
+      "editors": [
+        "VS Code avec l'extension « Vue (Official) » : coloration, autocomplétion et vérification de types dans les blocs `<template>`, `<script>` et `<style>` des fichiers `.vue`.",
+        "WebStorm : support intégré de Vue (completion des templates, navigation entre blocs, inspection des props) sans extension supplémentaire."
+      ],
+      "install": [
+        "Exécutez `npm create vue@latest` : l'assistant officiel `create-vue` génère le squelette du projet. Répondez à ses questions (TypeScript, Vue Router, Pinia...) ; vérifiez que le dossier du projet est créé avec `package.json` à sa racine.",
+        "Exécutez `npm install` dans le dossier du projet : installe les dépendances déclarées dans `package.json`. Vérifiez la fin du journal d'installation (aucune erreur) et la présence du dossier `node_modules/`.",
+        "Exécutez `npm run dev` : démarre le serveur de développement Vite avec rechargement à chaud. Vérifiez que le terminal affiche une URL locale et que l'application s'affiche en l'ouvrant dans le navigateur.",
+        "Exécutez `npm run build` : compile et optimise le projet pour la production. Vérifiez la création du dossier `dist/` contenant les fichiers statiques prêts à être déployés."
+      ],
+      "workflow": [
+        "Travaillez avec `npm run dev` en permanence : le rechargement à chaud reflète chaque modification du template ou du script quasi instantanément. Un changement d'état visible à l'écran sans rechargement confirme que la réactivité fonctionne.",
+        "Débuggez avec l'extension navigateur officielle Vue DevTools : elle inspecte l'arbre des composants, leurs props et leur état réactif en direct. Si l'extension ne détecte pas l'application, vérifiez que vous êtes bien en mode développement.",
+        "Avant chaque déploiement, exécutez `npm run build` et corrigez les avertissements affichés : un build propre sans erreurs est la condition d'une mise en production sereine."
+      ]
+    },
+    "whyLearn": "Vue combine la courbe d'apprentissage la plus douce des grands frameworks avec un modèle de production complet : réactivité intuitive, Single-File Components lisibles, écosystème officiel cohérent (Router, Pinia). C'est le choix pragmatique pour des équipes qui veulent livrer vite sans sacrifier la structure."
+  }
+,
+  // ------------------------------------------------------------------ angular
+  angular: {
+    learning: LEARNING_ANGULAR,
+    "conceptDetails": [
+      {
+        "definition": "Classes TypeScript décorées avec `@Component` qui associent un template HTML, des styles et de la logique. Chaque composant contrôle une portion de l'écran ; l'application entière est un arbre de composants.",
+        "name": "Composants"
+      },
+      {
+        "definition": "L'injection de dépendances fournit les services (classes `@Injectable` : appels HTTP, logique métier) aux composants qui les demandent dans leur constructeur. Un même service partagé reste une instance unique : l'état est cohérent partout.",
+        "name": "Services & DI"
+      },
+      {
+        "definition": "La bibliothèque de programmation réactive d'Angular : les `Observable` modélisent les flux asynchrones (requêtes HTTP, événements, formulaires). Les opérateurs (`map`, `filter`, `switchMap`) transforment ces flux, et le pipe `async` du template gère l'abonnement automatiquement.",
+        "name": "RxJS"
+      },
+      {
+        "definition": "Deux approches : les formulaires pilotés par template (simples, déclaratifs) et les formulaires réactifs (`FormControl`, `FormGroup`, `Validators`) qui décrivent le formulaire en TypeScript. Les réactifs dominent dès que la validation devient sérieuse.",
+        "name": "Formulaires"
+      },
+      {
+        "definition": "Le routeur associe des chemins d'URL aux composants, avec paramètres, routes enfants et chargement différé des modules. Les gardes (`CanActivate`) protègent les routes selon l'authentification ou les rôles.",
+        "name": "Router"
+      },
+      {
+        "definition": "Le système de réactivité moderne d'Angular (depuis v16) : `signal()` crée une valeur réactive, `computed()` en dérive une valeur, `effect()` réagit aux changements. Plus simple et plus performant que la détection de changements par défaut pour l'état local.",
+        "name": "Signals"
+      }
+    ],
+    "definition": "Angular est un framework TypeScript complet, maintenu par Google, pour construire des applications web d'entreprise : composants, injection de dépendances, routage et formulaires sont intégrés dans une architecture opinionée. Tout passe par son CLI, qui génère, sert, teste et compile les projets.",
+    "environment": [
+      "Node.js LTS installé et vérifié via `node --version`",
+      "npm fonctionnel, vérifié via `npm --version`",
+      "Angular CLI installé en global et vérifié via `ng version`",
+      "Un navigateur récent (Chrome recommandé pour `ng test` et le debug)",
+      "VS Code avec l'extension « Angular Language Service », ou WebStorm"
+    ],
+    "example": {
+      "steps": [
+        "Générez le projet avec `ng new mon-app` (avec routage) et démarrez-le avec `ng serve`",
+        "Créez un composant avec `ng generate component inscription`",
+        "Décrivez le formulaire en réactif : `FormGroup` avec `FormControl` pour chaque champ et `Validators.required`, `Validators.email`",
+        "Affichez les erreurs dans le template quand un champ est touché et invalide, et désactivez le bouton tant que le formulaire est invalide",
+        "Soumettez vers un service qui envoie les données en HTTP ; vérifiez la requête dans l'onglet réseau du navigateur"
+      ],
+      "title": "Un formulaire d'inscription avec validation"
+    },
+    "howItWorks": [
+      "MODULE",
+      "COMPONENT",
+      "TEMPLATE",
+      "DATA BINDING",
+      "CHANGE DETECTION",
+      "RENDU"
+    ],
+    "howItWorksTitle": "Le cycle d'une application",
+    "prerequisiteNotes": {
+      "typescript": "Angular est écrit en TypeScript : types, classes et décorateurs sont indispensables."
+    },
+    "projectsDetailed": [
+      {
+        "flow": "ng new → Composants liste/détail → Service en mémoire (DI) → Router (routes paramétrées) → Build",
+        "title": "Carnet d'adresses"
+      },
+      {
+        "flow": "Formulaires réactifs (login) → Guard CanActivate → Service HTTP + intercepteur JWT → RxJS (switchMap, catchError) → Tests ng test → Build production",
+        "title": "Back-office avec authentification"
+      },
+      {
+        "flow": "Modules lazy-loaded → Signals pour l'état local → Store/state partagé via services → Tests unitaires + e2e → Budgets de bundle et optimisation du build",
+        "title": "Plateforme e-learning modulaire"
+      }
+    ],
+    "setup": {
+      "configure": [
+        "Le fichier `angular.json` centralise la configuration du workspace : projets, builds, assets, budgets de taille des bundles. Laissez les valeurs générées par défaut jusqu'à en comprendre chaque section.",
+        "Les fichiers `src/environments/` séparent les variables par environnement (URL d'API de dev vs de prod). Le build de production substitue automatiquement le bon fichier : ne codez jamais une URL d'API en dur dans un service.",
+        "Pour le développement local contre une API, créez un fichier proxy (ex. `proxy.conf.json`) et servez avec l'option correspondante : les appels `/api` sont redirigés vers le backend sans problème CORS. Vérifiez dans l'onglet réseau du navigateur que les requêtes atteignent bien le backend."
+      ],
+      "editors": [
+        "VS Code avec l'extension « Angular Language Service » : autocomplétion et vérification de types dans les templates HTML, navigation vers les définitions des composants.",
+        "WebStorm : support Angular intégré (templates, injection de dépendances, refactoring des composants) sans extension supplémentaire."
+      ],
+      "install": [
+        "Exécutez `npm install -g @angular/cli` : installe la CLI Angular en global sur votre machine. Vérifiez avec `ng version`, qui doit afficher les versions d'Angular, de Node.js et du gestionnaire de paquets.",
+        "Exécutez `ng version` seul à tout moment pour diagnostiquer l'environnement : il liste les versions installées du framework, du CLI et des dépendances. Des versions incohérentes ici expliquent la plupart des erreurs de build.",
+        "Exécutez `ng new mon-app` : génère l'arborescence complète du projet (configuration, dossier `src/`, tests). Répondez aux questions (routage, style) ; vérifiez que le dossier `mon-app/` est créé et contient `angular.json`.",
+        "Exécutez `ng generate component nom` dans le projet : crée les quatre fichiers d'un composant (TypeScript, template, styles, test). Vérifiez leur présence dans `src/app/nom/` et l'enregistrement automatique du composant."
+      ],
+      "workflow": [
+        "Développez avec `ng serve` : serveur local avec rechargement à chaud sur `http://localhost:4200`. Chaque sauvegarde recompile ; une erreur de compilation TypeScript s'affiche directement dans le terminal et le navigateur.",
+        "Générez tout avec la CLI (`ng generate service`, `ng generate guard`...) plutôt qu'en créant les fichiers à la main : les conventions de nommage et d'enregistrement sont respectées automatiquement.",
+        "Testez avec `ng test` : lance la suite Karma/Jasmine dans le navigateur. Des tests verts avant chaque commit garantissent que la refactorisation n'a rien cassé.",
+        "Livrez avec `ng build` : compile en mode production (optimisations, tree-shaking). Vérifiez le dossier `dist/` et les tailles de bundles affichées dans le rapport de build."
+      ]
+    },
+    "whyLearn": "Angular est le standard des grandes applications d'équipe : son architecture imposée (modules, services, typage strict) rend le code prévisible à grande échelle. Le maîtriser ouvre les postes entreprise et donne une culture solide de l'ingénierie frontend : DI, RxJS, tests."
+  }
+,
 };

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LuBriefcase as Briefcase, LuCornerDownLeft as CornerDownLeft, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuZap as Zap } from "react-icons/lu";
+import { LuBriefcase as Briefcase, LuCornerDownLeft as CornerDownLeft, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuZap as Zap, LuBookOpen as BookOpen } from "react-icons/lu";
 import type { SearchItem, SearchItemType } from "../../types";
 import { SEARCH_INDEX, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";
@@ -17,9 +17,10 @@ const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
   field: { label: "Filières", icon: LayoutGrid },
   career: { label: "Métiers", icon: Briefcase },
   skill: { label: "Compétences", icon: Zap },
+  learning: { label: "Guides", icon: BookOpen },
 };
 
-const TYPE_ORDER: SearchItemType[] = ["roadmap", "field", "career", "skill"];
+const TYPE_ORDER: SearchItemType[] = ["roadmap", "field", "career", "skill", "learning"];
 
 function suggestions(): SearchItem[] {
   // Quand la recherche est vide : un aperçu rapide par catégorie.

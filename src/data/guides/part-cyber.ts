@@ -1,5 +1,6 @@
 import type { SkillGuide } from "../skill-guides";
 
+import { LEARNING_LINUX } from "./learning-linux";
 /**
  * Guides pédagogiques — cybersécurité.
  *
@@ -78,6 +79,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------------- linux
   linux: {
+    learning: LEARNING_LINUX,
     definition:
       "Linux est le système d'exploitation dominant sur les serveurs, les équipements réseau et les machines des attaquants comme des défenseurs. Il expose un modèle clair : utilisateurs, permissions, processus et fichiers de logs.",
     whyLearn:

@@ -1,4 +1,13 @@
 import type { SkillGuide } from "../skill-guides";
+import { LEARNING_PYTHON } from "./learning-python";
+import { LEARNING_DOCKER } from "./learning-docker";
+import { LEARNING_CYBERSECURITY } from "./learning-cybersecurity";
+import { LEARNING_KUBERNETES } from "./learning-kubernetes";
+import { LEARNING_STATISTICS } from "./learning-statistics";
+import { LEARNING_CPP } from "./learning-cpp";
+import { LEARNING_ROBOTICS } from "./learning-robotics";
+import { LEARNING_DEEP_LEARNING } from "./learning-deep-learning";
+import { LEARNING_ML } from "./learning-ml";
 
 /**
  * Guides pédagogiques — partie B (IA, infrastructure, data, automation,
@@ -14,6 +23,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 1 ===
   // ---------------------------------------------------------------- python
   python: {
+    learning: LEARNING_PYTHON,
   setup: {
     install: [
       "Installer Python 3 depuis python.org, ou `brew install python3` / `winget install Python.Python.3`.",
@@ -104,6 +114,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------- machine-learning
   "machine-learning": {
+    learning: LEARNING_ML,
   setup: {
     install: [
       "Installer la stack scientifique : `pip install scikit-learn pandas numpy matplotlib jupyter`.",
@@ -204,6 +215,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- deep-learning
   "deep-learning": {
+    learning: LEARNING_DEEP_LEARNING,
   setup: {
     install: [
       "Choisir un framework : `pip install torch torchvision jupyter matplotlib` (PyTorch) ou `pip install tensorflow`.",
@@ -379,6 +391,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- docker
   docker: {
+    learning: LEARNING_DOCKER,
   setup: {
     install: [
       "Installer Docker Desktop depuis docker.com (Windows/macOS), ou le moteur sur Linux via la documentation officielle.",
@@ -540,6 +553,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ kubernetes
   kubernetes: {
+    learning: LEARNING_KUBERNETES,
   setup: {
     install: [
       "Installer `kubectl` : `brew install kubectl`.",
@@ -734,6 +748,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- cybersecurity
   cybersecurity: {
+    learning: LEARNING_CYBERSECURITY,
   setup: {
     install: [
       "VirtualBox ou VMware sur la machine hôte.",
@@ -1267,6 +1282,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- statistics
   statistics: {
+    learning: LEARNING_STATISTICS,
     definition:
       "Les statistiques sont l’ensemble des méthodes pour collecter, décrire et interpréter des données : distributions, probabilités, tests d’hypothèses. Elles permettent de distinguer un vrai signal du bruit.",
     whyLearn:
@@ -4757,6 +4773,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- cpp
   cpp: {
+    learning: LEARNING_CPP,
   setup: {
     install: [
       "Linux : `sudo apt install build-essential` (g++, gdb, make).",
@@ -5051,6 +5068,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- robotics
   robotics: {
+    learning: LEARNING_ROBOTICS,
   setup: {
     install: [
       "ROS 2 desktop : `sudo apt install ros-jazzy-desktop` (voir `ros`).",

@@ -9,6 +9,7 @@ import {
   skillMap,
 } from "../../data/roadmaps";
 import { SkillNode } from "../SkillNode/SkillNode";
+import { Minimap } from "./Minimap";
 import { layoutGraph, edgePath, NODE_W, NODE_H, PAD } from "./layout";
 import styles from "./RoadmapMap.module.css";
 
@@ -84,6 +85,14 @@ export function RoadmapMap({
   );
 
   const resetView = useCallback(() => setView({ x: PAD, y: 28, z: 1 }), []);
+
+  const centerOn = useCallback((wx: number, wy: number) => {
+    const el = viewportRef.current;
+    if (!el) return;
+    const cw = el.clientWidth;
+    const ch = el.clientHeight;
+    setView((v) => ({ ...v, x: cw / 2 - wx * v.z, y: ch / 2 - wy * v.z }));
+  }, []);
 
   const fitView = useCallback(() => {
     const el = viewportRef.current;
@@ -334,6 +343,15 @@ export function RoadmapMap({
         </span>
         <span className={styles.legendHint}>Glisser · Ctrl+molette</span>
       </div>
+
+      <Minimap
+        layout={layout}
+        view={view}
+        viewportRef={viewportRef}
+        status={status}
+        selectedId={selectedId}
+        onCenter={centerOn}
+      />
     </div>
   );
 }

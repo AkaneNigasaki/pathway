@@ -1,5 +1,6 @@
 import type { SkillGuide } from "../skill-guides";
 
+import { LEARNING_LINUX } from "./learning-linux";
 /**
  * Guides pédagogiques — robotique.
  *
@@ -169,6 +170,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------------- linux
   linux: {
+    learning: LEARNING_LINUX,
     definition:
       "Les robots tournent sous Linux : c'est le système qui héberge ROS, gère le réseau entre les composants et s'exécute sur des cartes embarquées comme Raspberry Pi ou Jetson.",
     whyLearn:

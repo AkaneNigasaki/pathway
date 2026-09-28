@@ -1,5 +1,10 @@
 import type { SkillGuide } from "../skill-guides";
 
+import { LEARNING_GIT } from "./learning-git";
+import { LEARNING_LINUX } from "./learning-linux";
+import { LEARNING_DOCKER } from "./learning-docker";
+import { LEARNING_KUBERNETES } from "./learning-kubernetes";
+import { LEARNING_CLOUD } from "./learning-cloud";
 /**
  * Guides pédagogiques — DevOps : roadmap DevOps Engineer.
  *
@@ -16,6 +21,7 @@ import type { SkillGuide } from "../skill-guides";
 export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ linux
   linux: {
+    learning: LEARNING_LINUX,
     definition:
       "Linux est le système d'exploitation de la quasi-totalité des serveurs de production : processus, fichiers, réseau, permissions. Le comprendre, c'est comprendre la machine sur laquelle tout tourne.",
     whyLearn:
@@ -73,6 +79,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ git
   git: {
+    learning: LEARNING_GIT,
     definition:
       "Git est un système de gestion de versions décentralisé : il enregistre l'historique des modifications, permet de travailler en branches parallèles et de fusionner proprement. En DevOps, c'est la colonne vertébrale du delivery.",
     whyLearn:
@@ -248,6 +255,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ docker
   docker: {
+    learning: LEARNING_DOCKER,
     definition:
       "Docker package une application et ses dépendances dans un conteneur : une image immuable et reproductible qui tourne partout pareil. Il a standardisé l'unité de déploiement moderne.",
     whyLearn:
@@ -371,6 +379,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ cloud
   cloud: {
+    learning: LEARNING_CLOUD,
     definition:
       "Le cloud fournit l'infrastructure à la demande via API : machines virtuelles, stockage, réseau managé, bases de données. On ne gère plus du matériel, on consomme des services facturés à l'usage.",
     whyLearn:
@@ -434,6 +443,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ kubernetes
   kubernetes: {
+    learning: LEARNING_KUBERNETES,
     definition:
       "Kubernetes orchestre des conteneurs à l'échelle : il place les workloads, les redémarre en cas de panne, expose les services et monte en charge automatiquement. Devenu le standard, il est exigeant mais incontournable.",
     whyLearn:

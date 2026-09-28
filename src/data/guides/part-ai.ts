@@ -1,4 +1,8 @@
 import type { SkillGuide } from "../skill-guides";
+import { LEARNING_DEEP_LEARNING } from "./learning-deep-learning";
+import { LEARNING_ML } from "./learning-ml";
+import { LEARNING_STATISTICS } from "./learning-statistics";
+import { LEARNING_GIT } from "./learning-git";
 
 /**
  * Guides pédagogiques — IA : roadmap AI Engineer.
@@ -134,6 +138,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ git
   git: {
+    learning: LEARNING_GIT,
     definition:
       "Git est un système de gestion de versions : il enregistre l'historique des modifications d'un projet, permet de travailler en parallèle via des branches et de revenir à n'importe quel état antérieur.",
     whyLearn:
@@ -191,6 +196,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ statistics
   statistics: {
+    learning: LEARNING_STATISTICS,
     definition:
       "Les statistiques sont l'art de tirer des conclusions fiables de données incomplètes : estimer, tester des hypothèses, quantifier l'incertitude autour d'une mesure.",
     whyLearn:
@@ -252,6 +258,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ machine-learning
   "machine-learning": {
+    learning: LEARNING_ML,
     definition:
       "Le machine learning consiste à apprendre des motifs à partir de données plutôt que de coder des règles à la main : on fournit des exemples, l'algorithme ajuste ses paramètres pour généraliser à de nouveaux cas.",
     whyLearn:
@@ -315,6 +322,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ deep-learning
   "deep-learning": {
+    learning: LEARNING_DEEP_LEARNING,
     definition:
       "Le deep learning utilise des réseaux de neurones à nombreuses couches qui apprennent eux-mêmes les représentations utiles des données : pixels, sons, texte. La profondeur permet de capturer des motifs hiérarchiques, du simple au complexe.",
     whyLearn:

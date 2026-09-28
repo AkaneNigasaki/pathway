@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { LuArrowUpRight as ArrowUpRight, LuBriefcase as Briefcase, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuX as X, LuZap as Zap } from "react-icons/lu";
+import { LuArrowUpRight as ArrowUpRight, LuBookOpen as BookOpen, LuBriefcase as Briefcase, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuX as X, LuZap as Zap } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { SkillIcon, searchItemSkill } from "../../components/SkillIcon/SkillIcon";
 import type { SearchItem, SearchItemType } from "../../types";
@@ -12,13 +12,14 @@ import styles from "./Explore.module.css";
 const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
   roadmap: { label: "Roadmaps", icon: Map },
   skill: { label: "Compétences", icon: Zap },
+  learning: { label: "Guides", icon: BookOpen },
   career: { label: "Métiers", icon: Briefcase },
   field: { label: "Filières", icon: LayoutGrid },
 };
 
 const SUGGESTIONS = ["React", "DevOps", "Python", "AI Engineer", "n8n"];
 
-const TYPE_ORDER: SearchItemType[] = ["roadmap", "skill", "career", "field"];
+const TYPE_ORDER: SearchItemType[] = ["roadmap", "skill", "learning", "career", "field"];
 
 export function Explore() {
   const [params, setParams] = useSearchParams();
