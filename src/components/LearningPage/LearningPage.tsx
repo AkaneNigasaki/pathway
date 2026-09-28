@@ -11,6 +11,7 @@ import type {
   LearningSection,
 } from "../../data/skill-guides";
 import { useProgress } from "../../hooks/useProgress";
+import { CodeHighlight } from "../CodeHighlight/CodeHighlight";
 import { renderRichText } from "../RichText/RichText";
 import styles from "./LearningPage.module.css";
 
@@ -61,7 +62,7 @@ function CommandBlock({ block }: { block: Extract<LearningBlock, { kind: "comman
     <div className={styles.command}>
       <p className={styles.commandLabel}>{renderRichText(block.label)}</p>
       <div className={styles.commandRow}>
-        <code className={styles.commandCode}>{block.command}</code>
+        <CodeHighlight code={block.command} language="bash" className={styles.commandCode} />
         <CopyButton text={block.command} />
       </div>
       <p className={styles.commandWhy}>
@@ -70,7 +71,7 @@ function CommandBlock({ block }: { block: Extract<LearningBlock, { kind: "comman
       {block.verify && (
         <div className={styles.commandRow}>
           <span className={styles.verifyLabel}>Vérifier :</span>
-          <code className={styles.commandCode}>{block.verify}</code>
+          <CodeHighlight code={block.verify} language="bash" className={styles.commandCode} />
           <CopyButton text={block.verify} />
         </div>
       )}
@@ -89,7 +90,7 @@ function CodeBlock({ block }: { block: Extract<LearningBlock, { kind: "code" }> 
         </span>
       </figcaption>
       <pre className={styles.codePre}>
-        <code>{block.code}</code>
+        <CodeHighlight code={block.code} language={block.language} />
       </pre>
     </figure>
   );

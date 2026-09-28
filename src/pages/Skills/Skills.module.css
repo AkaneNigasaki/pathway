@@ -242,6 +242,13 @@
   position: relative;
 }
 
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .cardMain {
   display: flex;
   flex-direction: column;

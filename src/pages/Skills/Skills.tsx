@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { LuChevronRight as ChevronRight, LuSearch as Search, LuX as X } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
+import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
 import { getRoadmap, getSkill } from "../../data/roadmaps";
 import { NODE_TYPE_LABEL, SKILL_LEVEL_LABEL } from "../../types";
 import type { NodeType, SkillLevel } from "../../types";
@@ -229,6 +230,15 @@ export function Skills() {
                         to={`/roadmaps/${s.roadmap}?skill=${s.id}`}
                         aria-label={`${s.label} — ${s.roadmapName}`}
                       >
+                        <span className={styles.cardIcon} aria-hidden="true">
+                          <SkillIcon
+                            skillId={s.id}
+                            nodeType={s.type}
+                            label={s.label}
+                            size={26}
+                            decorative
+                          />
+                        </span>
                         <span className={styles.cardMain}>
                           <span className={styles.name}>{s.label}</span>
                           <span className={styles.meta}>
