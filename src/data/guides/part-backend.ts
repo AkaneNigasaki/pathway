@@ -9,6 +9,14 @@ import { LEARNING_GO } from "./learning-go";
 import { LEARNING_ASPNET } from "./learning-aspnet";
 import { LEARNING_RUST } from "./learning-rust";
 import { LEARNING_JAVA } from "./learning-java";
+import { LEARNING_API_REST } from "./learning-api-rest";
+import { LEARNING_AUTH } from "./learning-auth";
+import { LEARNING_CACHING } from "./learning-caching";
+import { LEARNING_MESSAGING } from "./learning-messaging";
+import { LEARNING_OBSERVABILITY } from "./learning-observability";
+import { LEARNING_PYTHON_GENERAL } from "./learning-python-general";
+import { LEARNING_SYSTEM_DESIGN } from "./learning-system-design";
+import { LEARNING_TESTING_API } from "./learning-testing-api";
 
 /**
  * Guides pédagogiques — backend : parcours Backend Developer.
@@ -142,6 +150,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ python
   python: {
+    learning: LEARNING_PYTHON_GENERAL,
     definition:
       "Python est un langage de programmation généraliste réputé pour sa lisibilité : syntaxe claire, typage dynamique, écosystème immense — du scripting aux APIs en passant par la data.",
     whyLearn:
@@ -199,6 +208,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ api-rest
   "api-rest": {
+    learning: LEARNING_API_REST,
     definition:
       "Une API REST expose les données d'un système comme des ressources adressées par des URLs et manipulées avec les verbes HTTP : le contrat standard entre un client et un serveur.",
     whyLearn:
@@ -322,6 +332,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ auth
   auth: {
+    learning: LEARNING_AUTH,
     definition:
       "L'authentification vérifie l'identité d'un utilisateur, l'autorisation définit ce qu'il peut faire : ensemble, elles protègent l'accès aux ressources d'une application.",
     whyLearn:
@@ -383,6 +394,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ testing-api
   "testing-api": {
+    learning: LEARNING_TESTING_API,
     definition:
       "Les tests backend vérifient automatiquement que l'API se comporte comme promis : réponses correctes, données valides, erreurs gérées — à chaque modification du code.",
     whyLearn:
@@ -446,6 +458,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ caching
   caching: {
+    learning: LEARNING_CACHING,
     definition:
       "Le caching consiste à conserver les résultats coûteux (requêtes, calculs, réponses HTTP) pour les resservir instantanément : la technique la plus rentable pour accélérer un backend.",
     whyLearn:
@@ -508,6 +521,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ messaging
   messaging: {
+    learning: LEARNING_MESSAGING,
     definition:
       "Les files de messages (RabbitMQ, Kafka) permettent aux services de communiquer de façon asynchrone : un producteur dépose des événements, des consommateurs les traitent à leur rythme.",
     whyLearn:
@@ -631,6 +645,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ observability
   observability: {
+    learning: LEARNING_OBSERVABILITY,
     definition:
       "L'observabilité regroupe les pratiques pour comprendre un système en production : logs structurés, métriques et traces distribuées qui racontent ce qui s'y passe réellement.",
     whyLearn:
@@ -694,6 +709,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ system-design
   "system-design": {
+    learning: LEARNING_SYSTEM_DESIGN,
     definition:
       "Le system design est l'art de concevoir des systèmes logiciels à grande échelle : choisir les composants, leurs interactions et les compromis (cohérence, disponibilité, coût) avant d'écrire la moindre ligne de code.",
     whyLearn:

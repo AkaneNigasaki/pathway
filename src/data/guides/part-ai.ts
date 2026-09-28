@@ -3,6 +3,13 @@ import { LEARNING_DEEP_LEARNING } from "./learning-deep-learning";
 import { LEARNING_ML } from "./learning-ml";
 import { LEARNING_STATISTICS } from "./learning-statistics";
 import { LEARNING_GIT } from "./learning-git";
+import { LEARNING_AI_SAFETY } from "./learning-ai-safety";
+import { LEARNING_COMPUTER_VISION } from "./learning-computer-vision";
+import { LEARNING_LLM_SYSTEMS } from "./learning-llm-systems";
+import { LEARNING_MATHS } from "./learning-maths";
+import { LEARNING_MLOPS } from "./learning-mlops";
+import { LEARNING_NLP } from "./learning-nlp";
+import { LEARNING_PYTHON } from "./learning-python";
 
 /**
  * Guides pédagogiques — IA : roadmap AI Engineer.
@@ -20,6 +27,7 @@ import { LEARNING_GIT } from "./learning-git";
 export const GUIDES_AI: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ python
   python: {
+    learning: LEARNING_PYTHON,
     definition:
       "Python est un langage de programmation interprété, lisible et polyvalent. En IA, il est la lingua franca : presque toutes les bibliothèques de machine learning (NumPy, pandas, PyTorch, scikit-learn) sont écrites ou pilotées en Python.",
     whyLearn:
@@ -81,6 +89,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ maths
   maths: {
+    learning: LEARNING_MATHS,
     definition:
       "Les mathématiques de l'IA regroupent trois piliers : l'algèbre linéaire (les données et les modèles sont des matrices), le calcul différentiel (comment on optimise un modèle) et les probabilités (comment on raisonne sous incertitude).",
     whyLearn:
@@ -386,6 +395,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ nlp
   nlp: {
+    learning: LEARNING_NLP,
     definition:
       "Le NLP (traitement du langage naturel) donne aux machines la capacité de comprendre et générer du texte : découper le langage en unités (tokens), le représenter en vecteurs (embeddings) et modéliser les relations entre les mots.",
     whyLearn:
@@ -449,6 +459,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ computer-vision
   "computer-vision": {
+    learning: LEARNING_COMPUTER_VISION,
     definition:
       "La vision par ordinateur apprend aux machines à interpréter les images et vidéos : détecter des objets, segmenter des régions, classifier des scènes. Les pixels deviennent une information structurée et exploitable.",
     whyLearn:
@@ -510,6 +521,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ llm-systems
   "llm-systems": {
+    learning: LEARNING_LLM_SYSTEMS,
     definition:
       "Les systèmes LLM assemblent un grand modèle de langage avec des composants — bases vectorielles, outils, mémoire, garde-fous — pour construire des applications fiables : assistants, agents, recherche augmentée. Le modèle seul ne suffit pas ; le système fait le produit.",
     whyLearn:
@@ -572,6 +584,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ mlops
   mlops: {
+    learning: LEARNING_MLOPS,
     definition:
       "Le MLOps applique les pratiques DevOps au machine learning : versionner modèles et données, automatiser les pipelines d'entraînement, déployer et surveiller les modèles en production.",
     whyLearn:
@@ -634,6 +647,7 @@ export const GUIDES_AI: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ ai-safety
   "ai-safety": {
+    learning: LEARNING_AI_SAFETY,
     definition:
       "L'évaluation et la fiabilité des systèmes IA consistent à mesurer rigoureusement leurs comportements — performances, biais, hallucinations, vulnérabilités — avant et après déploiement, puis à mettre en place des garde-fous.",
     whyLearn:

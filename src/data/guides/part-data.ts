@@ -3,6 +3,13 @@ import type { SkillGuide } from "../skill-guides";
 import { LEARNING_STATISTICS } from "./learning-statistics";
 import { LEARNING_SQL } from "./learning-sql";
 import { LEARNING_ML } from "./learning-ml";
+import { LEARNING_DATA_VIZ } from "./learning-data-viz";
+import { LEARNING_DEPLOYMENT } from "./learning-deployment";
+import { LEARNING_EDA } from "./learning-eda";
+import { LEARNING_EXPERIMENTATION } from "./learning-experimentation";
+import { LEARNING_FEATURE_ENGINEERING } from "./learning-feature-engineering";
+import { LEARNING_PYTHON } from "./learning-python";
+import { LEARNING_STORYTELLING } from "./learning-storytelling";
 /**
  * Guides pédagogiques — Data : roadmap Data Scientist.
  *
@@ -19,6 +26,7 @@ import { LEARNING_ML } from "./learning-ml";
 export const GUIDES_DATA: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ python
   python: {
+    learning: LEARNING_PYTHON,
     definition:
       "Python est le langage central de la data science : avec pandas et NumPy pour manipuler les données, et Jupyter pour explorer, il constitue l'environnement de travail quotidien du data scientist.",
     whyLearn:
@@ -192,6 +200,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ data-viz
   "data-viz": {
+    learning: LEARNING_DATA_VIZ,
     definition:
       "La data visualization transforme des données en représentations graphiques qui révèlent structures et anomalies d'un coup d'œil. Bien faite, elle rend l'invisible évident ; mal faite, elle trompe.",
     whyLearn:
@@ -255,6 +264,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ eda
   eda: {
+    learning: LEARNING_EDA,
     definition:
       "L'analyse exploratoire (EDA) est le dialogue avec les données avant toute modélisation : distributions, corrélations, valeurs aberrantes, hypothèses. C'est là que naissent les vraies questions — et que meurent les fausses.",
     whyLearn:
@@ -382,6 +392,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ experimentation
   experimentation: {
+    learning: LEARNING_EXPERIMENTATION,
     definition:
       "L'expérimentation (A/B testing, inférence causale) permet de prouver qu'un changement cause un effet, et pas seulement qu'il coïncide avec. C'est la méthode la plus fiable pour décider en environnement incertain.",
     whyLearn:
@@ -443,6 +454,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ feature-engineering
   "feature-engineering": {
+    learning: LEARNING_FEATURE_ENGINEERING,
     definition:
       "Le feature engineering crée les variables d'entrée d'un modèle à partir des données brutes : encodages, agrégations temporelles, interactions. C'est souvent là que se gagnent les points de performance, pas dans l'algorithme.",
     whyLearn:
@@ -504,6 +516,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ storytelling
   storytelling: {
+    learning: LEARNING_STORYTELLING,
     definition:
       "Le storytelling data est l'art de transformer une analyse en récit qui fait décider : structurer le propos, adapter au public, formuler des recommandations claires. Une analyse non communiquée n'existe pas.",
     whyLearn:
@@ -566,6 +579,7 @@ export const GUIDES_DATA: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ deployment
   deployment: {
+    learning: LEARNING_DEPLOYMENT,
     definition:
       "La mise en production déploie un modèle pour qu'il serve réellement : API de scoring, batch planifié, monitoring. Un modèle en production vaut dix notebooks.",
     whyLearn:

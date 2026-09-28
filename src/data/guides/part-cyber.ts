@@ -1,6 +1,17 @@
 import type { SkillGuide } from "../skill-guides";
 
 import { LEARNING_LINUX } from "./learning-linux";
+import { LEARNING_CLOUD_SECURITY } from "./learning-cloud-security";
+import { LEARNING_CRYPTOGRAPHY } from "./learning-cryptography";
+import { LEARNING_FORENSICS } from "./learning-forensics";
+import { LEARNING_GOVERNANCE } from "./learning-governance";
+import { LEARNING_NETWORKING } from "./learning-networking";
+import { LEARNING_PENTEST } from "./learning-pentest";
+import { LEARNING_PYTHON } from "./learning-python";
+import { LEARNING_SECURE_CODING } from "./learning-secure-coding";
+import { LEARNING_SOC } from "./learning-soc";
+import { LEARNING_SYSTEM_SECURITY } from "./learning-system-security";
+import { LEARNING_WEB_SECURITY } from "./learning-web-security";
 /**
  * Guides pédagogiques — cybersécurité.
  *
@@ -17,6 +28,7 @@ import { LEARNING_LINUX } from "./learning-linux";
 export const GUIDES_CYBER: Record<string, SkillGuide> = {
   // --------------------------------------------------------------- networking
   networking: {
+    learning: LEARNING_NETWORKING,
     definition:
       "Les réseaux sont l'infrastructure par laquelle les machines communiquent : le modèle TCP/IP décrit comment les données sont découpées en paquets, adressées, routées puis réassemblées entre un émetteur et un destinataire.",
     whyLearn:
@@ -137,6 +149,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- python
   python: {
+    learning: LEARNING_PYTHON,
     definition:
       "Python est le langage de scripting de référence en sécurité : lisible, riche en bibliothèques réseau et système, il permet d'écrire en quelques dizaines de lignes des outils d'analyse ou d'attaque.",
     whyLearn:
@@ -192,6 +205,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------- web-security
   "web-security": {
+    learning: LEARNING_WEB_SECURITY,
     definition:
       "La sécurité web étudie les vulnérabilités des applications exposées sur HTTP : injections, XSS, failles d'authentification. C'est le domaine où se concentre la majorité des incidents de sécurité.",
     whyLearn:
@@ -253,6 +267,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------- system-security
   "system-security": {
+    learning: LEARNING_SYSTEM_SECURITY,
     definition:
       "La sécurité système couvre la compromission et la protection des systèmes d'exploitation : élévation de privilèges, persistance des attaquants, durcissement des machines.",
     whyLearn:
@@ -308,6 +323,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- cryptography
   cryptography: {
+    learning: LEARNING_CRYPTOGRAPHY,
     definition:
       "La cryptographie fournit les outils mathématiques de la confiance numérique : chiffrement, hachage, signatures. En sécurité, l'enjeu n'est pas d'inventer des algorithmes, mais de les utiliser correctement.",
     whyLearn:
@@ -365,6 +381,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- pentest
   pentest: {
+    learning: LEARNING_PENTEST,
     definition:
       "Le test d'intrusion (pentest) est une attaque simulée et autorisée contre un système, menée avec une méthodologie rigoureuse : reconnaissance, exploitation, post-exploitation et rapport.",
     whyLearn:
@@ -429,6 +446,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------------- soc
   soc: {
+    learning: LEARNING_SOC,
     definition:
       "Le SOC (Security Operations Center) est l'équipe qui surveille en continu les systèmes d'une organisation : un SIEM centralise les logs, des règles détectent les comportements suspects, des analystes trient les alertes.",
     whyLearn:
@@ -486,6 +504,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ forensics
   forensics: {
+    learning: LEARNING_FORENSICS,
     definition:
       "La forensique numérique (DFIR) reconstitue ce qui s'est passé pendant un incident : on fige les preuves (disque, mémoire), on les analyse sans les altérer, on établit une chronologie.",
     whyLearn:
@@ -543,6 +562,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- secure-coding
   "secure-coding": {
+    learning: LEARNING_SECURE_CODING,
     definition:
       "Le secure coding consiste à écrire du code qui ne crée pas de vulnérabilités : validation des entrées, gestion des secrets, dépendances maîtrisées, revues orientées sécurité.",
     whyLearn:
@@ -600,6 +620,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------- cloud-security
   "cloud-security": {
+    learning: LEARNING_CLOUD_SECURITY,
     definition:
       "La sécurité du cloud protège des infrastructures éphémères et pilotées par API : identités (IAM), configurations, conteneurs. Le modèle est la responsabilité partagée : le fournisseur sécurise le cloud, le client sécurise ce qu'il y met.",
     whyLearn:
@@ -657,6 +678,7 @@ export const GUIDES_CYBER: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------- governance
   governance: {
+    learning: LEARNING_GOVERNANCE,
     definition:
       "La gouvernance sécurité transforme la technique en organisation durable : gestion des risques, politiques, conformité (ISO 27001, NIS2), audits. Elle répond à « sommes-nous suffisamment protégés ? » au niveau de l'entreprise.",
     whyLearn:

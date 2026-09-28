@@ -38,6 +38,34 @@ interface LangConfig {
 
 /* ── Mots-clés réels par langage ─────────────────────────────────────────── */
 
+const NGINX_KW = [
+  "accept_mutex", "access_log", "add_header", "alias", "auth_basic",
+  "client_max_body_size", "daemon", "deny", "error_log", "error_page",
+  "events", "expires", "gzip", "gzip_types", "http", "include",
+  "index", "keepalive_timeout", "limit_req", "listen", "location",
+  "log_format", "map", "pid", "proxy_cache", "proxy_http_version",
+  "proxy_pass", "proxy_set_header", "return", "rewrite", "root",
+  "sendfile", "server", "server_name", "ssl_certificate",
+  "ssl_certificate_key", "stream", "try_files", "upstream", "user",
+  "worker_connections", "worker_processes",
+];
+const DART_KW = [
+  "abstract", "as", "assert", "async", "await", "break", "case", "catch",
+  "class", "const", "continue", "covariant", "default", "deferred",
+  "do", "dynamic", "else", "enum", "export", "extends", "extension",
+  "external", "factory", "false", "final", "finally", "for", "function",
+  "get", "hide", "if", "implements", "import", "in", "interface", "is",
+  "late", "library", "mixin", "new", "null", "on", "operator", "part",
+  "required", "rethrow", "return", "sealed", "set", "show", "static",
+  "super", "switch", "sync", "this", "throw", "true", "try", "typedef",
+  "var", "void", "while", "with", "yield",
+];
+const REGO_KW = [
+  "package", "import", "default", "allow", "deny", "violation", "not",
+  "some", "every", "if", "else", "in", "with", "as", "contains",
+  "true", "false", "null",
+];
+
 const JS_KW = [
   "break", "case", "catch", "class", "const", "continue", "debugger",
   "default", "delete", "do", "else", "export", "extends", "finally",
@@ -190,6 +218,10 @@ const CONFIGS: Record<string, LangConfig> = {
   html:       { mode: "html", lineComment: [], blockComment: ["<!--", "-->"], quotes: ["\"", "'"], keywords: [] },
   yaml:       { mode: "yaml", lineComment: ["#"], quotes: ["\"", "'"], keywords: YAML_KW, caseInsensitive: true },
   dockerfile: { mode: "dockerfile", lineComment: ["#"], quotes: ["\"", "'"], keywords: DOCKER_KW, caseInsensitive: true },
+  nginx:      { mode: "generic", lineComment: ["#"], quotes: ["\"", "'"], keywords: NGINX_KW },
+  dart:       { mode: "generic", lineComment: ["//"], blockComment: ["/*", "*/"], quotes: ["\"", "'"], keywords: DART_KW },
+  ini:        { mode: "generic", lineComment: ["#", ";"], quotes: ["\"", "'"], keywords: [] },
+  rego:       { mode: "generic", lineComment: ["#"], quotes: ["\"", "'"], keywords: REGO_KW },
 };
 
 const ALIASES: Record<string, string> = {
@@ -204,6 +236,7 @@ const ALIASES: Record<string, string> = {
   scss: "css", sass: "css", less: "css",
   yml: "yaml", toml: "yaml",
   tf: "hcl",
+  md: "none", markdown: "none",
   plaintext: "none", text: "none", txt: "none",
 };
 

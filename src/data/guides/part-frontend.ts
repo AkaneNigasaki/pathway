@@ -5,6 +5,14 @@ import { LEARNING_JAVASCRIPT } from "./learning-javascript";
 import { LEARNING_REACT } from "./learning-react";
 import { LEARNING_ANGULAR } from "./learning-angular";
 import { LEARNING_VUE } from "./learning-vue";
+import { LEARNING_ACCESSIBILITY } from "./learning-accessibility";
+import { LEARNING_DESIGN_SYSTEMS } from "./learning-design-systems";
+import { LEARNING_FRONTEND_ARCHITECTURE } from "./learning-frontend-architecture";
+import { LEARNING_NEXTJS } from "./learning-nextjs";
+import { LEARNING_PERFORMANCE } from "./learning-performance";
+import { LEARNING_STATE_MANAGEMENT } from "./learning-state-management";
+import { LEARNING_TESTING } from "./learning-testing";
+import { LEARNING_TYPESCRIPT_FRONTEND } from "./learning-typescript-frontend";
 
 /**
  * Guides pédagogiques — frontend : parcours Frontend Developer.
@@ -200,6 +208,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ typescript
   typescript: {
+    learning: LEARNING_TYPESCRIPT_FRONTEND,
     definition:
       "TypeScript est un sur-ensemble typé de JavaScript : il ajoute des types statiques vérifiés à la compilation, puis se compile en JavaScript standard exécutable partout.",
     whyLearn:
@@ -323,6 +332,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ nextjs
   nextjs: {
+    learning: LEARNING_NEXTJS,
     definition:
       "Next.js est un framework React qui ajoute le rendu côté serveur, le routage par fichiers et les optimisations de production : l'outillage standard pour des applications React sérieuses.",
     whyLearn:
@@ -385,6 +395,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ testing
   testing: {
+    learning: LEARNING_TESTING,
     definition:
       "Le testing consiste à vérifier automatiquement que le code se comporte comme prévu : tests unitaires, d'intégration et end-to-end forment un filet de sécurité contre les régressions.",
     whyLearn:
@@ -448,6 +459,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ state-management
   "state-management": {
+    learning: LEARNING_STATE_MANAGEMENT,
     definition:
       "Le state management organise les données d'une application frontend : où vit l'état, comment il circule entre composants, comment il se synchronise avec le serveur.",
     whyLearn:
@@ -509,6 +521,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ performance
   performance: {
+    learning: LEARNING_PERFORMANCE,
     definition:
       "La performance web mesure la rapidité ressentie d'une application : temps de chargement, réactivité aux interactions, fluidité visuelle. Les Core Web Vitals en sont la mesure standard.",
     whyLearn:
@@ -572,6 +585,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ accessibility
   accessibility: {
+    learning: LEARNING_ACCESSIBILITY,
     definition:
       "L'accessibilité web consiste à rendre les interfaces utilisables par tout le monde : navigation au clavier, lecteurs d'écran, contrastes suffisants, alternatives textuelles.",
     whyLearn:
@@ -635,6 +649,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ frontend-architecture
   "frontend-architecture": {
+    learning: LEARNING_FRONTEND_ARCHITECTURE,
     definition:
       "L'architecture frontend définit l'organisation d'une application : découpage en modules, frontières entre couches, conventions partagées et décisions documentées pour rester maintenable quand l'équipe grandit.",
     whyLearn:
@@ -700,6 +715,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ design-systems
   "design-systems": {
+    learning: LEARNING_DESIGN_SYSTEMS,
     definition:
       "Un design system est l'ensemble des tokens, composants et règles qui garantissent la cohérence d'un produit : une source unique de vérité partagée entre design et code.",
     whyLearn:

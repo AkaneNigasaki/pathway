@@ -10,6 +10,7 @@ import { GUIDES_DEVOPS } from "./guides/part-devops";
 import { GUIDES_CYBER } from "./guides/part-cyber";
 import { GUIDES_ROBOTICS } from "./guides/part-robotics";
 import { GUIDES_TYPESCRIPT } from "./guides/part-typescript";
+import { LEARNING_N8N } from "./guides/learning-n8n";
 import { OFFICIAL_DOCS } from "./guides/official-docs";
 
 /**
@@ -111,6 +112,7 @@ export interface SkillSetup {
 
 /** Guide de référence rédigé à la main (modèle pour les autres entrées). */
 const N8N_GUIDE: SkillGuide = {
+  learning: LEARNING_N8N,
   setup: {
     install: [
       "Via npm : `npm install -g n8n` (Node.js 18+ requis).",

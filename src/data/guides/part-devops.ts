@@ -5,6 +5,13 @@ import { LEARNING_LINUX } from "./learning-linux";
 import { LEARNING_DOCKER } from "./learning-docker";
 import { LEARNING_KUBERNETES } from "./learning-kubernetes";
 import { LEARNING_CLOUD } from "./learning-cloud";
+import { LEARNING_CI_CD } from "./learning-ci-cd";
+import { LEARNING_DEVSECOPS } from "./learning-devsecops";
+import { LEARNING_IAC } from "./learning-iac";
+import { LEARNING_MONITORING } from "./learning-monitoring";
+import { LEARNING_NETWORKING } from "./learning-networking";
+import { LEARNING_PLATFORM_ENGINEERING } from "./learning-platform-engineering";
+import { LEARNING_SCRIPTING } from "./learning-scripting";
 /**
  * Guides pédagogiques — DevOps : roadmap DevOps Engineer.
  *
@@ -137,6 +144,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ networking
   networking: {
+    learning: LEARNING_NETWORKING,
     definition:
       "Les réseaux sont ce qui relie tout : le modèle TCP/IP, le DNS, TLS, le load balancing. La majorité des incidents « mystérieux » en production sont, au fond, des problèmes réseau.",
     whyLearn:
@@ -194,6 +202,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ scripting
   scripting: {
+    learning: LEARNING_SCRIPTING,
     definition:
       "Le scripting automatise les tâches répétitives avec Bash et Python : provisioning, sauvegardes, vérifications. Règle d'or : ce qui est fait trois fois à la main devient un script versionné.",
     whyLearn:
@@ -317,6 +326,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ ci-cd
   "ci-cd": {
+    learning: LEARNING_CI_CD,
     definition:
       "La CI/CD automatise le chemin du commit à la production : intégration continue (build + tests à chaque push) puis livraison/déploiement continu. Objectif : rendre chaque commit un candidat sûr à la production.",
     whyLearn:
@@ -507,6 +517,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ iac
   iac: {
+    learning: LEARNING_IAC,
     definition:
       "L'Infrastructure as Code déclare l'infrastructure comme du code versionné (Terraform/OpenTofu) : on la relit en pull request, on l'applique automatiquement, on peut la détruire et la reconstruire à volonté.",
     whyLearn:
@@ -569,6 +580,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ monitoring
   monitoring: {
+    learning: LEARNING_MONITORING,
     definition:
       "Le monitoring et l'observabilité consistent à savoir ce qui se passe en production avant que les utilisateurs ne s'en plaignent : métriques, logs, traces, et des SLO qui définissent ce que « ça marche » veut dire.",
     whyLearn:
@@ -632,6 +644,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ devsecops
   devsecops: {
+    learning: LEARNING_DEVSECOPS,
     definition:
       "Le DevSecOps intègre la sécurité à chaque étape du delivery plutôt qu'en audit final : scans automatiques, gestion des secrets, politiques as code. La sécurité devient un garde-fou du pipeline, pas un frein.",
     whyLearn:
@@ -695,6 +708,7 @@ export const GUIDES_DEVOPS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ platform-engineering
   "platform-engineering": {
+    learning: LEARNING_PLATFORM_ENGINEERING,
     definition:
       "Le platform engineering construit la plateforme interne que les équipes produit utilisent en self-service : templates, golden paths, portails développeur. La plateforme est traitée comme un produit, dont les développeurs sont les clients.",
     whyLearn:

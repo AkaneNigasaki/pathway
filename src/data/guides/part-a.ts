@@ -17,6 +17,46 @@ import { LEARNING_JAVA } from "./learning-java";
 import { LEARNING_NODEJS } from "./learning-nodejs";
 import { LEARNING_DEVOPS } from "./learning-devops";
 import { LEARNING_SQL } from "./learning-sql";
+import { LEARNING_ACCESSIBILITY } from "./learning-accessibility";
+import { LEARNING_ALGORITHMS } from "./learning-algorithms";
+import { LEARNING_ASYNC_JS } from "./learning-async-js";
+import { LEARNING_BASH } from "./learning-bash";
+import { LEARNING_CSS_ANIMATIONS } from "./learning-css-animations";
+import { LEARNING_CSS_GRID } from "./learning-css-grid";
+import { LEARNING_CULTURE_INFO } from "./learning-culture-info";
+import { LEARNING_DATA_STRUCTURES } from "./learning-data-structures";
+import { LEARNING_DATABASES } from "./learning-databases";
+import { LEARNING_DOM } from "./learning-dom";
+import { LEARNING_ELECTRON } from "./learning-electron";
+import { LEARNING_ESLINT } from "./learning-eslint";
+import { LEARNING_FETCH_API } from "./learning-fetch-api";
+import { LEARNING_FLEXBOX } from "./learning-flexbox";
+import { LEARNING_FLUTTER } from "./learning-flutter";
+import { LEARNING_FRONTEND_ARCHI } from "./learning-frontend-archi";
+import { LEARNING_FULLSTACK } from "./learning-fullstack";
+import { LEARNING_GITHUB } from "./learning-github";
+import { LEARNING_HTTP } from "./learning-http";
+import { LEARNING_JS_MODULES } from "./learning-js-modules";
+import { LEARNING_JSON } from "./learning-json";
+import { LEARNING_NETWORKS } from "./learning-networks";
+import { LEARNING_NEXTJS } from "./learning-nextjs";
+import { LEARNING_NPM } from "./learning-npm";
+import { LEARNING_PLAYWRIGHT } from "./learning-playwright";
+import { LEARNING_PNPM } from "./learning-pnpm";
+import { LEARNING_POSTMAN } from "./learning-postman";
+import { LEARNING_PRETTIER } from "./learning-prettier";
+import { LEARNING_REACT_FORMS } from "./learning-react-forms";
+import { LEARNING_REACT_HOOKS } from "./learning-react-hooks";
+import { LEARNING_REACT_NATIVE } from "./learning-react-native";
+import { LEARNING_REACT_STATE } from "./learning-react-state";
+import { LEARNING_RESPONSIVE } from "./learning-responsive";
+import { LEARNING_REST } from "./learning-rest";
+import { LEARNING_TAILWIND } from "./learning-tailwind";
+import { LEARNING_TESTING } from "./learning-testing";
+import { LEARNING_VITE } from "./learning-vite";
+import { LEARNING_VITEST } from "./learning-vitest";
+import { LEARNING_WEB_PERF } from "./learning-web-perf";
+import { LEARNING_WEBHOOKS } from "./learning-webhooks";
 
 /**
  * Guides pédagogiques — partie A : fondations & développement web.
@@ -37,6 +77,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ http
   http: {
+    learning: LEARNING_HTTP,
     definition:
       "HTTP est le protocole qui permet à un client (navigateur, application) et un serveur de dialoguer sur le web. Chaque échange suit le même schéma : une requête (méthode + URL + en-têtes) puis une réponse (code de statut + en-têtes + contenu).",
     whyLearn:
@@ -107,6 +148,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ rest
   rest: {
+    learning: LEARNING_REST,
     illustration: "api",
     definition:
       "REST est un style d'architecture pour concevoir des APIs web : les données sont exposées comme des ressources adressées par des URLs, manipulées avec les verbes HTTP, dans des échanges sans état.",
@@ -177,6 +219,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- webhooks
   webhooks: {
+    learning: LEARNING_WEBHOOKS,
     definition:
       "Un webhook est un mécanisme où un service appelle automatiquement une URL que vous lui avez fournie dès qu'un événement se produit. Au lieu d'interroger l'API en boucle, c'est elle qui vous prévient.",
     whyLearn:
@@ -247,6 +290,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ json
   json: {
+    learning: LEARNING_JSON,
     definition:
       "JSON (JavaScript Object Notation) est un format texte pour représenter des données structurées : objets, tableaux, chaînes, nombres, booléens. Lisible par les humains, natif pour les machines.",
     whyLearn:
@@ -963,6 +1007,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------- culture-info
   "culture-info": {
+    learning: LEARNING_CULTURE_INFO,
     definition:
       "La culture informatique rassemble les fondamentaux : ce qu'est un ordinateur, un système d'exploitation, un réseau, un programme — et comment tout cela s'articule.",
     whyLearn:
@@ -1029,6 +1074,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ algorithms
   algorithms: {
+    learning: LEARNING_ALGORITHMS,
     definition:
       "L'algorithmique est l'art de décomposer un problème en une suite d'étapes précises, correctes et efficaces qu'une machine peut exécuter.",
     whyLearn:
@@ -1100,6 +1146,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------- data-structures
   "data-structures": {
+    learning: LEARNING_DATA_STRUCTURES,
     definition:
       "Les structures de données sont des façons d'organiser l'information en mémoire — tableaux, listes, arbres, tables de hachage — chacune avec ses forces et ses coûts.",
     whyLearn:
@@ -1170,6 +1217,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ bash
   bash: {
+  learning: LEARNING_BASH,
   setup: {
     install: [
       "Natif à Linux et macOS : rien à installer.",
@@ -1262,6 +1310,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- networks
   networks: {
+    learning: LEARNING_NETWORKS,
     definition:
       "Les réseaux sont l'infrastructure qui relie les machines : protocoles, adressage, routage. Comprendre ce qui se passe entre le clic et la réponse du serveur.",
     whyLearn:
@@ -1333,6 +1382,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- databases
   databases: {
+    learning: LEARNING_DATABASES,
     definition:
       "Les bases de données stockent et organisent l'information de façon durable et interrogeable : relationnel, document, clé-valeur — chaque famille a ses usages.",
     whyLearn:
@@ -1584,6 +1634,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- async-js
   "async-js": {
+    learning: LEARNING_ASYNC_JS,
     definition:
       "JavaScript est mono-thread mais non bloquant : l'event loop, les promesses et async/await permettent d'attendre réseau, fichiers ou timers sans figer le programme.",
     whyLearn:
@@ -1655,6 +1706,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- fetch-api
   "fetch-api": {
+    learning: LEARNING_FETCH_API,
     definition:
       "Fetch est l'API native du navigateur pour envoyer des requêtes HTTP et recevoir des réponses, généralement en JSON.",
     whyLearn:
@@ -1727,6 +1779,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- dom
   dom: {
+    learning: LEARNING_DOM,
     definition:
       "Le DOM (Document Object Model) est la représentation en mémoire d'une page HTML : un arbre d'objets que JavaScript peut lire et modifier.",
     whyLearn:
@@ -1797,6 +1850,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- npm
   npm: {
+  learning: LEARNING_NPM,
   setup: {
     install: [
       "Fourni avec Node.js : rien à installer séparément.",
@@ -1889,6 +1943,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ vite
   vite: {
+  learning: LEARNING_VITE,
   setup: {
     install: [
       "Créer un projet : `npm create vite@latest mon-app`.",
@@ -1981,6 +2036,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- nextjs
   nextjs: {
+  learning: LEARNING_NEXTJS,
   setup: {
     install: [
       "Créer l'app : `npx create-next-app@latest mon-app` (choisir TypeScript et App Router).",
@@ -2073,6 +2129,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- tailwind
   tailwind: {
+  learning: LEARNING_TAILWIND,
   setup: {
     install: [
       "Via Vite : `npm install -D tailwindcss @tailwindcss/vite`, puis ajouter le plugin dans `vite.config.ts`.",
@@ -2163,6 +2220,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- testing
   testing: {
+    learning: LEARNING_TESTING,
     definition:
       "Les tests vérifient automatiquement que le code se comporte comme prévu : tests unitaires, d'intégration, end-to-end. Ils permettent de refactorer sans peur.",
     whyLearn:
@@ -2234,6 +2292,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- github
   github: {
+  learning: LEARNING_GITHUB,
   setup: {
     install: [
       "Installer Git : `git --version` pour vérifier (git-scm.com si absent).",
@@ -2325,6 +2384,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- postman
   postman: {
+  learning: LEARNING_POSTMAN,
   setup: {
     install: [
       "Télécharger Postman depuis postman.com, ou `brew install --cask postman` sur macOS.",
@@ -2416,6 +2476,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- fullstack
   fullstack: {
+  learning: LEARNING_FULLSTACK,
   setup: {
     install: [
       "Installer Node.js LTS (`nvm install --lts`) pour le backend et les outils frontend.",
@@ -2510,6 +2571,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------- accessibility
   accessibility: {
+    learning: LEARNING_ACCESSIBILITY,
     definition:
       "L'accessibilité consiste à concevoir des interfaces utilisables par tous : lecteurs d'écran, navigation au clavier, contrastes suffisants.",
     whyLearn:
@@ -2583,6 +2645,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ responsive
   responsive: {
+    learning: LEARNING_RESPONSIVE,
     definition:
       "Le responsive design adapte une interface à toutes les tailles d'écran : du mobile 360 px à l'écran 4K, via media queries, unités fluides et approche mobile-first.",
     whyLearn:
@@ -2644,6 +2707,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- flexbox
   flexbox: {
+    learning: LEARNING_FLEXBOX,
     definition:
       "Flexbox est le module CSS de mise en page unidimensionnel : il aligne, distribue et ordonne des éléments le long d'un axe, avec un contrôle fin de l'alignement et de l'espace.",
     whyLearn:
@@ -2704,6 +2768,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- css-grid
   "css-grid": {
+    learning: LEARNING_CSS_GRID,
     definition:
       "CSS Grid est le système de mise en page bidimensionnel : lignes et colonnes définissent une grille où placer les éléments, pour des layouts complexes en quelques lignes.",
     whyLearn:
@@ -2765,6 +2830,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------- css-animations
   "css-animations": {
+    learning: LEARNING_CSS_ANIMATIONS,
     definition:
       "Les animations CSS (transitions et keyframes) ajoutent du mouvement aux interfaces : micro-interactions, feedbacks visuels, changements d'état fluides — sans JavaScript.",
     whyLearn:
@@ -2826,6 +2892,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ js-modules
   "js-modules": {
+    learning: LEARNING_JS_MODULES,
     definition:
       "Les modules ES (import/export) découpent une application JavaScript en fichiers indépendants qui déclarent explicitement leurs dépendances.",
     whyLearn:
@@ -2887,6 +2954,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ pnpm
   pnpm: {
+  learning: LEARNING_PNPM,
   setup: {
     install: [
       "Via npm : `npm install -g pnpm`.",
@@ -2968,6 +3036,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- eslint
   eslint: {
+  learning: LEARNING_ESLINT,
   setup: {
     install: [
       "Installer en dépendance de dev : `npm install -D eslint`.",
@@ -3049,6 +3118,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- prettier
   prettier: {
+  learning: LEARNING_PRETTIER,
   setup: {
     install: [
       "Installer en dépendance de dev : `npm install -D prettier`.",
@@ -3131,6 +3201,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ react-hooks
   "react-hooks": {
+    learning: LEARNING_REACT_HOOKS,
     definition:
       "Les Hooks (useState, useEffect, useRef, useMemo…) sont les fonctions qui donnent aux composants React accès à l'état, aux effets de bord et au cycle de vie.",
     whyLearn:
@@ -3192,6 +3263,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ react-state
   "react-state": {
+    learning: LEARNING_REACT_STATE,
     definition:
       "Le state management organise l'état d'une application quand l'état local ne suffit plus : Context, Zustand, Redux Toolkit, React Query — chacun à son niveau.",
     whyLearn:
@@ -3253,6 +3325,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------ react-forms
   "react-forms": {
+    learning: LEARNING_REACT_FORMS,
     definition:
       "Les formulaires React gèrent la saisie utilisateur : état des champs, validation, messages d'erreur, soumission — un domaine où les détails font la qualité.",
     whyLearn:
@@ -3314,6 +3387,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- vitest
   vitest: {
+  learning: LEARNING_VITEST,
   setup: {
     install: [
       "Installer en dépendance de dev : `npm install -D vitest`.",
@@ -3395,6 +3469,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------- playwright
   playwright: {
+  learning: LEARNING_PLAYWRIGHT,
   setup: {
     install: [
       "Installer Node.js LTS, puis initialiser : `npm init playwright@latest` (crée tests/, playwright.config.ts et installe le paquet).",
@@ -3478,6 +3553,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- web-perf
   "web-perf": {
+    learning: LEARNING_WEB_PERF,
     definition:
       "La performance web mesure et optimise la vitesse ressentie : Core Web Vitals, temps de chargement, fluidité — via code splitting, lazy loading, cache et images optimisées.",
     whyLearn:
@@ -3539,6 +3615,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------- frontend-archi
   "frontend-archi": {
+    learning: LEARNING_FRONTEND_ARCHI,
     definition:
       "L'architecture frontend organise le code quand projets et équipes grandissent : monorepos, design systems, découpage par fonctionnalités, conventions partagées.",
     whyLearn:
@@ -3600,6 +3677,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------- react-native
   "react-native": {
+  learning: LEARNING_REACT_NATIVE,
   setup: {
     install: [
       "Installer Node.js LTS.",
@@ -3684,6 +3762,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- flutter
   flutter: {
+  learning: LEARNING_FLUTTER,
   setup: {
     install: [
       "Télécharger le SDK Flutter depuis docs.flutter.dev et l'ajouter au PATH.",
@@ -3767,6 +3846,7 @@ export const GUIDES_A: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------------- electron
   electron: {
+  learning: LEARNING_ELECTRON,
   setup: {
     install: [
       "Installer Node.js LTS.",
