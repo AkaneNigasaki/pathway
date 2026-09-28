@@ -41,6 +41,14 @@ import gitlabCiSvg from "../../assets/tech-icons/gitlab-ci.svg";
 import awsSvg from "../../assets/tech-icons/aws.svg";
 import gcpSvg from "../../assets/tech-icons/gcp.svg";
 import azureSvg from "../../assets/tech-icons/azure.svg";
+import csharpSvg from "../../assets/tech-icons/csharp.svg";
+import javaSvg from "../../assets/tech-icons/java.svg";
+import rustSvg from "../../assets/tech-icons/rust.svg";
+import goSvg from "../../assets/tech-icons/go.svg";
+import vueSvg from "../../assets/tech-icons/vue.svg";
+import angularSvg from "../../assets/tech-icons/angular.svg";
+import dotnetSvg from "../../assets/tech-icons/dotnet.svg";
+import djangoSvg from "../../assets/tech-icons/django.svg";
 import styles from "./BrandIcon.module.css";
 
 /**
@@ -97,6 +105,14 @@ const BRAND_ICONS: Record<string, string> = {
   aws: awsSvg,
   gcp: gcpSvg,
   azure: azureSvg,
+  csharp: csharpSvg,
+  java: javaSvg,
+  rust: rustSvg,
+  go: goSvg,
+  vue: vueSvg,
+  angular: angularSvg,
+  aspnet: dotnetSvg,
+  django: djangoSvg,
   /** Alias : noms de compétences qui désignent la même technologie. */
   "js-moderne": javascriptSvg,
   "github-actions": githubSvg,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   LuCheck as Check,
   LuChevronDown as ChevronDown,
@@ -173,6 +173,18 @@ function BlockView({ block }: { block: LearningBlock }) {
 
 function SectionView({ section, defaultOpen }: { section: LearningSection; defaultOpen: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
+
+  // Arrivée via une ancre (#learn-xxx, recherche ou sommaire) : déplier et cadrer.
+  useEffect(() => {
+    if (window.location.hash !== `#learn-${section.id}`) return;
+    setOpen(true);
+    window.setTimeout(() => {
+      document
+        .getElementById(`learn-${section.id}`)
+        ?.scrollIntoView({ block: "start" });
+    }, 60);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div id={`learn-${section.id}`} className={styles.section}>
       <button
@@ -208,10 +220,25 @@ interface LearningPageProps {
   roadmapSlug: string;
   skillId: string;
   skillName: string;
+  /** Niveau contrôlé par le parent (SkillDoc, pour synchroniser le sommaire). */
+  level?: LearningLevel;
+  onLevelChange?: (level: LearningLevel) => void;
 }
 
-export function LearningPage({ sections, roadmapSlug, skillId, skillName }: LearningPageProps) {
-  const [level, setLevel] = useState<LearningLevel>(1);
+export function LearningPage({
+  sections,
+  roadmapSlug,
+  skillId,
+  skillName,
+  level: controlledLevel,
+  onLevelChange,
+}: LearningPageProps) {
+  const [innerLevel, setInnerLevel] = useState<LearningLevel>(1);
+  const level = controlledLevel ?? innerLevel;
+  const setLevel = (l: LearningLevel) => {
+    onLevelChange?.(l);
+    setInnerLevel(l);
+  };
   const { statusOf, setStatus } = useProgress(roadmapSlug);
   const done = statusOf(skillId) === "done";
   const visible = sections.filter((s) => s.level <= level);

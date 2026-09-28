@@ -174,6 +174,7 @@ export const CONCEPT_ICONS: Record<string, IconType> = {
   "llm-systems": BrainCircuit,
   "ai-safety": Scale,
   // DevOps
+  devops: InfinityIcon,
   networking: Network,
   cicd: Cog,
   "container-registry": Container,

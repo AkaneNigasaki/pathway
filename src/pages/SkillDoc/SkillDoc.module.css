@@ -92,38 +92,6 @@
   color: var(--faint);
 }
 
-.toc ol {
-  list-style: none;
-  margin: 0 0 1rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.toc a {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.6rem;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  color: var(--muted);
-  transition: color var(--dur-short) var(--ease-standard),
-    background-color var(--dur-short) var(--ease-standard);
-}
-
-.toc a:hover {
-  color: var(--foreground);
-  background: var(--surface-soft);
-}
-
-.tocNum {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--faint);
-}
-
 .backLink {
   display: inline-flex;
   align-items: center;
@@ -557,8 +525,7 @@
   .checklist li,
   .project,
   .resources a,
-  .nextCta,
-  .toc a {
+  .nextCta {
     transition: none;
   }
 

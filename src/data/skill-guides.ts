@@ -228,7 +228,6 @@ export const SKILL_GUIDES: Record<string, Record<string, SkillGuide>> = {
     ...GUIDES_A,
     ...GUIDES_B,
     n8n: N8N_GUIDE,
-    cloud: GUIDES_DEVOPS["cloud"],
   },
   "frontend-developer": GUIDES_FRONTEND,
   "backend-developer": GUIDES_BACKEND,

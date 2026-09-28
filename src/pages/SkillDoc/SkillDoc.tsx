@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   LuArrowLeft as ArrowLeft,
   LuArrowRight as ArrowRight,
@@ -18,6 +19,8 @@ import {
 import { Reveal } from "../../components/Reveal/Reveal";
 import { renderRichText } from "../../components/RichText/RichText";
 import { LearningPage } from "../../components/LearningPage/LearningPage";
+import { SectionMap } from "../../components/SectionMap/SectionMap";
+import type { MapSection } from "../../components/SectionMap/SectionMap";
 import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
 import { NotFound } from "../NotFound/NotFound";
 import { getRoadmap, skillMap } from "../../data/roadmaps";
@@ -25,18 +28,24 @@ import { getSkillGuide } from "../../data/skill-guides";
 import { getEnvironment } from "../../data/doc-environment";
 import { NODE_TYPE_LABEL, SKILL_LEVEL_LABEL } from "../../types";
 import type { SkillProject } from "../../types";
+import type { LearningLevel } from "../../data/skill-guides";
 import styles from "./SkillDoc.module.css";
-
-interface DocSection {
-  id: string;
-  label: string;
-}
 
 export function SkillDoc() {
   const { roadmapSlug = "", skillId = "" } = useParams();
   const roadmap = getRoadmap(roadmapSlug);
   const skill = roadmap?.skills.find((s) => s.id === skillId);
   const guide = getSkillGuide(roadmapSlug, skillId);
+  const [level, setLevel] = useState<LearningLevel>(1);
+
+  // Arrivée via une ancre profonde (#learn-xxx, recherche ou lien partagé) :
+  // monter au niveau requis pour que la section existe.
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, "");
+    const target = guide?.learning?.find((s) => `learn-${s.id}` === hash);
+    if (target && target.level > 1) setLevel(target.level);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!roadmap || !skill) {
     return <NotFound />;
@@ -55,9 +64,13 @@ export function SkillDoc() {
   const learningSections = guide?.learning ?? [];
   const hasLearning = learningSections.length > 0;
 
-  const sections: DocSection[] = hasLearning
+  const sections: MapSection[] = hasLearning
     ? [
-        ...learningSections.map((s) => ({ id: `learn-${s.id}`, label: s.title })),
+        ...learningSections.map((s) => ({
+          id: `learn-${s.id}`,
+          label: s.title,
+          level: s.level,
+        })),
         ...(prereqs.length ? [{ id: "prerequis", label: "Prérequis" }] : []),
         ...(skill.resources.length ? [{ id: "ressources", label: "Ressources" }] : []),
       ]
@@ -129,16 +142,13 @@ export function SkillDoc() {
         <div className={styles.layout}>
           <aside className={styles.toc} aria-label="Sommaire">
             <p className={styles.tocTitle}>Sommaire</p>
-            <ol>
-              {sections.map((s, i) => (
-                <li key={s.id}>
-                  <a href={`#${s.id}`}>
-                    <span className={styles.tocNum}>{String(i + 1).padStart(2, "0")}</span>
-                    {s.label}
-                  </a>
-                </li>
-              ))}
-            </ol>
+            <SectionMap
+              sections={sections}
+              level={level}
+              onSelect={(s) => {
+                if (s.level && s.level > level) setLevel(s.level);
+              }}
+            />
             <Link to={`/roadmaps/${roadmap.slug}`} className={styles.backLink}>
               <ArrowLeft size={14} aria-hidden="true" /> Retour à la roadmap
             </Link>
@@ -151,6 +161,8 @@ export function SkillDoc() {
                 roadmapSlug={roadmap.slug}
                 skillId={skill.id}
                 skillName={skill.name}
+                level={level}
+                onLevelChange={setLevel}
               />
             ) : (
               <>

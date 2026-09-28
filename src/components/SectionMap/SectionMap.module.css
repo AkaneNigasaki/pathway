@@ -1,0 +1,131 @@
+/* Graphe de nœuds du sommaire : colonne vertébrale + un nœud par section. */
+
+.spine {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* La colonne vertébrale */
+.spine::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* Palier de niveau, façon étape de roadmap */
+.stage {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.85rem 0 0.35rem 1.6rem;
+}
+
+.stageName {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stageHint {
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+.node {
+  position: relative;
+}
+
+.node a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 40px;
+  padding: 0.45rem 0.6rem 0.45rem 0;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+  transition: color var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard);
+}
+
+.node a:hover {
+  color: var(--foreground);
+  background: var(--surface-soft);
+}
+
+/* Le nœud sur la colonne */
+.dot {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--faint);
+  background: var(--surface);
+  transition: border-color var(--dur-short) var(--ease-standard),
+    background-color var(--dur-short) var(--ease-standard),
+    box-shadow var(--dur-short) var(--ease-standard);
+}
+
+.node a:hover .dot {
+  border-color: var(--accent);
+}
+
+.num {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--faint);
+  min-width: 1.6rem;
+}
+
+.label {
+  flex: 1;
+}
+
+/* Sections des niveaux supérieurs : estompées, comme la suite du parcours */
+.future {
+  opacity: 0.5;
+}
+
+.future a:hover {
+  opacity: 1;
+}
+
+/* Section actuellement visible : nœud doré, façon roadmap.sh */
+.active a {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.active .dot {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.active .num {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node a,
+  .dot {
+    transition: none;
+  }
+}
