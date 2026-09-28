@@ -171,20 +171,29 @@ function BlockView({ block }: { block: LearningBlock }) {
   }
 }
 
-function SectionView({ section, defaultOpen }: { section: LearningSection; defaultOpen: boolean }) {
+function SectionView({
+  section,
+  defaultOpen,
+  focused,
+}: {
+  section: LearningSection;
+  defaultOpen: boolean;
+  focused: boolean;
+}) {
   const [open, setOpen] = useState(defaultOpen);
 
-  // Arrivée via une ancre (#learn-xxx, recherche ou sommaire) : déplier et cadrer.
+  // Section visée par une ancre (#learn-xxx, recherche ou sommaire) :
+  // déplier et cadrer, y compris quand l'ancre change sans remontage.
   useEffect(() => {
-    if (window.location.hash !== `#learn-${section.id}`) return;
+    if (!focused) return;
     setOpen(true);
     window.setTimeout(() => {
       document
         .getElementById(`learn-${section.id}`)
         ?.scrollIntoView({ block: "start" });
-    }, 60);
+    }, 80);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [focused]);
   return (
     <div id={`learn-${section.id}`} className={styles.section}>
       <button
@@ -223,6 +232,8 @@ interface LearningPageProps {
   /** Niveau contrôlé par le parent (SkillDoc, pour synchroniser le sommaire). */
   level?: LearningLevel;
   onLevelChange?: (level: LearningLevel) => void;
+  /** Id d'ancre à cadrer/déplier (sans le #), ex. « learn-ownership ». */
+  focusSectionId?: string | null;
 }
 
 export function LearningPage({
@@ -232,6 +243,7 @@ export function LearningPage({
   skillName,
   level: controlledLevel,
   onLevelChange,
+  focusSectionId = null,
 }: LearningPageProps) {
   const [innerLevel, setInnerLevel] = useState<LearningLevel>(1);
   const level = controlledLevel ?? innerLevel;
@@ -279,7 +291,12 @@ export function LearningPage({
 
       <div className={styles.sections}>
         {visible.map((s, i) => (
-          <SectionView key={s.id} section={s} defaultOpen={i === 0} />
+          <SectionView
+            key={s.id}
+            section={s}
+            defaultOpen={i === 0}
+            focused={focusSectionId === `learn-${s.id}`}
+          />
         ))}
       </div>
 

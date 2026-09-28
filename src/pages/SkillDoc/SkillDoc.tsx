@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   LuArrowLeft as ArrowLeft,
@@ -37,15 +37,17 @@ export function SkillDoc() {
   const skill = roadmap?.skills.find((s) => s.id === skillId);
   const guide = getSkillGuide(roadmapSlug, skillId);
   const [level, setLevel] = useState<LearningLevel>(1);
+  const { hash } = useLocation();
+  // Section visée par l'ancre (recherche, sommaire, lien partagé).
+  const focusId = hash.replace(/^#/, "") || null;
 
-  // Arrivée via une ancre profonde (#learn-xxx, recherche ou lien partagé) :
-  // monter au niveau requis pour que la section existe.
+  // L'ancre peut arriver après le montage (navigation interne) : monter au
+  // niveau requis pour que la section ciblée existe dans le DOM.
   useEffect(() => {
-    const hash = window.location.hash.replace(/^#/, "");
-    const target = guide?.learning?.find((s) => `learn-${s.id}` === hash);
-    if (target && target.level > 1) setLevel(target.level);
+    const target = guide?.learning?.find((s) => `learn-${s.id}` === focusId);
+    if (target && target.level > level) setLevel(target.level);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [focusId]);
 
   if (!roadmap || !skill) {
     return <NotFound />;
@@ -163,6 +165,7 @@ export function SkillDoc() {
                 skillName={skill.name}
                 level={level}
                 onLevelChange={setLevel}
+                focusSectionId={focusId}
               />
             ) : (
               <>
