@@ -102,10 +102,12 @@ export function RoadmapJourney({
       .filter((g) => g.skills.length > 0);
   }, [roadmap]);
 
-  /** Mise en page déterministe (aucune mesure DOM). */
+  /** Mise en page déterministe (aucune mesure DOM). Uniquement pour desktop :
+   *  sur mobile, le rendu est en flux (aucun positionnement absolu). */
   const layout = useMemo(() => {
     if (width <= 0 || stages.length === 0) return null;
     const mobile = width < MOBILE_BP;
+    if (mobile) return { mobile: true as const, placed: [], totalH: 0, road: "" };
     const placed: PlacedStage[] = [];
     let y = TOP_PAD;
 
@@ -113,35 +115,20 @@ export function RoadmapJourney({
       const n = g.skills.length;
       const stackH = n * CHIP_H + (n - 1) * CHIP_GAP;
       const chips: PlacedChip[] = [];
-
-      if (mobile) {
-        const chipW = Math.min(width - 56, 330);
-        const chipX = (width - chipW) / 2;
-        const mileX = width / 2;
-        const mileY = y + MILE_H / 2;
-        const stackTop = y + MILE_H + 30;
-        g.skills.forEach((skill, k) => {
-          chips.push({ skill, x: chipX, y: stackTop + k * (CHIP_H + CHIP_GAP), w: chipW });
-        });
-        const blockH = MILE_H + 30 + stackH;
-        placed.push({ stage: g.stage, index: i, mileX, mileY, side: "center", chips });
-        y += blockH + STAGE_GAP;
-      } else {
-        const chipW = Math.min(Math.max(width * 0.3, 180), 300);
-        const margin = Math.max(20, width * 0.05);
-        const side: "left" | "right" = i % 2 === 0 ? "right" : "left";
-        const windAmp = Math.min(56, width * 0.07);
-        const mileX = width / 2 + (side === "right" ? -windAmp : windAmp);
-        const blockH = Math.max(MILE_H, stackH) + 12;
-        const mileY = y + blockH / 2;
-        const chipX = side === "left" ? margin : width - margin - chipW;
-        const stackTop = y + (blockH - stackH) / 2;
-        g.skills.forEach((skill, k) => {
-          chips.push({ skill, x: chipX, y: stackTop + k * (CHIP_H + CHIP_GAP), w: chipW });
-        });
-        placed.push({ stage: g.stage, index: i, mileX, mileY, side, chips });
-        y += blockH + STAGE_GAP;
-      }
+      const chipW = Math.min(Math.max(width * 0.3, 180), 300);
+      const margin = Math.max(20, width * 0.05);
+      const side: "left" | "right" = i % 2 === 0 ? "right" : "left";
+      const windAmp = Math.min(56, width * 0.07);
+      const mileX = width / 2 + (side === "right" ? -windAmp : windAmp);
+      const blockH = Math.max(MILE_H, stackH) + 12;
+      const mileY = y + blockH / 2;
+      const chipX = side === "left" ? margin : width - margin - chipW;
+      const stackTop = y + (blockH - stackH) / 2;
+      g.skills.forEach((skill, k) => {
+        chips.push({ skill, x: chipX, y: stackTop + k * (CHIP_H + CHIP_GAP), w: chipW });
+      });
+      placed.push({ stage: g.stage, index: i, mileX, mileY, side, chips });
+      y += blockH + STAGE_GAP;
     });
 
     const totalH = y - STAGE_GAP + BOTTOM_PAD;
@@ -150,9 +137,10 @@ export function RoadmapJourney({
       ...placed.map((p) => ({ x: p.mileX, y: p.mileY })),
       { x: placed[placed.length - 1].mileX, y: totalH - 28 },
     ];
-    return { placed, totalH, road: smoothPath(roadPts), mobile };
+    return { placed, totalH, road: smoothPath(roadPts), mobile: false as const };
   }, [width, stages]);
 
+  const isMobile = width > 0 && width < MOBILE_BP;
   const dimmed = (stageId: string) =>
     highlightStage !== null && highlightStage !== stageId;
 
@@ -207,6 +195,42 @@ export function RoadmapJourney({
             </section>
           ))}
         </div>
+      ) : isMobile ? (
+        /* Mobile : vraie roadmap verticale en flux — aucun positionnement
+           absolu, le texte peut revenir à la ligne, rien ne déborde. */
+        <div
+          className={styles.mJourney}
+          role="list"
+          aria-label={`Parcours ${roadmap.title}, ${stages.length} étapes`}
+        >
+          <div className={styles.mStart} aria-hidden="true">
+            <Lightbulb size={20} />
+          </div>
+          {stages.map((g, i) => (
+            <section
+              key={g.stage.id}
+              className={`${styles.mStage} ${dimmed(g.stage.id) ? styles.dimmed : ""}`}
+              aria-label={`Étape ${i + 1} : ${g.stage.label}`}
+            >
+              <div className={styles.mMilestone} role="listitem">
+                <span className={`${styles.mileNum} mono`}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.mileLabel}>{g.stage.label}</span>
+                <span className={`${styles.mileCount} mono`}>{g.skills.length}</span>
+              </div>
+              <div className={styles.mChips} role="list">
+                {g.skills.map((s) => (
+                  <JourneyChip
+                    key={s.id}
+                    skill={s}
+                    status={status[s.id] ?? null}
+                    selected={selectedId === s.id}
+                    onSelect={onSelect}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
       ) : (
         <div
           className={styles.canvas}
@@ -214,13 +238,13 @@ export function RoadmapJourney({
           role="list"
           aria-label={`Parcours ${roadmap.title}, ${stages.length} étapes`}
         >
-          {layout && (
+          {layout && !layout.mobile && (
             <svg
               className={styles.road}
-              width={width}
-              height={layout.totalH}
+              style={{ height: layout.totalH }}
               viewBox={`0 0 ${width} ${layout.totalH}`}
               aria-hidden="true"
+              preserveAspectRatio="xMidYMin meet"
             >
               <path d={layout.road} className={styles.roadPath} />
               {!layout.mobile &&

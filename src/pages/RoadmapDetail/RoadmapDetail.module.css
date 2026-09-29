@@ -160,23 +160,8 @@
   position: sticky;
   top: calc(var(--nav-height-scrolled) + 16px);
   z-index: 40;
-}
-
-/* Desktop : barre pleine largeur pour que toutes les étapes soient visibles. */
-@media (min-width: 1024px) {
-  .stageStrip {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-  }
-
-  .stages {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    justify-content: center;
-    padding-left: max(1rem, calc((100vw - 1400px) / 2));
-    padding-right: max(1rem, calc((100vw - 1400px) / 2));
-  }
+  /* Reste dans le conteneur : le scroll est interne à .stages,
+     jamais global (pas de 100vw qui déborde avec la scrollbar). */
 }
 
 .stages {
@@ -386,6 +371,19 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 640px) {
+  .viewBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .viewToggle {
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
 .roadmapKicker {
   font-size: 0.78rem;
   font-weight: 700;
@@ -396,7 +394,10 @@
 }
 
 .viewToggle {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: auto;
+  max-width: 420px;
   padding: 3px;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
@@ -411,6 +412,7 @@
   font-weight: 600;
   color: var(--muted);
   cursor: pointer;
+  white-space: nowrap;
   transition: background-color 180ms ease, color 180ms ease;
 }
 
