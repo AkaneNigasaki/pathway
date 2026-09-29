@@ -68,7 +68,7 @@
   --primary: #1a73e8;
   --primary-bright: #4b8bf5;
   --accent-gold: #8a6d1f;
-  --accent-red: #1a73e8;
+  --accent-red: var(--accent-gold);
   --card: #ffffff;
   --surface-elevated: #f1f3f4;
   --border-subtle: #e8eaed;
@@ -101,7 +101,7 @@
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
   --accent-faint: color-mix(in srgb, var(--accent) 7%, transparent);
 
-  --navy: #1a1860;
+  --navy: #123b63;
 
   /* Pastilles du thème (jaune/bleu uniquement) */
   --tint-lavender: #4a3a12;
