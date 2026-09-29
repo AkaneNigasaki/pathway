@@ -161,31 +161,6 @@ export function RoadmapDetail() {
           </div>
         </Reveal>
 
-        {nextUp.length > 0 && (
-          <Reveal className={styles.nextUp}>
-            <h2 className={styles.nextUpTitle}>Prochaines étapes</h2>
-            <p className={styles.nextUpHint}>
-              Vos prérequis sont validés : plusieurs directions s'ouvrent, à vous de choisir.
-            </p>
-            <div className={styles.suggestGrid}>
-              {nextUp.map((s) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  className={styles.suggestCard}
-                  onClick={() => setSelected(s)}
-                >
-                  <span className={styles.suggestName}>{s.name}</span>
-                  <span className={styles.suggestTag}>{s.tagline}</span>
-                  <span className={styles.suggestGo}>
-                    Explorer <ArrowRight size={14} aria-hidden="true" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          </Reveal>
-        )}
-
         <Reveal className={styles.stageStrip} delay={80}>
           <nav aria-label="Étapes du parcours">
             <ol className={styles.stages}>
@@ -326,6 +301,31 @@ export function RoadmapDetail() {
                     <small>{c.tagline}</small>
                   </span>
                 </Link>
+              ))}
+            </div>
+          </Reveal>
+        )}
+
+        {nextUp.length > 0 && (
+          <Reveal className={styles.nextUp}>
+            <h2 className={styles.nextUpTitle}>Prochaines étapes</h2>
+            <p className={styles.nextUpHint}>
+              Vos prérequis sont validés : plusieurs directions s'ouvrent, à vous de choisir.
+            </p>
+            <div className={styles.suggestGrid}>
+              {nextUp.map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  className={styles.suggestCard}
+                  onClick={() => setSelected(s)}
+                >
+                  <span className={styles.suggestName}>{s.name}</span>
+                  <span className={styles.suggestTag}>{s.tagline}</span>
+                  <span className={styles.suggestGo}>
+                    Explorer <ArrowRight size={14} aria-hidden="true" />
+                  </span>
+                </button>
               ))}
             </div>
           </Reveal>
