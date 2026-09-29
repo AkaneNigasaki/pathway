@@ -72,6 +72,17 @@ export function SkillDoc() {
     if (!learningSectionsState) return;
     const target = learningSectionsState.find((s) => `learn-${s.id}` === focusId);
     if (target && target.level > level) setLevel(target.level);
+    // Fait défiler jusqu'à la section visée (clic sommaire, recherche, lien partagé).
+    if (focusId) {
+      // Attend que le niveau se soit appliqué et la section dépliée.
+      const t = setTimeout(() => {
+        const el = document.getElementById(focusId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+      return () => clearTimeout(t);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusId, learningSectionsState]);
 
