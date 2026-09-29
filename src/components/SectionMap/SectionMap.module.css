@@ -141,12 +141,11 @@
   font-weight: 700;
 }
 
-/* ── Panneau overlay : sections de la catégorie, à droite en absolute
-   (comme le panneau détail sur la page roadmap) ── */
+/* ── Panneau overlay : sections à droite du sommaire, en absolute ── */
 .overlay {
   position: absolute;
   top: 0;
-  right: calc(100% + 0.75rem);
+  left: calc(100% + 0.75rem);
   z-index: 10;
   /* Largeur suffisante pour que les cartes ne se cassent pas. */
   width: 320px;

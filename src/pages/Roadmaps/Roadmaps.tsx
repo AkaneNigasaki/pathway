@@ -1,6 +1,23 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { LuArrowRight as ArrowRight, LuSearch as Search } from "react-icons/lu";
+import type { IconType } from "react-icons";
+import {
+  LuArrowRight as ArrowRight,
+  LuBrainCircuit as Brain,
+  LuBriefcaseBusiness as Briefcase,
+  LuCode as Code,
+  LuDatabase as Database,
+  LuFlaskConical as Flask,
+  LuGamepad2 as Gamepad,
+  LuGlobe as Globe,
+  LuLayers3 as Layers,
+  LuMousePointer2 as MousePointer,
+  LuNetwork as Network,
+  LuSearch as Search,
+  LuShieldCheck as Shield,
+  LuTerminal as Terminal,
+  LuWorkflow as Workflow,
+} from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { FIELDS, getField } from "../../data/fields";
@@ -10,14 +27,26 @@ import { useAllProgress, progressPercent, countDone } from "../../hooks/useProgr
 import styles from "./Roadmaps.module.css";
 
 /** « Explore by skills » — paires (roadmap, skill) vérifiées. */
-const SKILL_CHIPS: { name: string; url: string }[] = [
-  { name: "Python", url: "/roadmaps/data-scientist?skill=python" },
-  { name: "React", url: "/roadmaps/frontend-developer?skill=react" },
-  { name: "Docker", url: "/roadmaps/devops-engineer?skill=docker" },
-  { name: "Kubernetes", url: "/roadmaps/devops-engineer?skill=kubernetes" },
-  { name: "n8n", url: "/roadmaps/informatique?skill=n8n" },
-  { name: "TypeScript", url: "/roadmaps/frontend-developer?skill=typescript" },
+const SKILL_CHIPS: { name: string; url: string; icon: IconType }[] = [
+  { name: "Python", url: "/roadmaps/data-scientist?skill=python", icon: Terminal },
+  { name: "React", url: "/roadmaps/frontend-developer?skill=react", icon: Code },
+  { name: "Docker", url: "/roadmaps/devops-engineer?skill=docker", icon: Layers },
+  { name: "Kubernetes", url: "/roadmaps/devops-engineer?skill=kubernetes", icon: Network },
+  { name: "n8n", url: "/roadmaps/informatique?skill=n8n", icon: Workflow },
+  { name: "TypeScript", url: "/roadmaps/frontend-developer?skill=typescript", icon: Flask },
 ];
+
+const CAREER_ICONS: Record<string, IconType> = {
+  "frontend-developer": Code,
+  "backend-developer": Database,
+  "devops-engineer": Network,
+  "ai-engineer": Brain,
+  "data-scientist": Flask,
+  "cybersecurity-engineer": Shield,
+  "robotics-engineer": Gamepad,
+  "software-architect": Globe,
+  "ux-designer": MousePointer,
+};
 
 export function Roadmaps() {
   const [fieldFilter, setFieldFilter] = useState<string>("all");
@@ -51,6 +80,11 @@ export function Roadmaps() {
             Des parcours structurés : définitions, prérequis, projets,
             progression et dépendances.
           </p>
+          <img
+            className={styles.heroArtwork}
+            src="/roadmaps-constellation.png"
+            alt="Constellation abstraite représentant les connexions entre les compétences"
+          />
           <div className={styles.searchBar} role="search">
             <Search size={19} aria-hidden="true" className={styles.searchIcon} />
             <label htmlFor="roadmaps-search" className={styles.srOnly}>
@@ -76,6 +110,10 @@ export function Roadmaps() {
               return (
                 <li key={c.slug}>
                   <Link to={`/careers/${c.slug}`} className={styles.tag}>
+                    {(() => {
+                      const Icon = CAREER_ICONS[c.slug] ?? Briefcase;
+                      return <Icon className={styles.tagIcon} aria-hidden="true" />;
+                    })()}
                     <span
                       className={styles.chipDot}
                       style={field ? ({ "--field-accent": field.accent } as React.CSSProperties) : undefined}
@@ -96,12 +134,14 @@ export function Roadmaps() {
             {SKILL_CHIPS.map((s) => (
               <li key={s.url}>
                 <Link to={s.url} className={`${styles.tag} mono`}>
+                  <s.icon className={styles.tagIcon} aria-hidden="true" />
                   {s.name}
                 </Link>
               </li>
             ))}
           </ul>
-          <Link to="/skills" className={styles.skillsLink}>
+            <Link to="/skills" className={styles.skillsLink}>
+              <Layers aria-hidden="true" />
             Toutes les compétences <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </Reveal>

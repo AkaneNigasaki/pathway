@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { LuArrowRight as ArrowRight, LuList as List, LuMoon as Moon, LuSearch as Search, LuSun as Sun, LuUser as User, LuX as X } from "react-icons/lu";
+import { LuArrowRight as ArrowRight, LuBell as Bell, LuBookOpen as Library, LuClock3 as History, LuHeart as Liked, LuHouse as HomeIcon, LuList as List, LuMoon as Moon, LuSquarePlay as Shorts, LuSearch as Search, LuSun as Sun, LuVideo as Videos, LuX as X } from "react-icons/lu";
 import type { Theme } from "../../types";
 import { ROADMAPS } from "../../data/roadmaps";
 import { getField } from "../../data/fields";
@@ -13,11 +13,12 @@ interface NavbarProps {
 }
 
 const LINKS = [
-  { to: "/explore", label: "Explore" },
-  { to: "/roadmaps", label: "Roadmaps" },
-  { to: "/skills", label: "Skills" },
-  { to: "/careers", label: "Métiers" },
-  { to: "/progression", label: "Progression" },
+  { to: "/explore", label: "Explore", icon: Library },
+  { to: "/roadmaps", label: "Roadmaps", icon: Shorts },
+  { to: "/skills", label: "Skills", icon: Liked },
+  { to: "/fields", label: "Filières", icon: HomeIcon },
+  { to: "/careers", label: "Métiers", icon: Videos },
+  { to: "/progression", label: "Progression", icon: History },
 ];
 
 export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
@@ -90,6 +91,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
                       `${styles.link} ${isActive ? styles.active : ""}`
                     }
                   >
+                    <l.icon size={15} aria-hidden="true" className={styles.navIcon} />
                     {l.label}
                   </NavLink>
                   <div className={styles.drop} role="menu" aria-label="Toutes les roadmaps">
@@ -128,6 +130,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
                       `${styles.link} ${isActive ? styles.active : ""}`
                     }
                   >
+                    <l.icon size={15} aria-hidden="true" className={styles.navIcon} />
                     {l.label}
                   </NavLink>
                 </li>
@@ -166,7 +169,8 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               onClick={() => navigate("/progression")}
               aria-label="Mon profil et ma progression"
             >
-              <User size={17} aria-hidden="true" />
+              <Bell size={17} aria-hidden="true" />
+              <span className={styles.navBadge} aria-label="4 notifications">4</span>
             </button>
             <button
               type="button"
