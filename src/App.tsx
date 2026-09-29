@@ -15,6 +15,7 @@ import { Skills } from "./pages/Skills/Skills";
 import { ProgressPage } from "./pages/Progress/ProgressPage";
 import { SkillDoc } from "./pages/SkillDoc/SkillDoc";
 import { NotFound } from "./pages/NotFound/NotFound";
+import { OverflowAudit } from "./pages/OverflowAudit/OverflowAudit";
 import { useTheme } from "./hooks/useTheme";
 import { useKeyboardShortcut } from "./hooks/useKeyboardShortcut";
 
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:slug" element={<CareerDetail />} />
           <Route path="/progression" element={<ProgressPage />} />
+          <Route path="/__audit" element={<OverflowAudit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
