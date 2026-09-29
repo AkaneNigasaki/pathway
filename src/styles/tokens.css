@@ -64,6 +64,18 @@
   --dur-medium: 400ms; /* M3 medium */
   --dur-long: 600ms; /* M3 long */
 
+  /* ── Système roadmap : bleu = sélection/actif, doré = compteurs ── */
+  --primary: #1a73e8;
+  --primary-bright: #4b8bf5;
+  --accent-gold: #8a6d1f;
+  --accent-red: #d93025;
+  --card: #ffffff;
+  --surface-elevated: #f1f3f4;
+  --border-subtle: #e8eaed;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-muted: #80868b;
+
   --nav-height: 76px;
   --nav-height-scrolled: 58px;
   --container: 1200px;
@@ -99,6 +111,18 @@
 
   --success: #1da85e;
   --danger: #f87171;
+
+  /* ── Système roadmap : bleu = sélection/actif, doré = compteurs ── */
+  --primary: #7c9ff5;
+  --primary-bright: #8eadff;
+  --accent-gold: #c8a94b;
+  --accent-red: #e5484d;
+  --card: #0d0f11;
+  --surface-elevated: #151619;
+  --border-subtle: #1b1d20;
+  --text-primary: #f1eee5;
+  --text-secondary: #a6a298;
+  --text-muted: #77736b;
 
   --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.3);
   --shadow-lift: 0 8px 24px rgb(0 0 0 / 0.35);

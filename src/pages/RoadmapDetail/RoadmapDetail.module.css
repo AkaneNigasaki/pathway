@@ -27,6 +27,8 @@
 .crumbSep {
   color: var(--faint);
   flex: none;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .crumbCurrent {
@@ -56,24 +58,38 @@
   margin-bottom: 1rem;
 }
 
-.field {
+.pill {
+  display: inline-block;
   font-size: var(--text-meta);
   font-weight: 700;
-  letter-spacing: 0.16em;
-  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  margin-bottom: 1.25rem;
 }
 
 .title {
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: clamp(2.75rem, 6vw, 4.75rem);
   letter-spacing: var(--tracking-display);
   margin-bottom: 1rem;
+  text-wrap: balance;
 }
 
-.tagline {
+.about {
   font-size: var(--text-lead);
   font-weight: 500;
   color: var(--foreground-soft);
   margin-bottom: 1rem;
+}
+
+.about strong {
+  color: var(--accent-gold);
+  font-weight: 700;
 }
 
 .desc {

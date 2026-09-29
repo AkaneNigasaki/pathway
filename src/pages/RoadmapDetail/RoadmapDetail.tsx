@@ -106,16 +106,10 @@ export function RoadmapDetail() {
       <div className="container">
         <Reveal>
           <nav className={styles.crumb} aria-label="Fil d'Ariane">
-            <Link to="/" className={styles.crumbLink}>Home</Link>
-            <ChevronRight size={14} aria-hidden="true" className={styles.crumbSep} />
-            {field && (
-              <>
-                <Link to={`/fields/${field.id}`} className={styles.crumbLink}>
-                  {field.name}
-                </Link>
-                <ChevronRight size={14} aria-hidden="true" className={styles.crumbSep} />
-              </>
-            )}
+            <Link to="/" className={styles.crumbLink}>Accueil</Link>
+            <span className={styles.crumbSep} aria-hidden="true">›</span>
+            <Link to="/roadmaps" className={styles.crumbLink}>Roadmaps</Link>
+            <span className={styles.crumbSep} aria-hidden="true">›</span>
             <span aria-current="page" className={styles.crumbCurrent}>
               {roadmap.title}
             </span>
@@ -129,11 +123,11 @@ export function RoadmapDetail() {
         </Reveal>
 
         <Reveal className={styles.hero}>
-          <p className={`${styles.field} fieldAccent`}>
-            {field?.name.toUpperCase()}
-          </p>
+          <p className={styles.pill}>Roadmap</p>
           <h1 className={styles.title}>{roadmap.title}</h1>
-          <p className={styles.tagline}>{roadmap.tagline}</p>
+          <p className={styles.about}>
+            Cette roadmap est consacrée à <strong>{roadmap.title}</strong>
+          </p>
           <p className={styles.desc}>{roadmap.description}</p>
 
           <div className={styles.statsGrid}>
