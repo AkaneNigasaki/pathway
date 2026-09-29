@@ -27,6 +27,9 @@ export function Hero() {
 
   return (
     <section className={styles.hero}>
+      <div className={styles.visual} aria-hidden="true">
+        <img src="/pathway-glass-orbit.png" alt="" />
+      </div>
       <div className="container">
         <div className={styles.inner}>
           <p className={styles.kicker} style={{ "--d": "0ms" } as React.CSSProperties}>
