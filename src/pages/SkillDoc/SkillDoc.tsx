@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
-  LuArrowLeft as ArrowLeft,
   LuArrowRight as ArrowRight,
   LuArrowUpRight as ArrowUpRight,
   LuBookOpen as BookOpen,
@@ -19,7 +18,7 @@ import {
 import { Reveal } from "../../components/Reveal/Reveal";
 import { renderRichText } from "../../components/RichText/RichText";
 import { LearningPage } from "../../components/LearningPage/LearningPage";
-import { SectionMap } from "../../components/SectionMap/SectionMap";
+import { DocJourney } from "../../components/DocJourney/DocJourney";
 import type { MapSection } from "../../components/SectionMap/SectionMap";
 import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
 import { NotFound } from "../NotFound/NotFound";
@@ -181,25 +180,17 @@ export function SkillDoc() {
           )}
         </Reveal>
 
-        <div className={styles.layout}>
-          <aside className={styles.toc} aria-label="Sommaire">
-            <p className={styles.tocTitle}>Sommaire</p>
-            <SectionMap
-              sections={sections}
-              level={level}
-              onSelect={(s) => {
-                if (s.level && s.level > level) setLevel(s.level);
-                // Passe par le hash : le niveau monte si besoin, la section
-                // se déplie et la page cadre son en-tête (même flux que la palette).
-                navigate({ hash: s.id });
-              }}
-            />
-            <Link to={`/roadmaps/${roadmap.slug}`} className={styles.backLink}>
-              <ArrowLeft size={14} aria-hidden="true" /> Retour à la roadmap
-            </Link>
-          </aside>
+        <DocJourney
+          sections={sections}
+          level={level}
+          activeId={focusId}
+          onSelect={(s) => {
+            if (s.level && s.level > level) setLevel(s.level);
+            navigate({ hash: s.id });
+          }}
+        />
 
-          <article className={styles.doc}>
+        <article className={styles.doc} hidden>
             {!learningReady ? (
               <div className={styles.loading} aria-live="polite" aria-busy="true">
                 <p className={styles.loadingTitle}>Chargement du guide…</p>
@@ -490,7 +481,6 @@ export function SkillDoc() {
               </div>
             </Reveal>
           </article>
-        </div>
       </div>
     </div>
   );

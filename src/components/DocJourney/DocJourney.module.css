@@ -1,0 +1,316 @@
+/* Chemin façon Softaims : fond bleu nuit, tracé crème sinueux,
+   jalons crème, sections en pilules sombres. */
+
+.journey {
+  position: relative;
+  background: #1a1860;
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+/* Nœud de départ : ampoule dans un cercle crème. */
+.startNode {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.bulbCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #f9f4db;
+  color: #eab308;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Étape : jalon + enfants ── */
+.stage {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+}
+
+/* Ligne verticale crème (le chemin) au centre de l'étape. */
+.stage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: -3rem;
+  width: 10px;
+  background: #f9f4db;
+  border-radius: 5px;
+}
+
+.side_right::before {
+  right: 25%;
+}
+
+.side_left::before {
+  left: 25%;
+}
+
+.stage:last-child::before {
+  bottom: 50%;
+}
+
+/* ── Jalon crème ── */
+.milestone {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #f9f4db;
+  color: #1a1860;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.1rem;
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  white-space: nowrap;
+}
+
+.side_right .milestone {
+  margin-left: auto;
+  margin-right: calc(25% - 70px);
+}
+
+.side_left .milestone {
+  margin-right: auto;
+  margin-left: calc(25% - 70px);
+}
+
+.milestone:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.milestone:focus-visible {
+  outline: 3px solid #efbd0b;
+  outline-offset: 3px;
+}
+
+.milestoneOpen {
+  box-shadow: 0 0 0 4px rgba(239, 189, 11, 0.4), 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.milestoneFuture {
+  opacity: 0.55;
+}
+
+.mNum {
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.mText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.mName {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.mHint {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.mCount {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.4rem;
+  border-radius: 50%;
+  background: #1a1860;
+  color: #f9f4db;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ── Enfants : pilules sombres ── */
+.children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  max-width: 320px;
+}
+
+.children_right {
+  order: -1;
+  align-items: flex-end;
+}
+
+.children_left {
+  align-items: flex-start;
+}
+
+.child {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+}
+
+.child a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: rgba(26, 24, 96, 0.6);
+  border: 1.5px solid rgba(249, 244, 219, 0.35);
+  border-radius: 10px;
+  color: #f9f4db;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+  backdrop-filter: blur(4px);
+}
+
+.child a:hover {
+  border-color: #f9f4db;
+  background: rgba(26, 24, 96, 0.85);
+  transform: translateX(4px);
+}
+
+.children_right .child a:hover {
+  transform: translateX(-4px);
+}
+
+.child a:focus-visible {
+  outline: 2px solid #efbd0b;
+  outline-offset: 2px;
+}
+
+.childActive a {
+  border-color: #efbd0b;
+  background: rgba(239, 189, 11, 0.15);
+  font-weight: 600;
+}
+
+.childDone .childDot {
+  background: #efbd0b;
+  border-color: #efbd0b;
+  color: #1a1860;
+}
+
+.childFuture {
+  opacity: 0.55;
+}
+
+.childDot {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(249, 244, 219, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.childLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Courbe pointillée vers le jalon. */
+.wire {
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 40px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.children_right .wire {
+  left: 100%;
+  transform: translateY(-50%);
+}
+
+.children_left .wire {
+  right: 100%;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.wirePath {
+  fill: none;
+  stroke: rgba(249, 244, 219, 0.6);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+  stroke-linecap: round;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .journey {
+    padding: 2rem 1rem;
+  }
+
+  .stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .stage::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .side_right .milestone,
+  .side_left .milestone {
+    margin: 0;
+  }
+
+  .children {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .children_right {
+    order: 0;
+    align-items: stretch;
+  }
+
+  .wire {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .milestone,
+  .child a {
+    transition: none;
+  }
+
+  .milestone:hover,
+  .child a:hover {
+    transform: none;
+  }
+}

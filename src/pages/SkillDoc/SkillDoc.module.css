@@ -1,6 +1,8 @@
 .page {
   padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(4rem, 8vw, 6rem);
   scroll-margin-top: 0;
+  /* Design façon Softaims : fond bleu nuit. */
+  background: #1a1860;
   /* Accent de la page de leçon : or sobre imposé (directive Akane).
      Défini ici pour couvrir le sommaire (aside) ET le contenu. */
   --accent: #c9a96e;
