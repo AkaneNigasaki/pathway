@@ -145,7 +145,10 @@ export function RoadmapJourney({
     highlightStage !== null && highlightStage !== stageId;
 
   return (
-    <div className={styles.journey} ref={wrapRef}>
+    <div
+      className={`${styles.journey} ${isMobile ? styles.journeyMobile : ""}`}
+      ref={wrapRef}
+    >
       <div className={styles.dirBar}>
         <p className={styles.dirLabel}>Disposition des compétences</p>
         <div className={styles.dirToggle} role="group" aria-label="Disposition des compétences">
