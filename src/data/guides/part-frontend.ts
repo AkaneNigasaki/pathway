@@ -1,18 +1,4 @@
 import type { SkillGuide } from "../skill-guides";
-import { LEARNING_HTML } from "./learning-html";
-import { LEARNING_CSS } from "./learning-css";
-import { LEARNING_JAVASCRIPT } from "./learning-javascript";
-import { LEARNING_REACT } from "./learning-react";
-import { LEARNING_ANGULAR } from "./learning-angular";
-import { LEARNING_VUE } from "./learning-vue";
-import { LEARNING_ACCESSIBILITY } from "./learning-accessibility";
-import { LEARNING_DESIGN_SYSTEMS } from "./learning-design-systems";
-import { LEARNING_FRONTEND_ARCHITECTURE } from "./learning-frontend-architecture";
-import { LEARNING_NEXTJS } from "./learning-nextjs";
-import { LEARNING_PERFORMANCE } from "./learning-performance";
-import { LEARNING_STATE_MANAGEMENT } from "./learning-state-management";
-import { LEARNING_TESTING } from "./learning-testing";
-import { LEARNING_TYPESCRIPT_FRONTEND } from "./learning-typescript-frontend";
 
 /**
  * Guides pédagogiques — frontend : parcours Frontend Developer.
@@ -30,7 +16,7 @@ import { LEARNING_TYPESCRIPT_FRONTEND } from "./learning-typescript-frontend";
 export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ html
   html: {
-    learning: LEARNING_HTML,
+    learning: () => import("./learning-html").then((m) => m.LEARNING_HTML),
     definition:
       "HTML (HyperText Markup Language) est le langage de balisage qui structure le contenu des pages web : titres, paragraphes, liens, images, formulaires. Chaque élément décrit le sens du contenu, pas son apparence.",
     whyLearn:
@@ -88,7 +74,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ css
   css: {
-    learning: LEARNING_CSS,
+    learning: () => import("./learning-css").then((m) => m.LEARNING_CSS),
     definition:
       "CSS (Cascading Style Sheets) est le langage qui décrit la présentation des pages web : mise en page, couleurs, typographie, espacements et animations. Il sépare le fond (HTML) de la forme.",
     whyLearn:
@@ -146,7 +132,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ javascript
   javascript: {
-    learning: LEARNING_JAVASCRIPT,
+    learning: () => import("./learning-javascript").then((m) => m.LEARNING_JAVASCRIPT),
     definition:
       "JavaScript est le langage de programmation du web : il rend les pages interactives en manipulant le DOM, en réagissant aux événements et en dialoguant avec des serveurs via des APIs.",
     whyLearn:
@@ -208,7 +194,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ typescript
   typescript: {
-    learning: LEARNING_TYPESCRIPT_FRONTEND,
+    learning: () => import("./learning-typescript-frontend").then((m) => m.LEARNING_TYPESCRIPT_FRONTEND),
     definition:
       "TypeScript est un sur-ensemble typé de JavaScript : il ajoute des types statiques vérifiés à la compilation, puis se compile en JavaScript standard exécutable partout.",
     whyLearn:
@@ -270,7 +256,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ react
   react: {
-    learning: LEARNING_REACT,
+    learning: () => import("./learning-react").then((m) => m.LEARNING_REACT),
     definition:
       "React est une bibliothèque JavaScript pour construire des interfaces à partir de composants : des fonctions qui décrivent l'UI en fonction de l'état, et que React met à jour efficacement quand l'état change.",
     whyLearn:
@@ -332,7 +318,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ nextjs
   nextjs: {
-    learning: LEARNING_NEXTJS,
+    learning: () => import("./learning-nextjs").then((m) => m.LEARNING_NEXTJS),
     definition:
       "Next.js est un framework React qui ajoute le rendu côté serveur, le routage par fichiers et les optimisations de production : l'outillage standard pour des applications React sérieuses.",
     whyLearn:
@@ -395,7 +381,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ testing
   testing: {
-    learning: LEARNING_TESTING,
+    learning: () => import("./learning-testing").then((m) => m.LEARNING_TESTING),
     definition:
       "Le testing consiste à vérifier automatiquement que le code se comporte comme prévu : tests unitaires, d'intégration et end-to-end forment un filet de sécurité contre les régressions.",
     whyLearn:
@@ -459,7 +445,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ state-management
   "state-management": {
-    learning: LEARNING_STATE_MANAGEMENT,
+    learning: () => import("./learning-state-management").then((m) => m.LEARNING_STATE_MANAGEMENT),
     definition:
       "Le state management organise les données d'une application frontend : où vit l'état, comment il circule entre composants, comment il se synchronise avec le serveur.",
     whyLearn:
@@ -521,7 +507,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ performance
   performance: {
-    learning: LEARNING_PERFORMANCE,
+    learning: () => import("./learning-performance").then((m) => m.LEARNING_PERFORMANCE),
     definition:
       "La performance web mesure la rapidité ressentie d'une application : temps de chargement, réactivité aux interactions, fluidité visuelle. Les Core Web Vitals en sont la mesure standard.",
     whyLearn:
@@ -585,7 +571,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ accessibility
   accessibility: {
-    learning: LEARNING_ACCESSIBILITY,
+    learning: () => import("./learning-accessibility").then((m) => m.LEARNING_ACCESSIBILITY),
     definition:
       "L'accessibilité web consiste à rendre les interfaces utilisables par tout le monde : navigation au clavier, lecteurs d'écran, contrastes suffisants, alternatives textuelles.",
     whyLearn:
@@ -649,7 +635,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ frontend-architecture
   "frontend-architecture": {
-    learning: LEARNING_FRONTEND_ARCHITECTURE,
+    learning: () => import("./learning-frontend-architecture").then((m) => m.LEARNING_FRONTEND_ARCHITECTURE),
     definition:
       "L'architecture frontend définit l'organisation d'une application : découpage en modules, frontières entre couches, conventions partagées et décisions documentées pour rester maintenable quand l'équipe grandit.",
     whyLearn:
@@ -715,7 +701,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ design-systems
   "design-systems": {
-    learning: LEARNING_DESIGN_SYSTEMS,
+    learning: () => import("./learning-design-systems").then((m) => m.LEARNING_DESIGN_SYSTEMS),
     definition:
       "Un design system est l'ensemble des tokens, composants et règles qui garantissent la cohérence d'un produit : une source unique de vérité partagée entre design et code.",
     whyLearn:
@@ -779,7 +765,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ vue
   vue: {
-    learning: LEARNING_VUE,
+    learning: () => import("./learning-vue").then((m) => m.LEARNING_VUE),
     "conceptDetails": [
       {
         "definition": "Le cœur de Vue : `ref()` et `reactive()` encapsulent des valeurs dans des proxies JavaScript qui notifient le framework à chaque modification, déclenchant un re-rendu ciblé sans manipulation manuelle du DOM.",
@@ -877,7 +863,7 @@ export const GUIDES_FRONTEND: Record<string, SkillGuide> = {
 ,
   // ------------------------------------------------------------------ angular
   angular: {
-    learning: LEARNING_ANGULAR,
+    learning: () => import("./learning-angular").then((m) => m.LEARNING_ANGULAR),
     "conceptDetails": [
       {
         "definition": "Classes TypeScript décorées avec `@Component` qui associent un template HTML, des styles et de la logique. Chaque composant contrôle une portion de l'écran ; l'application entière est un arbre de composants.",

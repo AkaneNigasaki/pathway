@@ -1,17 +1,5 @@
 import type { SkillGuide } from "../skill-guides";
 
-import { LEARNING_LINUX } from "./learning-linux";
-import { LEARNING_CONTROLE } from "./learning-controle";
-import { LEARNING_ELECTRONIQUE } from "./learning-electronique";
-import { LEARNING_INTEGRATION } from "./learning-integration";
-import { LEARNING_MATHS } from "./learning-maths";
-import { LEARNING_MECANIQUE } from "./learning-mecanique";
-import { LEARNING_PERCEPTION } from "./learning-perception";
-import { LEARNING_PHYSIQUE } from "./learning-physique";
-import { LEARNING_PLANIFICATION } from "./learning-planification";
-import { LEARNING_PYTHON } from "./learning-python";
-import { LEARNING_ROS } from "./learning-ros";
-import { LEARNING_SYSTEMES_EMBARQUES } from "./learning-systemes-embarques";
 /**
  * Guides pédagogiques — robotique.
  *
@@ -28,7 +16,7 @@ import { LEARNING_SYSTEMES_EMBARQUES } from "./learning-systemes-embarques";
 export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
   // --------------------------------------------------------------------- maths
   maths: {
-    learning: LEARNING_MATHS,
+    learning: () => import("./learning-maths").then((m) => m.LEARNING_MATHS),
     definition:
       "Les mathématiques de la robotique décrivent le mouvement : l'algèbre linéaire positionne le robot dans l'espace, la géométrie 3D oriente ses articulations, les probabilités gèrent l'incertitude des capteurs.",
     whyLearn:
@@ -80,7 +68,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ physique
   physique: {
-    learning: LEARNING_PHYSIQUE,
+    learning: () => import("./learning-physique").then((m) => m.LEARNING_PHYSIQUE),
     definition:
       "La physique impose les lois auxquelles tout robot obéit : mécanique du solide pour les structures, dynamique pour les mouvements, et principes des capteurs et actionneurs qui relient le logiciel au monde réel.",
     whyLearn:
@@ -132,7 +120,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- python
   python: {
-    learning: LEARNING_PYTHON,
+    learning: () => import("./learning-python").then((m) => m.LEARNING_PYTHON),
     definition:
       "Python est le langage quotidien de la robotique moderne : avec NumPy pour le calcul et l'écosystème ROS, il sert au prototypage rapide, au traitement des capteurs et à l'orchestration des systèmes.",
     whyLearn:
@@ -184,7 +172,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------------- linux
   linux: {
-    learning: LEARNING_LINUX,
+    learning: () => import("./learning-linux").then((m) => m.LEARNING_LINUX),
     definition:
       "Les robots tournent sous Linux : c'est le système qui héberge ROS, gère le réseau entre les composants et s'exécute sur des cartes embarquées comme Raspberry Pi ou Jetson.",
     whyLearn:
@@ -236,7 +224,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- electronique
   electronique: {
-    learning: LEARNING_ELECTRONIQUE,
+    learning: () => import("./learning-electronique").then((m) => m.LEARNING_ELECTRONIQUE),
     definition:
       "L'électronique est le système nerveux du robot : circuits, microcontrôleurs et bus de communication relient les capteurs et actionneurs au logiciel de contrôle.",
     whyLearn:
@@ -292,7 +280,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------- mecanique
   mecanique: {
-    learning: LEARNING_MECANIQUE,
+    learning: () => import("./learning-mecanique").then((m) => m.LEARNING_MECANIQUE),
     definition:
       "La mécanique robotique conçoit la structure physique du robot : modélisation CAO, cinématique des articulations, choix des matériaux et fabrication (impression 3D, usinage).",
     whyLearn:
@@ -350,7 +338,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // --------------------------------------------------------- systemes-embarques
   "systemes-embarques": {
-    learning: LEARNING_SYSTEMES_EMBARQUES,
+    learning: () => import("./learning-systemes-embarques").then((m) => m.LEARNING_SYSTEMES_EMBARQUES),
     definition:
       "Les systèmes embarqués sont le logiciel au plus près du hardware : firmware de microcontrôleur, temps réel, interruptions, drivers. C'est le code qui fait tourner le moteur, avec des contraintes de mémoire et de timing strictes.",
     whyLearn:
@@ -408,7 +396,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------------- ros
   ros: {
-    learning: LEARNING_ROS,
+    learning: () => import("./learning-ros").then((m) => m.LEARNING_ROS),
     definition:
       "ROS 2 (Robot Operating System) est le framework standard de la robotique : il structure un robot en nœuds modulaires qui échangent des messages (topics), appellent des services et se décrivent en URDF.",
     whyLearn:
@@ -466,7 +454,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------- controle
   controle: {
-    learning: LEARNING_CONTROLE,
+    learning: () => import("./learning-controle").then((m) => m.LEARNING_CONTROLE),
     definition:
       "Le contrôle (automatique) conçoit les lois qui transforment une consigne en mouvement précis : le régulateur PID corrige l'erreur en continu, les méthodes avancées (MPC, espace d'état) optimisent le comportement.",
     whyLearn:
@@ -524,7 +512,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ----------------------------------------------------------------- perception
   perception: {
-    learning: LEARNING_PERCEPTION,
+    learning: () => import("./learning-perception").then((m) => m.LEARNING_PERCEPTION),
     definition:
       "La perception donne au robot une représentation du monde : vision par ordinateur pour voir, LiDAR pour mesurer, fusion de capteurs et filtres probabilistes pour se localiser.",
     whyLearn:
@@ -582,7 +570,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // -------------------------------------------------------------- planification
   planification: {
-    learning: LEARNING_PLANIFICATION,
+    learning: () => import("./learning-planification").then((m) => m.LEARNING_PLANIFICATION),
     definition:
       "La planification décide où le robot doit aller : algorithmes de recherche de chemin (A*, RRT), navigation avec évitement d'obstacles, planification de tâches. C'est l'autonomie décisionnelle.",
     whyLearn:
@@ -640,7 +628,7 @@ export const GUIDES_ROBOTICS: Record<string, SkillGuide> = {
 
   // ---------------------------------------------------------------- integration
   integration: {
-    learning: LEARNING_INTEGRATION,
+    learning: () => import("./learning-integration").then((m) => m.LEARNING_INTEGRATION),
     definition:
       "L'intégration système assemble hardware, logiciel et autonomie en un robot fiable : tests de bout en bout, sécurité, téléopération, maintenance. C'est le passage du prototype au produit.",
     whyLearn:

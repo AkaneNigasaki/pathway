@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LuBriefcase as Briefcase, LuCornerDownLeft as CornerDownLeft, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuZap as Zap, LuBookOpen as BookOpen } from "react-icons/lu";
 import type { SearchItem, SearchItemType } from "../../types";
-import { SEARCH_INDEX, searchItems } from "../../data/search";
+import { getSearchIndex, searchItems } from "../../data/search";
 import { getField } from "../../data/fields";
 import { SkillIcon, searchItemSkill } from "../SkillIcon/SkillIcon";
 import styles from "./CommandPalette.module.css";
@@ -22,11 +22,11 @@ const TYPE_META: Record<SearchItemType, { label: string; icon: typeof Map }> = {
 
 const TYPE_ORDER: SearchItemType[] = ["roadmap", "field", "career", "skill", "learning"];
 
-function suggestions(): SearchItem[] {
+function suggestions(index: SearchItem[]): SearchItem[] {
   // Quand la recherche est vide : un aperçu rapide par catégorie.
   const out: SearchItem[] = [];
   for (const t of TYPE_ORDER) {
-    out.push(...SEARCH_INDEX.filter((i) => i.type === t).slice(0, 2));
+    out.push(...index.filter((i) => i.type === t).slice(0, 2));
   }
   return out;
 }
@@ -35,13 +35,34 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [index, setIndex] = useState<SearchItem[] | null>(null);
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
+  // L'index est chargé à la première ouverture (jamais dans le bundle initial).
+  useEffect(() => {
+    if (open && !index) {
+      let alive = true;
+      getSearchIndex()
+        .then((items) => {
+          if (alive) setIndex(items);
+        })
+        .catch(() => {});
+      return () => {
+        alive = false;
+      };
+    }
+  }, [open, index]);
+
   const results = useMemo(
-    () => (query.trim() ? searchItems(query).slice(0, 24) : suggestions()),
-    [query]
+    () =>
+      !index
+        ? []
+        : query.trim()
+          ? searchItems(query, index).slice(0, 24)
+          : suggestions(index),
+    [query, index]
   );
 
   // Ouverture / fermeture animée.

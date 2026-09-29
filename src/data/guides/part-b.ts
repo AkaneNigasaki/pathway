@@ -1,64 +1,4 @@
 import type { SkillGuide } from "../skill-guides";
-import { LEARNING_PYTHON } from "./learning-python";
-import { LEARNING_DOCKER } from "./learning-docker";
-import { LEARNING_CYBERSECURITY } from "./learning-cybersecurity";
-import { LEARNING_KUBERNETES } from "./learning-kubernetes";
-import { LEARNING_STATISTICS } from "./learning-statistics";
-import { LEARNING_CPP } from "./learning-cpp";
-import { LEARNING_ROBOTICS } from "./learning-robotics";
-import { LEARNING_DEEP_LEARNING } from "./learning-deep-learning";
-import { LEARNING_ML } from "./learning-ml";
-import { LEARNING_ANALYTICS } from "./learning-analytics";
-import { LEARNING_ANSIBLE } from "./learning-ansible";
-import { LEARNING_API_INTEGRATION } from "./learning-api-integration";
-import { LEARNING_AUTHENTICATION } from "./learning-authentication";
-import { LEARNING_AWS } from "./learning-aws";
-import { LEARNING_AZURE } from "./learning-azure";
-import { LEARNING_CICD } from "./learning-cicd";
-import { LEARNING_COMPUTER_VISION } from "./learning-computer-vision";
-import { LEARNING_CONTAINER_REGISTRY } from "./learning-container-registry";
-import { LEARNING_CONTROL_SYSTEMS } from "./learning-control-systems";
-import { LEARNING_CRYPTOGRAPHY } from "./learning-cryptography";
-import { LEARNING_DATA_ENGINEERING } from "./learning-data-engineering";
-import { LEARNING_DATA_SCIENCE } from "./learning-data-science";
-import { LEARNING_ELECTRONICS } from "./learning-electronics";
-import { LEARNING_EMBEDDED } from "./learning-embedded";
-import { LEARNING_GCP } from "./learning-gcp";
-import { LEARNING_GITHUB_ACTIONS } from "./learning-github-actions";
-import { LEARNING_GITLAB_CI } from "./learning-gitlab-ci";
-import { LEARNING_GRAFANA } from "./learning-grafana";
-import { LEARNING_HELM } from "./learning-helm";
-import { LEARNING_INCIDENT_RESPONSE } from "./learning-incident-response";
-import { LEARNING_K8S_OPERATORS } from "./learning-k8s-operators";
-import { LEARNING_KAFKA } from "./learning-kafka";
-import { LEARNING_LLMS } from "./learning-llms";
-import { LEARNING_MAKE } from "./learning-make";
-import { LEARNING_MLOPS } from "./learning-mlops";
-import { LEARNING_MONGODB } from "./learning-mongodb";
-import { LEARNING_MYSQL } from "./learning-mysql";
-import { LEARNING_NETWORKING } from "./learning-networking";
-import { LEARNING_NGINX } from "./learning-nginx";
-import { LEARNING_NLP } from "./learning-nlp";
-import { LEARNING_NUMPY } from "./learning-numpy";
-import { LEARNING_OWASP } from "./learning-owasp";
-import { LEARNING_PANDAS } from "./learning-pandas";
-import { LEARNING_PENTESTING } from "./learning-pentesting";
-import { LEARNING_PLATFORM_ENGINEERING } from "./learning-platform-engineering";
-import { LEARNING_POSTGRESQL } from "./learning-postgresql";
-import { LEARNING_PROMETHEUS } from "./learning-prometheus";
-import { LEARNING_PYTORCH } from "./learning-pytorch";
-import { LEARNING_RABBITMQ } from "./learning-rabbitmq";
-import { LEARNING_RAG } from "./learning-rag";
-import { LEARNING_REDIS } from "./learning-redis";
-import { LEARNING_ROS } from "./learning-ros";
-import { LEARNING_SCIKIT_LEARN } from "./learning-scikit-learn";
-import { LEARNING_SENSORS } from "./learning-sensors";
-import { LEARNING_SIEM } from "./learning-siem";
-import { LEARNING_TENSORFLOW } from "./learning-tensorflow";
-import { LEARNING_TERRAFORM } from "./learning-terraform";
-import { LEARNING_TRANSFORMERS } from "./learning-transformers";
-import { LEARNING_WEB_SECURITY } from "./learning-web-security";
-import { LEARNING_ZAPIER } from "./learning-zapier";
 
 /**
  * Guides pédagogiques — partie B (IA, infrastructure, data, automation,
@@ -74,7 +14,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 1 ===
   // ---------------------------------------------------------------- python
   python: {
-    learning: LEARNING_PYTHON,
+    learning: () => import("./learning-python").then((m) => m.LEARNING_PYTHON),
   setup: {
     install: [
       "Installer Python 3 depuis python.org, ou `brew install python3` / `winget install Python.Python.3`.",
@@ -165,7 +105,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------- machine-learning
   "machine-learning": {
-    learning: LEARNING_ML,
+    learning: () => import("./learning-ml").then((m) => m.LEARNING_ML),
   setup: {
     install: [
       "Installer la stack scientifique : `pip install scikit-learn pandas numpy matplotlib jupyter`.",
@@ -266,7 +206,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- deep-learning
   "deep-learning": {
-    learning: LEARNING_DEEP_LEARNING,
+    learning: () => import("./learning-deep-learning").then((m) => m.LEARNING_DEEP_LEARNING),
   setup: {
     install: [
       "Choisir un framework : `pip install torch torchvision jupyter matplotlib` (PyTorch) ou `pip install tensorflow`.",
@@ -365,7 +305,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ llms
   llms: {
-    learning: LEARNING_LLMS,
+    learning: () => import("./learning-llms").then((m) => m.LEARNING_LLMS),
     definition:
       "Les LLMs (grands modèles de langage) sont des réseaux de neurones entraînés sur d’immenses corpus de texte. Ils prédisent la suite la plus probable d’un texte, ce qui leur permet de répondre, résumer, traduire et coder à partir d’instructions en langage naturel.",
     whyLearn:
@@ -443,7 +383,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- docker
   docker: {
-    learning: LEARNING_DOCKER,
+    learning: () => import("./learning-docker").then((m) => m.LEARNING_DOCKER),
   setup: {
     install: [
       "Installer Docker Desktop depuis docker.com (Windows/macOS), ou le moteur sur Linux via la documentation officielle.",
@@ -535,7 +475,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ cicd
   cicd: {
-    learning: LEARNING_CICD,
+    learning: () => import("./learning-cicd").then((m) => m.LEARNING_CICD),
     illustration: "devops",
     definition:
       "Le CI/CD (intégration continue / déploiement continu) est l’automatisation du cycle de vie du code : à chaque commit, le code est testé, construit puis déployé automatiquement. L’objectif : livrer des changements petits, fréquents et fiables.",
@@ -606,7 +546,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ kubernetes
   kubernetes: {
-    learning: LEARNING_KUBERNETES,
+    learning: () => import("./learning-kubernetes").then((m) => m.LEARNING_KUBERNETES),
   setup: {
     install: [
       "Installer `kubectl` : `brew install kubectl`.",
@@ -708,7 +648,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- terraform
   terraform: {
-  learning: LEARNING_TERRAFORM,
+  learning: () => import("./learning-terraform").then((m) => m.LEARNING_TERRAFORM),
   setup: {
     install: [
       "Installer : `brew install terraform` (ou le binaire depuis developer.hashicorp.com).",
@@ -802,7 +742,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- cybersecurity
   cybersecurity: {
-    learning: LEARNING_CYBERSECURITY,
+    learning: () => import("./learning-cybersecurity").then((m) => m.LEARNING_CYBERSECURITY),
   setup: {
     install: [
       "VirtualBox ou VMware sur la machine hôte.",
@@ -906,7 +846,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------- authentication
   authentication: {
-    learning: LEARNING_AUTHENTICATION,
+    learning: () => import("./learning-authentication").then((m) => m.LEARNING_AUTHENTICATION),
     definition:
       "L’authentification est le mécanisme qui vérifie l’identité d’un utilisateur ou d’un système avant de lui accorder l’accès. Mots de passe, double facteur, OAuth, passkeys : autant de façons de répondre à la question « qui êtes-vous ? » avec un niveau de confiance adapté.",
     whyLearn:
@@ -979,7 +919,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------- api-integration
   "api-integration": {
-    learning: LEARNING_API_INTEGRATION,
+    learning: () => import("./learning-api-integration").then((m) => m.LEARNING_API_INTEGRATION),
     definition:
       "L’intégration d’APIs est l’art de faire dialoguer des systèmes entre eux : s’authentifier, paginer les résultats, gérer les quotas et les erreurs, garantir l’idempotence. C’est le ciment technique de l’automation et des architectures distribuées.",
     whyLearn:
@@ -1058,7 +998,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ data-science
   "data-science": {
-  learning: LEARNING_DATA_SCIENCE,
+  learning: () => import("./learning-data-science").then((m) => m.LEARNING_DATA_SCIENCE),
   setup: {
     install: [
       "Python 3.11+ : `python3 --version`.",
@@ -1162,7 +1102,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 2 ===
   // ----------------------------------------------------------------- numpy
   numpy: {
-  learning: LEARNING_NUMPY,
+  learning: () => import("./learning-numpy").then((m) => m.LEARNING_NUMPY),
   setup: {
     install: [
       "Dans un venv Python : `pip install numpy`.",
@@ -1251,7 +1191,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- pandas
   pandas: {
-  learning: LEARNING_PANDAS,
+  learning: () => import("./learning-pandas").then((m) => m.LEARNING_PANDAS),
   setup: {
     install: [
       "Dans un venv Python : `pip install pandas` (installe numpy avec).",
@@ -1341,7 +1281,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- statistics
   statistics: {
-    learning: LEARNING_STATISTICS,
+    learning: () => import("./learning-statistics").then((m) => m.LEARNING_STATISTICS),
     definition:
       "Les statistiques sont l’ensemble des méthodes pour collecter, décrire et interpréter des données : distributions, probabilités, tests d’hypothèses. Elles permettent de distinguer un vrai signal du bruit.",
     whyLearn:
@@ -1412,7 +1352,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------- scikit-learn
   "scikit-learn": {
-  learning: LEARNING_SCIKIT_LEARN,
+  learning: () => import("./learning-scikit-learn").then((m) => m.LEARNING_SCIKIT_LEARN),
   setup: {
     install: [
       "`pip install scikit-learn` (dépendances numpy/scipy installées automatiquement).",
@@ -1502,7 +1442,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- pytorch
   pytorch: {
-  learning: LEARNING_PYTORCH,
+  learning: () => import("./learning-pytorch").then((m) => m.LEARNING_PYTORCH),
   setup: {
     install: [
       "CPU : `pip install torch` (suivre pytorch.org/get-started pour la commande exacte selon l'OS).",
@@ -1595,7 +1535,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------- transformers
   transformers: {
-    learning: LEARNING_TRANSFORMERS,
+    learning: () => import("./learning-transformers").then((m) => m.LEARNING_TRANSFORMERS),
     definition:
       "Les Transformers sont l’architecture de réseaux de neurones introduite en 2017 (« Attention Is All You Need »), basée sur le mécanisme d’attention. Elle est derrière les LLMs, la traduction moderne et une grande partie de l’IA générative.",
     whyLearn:
@@ -1666,7 +1606,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- rag
   rag: {
-    learning: LEARNING_RAG,
+    learning: () => import("./learning-rag").then((m) => m.LEARNING_RAG),
     definition:
       "Le RAG (Retrieval-Augmented Generation) combine recherche d’information et génération : avant de répondre, le LLM récupère les passages pertinents dans vos documents, puis formule sa réponse à partir de ces sources.",
     whyLearn:
@@ -1738,7 +1678,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------- computer-vision
   "computer-vision": {
-  learning: LEARNING_COMPUTER_VISION,
+  learning: () => import("./learning-computer-vision").then((m) => m.LEARNING_COMPUTER_VISION),
   setup: {
     install: [
       "`pip install opencv-python numpy matplotlib` (le paquet s'importe avec `import cv2`).",
@@ -1829,7 +1769,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- nlp
   nlp: {
-  learning: LEARNING_NLP,
+  learning: () => import("./learning-nlp").then((m) => m.LEARNING_NLP),
   setup: {
     install: [
       "Créer un environnement virtuel : `python -m venv .venv` puis `source .venv/bin/activate`.",
@@ -1922,7 +1862,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- networking
   networking: {
-    learning: LEARNING_NETWORKING,
+    learning: () => import("./learning-networking").then((m) => m.LEARNING_NETWORKING),
     definition:
       "Le networking version praticien : comprendre TCP/IP, DNS et le routage, puis savoir diagnostiquer, configurer et sécuriser un réseau réel.",
     whyLearn:
@@ -1995,7 +1935,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------- github-actions
   "github-actions": {
-  learning: LEARNING_GITHUB_ACTIONS,
+  learning: () => import("./learning-github-actions").then((m) => m.LEARNING_GITHUB_ACTIONS),
   setup: {
     install: [
       "Aucune installation : GitHub Actions est inclus dans chaque dépôt GitHub.",
@@ -2088,7 +2028,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- gitlab-ci
   "gitlab-ci": {
-  learning: LEARNING_GITLAB_CI,
+  learning: () => import("./learning-gitlab-ci").then((m) => m.LEARNING_GITLAB_CI),
   setup: {
     install: [
       "Aucune installation : GitLab CI est inclus dans chaque projet GitLab.",
@@ -2179,7 +2119,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- aws
   aws: {
-  learning: LEARNING_AWS,
+  learning: () => import("./learning-aws").then((m) => m.LEARNING_AWS),
   setup: {
     install: [
       "Créer un compte sur aws.amazon.com (offre gratuite 12 mois sur de nombreux services).",
@@ -2274,7 +2214,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- ansible
   ansible: {
-  learning: LEARNING_ANSIBLE,
+  learning: () => import("./learning-ansible").then((m) => m.LEARNING_ANSIBLE),
   setup: {
     install: [
       "Installer : `pip install ansible` ou `brew install ansible`.",
@@ -2367,7 +2307,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- nginx
   nginx: {
-  learning: LEARNING_NGINX,
+  learning: () => import("./learning-nginx").then((m) => m.LEARNING_NGINX),
   setup: {
     install: [
       "Installer : `sudo apt install nginx` (Debian/Ubuntu) ou `brew install nginx` (macOS).",
@@ -2459,7 +2399,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ prometheus
   prometheus: {
-  learning: LEARNING_PROMETHEUS,
+  learning: () => import("./learning-prometheus").then((m) => m.LEARNING_PROMETHEUS),
   setup: {
     install: [
       "Installer : `brew install prometheus` ou le binaire depuis prometheus.io.",
@@ -2551,7 +2491,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- postgresql
   postgresql: {
-  learning: LEARNING_POSTGRESQL,
+  learning: () => import("./learning-postgresql").then((m) => m.LEARNING_POSTGRESQL),
   setup: {
     install: [
       "Installer : `brew install postgresql` puis `brew services start postgresql` (ou `sudo apt install postgresql`).",
@@ -2642,7 +2582,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- mongodb
   mongodb: {
-  learning: LEARNING_MONGODB,
+  learning: () => import("./learning-mongodb").then((m) => m.LEARNING_MONGODB),
   setup: {
     install: [
       "Via Docker : `docker run --name mongo -p 27017:27017 -d mongo:7`.",
@@ -2734,7 +2674,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- redis
   redis: {
-  learning: LEARNING_REDIS,
+  learning: () => import("./learning-redis").then((m) => m.LEARNING_REDIS),
   setup: {
     install: [
       "Via Docker : `docker run --name redis -p 6379:6379 -d redis:7`.",
@@ -2826,7 +2766,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------- data-engineering
   "data-engineering": {
-  learning: LEARNING_DATA_ENGINEERING,
+  learning: () => import("./learning-data-engineering").then((m) => m.LEARNING_DATA_ENGINEERING),
   setup: {
     install: [
       "Docker Desktop (indispensable pour Airflow, Spark ou Kafka en local).",
@@ -2919,7 +2859,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- kafka
   kafka: {
-  learning: LEARNING_KAFKA,
+  learning: () => import("./learning-kafka").then((m) => m.LEARNING_KAFKA),
   setup: {
     install: [
       "Via Docker (image officielle, mode KRaft, sans ZooKeeper) : `docker run -p 9092:9092 -d apache/kafka:3.8`.",
@@ -3010,7 +2950,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ web-security
   "web-security": {
-    learning: LEARNING_WEB_SECURITY,
+    learning: () => import("./learning-web-security").then((m) => m.LEARNING_WEB_SECURITY),
     definition:
       "La sécurité web est l’ensemble des pratiques qui protègent les applications web : prévenir les injections, le XSS, le CSRF, sécuriser les sessions et configurer correctement les en-têtes. Penser sécurité dès la conception, pas après l’incident.",
     whyLearn:
@@ -3081,7 +3021,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- owasp
   owasp: {
-    learning: LEARNING_OWASP,
+    learning: () => import("./learning-owasp").then((m) => m.LEARNING_OWASP),
     definition:
       "L’OWASP Top 10 est le référentiel des dix risques de sécurité les plus critiques pour les applications web, maintenu par la fondation OWASP. C’est la checklist de référence de tout audit de sécurité applicative.",
     whyLearn:
@@ -3152,7 +3092,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------- pentesting
   pentesting: {
-  learning: LEARNING_PENTESTING,
+  learning: () => import("./learning-pentesting").then((m) => m.LEARNING_PENTESTING),
   setup: {
     install: [
       "Kali Linux en VM (kali.org) : inclut déjà Nmap, Metasploit, Burp Suite.",
@@ -3248,7 +3188,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- ros
   ros: {
-  learning: LEARNING_ROS,
+  learning: () => import("./learning-ros").then((m) => m.LEARNING_ROS),
   setup: {
     install: [
       "ROS 2 (Jazzy, Ubuntu 24.04) : ajouter le dépôt `packages.ros.org` (voir docs.ros.org).",
@@ -3342,7 +3282,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- embedded
   embedded: {
-  learning: LEARNING_EMBEDDED,
+  learning: () => import("./learning-embedded").then((m) => m.LEARNING_EMBEDDED),
   setup: {
     install: [
       "Toolchain ARM : `sudo apt install gcc-arm-none-eabi`.",
@@ -3436,7 +3376,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ make
   make: {
-  learning: LEARNING_MAKE,
+  learning: () => import("./learning-make").then((m) => m.LEARNING_MAKE),
   setup: {
     install: [
       "SaaS : créer un compte sur make.com, rien à installer.",
@@ -3531,7 +3471,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------------- zapier
   zapier: {
-  learning: LEARNING_ZAPIER,
+  learning: () => import("./learning-zapier").then((m) => m.LEARNING_ZAPIER),
   setup: {
     install: [
       "SaaS : créer un compte sur zapier.com, rien à installer.",
@@ -3622,7 +3562,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------- cryptography
   cryptography: {
-    learning: LEARNING_CRYPTOGRAPHY,
+    learning: () => import("./learning-cryptography").then((m) => m.LEARNING_CRYPTOGRAPHY),
     definition:
       "La cryptographie est la science du secret et de la confiance numérique : chiffrer des données, vérifier leur intégrité, prouver une identité. Elle est derrière HTTPS, les mots de passe stockés et les blockchains.",
     whyLearn:
@@ -3694,7 +3634,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   // ============================================================ TIER 3 ===
   // ------------------------------------------------------------- tensorflow
   tensorflow: {
-  learning: LEARNING_TENSORFLOW,
+  learning: () => import("./learning-tensorflow").then((m) => m.LEARNING_TENSORFLOW),
   setup: {
     install: [
       "`pip install tensorflow` (CPU et GPU dans le même paquet depuis TF 2.x).",
@@ -3782,7 +3722,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- mlops
   mlops: {
-  learning: LEARNING_MLOPS,
+  learning: () => import("./learning-mlops").then((m) => m.LEARNING_MLOPS),
   setup: {
     install: [
       "Installer MLflow : `pip install mlflow`.",
@@ -3871,7 +3811,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------- container-registry
   "container-registry": {
-    learning: LEARNING_CONTAINER_REGISTRY,
+    learning: () => import("./learning-container-registry").then((m) => m.LEARNING_CONTAINER_REGISTRY),
     definition:
       "Un container registry est un dépôt qui stocke, versionne et distribue les images de conteneurs : le point de passage entre le build et le déploiement, avec scan de vulnérabilités et gestion des accès.",
     whyLearn:
@@ -3939,7 +3879,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ helm
   helm: {
-  learning: LEARNING_HELM,
+  learning: () => import("./learning-helm").then((m) => m.LEARNING_HELM),
   setup: {
     install: [
       "Installer Helm : `brew install helm` (ou le binaire depuis helm.sh).",
@@ -4028,7 +3968,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------------- k8s-operators
   "k8s-operators": {
-    learning: LEARNING_K8S_OPERATORS,
+    learning: () => import("./learning-k8s-operators").then((m) => m.LEARNING_K8S_OPERATORS),
     definition:
       "Les Operators sont des contrôleurs Kubernetes qui pilotent des applications complexes (bases de données, files) : ils étendent l’API Kubernetes avec des ressources custom et une logique de réconciliation automatique.",
     whyLearn:
@@ -4095,7 +4035,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- azure
   azure: {
-  learning: LEARNING_AZURE,
+  learning: () => import("./learning-azure").then((m) => m.LEARNING_AZURE),
   setup: {
     install: [
       "Créer un compte sur azure.microsoft.com (compte gratuit + crédits d'essai).",
@@ -4186,7 +4126,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- gcp
   gcp: {
-  learning: LEARNING_GCP,
+  learning: () => import("./learning-gcp").then((m) => m.LEARNING_GCP),
   setup: {
     install: [
       "Créer un compte sur cloud.google.com (essai gratuit avec crédits).",
@@ -4277,7 +4217,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- grafana
   grafana: {
-  learning: LEARNING_GRAFANA,
+  learning: () => import("./learning-grafana").then((m) => m.LEARNING_GRAFANA),
   setup: {
     install: [
       "Installer : `brew install grafana` ou via Docker : `docker run -p 3000:3000 grafana/grafana`.",
@@ -4365,7 +4305,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ---------------------------------------------------- platform-engineering
   "platform-engineering": {
-  learning: LEARNING_PLATFORM_ENGINEERING,
+  learning: () => import("./learning-platform-engineering").then((m) => m.LEARNING_PLATFORM_ENGINEERING),
   setup: {
     install: [
       "Installer Docker et `kubectl` (voir fiches Docker et Kubernetes).",
@@ -4454,7 +4394,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ----------------------------------------------------------------- mysql
   mysql: {
-  learning: LEARNING_MYSQL,
+  learning: () => import("./learning-mysql").then((m) => m.LEARNING_MYSQL),
   setup: {
     install: [
       "Via Docker : `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8`.",
@@ -4543,7 +4483,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- rabbitmq
   rabbitmq: {
-  learning: LEARNING_RABBITMQ,
+  learning: () => import("./learning-rabbitmq").then((m) => m.LEARNING_RABBITMQ),
   setup: {
     install: [
       "Via Docker (avec console d'admin) : `docker run --name rabbitmq -p 5672:5672 -p 15672:15672 -d rabbitmq:4-management`.",
@@ -4630,7 +4570,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- analytics
   analytics: {
-  learning: LEARNING_ANALYTICS,
+  learning: () => import("./learning-analytics").then((m) => m.LEARNING_ANALYTICS),
   setup: {
     install: [
       "Python 3.11+ : `pip install pandas matplotlib seaborn jupyterlab`.",
@@ -4718,7 +4658,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------ siem
   siem: {
-  learning: LEARNING_SIEM,
+  learning: () => import("./learning-siem").then((m) => m.LEARNING_SIEM),
   setup: {
     install: [
       "Wazuh (open source) : déployer via le script d'installation officiel sur une VM Ubuntu (voir documentation wazuh.com).",
@@ -4805,7 +4745,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------- incident-response
   "incident-response": {
-    learning: LEARNING_INCIDENT_RESPONSE,
+    learning: () => import("./learning-incident-response").then((m) => m.LEARNING_INCIDENT_RESPONSE),
     definition:
       "La réponse aux incidents est la gestion de crise sécurité : contenir l’attaque, éradiquer la menace, récupérer les systèmes, puis tirer les leçons. Elle s’appuie sur des playbooks préparés à l’avance.",
     whyLearn:
@@ -4872,7 +4812,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------------- cpp
   cpp: {
-    learning: LEARNING_CPP,
+    learning: () => import("./learning-cpp").then((m) => m.LEARNING_CPP),
   setup: {
     install: [
       "Linux : `sudo apt install build-essential` (g++, gdb, make).",
@@ -4968,7 +4908,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // ------------------------------------------------------------ electronics
   electronics: {
-    learning: LEARNING_ELECTRONICS,
+    learning: () => import("./learning-electronics").then((m) => m.LEARNING_ELECTRONICS),
     definition:
       "L’électronique est la compréhension du hardware : tension, courant, composants, lecture de schémas. Elle explique ce qui se passe physiquement dans la machine que le logiciel pilote.",
     whyLearn:
@@ -5035,7 +4975,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------------- sensors
   sensors: {
-    learning: LEARNING_SENSORS,
+    learning: () => import("./learning-sensors").then((m) => m.LEARNING_SENSORS),
     definition:
       "Les capteurs sont les sens des machines : ils convertissent le monde physique (distance, température, mouvement, image) en signaux numériques exploitables par le logiciel.",
     whyLearn:
@@ -5103,7 +5043,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // --------------------------------------------------------- control-systems
   "control-systems": {
-    learning: LEARNING_CONTROL_SYSTEMS,
+    learning: () => import("./learning-control-systems").then((m) => m.LEARNING_CONTROL_SYSTEMS),
     definition:
       "L’asservissement (control systems) est la théorie du contrôle : boucles de régulation, correcteurs PID, stabilité. Faire en sorte qu’une machine atteigne précisément sa consigne malgré les perturbations.",
     whyLearn:
@@ -5170,7 +5110,7 @@ export const GUIDES_B: Record<string, SkillGuide> = {
   },
   // -------------------------------------------------------------- robotics
   robotics: {
-    learning: LEARNING_ROBOTICS,
+    learning: () => import("./learning-robotics").then((m) => m.LEARNING_ROBOTICS),
   setup: {
     install: [
       "ROS 2 desktop : `sudo apt install ros-jazzy-desktop` (voir `ros`).",

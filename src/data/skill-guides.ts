@@ -10,7 +10,6 @@ import { GUIDES_DEVOPS } from "./guides/part-devops";
 import { GUIDES_CYBER } from "./guides/part-cyber";
 import { GUIDES_ROBOTICS } from "./guides/part-robotics";
 import { GUIDES_TYPESCRIPT } from "./guides/part-typescript";
-import { LEARNING_N8N } from "./guides/learning-n8n";
 import { OFFICIAL_DOCS } from "./guides/official-docs";
 
 /**
@@ -44,12 +43,17 @@ export type SkillGuide = Pick<
   /** URL de la documentation officielle de la technologie. */
   docsUrl?: string;
   /**
-   * Page d'apprentissage complète (« Learning Page ») : sections structurées
-   * en 3 niveaux d'information avec divulgation progressive. Quand ce champ
-   * est présent, la page /docs affiche l'expérience Learning Page.
+   * Page d'apprentissage complète (« Learning Page ») : loader asynchrone
+   * vers les sections structurées en 3 niveaux d'information. Le chargement
+   * est différé (dynamic import) pour ne pas alourdir le bundle initial :
+   * chaque Learning Page vit dans son propre chunk, chargé à la visite
+   * de la page /docs correspondante.
    */
-  learning?: LearningSection[];
+  learning?: LearningLoader;
 };
+
+/** Chargeur différé d'une Learning Page (dynamic import, code-splitting). */
+export type LearningLoader = () => Promise<LearningSection[]>;
 
 /**
  * Niveau d'information d'une section :
@@ -112,7 +116,7 @@ export interface SkillSetup {
 
 /** Guide de référence rédigé à la main (modèle pour les autres entrées). */
 const N8N_GUIDE: SkillGuide = {
-  learning: LEARNING_N8N,
+  learning: () => import("./guides/learning-n8n").then((m) => m.LEARNING_N8N),
   setup: {
     install: [
       "Via npm : `npm install -g n8n` (Node.js 18+ requis).",

@@ -1,22 +1,4 @@
 import type { SkillGuide } from "../skill-guides";
-import { LEARNING_CSHARP } from "./learning-csharp";
-import { LEARNING_LINUX } from "./learning-linux";
-import { LEARNING_DOCKER } from "./learning-docker";
-import { LEARNING_SQL } from "./learning-sql";
-import { LEARNING_GIT } from "./learning-git";
-import { LEARNING_DJANGO } from "./learning-django";
-import { LEARNING_GO } from "./learning-go";
-import { LEARNING_ASPNET } from "./learning-aspnet";
-import { LEARNING_RUST } from "./learning-rust";
-import { LEARNING_JAVA } from "./learning-java";
-import { LEARNING_API_REST } from "./learning-api-rest";
-import { LEARNING_AUTH } from "./learning-auth";
-import { LEARNING_CACHING } from "./learning-caching";
-import { LEARNING_MESSAGING } from "./learning-messaging";
-import { LEARNING_OBSERVABILITY } from "./learning-observability";
-import { LEARNING_PYTHON_GENERAL } from "./learning-python-general";
-import { LEARNING_SYSTEM_DESIGN } from "./learning-system-design";
-import { LEARNING_TESTING_API } from "./learning-testing-api";
 
 /**
  * Guides pédagogiques — backend : parcours Backend Developer.
@@ -34,7 +16,7 @@ import { LEARNING_TESTING_API } from "./learning-testing-api";
 export const GUIDES_BACKEND: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ git
   git: {
-    learning: LEARNING_GIT,
+    learning: () => import("./learning-git").then((m) => m.LEARNING_GIT),
     definition:
       "Git est un système de gestion de versions distribué : il enregistre l'historique des modifications d'un projet, permet de travailler en branches parallèles et de fusionner le travail de plusieurs personnes.",
     whyLearn:
@@ -92,7 +74,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ linux
   linux: {
-    learning: LEARNING_LINUX,
+    learning: () => import("./learning-linux").then((m) => m.LEARNING_LINUX),
     definition:
       "Linux est le système d'exploitation de la quasi-totalité des serveurs : le maîtriser via le terminal, c'est administrer les machines où le code tourne réellement en production.",
     whyLearn:
@@ -150,7 +132,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ python
   python: {
-    learning: LEARNING_PYTHON_GENERAL,
+    learning: () => import("./learning-python-general").then((m) => m.LEARNING_PYTHON_GENERAL),
     definition:
       "Python est un langage de programmation généraliste réputé pour sa lisibilité : syntaxe claire, typage dynamique, écosystème immense — du scripting aux APIs en passant par la data.",
     whyLearn:
@@ -208,7 +190,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ api-rest
   "api-rest": {
-    learning: LEARNING_API_REST,
+    learning: () => import("./learning-api-rest").then((m) => m.LEARNING_API_REST),
     definition:
       "Une API REST expose les données d'un système comme des ressources adressées par des URLs et manipulées avec les verbes HTTP : le contrat standard entre un client et un serveur.",
     whyLearn:
@@ -270,7 +252,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ sql
   sql: {
-    learning: LEARNING_SQL,
+    learning: () => import("./learning-sql").then((m) => m.LEARNING_SQL),
     definition:
       "SQL (Structured Query Language) est le langage d'interrogation des bases de données relationnelles : il permet de définir, lire et modifier des données structurées en tables liées entre elles.",
     whyLearn:
@@ -332,7 +314,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ auth
   auth: {
-    learning: LEARNING_AUTH,
+    learning: () => import("./learning-auth").then((m) => m.LEARNING_AUTH),
     definition:
       "L'authentification vérifie l'identité d'un utilisateur, l'autorisation définit ce qu'il peut faire : ensemble, elles protègent l'accès aux ressources d'une application.",
     whyLearn:
@@ -394,7 +376,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ testing-api
   "testing-api": {
-    learning: LEARNING_TESTING_API,
+    learning: () => import("./learning-testing-api").then((m) => m.LEARNING_TESTING_API),
     definition:
       "Les tests backend vérifient automatiquement que l'API se comporte comme promis : réponses correctes, données valides, erreurs gérées — à chaque modification du code.",
     whyLearn:
@@ -458,7 +440,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ caching
   caching: {
-    learning: LEARNING_CACHING,
+    learning: () => import("./learning-caching").then((m) => m.LEARNING_CACHING),
     definition:
       "Le caching consiste à conserver les résultats coûteux (requêtes, calculs, réponses HTTP) pour les resservir instantanément : la technique la plus rentable pour accélérer un backend.",
     whyLearn:
@@ -521,7 +503,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ messaging
   messaging: {
-    learning: LEARNING_MESSAGING,
+    learning: () => import("./learning-messaging").then((m) => m.LEARNING_MESSAGING),
     definition:
       "Les files de messages (RabbitMQ, Kafka) permettent aux services de communiquer de façon asynchrone : un producteur dépose des événements, des consommateurs les traitent à leur rythme.",
     whyLearn:
@@ -583,7 +565,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ docker
   docker: {
-    learning: LEARNING_DOCKER,
+    learning: () => import("./learning-docker").then((m) => m.LEARNING_DOCKER),
     definition:
       "Docker conteneurise les applications : il embarque le code et toutes ses dépendances dans une image portable qui s'exécute de façon identique sur n'importe quelle machine.",
     whyLearn:
@@ -645,7 +627,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ observability
   observability: {
-    learning: LEARNING_OBSERVABILITY,
+    learning: () => import("./learning-observability").then((m) => m.LEARNING_OBSERVABILITY),
     definition:
       "L'observabilité regroupe les pratiques pour comprendre un système en production : logs structurés, métriques et traces distribuées qui racontent ce qui s'y passe réellement.",
     whyLearn:
@@ -709,7 +691,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ system-design
   "system-design": {
-    learning: LEARNING_SYSTEM_DESIGN,
+    learning: () => import("./learning-system-design").then((m) => m.LEARNING_SYSTEM_DESIGN),
     definition:
       "Le system design est l'art de concevoir des systèmes logiciels à grande échelle : choisir les composants, leurs interactions et les compromis (cohérence, disponibilité, coût) avant d'écrire la moindre ligne de code.",
     whyLearn:
@@ -774,7 +756,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ csharp
   csharp: {
-    learning: LEARNING_CSHARP,
+    learning: () => import("./learning-csharp").then((m) => m.LEARNING_CSHARP),
     "conceptDetails": [
       {
         "definition": "Le système de types distingue types valeur (struct, int) et types référence (class) : comprendre cette différence explique la plupart des comportements surprenants du langage.",
@@ -867,7 +849,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 ,
   // ------------------------------------------------------------------ java
   java: {
-    learning: LEARNING_JAVA,
+    learning: () => import("./learning-java").then((m) => m.LEARNING_JAVA),
     "conceptDetails": [
       {
         "definition": "Le code Java est compilé en bytecode, un format intermédiaire exécuté par la JVM : c'est ce qui rend Java portable et optimisable à chaud par le compilateur JIT.",
@@ -963,7 +945,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 ,
   // ------------------------------------------------------------------ rust
   rust: {
-    learning: LEARNING_RUST,
+    learning: () => import("./learning-rust").then((m) => m.LEARNING_RUST),
     "conceptDetails": [
       {
         "definition": "Chaque valeur a un propriétaire unique ; quand il sort de portée, la valeur est libérée : pas de ramasse-miettes, pas de libération manuelle, pas de double libération.",
@@ -1057,7 +1039,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 ,
   // ------------------------------------------------------------------ go
   go: {
-    learning: LEARNING_GO,
+    learning: () => import("./learning-go").then((m) => m.LEARNING_GO),
     "conceptDetails": [
       {
         "definition": "Les goroutines sont des fonctions exécutées en concurrence, légères (quelques Ko) : on en lance des milliers. Les channels échangent des données entre elles en toute sécurité.",
@@ -1154,7 +1136,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 ,
   // ------------------------------------------------------------------ aspnet
   aspnet: {
-    learning: LEARNING_ASPNET,
+    learning: () => import("./learning-aspnet").then((m) => m.LEARNING_ASPNET),
     "conceptDetails": [
       {
         "definition": "Chaîne de composants qui traitent chaque requête dans l'ordre (authentification, logs, erreurs) : on l'assemble dans `Program.cs` avec `app.Use...`, et chacun peut court-circuiter le pipeline.",
@@ -1251,7 +1233,7 @@ export const GUIDES_BACKEND: Record<string, SkillGuide> = {
 ,
   // ------------------------------------------------------------------ django
   django: {
-    learning: LEARNING_DJANGO,
+    learning: () => import("./learning-django").then((m) => m.LEARNING_DJANGO),
     "conceptDetails": [
       {
         "definition": "Les modèles sont des classes Python qui décrivent les tables : l'ORM traduit `Article.objects.filter(...)` en SQL. On manipule la base sans écrire une ligne de SQL.",

@@ -2,8 +2,10 @@
 import { ROADMAPS } from "../src/data/roadmaps";
 import { FIELDS } from "../src/data/fields";
 import { CAREERS } from "../src/data/careers";
-import { SEARCH_INDEX } from "../src/data/search";
+import { buildSearchIndexData } from "./build-search-index";
 import { NODE_TYPE_LABEL } from "../src/types";
+
+const SEARCH_INDEX = await buildSearchIndexData();
 
 let errors = 0;
 const fail = (msg: string) => {

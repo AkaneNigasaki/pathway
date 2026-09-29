@@ -1,16 +1,4 @@
 import type { SkillGuide } from "../skill-guides";
-import { LEARNING_ACCESSIBILITE_DESIGN } from "./learning-accessibilite-design";
-import { LEARNING_COULEUR } from "./learning-couleur";
-import { LEARNING_DESIGN_SYSTEM } from "./learning-design-system";
-import { LEARNING_DESIGN_THINKING } from "./learning-design-thinking";
-import { LEARNING_FIGMA } from "./learning-figma";
-import { LEARNING_MOTION_DESIGN } from "./learning-motion-design";
-import { LEARNING_PORTFOLIO } from "./learning-portfolio";
-import { LEARNING_PROTOTYPAGE } from "./learning-prototypage";
-import { LEARNING_TYPOGRAPHIE } from "./learning-typographie";
-import { LEARNING_UI_DESIGN } from "./learning-ui-design";
-import { LEARNING_UX_RESEARCH } from "./learning-ux-research";
-import { LEARNING_WIREFRAMING } from "./learning-wireframing";
 
 /**
  * Guides pédagogiques — UX : parcours UX Designer.
@@ -28,7 +16,7 @@ import { LEARNING_WIREFRAMING } from "./learning-wireframing";
 export const GUIDES_UX: Record<string, SkillGuide> = {
   // ------------------------------------------------------------------ design-thinking
   "design-thinking": {
-    learning: LEARNING_DESIGN_THINKING,
+    learning: () => import("./learning-design-thinking").then((m) => m.LEARNING_DESIGN_THINKING),
     definition:
       "Le design thinking est une méthode de résolution de problèmes centrée sur l'humain : comprendre les utilisateurs (empathie), cadrer le vrai problème, générer des idées, prototyper et tester en itérations courtes.",
     whyLearn:
@@ -86,7 +74,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ typographie
   typographie: {
-    learning: LEARNING_TYPOGRAPHIE,
+    learning: () => import("./learning-typographie").then((m) => m.LEARNING_TYPOGRAPHIE),
     definition:
       "La typographie est l'art de composer le texte : choix des polices, tailles, graisses, interlignages et hiérarchie pour rendre l'information lisible et structurée.",
     whyLearn:
@@ -144,7 +132,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ couleur
   couleur: {
-    learning: LEARNING_COULEUR,
+    learning: () => import("./learning-couleur").then((m) => m.LEARNING_COULEUR),
     definition:
       "La couleur en design d'interface est un langage : elle signale les actions, organise la hiérarchie et transmet l'identité — à condition de respecter les règles de contraste et de signification.",
     whyLearn:
@@ -202,7 +190,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ figma
   figma: {
-    learning: LEARNING_FIGMA,
+    learning: () => import("./learning-figma").then((m) => m.LEARNING_FIGMA),
     definition:
       "Figma est l'outil de design d'interface collaboratif de référence : dessin vectoriel, composants, prototypage et transmission aux développeurs, le tout dans le navigateur et en temps réel.",
     whyLearn:
@@ -264,7 +252,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ ui-design
   "ui-design": {
-    learning: LEARNING_UI_DESIGN,
+    learning: () => import("./learning-ui-design").then((m) => m.LEARNING_UI_DESIGN),
     definition:
       "L'UI design (User Interface) conçoit l'aspect visuel et interactif des écrans : grilles, espacements, composants, états — la couche visible et tactile de l'expérience utilisateur.",
     whyLearn:
@@ -330,7 +318,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ ux-research
   "ux-research": {
-    learning: LEARNING_UX_RESEARCH,
+    learning: () => import("./learning-ux-research").then((m) => m.LEARNING_UX_RESEARCH),
     definition:
       "L'UX research étudie les utilisateurs réels — leurs besoins, comportements et frustrations — via entretiens, observations et données, pour fonder les décisions design sur des preuves plutôt que des opinions.",
     whyLearn:
@@ -392,7 +380,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ wireframing
   wireframing: {
-    learning: LEARNING_WIREFRAMING,
+    learning: () => import("./learning-wireframing").then((m) => m.LEARNING_WIREFRAMING),
     definition:
       "Le wireframing structure les écrans en noir et blanc avant tout travail visuel : architecture de l'information, hiérarchie et parcours — la charpente de l'expérience.",
     whyLearn:
@@ -456,7 +444,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ prototypage
   prototypage: {
-    learning: LEARNING_PROTOTYPAGE,
+    learning: () => import("./learning-prototypage").then((m) => m.LEARNING_PROTOTYPAGE),
     definition:
       "Le prototypage matérialise une idée à la fidélité juste nécessaire pour la tester : du croquis papier au prototype cliquable haute-fidélité, l'objectif est d'apprendre vite et à moindre coût.",
     whyLearn:
@@ -520,7 +508,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ design-system
   "design-system": {
-    learning: LEARNING_DESIGN_SYSTEM,
+    learning: () => import("./learning-design-system").then((m) => m.LEARNING_DESIGN_SYSTEM),
     definition:
       "Un design system est le langage visuel et interactif partagé d'une organisation : tokens, composants documentés et règles d'usage qui garantissent cohérence et efficacité à l'échelle.",
     whyLearn:
@@ -584,7 +572,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ accessibilite-design
   "accessibilite-design": {
-    learning: LEARNING_ACCESSIBILITE_DESIGN,
+    learning: () => import("./learning-accessibilite-design").then((m) => m.LEARNING_ACCESSIBILITE_DESIGN),
     definition:
       "L'accessibilité en design garantit que les interfaces sont utilisables par tout le monde : contrastes, tailles de cibles, focus visibles, alternatives — dès la maquette, pas après le développement.",
     whyLearn:
@@ -648,7 +636,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ motion-design
   "motion-design": {
-    learning: LEARNING_MOTION_DESIGN,
+    learning: () => import("./learning-motion-design").then((m) => m.LEARNING_MOTION_DESIGN),
     definition:
       "Le motion design utilise le mouvement comme langage : transitions, micro-interactions et chorégraphies qui guident l'attention et expliquent les changements d'état d'une interface.",
     whyLearn:
@@ -710,7 +698,7 @@ export const GUIDES_UX: Record<string, SkillGuide> = {
 
   // ------------------------------------------------------------------ portfolio
   portfolio: {
-    learning: LEARNING_PORTFOLIO,
+    learning: () => import("./learning-portfolio").then((m) => m.LEARNING_PORTFOLIO),
     definition:
       "Un portfolio UX présente le travail d'un designer à travers des case studies : problème, processus, décisions et résultats — la preuve d'une méthode, pas seulement de jolies images.",
     whyLearn:

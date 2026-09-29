@@ -1,20 +1,4 @@
 import type { SkillGuide } from "../skill-guides";
-import { LEARNING_EDITEUR } from "./learning-editeur";
-import { LEARNING_FONCTIONS } from "./learning-fonctions";
-import { LEARNING_INSTALLATION } from "./learning-installation";
-import { LEARNING_INTERFACES } from "./learning-interfaces";
-import { LEARNING_JS_MODERNE } from "./learning-js-moderne";
-import { LEARNING_TSC } from "./learning-tsc";
-import { LEARNING_TSCONFIG } from "./learning-tsconfig";
-import { LEARNING_TYPES_BASE } from "./learning-types-base";
-import { LEARNING_GENERIQUES } from "./learning-generiques";
-import { LEARNING_MIGRATION } from "./learning-migration";
-import { LEARNING_MODULES } from "./learning-modules";
-import { LEARNING_OUTILLAGE } from "./learning-outillage";
-import { LEARNING_STRICT } from "./learning-strict";
-import { LEARNING_TYPES_AVANCES } from "./learning-types-avances";
-import { LEARNING_UNIONS } from "./learning-unions";
-import { LEARNING_UTILITY_TYPES } from "./learning-utility-types";
 
 /**
  * Guides pédagogiques de la roadmap TypeScript.
@@ -22,7 +6,7 @@ import { LEARNING_UTILITY_TYPES } from "./learning-utility-types";
  */
 export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
   "js-moderne": {
-  learning: LEARNING_JS_MODERNE,
+  learning: () => import("./learning-js-moderne").then((m) => m.LEARNING_JS_MODERNE),
   setup: {
     install: [
       "Installer Node.js LTS depuis nodejs.org (ou via nvm : `nvm install --lts`).",
@@ -98,7 +82,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   installation: {
-  learning: LEARNING_INSTALLATION,
+  learning: () => import("./learning-installation").then((m) => m.LEARNING_INSTALLATION),
   setup: {
     install: [
       "Installer Node.js LTS depuis nodejs.org.",
@@ -181,7 +165,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   tsc: {
-  learning: LEARNING_TSC,
+  learning: () => import("./learning-tsc").then((m) => m.LEARNING_TSC),
   setup: {
     install: [
       "Inclus dans le paquet `typescript` : `npm install -D typescript`.",
@@ -260,7 +244,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   tsconfig: {
-  learning: LEARNING_TSCONFIG,
+  learning: () => import("./learning-tsconfig").then((m) => m.LEARNING_TSCONFIG),
   setup: {
     install: [
       "Généré automatiquement : `npx tsc --init`.",
@@ -339,7 +323,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   editeur: {
-  learning: LEARNING_EDITEUR,
+  learning: () => import("./learning-editeur").then((m) => m.LEARNING_EDITEUR),
   setup: {
     install: [
       "Télécharger VS Code depuis code.visualstudio.com (Windows, macOS, Linux).",
@@ -416,7 +400,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   "types-base": {
-  learning: LEARNING_TYPES_BASE,
+  learning: () => import("./learning-types-base").then((m) => m.LEARNING_TYPES_BASE),
   setup: {
     install: [
       "Aucune installation supplémentaire : les types de base sont natifs à TypeScript.",
@@ -491,7 +475,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   interfaces: {
-  learning: LEARNING_INTERFACES,
+  learning: () => import("./learning-interfaces").then((m) => m.LEARNING_INTERFACES),
   setup: {
     install: [
       "Natif à TypeScript, rien à installer.",
@@ -568,7 +552,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
     ],
   },
   fonctions: {
-  learning: LEARNING_FONCTIONS,
+  learning: () => import("./learning-fonctions").then((m) => m.LEARNING_FONCTIONS),
   setup: {
     install: [
       "Natif à TypeScript, rien à installer.",
@@ -646,7 +630,7 @@ export const GUIDES_TYPESCRIPT: Record<string, SkillGuide> = {
 };
 const EXTRA: Record<string, SkillGuide> = {
   unions: {
-  learning: LEARNING_UNIONS,
+  learning: () => import("./learning-unions").then((m) => m.LEARNING_UNIONS),
   setup: {
     install: [
       "Natif à TypeScript, rien à installer.",
@@ -724,7 +708,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   generiques: {
-  learning: LEARNING_GENERIQUES,
+  learning: () => import("./learning-generiques").then((m) => m.LEARNING_GENERIQUES),
   setup: {
     install: [
       "Natif à TypeScript, rien à installer.",
@@ -795,7 +779,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   "utility-types": {
-  learning: LEARNING_UTILITY_TYPES,
+  learning: () => import("./learning-utility-types").then((m) => m.LEARNING_UTILITY_TYPES),
   setup: {
     install: [
       "Natifs, disponibles sans import.",
@@ -871,7 +855,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   "types-avances": {
-  learning: LEARNING_TYPES_AVANCES,
+  learning: () => import("./learning-types-avances").then((m) => m.LEARNING_TYPES_AVANCES),
   setup: {
     install: [
       "Natifs à TypeScript, rien à installer.",
@@ -947,7 +931,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   modules: {
-  learning: LEARNING_MODULES,
+  learning: () => import("./learning-modules").then((m) => m.LEARNING_MODULES),
   setup: {
     install: [
       "Natif ; l'écosystème npm fournit les modules tiers.",
@@ -1018,7 +1002,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   strict: {
-  learning: LEARNING_STRICT,
+  learning: () => import("./learning-strict").then((m) => m.LEARNING_STRICT),
   setup: {
     install: [
       "Natif : c'est une option du compilateur, rien à installer.",
@@ -1091,7 +1075,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   outillage: {
-  learning: LEARNING_OUTILLAGE,
+  learning: () => import("./learning-outillage").then((m) => m.LEARNING_OUTILLAGE),
   setup: {
     install: [
       "ESLint : `npm install -D eslint @eslint/js typescript-eslint`.",
@@ -1172,7 +1156,7 @@ const EXTRA: Record<string, SkillGuide> = {
     ],
   },
   migration: {
-  learning: LEARNING_MIGRATION,
+  learning: () => import("./learning-migration").then((m) => m.LEARNING_MIGRATION),
   setup: {
     install: [
       "`npm install -D typescript` dans le projet JS existant.",

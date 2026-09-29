@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { LuArrowUpRight as ArrowUpRight, LuBookOpen as BookOpen, LuBriefcase as Briefcase, LuLayoutGrid as LayoutGrid, LuMap as Map, LuSearch as Search, LuX as X, LuZap as Zap } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { SkillIcon, searchItemSkill } from "../../components/SkillIcon/SkillIcon";
 import type { SearchItem, SearchItemType } from "../../types";
-import { SEARCH_INDEX, searchItems } from "../../data/search";
+import { getSearchIndex, searchItems } from "../../data/search";
 import { FIELDS } from "../../data/fields";
 import { SKILL_LEVEL_LABEL } from "../../types";
 import styles from "./Explore.module.css";
@@ -31,16 +31,31 @@ export function Explore() {
     ["roadmap", "skill", "career", "field"].includes(initialType) ? initialType : "all"
   );
   const [levelFilter, setLevelFilter] = useState("all");
+  const [index, setIndex] = useState<SearchItem[] | null>(null);
+
+  // L'index est chargé à l'arrivée sur la page (jamais dans le bundle initial).
+  useEffect(() => {
+    let alive = true;
+    getSearchIndex()
+      .then((items) => {
+        if (alive) setIndex(items);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   const results = useMemo(() => {
+    if (!index) return [];
     let items: SearchItem[] = query.trim()
-      ? searchItems(query)
-      : [...SEARCH_INDEX].sort((a, b) => a.title.localeCompare(b.title));
+      ? searchItems(query, index)
+      : [...index].sort((a, b) => a.title.localeCompare(b.title));
     if (fieldFilter !== "all") items = items.filter((i) => i.fieldId === fieldFilter);
     if (typeFilter !== "all") items = items.filter((i) => i.type === typeFilter);
     if (levelFilter !== "all") items = items.filter((i) => i.level === levelFilter);
     return items.slice(0, 60);
-  }, [query, fieldFilter, typeFilter, levelFilter]);
+  }, [query, fieldFilter, typeFilter, levelFilter, index]);
 
   const grouped = useMemo(
     () =>
@@ -136,10 +151,14 @@ export function Explore() {
             {query.trim() && <> pour «&nbsp;{query.trim()}&nbsp;»</>}
           </p>
 
-          {grouped.length === 0 ? (
+          {!index ? (
             <div className={styles.empty}>
-              <p className={styles.emptyTitle}>No roadmap found.</p>
-              <p className={styles.emptyHint}>Try searching for:</p>
+              <p className={styles.emptyTitle}>Chargement de l'index de recherche…</p>
+            </div>
+          ) : grouped.length === 0 ? (
+            <div className={styles.empty}>
+              <p className={styles.emptyTitle}>Aucun résultat.</p>
+              <p className={styles.emptyHint}>Essayez :</p>
               <ul className={styles.emptySuggestions}>
                 {SUGGESTIONS.map((s) => (
                   <li key={s}>

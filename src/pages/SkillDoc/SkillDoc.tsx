@@ -28,7 +28,7 @@ import { getSkillGuide } from "../../data/skill-guides";
 import { getEnvironment } from "../../data/doc-environment";
 import { NODE_TYPE_LABEL, SKILL_LEVEL_LABEL } from "../../types";
 import type { SkillProject } from "../../types";
-import type { LearningLevel } from "../../data/skill-guides";
+import type { LearningLevel, LearningSection } from "../../data/skill-guides";
 import styles from "./SkillDoc.module.css";
 
 export function SkillDoc() {
@@ -42,13 +42,38 @@ export function SkillDoc() {
   // Section visée par l'ancre (recherche, sommaire, lien partagé).
   const focusId = hash.replace(/^#/, "") || null;
 
+  // Sections de la Learning Page, chargées à la demande (chunk séparé).
+  const [learningSectionsState, setLearningSections] = useState<LearningSection[] | null>(null);
+  useEffect(() => {
+    let alive = true;
+    setLearningSections(null);
+    const loader = guide?.learning;
+    if (loader) {
+      loader().then(
+        (sections) => {
+          if (alive) setLearningSections(sections);
+        },
+        () => {
+          if (alive) setLearningSections([]);
+        }
+      );
+    } else if (alive) {
+      setLearningSections([]);
+    }
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roadmapSlug, skillId]);
+
   // L'ancre peut arriver après le montage (navigation interne) : monter au
   // niveau requis pour que la section ciblée existe dans le DOM.
   useEffect(() => {
-    const target = guide?.learning?.find((s) => `learn-${s.id}` === focusId);
+    if (!learningSectionsState) return;
+    const target = learningSectionsState.find((s) => `learn-${s.id}` === focusId);
     if (target && target.level > level) setLevel(target.level);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [focusId]);
+  }, [focusId, learningSectionsState]);
 
   if (!roadmap || !skill) {
     return <NotFound />;
@@ -64,11 +89,14 @@ export function SkillDoc() {
     note: guide?.prerequisiteNotes?.[id],
   }));
 
-  const learningSections = guide?.learning ?? [];
-  const hasLearning = learningSections.length > 0;
+  const learningSections = learningSectionsState ?? [];
+  const learningReady = learningSectionsState !== null;
+  const hasLearning = learningReady && learningSections.length > 0;
 
-  const sections: MapSection[] = hasLearning
-    ? [
+  const sections: MapSection[] = !learningReady
+    ? []
+    : hasLearning
+      ? [
         ...learningSections.map((s) => ({
           id: `learn-${s.id}`,
           label: s.title,
@@ -161,7 +189,12 @@ export function SkillDoc() {
           </aside>
 
           <article className={styles.doc}>
-            {hasLearning ? (
+            {!learningReady ? (
+              <div className={styles.loading} aria-live="polite" aria-busy="true">
+                <p className={styles.loadingTitle}>Chargement du guide…</p>
+                <p className={styles.loadingHint}>Les sections arrivent dans un instant.</p>
+              </div>
+            ) : hasLearning ? (
               <LearningPage
                 sections={learningSections}
                 roadmapSlug={roadmap.slug}
