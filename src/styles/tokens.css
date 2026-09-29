@@ -22,11 +22,11 @@
   /* Pastilles tonales (chips d'icônes, panneaux) */
   --tint-lavender: #e8f0fe;
   --tint-blue: #d2e3fc;
-  --tint-peach: #fce8e6;
-  --tint-mint: #e6f4ea;
+  --tint-peach: #e8f0fe;
+  --tint-mint: #d2e3fc;
 
-  --success: #1e8e3e;
-  --danger: #d93025;
+  --success: #1a73e8;
+  --danger: #1a73e8;
 
   --font-sans: "Roboto", Arial, Helvetica, sans-serif;
   --font-display: "Poppins", "Google Sans", Arial, Helvetica, sans-serif;
@@ -101,22 +101,22 @@
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
   --accent-faint: color-mix(in srgb, var(--accent) 7%, transparent);
 
-  --navy: #123b63;
+  --navy: #1a1860;
 
-  /* Pastilles dorées sombres (chips d'icônes) */
+  /* Pastilles du thème (jaune/bleu uniquement) */
   --tint-lavender: #4a3a12;
   --tint-blue: #6b5210;
-  --tint-peach: #4a2c14;
-  --tint-mint: #1e4030;
+  --tint-peach: #4a3a12;
+  --tint-mint: #1a2a4a;
 
-  --success: #1da85e;
-  --danger: #f87171;
+  --success: #efbd0b;
+  --danger: #efbd0b;
 
   /* ── Système roadmap : bleu = sélection/actif, doré = compteurs ── */
   --primary: #7c9ff5;
   --primary-bright: #8eadff;
   --accent-gold: #c8a94b;
-  --accent-red: #e5484d;
+  --accent-red: #efbd0b;
   --card: #0d0f11;
   --surface-elevated: #151619;
   --border-subtle: #1b1d20;

@@ -4,7 +4,6 @@ import { LuArrowDown as ArrowDown, LuSearch as Search } from "react-icons/lu";
 import styles from "./Hero.module.css";
 
 const EXPLORE_BY = [
-  { id: "field", label: "Filière", to: "/fields" },
   { id: "career", label: "Métier", to: "/careers" },
   { id: "skill", label: "Compétence", to: "/skills" },
   { id: "tech", label: "Technologie", to: "/explore?type=skill" },

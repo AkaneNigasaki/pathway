@@ -1,11 +1,8 @@
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { LuArrowRight as ArrowRight } from "react-icons/lu";
 import { Hero } from "../../components/Hero/Hero";
 import { Reveal } from "../../components/Reveal/Reveal";
-import { FieldCard } from "../../components/FieldCard/FieldCard";
 import { ContinueLearning } from "../../components/ContinueLearning/ContinueLearning";
-import { FIELDS } from "../../data/fields";
 import { ROADMAPS, totalSkills } from "../../data/roadmaps";
 import { CAREERS } from "../../data/careers";
 import { getField } from "../../data/fields";
@@ -38,49 +35,11 @@ function Stat({ target, suffix, label }: { target: number; suffix?: string; labe
 }
 
 export function Home() {
-  const fieldStats = useMemo(() => {
-    return FIELDS.map((f) => {
-      const rms = ROADMAPS.filter((r) => r.fieldId === f.id);
-      return {
-        field: f,
-        roadmapCount: rms.length,
-        skillCount: rms.reduce((n, r) => n + r.skills.length, 0),
-        careerCount: CAREERS.filter((c) => c.fieldId === f.id).length,
-      };
-    });
-  }, []);
-
   return (
     <>
       <Hero />
 
       <ContinueLearning />
-
-      {/* ── Explore by field ── */}
-      <section className="section" id="explore-fields" aria-labelledby="fields-title">
-        <div className="container">
-          <Reveal className="section-head">
-            <p className="eyebrow">Explore by field</p>
-            <h2 className="section-title" id="fields-title">Choisissez un domaine</h2>
-            <p className="section-lead">
-              Huit filières, des dizaines de parcours. Choisissez un point de départ,
-              Pathway trace la suite.
-            </p>
-          </Reveal>
-          <div className={styles.fieldGrid}>
-            {fieldStats.map(({ field, roadmapCount, skillCount, careerCount }, i) => (
-              <Reveal key={field.id} delay={Math.min(i * 60, 420)}>
-                <FieldCard
-                  field={field}
-                  roadmapCount={roadmapCount}
-                  skillCount={skillCount}
-                  careerCount={careerCount}
-                />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Explore by career ── */}
       <section className={`section ${styles.alt}`} aria-labelledby="careers-title">
@@ -157,7 +116,6 @@ export function Home() {
             <Stat target={ROADMAPS.length} label="Roadmaps détaillées" />
             <Stat target={totalSkills()} suffix="+" label="Compétences cartographiées" />
             <Stat target={CAREERS.length} label="Métiers documentés" />
-            <Stat target={FIELDS.length} label="Filières couvertes" />
           </div>
         </div>
       </section>

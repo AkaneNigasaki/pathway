@@ -4,8 +4,6 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { Footer } from "./components/Footer/Footer";
 import { CommandPalette } from "./components/CommandPalette/CommandPalette";
 import { Home } from "./pages/Home/Home";
-import { Fields } from "./pages/Fields/Fields";
-import { FieldDetail } from "./pages/Fields/FieldDetail";
 import { Roadmaps } from "./pages/Roadmaps/Roadmaps";
 import { RoadmapDetail } from "./pages/RoadmapDetail/RoadmapDetail";
 import { Careers } from "./pages/Careers/Careers";
@@ -44,8 +42,6 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/skills" element={<Skills />} />
-          <Route path="/fields" element={<Fields />} />
-          <Route path="/fields/:id" element={<FieldDetail />} />
           <Route path="/roadmaps" element={<Roadmaps />} />
           <Route path="/roadmaps/:slug" element={<RoadmapDetail />} />
           <Route path="/docs/:roadmapSlug/:skillId" element={<SkillDoc />} />

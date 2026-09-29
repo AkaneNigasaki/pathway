@@ -29,6 +29,16 @@
   letter-spacing: 0.14em;
 }
 
+/* Icône générée de la roadmap : 64px, coins arrondis. */
+.icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+
 .arrow {
   color: var(--faint);
   transition: transform 200ms var(--ease-out), color 200ms ease;

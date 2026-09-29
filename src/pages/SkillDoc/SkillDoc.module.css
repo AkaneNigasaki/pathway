@@ -1,11 +1,12 @@
 .page {
   padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(4rem, 8vw, 6rem);
   scroll-margin-top: 0;
-  /* Le jaune de la marque reste l'accent unique du sommaire et du contenu. */
-  --accent: var(--accent-gold);
-  --accent-soft: color-mix(in srgb, var(--accent) 18%, transparent);
+  /* Accent de la page de leçon : or sobre imposé (directive Akane).
+     Défini ici pour couvrir le sommaire (aside) ET le contenu. */
+  --accent: #c9a96e;
+  --accent-soft: #3a2f1a;
   --accent-border: color-mix(in srgb, var(--accent) 45%, transparent);
-  --on-accent: var(--accent-ink);
+  --on-accent: #141414;
 }
 
 .crumb {
