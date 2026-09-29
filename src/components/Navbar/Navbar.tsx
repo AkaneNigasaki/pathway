@@ -146,7 +146,7 @@ export function Navbar({ theme, onToggleTheme, onOpenPalette }: NavbarProps) {
               <Search size={16} aria-hidden="true" />
               <span className={styles.searchLabel}>Rechercher</span>
               <kbd className={styles.kbd} aria-hidden="true">
-                ⌘K
+                ⌘ K
               </kbd>
             </button>
             <button
