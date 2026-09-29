@@ -141,11 +141,12 @@
   font-weight: 700;
 }
 
-/* ── Panneau overlay : sections de la catégorie, à gauche en absolute ── */
+/* ── Panneau overlay : sections de la catégorie, à droite en absolute
+   (comme le panneau détail sur la page roadmap) ── */
 .overlay {
   position: absolute;
   top: 0;
-  right: calc(100% + 0.75rem);
+  left: calc(100% + 0.75rem);
   z-index: 10;
   /* Largeur suffisante pour que les cartes ne se cassent pas. */
   width: 320px;
@@ -164,8 +165,7 @@
   padding: 0.9rem;
 }
 
-/* Sur mobile : le panneau passe sous les pilules, en flux normal
-   (pas de place à gauche, l'absolute sortirait de l'écran). */
+/* Sur mobile : le panneau passe sous les pilules, en flux normal. */
 @media (max-width: 900px) {
   .overlay {
     position: static;
