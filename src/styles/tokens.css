@@ -101,7 +101,7 @@
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
   --accent-faint: color-mix(in srgb, var(--accent) 7%, transparent);
 
-  --navy: #123b63;
+  --navy: #1a1860;
 
   /* Pastilles du thème (jaune/bleu uniquement) */
   --tint-lavender: #4a3a12;
