@@ -34,12 +34,13 @@ export function Hero() {
             Pathway
           </p>
           <h1 className={styles.title} style={{ "--d": "90ms" } as React.CSSProperties}>
-            Build your path.
+            Tracez votre chemin.
           </h1>
           <p className={styles.lead} style={{ "--d": "200ms" } as React.CSSProperties}>
-            Explore careers, fields and skills
+            Explorez les carrières, les domaines et les compétences
             <br />
-            through structured learning roadmaps.
+           grâce à des feuilles de route d’apprentissage structurées.
+
           </p>
 
           <form
