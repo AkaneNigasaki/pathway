@@ -76,7 +76,8 @@
   margin-left: auto;
 }
 
-/* ── Nœud façon Softaims : pilule sombre à bordure fine, texte centré ── */
+/* ── Nœud façon Softaims : pilule SOMBRE à bordure fine, texte centré ──
+   Sombre dans les deux thèmes, comme sur Softaims. */
 .card {
   position: relative;
   display: flex;
@@ -86,10 +87,10 @@
   width: 100%;
   max-width: 280px;
   min-height: 48px;
-  background: var(--surface);
-  border: 1.5px solid var(--border-strong);
+  background: #14141f;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
   border-radius: 12px;
-  color: var(--foreground);
+  color: #f5f2e9;
   font: inherit;
   font-size: 0.88rem;
   font-weight: 600;
@@ -107,23 +108,23 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--surface);
-  border: 2px solid var(--border-strong);
+  background: #14141f;
+  border: 2px solid rgba(255, 255, 255, 0.4);
   transform: translateY(-50%);
 }
 
 .node_right .card::after {
-  left: -6px;
+  left: -7px;
 }
 
 .node_left .card::after {
-  right: -6px;
+  right: -7px;
 }
 
 .card:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .card:focus-visible {
@@ -138,14 +139,15 @@
 
 .cardActive {
   border-color: var(--accent);
-  background: var(--accent-soft);
+  background: #1e1e2e;
 }
 
 .num {
   flex: none;
   font-size: 0.75rem;
   font-weight: 700;
-  opacity: 0.5;
+  opacity: 0.55;
+  color: #f5f2e9;
 }
 
 .label {
@@ -154,6 +156,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #f5f2e9;
 }
 
 /* Pastille de statut discrète. */
@@ -162,10 +165,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1.5px solid var(--border-strong);
-}
-
-.dotTodo {
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   background: transparent;
 }
 
@@ -179,21 +179,21 @@
   border-color: #4a7dff;
 }
 
-/* ── Panneau d'explication : large, absolute à droite (desktop) ── */
+/* ── Panneau d'explication : large, fixe à droite (toujours visible) ── */
 .panel {
-  position: absolute;
-  top: 3rem;
+  position: fixed;
+  top: 5rem;
   right: 2rem;
   /* Large pour ne pas casser tableaux et blocs de code. */
-  width: min(560px, calc(100% - 4rem));
-  max-height: calc(100% - 6rem);
+  width: min(560px, calc(100vw - 4rem));
+  max-height: calc(100dvh - 7rem);
   display: flex;
   flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: 16px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
-  z-index: 20;
+  z-index: 50;
   overflow: hidden;
 }
 
