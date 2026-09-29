@@ -321,7 +321,7 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
   };
 
   const graph = (
-    <div className={styles.graph} ref={containerRef}>
+    <div className={`${styles.graph}${openLevel != null ? ` ${styles.graphHasOverlay}` : ""}`} ref={containerRef}>
       <svg
         className={styles.wires}
         width={paths.w > 0 ? paths.w : undefined}

@@ -39,6 +39,12 @@
   stroke-linecap: round;
 }
 
+/* Quand le panneau overlay est ouvert, le conteneur ne doit pas le rogner. */
+.graphHasOverlay {
+  overflow: visible;
+  max-height: none;
+}
+
 /* ── Pilules catégorie : colonne verticale uniquement ── */
 .pills {
   position: relative;
@@ -156,6 +162,25 @@
     0 12px 40px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(255, 255, 255, 0.04);
   padding: 0.9rem;
+}
+
+/* Sur mobile : le panneau passe sous les pilules, en flux normal
+   (pas de place à gauche, l'absolute sortirait de l'écran). */
+@media (max-width: 900px) {
+  .overlay {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    max-height: 60dvh;
+    margin-top: 0.75rem;
+  }
+
+  /* Le conteneur doit permettre au panneau de s'étendre. */
+  .graph {
+    overflow: visible;
+    max-height: none;
+  }
 }
 
 .overlayHead {
