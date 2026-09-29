@@ -606,3 +606,17 @@
   filter: brightness(1.08);
   transform: translateY(-1px);
 }
+
+/* Contenu du panneau : écriture naturelle, sans étiquettes. */
+.panelNatural > p:first-child {
+  margin-top: 0;
+}
+
+.panelLead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--foreground);
+  margin: 0 0 1.1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}

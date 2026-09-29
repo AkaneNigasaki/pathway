@@ -189,16 +189,14 @@ export function SkillDoc() {
           }}
           renderContent={(s) => {
             // Retrouve la section d'apprentissage complète pour afficher
-            // l'explication claire : définition, texte, exemples, etc.
+            // son contenu de façon naturelle, comme écrit par un humain.
             const ls = learningSections.find((x) => `learn-${x.id}` === s.id);
             if (!ls) {
               // Sections spéciales (prérequis, ressources, etc.)
               if (s.id === "prerequis") {
                 return (
                   <div>
-                    <h3>Définition</h3>
-                    <p>Ce qu'il faut maîtriser avant d'aborder cette compétence.</p>
-                    <h3>Prérequis</h3>
+                    <p>Avant de plonger, assurez-vous de maîtriser ces bases — elles vous éviteront bien des détours.</p>
                     <ul>
                       {prereqs.map(({ id, skill: pre, note }) => (
                         <li key={id}>
@@ -213,8 +211,7 @@ export function SkillDoc() {
               if (s.id === "ressources") {
                 return (
                   <div>
-                    <h3>Ressources</h3>
-                    <p>Pour aller plus loin avec des sources fiables.</p>
+                    <p>Pour creuser plus loin, voici des sources fiables choisies avec soin.</p>
                     <ul>
                       {skill.resources.map((r) => (
                         <li key={r.url}>
@@ -229,14 +226,8 @@ export function SkillDoc() {
               return <p>{s.label}</p>;
             }
             return (
-              <div>
-                {ls.intro && (
-                  <>
-                    <h3>En bref</h3>
-                    <p><em>{ls.intro}</em></p>
-                  </>
-                )}
-                <h3>Explication</h3>
+              <div className={styles.panelNatural}>
+                {ls.intro && <p className={styles.panelLead}>{ls.intro}</p>}
                 {ls.blocks.map((b, i) => (
                   <BlockView key={i} block={b} />
                 ))}
