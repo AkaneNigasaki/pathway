@@ -54,6 +54,31 @@
   margin-bottom: 0;
 }
 
+/* Sur écran étroit : empilement vertical (la grille latérale écrase les cartes). */
+@media (max-width: 480px) {
+  .stageBlock {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .catNode {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    margin-bottom: 0.6rem;
+  }
+
+  .children {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* Le chemin vertical et les branches horizontales n'ont plus de sens
+     en empilement : on les masque pour éviter les traits orphelins. */
+  .wires {
+    display: none;
+  }
+}
+
 /* ── Nœud catégorie : pilule pleine accent, sur le chemin ── */
 .catNode {
   grid-column: 2;
