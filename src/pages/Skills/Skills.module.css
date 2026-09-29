@@ -284,15 +284,15 @@
 }
 
 .levelDot.beginner {
-  background: #1da85e;
+  background: var(--primary);
 }
 
 .levelDot.intermediate {
-  background: #b48a2e;
+  background: var(--accent);
 }
 
 .levelDot.advanced {
-  background: #d9480f;
+  background: var(--foreground);
 }
 
 .chevron {

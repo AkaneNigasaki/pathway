@@ -189,9 +189,9 @@
 }
 
 .reset:hover {
-  border-color: var(--accent-red);
-  color: var(--accent-red);
-  background: color-mix(in srgb, var(--accent-red) 8%, transparent);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .reset:focus-visible {
