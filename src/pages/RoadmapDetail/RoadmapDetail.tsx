@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { LuArrowRight as ArrowRight, LuBriefcase as Briefcase, LuChevronRight as ChevronRight, LuClock as Clock, LuFlag as Flag, LuLayers as Layers, LuMap as MapIcon, LuX as X } from "react-icons/lu";
-import { RoadmapMap } from "../../components/RoadmapGraph/RoadmapMap";
+import { LuArrowRight as ArrowRight, LuBriefcase as Briefcase, LuChevronRight as ChevronRight, LuClock as Clock, LuFlag as Flag, LuLayers as Layers } from "react-icons/lu";
+import { RoadmapJourney } from "../../components/RoadmapGraph/RoadmapJourney";
 import { RoadmapTimeline } from "../../components/RoadmapGraph/RoadmapTimeline";
 import { SkillPanel } from "../../components/SkillPanel/SkillPanel";
 import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
@@ -20,8 +20,7 @@ export function RoadmapDetail() {
   const [searchParams, setSearchParams] = useSearchParams();
   const roadmap = slug ? getRoadmap(slug) : undefined;
   const [selected, setSelected] = useState<Skill | null>(null);
-  const [mapOpen, setMapOpen] = useState(false);
-  /** Vue principale : progression verticale. La carte reste accessible en second. */
+  /** Vue principale : progression verticale. La carte « voyage » en second. */
   const [view, setView] = useState<"timeline" | "map">("timeline");
   /** Branche mise en évidence sur la carte (?stage= ou chips d'étapes). */
   const [highlightStage, setHighlightStage] = useState<string | null>(null);
@@ -59,16 +58,6 @@ export function RoadmapDetail() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmap, searchParams]);
-
-  // Verrouille le scroll quand la carte plein écran est ouverte.
-  useEffect(() => {
-    if (!mapOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [mapOpen]);
 
   const percent = useMemo(
     () => (roadmap ? progressPercent(doneCount, roadmap.skills.length) : 0),
@@ -321,22 +310,13 @@ export function RoadmapDetail() {
           />
         ) : (
           <div className={styles.graphWrap} id="roadmap-map">
-            <RoadmapMap
+            <RoadmapJourney
               roadmap={roadmap}
               status={status}
               selectedId={selected?.id ?? null}
               onSelect={setSelected}
-              onCycle={cycle}
               highlightStage={highlightStage}
             />
-            <button
-              type="button"
-              className={styles.mapFab}
-              onClick={() => setMapOpen(true)}
-              aria-label="Ouvrir la carte en plein écran"
-            >
-              <MapIcon size={17} aria-hidden="true" /> Carte
-            </button>
           </div>
         )}
 
@@ -357,33 +337,6 @@ export function RoadmapDetail() {
           </Reveal>
         )}
       </div>
-
-      {mapOpen && (
-        <div
-          className={styles.mapOverlay}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Carte des connaissances en plein écran"
-        >
-          <button
-            type="button"
-            className={styles.mapClose}
-            onClick={() => setMapOpen(false)}
-            aria-label="Fermer la carte"
-          >
-            <X size={18} aria-hidden="true" />
-          </button>
-          <RoadmapMap
-            roadmap={roadmap}
-            status={status}
-            selectedId={selected?.id ?? null}
-            onSelect={setSelected}
-            onCycle={cycle}
-            highlightStage={highlightStage}
-            fullscreen
-          />
-        </div>
-      )}
 
       {selected && (
         <SkillPanel
