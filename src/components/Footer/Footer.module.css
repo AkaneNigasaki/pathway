@@ -64,11 +64,48 @@
   color: var(--faint);
 }
 
+/* ── Wordmark géant en pied de page ── */
+.wordmark {
+  margin-top: 2.5rem;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+.wordmark span {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 14vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-align: center;
+  /* Dégradé or qui s'estompe vers le bas. */
+  background: linear-gradient(
+    180deg,
+    var(--accent) 20%,
+    color-mix(in srgb, var(--accent) 35%, transparent) 70%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Halo subtil. */
+  filter: drop-shadow(0 0 24px color-mix(in srgb, var(--accent) 25%, transparent));
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr 1fr;
   }
   .brand {
     grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark span {
+    filter: none;
   }
 }

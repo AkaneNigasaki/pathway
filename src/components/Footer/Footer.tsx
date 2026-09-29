@@ -63,6 +63,9 @@ export function Footer() {
             Icônes des concepts : Flat Color Icons (MIT), via Iconify.
           </span>
         </div>
+        <div className={styles.wordmark} aria-hidden="true">
+          <span>pathway</span>
+        </div>
       </div>
     </footer>
   );
