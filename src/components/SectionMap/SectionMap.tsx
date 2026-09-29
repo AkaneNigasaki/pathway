@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   LuLightbulb,
   LuBookOpen,
@@ -248,16 +248,26 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
         const r = el.getBoundingClientRect();
         return {
           cx: r.left - cRect.left + r.width / 2,
+          left: r.left - cRect.left,
+          right: r.left - cRect.left + r.width,
+          cy: r.top - cRect.top + scrollTop + r.height / 2,
           top: r.top - cRect.top + scrollTop,
           bottom: r.top - cRect.top + scrollTop + r.height,
         };
       };
-      // Courbe cubique douce entre deux points verticaux.
-      const curve = (x1: number, y1: number, x2: number, y2: number) => {
+      // Courbe verticale douce entre deux points (colonne vertébrale).
+      const vcurve = (x1: number, y1: number, x2: number, y2: number) => {
         if (y2 <= y1) return "";
         const dy = Math.max(18, (y2 - y1) * 0.5);
         const f = (n: number) => n.toFixed(1);
         return `M ${f(x1)} ${f(y1)} C ${f(x1)} ${f(y1 + dy)}, ${f(x2)} ${f(y2 - dy)}, ${f(x2)} ${f(y2)}`;
+      };
+      // Courbe horizontale douce (branche vers la gauche, façon Softaims).
+      const hcurve = (x1: number, y1: number, x2: number, y2: number) => {
+        const dx = Math.max(12, Math.abs(x2 - x1) * 0.5);
+        const f = (n: number) => n.toFixed(1);
+        const dir = x2 > x1 ? 1 : -1;
+        return `M ${f(x1)} ${f(y1)} C ${f(x1 + dir * dx)} ${f(y1)}, ${f(x2 - dir * dx)} ${f(y2)}, ${f(x2)} ${f(y2)}`;
       };
 
       const spine: string[] = [];
@@ -265,7 +275,7 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
         const a = box(`cat-${stages[i].level}`);
         const b = box(`cat-${stages[i + 1].level}`);
         if (a && b) {
-          const d = curve(a.cx, a.bottom, b.cx, b.top);
+          const d = vcurve(a.cx, a.bottom, b.cx, b.top);
           if (d) spine.push(d);
         }
       }
@@ -277,7 +287,8 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
         for (const s of g.sections) {
           const child = box(s.id);
           if (!child) continue;
-          const d = curve(cat.cx, cat.bottom, child.cx, child.top);
+          // De la droite de l'enfant vers la gauche de la catégorie.
+          const d = hcurve(child.right, child.cy, cat.left, cat.cy);
           if (d) branches.push(d);
         }
       }
@@ -331,20 +342,7 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
       </svg>
 
       {stages.map((g, ci) => (
-        <Fragment key={g.level}>
-          <div ref={setNodeRef(`cat-${g.level}`)} className={styles.catNode}>
-            <span className={`${styles.catNum} mono`} aria-hidden="true">
-              {String(ci + 1).padStart(2, "0")}
-            </span>
-            <span className={styles.catText}>
-              <span className={styles.catName}>{STAGE[g.level].name}</span>
-              <span className={styles.catHint}>{STAGE[g.level].hint}</span>
-            </span>
-            <span className={styles.catCount} aria-label={`${g.sections.length} sections`}>
-              {g.sections.length}
-            </span>
-          </div>
-
+        <div key={g.level} className={styles.stageBlock}>
           <ol className={styles.children}>
             {g.sections.map((s) => {
               cursor += 1;
@@ -386,7 +384,20 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
               );
             })}
           </ol>
-        </Fragment>
+
+          <div ref={setNodeRef(`cat-${g.level}`)} className={styles.catNode}>
+            <span className={`${styles.catNum} mono`} aria-hidden="true">
+              {String(ci + 1).padStart(2, "0")}
+            </span>
+            <span className={styles.catText}>
+              <span className={styles.catName}>{STAGE[g.level].name}</span>
+              <span className={styles.catHint}>{STAGE[g.level].hint}</span>
+            </span>
+            <span className={styles.catCount} aria-label={`${g.sections.length} sections`}>
+              {g.sections.length}
+            </span>
+          </div>
+        </div>
       ))}
     </div>
   );

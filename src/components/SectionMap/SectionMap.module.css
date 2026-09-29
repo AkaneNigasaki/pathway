@@ -26,8 +26,9 @@
 .spinePath {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 2;
+  stroke-width: 3;
   stroke-linecap: round;
+  opacity: 0.9;
 }
 
 .branchPath {
@@ -38,18 +39,35 @@
   stroke-linecap: round;
 }
 
-/* ── Nœud catégorie : pilule pleine accent ── */
-.catNode {
+/* ── Bloc étape : enfants à gauche, nœud catégorie à droite (façon Softaims) ── */
+.stageBlock {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: start;
+  margin-bottom: 1.4rem;
+}
+
+.stageBlock:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Nœud catégorie : pilule pleine accent, sur le chemin ── */
+.catNode {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   background: var(--accent);
   color: var(--on-accent);
   border-radius: 999px;
-  padding: 0.55rem 0.85rem;
-  margin: 0 0 0.9rem;
+  padding: 0.55rem 0.8rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .catNum {
@@ -93,20 +111,18 @@
   font-weight: 700;
 }
 
-/* ── Nœuds sections : cartes enfants ── */
+/* ── Nœuds sections : cartes enfants à gauche ── */
 .children {
+  grid-column: 1;
+  grid-row: 1;
   list-style: none;
-  margin: 0 0 1.15rem;
+  margin: 0;
   padding: 0;
   position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.children:last-child {
-  margin-bottom: 0;
+  padding-top: 0.2rem;
 }
 
 .child a {
