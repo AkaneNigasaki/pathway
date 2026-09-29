@@ -96,7 +96,7 @@ function CodeBlock({ block }: { block: Extract<LearningBlock, { kind: "code" }> 
   );
 }
 
-function BlockView({ block }: { block: LearningBlock }) {
+export function BlockView({ block }: { block: LearningBlock }) {
   switch (block.kind) {
     case "text":
       return <p className={styles.text}>{renderRichText(block.text)}</p>;

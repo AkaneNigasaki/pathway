@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LuCheck, LuLightbulb, LuX } from "react-icons/lu";
+import { LuLightbulb, LuX } from "react-icons/lu";
 import type { LearningLevel } from "../../data/skill-guides";
 import styles from "./DocJourney.module.css";
 
@@ -13,14 +13,14 @@ interface DocJourneyProps {
   sections: JourneySection[];
   activeId: string | null;
   onSelect: (section: JourneySection) => void;
-  /** Contenu HTML/texte de la section sélectionnée (affiché dans le panneau). */
+  /** Contenu de la section sélectionnée (affiché dans le panneau de droite). */
   renderContent?: (section: JourneySection) => React.ReactNode;
 }
 
 /**
- * Page documentation façon roadmap Softaims : un chemin sinueux crème
- * sur fond bleu nuit, avec TOUTES les sections en nœuds crème mélangés
- * (sans distinction de niveau). Clic sur un nœud → panneau d'explication.
+ * Page documentation façon roadmap : chemin sinueux sur fond bleu nuit,
+ * sections en cartes sombres comme les nœuds de la roadmap (icône + nom + pastille),
+ * panneau d'explication en absolute à droite au clic.
  */
 export function DocJourney({ sections, activeId, onSelect, renderContent }: DocJourneyProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -35,14 +35,14 @@ export function DocJourney({ sections, activeId, onSelect, renderContent }: DocJ
 
   return (
     <div className={styles.journey}>
-      {/* Ampoule de départ, comme Softaims. */}
+      {/* Ampoule de départ. */}
       <div className={styles.startNode} aria-hidden="true">
         <span className={styles.bulbCircle}>
           <LuLightbulb size={28} />
         </span>
       </div>
 
-      {/* Chemin sinueux avec tous les nœuds mélangés. */}
+      {/* Chemin : cartes-nœuds alternées. */}
       <ol className={styles.path}>
         {sections.map((s, i) => {
           const active = activeId === s.id;
@@ -53,27 +53,29 @@ export function DocJourney({ sections, activeId, onSelect, renderContent }: DocJ
             <li key={s.id} className={`${styles.node} ${styles[`node_${side}`]}`}>
               <button
                 type="button"
-                className={`${styles.pill}${selected_ ? ` ${styles.pillSelected}` : ""}${
-                  active ? ` ${styles.pillActive}` : ""
+                className={`${styles.card}${selected_ ? ` ${styles.cardSelected}` : ""}${
+                  active ? ` ${styles.cardActive}` : ""
                 }`}
                 onClick={() => handleSelect(s)}
                 aria-current={active ? "step" : undefined}
                 aria-expanded={selected_}
+                title={s.label}
               >
-                <span className={`${styles.num} mono`}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={`${styles.num} mono`} aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span className={styles.label}>{s.label}</span>
-                {done && (
-                  <span className={styles.check} aria-hidden="true">
-                    <LuCheck size={14} />
-                  </span>
-                )}
+                <span
+                  className={`${styles.dot} ${done ? styles.dotDone : active ? styles.dotActive : styles.dotTodo}`}
+                  aria-hidden="true"
+                />
               </button>
             </li>
           );
         })}
       </ol>
 
-      {/* Panneau d'explication de la section sélectionnée. */}
+      {/* Panneau d'explication en absolute à droite (desktop). */}
       {selected && (
         <div className={styles.panel} role="dialog" aria-label={selected.label}>
           <div className={styles.panelHead}>
@@ -89,9 +91,7 @@ export function DocJourney({ sections, activeId, onSelect, renderContent }: DocJ
           </div>
           <div className={styles.panelBody}>
             {renderContent ? renderContent(selected) : (
-              <p className={styles.panelHint}>
-                Cliquez sur un nœud du chemin pour voir son explication.
-              </p>
+              <p className={styles.panelHint}>Explication à venir.</p>
             )}
           </div>
         </div>

@@ -17,7 +17,7 @@ import {
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { renderRichText } from "../../components/RichText/RichText";
-import { LearningPage } from "../../components/LearningPage/LearningPage";
+import { LearningPage, BlockView } from "../../components/LearningPage/LearningPage";
 import { DocJourney } from "../../components/DocJourney/DocJourney";
 import type { MapSection } from "../../components/SectionMap/SectionMap";
 import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
@@ -188,38 +188,58 @@ export function SkillDoc() {
             navigate({ hash: s.id });
           }}
           renderContent={(s) => {
-            // Retrouve la section d'apprentissage complète pour afficher son intro.
+            // Retrouve la section d'apprentissage complète pour afficher
+            // l'explication claire : définition, texte, exemples, etc.
             const ls = learningSections.find((x) => `learn-${x.id}` === s.id);
             if (!ls) {
               // Sections spéciales (prérequis, ressources, etc.)
-              const special = s.id === "prerequis" ? (
-                <div>
-                  <p>Les prérequis pour cette compétence :</p>
-                  <ul>
-                    {prereqs.map(({ id, skill: pre }) => (
-                      <li key={id}>{pre?.name ?? id}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : s.id === "ressources" ? (
-                <div>
-                  <p>Ressources recommandées :</p>
-                  <ul>
-                    {skill.resources.map((r) => (
-                      <li key={r.url}>
-                        <a href={r.url} target="_blank" rel="noreferrer">{r.title}</a>
-                        {r.provider ? ` — ${r.provider}` : ""}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null;
-              return special ?? <p>{s.label}</p>;
+              if (s.id === "prerequis") {
+                return (
+                  <div>
+                    <h3>Définition</h3>
+                    <p>Ce qu'il faut maîtriser avant d'aborder cette compétence.</p>
+                    <h3>Prérequis</h3>
+                    <ul>
+                      {prereqs.map(({ id, skill: pre, note }) => (
+                        <li key={id}>
+                          <strong>{pre?.name ?? id}</strong>
+                          {note ? ` — ${note}` : ""}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              }
+              if (s.id === "ressources") {
+                return (
+                  <div>
+                    <h3>Ressources</h3>
+                    <p>Pour aller plus loin avec des sources fiables.</p>
+                    <ul>
+                      {skill.resources.map((r) => (
+                        <li key={r.url}>
+                          <a href={r.url} target="_blank" rel="noreferrer">{r.title}</a>
+                          {r.provider ? ` — ${r.provider}` : ""}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              }
+              return <p>{s.label}</p>;
             }
             return (
               <div>
-                {ls.intro && <p><em>{ls.intro}</em></p>}
-                <p>{ls.blocks.length} bloc(s) de contenu — faites défiler la page pour tout lire.</p>
+                {ls.intro && (
+                  <>
+                    <h3>En bref</h3>
+                    <p><em>{ls.intro}</em></p>
+                  </>
+                )}
+                <h3>Explication</h3>
+                {ls.blocks.map((b, i) => (
+                  <BlockView key={i} block={b} />
+                ))}
               </div>
             );
           }}
