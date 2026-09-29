@@ -74,15 +74,17 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 250px;
   gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
 }
 
 /* ── Sommaire ── */
 .toc {
+  order: 2;
   position: sticky;
   top: calc(var(--nav-height-scrolled) + 28px);
+  min-width: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -117,8 +119,9 @@
 
 /* ── Corps de la documentation ── */
 .doc {
+  order: 1;
   min-width: 0;
-  max-width: 760px;
+  max-width: 860px;
 }
 
 .loading {

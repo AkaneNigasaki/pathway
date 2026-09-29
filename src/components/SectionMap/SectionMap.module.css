@@ -146,7 +146,7 @@
 .overlay {
   position: absolute;
   top: 0;
-  left: calc(100% + 0.75rem);
+  right: calc(100% + 0.75rem);
   z-index: 10;
   /* Largeur suffisante pour que les cartes ne se cassent pas. */
   width: 320px;
