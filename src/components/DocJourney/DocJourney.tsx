@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { LuCheck, LuLightbulb } from "react-icons/lu";
+import { useState } from "react";
+import { LuCheck, LuLightbulb, LuX } from "react-icons/lu";
 import type { LearningLevel } from "../../data/skill-guides";
 import styles from "./DocJourney.module.css";
 
@@ -11,38 +11,27 @@ export interface JourneySection {
 
 interface DocJourneyProps {
   sections: JourneySection[];
-  level: LearningLevel;
   activeId: string | null;
   onSelect: (section: JourneySection) => void;
+  /** Contenu HTML/texte de la section sélectionnée (affiché dans le panneau). */
+  renderContent?: (section: JourneySection) => React.ReactNode;
 }
-
-const STAGE: Record<LearningLevel, { name: string; hint: string }> = {
-  1: { name: "Aperçu", hint: "30 secondes" },
-  2: { name: "Pratique", hint: "5 à 15 minutes" },
-  3: { name: "Approfondi", hint: "En profondeur" },
-};
 
 /**
  * Page documentation façon roadmap Softaims : un chemin sinueux crème
- * sur fond bleu nuit, avec les 3 niveaux en jalons crème et les sections
- * en pilules sombres reliées par des courbes pointillées.
+ * sur fond bleu nuit, avec TOUTES les sections en nœuds crème mélangés
+ * (sans distinction de niveau). Clic sur un nœud → panneau d'explication.
  */
-export function DocJourney({ sections, level, activeId, onSelect }: DocJourneyProps) {
-  const [openLevel, setOpenLevel] = useState<LearningLevel | null>(1);
+export function DocJourney({ sections, activeId, onSelect, renderContent }: DocJourneyProps) {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const stages = useMemo(() => {
-    const map = new Map<LearningLevel, JourneySection[]>();
-    for (const s of sections) {
-      const lv = (s.level ?? 1) as LearningLevel;
-      if (!map.has(lv)) map.set(lv, []);
-      map.get(lv)!.push(s);
-    }
-    return ([1, 2, 3] as LearningLevel[])
-      .map((lv) => ({ level: lv, sections: map.get(lv) ?? [] }))
-      .filter((g) => g.sections.length > 0);
-  }, [sections]);
-
+  const selected = selectedId ? sections.find((s) => s.id === selectedId) : null;
   const activeIndex = activeId ? sections.findIndex((s) => s.id === activeId) : -1;
+
+  const handleSelect = (s: JourneySection) => {
+    setSelectedId(s.id);
+    onSelect(s);
+  };
 
   return (
     <div className={styles.journey}>
@@ -53,68 +42,60 @@ export function DocJourney({ sections, level, activeId, onSelect }: DocJourneyPr
         </span>
       </div>
 
-      {stages.map((g, gi) => {
-        const isOpen = openLevel === g.level;
-        const isFuture = g.level > level;
-        const side = gi % 2 === 0 ? "right" : "left";
-        return (
-          <div key={g.level} className={`${styles.stage} ${styles[`side_${side}`]}`}>
-            {/* Jalon crème sur le chemin. */}
+      {/* Chemin sinueux avec tous les nœuds mélangés. */}
+      <ol className={styles.path}>
+        {sections.map((s, i) => {
+          const active = activeId === s.id;
+          const selected_ = selectedId === s.id;
+          const done = activeIndex >= 0 && i < activeIndex;
+          const side = i % 2 === 0 ? "right" : "left";
+          return (
+            <li key={s.id} className={`${styles.node} ${styles[`node_${side}`]}`}>
+              <button
+                type="button"
+                className={`${styles.pill}${selected_ ? ` ${styles.pillSelected}` : ""}${
+                  active ? ` ${styles.pillActive}` : ""
+                }`}
+                onClick={() => handleSelect(s)}
+                aria-current={active ? "step" : undefined}
+                aria-expanded={selected_}
+              >
+                <span className={`${styles.num} mono`}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.label}>{s.label}</span>
+                {done && (
+                  <span className={styles.check} aria-hidden="true">
+                    <LuCheck size={14} />
+                  </span>
+                )}
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+
+      {/* Panneau d'explication de la section sélectionnée. */}
+      {selected && (
+        <div className={styles.panel} role="dialog" aria-label={selected.label}>
+          <div className={styles.panelHead}>
+            <h2 className={styles.panelTitle}>{selected.label}</h2>
             <button
               type="button"
-              className={`${styles.milestone}${isOpen ? ` ${styles.milestoneOpen}` : ""}${
-                isFuture ? ` ${styles.milestoneFuture}` : ""
-              }`}
-              onClick={() => setOpenLevel(isOpen ? null : g.level)}
-              aria-expanded={isOpen}
+              className={styles.panelClose}
+              onClick={() => setSelectedId(null)}
+              aria-label="Fermer le panneau"
             >
-              <span className={`${styles.mNum} mono`}>{String(gi + 1).padStart(2, "0")}</span>
-              <span className={styles.mText}>
-                <span className={styles.mName}>{STAGE[g.level].name}</span>
-                <span className={styles.mHint}>{STAGE[g.level].hint}</span>
-              </span>
-              <span className={styles.mCount}>{g.sections.length}</span>
+              <LuX size={18} />
             </button>
-
-            {/* Sections : pilules sombres reliées en pointillés. */}
-            {isOpen && (
-              <ol className={`${styles.children} ${styles[`children_${side}`]}`}>
-                {g.sections.map((s) => {
-                  const i = sections.findIndex((x) => x.id === s.id);
-                  const active = activeId === s.id;
-                  const done = activeIndex >= 0 && i >= 0 && i < activeIndex;
-                  const future = (s.level ?? 1) > level;
-                  return (
-                    <li
-                      key={s.id}
-                      className={`${styles.child}${active ? ` ${styles.childActive}` : ""}${
-                        done ? ` ${styles.childDone}` : ""
-                      }${future ? ` ${styles.childFuture}` : ""}`}
-                    >
-                      <a
-                        href={`#${s.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          onSelect(s);
-                        }}
-                        aria-current={active ? "step" : undefined}
-                      >
-                        <span className={styles.childDot} aria-hidden="true">
-                          {done && <LuCheck size={12} />}
-                        </span>
-                        <span className={styles.childLabel}>{s.label}</span>
-                      </a>
-                      <svg className={styles.wire} aria-hidden="true" focusable="false">
-                        <path d="M 0 20 C 30 20, 30 20, 60 20" className={styles.wirePath} />
-                      </svg>
-                    </li>
-                  );
-                })}
-              </ol>
+          </div>
+          <div className={styles.panelBody}>
+            {renderContent ? renderContent(selected) : (
+              <p className={styles.panelHint}>
+                Cliquez sur un nœud du chemin pour voir son explication.
+              </p>
             )}
           </div>
-        );
-      })}
+        </div>
+      )}
     </div>
   );
 }

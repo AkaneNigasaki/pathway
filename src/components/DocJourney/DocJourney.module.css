@@ -1,5 +1,5 @@
-/* Chemin façon Softaims : fond bleu nuit, tracé crème sinueux,
-   jalons crème, sections en pilules sombres. */
+/* Chemin façon Softaims : fond bleu nuit, nœuds crème mélangés
+   sur un tracé sinueux, panneau d'explication au clic. */
 
 .journey {
   position: relative;
@@ -14,7 +14,7 @@
 .startNode {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .bulbCircle {
@@ -27,45 +27,57 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
-/* ── Étape : jalon + enfants ── */
-.stage {
+/* ── Chemin : nœuds alternés gauche/droite ── */
+.path {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  padding: 1rem 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
-/* Ligne verticale crème (le chemin) au centre de l'étape. */
-.stage::before {
+/* Ligne verticale crème (le chemin). */
+.path::before {
   content: "";
   position: absolute;
   top: 0;
-  bottom: -3rem;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 10px;
   background: #f9f4db;
   border-radius: 5px;
+  opacity: 0.95;
 }
 
-.side_right::before {
-  right: 25%;
-}
-
-.side_left::before {
-  left: 25%;
-}
-
-.stage:last-child::before {
-  bottom: 50%;
-}
-
-/* ── Jalon crème ── */
-.milestone {
+.node {
   position: relative;
   z-index: 1;
+  width: 50%;
+  padding: 1.2rem 0;
+  display: flex;
+}
+
+.node_right {
+  justify-content: flex-start;
+  padding-left: 3rem;
+}
+
+.node_left {
+  justify-content: flex-end;
+  padding-right: 3rem;
+  margin-left: auto;
+}
+
+/* ── Pilule crème (nœud) ── */
+.pill {
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -76,194 +88,128 @@
   padding: 0.7rem 1.1rem;
   font: inherit;
   cursor: pointer;
+  max-width: 280px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   transition: transform 150ms ease, box-shadow 150ms ease;
-  white-space: nowrap;
+  text-align: left;
 }
 
-.side_right .milestone {
-  margin-left: auto;
-  margin-right: calc(25% - 70px);
-}
-
-.side_left .milestone {
-  margin-right: auto;
-  margin-left: calc(25% - 70px);
-}
-
-.milestone:hover {
-  transform: translateY(-2px);
+.pill:hover {
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
-.milestone:focus-visible {
+.pill:focus-visible {
   outline: 3px solid #efbd0b;
   outline-offset: 3px;
 }
 
-.milestoneOpen {
-  box-shadow: 0 0 0 4px rgba(239, 189, 11, 0.4), 0 4px 16px rgba(0, 0, 0, 0.25);
+.pillSelected {
+  box-shadow: 0 0 0 4px rgba(239, 189, 11, 0.5), 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.milestoneFuture {
-  opacity: 0.55;
+.pillActive {
+  background: #efbd0b;
 }
 
-.mNum {
-  font-size: 0.8rem;
+.num {
+  font-size: 0.78rem;
   font-weight: 700;
-  opacity: 0.7;
+  opacity: 0.65;
+  flex: none;
 }
 
-.mText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-  text-align: left;
+.label {
+  flex: 1;
+  min-width: 0;
+  font-weight: 700;
+  font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.mName {
-  font-weight: 800;
-  font-size: 1rem;
-}
-
-.mHint {
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
-
-.mCount {
-  min-width: 32px;
-  height: 32px;
-  padding: 0 0.4rem;
+.check {
+  flex: none;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #1a1860;
   color: #f9f4db;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
 }
 
-/* ── Enfants : pilules sombres ── */
-.children {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  flex: 1;
-  max-width: 320px;
+/* ── Panneau d'explication ── */
+.panel {
+  position: sticky;
+  bottom: 1.5rem;
+  margin: 2rem auto 0;
+  max-width: 640px;
+  background: #0d0d0d;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  overflow: hidden;
 }
 
-.children_right {
-  order: -1;
-  align-items: flex-end;
-}
-
-.children_left {
-  align-items: flex-start;
-}
-
-.child {
-  position: relative;
-  width: 100%;
-  max-width: 280px;
-}
-
-.child a {
+.panelHead {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1rem;
-  background: rgba(26, 24, 96, 0.6);
-  border: 1.5px solid rgba(249, 244, 219, 0.35);
-  border-radius: 10px;
-  color: #f9f4db;
-  font-size: 0.88rem;
-  text-decoration: none;
-  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
-  backdrop-filter: blur(4px);
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(201, 169, 110, 0.08);
 }
 
-.child a:hover {
-  border-color: #f9f4db;
-  background: rgba(26, 24, 96, 0.85);
-  transform: translateX(4px);
+.panelTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
-.children_right .child a:hover {
-  transform: translateX(-4px);
-}
-
-.child a:focus-visible {
-  outline: 2px solid #efbd0b;
-  outline-offset: 2px;
-}
-
-.childActive a {
-  border-color: #efbd0b;
-  background: rgba(239, 189, 11, 0.15);
-  font-weight: 600;
-}
-
-.childDone .childDot {
-  background: #efbd0b;
-  border-color: #efbd0b;
-  color: #1a1860;
-}
-
-.childFuture {
-  opacity: 0.55;
-}
-
-.childDot {
+.panelClose {
   flex: none;
-  width: 18px;
-  height: 18px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1.5px solid rgba(249, 244, 219, 0.5);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 150ms ease, color 150ms ease;
 }
 
-.childLabel {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.panelClose:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* Courbe pointillée vers le jalon. */
-.wire {
-  position: absolute;
-  top: 50%;
-  width: 60px;
-  height: 40px;
-  overflow: visible;
-  pointer-events: none;
+.panelClose:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.children_right .wire {
-  left: 100%;
-  transform: translateY(-50%);
+.panelBody {
+  padding: 1.25rem;
+  max-height: 50dvh;
+  overflow-y: auto;
+  color: var(--foreground);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
-.children_left .wire {
-  right: 100%;
-  transform: translateY(-50%) scaleX(-1);
-}
-
-.wirePath {
-  fill: none;
-  stroke: rgba(249, 244, 219, 0.6);
-  stroke-width: 1.5;
-  stroke-dasharray: 5 5;
-  stroke-linecap: round;
+.panelHint {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
 }
 
 /* ── Responsive ── */
@@ -272,45 +218,34 @@
     padding: 2rem 1rem;
   }
 
-  .stage {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .stage::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .side_right .milestone,
-  .side_left .milestone {
-    margin: 0;
-  }
-
-  .children {
-    max-width: 100%;
+  .node {
     width: 100%;
+    padding: 0.9rem 0;
   }
 
-  .children_right {
-    order: 0;
-    align-items: stretch;
+  .node_right,
+  .node_left {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
   }
 
-  .wire {
-    display: none;
+  .path::before {
+    left: 50%;
+  }
+
+  .pill {
+    max-width: 100%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .milestone,
-  .child a {
+  .pill {
     transition: none;
   }
 
-  .milestone:hover,
-  .child a:hover {
+  .pill:hover {
     transform: none;
   }
 }

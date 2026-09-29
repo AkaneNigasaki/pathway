@@ -182,11 +182,46 @@ export function SkillDoc() {
 
         <DocJourney
           sections={sections}
-          level={level}
           activeId={focusId}
           onSelect={(s) => {
             if (s.level && s.level > level) setLevel(s.level);
             navigate({ hash: s.id });
+          }}
+          renderContent={(s) => {
+            // Retrouve la section d'apprentissage complète pour afficher son intro.
+            const ls = learningSections.find((x) => `learn-${x.id}` === s.id);
+            if (!ls) {
+              // Sections spéciales (prérequis, ressources, etc.)
+              const special = s.id === "prerequis" ? (
+                <div>
+                  <p>Les prérequis pour cette compétence :</p>
+                  <ul>
+                    {prereqs.map(({ id, skill: pre }) => (
+                      <li key={id}>{pre?.name ?? id}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : s.id === "ressources" ? (
+                <div>
+                  <p>Ressources recommandées :</p>
+                  <ul>
+                    {skill.resources.map((r) => (
+                      <li key={r.url}>
+                        <a href={r.url} target="_blank" rel="noreferrer">{r.title}</a>
+                        {r.provider ? ` — ${r.provider}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null;
+              return special ?? <p>{s.label}</p>;
+            }
+            return (
+              <div>
+                {ls.intro && <p><em>{ls.intro}</em></p>}
+                <p>{ls.blocks.length} bloc(s) de contenu — faites défiler la page pour tout lire.</p>
+              </div>
+            );
           }}
         />
 
