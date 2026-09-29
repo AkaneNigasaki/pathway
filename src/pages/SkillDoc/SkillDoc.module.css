@@ -74,14 +74,16 @@
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 250px;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
+  max-width: 1180px;
+  margin-inline: auto;
 }
 
-/* ── Sommaire ── */
+/* ── Sommaire centré, contenu documentaire à droite ── */
 .toc {
-  order: 2;
+  order: 1;
   position: sticky;
   top: calc(var(--nav-height-scrolled) + 28px);
   min-width: 0;
@@ -89,6 +91,10 @@
   border-radius: var(--radius-lg);
   background: var(--surface);
   padding: 1.25rem 1.1rem;
+}
+
+.toc :global(.mobilePanel) {
+  width: 100%;
 }
 
 .tocTitle {
