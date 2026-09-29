@@ -28,24 +28,21 @@ export const LEARNING_GIT: LearningSection[] = [
         text: "Point essentiel : Git n'est pas GitHub. Git est l'outil local qui gère l'historique sur votre machine ; GitHub (comme GitLab ou Codeberg) est une plateforme d'hébergement qui stocke les dépôts Git en ligne et ajoute la collaboration (pull requests, revue de code, CI). On peut utiliser Git toute sa vie sans jamais toucher GitHub.",
       },
       {
+        kind: "text",
+        text: "Git photographie l'état de vos fichiers à chaque étape et conserve toutes les photographies dans un historique navigable.",
+      },
+      {
+        kind: "text",
+        text: "Avant Git, on sauvegardait `projet-final-v2-vraiment-final.zip`. En équipe, c'est ingérable : qui a changé quoi, quand, et comment revenir en arrière sans écraser le travail des autres ? Git répond à ces trois questions avec un historique partagé et fusionnable.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'un projet dépasse quelques fichiers : code, documentation, configuration, site statique. En solo comme en équipe, dès le premier jour du projet — pas « quand ce sera sérieux ».",
+      },
+      {
         kind: "fields",
-        title: "Git en une phrase, par angle",
+        title: "Git : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Git photographie l'état de vos fichiers à chaque étape et conserve toutes les photographies dans un historique navigable.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Avant Git, on sauvegardait `projet-final-v2-vraiment-final.zip`. En équipe, c'est ingérable : qui a changé quoi, quand, et comment revenir en arrière sans écraser le travail des autres ? Git répond à ces trois questions avec un historique partagé et fusionnable.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'un projet dépasse quelques fichiers : code, documentation, configuration, site statique. En solo comme en équipe, dès le premier jour du projet — pas « quand ce sera sérieux ».",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -359,20 +356,17 @@ export const LEARNING_GIT: LearningSection[] = [
         code: "# Dépendances\nnode_modules/\n__pycache__/\n\n# Build\n/dist/\n/build/\n\n# Secrets et environnement local\n.env\n.env.local\n\n# Système et éditeurs\n.DS_Store\nThumbs.db",
       },
       {
+        kind: "text",
+        text: "Sans `.gitignore`, un `git add .` embarquerait des milliers de fichiers générés, des secrets, et des fichiers propres à votre machine — polluant l'historique et exposant des données sensibles.",
+      },
+      {
+        kind: "text",
+        text: "Dès la création du dépôt, avant le premier commit. Ajoutez les motifs au fur et à mesure que de nouveaux fichiers générés apparaissent.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans `.gitignore`, un `git add .` embarquerait des milliers de fichiers générés, des secrets, et des fichiers propres à votre machine — polluant l'historique et exposant des données sensibles.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès la création du dépôt, avant le premier commit. Ajoutez les motifs au fur et à mesure que de nouveaux fichiers générés apparaissent.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Ajouter un fichier au `.gitignore` après l'avoir commité ne le retire pas de l'historique : Git continue de suivre les fichiers déjà suivis. Il faut d'abord le retirer du suivi (voir la section `reset` et `git rm --cached`).",
@@ -766,28 +760,24 @@ export const LEARNING_GIT: LearningSection[] = [
         text: "Un commit atomique fait une seule chose : une correction de bug, une fonctionnalité, un refactoring — jamais les trois mélangés. C'est ce qui permet de relire l'historique, de revert un changement sans dommage collatéral, et de faire du `bisect` (voir plus loin).",
       },
       {
+        kind: "text",
+        text: "Le message explique le pourquoi, pas le quoi : le diff montre déjà le quoi. « Corrige le calcul de la remise qui ignorait les coupons » plutôt que « modif app.py ».",
+      },
+      {
+        kind: "text",
+        text: "Des messages structurés permettent de générer des changelogs automatiquement, de filtrer l'historique par type, et donnent à toute l'équipe le même vocabulaire.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'on travaille à plusieurs ou qu'on publie des versions. En solo, c'est un excellent entraînement à la clarté.",
+      },
+      {
         kind: "fields",
         title: "Écrire un bon message",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le message explique le pourquoi, pas le quoi : le diff montre déjà le quoi. « Corrige le calcul de la remise qui ignorait les coupons » plutôt que « modif app.py ».",
-          },
-          {
+        fields: [          {
             label: "La convention Conventional Commits",
             value:
               "Un format largement adopté : `type(portée): description`. Types courants : `feat` (fonctionnalité), `fix` (correction), `docs`, `refactor`, `test`, `chore`. Exemple : `feat(panier): ajoute la remise fidélité`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Des messages structurés permettent de générer des changelogs automatiquement, de filtrer l'historique par type, et donnent à toute l'équipe le même vocabulaire.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'on travaille à plusieurs ou qu'on publie des versions. En solo, c'est un excellent entraînement à la clarté.",
           },
           {
             label: "Erreur fréquente",
@@ -907,20 +897,17 @@ export const LEARNING_GIT: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Si vous faites `git switch` vers un commit directement (pas une branche), `HEAD` pointe vers le commit lui-même : on dit qu'elle est « détachée ».",
+      },
+      {
+        kind: "text",
+        text: "Pour inspecter ou tester un état passé du projet sans créer de branche. Git vous prévient explicitement quand cela arrive.",
+      },
+      {
         kind: "fields",
         title: "La HEAD détachée",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Si vous faites `git switch` vers un commit directement (pas une branche), `HEAD` pointe vers le commit lui-même : on dit qu'elle est « détachée ».",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour inspecter ou tester un état passé du projet sans créer de branche. Git vous prévient explicitement quand cela arrive.",
-          },
-          {
+        fields: [          {
             label: "Le piège",
             value:
               "Les commits créés en HEAD détachée n'appartiennent à aucune branche : si vous changez de branche ensuite, ils deviennent difficiles à retrouver (le `reflog` peut les sauver — voir la section dédiée).",
@@ -1017,15 +1004,13 @@ export const LEARNING_GIT: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Ne rebasez jamais une branche que d'autres personnes utilisent déjà (typiquement une branche poussée et partagée) : vous réécririez un historique sur lequel ils ont basé leur travail.",
+      },
+      {
         kind: "fields",
         title: "La règle d'or",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ne rebasez jamais une branche que d'autres personnes utilisent déjà (typiquement une branche poussée et partagée) : vous réécririez un historique sur lequel ils ont basé leur travail.",
-          },
-          {
+        fields: [          {
             label: "En pratique",
             value:
               "`rebase` pour nettoyer et mettre à jour votre branche locale avant de la partager ; `merge` pour intégrer du travail partagé. Beaucoup d'équipes combinent les deux : rebase local, merge via pull request.",
@@ -1062,15 +1047,13 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "`HEAD~3` désigne le 3e ancêtre du commit courant. L'éditeur s'ouvre : changez `pick` en `squash` pour fusionner des commits, en `reword` pour corriger un message, puis sauvegardez.",
       },
       {
+        kind: "text",
+        text: "Avant de pousser une branche : fusionner 8 commits « wip » en 2 commits atomiques avec de bons messages. Jamais sur des commits déjà poussés et partagés.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Avant de pousser une branche : fusionner 8 commits « wip » en 2 commits atomiques avec de bons messages. Jamais sur des commits déjà poussés et partagés.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Rebaser des commits déjà poussés, puis forcer le push (`--force`) : les collaborateurs qui avaient basé leur travail sur l'ancien historique se retrouvent avec des conflits fantômes.",
@@ -1177,15 +1160,13 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "Réapplique la remise la plus récente et la retire de la pile. Si des conflits surviennent à l'application, la remise est conservée (sécurité).",
       },
       {
+        kind: "text",
+        text: "Interruption urgente, besoin de tester quelque chose sur une base propre, ou de changer de branche sans commiter un brouillon.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Interruption urgente, besoin de tester quelque chose sur une base propre, ou de changer de branche sans commiter un brouillon.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Oublier des remises dans le stash pendant des semaines : elles deviennent incompréhensibles. Le stash est un tiroir temporaire, pas un archivage.",
@@ -1295,15 +1276,13 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "Crée un commit qui inverse les changements de `a3f9c1d`. Poussable sans `--force`, sans perturber les collaborateurs : l'historique raconte « on a fait X, puis on l'a annulé ».",
       },
       {
+        kind: "text",
+        text: "Parce qu'en équipe, l'historique partagé est un contrat : on ne le réécrit pas, on le complète. `revert` est l'outil de l'honnêteté historique.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Parce qu'en équipe, l'historique partagé est un contrat : on ne le réécrit pas, on le complète. `revert` est l'outil de l'honnêteté historique.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Faire un `reset --hard` puis un `push --force` sur `main` pour « effacer » une erreur : les collaborateurs qui avaient déjà tiré l'ancien historique se retrouvent désynchronisés.",
@@ -1329,15 +1308,13 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "Recrée le changement de `a3f9c1d` ici. Si le même fichier a divergé, un conflit peut survenir — à résoudre comme un conflit de merge classique.",
       },
       {
+        kind: "text",
+        text: "Une correction faite sur `main` doit aussi exister sur la branche de maintenance `v1.x` : cherry-pick plutôt que merge complet.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Une correction faite sur `main` doit aussi exister sur la branche de maintenance `v1.x` : cherry-pick plutôt que merge complet.",
-          },
-          {
+        fields: [          {
             label: "Le revers",
             value:
               "Le commit est dupliqué (deux hashs différents, même contenu) : l'historique contient deux fois le changement. À utiliser avec parcimonie, pas comme stratégie de synchronisation.",
@@ -1376,20 +1353,12 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "Affiche les tags, filtrables par motif. Pratique pour retrouver la dernière version d'une série.",
       },
       {
-        kind: "fields",
-        title: "Versionnage sémantique (semver)",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La convention `MAJEUR.MINEUR.CORRECTIF` (ex. `2.4.1`) : on incrémente MAJEUR en cas de rupture de compatibilité, MINEUR pour une nouveauté compatible, CORRECTIF pour un bug.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un numéro de version lisible par les humains et les outils : les gestionnaires de paquets s'en servent pour résoudre les dépendances.",
-          },
-        ],
+        kind: "text",
+        text: "La convention `MAJEUR.MINEUR.CORRECTIF` (ex. `2.4.1`) : on incrémente MAJEUR en cas de rupture de compatibilité, MINEUR pour une nouveauté compatible, CORRECTIF pour un bug.",
+      },
+      {
+        kind: "text",
+        text: "Un numéro de version lisible par les humains et les outils : les gestionnaires de paquets s'en servent pour résoudre les dépendances.",
       },
     ],
   },
@@ -1510,15 +1479,13 @@ export const LEARNING_GIT: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Pour que rien n'arrive sur `main` sans relecture : la PR transforme l'intégration en discussion traçable plutôt qu'en action solitaire.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour que rien n'arrive sur `main` sans relecture : la PR transforme l'intégration en discussion traçable plutôt qu'en action solitaire.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value:
               "Petites PR, description soignée, tests qui passent. Une PR de 2000 lignes ne sera jamais bien relue : découpez.",
@@ -1631,15 +1598,13 @@ export const LEARNING_GIT: LearningSection[] = [
         text: "Les hooks sont des scripts exécutés automatiquement par Git à certains événements : avant un commit (`pre-commit`), avant un push (`pre-push`), après un merge (`post-merge`)… Ils vivent dans `.git/hooks/` (non versionnés par défaut). Un hook qui échoue bloque l'opération — c'est un garde-fou, pas une suggestion.",
       },
       {
+        kind: "text",
+        text: "Pour empêcher les erreurs bêtes avant qu'elles n'entrent dans l'historique : tests qui échouent, secrets committés par accident, message de commit mal formaté.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour empêcher les erreurs bêtes avant qu'elles n'entrent dans l'historique : tests qui échouent, secrets committés par accident, message de commit mal formaté.",
-          },
-          {
+        fields: [          {
             label: "Exemple concret",
             value:
               "Un hook `pre-commit` qui lance le linter et les tests rapides : si le lint échoue, le commit est refusé et vous corrigez immédiatement.",
@@ -1732,15 +1697,13 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "L'option `-L` limite l'analyse aux lignes 40 à 60 : inutile de blâmer tout un fichier de 2000 lignes quand seule une fonction vous intrigue.",
       },
       {
+        kind: "text",
+        text: "Comprendre, pas accuser : « pourquoi ce comportement bizarre ? » → blame → commit → message → contexte. Jamais pour pointer du doigt un collègue.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Comprendre, pas accuser : « pourquoi ce comportement bizarre ? » → blame → commit → message → contexte. Jamais pour pointer du doigt un collègue.",
-          },
-          {
+        fields: [          {
             label: "La limite",
             value:
               "Le blame montre le dernier commit ayant touché la ligne, pas forcément celui qui a introduit la logique (un reformatage peut masquer l'origine). L'option `-w` ignore les changements d'espaces.",
@@ -1772,15 +1735,13 @@ export const LEARNING_GIT: LearningSection[] = [
         why: "Si le reflog montre que `HEAD@{2}` pointait vers le dernier commit de la branche supprimée, cette commande recrée la branche à cet endroit. Vérifiez le hash avec `git show HEAD@{2}` avant.",
       },
       {
+        kind: "text",
+        text: "Parce que Git ne supprime presque jamais d'objets immédiatement : le reflog est la mémoire de secours qui rend les opérations destructrices annulables.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Parce que Git ne supprime presque jamais d'objets immédiatement : le reflog est la mémoire de secours qui rend les opérations destructrices annulables.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value:
               "En cas de panique après un reset/rebase raté : ne touchez à rien d'autre, ouvrez `git reflog`, identifiez le bon état, et revenez-y. La précipitation aggrave tout.",
@@ -1800,23 +1761,20 @@ export const LEARNING_GIT: LearningSection[] = [
         text: "Par défaut, le nom et l'e-mail d'un commit sont de simples champs texte : n'importe qui peut commiter en votre nom. La signature cryptographique (GPG ou SSH) attache une preuve d'identité au commit. GitHub affiche alors un badge « Verified ».",
       },
       {
+        kind: "text",
+        text: "Dans les projets sensibles ou très visibles, empêcher l'usurpation d'identité : un commit signé prouve qu'il a été créé par le détenteur de la clé.",
+      },
+      {
+        kind: "text",
+        text: "Recommandé pour les mainteneurs de projets open source et les environnements exigeants ; optionnel mais bon réflexe pour les autres.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Dans les projets sensibles ou très visibles, empêcher l'usurpation d'identité : un commit signé prouve qu'il a été créé par le détenteur de la clé.",
-          },
-          {
+        fields: [          {
             label: "Les deux options",
             value:
               "GPG (le standard historique, clés gérées via `gpg`) ou SSH (plus simple si vous avez déjà une clé SSH : `git config --global gpg.format ssh`). Les deux sont reconnues par GitHub.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Recommandé pour les mainteneurs de projets open source et les environnements exigeants ; optionnel mais bon réflexe pour les autres.",
           },
           {
             label: "Concepts liés",

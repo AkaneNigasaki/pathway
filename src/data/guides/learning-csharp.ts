@@ -28,24 +28,21 @@ export const LEARNING_CSHARP: LearningSection[] = [
         text: "Point essentiel : C# et .NET sont deux choses différentes. C# est le langage (la syntaxe que vous écrivez) ; .NET est la plateforme d'exécution (le SDK pour compiler, les bibliothèques, le runtime qui exécute le code). On peut écrire du C# uniquement avec .NET — et .NET accepte aussi d'autres langages comme F# ou Visual Basic.",
       },
       {
+        kind: "text",
+        text: "C# est un langage statiquement typé, lisible et productif, qui tourne sur le runtime .NET multiplateforme (Windows, macOS, Linux).",
+      },
+      {
+        kind: "text",
+        text: "Offrir la productivité d'un langage moderne (inférence de types, LINQ, async/await) avec la robustesse du typage statique et les performances d'un runtime optimisé — sans la verbosité historique de Java ni la complexité manuelle du C++.",
+      },
+      {
+        kind: "text",
+        text: "API et backends web (ASP.NET Core), applications d'entreprise, outils en ligne de commande, jeux avec Unity, applications desktop Windows, services cloud sur Azure.",
+      },
+      {
         kind: "fields",
-        title: "C# en une phrase, par angle",
+        title: "C# : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "C# est un langage statiquement typé, lisible et productif, qui tourne sur le runtime .NET multiplateforme (Windows, macOS, Linux).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Offrir la productivité d'un langage moderne (inférence de types, LINQ, async/await) avec la robustesse du typage statique et les performances d'un runtime optimisé — sans la verbosité historique de Java ni la complexité manuelle du C++.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "API et backends web (ASP.NET Core), applications d'entreprise, outils en ligne de commande, jeux avec Unity, applications desktop Windows, services cloud sur Azure.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -512,18 +509,16 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "int age = 30;                 // entier 32 bits\ndouble prix = 19.99;          // nombre à virgule flottante\ndecimal montant = 19.99m;     // décimal précis (monnaie) : suffixe m\nbool actif = true;            // booléen\nchar initiale = 'A';          // caractère unique : guillemets simples\nstring nom = \"Akane\";           // chaîne : guillemets doubles\nDateTime aujourdhui = DateTime.Today;",
       },
       {
+        kind: "text",
+        text: "Détecter les incohérences au plus tôt, documenter les intentions dans le code, et permettre à l'IDE une complétion fiable.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par concept",
-        fields: [
-          {
+        fields: [          {
             label: "Typage statique",
             value:
               "Chaque variable a un type connu à la compilation : `int age = \"texte\"` ne compile pas. Le compilateur attrape les erreurs de type avant l'exécution.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Détecter les incohérences au plus tôt, documenter les intentions dans le code, et permettre à l'IDE une complétion fiable.",
           },
           {
             label: "Quand s'en soucier",
@@ -553,15 +548,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "var age = 30;            // int : déduit, pas dynamique\nvar nom = \"Akane\";       // string\n// age = \"texte\";        // ERREUR de compilation : age est un int\n\nvar clients = new List<string>(); // le type de droite rend var lisible",
       },
       {
+        kind: "text",
+        text: "`var` demande au compilateur de déduire le type depuis l'expression d'initialisation : le typage statique est préservé.",
+      },
+      {
         kind: "fields",
         title: "Règles d'usage",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`var` demande au compilateur de déduire le type depuis l'expression d'initialisation : le typage statique est préservé.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value:
               "Utilisez `var` quand le type est évident depuis la droite (`new`, appel de méthode typée). Préférez le type explicite quand l'inférence masque l'intention (`var x = GetData();` : quel type ?).",
@@ -607,15 +600,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "// Types valeur : la copie est indépendante\nint a = 10;\nint b = a;\nb = 20;\n// a vaut toujours 10\n\n// Types référence : la copie partage l'objet\nvar liste1 = new List<int> { 1, 2 };\nvar liste2 = liste1;\nliste2.Add(3);\n// liste1 contient aussi 3 : c'est le MÊME objet",
       },
       {
+        kind: "text",
+        text: "Un type valeur contient directement sa donnée (copie = duplication) ; un type référence contient l'adresse d'un objet partagé (copie = alias).",
+      },
+      {
         kind: "fields",
         title: "Repères",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un type valeur contient directement sa donnée (copie = duplication) ; un type référence contient l'adresse d'un objet partagé (copie = alias).",
-          },
-          {
+        fields: [          {
             label: "Pourquoi ça compte",
             value:
               "Passer un objet à une méthode ne le duplique pas : la méthode peut le modifier. C'est la source n°1 des effets de bord surprenants.",
@@ -648,20 +639,17 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "// Avec <Nullable>enable</Nullable> dans le .csproj :\nstring nom = null!;      // warning : null assigné à un non-nullable\nstring? surnom = null;   // OK : le ? autorise explicitement null\n\nConsole.WriteLine(surnom.Length); // warning CS8602 : déréférencement possiblement nul\nConsole.WriteLine(surnom?.Length); // OK : ?. propage le null en sécurité",
       },
       {
+        kind: "text",
+        text: "Par défaut, un type référence n'est plus censé être `null` : le `?` marque explicitement les cas où `null` est légitime, et le compilateur vérifie chaque déréférencement.",
+      },
+      {
+        kind: "text",
+        text: "Faire du `null` un cas visible et vérifié plutôt qu'une surprise à l'exécution. C'est une analyse statique, sans coût au runtime.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le mécanisme",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Par défaut, un type référence n'est plus censé être `null` : le `?` marque explicitement les cas où `null` est légitime, et le compilateur vérifie chaque déréférencement.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Faire du `null` un cas visible et vérifié plutôt qu'une surprise à l'exécution. C'est une analyse statique, sans coût au runtime.",
-          },
-          {
+        fields: [          {
             label: "Opérateurs associés",
             value:
               "`?.` (accès conditionnel), `??` (coalescence : `nom ?? \"inconnu\"`), `??=` (assignation si null), `!` (suppression d'avertissement — à utiliser avec parcimonie).",
@@ -689,15 +677,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "var nom = \"Akane\";\nvar score = 1250;\n\n// Interpolation : lisible et sûre\nvar message = $\"Joueur {nom}, score : {score:N0} points\";\n// → \"Joueur Akane, score : 1 250 points\"\n\n// Chaîne multiligne\nvar sql = \"\"\"\n    SELECT * FROM Joueurs\n    WHERE Score > 1000\n    \"\"\";",
       },
       {
+        kind: "text",
+        text: "Le préfixe `$` active l'interpolation : les expressions entre accolades sont évaluées et formatées dans la chaîne.",
+      },
+      {
         kind: "fields",
         title: "À retenir",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le préfixe `$` active l'interpolation : les expressions entre accolades sont évaluées et formatées dans la chaîne.",
-          },
-          {
+        fields: [          {
             label: "Immuabilité",
             value:
               "Les `string` sont immuables : `texte.ToUpper()` renvoie une NOUVELLE chaîne, l'originale est inchangée. Oublier d'assigner le résultat est une erreur classique.",
@@ -795,15 +781,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "public class Joueur\n{\n    // Auto-propriété : le champ privé est généré\n    public string Pseudo { get; set; } = \"Anonyme\";\n\n    // init : assignable uniquement à la création\n    public Guid Id { get; init; } = Guid.NewGuid();\n\n    // Lecture seule calculée\n    public bool EstExpert => Score >= 1000;\n    public int Score { get; set; }\n}",
       },
       {
+        kind: "text",
+        text: "Une propriété est une paire d'accesseurs `get`/`set` qui s'utilise comme un champ mais encapsule la logique d'accès.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les propriétés",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une propriété est une paire d'accesseurs `get`/`set` qui s'utilise comme un champ mais encapsule la logique d'accès.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi pas un champ public",
             value:
               "La propriété permet d'ajouter plus tard validation, notification ou calcul sans casser les appelants : le champ public fige l'implémentation.",
@@ -953,15 +937,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "// Record positionnel : propriétés init-only générées\npublic record Joueur(string Pseudo, int Score);\n\nvar j1 = new Joueur(\"Akane\", 1250);\nvar j2 = new Joueur(\"Akane\", 1250);\nConsole.WriteLine(j1 == j2); // True : égalité par VALEUR, pas par référence\n\n// Copie non destructive avec une propriété modifiée\nvar j3 = j1 with { Score = 1300 };",
       },
       {
+        kind: "text",
+        text: "Un `record` est une classe (ou struct) dont l'égalité compare les valeurs des propriétés, pensée pour les données immuables.",
+      },
+      {
         kind: "fields",
         title: "Quand utiliser un record",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `record` est une classe (ou struct) dont l'égalité compare les valeurs des propriétés, pensée pour les données immuables.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "DTO d'API, résultats de requêtes, messages, clés de cache : tout objet dont l'identité EST ses données.",
@@ -994,15 +976,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "object donnee = GetDonnee();\n\n// is + déclaration : test ET cast en une fois\nif (donnee is string texte && texte.Length > 3)\n{\n    Console.WriteLine($\"Texte long : {texte}\");\n}\n\n// Switch sur le type avec gardes\nvar description = donnee switch\n{\n    int n when n < 0 => \"entier négatif\",\n    int => \"entier positif\",\n    string s => $\"chaîne de {s.Length} caractères\",\n    null => \"rien\",\n    _ => \"autre chose\",\n};",
       },
       {
+        kind: "text",
+        text: "Le pattern matching combine test de type, extraction de valeur et conditions dans une syntaxe déclarative.",
+      },
+      {
         kind: "fields",
         title: "Pourquoi c'est puissant",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le pattern matching combine test de type, extraction de valeur et conditions dans une syntaxe déclarative.",
-          },
-          {
+        fields: [          {
             label: "Exhaustivité",
             value:
               "Le compilateur avertit si un `switch` sur une énumération ou une hiérarchie oublie un cas : les oublis deviennent des erreurs de compilation.",
@@ -1035,20 +1015,17 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "// Une méthode qui fonctionne pour tout type\nT Premier<T>(List<T> liste) => liste[0];\n\nvar premierNom = Premier(new List<string> { \"a\", \"b\" }); // string\nvar premierScore = Premier(new List<int> { 1, 2 });         // int\n\n// Contrainte : T doit être un type référence avec constructeur sans paramètres\npublic T Creer<T>() where T : class, new() => new T();",
       },
       {
+        kind: "text",
+        text: "Les génériques paramètrent classes et méthodes par un type `T`, résolu à la compilation : sécurité des types sans duplication de code.",
+      },
+      {
+        kind: "text",
+        text: "Avant les génériques, les collections stockaient des `object` : chaque lecture exigeait un cast, source d'erreurs au runtime. `List<string>` ne contient QUE des chaînes, vérifié à la compilation.",
+      },
+      {
         kind: "fields",
         title: "L'essentiel",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les génériques paramètrent classes et méthodes par un type `T`, résolu à la compilation : sécurité des types sans duplication de code.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Avant les génériques, les collections stockaient des `object` : chaque lecture exigeait un cast, source d'erreurs au runtime. `List<string>` ne contient QUE des chaînes, vérifié à la compilation.",
-          },
-          {
+        fields: [          {
             label: "Contraintes (`where`)",
             value:
               "`where T : class` (référence), `where T : struct` (valeur), `where T : new()` (constructible), `where T : IComparable<T>` (comparable).",
@@ -1101,20 +1078,17 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "var joueurs = new List<Joueur>\n{\n    new(\"Akane\", 1250), new(\"Rex\", 980), new(\"Mia\", 1420),\n};\n\nvar experts = joueurs\n    .Where(j => j.Score >= 1000)   // filtrer\n    .OrderByDescending(j => j.Score) // trier\n    .Select(j => j.Pseudo)           // projeter\n    .ToList();                       // matérialiser\n// → [ \"Mia\", \"Akane\" ]",
       },
       {
+        kind: "text",
+        text: "LINQ exprime filtrer/trier/projeter/regrouper comme des opérations enchaînées sur des séquences, avec des lambdas (`j => ...`).",
+      },
+      {
+        kind: "text",
+        text: "Remplacer des boucles `foreach` verbeuses et propices aux erreurs par des intentions déclaratives, vérifiées par le compilateur.",
+      },
+      {
         kind: "fields",
         title: "Comprendre LINQ",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "LINQ exprime filtrer/trier/projeter/regrouper comme des opérations enchaînées sur des séquences, avec des lambdas (`j => ...`).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Remplacer des boucles `foreach` verbeuses et propices aux erreurs par des intentions déclaratives, vérifiées par le compilateur.",
-          },
-          {
+        fields: [          {
             label: "Exécution différée",
             value:
               "Sans `ToList()` final, la requête ne s'exécute qu'à l'itération : elle voit les modifications ultérieures de la source. Matérialisez quand le résultat doit être figé.",
@@ -1151,20 +1125,17 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "async Task<string> TelechargerAsync(string url)\n{\n    using var http = new HttpClient();\n    // await : pause la méthode SANS bloquer le thread,\n    // reprise quand le téléchargement termine\n    return await http.GetStringAsync(url);\n}\n\n// Appel : await dans une méthode async\nstring contenu = await TelechargerAsync(\"https://example.com\");",
       },
       {
+        kind: "text",
+        text: "`async` marque une méthode qui peut se mettre en pause ; `await` attend la fin d'une opération en libérant le thread entre-temps.",
+      },
+      {
+        kind: "text",
+        text: "Un serveur web traite des milliers de requêtes : bloquer un thread par requête en attente de la base de données gaspillerait les ressources. L'async libère le thread pendant l'attente.",
+      },
+      {
         kind: "fields",
         title: "Le modèle mental",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`async` marque une méthode qui peut se mettre en pause ; `await` attend la fin d'une opération en libérant le thread entre-temps.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un serveur web traite des milliers de requêtes : bloquer un thread par requête en attente de la base de données gaspillerait les ressources. L'async libère le thread pendant l'attente.",
-          },
-          {
+        fields: [          {
             label: "`Task` vs `void`",
             value:
               "`async Task` : la méthode peut être attendue et ses exceptions sont capturées. `async void` : à proscrire sauf pour les gestionnaires d'événements — les exceptions s'y perdent.",
@@ -1192,15 +1163,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "try\n{\n    var contenu = File.ReadAllText(\"config.json\");\n}\ncatch (FileNotFoundException ex)\n{\n    Console.WriteLine($\"Fichier manquant : {ex.FileName}\");\n}\ncatch (IOException ex)\n{\n    Console.WriteLine($\"Erreur de lecture : {ex.Message}\");\n}\nfinally\n{\n    // Toujours exécuté : libération des ressources\n}",
       },
       {
+        kind: "text",
+        text: "Une exception interrompt le flux normal et remonte la pile d'appels jusqu'à un `catch` capable de la traiter.",
+      },
+      {
         kind: "fields",
         title: "Règles d'usage",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une exception interrompt le flux normal et remonte la pile d'appels jusqu'à un `catch` capable de la traiter.",
-          },
-          {
+        fields: [          {
             label: "Quand lever",
             value:
               "Pour les situations exceptionnelles (fichier manquant, réseau coupé). Pour les cas prévisibles, préférez `TryParse`, les retours nullables ou les types résultat.",
@@ -1233,20 +1202,17 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "// Func<T, TResult> : méthode qui prend un T et renvoie un TResult\nFunc<int, int> doubler = x => x * 2;\n\n// Action : méthode sans valeur de retour\nAction<string> logger = msg => Console.WriteLine($\"[LOG] {msg}\");\n\n// Événement : notification aux abonnés\npublic class Compteur\n{\n    public event Action<int>? ValeurChangee;\n    public void Incrementer()\n    {\n        ValeurChangee?.Invoke(1); // notifie les abonnés, sans risque si aucun\n    }\n}",
       },
       {
+        kind: "text",
+        text: "Un délégué est un type qui représente une méthode : on le stocke, on le passe en paramètre, on l'invoque.",
+      },
+      {
+        kind: "text",
+        text: "C'est le mécanisme derrière LINQ (`Where(j => ...)` prend un `Func<Joueur, bool>`), les callbacks et tout le modèle d'événements des UI.",
+      },
+      {
         kind: "fields",
         title: "Repères",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un délégué est un type qui représente une méthode : on le stocke, on le passe en paramètre, on l'invoque.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "C'est le mécanisme derrière LINQ (`Where(j => ...)` prend un `Func<Joueur, bool>`), les callbacks et tout le modèle d'événements des UI.",
-          },
-          {
+        fields: [          {
             label: "`event`",
             value:
               "Un délégué exposé comme événement ne peut être déclenché que par sa classe : les abonnés s'ajoutent avec `+=`, se retirent avec `-=` — sans pouvoir le déclencher eux-mêmes.",
@@ -1388,15 +1354,13 @@ export const LEARNING_CSHARP: LearningSection[] = [
         code: "public class AppDbContext : DbContext\n{\n    public DbSet<Joueur> Joueurs => Set<Joueur>();\n\n    protected override void OnConfiguring(DbContextOptionsBuilder options)\n        => options.UseSqlite(\"Data Source=app.db\");\n}\n\n// Requête LINQ → traduite en SQL\nusing var db = new AppDbContext();\nvar experts = await db.Joueurs\n    .Where(j => j.Score >= 1000)\n    .ToListAsync();",
       },
       {
+        kind: "text",
+        text: "EF Core mappe vos classes vers des tables : vous écrivez du LINQ, il génère le SQL.",
+      },
+      {
         kind: "fields",
         title: "Les notions clés",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "EF Core mappe vos classes vers des tables : vous écrivez du LINQ, il génère le SQL.",
-          },
-          {
+        fields: [          {
             label: "`DbContext` / `DbSet<T>`",
             value:
               "Le contexte représente la base ; chaque `DbSet` représente une table. Le suivi des modifications (`ChangeTracker`) détecte ce qui a changé pour générer les `UPDATE`.",
@@ -1652,83 +1616,101 @@ export const LEARNING_CSHARP: LearningSection[] = [
       "Les neuf pièges que tous les développeurs C# rencontrent — et comment les éviter.",
     blocks: [
       {
+        kind: "text",
+        text: "`null` signifie « aucun objet » : il n'y a rien sur quoi appeler `.Length`.",
+      },
+      {
         kind: "fields",
         title: "1. NullReferenceException",
-        fields: [
-          { label: "Problème", value: "Déréférencer un objet `null` : `nom.Length` alors que `nom` est `null`." },
-          { label: "Pourquoi", value: "`null` signifie « aucun objet » : il n'y a rien sur quoi appeler `.Length`." },
+        fields: [          { label: "Problème", value: "Déréférencer un objet `null` : `nom.Length` alors que `nom` est `null`." },
           { label: "Mieux", value: "Activez les nullable reference types et utilisez `?.` / `??` pour les cas où `null` est légitime." },
         ],
       },
       {
+        kind: "text",
+        text: "Sans `await`, la méthode rend la main immédiatement avec un `Task` non observé — et ses exceptions sont perdues.",
+      },
+      {
         kind: "fields",
         title: "2. Oublier `await`",
-        fields: [
-          { label: "Problème", value: "Appeler une méthode `async` sans `await` : l'opération part en tâche de fond, le résultat n'est jamais attendu." },
-          { label: "Pourquoi", value: "Sans `await`, la méthode rend la main immédiatement avec un `Task` non observé — et ses exceptions sont perdues." },
+        fields: [          { label: "Problème", value: "Appeler une méthode `async` sans `await` : l'opération part en tâche de fond, le résultat n'est jamais attendu." },
           { label: "Mieux", value: "Tenez compte du warning CS4014 : si l'appel doit être séquentiel, `await`-ez-le ; sinon, stockez le `Task` explicitement." },
         ],
       },
       {
+        kind: "text",
+        text: "`void` ne renvoie pas de `Task` : il n'y a aucun objet sur lequel observer l'échec.",
+      },
+      {
         kind: "fields",
         title: "3. `async void`",
-        fields: [
-          { label: "Problème", value: "`async void MaMethode()` : les exceptions levées dedans ne peuvent être capturées par l'appelant et font crasher le processus." },
-          { label: "Pourquoi", value: "`void` ne renvoie pas de `Task` : il n'y a aucun objet sur lequel observer l'échec." },
+        fields: [          { label: "Problème", value: "`async void MaMethode()` : les exceptions levées dedans ne peuvent être capturées par l'appelant et font crasher le processus." },
           { label: "Mieux", value: "`async Task` partout ; `async void` uniquement pour les gestionnaires d'événements UI, où c'est imposé par la signature." },
         ],
       },
       {
+        kind: "text",
+        text: "Quand les deux opérandes sont entiers, C# effectue une division entière — c'est défini par le langage, pas un bug.",
+      },
+      {
         kind: "fields",
         title: "4. Division entière",
-        fields: [
-          { label: "Problème", value: "`5 / 2` vaut `2` : la partie décimale est tronquée silencieusement." },
-          { label: "Pourquoi", value: "Quand les deux opérandes sont entiers, C# effectue une division entière — c'est défini par le langage, pas un bug." },
+        fields: [          { label: "Problème", value: "`5 / 2` vaut `2` : la partie décimale est tronquée silencieusement." },
           { label: "Mieux", value: "Écrivez `5 / 2.0` ou castez un opérande : `(double)total / nombre`." },
         ],
       },
       {
+        kind: "text",
+        text: "Les méthodes de `string` renvoient une NOUVELLE chaîne ; l'originale n'est jamais modifiée.",
+      },
+      {
         kind: "fields",
         title: "5. `string` immuable ignorée",
-        fields: [
-          { label: "Problème", value: "`texte.ToUpper();` seul, sans assigner le résultat : `texte` est inchangé." },
-          { label: "Pourquoi", value: "Les méthodes de `string` renvoient une NOUVELLE chaîne ; l'originale n'est jamais modifiée." },
+        fields: [          { label: "Problème", value: "`texte.ToUpper();` seul, sans assigner le résultat : `texte` est inchangé." },
           { label: "Mieux", value: "`texte = texte.ToUpper();` — assignez toujours le résultat." },
         ],
       },
       {
+        kind: "text",
+        text: "L'énumérateur détecte la modification et se protège : l'itération deviendrait incohérente.",
+      },
+      {
         kind: "fields",
         title: "6. Modifier une collection pendant `foreach`",
-        fields: [
-          { label: "Problème", value: "`InvalidOperationException: Collection was modified` quand on ajoute/retire pendant l'itération." },
-          { label: "Pourquoi", value: "L'énumérateur détecte la modification et se protège : l'itération deviendrait incohérente." },
+        fields: [          { label: "Problème", value: "`InvalidOperationException: Collection was modified` quand on ajoute/retire pendant l'itération." },
           { label: "Mieux", value: "Itérez sur une copie (`foreach (var x in liste.ToList())`) ou collectez les modifications pour les appliquer après la boucle." },
         ],
       },
       {
+        kind: "text",
+        text: "Les flottants binaires ne représentent pas exactement les décimaux : l'erreur s'accumule.",
+      },
+      {
         kind: "fields",
         title: "7. `double` pour la monnaie",
-        fields: [
-          { label: "Problème", value: "`0.1 + 0.2` en `double` ne vaut pas exactement `0.3` : les centimes dérivent." },
-          { label: "Pourquoi", value: "Les flottants binaires ne représentent pas exactement les décimaux : l'erreur s'accumule." },
+        fields: [          { label: "Problème", value: "`0.1 + 0.2` en `double` ne vaut pas exactement `0.3` : les centimes dérivent." },
           { label: "Mieux", value: "`decimal` (suffixe `m`) pour tout ce qui touche à l'argent." },
         ],
       },
       {
+        kind: "text",
+        text: "Contrairement aux champs (initialisés par défaut), les variables locales DOIVENT être assignées avant usage — le compilateur l'exige.",
+      },
+      {
         kind: "fields",
         title: "8. Variable locale non assignée",
-        fields: [
-          { label: "Problème", value: "`error CS0165: Use of unassigned local variable 'x'`." },
-          { label: "Pourquoi", value: "Contrairement aux champs (initialisés par défaut), les variables locales DOIVENT être assignées avant usage — le compilateur l'exige." },
+        fields: [          { label: "Problème", value: "`error CS0165: Use of unassigned local variable 'x'`." },
           { label: "Mieux", value: "Initialisez à la déclaration : `int total = 0;`. C'est une protection, pas une contrainte." },
         ],
       },
       {
+        kind: "text",
+        text: "Une exception masquée ne disparaît pas : elle réapparaît plus tard, loin de sa cause, beaucoup plus difficile à diagnostiquer.",
+      },
+      {
         kind: "fields",
         title: "9. `catch` vide ou trop large",
-        fields: [
-          { label: "Problème", value: "`catch { }` qui avale silencieusement l'erreur : le programme continue dans un état incohérent." },
-          { label: "Pourquoi", value: "Une exception masquée ne disparaît pas : elle réapparaît plus tard, loin de sa cause, beaucoup plus difficile à diagnostiquer." },
+        fields: [          { label: "Problème", value: "`catch { }` qui avale silencieusement l'erreur : le programme continue dans un état incohérent." },
           { label: "Mieux", value: "Capturez le type précis, logguez, et ne capturez que ce que vous savez traiter. En cas de doute, laissez remonter." },
         ],
       },

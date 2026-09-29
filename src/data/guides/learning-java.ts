@@ -28,21 +28,21 @@ export const LEARNING_JAVA: LearningSection[] = [
         text: "Concrètement, Java fait tourner des applications d'entreprise, des systèmes bancaires, des serveurs web, des applications Android (historiquement), des outils de big data (Hadoop, Kafka, Elasticsearch sont écrits en Java ou en langages JVM) et des jeux comme Minecraft. C'est un langage « batterie incluse » avec une immense bibliothèque standard, un typage statique fort et une gestion automatique de la mémoire.",
       },
       {
+        kind: "text",
+        text: "Java est un langage compilé vers un bytecode portable, exécuté par la JVM, avec typage statique et ramasse-miettes.",
+      },
+      {
+        kind: "text",
+        text: "Dans les années 90, écrire un programme par plateforme coûtait cher et les pointeurs manuels du C causaient des crashs. Java a apporté la portabilité (une compilation, toutes les plateformes) et la sécurité mémoire (pas d'arithmétique de pointeurs, ramasse-miettes intégré).",
+      },
+      {
+        kind: "text",
+        text: "Applications backend et d'entreprise, API, systèmes distribués, Android (via Kotlin/Java), outils de données. Moins adapté aux scripts rapides ou aux pages web interactives côté navigateur.",
+      },
+      {
         kind: "fields",
-        title: "Java en une phrase, par angle",
+        title: "Java : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value: "Java est un langage compilé vers un bytecode portable, exécuté par la JVM, avec typage statique et ramasse-miettes.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value: "Dans les années 90, écrire un programme par plateforme coûtait cher et les pointeurs manuels du C causaient des crashs. Java a apporté la portabilité (une compilation, toutes les plateformes) et la sécurité mémoire (pas d'arithmétique de pointeurs, ramasse-miettes intégré).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value: "Applications backend et d'entreprise, API, systèmes distribués, Android (via Kotlin/Java), outils de données. Moins adapté aux scripts rapides ou aux pages web interactives côté navigateur.",
-          },
           {
             label: "Ce que ce n'est pas",
             value: "Ni JavaScript (aucun lien malgré le nom), ni un langage interprété pur, ni réservé aux débutants ou aux experts : sa verbosité assumée vise la lisibilité en équipe.",
@@ -453,17 +453,16 @@ export const LEARNING_JAVA: LearningSection[] = [
       "Java est à typage statique : chaque variable déclare son type, vérifié à la compilation.",
     blocks: [
       {
+        kind: "text",
+        text: "Une variable Java a un type déclaré une fois pour toutes ; le compilateur refuse toute affectation incompatible.",
+      },
+      {
+        kind: "text",
+        text: "Le typage statique déplace une classe entière de bugs du runtime vers la compilation : `String nom = 42;` ne compile pas, point final.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Une variable Java a un type déclaré une fois pour toutes ; le compilateur refuse toute affectation incompatible.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Le typage statique déplace une classe entière de bugs du runtime vers la compilation : `String nom = 42;` ne compile pas, point final.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value: "Toujours : c'est le régime par défaut du langage, pas une option.",
           },
@@ -526,13 +525,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "int note = 15;\nif (note >= 10) {\n    System.out.println(\"Admis\");\n} else {\n    System.out.println(\"Recalé\");\n}\n\n// switch expression (Java 14+) : retourne une valeur\nString mention = switch (note / 5) {\n    case 4, 3 -> \"Bien\";\n    case 2 -> \"Passable\";\n    default -> \"Insuffisant\";\n};\n\nfor (int i = 0; i < 3; i++) { /* 0, 1, 2 */ }\nwhile (note < 20) { note++; }\nfor (String nom : noms) { /* for-each : lire une collection */ }",
       },
       {
+        kind: "text",
+        text: "`if`/`switch` choisissent, `for`/`while` répètent : la logique de tout programme tient dans ces quatre mots-clés.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "`if`/`switch` choisissent, `for`/`while` répètent : la logique de tout programme tient dans ces quatre mots-clés.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi le switch moderne",
             value: "L'ancien `switch` exigeait des `break` sous peine de « tomber » dans le cas suivant — source classique de bugs. La forme fléchée (`->`) des switch expressions supprime ce piège et retourne directement une valeur.",
           },
@@ -556,13 +554,12 @@ export const LEARNING_JAVA: LearningSection[] = [
       "`String` est la classe la plus utilisée de Java — et la plus piégeuse pour les débutants.",
     blocks: [
       {
+        kind: "text",
+        text: "`String` est une séquence de caractères immuable : chaque « modification » crée en réalité une nouvelle chaîne.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "`String` est une séquence de caractères immuable : chaque « modification » crée en réalité une nouvelle chaîne.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi l'immuabilité",
             value: "Une chaîne partagée ne peut pas être corrompue par surprise : sûreté dans les threads, clés de `HashMap` fiables, sécurité. Le prix : concaténer en boucle avec `+` crée des objets intermédiaires — d'où `StringBuilder` pour construire.",
           },
@@ -615,17 +612,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "int[] notes = {12, 15, 9};          // taille fixée à 3\nString[] noms = new String[10];     // 10 cases, initialisées à null\n\nnotes[0] = 14;                      // accès par index (0-based)\nint n = notes.length;               // 3 — attribut, pas méthode !\n\nfor (int note : notes) { /* for-each */ }\njava.util.Arrays.sort(notes);       // utilitaires : sort, toString…\nSystem.out.println(java.util.Arrays.toString(notes)); // [9, 12, 14]",
       },
       {
+        kind: "text",
+        text: "Un tableau est un conteneur de taille fixée à la création, d'accès direct par index.",
+      },
+      {
+        kind: "text",
+        text: "Taille connue et stable : jours de la semaine, arguments `main`, tampons. Dès que la taille varie, passez à `ArrayList` (voir Collections).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Un tableau est un conteneur de taille fixée à la création, d'accès direct par index.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value: "Taille connue et stable : jours de la semaine, arguments `main`, tampons. Dès que la taille varie, passez à `ArrayList` (voir Collections).",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value: "`ArrayIndexOutOfBoundsException` : `notes[3]` sur un tableau de 3 cases. L'index max est toujours `length - 1`.",
           },
@@ -645,17 +641,16 @@ export const LEARNING_JAVA: LearningSection[] = [
       "Le cœur de Java : modéliser le monde en objets qui portent leurs données et leurs comportements.",
     blocks: [
       {
+        kind: "text",
+        text: "Une classe est un moule (définition), un objet est une instance de ce moule (une réalisation concrète en mémoire).",
+      },
+      {
+        kind: "text",
+        text: "Regrouper données et traitements qui vont ensemble rend le code découpable, testable et réutilisable : un `CompteBancaire` sait créditer, débiter et connaît son solde — personne d'autre n'y touche directement.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Une classe est un moule (définition), un objet est une instance de ce moule (une réalisation concrète en mémoire).",
-          },
-          {
-            label: "Pourquoi",
-            value: "Regrouper données et traitements qui vont ensemble rend le code découpable, testable et réutilisable : un `CompteBancaire` sait créditer, débiter et connaît son solde — personne d'autre n'y touche directement.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value: "Dès qu'une donnée a un comportement associé : compte, utilisateur, commande, capteur. Les classes structurent tout programme Java au-delà du script.",
           },
@@ -718,17 +713,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "public class Utilisateur {\n    private String email;   // privé : lecture/écriture contrôlées\n\n    public String getEmail() {\n        return email;\n    }\n\n    public void setEmail(String email) {\n        if (email == null || !email.contains(\"@\")) {\n            throw new IllegalArgumentException(\"Email invalide\");\n        }\n        this.email = email;\n    }\n}",
       },
       {
+        kind: "text",
+        text: "L'encapsulation consiste à rendre les champs `private` et à n'exposer que des méthodes : l'objet contrôle ses propres règles.",
+      },
+      {
+        kind: "text",
+        text: "Si `solde` est public, n'importe quel code peut le mettre à `-1000`. Privé + méthodes, l'objet garantit ses invariants — et vous pouvez changer l'implémentation interne sans casser les utilisateurs de la classe.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "L'encapsulation consiste à rendre les champs `private` et à n'exposer que des méthodes : l'objet contrôle ses propres règles.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Si `solde` est public, n'importe quel code peut le mettre à `-1000`. Privé + méthodes, l'objet garantit ses invariants — et vous pouvez changer l'implémentation interne sans casser les utilisateurs de la classe.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value: "Champs `private` par défaut ; n'ouvrez (`public`) que ce qui est nécessaire. Un setter qui valide vaut mieux qu'un champ public.",
           },
@@ -750,17 +744,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "public class Animal {\n    protected String nom;\n    public Animal(String nom) { this.nom = nom; }\n    public void parler() { System.out.println(\"…\"); }\n}\n\npublic class Chien extends Animal {   // Chien EST UN Animal\n    public Chien(String nom) {\n        super(nom);                   // appelle le constructeur parent\n    }\n    @Override\n    public void parler() {            // redéfinition\n        System.out.println(nom + \" aboie : Ouaf !\");\n    }\n}",
       },
       {
+        kind: "text",
+        text: "L'héritage permet à une classe de réutiliser (et spécialiser) les champs et méthodes d'une classe parente.",
+      },
+      {
+        kind: "text",
+        text: "Éviter la duplication : le comportement commun vit dans `Animal`, chaque espèce ne définit que sa différence.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "L'héritage permet à une classe de réutiliser (et spécialiser) les champs et méthodes d'une classe parente.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Éviter la duplication : le comportement commun vit dans `Animal`, chaque espèce ne définit que sa différence.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value: "Relation « est-un » véritable et stable : `Chien` est un `Animal`. Si la relation est « a-un » (`Voiture` a un `Moteur`), préférez la composition (un champ) à l'héritage.",
           },
@@ -790,17 +783,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "Animal a1 = new Chien(\"Rex\");\nAnimal a2 = new Chat(\"Mimi\");\na1.parler();  // « Rex aboie : Ouaf ! »\na2.parler();  // « Mimi miaule : Miaou ! »\n\n// La méthode appelée est choisie à l'EXÉCUTION selon l'objet réel\nList<Animal> animaux = List.of(a1, a2);\nfor (Animal a : animaux) {\n    a.parler();   // chaque animal parle à sa façon\n}",
       },
       {
+        kind: "text",
+        text: "Le polymorphisme : une variable de type parent peut référencer n'importe quel enfant, et c'est la version la plus spécifique de la méthode qui s'exécute.",
+      },
+      {
+        kind: "text",
+        text: "Écrire du code générique : une méthode `faireParler(List<Animal>)` fonctionne pour tous les animaux présents et futurs, sans modification quand on ajoute `Perroquet`.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Le polymorphisme : une variable de type parent peut référencer n'importe quel enfant, et c'est la version la plus spécifique de la méthode qui s'exécute.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Écrire du code générique : une méthode `faireParler(List<Animal>)` fonctionne pour tous les animaux présents et futurs, sans modification quand on ajoute `Perroquet`.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value: "Liaison dynamique : la JVM regarde le type réel de l'objet à l'exécution, pas le type déclaré de la variable. (Seules les méthodes `static`, `private` et `final` échappent à cette règle.)",
           },
@@ -830,17 +822,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "public interface MoyenPaiement {\n    void payer(double montant);          // contrat : pas de code\n    default String devise() { return \"EUR\"; }  // méthode par défaut (Java 8+)\n}\n\npublic class CarteBancaire implements MoyenPaiement {\n    @Override\n    public void payer(double montant) { /* débit carte */ }\n}\n\npublic class Paypal implements MoyenPaiement {\n    @Override\n    public void payer(double montant) { /* appel API */ }\n}",
       },
       {
+        kind: "text",
+        text: "Une interface déclare des comportements (`payer`) sans les implémenter ; chaque classe choisit comment les réaliser.",
+      },
+      {
+        kind: "text",
+        text: "Découpler : le code client manipule `MoyenPaiement`, pas `CarteBancaire`. Ajouter `Virement` ne change rien au code existant — c'est le fondement des API et des frameworks Java.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Une interface déclare des comportements (`payer`) sans les implémenter ; chaque classe choisit comment les réaliser.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Découpler : le code client manipule `MoyenPaiement`, pas `CarteBancaire`. Ajouter `Virement` ne change rien au code existant — c'est le fondement des API et des frameworks Java.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value: "Pour exprimer une capacité (« peut payer », « est comparable », « est sérialisable ») plutôt qu'une nature. Une classe peut implémenter plusieurs interfaces, mais n'hériter que d'une classe.",
           },
@@ -956,17 +947,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "// Sans génériques : tout est Object, casts partout\nList noms = new ArrayList();\nnoms.add(\"Ada\");\nString s = (String) noms.get(0);  // cast manuel, risque à l'exécution\n\n// Avec génériques : le compilateur vérifie\nList<String> prenoms = new ArrayList<>();\nprenoms.add(\"Ada\");\n// prenoms.add(42);   // REFUSÉ à la compilation\nString p = prenoms.get(0);        // pas de cast",
       },
       {
+        kind: "text",
+        text: "Les génériques paramètrent classes et méthodes par un type (`<T>`) : un seul code, typé pour chaque usage.",
+      },
+      {
+        kind: "text",
+        text: "Détecter les erreurs de type à la compilation plutôt qu'au runtime : mettre un `Integer` dans une `List<String>` devient impossible, pas juste « à éviter ».",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Les génériques paramètrent classes et méthodes par un type (`<T>`) : un seul code, typé pour chaque usage.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Détecter les erreurs de type à la compilation plutôt qu'au runtime : mettre un `Integer` dans une `List<String>` devient impossible, pas juste « à éviter ».",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value: "Par effacement (type erasure) : le compilateur vérifie les types puis les efface — à l'exécution, `List<String>` et `List<Integer>` sont la même classe. Conséquence : pas de `new T[]`, pas de `instanceof T`.",
           },
@@ -1010,15 +1000,14 @@ export const LEARNING_JAVA: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Ordre significatif, accès par index, ajouts en fin : la grande majorité des cas. Pour une file d'attente, regardez `Queue`/`Deque`.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Bonne pratique",
             value: "Déclarez le type d'interface (`List<String> todos`), instanciez l'implémentation (`new ArrayList<>()`) : changer d'implémentation plus tard ne touche qu'une ligne.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value: "Ordre significatif, accès par index, ajouts en fin : la grande majorité des cas. Pour une file d'attente, regardez `Queue`/`Deque`.",
           },
           {
             label: "Concepts liés",
@@ -1082,17 +1071,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import java.util.List;\n\nList<String> noms = List.of(\"ada\", \"grace\", \"alan\", \"katherine\");\n\nList<String> resultat = noms.stream()\n    .filter(n -> n.length() > 3)      // intermédiaire : garde\n    .map(String::toUpperCase)         // intermédiaire : transforme\n    .sorted()                         // intermédiaire : trie\n    .toList();                        // terminal : produit le résultat\n// [ALAN, GRACE, KATHERINE]",
       },
       {
+        kind: "text",
+        text: "Un stream est un pipeline d'opérations sur une séquence d'éléments : on enchaîne des transformations, une opération terminale déclenche le calcul.",
+      },
+      {
+        kind: "text",
+        text: "Lisibilité : `filter`/`map`/`sorted` disent l'intention, là où une boucle imbriquée dit la mécanique. Moins de variables temporaires, moins d'erreurs d'index.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Un stream est un pipeline d'opérations sur une séquence d'éléments : on enchaîne des transformations, une opération terminale déclenche le calcul.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Lisibilité : `filter`/`map`/`sorted` disent l'intention, là où une boucle imbriquée dit la mécanique. Moins de variables temporaires, moins d'erreurs d'index.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value: "Opérations intermédiaires paresseuses (rien ne s'exécute avant l'opération terminale) + opérations terminales (`toList`, `forEach`, `reduce`, `count`). Le stream ne modifie JAMAIS la source.",
           },
@@ -1126,19 +1114,18 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import java.util.*;\n\nList<String> noms = new ArrayList<>(List.of(\"ada\", \"grace\", \"alan\"));\n\n// Trier par longueur : une lambda remplace une classe anonyme\nnoms.sort((a, b) -> a.length() - b.length());\n\n// Référence de méthode : encore plus concis quand on appelle une méthode existante\nnoms.forEach(System.out::println);   // équivaut à n -> System.out.println(n)\nnoms.replaceAll(String::toUpperCase);",
       },
       {
+        kind: "text",
+        text: "Une lambda `(a, b) -> a.length() - b.length()` est une fonction anonyme concise, utilisable partout où une interface à une seule méthode est attendue.",
+      },
+      {
+        kind: "text",
+        text: "Avant Java 8, passer un comparateur exigeait une classe anonyme de 6 lignes. Les lambdas ont rendu les streams, les callbacks et les tests expressifs.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Une lambda `(a, b) -> a.length() - b.length()` est une fonction anonyme concise, utilisable partout où une interface à une seule méthode est attendue.",
-          },
-          {
+        fields: [          {
             label: "Interface fonctionnelle",
             value: "Une interface avec UNE seule méthode abstraite (`Comparator`, `Runnable`, `Predicate`, `Function`…) : c'est la « prise » dans laquelle la lambda se branche.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Avant Java 8, passer un comparateur exigeait une classe anonyme de 6 lignes. Les lambdas ont rendu les streams, les callbacks et les tests expressifs.",
           },
           {
             label: "Erreur fréquente",
@@ -1166,17 +1153,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import java.util.Optional;\n\npublic Optional<Utilisateur> trouverParEmail(String email) {\n    // ... recherche en base\n    return Optional.ofNullable(resultat); // présent ou vide, jamais null\n}\n\ntrouverParEmail(\"ada@exemple.com\")\n    .map(Utilisateur::getNom)          // transforme si présent\n    .ifPresent(nom -> System.out.println(\"Trouvé : \" + nom));\n\nString nom = trouverParEmail(\"x@y.z\").map(Utilisateur::getNom).orElse(\"Inconnu\");",
       },
       {
+        kind: "text",
+        text: "`Optional<T>` est un conteneur qui contient zéro ou une valeur : le type annonce que l'absence est un cas normal.",
+      },
+      {
+        kind: "text",
+        text: "Un `null` silencieux est ambigu : oubli ou absence légitime ? `Optional` force l'appelant à traiter les deux cas — les `NullPointerException` « surprise » diminuent mécaniquement.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "`Optional<T>` est un conteneur qui contient zéro ou une valeur : le type annonce que l'absence est un cas normal.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Un `null` silencieux est ambigu : oubli ou absence légitime ? `Optional` force l'appelant à traiter les deux cas — les `NullPointerException` « surprise » diminuent mécaniquement.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value: "En valeur de retour des méthodes de recherche. JAMAIS en paramètre, en champ, ni dans les collections : `Optional` n'est pas fait pour ça.",
           },
@@ -1216,13 +1202,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import java.nio.file.*;\n\n// try-with-resources (Java 7+) : fermeture AUTOMATIQUE, même en cas d'exception\ntry (var lecteur = Files.newBufferedReader(Path.of(\"data.txt\"))) {\n    return lecteur.readLine();\n} catch (NoSuchFileException e) {\n    System.err.println(\"Fichier introuvable : \" + e.getFile());\n    return null;\n} catch (java.io.IOException e) {\n    throw new IllegalStateException(\"Lecture impossible\", e); // on emballe\n}",
       },
       {
+        kind: "text",
+        text: "Les exceptions checked signalent des aléas prévisibles que l'appelant doit traiter ; les unchecked signalent des bugs de programmation.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Les exceptions checked signalent des aléas prévisibles que l'appelant doit traiter ; les unchecked signalent des bugs de programmation.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi cette distinction",
             value: "Obliger à traiter les aléas I/O et réseau évite les programmes qui « oublient » que le monde réel échoue. Les bugs, eux, ne se « traitent » pas : ils se corrigent.",
           },
@@ -1256,17 +1241,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "public record Point(int x, int y) {}\n\n// Généré automatiquement :\n// - constructeur Point(int x, int y)\n// - accesseurs x(), y()\n// - equals(), hashCode(), toString() cohérents\n\nPoint p = new Point(3, 4);\np.x();            // 3\np.equals(new Point(3, 4));  // true",
       },
       {
+        kind: "text",
+        text: "Un record est une classe immuable qui modélise des données simples : le compilateur génère constructeur, accesseurs et `equals`/`hashCode`/`toString`.",
+      },
+      {
+        kind: "text",
+        text: "Les DTO (objets de transfert), résultats de requêtes et clés composites représentaient des centaines de lignes de boilerplate ennuyeux et propice aux oublis (`hashCode` oublié = bug de `HashMap`).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Un record est une classe immuable qui modélise des données simples : le compilateur génère constructeur, accesseurs et `equals`/`hashCode`/`toString`.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Les DTO (objets de transfert), résultats de requêtes et clés composites représentaient des centaines de lignes de boilerplate ennuyeux et propice aux oublis (`hashCode` oublié = bug de `HashMap`).",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value: "Transporter des données : réponses d'API, lignes de CSV, coordonnées, paires clé-valeur. PAS quand l'objet a un comportement riche ou un état mutable.",
           },
@@ -1296,17 +1280,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "public enum Jour {\n    LUNDI(false), MARDI(false), MERCREDI(false),\n    JEUDI(false), VENDREDI(false), SAMEDI(true), DIMANCHE(true);\n\n    private final boolean weekend;\n    Jour(boolean weekend) { this.weekend = weekend; }\n    public boolean estWeekend() { return weekend; }\n}\n\nJour j = Jour.SAMEDI;\nj.estWeekend();  // true",
       },
       {
+        kind: "text",
+        text: "Un `enum` définit un type dont les seules valeurs possibles sont listées : le compilateur refuse tout le reste.",
+      },
+      {
+        kind: "text",
+        text: "Remplace les constantes `int` magiques (`static final int LUNDI = 1`) où rien n'empêchait de passer `42`. Avec un enum, `switch` exhaustif + typage = erreurs impossibles.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Un `enum` définit un type dont les seules valeurs possibles sont listées : le compilateur refuse tout le reste.",
-          },
-          {
-            label: "Pourquoi",
-            value: "Remplace les constantes `int` magiques (`static final int LUNDI = 1`) où rien n'empêchait de passer `42`. Avec un enum, `switch` exhaustif + typage = erreurs impossibles.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value: "Les enums Java sont des classes : champs, constructeur privé, méthodes — utilisez-les pour attacher du comportement aux valeurs au lieu de `switch` dispersés.",
           },
@@ -1328,13 +1311,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import java.nio.file.*;\nimport java.nio.charset.StandardCharsets;\nimport java.util.List;\n\nPath chemin = Path.of(\"notes.txt\");\n\n// Écrire (crée ou écrase)\nFiles.writeString(chemin, \"Bonjour\\n\", StandardCharsets.UTF_8);\n\n// Lire\nString contenu = Files.readString(chemin, StandardCharsets.UTF_8);\nList<String> lignes = Files.readAllLines(chemin, StandardCharsets.UTF_8);\n\n// Lister un dossier\ntry (var flux = Files.list(Path.of(\".\"))) {\n    flux.forEach(System.out::println);\n}",
       },
       {
+        kind: "text",
+        text: "`java.nio.file` (Java 7+) est l'API moderne : `Path` désigne un chemin, `Files` fournit les opérations.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "`java.nio.file` (Java 7+) est l'API moderne : `Path` désigne un chemin, `Files` fournit les opérations.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi pas l'ancien `java.io.File`",
             value: "L'ancienne API signale les erreurs en retournant `false` ou `null` (silencieux !) ; `Files` lève des exceptions précises (`NoSuchFileException`, `AccessDeniedException`).",
           },
@@ -1364,17 +1346,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import java.time.*;\nimport java.time.format.DateTimeFormatter;\n\nLocalDate aujourdhui = LocalDate.now();          // 2026-09-28\nLocalDate noel = LocalDate.of(2026, 12, 25);\nPeriod jusquaNoel = Period.between(aujourdhui, noel);\n\nInstant moment = Instant.now();                 // timestamp UTC\nZonedDateTime paris = ZonedDateTime.now(ZoneId.of(\"Europe/Paris\"));\n\nString texte = noel.format(DateTimeFormatter.ofPattern(\"dd/MM/yyyy\"));",
       },
       {
+        kind: "text",
+        text: "`java.time` (Java 8+) modélise les dates comme des objets immuables distincts selon le besoin : date seule, date+heure, instant UTC.",
+      },
+      {
+        kind: "text",
+        text: "L'ancienne API (`java.util.Date`, `Calendar`) était mutable, confuse (mois indexés de 0 !) et non thread-safe. `java.time` corrige tout : janvier = `1`, objets immuables.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "`java.time` (Java 8+) modélise les dates comme des objets immuables distincts selon le besoin : date seule, date+heure, instant UTC.",
-          },
-          {
-            label: "Pourquoi",
-            value: "L'ancienne API (`java.util.Date`, `Calendar`) était mutable, confuse (mois indexés de 0 !) et non thread-safe. `java.time` corrige tout : janvier = `1`, objets immuables.",
-          },
-          {
+        fields: [          {
             label: "Quelle classe quand",
             value: "`LocalDate` : anniversaire. `LocalDateTime` : rendez-vous local. `ZonedDateTime` : événement mondial avec fuseau. `Instant` : horodatage machine, logs, mesures.",
           },
@@ -1400,13 +1381,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "// Version manuelle : à connaître, à éviter en production\nThread t = new Thread(() -> System.out.println(\"Bonjour du thread\"));\nt.start();\n\n// Version pro : un pool géré qui réutilise les threads\nimport java.util.concurrent.*;\ntry (ExecutorService pool = Executors.newFixedThreadPool(4)) {\n    pool.submit(() -> traiter(fichier1));\n    pool.submit(() -> traiter(fichier2));\n} // fermeture = attente de la fin des tâches",
       },
       {
+        kind: "text",
+        text: "Un thread exécute du code en parallèle du programme principal ; un `ExecutorService` gère un pool de threads réutilisables.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Un thread exécute du code en parallèle du programme principal ; un `ExecutorService` gère un pool de threads réutilisables.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi un pool",
             value: "Créer un thread coûte cher : le pool recycle N threads au lieu d'en créer un par tâche. Et le try-with-resources attend proprement la fin.",
           },
@@ -1456,13 +1436,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La JVM interprète d'abord, puis le JIT compile à chaud les portions critiques en code natif : lent au démarrage, très rapide en régime établi.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "La JVM interprète d'abord, puis le JIT compile à chaud les portions critiques en code natif : lent au démarrage, très rapide en régime établi.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est important",
             value: "Ça explique les comportements : un benchmark Java doit « chauffer » la JVM avant de mesurer ; la mémoire se règle (`-Xmx`) ; et « write once, run anywhere » tient parce que le bytecode ne dépend d'aucun CPU.",
           },
@@ -1594,13 +1573,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "<dependencies>\n    <dependency>\n        <groupId>org.junit.jupiter</groupId>\n        <artifactId>junit-jupiter</artifactId>\n        <version>5.11.0</version> <!-- ou la 5.x en cours : voir junit.org -->\n        <scope>test</scope>\n    </dependency>\n</dependencies>",
       },
       {
+        kind: "text",
+        text: "Une dépendance = des coordonnées `groupId:artifactId:version` + un scope ; Maven la télécharge depuis Maven Central et la met sur le classpath.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Une dépendance = des coordonnées `groupId:artifactId:version` + un scope ; Maven la télécharge depuis Maven Central et la met sur le classpath.",
-          },
-          {
+        fields: [          {
             label: "Les scopes",
             value: "`compile` (défaut : nécessaire partout), `test` (tests uniquement, non embarqué), `provided` (fourni par l'environnement, ex. API servlet), `runtime` (utile à l'exécution seulement).",
           },
@@ -1634,13 +1612,12 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "import org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.BeforeEach;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass CalculatriceTest {\n\n    private Calculatrice calc;\n\n    @BeforeEach\n    void setUp() {\n        calc = new Calculatrice();  // exécuté avant CHAQUE test\n    }\n\n    @Test\n    void additionneDeuxNombres() {\n        assertEquals(5, calc.additionner(2, 3));\n    }\n\n    @Test\n    void divisionParZeroEchoueProprement() {\n        assertThrows(ArithmeticException.class,\n            () -> calc.diviser(1, 0));\n    }\n}",
       },
       {
+        kind: "text",
+        text: "JUnit 5 (Jupiter) : des méthodes annotées `@Test` qui vérifient le comportement via des assertions ; Maven les lance avec `mvn test`.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "JUnit 5 (Jupiter) : des méthodes annotées `@Test` qui vérifient le comportement via des assertions ; Maven les lance avec `mvn test`.",
-          },
-          {
+        fields: [          {
             label: "Les annotations essentielles",
             value: "`@Test` (un cas), `@BeforeEach` (préparation avant chaque test), `@AfterEach` (nettoyage), `@ParameterizedTest` (même test, plusieurs jeux de données).",
           },
@@ -1757,17 +1734,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "name: CI\non: [push, pull_request]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-java@v4\n        with:\n          distribution: 'temurin'\n          java-version: '21'\n      - run: mvn -B package\n",
       },
       {
+        kind: "text",
+        text: "La CI rejoue `mvn package` sur un environnement neuf à chaque push : si ça casse, on le sait en minutes, pas en fin de projet.",
+      },
+      {
+        kind: "text",
+        text: "« Ça marchait sur ma machine » : la CI élimine les dépendances à l'environnement local (JDK oublié, fichier non commité). C'est aussi le garde-fou qui empêche de merger du code qui ne compile pas.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "La CI rejoue `mvn package` sur un environnement neuf à chaque push : si ça casse, on le sait en minutes, pas en fin de projet.",
-          },
-          {
-            label: "Pourquoi",
-            value: "« Ça marchait sur ma machine » : la CI élimine les dépendances à l'environnement local (JDK oublié, fichier non commité). C'est aussi le garde-fou qui empêche de merger du code qui ne compile pas.",
-          },
-          {
+        fields: [          {
             label: "Les briques",
             value: "`actions/setup-java` installe le JDK (distribution et version choisies) ; `mvn -B package` lance le build en mode non interactif. Ajoutez ensuite analyse statique et déploiement.",
           },
@@ -1793,17 +1769,16 @@ export const LEARNING_JAVA: LearningSection[] = [
         code: "module com.exemple.app {\n    requires com.exemple.bibliotheque;  // dépendance explicite\n    exports com.exemple.app.api;        // packages visibles aux autres\n    // com.exemple.app.impl reste INVISIBLE de l'extérieur\n}",
       },
       {
+        kind: "text",
+        text: "JPMS découpe une application en modules qui déclarent ce qu'ils utilisent (`requires`) et ce qu'ils exposent (`exports`) : encapsulation à l'échelle de l'architecture.",
+      },
+      {
+        kind: "text",
+        text: "Le JDK lui-même devenait monolithique ; les modules permettent des runtimes sur mesure (`jlink` : une JVM minimale embarquant uniquement les modules nécessaires — utile pour les conteneurs).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "JPMS découpe une application en modules qui déclarent ce qu'ils utilisent (`requires`) et ce qu'ils exposent (`exports`) : encapsulation à l'échelle de l'architecture.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value: "Le JDK lui-même devenait monolithique ; les modules permettent des runtimes sur mesure (`jlink` : une JVM minimale embarquant uniquement les modules nécessaires — utile pour les conteneurs).",
-          },
-          {
+        fields: [          {
             label: "En pratique",
             value: "La plupart des applications classiques s'en passent : Maven/Gradle gèrent déjà les dépendances au niveau artefact. À connaître pour comprendre `jlink`, les erreurs `module not found`, et l'architecture des gros systèmes.",
           },

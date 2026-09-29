@@ -223,15 +223,13 @@ export const LEARNING_DESIGN_SYSTEMS: LearningSection[] = [
     intro: "Un composant sans documentation sera mal utilisé, aussi bon soit-il.",
     blocks: [
       {
+        kind: "text",
+        text: "Le cas nominal (`primary` pour l'action principale) et les cas limites : un composant a un périmètre, pas seulement des props.",
+      },
+      {
         kind: "fields",
         title: "Ce que chaque composant documente",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Le cas nominal (`primary` pour l'action principale) et les cas limites : un composant a un périmètre, pas seulement des props.",
-          },
-          {
+        fields: [          {
             label: "Quand NE PAS l'utiliser",
             value:
               "Les contre-exemples sont aussi importants : « pour une action destructive, utilisez le bouton danger, pas le ghost ».",

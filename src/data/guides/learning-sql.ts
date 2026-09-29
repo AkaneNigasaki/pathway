@@ -28,24 +28,21 @@ export const LEARNING_SQL: LearningSection[] = [
         text: "SQL (Structured Query Language) est le langage standard pour dialoguer avec ces bases : interroger (`SELECT`), ajouter (`INSERT`), modifier (`UPDATE`), supprimer (`DELETE`) et définir la structure (`CREATE TABLE`). Il est déclaratif : vous décrivez le résultat voulu (« les clients de Paris triés par nom »), pas comment l'obtenir — le moteur optimise l'exécution. Créé dans les années 1970 chez IBM, normalisé par l'ISO, SQL reste le langage de données le plus utilisé au monde : presque chaque application sérieuse (site web, banque, logistique, application mobile) repose dessus.",
       },
       {
+        kind: "text",
+        text: "SQL est le langage déclaratif universel pour stocker, interroger et protéger des données structurées.",
+      },
+      {
+        kind: "text",
+        text: "Avant les SGBD relationnels, les données vivaient dans des fichiers plats : doublons, incohérences, aucun contrôle d'accès, requêtes écrites à la main. Le modèle relationnel apporte structure, intégrité (impossible d'avoir une commande sans client) et un langage unique d'interrogation.",
+      },
+      {
+        kind: "text",
+        text: "Données structurées avec relations : utilisateurs, commandes, inventaires, comptabilité, réservations. Pour des documents sans schéma fixe ou des données massivement distribuées, d'autres modèles (document, clé-valeur) peuvent convenir — mais la base relationnelle reste le choix par défaut.",
+      },
+      {
         kind: "fields",
-        title: "SQL en une phrase, par angle",
+        title: "SQL : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "SQL est le langage déclaratif universel pour stocker, interroger et protéger des données structurées.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Avant les SGBD relationnels, les données vivaient dans des fichiers plats : doublons, incohérences, aucun contrôle d'accès, requêtes écrites à la main. Le modèle relationnel apporte structure, intégrité (impossible d'avoir une commande sans client) et un langage unique d'interrogation.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Données structurées avec relations : utilisateurs, commandes, inventaires, comptabilité, réservations. Pour des documents sans schéma fixe ou des données massivement distribuées, d'autres modèles (document, clé-valeur) peuvent convenir — mais la base relationnelle reste le choix par défaut.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -151,20 +148,17 @@ export const LEARNING_SQL: LearningSection[] = [
       "PostgreSQL est un SGBD open source complet, client-serveur : il tourne comme un service et on s'y connecte en réseau (même en local).",
     blocks: [
       {
+        kind: "text",
+        text: "Le SGBD relationnel open source le plus complet : SQL standard strict, types avancés, extensible.",
+      },
+      {
+        kind: "text",
+        text: "Projet applicatif sérieux, besoin d'intégrité forte, types avancés (JSON, tableaux, géospatial via PostGIS), apprentissage approfondi du SQL.",
+      },
+      {
         kind: "fields",
         title: "PostgreSQL en bref",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le SGBD relationnel open source le plus complet : SQL standard strict, types avancés, extensible.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Projet applicatif sérieux, besoin d'intégrité forte, types avancés (JSON, tableaux, géospatial via PostGIS), apprentissage approfondi du SQL.",
-          },
-          {
+        fields: [          {
             label: "Port par défaut",
             value: "`5432`. Le client `psql` et le serveur communiquent via ce port en local.",
           },
@@ -219,20 +213,17 @@ export const LEARNING_SQL: LearningSection[] = [
       "MySQL est un SGBD open source client-serveur très répandu dans l'écosystème web (WordPress, PHP, hébergements mutualisés).",
     blocks: [
       {
+        kind: "text",
+        text: "Le SGBD open source historique du web : simple à déployer, très présent chez les hébergeurs.",
+      },
+      {
+        kind: "text",
+        text: "Application web classique, CMS (WordPress, Drupal), hébergement mutualisé imposant MySQL/MariaDB, besoin de réplication simple.",
+      },
+      {
         kind: "fields",
         title: "MySQL en bref",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le SGBD open source historique du web : simple à déployer, très présent chez les hébergeurs.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Application web classique, CMS (WordPress, Drupal), hébergement mutualisé imposant MySQL/MariaDB, besoin de réplication simple.",
-          },
-          {
+        fields: [          {
             label: "Port par défaut",
             value: "`3306`. Le client `mysql` s'y connecte en local ou à distance.",
           },
@@ -286,20 +277,17 @@ export const LEARNING_SQL: LearningSection[] = [
       "SQLite n'est pas un serveur : c'est une bibliothèque qui stocke toute la base dans un simple fichier. Zéro configuration.",
     blocks: [
       {
+        kind: "text",
+        text: "Une base SQL complète dans un seul fichier, sans serveur ni installation : la base la plus déployée au monde (téléphones, navigateurs, applications).",
+      },
+      {
+        kind: "text",
+        text: "Apprendre SQL, prototyper, application locale ou embarquée, tests automatisés, petits sites à faible trafic. Pas de gestion d'utilisateurs ni d'accès réseau concurrents massifs.",
+      },
+      {
         kind: "fields",
         title: "SQLite en bref",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une base SQL complète dans un seul fichier, sans serveur ni installation : la base la plus déployée au monde (téléphones, navigateurs, applications).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Apprendre SQL, prototyper, application locale ou embarquée, tests automatisés, petits sites à faible trafic. Pas de gestion d'utilisateurs ni d'accès réseau concurrents massifs.",
-          },
-          {
+        fields: [          {
             label: "Ce que ce n'est pas",
             value:
               "Pas un serveur : pas de port, pas d'utilisateurs, pas de `GRANT`. Si un autre processus écrit pendant que vous lisez, c'est le verrou du fichier qui arbitre.",
@@ -612,15 +600,13 @@ export const LEARNING_SQL: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Le type déclare ce que la colonne peut contenir ; le SGBD rejette le reste, ce qui élimine toute une classe de bugs.",
+      },
+      {
         kind: "fields",
         title: "Règles de choix",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le type déclare ce que la colonne peut contenir ; le SGBD rejette le reste, ce qui élimine toute une classe de bugs.",
-          },
-          {
+        fields: [          {
             label: "Prix et monnaie",
             value:
               "Toujours un type décimal exact (`NUMERIC`/`DECIMAL`), jamais un flottant : `0.1 + 0.2` ne vaut pas exactement `0.3` en flottant, et en comptabilité c'est inacceptable.",
@@ -658,9 +644,12 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "CREATE TABLE produits (\n  id SERIAL PRIMARY KEY,\n  nom TEXT NOT NULL,\n  reference TEXT UNIQUE NOT NULL,\n  prix NUMERIC(10,2) NOT NULL CHECK (prix >= 0),\n  stock INTEGER NOT NULL DEFAULT 0\n);",
       },
       {
+        kind: "text",
+        text: "Une contrainte rejette la donnée invalide au plus près du stockage : aucun bug applicatif, aucun script oublié ne peut corrompre la base. C'est la dernière ligne de défense, et la plus fiable.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "NOT NULL",
             value:
               "La colonne doit toujours avoir une valeur. Sans elle, `NULL` (l'absence de valeur) est autorisé — source de surprises dans les calculs et les jointures.",
@@ -681,11 +670,6 @@ export const LEARNING_SQL: LearningSection[] = [
               "Valeur utilisée quand l'`INSERT` ne précise pas la colonne (`stock` vaut `0` si omis). Évite les `NULL` involontaires.",
           },
           {
-            label: "Pourquoi",
-            value:
-              "Une contrainte rejette la donnée invalide au plus près du stockage : aucun bug applicatif, aucun script oublié ne peut corrompre la base. C'est la dernière ligne de défense, et la plus fiable.",
-          },
-          {
             label: "Bonne pratique",
             value:
               "Mettez les règles d'intégrité dans la base (contraintes), les règles de présentation dans l'application. Une base bien contrainte survit à cinq réécritures d'application.",
@@ -702,19 +686,16 @@ export const LEARNING_SQL: LearningSection[] = [
       "Chaque table a besoin d'un identifiant unique et stable : c'est la clé primaire.",
     blocks: [
       {
+        kind: "text",
+        text: "La clé primaire est la colonne (ou le groupe de colonnes) qui identifie chaque ligne de façon unique : jamais `NULL`, jamais deux fois la même valeur.",
+      },
+      {
+        kind: "text",
+        text: "Sans identifiant unique, impossible de désigner une ligne précisément (`UPDATE`/`DELETE` ciblés), et les clés étrangères n'ont rien vers quoi pointer. C'est le socle de tout le modèle relationnel.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La clé primaire est la colonne (ou le groupe de colonnes) qui identifie chaque ligne de façon unique : jamais `NULL`, jamais deux fois la même valeur.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Sans identifiant unique, impossible de désigner une ligne précisément (`UPDATE`/`DELETE` ciblés), et les clés étrangères n'ont rien vers quoi pointer. C'est le socle de tout le modèle relationnel.",
-          },
-          {
+        fields: [          {
             label: "Clé artificielle vs naturelle",
             value:
               "Une clé artificielle (`id` auto-incrémenté) ne change jamais et ne porte aucun sens métier : c'est le choix par défaut. Une clé naturelle (email, numéro de sécu) peut changer ou poser des problèmes de confidentialité — à réserver aux cas où le métier l'exige vraiment.",
@@ -751,27 +732,23 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "CREATE TABLE commandes (\n  id SERIAL PRIMARY KEY,\n  client_id INTEGER NOT NULL REFERENCES clients(id),\n  montant NUMERIC(10,2) NOT NULL\n);\n\n-- Variante explicite avec comportement à la suppression\nCREATE TABLE adresses (\n  id SERIAL PRIMARY KEY,\n  client_id INTEGER NOT NULL REFERENCES clients(id) ON DELETE CASCADE,\n  libelle TEXT NOT NULL\n);",
       },
       {
+        kind: "text",
+        text: "Une clé étrangère garantit que chaque valeur de `commandes.client_id` correspond à une ligne existante de `clients(id)`.",
+      },
+      {
+        kind: "text",
+        text: "Sans elle, rien n'empêche d'insérer une commande pour le client 999 qui n'existe pas — puis les rapports affichent des lignes fantômes. La base refuse l'incohérence au lieu de la découvrir six mois plus tard.",
+      },
+      {
+        kind: "text",
+        text: "Toujours, pour chaque relation entre tables. Une base sans clés étrangères n'est qu'un ensemble de fichiers CSV coûteux.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une clé étrangère garantit que chaque valeur de `commandes.client_id` correspond à une ligne existante de `clients(id)`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Sans elle, rien n'empêche d'insérer une commande pour le client 999 qui n'existe pas — puis les rapports affichent des lignes fantômes. La base refuse l'incohérence au lieu de la découvrir six mois plus tard.",
-          },
-          {
+        fields: [          {
             label: "ON DELETE CASCADE",
             value:
               "Supprimer un client supprime automatiquement ses adresses. À manier avec précaution : puissant, mais une suppression accidentelle se propage. L'alternative sûre par défaut est `ON DELETE RESTRICT` (refuse la suppression tant que des lignes pointent vers elle).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toujours, pour chaque relation entre tables. Une base sans clés étrangères n'est qu'un ensemble de fichiers CSV coûteux.",
           },
           {
             label: "Erreur fréquente",
@@ -996,14 +973,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "SELECT\n  COUNT(*)        AS nb_commandes,\n  COUNT(telephone)  AS nb_avec_telephone,\n  SUM(montant)      AS chiffre_affaires,\n  AVG(montant)      AS panier_moyen,\n  MIN(montant)      AS plus_petite,\n  MAX(montant)      AS plus_grande\nFROM commandes;",
       },
       {
+        kind: "text",
+        text: "Une fonction d'agrégation prend un ensemble de lignes et renvoie une seule valeur.",
+      },
+      {
+        kind: "text",
+        text: "Tableaux de bord, rapports, statistiques : chaque fois qu'on veut « combien / combien en moyenne / quel total » plutôt que le détail des lignes.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une fonction d'agrégation prend un ensemble de lignes et renvoie une seule valeur.",
-          },
-          {
+        fields: [          {
             label: "COUNT(*) vs COUNT(colonne)",
             value:
               "`COUNT(*)` compte les lignes, y compris celles où des colonnes sont `NULL`. `COUNT(telephone)` ne compte que les lignes où `telephone` n'est pas `NULL`. Confondre les deux fausse les statistiques.",
@@ -1012,11 +991,6 @@ export const LEARNING_SQL: LearningSection[] = [
             label: "NULL et les agrégats",
             value:
               "`SUM`, `AVG`, `MIN`, `MAX` ignorent les `NULL`. `AVG` d'une colonne à moitié vide moyenne donc sur les valeurs renseignées — ce qui est généralement ce qu'on veut, à condition de le savoir.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Tableaux de bord, rapports, statistiques : chaque fois qu'on veut « combien / combien en moyenne / quel total » plutôt que le détail des lignes.",
           },
           {
             label: "Erreur fréquente",
@@ -1101,19 +1075,16 @@ export const LEARNING_SQL: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "`INNER JOIN` associe chaque ligne de gauche à la ligne correspondante de droite via la condition `ON`, et ne garde que les paires qui matchent.",
+      },
+      {
+        kind: "text",
+        text: "Les données sont éclatées en tables (normalisation) : la jointure les réassemble à la lecture. C'est l'opération la plus courante du SQL.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`INNER JOIN` associe chaque ligne de gauche à la ligne correspondante de droite via la condition `ON`, et ne garde que les paires qui matchent.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les données sont éclatées en tables (normalisation) : la jointure les réassemble à la lecture. C'est l'opération la plus courante du SQL.",
-          },
-          {
+        fields: [          {
             label: "Le mot INNER est optionnel",
             value:
               "`JOIN` seul signifie `INNER JOIN`. L'écrire en entier au début aide à distinguer des autres types de jointures.",
@@ -1233,14 +1204,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "-- Dans le WHERE : clients ayant passé au moins une commande > 20000\nSELECT nom FROM clients\nWHERE id IN (SELECT client_id FROM commandes WHERE montant > 20000);\n\n-- Dans le FROM : agréger puis joindre (sous-requête = table temporaire)\nSELECT c.nom, stats.total\nFROM clients c\nJOIN (SELECT client_id, SUM(montant) AS total\n      FROM commandes GROUP BY client_id) AS stats\n  ON stats.client_id = c.id;\n\n-- Dans le SELECT : une valeur calculée par ligne (corrélée)\nSELECT nom,\n  (SELECT COUNT(*) FROM commandes o WHERE o.client_id = c.id) AS nb_commandes\nFROM clients c;",
       },
       {
+        kind: "text",
+        text: "Une sous-requête est un `SELECT` entre parenthèses utilisé comme valeur, comme liste ou comme table par la requête englobante.",
+      },
+      {
+        kind: "text",
+        text: "Filtres « les X qui ont des Y », calculs intermédiaires réutilisés une fois. Pour les requêtes imbriquées complexes, les CTE sont plus lisibles (section suivante).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une sous-requête est un `SELECT` entre parenthèses utilisé comme valeur, comme liste ou comme table par la requête englobante.",
-          },
-          {
+        fields: [          {
             label: "Sous-requête corrélée",
             value:
               "Quand la sous-requête référence la requête externe (`o.client_id = c.id`), elle s'exécute une fois par ligne : lisible, mais potentiellement lent sur de gros volumes.",
@@ -1250,11 +1223,7 @@ export const LEARNING_SQL: LearningSection[] = [
             value:
               "`WHERE EXISTS (SELECT 1 FROM …)` s'arrête dès qu'une ligne matche et gère proprement les `NULL` ; `IN` avec un `NULL` dans la liste a le piège vu plus haut. En cas de doute, `EXISTS`.",
           },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Filtres « les X qui ont des Y », calculs intermédiaires réutilisés une fois. Pour les requêtes imbriquées complexes, les CTE sont plus lisibles (section suivante).",
-          },
+          
         ],
       },
     ],
@@ -1273,19 +1242,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "WITH\n  gros_clients AS (\n    SELECT client_id, SUM(montant) AS total\n    FROM commandes\n    GROUP BY client_id\n    HAVING SUM(montant) > 20000\n  ),\n  avec_ville AS (\n    SELECT g.total, c.nom, c.ville\n    FROM gros_clients g\n    JOIN clients c ON c.id = g.client_id\n  )\nSELECT ville, COUNT(*) AS nb_gros_clients, AVG(total) AS panier_moyen\nFROM avec_ville\nGROUP BY ville;",
       },
       {
+        kind: "text",
+        text: "Une CTE (`WITH nom AS (SELECT …)`) définit une table temporaire nommée, utilisable ensuite comme une vraie table dans la requête.",
+      },
+      {
+        kind: "text",
+        text: "Une requête à trois niveaux d'imbrication devient illisible ; découpée en CTE nommées (`gros_clients`, `avec_ville`), elle se lit comme une recette, étape par étape. Chaque CTE se teste indépendamment.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une CTE (`WITH nom AS (SELECT …)`) définit une table temporaire nommée, utilisable ensuite comme une vraie table dans la requête.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Une requête à trois niveaux d'imbrication devient illisible ; découpée en CTE nommées (`gros_clients`, `avec_ville`), elle se lit comme une recette, étape par étape. Chaque CTE se teste indépendamment.",
-          },
-          {
+        fields: [          {
             label: "CTE récursive",
             value:
               "Avec `WITH RECURSIVE`, une CTE peut se référencer elle-même : le moyen standard de parcourir des hiérarchies (organigramme, catégories imbriquées). Supportée par PostgreSQL, MySQL 8+, SQLite.",
@@ -1318,9 +1284,12 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "-- Insérer plusieurs lignes et récupérer les ids créés (PostgreSQL, SQLite)\nINSERT INTO clients (nom, email, ville)\nVALUES ('Vola', 'vola@exemple.mg', 'Antsirabe'),\n       ('Tovo', 'tovo@exemple.mg', 'Fianarantsoa')\nRETURNING id, nom;\n\n-- Ignorer silencieusement si l'email existe déjà (PostgreSQL, SQLite)\nINSERT INTO clients (nom, email, ville)\nVALUES ('Aina', 'aina@exemple.mg', 'Antananarivo')\nON CONFLICT (email) DO NOTHING;\n\n-- Équivalent MySQL : ignorer ou mettre à jour\nINSERT IGNORE INTO clients (nom, email, ville)\nVALUES ('Aina', 'aina@exemple.mg', 'Antananarivo');",
       },
       {
+        kind: "text",
+        text: "Le motif « vérifier si ça existe, puis insérer » en deux requêtes crée une course : deux processus peuvent insérer le même email entre le test et l'insertion. La contrainte `UNIQUE` + `ON CONFLICT` rend l'opération atomique.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "RETURNING",
             value:
               "Renvoie les lignes insérées (souvent l'`id` auto-généré) sans une seconde requête `SELECT`. Supporté par PostgreSQL et SQLite ; sur MySQL, utilisez `LAST_INSERT_ID()` après l'insertion.",
@@ -1329,11 +1298,6 @@ export const LEARNING_SQL: LearningSection[] = [
             label: "ON CONFLICT",
             value:
               "Gère la violation d'unicité : `DO NOTHING` ignore, `DO UPDATE SET …` met à jour la ligne existante (upsert). Indispensable pour les imports idempotents rejoués plusieurs fois.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le motif « vérifier si ça existe, puis insérer » en deux requêtes crée une course : deux processus peuvent insérer le même email entre le test et l'insertion. La contrainte `UNIQUE` + `ON CONFLICT` rend l'opération atomique.",
           },
           {
             label: "Erreur fréquente",
@@ -1403,14 +1367,12 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "-- Ajouter une colonne (avec défaut pour les lignes existantes)\nALTER TABLE clients ADD COLUMN telephone TEXT;\n\n-- Renommer une colonne\nALTER TABLE clients RENAME COLUMN telephone TO tel_mobile;\n\n-- Changer le type (PostgreSQL : avec conversion explicite si besoin)\nALTER TABLE produits ALTER COLUMN prix TYPE NUMERIC(12,2);\n\n-- Ajouter une contrainte après coup\nALTER TABLE commandes ADD CONSTRAINT montant_positif CHECK (montant > 0);\n\n-- Supprimer une colonne (irréversible : la donnée est perdue)\nALTER TABLE clients DROP COLUMN tel_mobile;",
       },
       {
+        kind: "text",
+        text: "`ALTER TABLE` modifie la structure d'une table existante sans toucher aux lignes — sauf `DROP COLUMN`, qui détruit la donnée.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`ALTER TABLE` modifie la structure d'une table existante sans toucher aux lignes — sauf `DROP COLUMN`, qui détruit la donnée.",
-          },
-          {
+        fields: [          {
             label: "Les migrations",
             value:
               "En équipe, chaque changement de schéma est un fichier versionné et numéroté (`003_ajout_telephone.sql`), appliqué dans l'ordre par un outil (Flyway, Alembic, Prisma Migrate, Django migrations…). On ne modifie jamais la prod « à la main » sans passer par ce circuit.",
@@ -1448,19 +1410,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "-- Accélérer les recherches par email\nCREATE INDEX idx_clients_email ON clients(email);\n\n-- Index composite : l'ordre des colonnes compte\nCREATE INDEX idx_commandes_client_date ON commandes(client_id, cree_le);\n\n-- Voir les index d'une table (PostgreSQL)\n-- psql : \\d clients",
       },
       {
+        kind: "text",
+        text: "Un index est une structure triée à part qui permet de trouver des lignes sans balayer toute la table — au prix d'un coût à chaque écriture.",
+      },
+      {
+        kind: "text",
+        text: "Sans index, `WHERE email = '…'` sur un million de clients lit un million de lignes (parcours séquentiel). Avec l'index, le SGBD saute directement aux bonnes lignes : de plusieurs secondes à quelques millisecondes.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un index est une structure triée à part qui permet de trouver des lignes sans balayer toute la table — au prix d'un coût à chaque écriture.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Sans index, `WHERE email = '…'` sur un million de clients lit un million de lignes (parcours séquentiel). Avec l'index, le SGBD saute directement aux bonnes lignes : de plusieurs secondes à quelques millisecondes.",
-          },
-          {
+        fields: [          {
             label: "Quand en créer",
             value:
               "Sur les colonnes de `WHERE`, `JOIN` (`client_id` !) et `ORDER BY` fréquents. Les clés primaires et contraintes `UNIQUE` créent déjà un index automatiquement : ne les dupliquez pas.",
@@ -1499,9 +1458,12 @@ export const LEARNING_SQL: LearningSection[] = [
         verify: "La sortie contient « Index Scan » si l'index est utilisé, « Seq Scan » sinon",
       },
       {
+        kind: "text",
+        text: "Dès qu'une requête dépasse quelques centaines de millisecondes, ou avant de créer un index « au hasard » : `EXPLAIN` dit si l'index servira.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Lire le plan",
             value:
               "Cherchez `Seq Scan on clients` (balayage complet : normal sur une petite table, suspect sur une grosse) vs `Index Scan using idx_clients_email` (utilisation de l'index). `cost=` est une estimation, `actual time=` la mesure réelle avec `ANALYZE`.",
@@ -1510,11 +1472,6 @@ export const LEARNING_SQL: LearningSection[] = [
             label: "Équivalents",
             value:
               "MySQL : `EXPLAIN ANALYZE SELECT …` (MySQL 8.0.18+) ou `EXPLAIN` simple. SQLite : `EXPLAIN QUERY PLAN SELECT …`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une requête dépasse quelques centaines de millisecondes, ou avant de créer un index « au hasard » : `EXPLAIN` dit si l'index servira.",
           },
           {
             label: "Bonne pratique",
@@ -1539,10 +1496,13 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "BEGIN;\n\nUPDATE comptes SET solde = solde - 50000 WHERE id = 1;\nUPDATE comptes SET solde = solde + 50000 WHERE id = 2;\n\nCOMMIT;  -- les deux écritures sont validées ensemble\n-- En cas de problème avant COMMIT : ROLLBACK; annule tout",
       },
       {
+        kind: "text",
+        text: "Dès qu'une opération métier = plusieurs écritures liées (commande + lignes + stock, virement débit + crédit). Une seule écriture isolée est déjà atomique par nature.",
+      },
+      {
         kind: "fields",
         title: "ACID, en une phrase par lettre",
-        fields: [
-          {
+        fields: [          {
             label: "Atomicité",
             value:
               "Tout ou rien : si le second `UPDATE` échoue, le premier est annulé. Jamais d'argent débité sans être crédité.",
@@ -1561,11 +1521,6 @@ export const LEARNING_SQL: LearningSection[] = [
             label: "Durabilité",
             value:
               "Une fois `COMMIT` renvoyé, la donnée survit même à un crash serveur : elle est écrite durablement avant l'accusé de réception.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une opération métier = plusieurs écritures liées (commande + lignes + stock, virement débit + crédit). Une seule écriture isolée est déjà atomique par nature.",
           },
           {
             label: "Erreur fréquente",
@@ -1594,14 +1549,12 @@ export const LEARNING_SQL: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Le niveau d'isolation règle ce qu'une transaction peut observer des autres : plus il est élevé, plus la justesse est garantie, plus les conflits (et les attentes) augmentent.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le niveau d'isolation règle ce qu'une transaction peut observer des autres : plus il est élevé, plus la justesse est garantie, plus les conflits (et les attentes) augmentent.",
-          },
-          {
+        fields: [          {
             label: "Le cas concret",
             value:
               "Deux admins décrémentent le même stock simultanément. En `READ COMMITTED`, le second écrase le premier sans le voir (mise à jour perdue) sauf si la requête est atomique (`SET stock = stock - 1`) ou verrouillée (`SELECT … FOR UPDATE`).",
@@ -1640,19 +1593,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "CREATE VIEW chiffre_par_ville AS\nSELECT c.ville, COUNT(*) AS nb_commandes, SUM(o.montant) AS total\nFROM clients c\nJOIN commandes o ON o.client_id = c.id\nGROUP BY c.ville;\n\n-- Puis, simplement :\nSELECT * FROM chiffre_par_ville WHERE total > 50000;\n\n-- Supprimer la vue (les tables sont intactes)\nDROP VIEW chiffre_par_ville;",
       },
       {
+        kind: "text",
+        text: "Une vue est une requête `SELECT` sauvegardée : à chaque interrogation, le SGBD réexécute la requête sous-jacente sur les données à jour.",
+      },
+      {
+        kind: "text",
+        text: "Factoriser les requêtes complexes réutilisées (reporting), offrir une interface stable aux applications pendant que le schéma évolue, restreindre les colonnes visibles pour certains utilisateurs (sécurité).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une vue est une requête `SELECT` sauvegardée : à chaque interrogation, le SGBD réexécute la requête sous-jacente sur les données à jour.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Factoriser les requêtes complexes réutilisées (reporting), offrir une interface stable aux applications pendant que le schéma évolue, restreindre les colonnes visibles pour certains utilisateurs (sécurité).",
-          },
-          {
+        fields: [          {
             label: "Vues matérialisées",
             value:
               "PostgreSQL propose les vues matérialisées : le résultat est stocké et rafraîchi sur demande (`REFRESH MATERIALIZED VIEW`) — rapide en lecture, données potentiellement datées. MySQL et SQLite ne les ont pas en natif.",
@@ -1729,14 +1679,16 @@ export const LEARNING_SQL: LearningSection[] = [
       "Comprendre le mécanisme de l'injection pour ne jamais l'introduire — uniquement sous l'angle défensif.",
     blocks: [
       {
+        kind: "text",
+        text: "L'injection SQL survient quand une entrée utilisateur est concaténée dans une requête : l'attaquant ne « casse » pas la base, il lui fait exécuter du SQL qu'elle croit légitime.",
+      },
+      {
+        kind: "text",
+        text: "Toujours, sans exception, dès qu'une valeur vient de l'extérieur (formulaire, URL, fichier, API). Même les valeurs « internes » passent en paramètres : c'est une habitude, pas une option.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'injection SQL survient quand une entrée utilisateur est concaténée dans une requête : l'attaquant ne « casse » pas la base, il lui fait exécuter du SQL qu'elle croit légitime.",
-          },
-          {
+        fields: [          {
             label: "Le mécanisme",
             value:
               "Requête construite par concaténation : `SELECT * FROM users WHERE nom = '` + saisie + `'` . Si la saisie contient un guillemet suivi de SQL, la structure de la requête change : la saisie devient du code. C'est une confusion entre données et instructions.",
@@ -1745,11 +1697,6 @@ export const LEARNING_SQL: LearningSection[] = [
             label: "La parade : requêtes paramétrées",
             value:
               "Ne jamais concaténer : passer les valeurs comme paramètres séparés. Le SGBD reçoit la structure et les données séparément, et les données ne sont plus jamais interprétées comme du code.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toujours, sans exception, dès qu'une valeur vient de l'extérieur (formulaire, URL, fichier, API). Même les valeurs « internes » passent en paramètres : c'est une habitude, pas une option.",
           },
           {
             label: "Ce qui ne protège pas",
@@ -1784,19 +1731,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "-- 1. Créer le rôle avec mot de passe\nCREATE USER app_boutique WITH PASSWORD 'mot-de-passe-solide';\n\n-- 2. Lui donner lecture/écriture sur les tables existantes...\nGRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_boutique;\n\n-- 3. ...et sur les tables futures\nALTER DEFAULT PRIVILEGES IN SCHEMA public\n  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO app_boutique;\n\n-- Révoquer si besoin\nREVOKE DELETE ON commandes FROM app_boutique;",
       },
       {
+        kind: "text",
+        text: "Chaque usage a son compte avec le minimum de droits nécessaires : l'application lit/écrit les données, elle ne crée pas de tables ni d'utilisateurs.",
+      },
+      {
+        kind: "text",
+        text: "Si l'application est compromise (injection SQL, faille), l'attaquant n'obtient que les droits du compte : sans `DROP` ni `GRANT`, les dégâts sont contenus. C'est la seconde barrière après les requêtes paramétrées.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque usage a son compte avec le minimum de droits nécessaires : l'application lit/écrit les données, elle ne crée pas de tables ni d'utilisateurs.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Si l'application est compromise (injection SQL, faille), l'attaquant n'obtient que les droits du compte : sans `DROP` ni `GRANT`, les dégâts sont contenus. C'est la seconde barrière après les requêtes paramétrées.",
-          },
-          {
+        fields: [          {
             label: "Équivalent MySQL",
             value:
               "`CREATE USER 'app'@'localhost' IDENTIFIED BY '…';` puis `GRANT SELECT, INSERT, UPDATE, DELETE ON boutique.* TO 'app'@'localhost';`. Sur MySQL, les droits se gèrent par base (`boutique.*`).",
@@ -1823,23 +1767,20 @@ export const LEARNING_SQL: LearningSection[] = [
       "Un ORM traduit vos objets en SQL : confortable, mais pas une excuse pour ignorer le SQL.",
     blocks: [
       {
+        kind: "text",
+        text: "Un ORM (Object-Relational Mapping : Django ORM, SQLAlchemy, Prisma, Eloquent…) génère le SQL à partir de classes et d'appels de méthodes, au lieu d'écrire les requêtes à la main.",
+      },
+      {
+        kind: "text",
+        text: "Éviter le SQL répétitif du CRUD, bénéficier des migrations intégrées, manipuler des objets plutôt que des chaînes. En équipe, il uniformise l'accès aux données.",
+      },
+      {
+        kind: "text",
+        text: "Application classique avec beaucoup de CRUD : l'ORM fait gagner du temps. Requêtes analytiques complexes, reporting, perfs fines : le SQL brut reprend l'avantage.",
+      },
+      {
         kind: "fields",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un ORM (Object-Relational Mapping : Django ORM, SQLAlchemy, Prisma, Eloquent…) génère le SQL à partir de classes et d'appels de méthodes, au lieu d'écrire les requêtes à la main.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Éviter le SQL répétitif du CRUD, bénéficier des migrations intégrées, manipuler des objets plutôt que des chaînes. En équipe, il uniformise l'accès aux données.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Application classique avec beaucoup de CRUD : l'ORM fait gagner du temps. Requêtes analytiques complexes, reporting, perfs fines : le SQL brut reprend l'avantage.",
-          },
           {
             label: "Le piège N+1",
             value:
@@ -1899,19 +1840,16 @@ export const LEARNING_SQL: LearningSection[] = [
         code: "CREATE TABLE evenements (\n  id SERIAL PRIMARY KEY,\n  donnees JSONB NOT NULL\n);\n\nINSERT INTO evenements (donnees)\nVALUES ('{\"type\": \"clic\", \"page\": \"/tarifs\"}');\n\n-- Extraire un champ (->> renvoie du texte)\nSELECT donnees->>'type' AS type_evenement\nFROM evenements\nWHERE donnees->>'page' = '/tarifs';\n\n-- Index sur un champ JSON\nCREATE INDEX idx_event_type ON evenements((donnees->>'type'));",
       },
       {
+        kind: "text",
+        text: "Les colonnes JSON (`JSONB` sur PostgreSQL, `JSON` sur MySQL, `TEXT` + fonctions `json_*` sur SQLite) stockent des données semi-structurées interrogeables en SQL.",
+      },
+      {
+        kind: "text",
+        text: "Données à schéma variable ou évolutif (événements, préférences, métadonnées) : le JSON évite une table par variante. Les champs stables et relationnels restent des colonnes classiques.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les colonnes JSON (`JSONB` sur PostgreSQL, `JSON` sur MySQL, `TEXT` + fonctions `json_*` sur SQLite) stockent des données semi-structurées interrogeables en SQL.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Données à schéma variable ou évolutif (événements, préférences, métadonnées) : le JSON évite une table par variante. Les champs stables et relationnels restent des colonnes classiques.",
-          },
-          {
+        fields: [          {
             label: "Les limites",
             value:
               "Pas de contraintes fines à l'intérieur du JSON (un `CHECK` reste possible mais grossier), jointures maladroites, lisibilité moindre. Si vous interrogez toujours les mêmes champs, ce sont des colonnes.",
@@ -1933,14 +1871,12 @@ export const LEARNING_SQL: LearningSection[] = [
       "Stocker des moments sans ambiguïté : UTC dans la base, fuseau à l'affichage.",
     blocks: [
       {
+        kind: "text",
+        text: "Une date-heure sans fuseau est ambiguë (minuit à Antananarivo ? à Paris ?) : stockez en UTC avec un type qui connaît le fuseau, convertissez à l'affichage.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une date-heure sans fuseau est ambiguë (minuit à Antananarivo ? à Paris ?) : stockez en UTC avec un type qui connaît le fuseau, convertissez à l'affichage.",
-          },
-          {
+        fields: [          {
             label: "PostgreSQL",
             value:
               "`TIMESTAMPTZ` (timestamp with time zone) stocke en UTC et convertit selon le fuseau de la session. `TIMESTAMP` (sans fuseau) stocke tel quel : à éviter pour des moments réels, utile pour des rendez-vous « heure locale » récurrents.",

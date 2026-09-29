@@ -28,24 +28,21 @@ export const LEARNING_DJANGO: LearningSection[] = [
         text: "Point essentiel : Django est un framework, pas une bibliothèque. Il impose une structure — un projet contient des applications, chaque application suit l'architecture MVT (Modèle-Vue-Template) — et cette contrainte est volontaire : deux développeurs Django retrouvent leurs repères dans n'importe quel projet Django. En échange, Django convient moins aux cas très atypiques (API temps réel, microservices ultra-légers) où un micro-framework comme Flask ou FastAPI laisse plus de liberté.",
       },
       {
+        kind: "text",
+        text: "Django est un framework web Python « batteries included » qui structure une application en modèles (données), vues (logique) et templates (présentation).",
+      },
+      {
+        kind: "text",
+        text: "Avant Django, chaque site web réinventait l'authentification, l'accès base de données, la protection CSRF… Django mutualise ces fondations éprouvées pour que vous vous concentriez sur la logique métier.",
+      },
+      {
+        kind: "text",
+        text: "Sites avec base de données et back-office : blogs, e-commerce, intranets, SaaS, APIs. Moins adapté : temps réel pur (WebSockets — voir Channels), scripts simples, prototypes sans persistance.",
+      },
+      {
         kind: "fields",
-        title: "Django en une phrase, par angle",
+        title: "Django : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Django est un framework web Python « batteries included » qui structure une application en modèles (données), vues (logique) et templates (présentation).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Avant Django, chaque site web réinventait l'authentification, l'accès base de données, la protection CSRF… Django mutualise ces fondations éprouvées pour que vous vous concentriez sur la logique métier.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Sites avec base de données et back-office : blogs, e-commerce, intranets, SaaS, APIs. Moins adapté : temps réel pur (WebSockets — voir Channels), scripts simples, prototypes sans persistance.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -372,10 +369,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.contrib import admin\nfrom .models import Article\n\n\n@admin.register(Article)\nclass ArticleAdmin(admin.ModelAdmin):\n    list_display = (\"titre\", \"auteur\", \"date_pub\")  # colonnes visibles\n    list_filter = (\"date_pub\",)                        # filtres latéraux\n    search_fields = (\"titre\", \"contenu\")              # barre de recherche",
       },
       {
+        kind: "text",
+        text: "L'admin est gratuite au départ et s'enrichit au fil du projet : commencez simple avec `@admin.register`, affinez avec `ModelAdmin` quand le besoin arrive.",
+      },
+      {
         kind: "fields",
         title: "Personnaliser l'admin, l'essentiel",
-        fields: [
-          {
+        fields: [          {
             label: "list_display",
             value:
               "Choisit les colonnes affichées dans la liste des objets. Par défaut, seul `__str__` du modèle s'affiche.",
@@ -390,11 +390,7 @@ export const LEARNING_DJANGO: LearningSection[] = [
             value:
               "Active la barre de recherche sur les champs indiqués. Indispensable dès que la table grandit.",
           },
-          {
-            label: "En une phrase",
-            value:
-              "L'admin est gratuite au départ et s'enrichit au fil du projet : commencez simple avec `@admin.register`, affinez avec `ModelAdmin` quand le besoin arrive.",
-          },
+          
         ],
       },
     ],
@@ -493,15 +489,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
       "MVT n'est pas un slogan : c'est une discipline de séparation qui décide où chaque ligne de code doit vivre.",
     blocks: [
       {
+        kind: "text",
+        text: "MVT = Modèle (données + règles métier), Vue (logique de la requête), Template (présentation). Django appelle « vue » ce que le pattern MVC classique appelle « contrôleur ».",
+      },
+      {
         kind: "fields",
         title: "MVT, couche par couche",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "MVT = Modèle (données + règles métier), Vue (logique de la requête), Template (présentation). Django appelle « vue » ce que le pattern MVC classique appelle « contrôleur ».",
-          },
-          {
+        fields: [          {
             label: "Le Modèle",
             value:
               "Une classe Python par table (`class Article(models.Model)`). Il définit les champs, les relations, et les méthodes métier (`publier()`, `est_recent()`). C'est la seule couche qui parle à la base de données.",
@@ -544,15 +538,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.db import models\nfrom django.utils import timezone\n\n\nclass Article(models.Model):\n    titre = models.CharField(max_length=200)\n    slug = models.SlugField(unique=True)\n    contenu = models.TextField()\n    date_pub = models.DateTimeField(default=timezone.now)\n    publie = models.BooleanField(default=False)\n    auteur = models.ForeignKey(\n        \"auth.User\", on_delete=models.CASCADE, related_name=\"articles\"\n    )\n\n    class Meta:\n        ordering = [\"-date_pub\"]  # tri par défaut : récents d'abord\n\n    def __str__(self):\n        return self.titre\n\n    def publier(self):\n        \"\"\"Logique métier : vit dans le modèle, pas dans la vue.\"\"\"\n        self.publie = True\n        self.date_pub = timezone.now()\n        self.save()",
       },
       {
+        kind: "text",
+        text: "`class Article(models.Model)` déclare une table `blog_article` ; chaque `models.XxxField` est une colonne typée.",
+      },
+      {
         kind: "fields",
         title: "Décortiquer le modèle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`class Article(models.Model)` déclare une table `blog_article` ; chaque `models.XxxField` est une colonne typée.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi des classes",
             value:
               "Parce que la table gagne des comportements : `__str__` pour l'affichage, `publier()` pour la logique métier, `Meta` pour les options. La base n'est plus un simple stockage.",
@@ -681,20 +673,17 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "# Tous les articles publiés, des plus récents aux plus anciens\nArticle.objects.filter(publie=True).order_by(\"-date_pub\")\n\n# Un seul objet (lève Article.DoesNotExist si absent)\narticle = Article.objects.get(slug=\"mon-article\")\n\n# Raccourci sûr dans une vue : 404 automatique si absent\nfrom django.shortcuts import get_object_or_404\narticle = get_object_or_404(Article, slug=\"mon-article\")\n\n# Créer\narticle = Article.objects.create(titre=\"Hello\", contenu=\"...\", auteur=user)\n\n# Chaînage : chaque appel affine la requête (elle ne s'exécute qu'à l'usage)\nrecents = Article.objects.filter(publie=True).exclude(auteur__isnull=True)[:10]",
       },
       {
+        kind: "text",
+        text: "`Model.objects` est le « manager » : le point d'entrée de toutes les requêtes sur la table. Chaque méthode renvoie un QuerySet chaînable.",
+      },
+      {
+        kind: "text",
+        text: "Le SQL concaténé à la main est verbeux et dangereux (injections). L'ORM échappe tous les paramètres automatiquement et rend le code lisible et portable entre bases.",
+      },
+      {
         kind: "fields",
         title: "Comprendre l'ORM",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`Model.objects` est le « manager » : le point d'entrée de toutes les requêtes sur la table. Chaque méthode renvoie un QuerySet chaînable.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le SQL concaténé à la main est verbeux et dangereux (injections). L'ORM échappe tous les paramètres automatiquement et rend le code lisible et portable entre bases.",
-          },
-          {
+        fields: [          {
             label: "Évaluation paresseuse",
             value:
               "`filter()` ne touche pas la base : il construit la requête. Elle ne s'exécute que quand vous itérez, affichez ou découpez le QuerySet. D'où le chaînage libre et gratuit.",
@@ -739,15 +728,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Une migration est un fichier Python qui décrit comment passer du schéma N au schéma N+1 ; `migrate` les applique dans l'ordre, sans jamais les rejouer deux fois.",
+      },
+      {
         kind: "fields",
         title: "Les migrations, en profondeur",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une migration est un fichier Python qui décrit comment passer du schéma N au schéma N+1 ; `migrate` les applique dans l'ordre, sans jamais les rejouer deux fois.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi deux commandes",
             value:
               "`makemigrations` planifie (génère du code relisible et modifiable), `migrate` exécute. Cette séparation permet de vérifier — voire d'ajuster — le plan avant de toucher aux données.",
@@ -808,15 +795,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.views.generic import ListView, DetailView\nfrom .models import Article\n\n\nclass ListeArticles(ListView):\n    model = Article\n    template_name = \"blog/liste.html\"\n    context_object_name = \"articles\"\n    queryset = Article.objects.filter(publie=True)\n\n\nclass DetailArticle(DetailView):\n    model = Article\n    template_name = \"blog/detail.html\"\n    slug_field = \"slug\"",
       },
       {
+        kind: "text",
+        text: "Les vues fonctions montrent chaque étape explicitement ; les vues génériques (`ListView`, `DetailView`, `CreateView`…) factorisent les cas standards liste/détail/création/édition/suppression.",
+      },
+      {
         kind: "fields",
         title: "Fonctions vs classes génériques",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les vues fonctions montrent chaque étape explicitement ; les vues génériques (`ListView`, `DetailView`, `CreateView`…) factorisent les cas standards liste/détail/création/édition/suppression.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi les deux existent",
             value:
               "80 % des pages d'un site classique sont « liste d'objets » ou « détail d'un objet » : les classes génériques évitent de réécrire ce boilerplate. Les fonctions restent supérieures dès que la logique sort du cadre.",
@@ -906,15 +891,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "{% extends \"blog/base.html\" %}\n\n{% block titre %}Articles{% endblock %}\n\n{% block contenu %}\n  {% for article in articles %}\n    <article>\n      <h2><a href=\"{% url 'blog:detail' slug=article.slug %}\">\n        {{ article.titre }}\n      </a></h2>\n      <p>Par {{ article.auteur.username }} le {{ article.date_pub|date:\"d/m/Y\" }}</p>\n    </article>\n  {% empty %}\n    <p>Aucun article pour le moment.</p>\n  {% endfor %}\n{% endblock %}",
       },
       {
+        kind: "text",
+        text: "`{{ variable }}` affiche, `{% tag %}` agit (boucle, condition, héritage), `{% extends %}` hérite d'un gabarit parent en redéfinissant ses blocs.",
+      },
+      {
         kind: "fields",
         title: "Le système de templates",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`{{ variable }}` affiche, `{% tag %}` agit (boucle, condition, héritage), `{% extends %}` hérite d'un gabarit parent en redéfinissant ses blocs.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi l'héritage",
             value:
               "Sans lui, chaque page dupliquerait `<head>`, header, footer. Avec `base.html` + `{% block %}`, la structure commune est définie une fois ; chaque page ne remplit que ses blocs.",
@@ -962,20 +945,17 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django import forms\nfrom .models import Article\n\n\nclass ArticleForm(forms.ModelForm):  # lié au modèle Article\n    class Meta:\n        model = Article\n        fields = [\"titre\", \"contenu\"]  # jamais \"__all__\" (voir sécurité)\n\n\n# blog/views.py\nfrom django.shortcuts import render, redirect\nfrom .forms import ArticleForm\n\n\ndef creer_article(request):\n    if request.method == \"POST\":\n        form = ArticleForm(request.POST)\n        if form.is_valid():            # ← la validation a lieu ici\n            article = form.save(commit=False)\n            article.auteur = request.user\n            article.save()\n            return redirect(\"blog:liste\")\n    else:\n        form = ArticleForm()           # formulaire vide (GET)\n    return render(request, \"blog/form.html\", {\"form\": form})",
       },
       {
+        kind: "text",
+        text: "Un formulaire Django est une classe qui déclare des champs ; `is_valid()` vérifie les données, `cleaned_data` fournit les valeurs nettoyées, `save()` persiste (pour les ModelForm).",
+      },
+      {
+        kind: "text",
+        text: "Valider à la main, c'est réécrire : champs requis, longueurs, emails, doublons, réaffichage avec erreurs… Le formulaire centralise tout et génère même le HTML.",
+      },
+      {
         kind: "fields",
         title: "Les formulaires, en profondeur",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un formulaire Django est une classe qui déclare des champs ; `is_valid()` vérifie les données, `cleaned_data` fournit les valeurs nettoyées, `save()` persiste (pour les ModelForm).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Valider à la main, c'est réécrire : champs requis, longueurs, emails, doublons, réaffichage avec erreurs… Le formulaire centralise tout et génère même le HTML.",
-          },
-          {
+        fields: [          {
             label: "Form vs ModelForm",
             value:
               "`forms.Form` : formulaire libre (contact, recherche). `forms.ModelForm` : lié à un modèle, avec `save()` intégré — le cas le plus courant pour créer/éditer des objets.",
@@ -1018,15 +998,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.contrib.auth.decorators import login_required\nfrom django.contrib.auth.forms import UserCreationForm\nfrom django.shortcuts import render, redirect\n\n\n@login_required  # redirige vers la page de login si anonyme\ndef creer_article(request):\n    ...\n\n\ndef inscription(request):\n    if request.method == \"POST\":\n        form = UserCreationForm(request.POST)\n        if form.is_valid():\n            form.save()  # mot de passe haché automatiquement (PBKDF2)\n            return redirect(\"login\")\n    else:\n        form = UserCreationForm()\n    return render(request, \"blog/inscription.html\", {\"form\": form})",
       },
       {
+        kind: "text",
+        text: "Le modèle `User`, les vues de login/logout, le hachage des mots de passe et les sessions sont intégrés : vous les assemblez, vous ne les réinventez pas.",
+      },
+      {
         kind: "fields",
         title: "L'authentification Django",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le modèle `User`, les vues de login/logout, le hachage des mots de passe et les sessions sont intégrés : vous les assemblez, vous ne les réinventez pas.",
-          },
-          {
+        fields: [          {
             label: "Ce qui est fourni",
             value:
               "Modèle `User` (username, email, mot de passe haché, `is_staff`, `is_superuser`), formulaires `UserCreationForm` / `AuthenticationForm`, vues `LoginView` / `LogoutView` prêtes à brancher dans `urls.py`, décorateur `@login_required`, mixin `LoginRequiredMixin` pour les classes.",
@@ -1074,15 +1052,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "{% load static %}\n<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" href=\"{% static 'blog/style.css' %}\">\n</head>",
       },
       {
+        kind: "text",
+        text: "Chaque app a son dossier `static/` ; `{% static 'blog/style.css' %}` génère l'URL ; en développement Django sert les fichiers, en production `collectstatic` les copie dans `STATIC_ROOT`.",
+      },
+      {
         kind: "fields",
         title: "Les fichiers statiques",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque app a son dossier `static/` ; `{% static 'blog/style.css' %}` génère l'URL ; en développement Django sert les fichiers, en production `collectstatic` les copie dans `STATIC_ROOT`.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi deux modes",
             value:
               "Le serveur de développement est pratique mais lent et non sécurisé pour servir des fichiers. En production, c'est le serveur web (Nginx) ou un service dédié qui sert les fichiers — Django ne fait que générer leurs URLs.",
@@ -1128,15 +1104,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "# blog/models.py\nclass Profil(models.Model):\n    user = models.OneToOneField(\"auth.User\", on_delete=models.CASCADE)\n    avatar = models.ImageField(upload_to=\"avatars/\", blank=True)\n\n\n# monsite/settings.py\nMEDIA_URL = \"/media/\"          # préfixe d'URL\nMEDIA_ROOT = BASE_DIR / \"media\"  # dossier de stockage sur disque",
       },
       {
+        kind: "text",
+        text: "Static = fichiers du code (CSS/JS), versionnés avec le projet. Media = fichiers des utilisateurs, créés à l'exécution, jamais dans Git.",
+      },
+      {
         kind: "fields",
         title: "Static vs media",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Static = fichiers du code (CSS/JS), versionnés avec le projet. Media = fichiers des utilisateurs, créés à l'exécution, jamais dans Git.",
-          },
-          {
+        fields: [          {
             label: "Ce qui est stocké",
             value:
               "En base : uniquement le chemin (`avatars/photo.jpg`). Sur disque : le fichier lui-même, dans `MEDIA_ROOT/avatars/`. La base ne contient jamais le contenu binaire.",
@@ -1243,20 +1217,17 @@ export const LEARNING_DJANGO: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un middleware est un plugin qui traite chaque requête/réponse : il peut modifier, enrichir ou bloquer avant que votre vue ne s'exécute.",
+      },
+      {
+        kind: "text",
+        text: "La sécurité (CSRF), les sessions, l'authentification concernent TOUTES les vues : plutôt que de les coder dans chacune, on les factorise en une chaîne exécutée systématiquement.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le middleware",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un middleware est un plugin qui traite chaque requête/réponse : il peut modifier, enrichir ou bloquer avant que votre vue ne s'exécute.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "La sécurité (CSRF), les sessions, l'authentification concernent TOUTES les vues : plutôt que de les coder dans chacune, on les factorise en une chaîne exécutée systématiquement.",
-          },
-          {
+        fields: [          {
             label: "L'ordre compte",
             value:
               "`SessionMiddleware` doit précéder `AuthenticationMiddleware` (l'authentification lit la session). L'ordre de `MIDDLEWARE` dans settings.py n'est pas décoratif.",
@@ -1284,15 +1255,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.test import TestCase\nfrom django.urls import reverse\nfrom django.contrib.auth.models import User\nfrom .models import Article\n\n\nclass ArticleTests(TestCase):\n    def setUp(self):\n        self.user = User.objects.create_user(username=\"akane\")\n        self.article = Article.objects.create(\n            titre=\"Test\", slug=\"test\", contenu=\"...\",\n            publie=True, auteur=self.user,\n        )\n\n    def test_publier(self):\n        self.article.publier()\n        self.assertTrue(Article.objects.get(pk=self.article.pk).publie)\n\n    def test_liste_affiche_les_articles(self):\n        reponse = self.client.get(reverse(\"blog:liste\"))\n        self.assertEqual(reponse.status_code, 200)\n        self.assertContains(reponse, \"Test\")\n\n    def test_detail_inexistant_404(self):\n        reponse = self.client.get(\"/blog/article/nope/\")\n        self.assertEqual(reponse.status_code, 404)",
       },
       {
+        kind: "text",
+        text: "`TestCase` crée une base de test vide, y joue vos scénarios via un client HTTP simulé (`self.client`), puis la détruit : chaque test part d'un état propre.",
+      },
+      {
         kind: "fields",
         title: "Tester avec Django",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`TestCase` crée une base de test vide, y joue vos scénarios via un client HTTP simulé (`self.client`), puis la détruit : chaque test part d'un état propre.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est intégré",
             value:
               "Parce que « fat models, thin views » ne vaut que si les modèles sont testés. Django rend le test aussi simple que la fonctionnalité elle-même : aucune excuse.",
@@ -1332,15 +1301,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
       "La falsification de requête inter-sites : comment Django vous protège par défaut, et le seul geste que vous devez faire.",
     blocks: [
       {
+        kind: "text",
+        text: "Une attaque CSRF piège le navigateur d'un utilisateur connecté pour qu'il envoie à votre site une requête qu'il n'a pas voulue (ex. changer son email) depuis un site malveillant.",
+      },
+      {
         kind: "fields",
         title: "Le CSRF, mécanisme défensif",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une attaque CSRF piège le navigateur d'un utilisateur connecté pour qu'il envoie à votre site une requête qu'il n'a pas voulue (ex. changer son email) depuis un site malveillant.",
-          },
-          {
+        fields: [          {
             label: "La défense de Django",
             value:
               "Un jeton secret unique par session, exigé sur chaque requête POST : le site attaquant ne connaît pas le jeton, sa requête forgée est rejetée (403). Actif par défaut via `CsrfViewMiddleware`.",
@@ -1372,15 +1339,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
       "Le cross-site scripting : injecter du JavaScript via un contenu utilisateur. Django neutralise le cas courant automatiquement.",
     blocks: [
       {
+        kind: "text",
+        text: "Si un commentaire contenant `<script>voler()</script>` s'affiche tel quel, le script s'exécute dans le navigateur de chaque visiteur : c'est une faille XSS.",
+      },
+      {
         kind: "fields",
         title: "Le XSS, mécanisme défensif",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Si un commentaire contenant `<script>voler()</script>` s'affiche tel quel, le script s'exécute dans le navigateur de chaque visiteur : c'est une faille XSS.",
-          },
-          {
+        fields: [          {
             label: "La défense de Django",
             value:
               "L'échappement automatique des templates : `{{ commentaire.texte }}` convertit `<` en `&lt;` — le script s'affiche comme texte, il ne s'exécute pas. Protection active par défaut, sans aucun code.",
@@ -1412,15 +1377,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
       "L'injection SQL reste une des failles les plus graves du web. L'ORM de Django est votre première ligne de défense — à condition de l'utiliser correctement.",
     blocks: [
       {
+        kind: "text",
+        text: "Si une entrée utilisateur est concaténée dans une requête SQL brute (`\"...\" + username`), un attaquant peut en modifier la structure et lire ou détruire la base.",
+      },
+      {
         kind: "fields",
         title: "L'injection SQL, mécanisme défensif",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Si une entrée utilisateur est concaténée dans une requête SQL brute (`\"...\" + username`), un attaquant peut en modifier la structure et lire ou détruire la base.",
-          },
-          {
+        fields: [          {
             label: "La défense de l'ORM",
             value:
               "Chaque `filter(titre=entree_utilisateur)` passe l'entrée comme PARAMÈTRE de la requête, jamais comme fragment de SQL : la base distingue structure et données. L'injection devient impossible par construction.",
@@ -1458,15 +1421,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.contrib.auth.decorators import login_required\nfrom django.core.exceptions import PermissionDenied\nfrom django.shortcuts import get_object_or_404\n\n\n@login_required\ndef editer_article(request, slug):\n    article = get_object_or_404(Article, slug=slug)\n    if article.auteur != request.user:\n        raise PermissionDenied  # → page 403, pas 404, pas un redirect\n    ...",
       },
       {
+        kind: "text",
+        text: "Authentification = « qui êtes-vous ? ». Autorisation = « avez-vous le droit ? ». Django fournit l'une, vous codez l'autre à chaque vue sensible.",
+      },
+      {
         kind: "fields",
         title: "Le contrôle d'accès",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Authentification = « qui êtes-vous ? ». Autorisation = « avez-vous le droit ? ». Django fournit l'une, vous codez l'autre à chaque vue sensible.",
-          },
-          {
+        fields: [          {
             label: "Les outils fournis",
             value:
               "`@login_required` (connecté requis), permissions par modèle (`user.has_perm(\"blog.change_article\")`, attribuées via l'admin ou les groupes), `PermissionDenied` → page 403 propre.",
@@ -1499,15 +1460,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.contrib import messages\n\n\ndef accueil(request):\n    visites = request.session.get(\"visites\", 0) + 1\n    request.session[\"visites\"] = visites  # stocké côté serveur\n    return render(request, \"blog/accueil.html\", {\"visites\": visites})\n\n\ndef creer_article(request):\n    ...\n    messages.success(request, \"Article publié avec succès !\")\n    return redirect(\"blog:liste\")  # le message s'affiche sur la page suivante",
       },
       {
+        kind: "text",
+        text: "HTTP est sans mémoire : la session (`request.session`, un dictionnaire persistant côté serveur) s'en souvient à votre place ; les messages affichent une notification unique après une redirection.",
+      },
+      {
         kind: "fields",
         title: "Sessions et messages",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "HTTP est sans mémoire : la session (`request.session`, un dictionnaire persistant côté serveur) s'en souvient à votre place ; les messages affichent une notification unique après une redirection.",
-          },
-          {
+        fields: [          {
             label: "Sessions : quand",
             value:
               "Panier d'achat, préférences, « vu récemment ». Stockées en base par défaut (table `django_session`), identifiées par un cookie signé. Ne jamais y mettre de secrets ni de gros objets.",
@@ -1540,15 +1499,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "# ❌ N+1 : 1 requête pour les articles + 1 par auteur (100 articles = 101 requêtes)\nfor article in Article.objects.filter(publie=True):\n    print(article.auteur.username)  # chaque accès = une requête SQL !\n\n# ✓ 2 requêtes au total, quel que soit le nombre d'articles\nfor article in Article.objects.filter(publie=True).select_related(\"auteur\"):\n    print(article.auteur.username)  # l'auteur est déjà chargé (JOIN)\n\n# ✓ Pour les relations inverses ou plusieurs-vers-plusieurs : prefetch_related\nfor tag in Tag.objects.prefetch_related(\"articles\"):\n    print(tag.articles.count())",
       },
       {
+        kind: "text",
+        text: "Accéder à une relation (`article.auteur`) dans une boucle déclenche une requête SQL par itération : N objets = N+1 requêtes. `select_related` (ForeignKey/OneToOne, via JOIN) et `prefetch_related` (ManyToMany et inverses, via requêtes groupées) chargent tout d'un coup.",
+      },
+      {
         kind: "fields",
         title: "Le N+1, en profondeur",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Accéder à une relation (`article.auteur`) dans une boucle déclenche une requête SQL par itération : N objets = N+1 requêtes. `select_related` (ForeignKey/OneToOne, via JOIN) et `prefetch_related` (ManyToMany et inverses, via requêtes groupées) chargent tout d'un coup.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est invisible",
             value:
               "L'ORM rend l'accès `article.auteur.username` si naturel qu'on ne voit pas le SQL derrière. En développement avec 10 objets, c'est instantané ; en production avec 10 000, la page met des secondes.",
@@ -1597,20 +1554,17 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "from django.core.paginator import Paginator\n\n\ndef liste_articles(request):\n    articles = Article.objects.filter(publie=True)\n    paginator = Paginator(articles, 10)  # 10 par page\n    page_num = request.GET.get(\"page\")\n    page = paginator.get_page(page_num)  # gère les numéros invalides tout seul\n    return render(request, \"blog/liste.html\", {\"page\": page})",
       },
       {
+        kind: "text",
+        text: "`Paginator(queryset, 10)` découpe ; `get_page(numero)` renvoie la page demandée en tolérant les numéros absurdes (trop grand → dernière page, invalide → première).",
+      },
+      {
+        kind: "text",
+        text: "Charger 10 000 objets en mémoire pour n'en afficher que 10 est un gaspillage de mémoire, de temps SQL et de bande passante. La pagination ne charge que la tranche utile (`LIMIT`/`OFFSET` en SQL).",
+      },
+      {
         kind: "fields",
         title: "La pagination",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`Paginator(queryset, 10)` découpe ; `get_page(numero)` renvoie la page demandée en tolérant les numéros absurdes (trop grand → dernière page, invalide → première).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Charger 10 000 objets en mémoire pour n'en afficher que 10 est un gaspillage de mémoire, de temps SQL et de bande passante. La pagination ne charge que la tranche utile (`LIMIT`/`OFFSET` en SQL).",
-          },
-          {
+        fields: [          {
             label: "Dans le template",
             value:
               "`page.object_list` (les objets), `page.has_previous` / `has_next`, `page.previous_page_number`. Les vues génériques `ListView` paginent avec une seule ligne : `paginate_by = 10`.",
@@ -1663,15 +1617,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
       "Le temps est un bug en puissance : Django stocke en UTC et convertit à l'affichage — si vous utilisez les bons outils.",
     blocks: [
       {
+        kind: "text",
+        text: "Avec `USE_TZ = True` (défaut), Django stocke les `DateTimeField` en UTC en base et convertit dans `TIME_ZONE` à l'affichage.",
+      },
+      {
         kind: "fields",
         title: "Le temps dans Django",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Avec `USE_TZ = True` (défaut), Django stocke les `DateTimeField` en UTC en base et convertit dans `TIME_ZONE` à l'affichage.",
-          },
-          {
+        fields: [          {
             label: "La règle d'or",
             value:
               "Toujours `django.utils.timezone.now()` (conscient du fuseau), jamais `datetime.now()` (naïf). Comparer un datetime naïf et un datetime conscient lève une exception — c'est voulu, c'est une protection.",
@@ -1715,15 +1667,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Django ne parle pas HTTP directement : un serveur d'application (Gunicorn en WSGI, Uvicorn/Daphne en ASGI) l'exécute, derrière un serveur web (Nginx) qui sert les fichiers statiques.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le déploiement",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Django ne parle pas HTTP directement : un serveur d'application (Gunicorn en WSGI, Uvicorn/Daphne en ASGI) l'exécute, derrière un serveur web (Nginx) qui sert les fichiers statiques.",
-          },
-          {
+        fields: [          {
             label: "WSGI vs ASGI",
             value:
               "WSGI = l'interface synchrone historique (`wsgi.py`), suffisante pour 95 % des sites. ASGI = l'interface asynchrone (`asgi.py`), nécessaire pour les WebSockets (via Django Channels) et les vues async. `runserver` gère les deux en dev.",
@@ -1772,20 +1722,17 @@ export const LEARNING_DJANGO: LearningSection[] = [
         code: "# pip install djangorestframework  (paquet tiers, le standard de fait)\nfrom rest_framework import serializers, viewsets\nfrom .models import Article\n\n\nclass ArticleSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Article\n        fields = [\"id\", \"titre\", \"slug\", \"contenu\", \"date_pub\"]\n\n\nclass ArticleViewSet(viewsets.ReadOnlyModelViewSet):\n    queryset = Article.objects.filter(publie=True)\n    serializer_class = ArticleSerializer\n    # → GET /api/articles/ et GET /api/articles/<id>/ générés automatiquement",
       },
       {
+        kind: "text",
+        text: "Django REST framework (DRF) est une bibliothèque tierce — le standard de fait — qui convertit modèles et QuerySets en API REST : sérialiseurs (modèle → JSON), vues API, pagination, authentification par token.",
+      },
+      {
+        kind: "text",
+        text: "Quand le consommateur n'est plus un template Django : application mobile, frontend React/Vue, partenaires externes. Si vos pages restent des templates, DRF est inutile.",
+      },
+      {
         kind: "fields",
         title: "DRF, en bref et sans hype",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Django REST framework (DRF) est une bibliothèque tierce — le standard de fait — qui convertit modèles et QuerySets en API REST : sérialiseurs (modèle → JSON), vues API, pagination, authentification par token.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand le consommateur n'est plus un template Django : application mobile, frontend React/Vue, partenaires externes. Si vos pages restent des templates, DRF est inutile.",
-          },
-          {
+        fields: [          {
             label: "Ce que ça change",
             value:
               "Les vues renvoient du JSON au lieu de HTML ; l'authentification passe par tokens ou sessions selon le client ; la documentation d'API devient un livrable (outils tiers comme drf-spectacular).",
@@ -2036,10 +1983,13 @@ export const LEARNING_DJANGO: LearningSection[] = [
       "Django maîtrisé ouvre plusieurs portes : approfondir l'écosystème ou élargir vers les domaines voisins.",
     blocks: [
       {
+        kind: "text",
+        text: "Django est une fondation, pas une fin : il vous a appris l'architecture web, l'ORM, la sécurité et le déploiement — des compétences transférables à n'importe quel framework.",
+      },
+      {
         kind: "fields",
         title: "Les pistes après Django",
-        fields: [
-          {
+        fields: [          {
             label: "APIs professionnelles",
             value:
               "Approfondir Django REST framework : authentification JWT, permissions fines, versioning d'API, tests d'API.",
@@ -2064,11 +2014,7 @@ export const LEARNING_DJANGO: LearningSection[] = [
             value:
               "Dockeriser l'application, CI/CD (tests + déploiement automatiques), PostgreSQL managé, sauvegardes : le versant « mise en production » du métier.",
           },
-          {
-            label: "En une phrase",
-            value:
-              "Django est une fondation, pas une fin : il vous a appris l'architecture web, l'ORM, la sécurité et le déploiement — des compétences transférables à n'importe quel framework.",
-          },
+          
         ],
       },
     ],

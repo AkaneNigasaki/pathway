@@ -399,15 +399,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<!DOCTYPE html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>Titre de la page</title>\n  </head>\n  <body>\n    <!-- Contenu visible ici -->\n  </body>\n</html>",
       },
       {
+        kind: "text",
+        text: "Ce squelette déclare le type de document, sa langue, son encodage et sépare les métadonnées (invisibles) du contenu (visible).",
+      },
+      {
         kind: "fields",
         title: "Chaque ligne, expliquée",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ce squelette déclare le type de document, sa langue, son encodage et sépare les métadonnées (invisibles) du contenu (visible).",
-          },
-          {
+        fields: [          {
             label: "`<!DOCTYPE html>`",
             value:
               "Ce n'est pas une balise mais une instruction : elle place le navigateur en « mode standard » (au lieu du mode de compatibilité avec les vieux sites). Toujours en toute première ligne, sans rien avant.",
@@ -510,24 +508,21 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<h1>Guide du jardinage</h1>\n<h2>Préparer le sol</h2>\n<h3>Choisir ses outils</h3>\n<h2>Semer</h2>",
       },
       {
+        kind: "text",
+        text: "Les six niveaux de titres (`<h1>` le plus important → `<h6>` le plus détaillé) décrivent le plan du document.",
+      },
+      {
+        kind: "text",
+        text: "Les lecteurs d'écran permettent de naviguer de titre en titre comme dans une table des matières ; les moteurs de recherche s'en servent pour comprendre la structure du contenu.",
+      },
+      {
+        kind: "text",
+        text: "Un seul `<h1>` par page (le sujet principal), puis des `<h2>` pour les grandes parties, `<h3>` pour les sous-parties, sans sauter de niveau.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les six niveaux de titres (`<h1>` le plus important → `<h6>` le plus détaillé) décrivent le plan du document.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les lecteurs d'écran permettent de naviguer de titre en titre comme dans une table des matières ; les moteurs de recherche s'en servent pour comprendre la structure du contenu.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Un seul `<h1>` par page (le sujet principal), puis des `<h2>` pour les grandes parties, `<h3>` pour les sous-parties, sans sauter de niveau.",
-          },
           {
             label: "Erreur fréquente",
             value:
@@ -597,15 +592,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<!-- Lien externe -->\n<a href=\"https://developer.mozilla.org/\">Documentation MDN</a>\n\n<!-- Lien interne (ancre) -->\n<a href=\"#tarifs\">Voir les tarifs</a>\n\n<!-- E-mail et téléphone -->\n<a href=\"mailto:contact@example.com\">Nous écrire</a>\n<a href=\"tel:+261340000000\">Appeler</a>",
       },
       {
+        kind: "text",
+        text: "`<a>` (anchor) crée un lien cliquable vers une autre ressource, identifiée par l'attribut `href`.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<a>` (anchor) crée un lien cliquable vers une autre ressource, identifiée par l'attribut `href`.",
-          },
-          {
+        fields: [          {
             label: "Attributs clés",
             value:
               "`href` : la destination (URL absolue, chemin relatif, `#ancre`, `mailto:`, `tel:`). `target=\"_blank\"` : ouvre dans un nouvel onglet — à réserver aux liens externes, car cela désoriente certains utilisateurs. `rel=\"noopener\"` : à ajouter systématiquement avec `target=\"_blank\"`, sinon la page liée peut manipuler votre page via `window.opener` (faille de sécurité réelle). `download` : propose le téléchargement au lieu de la navigation.",
@@ -684,15 +677,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<figure>\n  <img src=\"jardin.jpg\"\n       alt=\"Potager en permaculture au lever du soleil\"\n       width=\"800\" height=\"600\"\n       loading=\"lazy\">\n  <figcaption>Notre potager au printemps.</figcaption>\n</figure>",
       },
       {
+        kind: "text",
+        text: "`<img>` intègre une image via `src` ; l'attribut `alt` fournit son équivalent textuel pour ceux qui ne la voient pas.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<img>` intègre une image via `src` ; l'attribut `alt` fournit son équivalent textuel pour ceux qui ne la voient pas.",
-          },
-          {
+        fields: [          {
             label: "`alt` — l'attribut le plus important",
             value:
               "Pourquoi ça existe : les lecteurs d'écran lisent le `alt` à la place de l'image, et il s'affiche si l'image ne charge pas. Quand l'utiliser : décrivez la fonction ou le contenu informatif (« Graphique des ventes 2024 »), jamais « image de… ». `alt=\"\"` (vide) pour les images purement décoratives : elles sont alors ignorées par les lecteurs d'écran.",
@@ -739,15 +730,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<table>\n  <caption>Ventes trimestrielles (en k€)</caption>\n  <thead>\n    <tr>\n      <th scope=\"col\">Trimestre</th>\n      <th scope=\"col\">Ventes</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th scope=\"row\">T1</th>\n      <td>120</td>\n    </tr>\n  </tbody>\n</table>",
       },
       {
+        kind: "text",
+        text: "`<table>` organise des données en lignes (`<tr>`) et cellules ; `<th>` désigne les cellules d'en-tête, `<td>` les cellules de données.",
+      },
+      {
         kind: "fields",
         title: "Fiches balises",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<table>` organise des données en lignes (`<tr>`) et cellules ; `<th>` désigne les cellules d'en-tête, `<td>` les cellules de données.",
-          },
-          {
+        fields: [          {
             label: "`<caption>`",
             value:
               "Le titre du tableau, lu en premier par les lecteurs d'écran. Toujours présent sur un tableau de données : c'est son équivalent du `<h2>` pour une section.",
@@ -817,15 +806,13 @@ export const LEARNING_HTML: LearningSection[] = [
       "Afficher les caractères que le HTML interpréterait autrement.",
     blocks: [
       {
+        kind: "text",
+        text: "Les entités (`&nom;`) permettent d'afficher littéralement des caractères réservés par la syntaxe HTML.",
+      },
+      {
         kind: "fields",
         title: "Quand les entités sont nécessaires",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les entités (`&nom;`) permettent d'afficher littéralement des caractères réservés par la syntaxe HTML.",
-          },
-          {
+        fields: [          {
             label: "`&lt;` `<` et `&gt;` `>`",
             value:
               "Indispensables pour montrer du code HTML dans une page : écrire `<p>` dans le contenu serait interprété comme une vraie balise. On écrit `&lt;p&gt;`.",
@@ -868,15 +855,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<form action=\"/recherche\" method=\"get\">\n  <label for=\"q\">Rechercher</label>\n  <input type=\"search\" id=\"q\" name=\"q\" required>\n  <button type=\"submit\">OK</button>\n</form>",
       },
       {
+        kind: "text",
+        text: "`<form>` regroupe des champs et définit où (`action`) et comment (`method`) leurs données sont envoyées.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<form>` regroupe des champs et définit où (`action`) et comment (`method`) leurs données sont envoyées.",
-          },
-          {
+        fields: [          {
             label: "`action`",
             value:
               "L'URL qui recevra les données. Si elle est absente, le formulaire est renvoyé vers la page courante.",
@@ -959,24 +944,21 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<!-- Syntaxe explicite : for = id du champ -->\n<label for=\"email\">Adresse e-mail</label>\n<input type=\"email\" id=\"email\" name=\"email\">\n\n<!-- Syntaxe enveloppante -->\n<label>Adresse e-mail\n  <input type=\"email\" name=\"email\">\n</label>",
       },
       {
+        kind: "text",
+        text: "`<label>` associe un libellé descriptif à un champ de formulaire, via `for`/`id` ou par enveloppement.",
+      },
+      {
+        kind: "text",
+        text: "Trois bénéfices concrets : la zone cliquable est agrandie (cliquer le libellé active le champ — précieux sur mobile), les lecteurs d'écran annoncent le libellé avec le champ, et les tests automatisés s'y retrouvent.",
+      },
+      {
+        kind: "text",
+        text: "Sur absolument chaque champ visible : texte, e-mail, cases à cocher, boutons radio, listes déroulantes, zones de texte. Sans exception.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<label>` associe un libellé descriptif à un champ de formulaire, via `for`/`id` ou par enveloppement.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Trois bénéfices concrets : la zone cliquable est agrandie (cliquer le libellé active le champ — précieux sur mobile), les lecteurs d'écran annoncent le libellé avec le champ, et les tests automatisés s'y retrouvent.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Sur absolument chaque champ visible : texte, e-mail, cases à cocher, boutons radio, listes déroulantes, zones de texte. Sans exception.",
-          },
           {
             label: "Erreur fréquente",
             value:
@@ -1005,15 +987,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<form action=\"/inscription\" method=\"post\">\n  <!-- ... champs ... -->\n  <button type=\"submit\">S'inscrire</button>\n  <button type=\"reset\">Effacer</button>\n</form>\n<button type=\"button\">Charger plus</button>",
       },
       {
+        kind: "text",
+        text: "`<button>` déclenche une action ; son `type` précise laquelle.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<button>` déclenche une action ; son `type` précise laquelle.",
-          },
-          {
+        fields: [          {
             label: "`type=\"submit\"`",
             value:
               "Envoie le formulaire parent. C'est la valeur par défaut quand `<button>` est dans un `<form>` — le piège classique : un bouton « Annuler » sans `type` envoie le formulaire par accident.",
@@ -1098,23 +1078,20 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<label for=\"message\">Votre message</label>\n<textarea id=\"message\" name=\"message\" rows=\"5\" cols=\"40\" maxlength=\"1000\" placeholder=\"Décrivez votre besoin…\"></textarea>",
       },
       {
+        kind: "text",
+        text: "`<textarea>` crée une zone de saisie multiligne redimensionnable, pour les messages, commentaires et descriptions.",
+      },
+      {
+        kind: "text",
+        text: "Dès que la saisie dépasse quelques mots : message, adresse, description. Pour une ligne (nom, e-mail), `<input type=\"text\">` reste adapté.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<textarea>` crée une zone de saisie multiligne redimensionnable, pour les messages, commentaires et descriptions.",
-          },
-          {
+        fields: [          {
             label: "Attributs clés",
             value:
               "`rows` / `cols` : dimensions initiales (indicatives, CSS peut les redéfinir). `maxlength` : limite de caractères avec compteur natif. Contrairement à `<input>`, la valeur par défaut se place entre les balises, pas dans un attribut `value`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que la saisie dépasse quelques mots : message, adresse, description. Pour une ligne (nom, e-mail), `<input type=\"text\">` reste adapté.",
           },
           {
             label: "Erreur fréquente",
@@ -1139,24 +1116,21 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<fieldset>\n  <legend>Centres d'intérêt</legend>\n  <label><input type=\"checkbox\" name=\"interet\" value=\"sport\"> Sport</label>\n  <label><input type=\"checkbox\" name=\"interet\" value=\"musique\"> Musique</label>\n  <label><input type=\"checkbox\" name=\"interet\" value=\"lecture\"> Lecture</label>\n</fieldset>",
       },
       {
+        kind: "text",
+        text: "`<fieldset>` regroupe des champs liés et `<legend>` leur donne un titre, comme un mini-formulaire dans le formulaire.",
+      },
+      {
+        kind: "text",
+        text: "Les lecteurs d'écran annoncent la légende avec chaque champ du groupe (« Centres d'intérêt : case à cocher Sport ») — sans `<legend>`, une série de cases à cocher est incompréhensible hors contexte visuel.",
+      },
+      {
+        kind: "text",
+        text: "Groupes de boutons radio, groupes de cases à cocher, sections d'un long formulaire (coordonnées, livraison, paiement).",
+      },
+      {
         kind: "fields",
         title: "Fiche balises",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<fieldset>` regroupe des champs liés et `<legend>` leur donne un titre, comme un mini-formulaire dans le formulaire.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les lecteurs d'écran annoncent la légende avec chaque champ du groupe (« Centres d'intérêt : case à cocher Sport ») — sans `<legend>`, une série de cases à cocher est incompréhensible hors contexte visuel.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Groupes de boutons radio, groupes de cases à cocher, sections d'un long formulaire (coordonnées, livraison, paiement).",
-          },
           {
             label: "Bonne pratique",
             value:
@@ -1318,15 +1292,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<video controls preload=\"metadata\" poster=\"apercu.jpg\" width=\"640\">\n  <source src=\"demo.mp4\" type=\"video/mp4\">\n  <source src=\"demo.webm\" type=\"video/webm\">\n  <track kind=\"subtitles\" src=\"sous-titres.fr.vtt\" srclang=\"fr\" label=\"Français\">\n  Votre navigateur ne supporte pas la vidéo.\n</video>",
       },
       {
+        kind: "text",
+        text: "`<video>` et `<audio>` intègrent des médias avec une interface de lecture native ; `<source>` propose plusieurs formats, `<track>` les sous-titres.",
+      },
+      {
         kind: "fields",
         title: "Fiche balises",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<video>` et `<audio>` intègrent des médias avec une interface de lecture native ; `<source>` propose plusieurs formats, `<track>` les sous-titres.",
-          },
-          {
+        fields: [          {
             label: "`controls`",
             value:
               "Affiche l'interface (lecture, volume, plein écran). Sans lui et sans JavaScript personnalisé, le média est invisible/injouable : toujours le fournir sauf interface sur mesure.",
@@ -1369,15 +1341,13 @@ export const LEARNING_HTML: LearningSection[] = [
         code: "<iframe src=\"https://www.openstreetmap.org/export/embed.html\"\n        title=\"Carte du centre d'Antananarivo\"\n        width=\"600\" height=\"450\"\n        loading=\"lazy\"\n        sandbox=\"allow-scripts allow-same-origin\">\n</iframe>",
       },
       {
+        kind: "text",
+        text: "`<iframe>` affiche une page web externe dans un cadre, comme une fenêtre vers un autre site.",
+      },
+      {
         kind: "fields",
         title: "Fiche balise",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<iframe>` affiche une page web externe dans un cadre, comme une fenêtre vers un autre site.",
-          },
-          {
+        fields: [          {
             label: "`title` — obligatoire",
             value:
               "Les lecteurs d'écran annoncent l'iframe par son titre : sans lui, l'utilisateur entend « cadre » sans savoir ce qu'il contient. Décrivez le contenu embarqué.",
@@ -1545,15 +1515,13 @@ export const LEARNING_HTML: LearningSection[] = [
       "Ce que les moteurs de recherche extraient de votre HTML.",
     blocks: [
       {
+        kind: "text",
+        text: "Les moteurs indexent d'abord votre HTML : un document clair, titré et structuré est la base du référencement.",
+      },
+      {
         kind: "fields",
         title: "Les leviers HTML du référencement",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les moteurs indexent d'abord votre HTML : un document clair, titré et structuré est la base du référencement.",
-          },
-          {
+        fields: [          {
             label: "`<title>` unique par page",
             value:
               "Le titre cliquable des résultats de recherche. Descriptif et spécifique à la page (« Formation HTML — niveau débutant | MonSite »), pas générique.",

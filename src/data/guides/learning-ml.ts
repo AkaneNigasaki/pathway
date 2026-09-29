@@ -29,24 +29,21 @@ export const LEARNING_ML: LearningSection[] = [
         text: "Point essentiel : le machine learning n'est ni de la magie ni de l'intelligence au sens humain. C'est de la statistique appliquée à grande échelle : le modèle ajuste des paramètres numériques pour minimiser ses erreurs sur les exemples fournis. Quand les exemples sont bons et représentatifs, les prédictions sont utiles ; quand les données sont biaisées ou insuffisantes, le modèle reproduit fidèlement ces défauts. La qualité des données compte davantage que la sophistication de l'algorithme.",
       },
       {
+        kind: "text",
+        text: "Le machine learning apprend des règles de décision à partir d'exemples, au lieu de les recevoir écrites à la main.",
+      },
+      {
+        kind: "text",
+        text: "Certains problèmes ont des règles trop complexes ou floues pour être codées explicitement : reconnaître une image, prédire une panne, recommander un contenu. Les exemples remplacent les règles.",
+      },
+      {
+        kind: "text",
+        text: "Quand vous avez beaucoup d'exemples représentatifs, que le problème tolère des erreurs occasionnelles, et que les règles explicites seraient trop complexes à écrire ou à maintenir.",
+      },
+      {
         kind: "fields",
-        title: "Le machine learning en une phrase, par angle",
+        title: "Le machine learning : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le machine learning apprend des règles de décision à partir d'exemples, au lieu de les recevoir écrites à la main.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certains problèmes ont des règles trop complexes ou floues pour être codées explicitement : reconnaître une image, prédire une panne, recommander un contenu. Les exemples remplacent les règles.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand vous avez beaucoup d'exemples représentatifs, que le problème tolère des erreurs occasionnelles, et que les règles explicites seraient trop complexes à écrire ou à maintenir.",
-          },
           {
             label: "Quand ne pas l'utiliser",
             value:
@@ -102,10 +99,13 @@ export const LEARNING_ML: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Supervisé = apprendre avec les réponses ; non supervisé = trouver la structure sans réponses ; renforcement = apprendre par récompense.",
+      },
+      {
         kind: "fields",
         title: "Les trois paradigmes en détail",
-        fields: [
-          {
+        fields: [          {
             label: "Supervisé",
             value:
               "On fournit des exemples avec la bonne réponse (`X` les entrées, `y` les réponses). Le modèle apprend la correspondance. Deux sous-familles : la classification (réponse = catégorie : spam / non-spam) et la régression (réponse = nombre : prix, température). C'est le paradigme le plus utilisé en pratique.",
@@ -119,11 +119,6 @@ export const LEARNING_ML: LearningSection[] = [
             label: "Par renforcement",
             value:
               "Un agent agit dans un environnement, reçoit des récompenses ou des pénalités, et ajuste sa stratégie pour maximiser la récompense totale. Pas de « bonne réponse » fournie : l'agent découvre par essai-erreur. Utilisé en robotique et dans les jeux.",
-          },
-          {
-            label: "En une phrase",
-            value:
-              "Supervisé = apprendre avec les réponses ; non supervisé = trouver la structure sans réponses ; renforcement = apprendre par récompense.",
           },
           {
             label: "Erreur fréquente",
@@ -219,14 +214,13 @@ export const LEARNING_ML: LearningSection[] = [
         verify: "L'invite affiche `(.venv)`.",
       },
       {
+        kind: "text",
+        text: "Un venv = un dossier avec son propre Python et ses propres paquets.",
+      },
+      {
         kind: "fields",
         title: "Réflexes venv",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Un venv = un dossier avec son propre Python et ses propres paquets.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value:
               "Ajouter `.venv/` au `.gitignore` : on versionne la liste des paquets (`requirements.txt`), jamais l'environnement lui-même.",
@@ -259,10 +253,13 @@ export const LEARNING_ML: LearningSection[] = [
         verify: "`pip list` affiche les quatre paquets avec leurs versions.",
       },
       {
+        kind: "text",
+        text: "`numpy` calcule, `pandas` organise, `scikit-learn` apprend, `matplotlib` montre.",
+      },
+      {
         kind: "fields",
         title: "Les quatre paquets, rôle par rôle",
-        fields: [
-          {
+        fields: [          {
             label: "numpy",
             value:
               "Le calcul numérique : tableaux multidimensionnels rapides et opérations vectorisées. C'est la fondation sur laquelle `pandas` et `scikit-learn` sont construits.",
@@ -281,11 +278,6 @@ export const LEARNING_ML: LearningSection[] = [
             label: "matplotlib",
             value:
               "Les graphiques : histogrammes, nuages de points, courbes. Indispensable pour explorer les données visuellement avant de modéliser.",
-          },
-          {
-            label: "En une phrase",
-            value:
-              "`numpy` calcule, `pandas` organise, `scikit-learn` apprend, `matplotlib` montre.",
           },
           {
             label: "Bonne pratique",
@@ -327,24 +319,21 @@ export const LEARNING_ML: LearningSection[] = [
         verify: "Le navigateur affiche l'arborescence des fichiers avec un bouton « New ».",
       },
       {
+        kind: "text",
+        text: "Jupyter = du Python exécuté cellule par cellule, avec résultats et graphiques intégrés au document.",
+      },
+      {
+        kind: "text",
+        text: "L'exploration de données ne suit pas un plan linéaire : le notebook garde le code, les résultats et les notes au même endroit, dans l'ordre de la réflexion.",
+      },
+      {
+        kind: "text",
+        text: "Exploration, analyse, prototypage de modèle, présentation d'une analyse. Le notebook est un brouillon de luxe.",
+      },
+      {
         kind: "fields",
         title: "Jupyter en pratique",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Jupyter = du Python exécuté cellule par cellule, avec résultats et graphiques intégrés au document.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "L'exploration de données ne suit pas un plan linéaire : le notebook garde le code, les résultats et les notes au même endroit, dans l'ordre de la réflexion.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Exploration, analyse, prototypage de modèle, présentation d'une analyse. Le notebook est un brouillon de luxe.",
-          },
           {
             label: "Quand ne pas l'utiliser",
             value:
@@ -388,20 +377,17 @@ export const LEARNING_ML: LearningSection[] = [
         code: "ages = df[\"age\"]                    # une colonne -> Series\nextrait = df[[\"age\", \"salaire\"]]       # plusieurs colonnes -> DataFrame\nadultes = df[df[\"age\"] >= 18]          # filtre les lignes : que les adultes\nmoyenne = df[\"salaire\"].mean()         # statistique sur une colonne",
       },
       {
+        kind: "text",
+        text: "Un `DataFrame` est un tableau étiqueté : chaque colonne a un nom et un type, chaque ligne est une observation.",
+      },
+      {
+        kind: "text",
+        text: "Les données réelles arrivent en CSV, Excel ou base SQL : `pandas` les charge en une ligne et offre des centaines d'opérations de transformation.",
+      },
+      {
         kind: "fields",
-        title: "Le DataFrame en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `DataFrame` est un tableau étiqueté : chaque colonne a un nom et un type, chaque ligne est une observation.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les données réelles arrivent en CSV, Excel ou base SQL : `pandas` les charge en une ligne et offre des centaines d'opérations de transformation.",
-          },
-          {
+        title: "Le DataFrame : l'essentiel",
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "`read_csv` parse le fichier en colonnes typées ; `head`, `info`, `describe` résument ; l'indexation booléenne (`df[condition]`) filtre les lignes.",
@@ -477,15 +463,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import accuracy_score\n\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)\n\nmodele = LogisticRegression(max_iter=200)\nmodele.fit(X_train, y_train)          # apprentissage\npredictions = modele.predict(X_test)  # prédiction sur données inédites\nprint(accuracy_score(y_test, predictions))  # ex. : 0.97 = 97 % de bonnes réponses",
       },
       {
+        kind: "text",
+        text: "On montre des exemples étiquetés au modèle (`fit`), puis on vérifie qu'il généralise sur des exemples inédits (`predict` + métrique).",
+      },
+      {
         kind: "fields",
         title: "Ce que ce premier modèle enseigne",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On montre des exemples étiquetés au modèle (`fit`), puis on vérifie qu'il généralise sur des exemples inédits (`predict` + métrique).",
-          },
-          {
+        fields: [          {
             label: "Pourquoi ce découpage",
             value:
               "Évaluer sur les données d'entraînement serait tricher : le modèle les a déjà vues. Le jeu de test simule le monde réel.",
@@ -527,20 +511,17 @@ export const LEARNING_ML: LearningSection[] = [
         code: "import pandas as pd\n\ndf = pd.read_csv(\"donnees.csv\")\nprint(df.isna().sum())      # valeurs manquantes par colonne\nprint(df.duplicated().sum())  # lignes en double\nprint(df.dtypes)            # types : une colonne numérique lue comme texte ?",
       },
       {
+        kind: "text",
+        text: "La préparation convertit des données brutes et imparfaites en une matrice numérique propre et cohérente.",
+      },
+      {
+        kind: "text",
+        text: "Les données réelles sont sales : capteurs en panne, saisies humaines, formats incohérents. Les algorithmes, eux, exigent des nombres propres.",
+      },
+      {
         kind: "fields",
-        title: "La préparation en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La préparation convertit des données brutes et imparfaites en une matrice numérique propre et cohérente.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les données réelles sont sales : capteurs en panne, saisies humaines, formats incohérents. Les algorithmes, eux, exigent des nombres propres.",
-          },
-          {
+        title: "La préparation : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Toujours, avant le premier `fit`. Un modèle entraîné sur des données sales apprend le bruit.",
@@ -582,15 +563,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y,\n    test_size=0.25,      # 25 % des données réservées au test\n    random_state=42,     # découpage reproductible\n    stratify=y,          # conserve la proportion des classes dans chaque lot\n)",
       },
       {
+        kind: "text",
+        text: "Le jeu de test est un examen blanc : des questions inédites qui mesurent ce que le modèle a vraiment compris.",
+      },
+      {
         kind: "fields",
-        title: "La séparation en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le jeu de test est un examen blanc : des questions inédites qui mesurent ce que le modèle a vraiment compris.",
-          },
-          {
+        title: "La séparation : l'essentiel",
+        fields: [          {
             label: "Pourquoi stratify",
             value:
               "Sans stratification, un tirage malchanceux peut mettre presque tous les exemples d'une classe rare dans le test : les proportions seraient faussées des deux côtés.",
@@ -631,15 +610,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.linear_model import LogisticRegression\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.neighbors import KNeighborsClassifier\n\nfor Modele in [LogisticRegression, RandomForestClassifier, KNeighborsClassifier]:\n    m = Modele()\n    m.fit(X_train, y_train)       # apprentissage : identique pour tous\n    score = m.score(X_test, y_test)  # évaluation rapide sur le test\n    print(type(m).__name__, score)",
       },
       {
+        kind: "text",
+        text: "`fit` ajuste les paramètres internes du modèle sur des exemples ; `predict` applique le modèle appris à de nouvelles données.",
+      },
+      {
         kind: "fields",
-        title: "fit / predict en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`fit` ajuste les paramètres internes du modèle sur des exemples ; `predict` applique le modèle appris à de nouvelles données.",
-          },
-          {
+        title: "fit / predict : l'essentiel",
+        fields: [          {
             label: "Pourquoi cette uniformité",
             value:
               "Elle rend les modèles interchangeables : pipelines, validation croisée et comparaisons fonctionnent avec n'importe quel estimateur sans code spécifique.",
@@ -694,15 +671,13 @@ export const LEARNING_ML: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un projet ML est une boucle : cadrer, préparer des données, entraîner, évaluer honnêtement, déployer, puis itérer.",
+      },
+      {
         kind: "fields",
-        title: "Le workflow en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un projet ML est une boucle : cadrer, préparer des données, entraîner, évaluer honnêtement, déployer, puis itérer.",
-          },
-          {
+        title: "Le workflow : l'essentiel",
+        fields: [          {
             label: "Pourquoi cet ordre",
             value:
               "Chaque étape dépend de la précédente : on ne choisit pas une métrique avant de savoir quelle décision le modèle doit aider à prendre.",
@@ -747,24 +722,21 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\nmodele = LinearRegression()\nmodele.fit(X_train, y_train)          # y_train contient des nombres (prix, etc.)\npredictions = modele.predict(X_test)\nprint(\"RMSE :\", mean_squared_error(y_test, predictions) ** 0.5)",
       },
       {
+        kind: "text",
+        text: "La régression prédit une quantité : la sortie du modèle est un nombre sur une échelle continue.",
+      },
+      {
+        kind: "text",
+        text: "Beaucoup de décisions reposent sur des estimations chiffrées : budget, stock, délai. La régression quantifie l'incertain.",
+      },
+      {
+        kind: "text",
+        text: "Quand la cible est numérique et ordonnée : prix, âge, consommation, score. Si la cible est une catégorie, c'est de la classification.",
+      },
+      {
         kind: "fields",
-        title: "La régression en une phrase, par angle",
+        title: "La régression : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La régression prédit une quantité : la sortie du modèle est un nombre sur une échelle continue.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Beaucoup de décisions reposent sur des estimations chiffrées : budget, stock, délai. La régression quantifie l'incertain.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand la cible est numérique et ordonnée : prix, âge, consommation, score. Si la cible est une catégorie, c'est de la classification.",
-          },
           {
             label: "Exemple simple",
             value:
@@ -811,24 +783,21 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report\n\nmodele = RandomForestClassifier(n_estimators=200, random_state=42)\nmodele.fit(X_train, y_train)  # y_train contient des étiquettes : 0/1, \"spam\"/\"ham\"...\nprint(classification_report(y_test, modele.predict(X_test)))",
       },
       {
+        kind: "text",
+        text: "La classification range chaque observation dans une case : la sortie est une étiquette, pas un nombre.",
+      },
+      {
+        kind: "text",
+        text: "Trier, filtrer, alerter : une grande partie des décisions métier sont des choix entre catégories.",
+      },
+      {
+        kind: "text",
+        text: "Quand la réponse attendue appartient à un ensemble fini et connu à l'avance : diagnostic, détection de fraude, modération.",
+      },
+      {
         kind: "fields",
-        title: "La classification en une phrase, par angle",
+        title: "La classification : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La classification range chaque observation dans une case : la sortie est une étiquette, pas un nombre.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Trier, filtrer, alerter : une grande partie des décisions métier sont des choix entre catégories.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand la réponse attendue appartient à un ensemble fini et connu à l'avance : diagnostic, détection de fraude, modération.",
-          },
           {
             label: "Exemple simple",
             value: "Classer des e-mails en « spam » ou « non-spam ».",
@@ -917,24 +886,21 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.cluster import KMeans\n\nkmeans = KMeans(n_clusters=3, random_state=42, n_init=10)\ngroupes = kmeans.fit_predict(X)  # fit + predict en une fois : pas de y !\nprint(kmeans.cluster_centers_)   # les centres des 3 groupes découverts",
       },
       {
+        kind: "text",
+        text: "Le clustering découvre des groupes naturels dans les données, sans qu'on lui dise à quoi ils correspondent.",
+      },
+      {
+        kind: "text",
+        text: "Étiqueter des données coûte cher ; le clustering exploite les données brutes pour segmenter, explorer ou détecter l'inhabituel.",
+      },
+      {
+        kind: "text",
+        text: "Segmentation clients, regroupement de documents par thème, détection d'anomalies (les points loin de tout groupe).",
+      },
+      {
         kind: "fields",
-        title: "Le clustering en une phrase, par angle",
+        title: "Le clustering : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le clustering découvre des groupes naturels dans les données, sans qu'on lui dise à quoi ils correspondent.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Étiqueter des données coûte cher ; le clustering exploite les données brutes pour segmenter, explorer ou détecter l'inhabituel.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Segmentation clients, regroupement de documents par thème, détection d'anomalies (les points loin de tout groupe).",
-          },
           {
             label: "Exemple réel",
             value:
@@ -975,20 +941,17 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.decomposition import PCA\nfrom sklearn.preprocessing import StandardScaler\n\nX_std = StandardScaler().fit_transform(X)  # PCA exige des variables centrées-réduites\npca = PCA(n_components=2)\nX_2d = pca.fit_transform(X_std)\nprint(pca.explained_variance_ratio_)  # part de variance gardée par composante",
       },
       {
+        kind: "text",
+        text: "La PCA remplace N variables corrélées par quelques composantes qui résument l'information.",
+      },
+      {
+        kind: "text",
+        text: "Visualiser des données en 2D/3D, débruiter, accélérer un modèle en réduisant le nombre d'entrées.",
+      },
+      {
         kind: "fields",
-        title: "La PCA en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La PCA remplace N variables corrélées par quelques composantes qui résument l'information.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Visualiser des données en 2D/3D, débruiter, accélérer un modèle en réduisant le nombre d'entrées.",
-          },
-          {
+        title: "La PCA : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Appliquer la PCA sans standardiser : les variables à grande amplitude domineraient les composantes.",
@@ -1033,20 +996,17 @@ export const LEARNING_ML: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "L'agent apprend une stratégie par essai-erreur, guidé uniquement par les récompenses de l'environnement.",
+      },
+      {
+        kind: "text",
+        text: "Décisions séquentielles où chaque action influence la suite : jeux, robotique, pilotage de systèmes.",
+      },
+      {
         kind: "fields",
-        title: "Le renforcement en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'agent apprend une stratégie par essai-erreur, guidé uniquement par les récompenses de l'environnement.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Décisions séquentielles où chaque action influence la suite : jeux, robotique, pilotage de systèmes.",
-          },
-          {
+        title: "Le renforcement : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est difficile",
             value:
               "La récompense est souvent retardée (un bon coup aux échecs ne paie qu'à la fin) et l'exploration coûte cher en environnement réel.",
@@ -1082,15 +1042,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "import pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv(\"donnees.csv\")\nprint(df.shape)              # dimensions : lignes x colonnes\nprint(df.isna().sum())       # manquants par colonne\nprint(df.duplicated().sum()) # doublons\nprint(df.describe())         # un min/max absurde saute aux yeux ici\ndf[\"age\"].hist()             # visualiser la distribution\nplt.show()",
       },
       {
+        kind: "text",
+        text: "Diagnostiquer les données (manquants, doublons, aberrations) avant de les confier à un algorithme.",
+      },
+      {
         kind: "fields",
-        title: "La qualité des données en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Diagnostiquer les données (manquants, doublons, aberrations) avant de les confier à un algorithme.",
-          },
-          {
+        title: "La qualité des données : l'essentiel",
+        fields: [          {
             label: "Exemple simple",
             value:
               "Une colonne « âge » avec des valeurs à 999 : probablement un code pour « inconnu », pas des centenaires. À traiter, pas à apprendre.",
@@ -1130,15 +1088,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "import pandas as pd\nfrom sklearn.impute import SimpleImputer\n\ndf = pd.read_csv(\"donnees.csv\")\nprint(df.isna().sum())  # où sont les trous ?\n\nimputer = SimpleImputer(strategy=\"median\")  # médiane : robuste aux extrêmes\nX_impute = imputer.fit_transform(df[[\"age\", \"salaire\"]])",
       },
       {
+        kind: "text",
+        text: "Une valeur manquante n'est pas un zéro : c'est une information absente, à traiter explicitement.",
+      },
+      {
         kind: "fields",
-        title: "Les valeurs manquantes en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une valeur manquante n'est pas un zéro : c'est une information absente, à traiter explicitement.",
-          },
-          {
+        title: "Les valeurs manquantes : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est délicat",
             value:
               "L'absence peut être informative : un champ « revenu » vide n'est pas aléatoire. Imputer aveuglément peut effacer un signal.",
@@ -1184,15 +1140,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "import pandas as pd\nfrom sklearn.preprocessing import OneHotEncoder\n\ndf = pd.DataFrame({\"couleur\": [\"rouge\", \"vert\", \"bleu\", \"rouge\"]})\nenc = OneHotEncoder(sparse_output=False, handle_unknown=\"ignore\")\nprint(enc.fit_transform(df[[\"couleur\"]]))\n# chaque couleur devient une colonne 0/1",
       },
       {
+        kind: "text",
+        text: "L'encodage traduit des catégories texte en vecteurs numériques sans inventer de faux ordre.",
+      },
+      {
         kind: "fields",
-        title: "L'encodage en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'encodage traduit des catégories texte en vecteurs numériques sans inventer de faux ordre.",
-          },
-          {
+        title: "L'encodage : l'essentiel",
+        fields: [          {
             label: "Pourquoi le one-hot",
             value:
               "Attribuer 1, 2, 3 à « rouge, vert, bleu » ferait croire au modèle que bleu = 3 × rouge. Le one-hot évite cette fausse hiérarchie.",
@@ -1238,15 +1192,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.preprocessing import StandardScaler\n\nscaler = StandardScaler()\nX_train_std = scaler.fit_transform(X_train)  # apprend moyenne/écart-type SUR LE TRAIN\nX_test_std = scaler.transform(X_test)        # applique SANS réapprendre sur le test",
       },
       {
+        kind: "text",
+        text: "La mise à l'échelle donne à chaque variable un ordre de grandeur comparable pour que l'algorithme les écoute équitablement.",
+      },
+      {
         kind: "fields",
-        title: "La mise à l'échelle en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La mise à l'échelle donne à chaque variable un ordre de grandeur comparable pour que l'algorithme les écoute équitablement.",
-          },
-          {
+        title: "La mise à l'échelle : l'essentiel",
+        fields: [          {
             label: "Quand c'est indispensable",
             value:
               "KMeans, KNN, régression logistique/ridge, PCA, réseaux de neurones : tous sensibles aux échelles.",
@@ -1292,15 +1244,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "import pandas as pd\n\ndf = pd.read_csv(\"transactions.csv\", parse_dates=[\"date\"])\ndf[\"jour_semaine\"] = df[\"date\"].dt.dayofweek   # 0=lundi … 6=dimanche\ndf[\"est_weekend\"] = df[\"jour_semaine\"] >= 5     # variable binaire dérivée\ndf[\"panier_moyen\"] = df[\"montant\"] / df[\"nb_articles\"]  # ratio informatif",
       },
       {
+        kind: "text",
+        text: "Le feature engineering traduit la connaissance du métier en variables que le modèle peut exploiter.",
+      },
+      {
         kind: "fields",
-        title: "Le feature engineering en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le feature engineering traduit la connaissance du métier en variables que le modèle peut exploiter.",
-          },
-          {
+        title: "Le feature engineering : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est puissant",
             value:
               "L'algorithme ne connaît pas le contexte : « week-end » ou « panier moyen » sont des idées humaines qu'aucune formule automatique ne devine.",
@@ -1347,7 +1297,7 @@ export const LEARNING_ML: LearningSection[] = [
       },
       {
         kind: "fields",
-        title: "Les métriques en une phrase, par angle",
+        title: "Les métriques : l'essentiel",
         fields: [
           {
             label: "Accuracy",
@@ -1449,15 +1399,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay\n\ncm = confusion_matrix(y_test, predictions)\nprint(cm)  # [[vrais_négatifs, faux_positifs], [faux_négatifs, vrais_positifs]]\nConfusionMatrixDisplay(cm).plot()  # version graphique dans un notebook",
       },
       {
+        kind: "text",
+        text: "La matrice croise réalité et prédiction : elle montre non seulement combien d'erreurs, mais lesquelles.",
+      },
+      {
         kind: "fields",
-        title: "La matrice de confusion en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La matrice croise réalité et prédiction : elle montre non seulement combien d'erreurs, mais lesquelles.",
-          },
-          {
+        title: "La matrice de confusion : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est mieux qu'un score",
             value:
               "Deux modèles à 90 % d'accuracy peuvent échouer différemment : l'un rate des cas graves, l'autre génère des fausses alertes. La matrice révèle cette différence.",
@@ -1482,10 +1430,13 @@ export const LEARNING_ML: LearningSection[] = [
     intro: "MAE, RMSE, R² : mesurer l'erreur quand la cible est un nombre.",
     blocks: [
       {
+        kind: "text",
+        text: "MAE et RMSE mesurent l'erreur moyenne dans l'unité du problème ; R² mesure la qualité globale du modèle de 0 à 1.",
+      },
+      {
         kind: "fields",
         title: "Les trois métriques de référence",
-        fields: [
-          {
+        fields: [          {
             label: "MAE (erreur absolue moyenne)",
             value:
               "La moyenne des écarts absolus entre prédictions et réalité, dans l'unité de la cible (ex. : « en moyenne, le modèle se trompe de 12 000 € »). Simple à interpréter, robuste aux extrêmes.",
@@ -1499,11 +1450,6 @@ export const LEARNING_ML: LearningSection[] = [
             label: "R² (coefficient de détermination)",
             value:
               "La part de la variance de la cible expliquée par le modèle, entre 0 (aussi bon que prédire la moyenne) et 1 (parfait). Un R² négatif signifie : pire que la simple moyenne.",
-          },
-          {
-            label: "En une phrase",
-            value:
-              "MAE et RMSE mesurent l'erreur moyenne dans l'unité du problème ; R² mesure la qualité globale du modèle de 0 à 1.",
           },
           {
             label: "Erreur fréquente",
@@ -1561,20 +1507,17 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.model_selection import cross_val_score\nfrom sklearn.ensemble import RandomForestClassifier\n\nmodele = RandomForestClassifier(random_state=42)\nscores = cross_val_score(modele, X, y, cv=5)  # 5 plis, sur les données d'entraînement\nprint(scores)\nprint(\"moyenne :\", scores.mean(), \"±\", scores.std())",
       },
       {
+        kind: "text",
+        text: "La validation croisée répète l'évaluation sur plusieurs découpages pour un score moyen fiable.",
+      },
+      {
+        kind: "text",
+        text: "Pendant le développement : comparer des modèles, régler des hyperparamètres. Le jeu de test final reste intact pour la toute fin.",
+      },
+      {
         kind: "fields",
-        title: "La validation croisée en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La validation croisée répète l'évaluation sur plusieurs découpages pour un score moyen fiable.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pendant le développement : comparer des modèles, régler des hyperparamètres. Le jeu de test final reste intact pour la toute fin.",
-          },
-          {
+        title: "La validation croisée : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Faire la validation croisée sur tout le jeu de données y compris le test : le test n'est plus un test. CV sur train, évaluation finale sur test.",
@@ -1620,15 +1563,13 @@ export const LEARNING_ML: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Surapprendre = mémoriser les exemples au lieu de comprendre le problème ; ça se voit quand le test décroche de l'entraînement.",
+      },
+      {
         kind: "fields",
-        title: "Le surapprentissage en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Surapprendre = mémoriser les exemples au lieu de comprendre le problème ; ça se voit quand le test décroche de l'entraînement.",
-          },
-          {
+        title: "Le surapprentissage : l'essentiel",
+        fields: [          {
             label: "Comment le détecter",
             value:
               "Comparer les scores train et test (ou les courbes de validation) : un écart qui se creuse quand la complexité augmente = surapprentissage.",
@@ -1678,15 +1619,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.linear_model import Ridge, Lasso\n\nridge = Ridge(alpha=1.0)  # alpha règle la force de la pénalité\nridge.fit(X_train, y_train)\n\nlasso = Lasso(alpha=0.1)\nlasso.fit(X_train, y_train)\nprint(\"variables conservées par Lasso :\", (lasso.coef_ != 0).sum())",
       },
       {
+        kind: "text",
+        text: "La régularisation pénalise les modèles trop compliqués pour qu'ils généralisent mieux.",
+      },
+      {
         kind: "fields",
-        title: "La régularisation en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La régularisation pénalise les modèles trop compliqués pour qu'ils généralisent mieux.",
-          },
-          {
+        title: "La régularisation : l'essentiel",
+        fields: [          {
             label: "Ridge vs Lasso",
             value:
               "Ridge (L2) répartit l'importance entre variables corrélées ; Lasso (L1) en élimine, ce qui fait aussi de la sélection de variables.",
@@ -1741,23 +1680,20 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.tree import DecisionTreeClassifier\n\narbre = DecisionTreeClassifier(\n    max_depth=5,          # limite la profondeur : anti-surapprentissage\n    min_samples_leaf=10,  # chaque feuille doit contenir au moins 10 exemples\n    random_state=42,\n)\narbre.fit(X_train, y_train)",
       },
       {
+        kind: "text",
+        text: "Un arbre de décision est un organigramme appris des données : des questions sur les variables mènent à la prédiction.",
+      },
+      {
+        kind: "text",
+        text: "Baseline interprétable, données tabulaires avec interactions entre variables, quand l'explicabilité compte.",
+      },
+      {
         kind: "fields",
-        title: "L'arbre de décision en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un arbre de décision est un organigramme appris des données : des questions sur les variables mènent à la prédiction.",
-          },
-          {
+        title: "L'arbre de décision : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est utile",
             value:
               "Interprétabilité : on peut montrer exactement pourquoi le modèle a décidé ceci pour ce cas. Précieux en médecine, finance, droit.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Baseline interprétable, données tabulaires avec interactions entre variables, quand l'explicabilité compte.",
           },
           {
             label: "Erreur fréquente",
@@ -1795,23 +1731,20 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.ensemble import RandomForestClassifier\nimport pandas as pd\n\nforet = RandomForestClassifier(n_estimators=300, random_state=42, n_jobs=-1)\nforet.fit(X_train, y_train)\n\nimportances = pd.Series(foret.feature_importances_, index=noms_variables)\nprint(importances.sort_values(ascending=False))  # quelles variables comptent ?",
       },
       {
+        kind: "text",
+        text: "Une forêt aléatoire fait voter des centaines d'arbres diversifiés : la moyenne de leurs erreurs vaut mieux que chaque arbre seul.",
+      },
+      {
+        kind: "text",
+        text: "Données tabulaires, baseline robuste, quand on veut de bonnes performances sans réglages fins ni mise à l'échelle.",
+      },
+      {
         kind: "fields",
-        title: "La forêt aléatoire en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une forêt aléatoire fait voter des centaines d'arbres diversifiés : la moyenne de leurs erreurs vaut mieux que chaque arbre seul.",
-          },
-          {
+        title: "La forêt aléatoire : l'essentiel",
+        fields: [          {
             label: "Pourquoi ça marche",
             value:
               "Les arbres sont décorrélés (données et variables tirées au hasard) : leurs erreurs se compensent au lieu de s'additionner.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Données tabulaires, baseline robuste, quand on veut de bonnes performances sans réglages fins ni mise à l'échelle.",
           },
           {
             label: "Exemple réel",
@@ -1903,15 +1836,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.preprocessing import StandardScaler, OneHotEncoder\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.ensemble import RandomForestClassifier\n\npreparation = ColumnTransformer([\n    (\"num\", Pipeline([\n        (\"imputer\", SimpleImputer(strategy=\"median\")),\n        (\"scaler\", StandardScaler()),\n    ]), variables_numeriques),\n    (\"cat\", Pipeline([\n        (\"imputer\", SimpleImputer(strategy=\"most_frequent\")),\n        (\"onehot\", OneHotEncoder(handle_unknown=\"ignore\")),\n    ]), variables_categorielles),\n])\n\npipeline = Pipeline([\n    (\"preparation\", preparation),\n    (\"modele\", RandomForestClassifier(random_state=42)),\n])\npipeline.fit(X_train, y_train)  # tout est appris sur le train, en une fois",
       },
       {
+        kind: "text",
+        text: "Un `Pipeline` est un modèle augmenté de sa recette de préparation : un seul objet du CSV brut à la prédiction.",
+      },
+      {
         kind: "fields",
-        title: "Le Pipeline en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `Pipeline` est un modèle augmenté de sa recette de préparation : un seul objet du CSV brut à la prédiction.",
-          },
-          {
+        title: "Le Pipeline : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est indispensable",
             value:
               "Sans pipeline, on prépare le train et le test à la main et on finit par faire fuiter des informations ou par oublier une étape en production.",
@@ -1952,15 +1883,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "import joblib\n\njoblib.dump(pipeline, \"modele_v1.joblib\")  # sauvegarde : pipeline ENTIER\n\n# ... plus tard, dans un autre script :\nmodele_charge = joblib.load(\"modele_v1.joblib\")\nprint(modele_charge.predict(nouvelles_donnees))",
       },
       {
+        kind: "text",
+        text: "Sauvegarder = figer le pipeline entraîné dans un fichier rechargeable tel quel.",
+      },
+      {
         kind: "fields",
-        title: "La sauvegarde en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Sauvegarder = figer le pipeline entraîné dans un fichier rechargeable tel quel.",
-          },
-          {
+        title: "La sauvegarde : l'essentiel",
+        fields: [          {
             label: "Pourquoi joblib plutôt que pickle",
             value:
               "`joblib` est optimisé pour les gros tableaux numpy que contiennent les modèles ; `pickle` standard fonctionne aussi mais moins efficacement.",
@@ -2015,15 +1944,13 @@ export const LEARNING_ML: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La production = le pipeline sauvegardé, chargé dans un service qui reçoit des données et renvoie des prédictions.",
+      },
+      {
         kind: "fields",
-        title: "La mise en production en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La production = le pipeline sauvegardé, chargé dans un service qui reçoit des données et renvoie des prédictions.",
-          },
-          {
+        title: "La mise en production : l'essentiel",
+        fields: [          {
             label: "Pourquoi une API",
             value:
               "Elle découple le modèle de ses usages : le même service alimente un site, une app mobile ou un batch, et on peut changer de version sans toucher les clients.",
@@ -2063,15 +1990,13 @@ export const LEARNING_ML: LearningSection[] = [
         text: "Un modèle apprend le passé ; le monde change. La dérive (drift) désigne ce décalage progressif : les données en production ne ressemblent plus aux données d'entraînement (nouveaux comportements clients, crise économique, changement de capteur). Sans surveillance, la performance se dégrade silencieusement. On surveille donc la distribution des entrées, le taux de prédictions par classe et, quand c'est possible, la performance sur des cas récents étiquetés.",
       },
       {
+        kind: "text",
+        text: "La dérive = le monde a changé depuis l'entraînement, et le modèle ne l'a pas suivi.",
+      },
+      {
         kind: "fields",
-        title: "La dérive en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La dérive = le monde a changé depuis l'entraînement, et le modèle ne l'a pas suivi.",
-          },
-          {
+        title: "La dérive : l'essentiel",
+        fields: [          {
             label: "Exemple simple",
             value:
               "Un modèle de recommandation entraîné avant une pandémie continue de suggérer des voyages d'affaires : les habitudes ont changé, pas le modèle.",
@@ -2122,15 +2047,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "# MAL : le scaler voit le test avant le split\nX_std = StandardScaler().fit_transform(X)  # moyenne calculée sur TOUT, test inclus\nX_train, X_test = train_test_split(X_std)   # trop tard : l'info a fuité\n\n# BIEN : séparer d'abord, puis fit sur le train uniquement\nX_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)\nX_train_std = StandardScaler().fit_transform(X_train)\nX_test_std = StandardScaler().fit(X_train).transform(X_test)  # ou via un Pipeline",
       },
       {
+        kind: "text",
+        text: "Le leakage = entraîner avec des informations venues du futur ou du jeu de test.",
+      },
+      {
         kind: "fields",
-        title: "Le data leakage en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le leakage = entraîner avec des informations venues du futur ou du jeu de test.",
-          },
-          {
+        title: "Le data leakage : l'essentiel",
+        fields: [          {
             label: "Formes courantes",
             value:
               "Préprocessing fitté sur tout le dataset, variable calculée à partir de la cible, lignes de test présentes dans le train (doublons), information post-événement.",
@@ -2171,15 +2094,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "# MAL : score sur les données déjà vues -> optimiste et trompeur\nmodele.fit(X_train, y_train)\nprint(modele.score(X_train, y_train))  # le modèle « reconnaît » ses exemples\n\n# BIEN : score sur des données inédites\nprint(modele.score(X_test, y_test))",
       },
       {
+        kind: "text",
+        text: "Évaluer sur l'entraînement, c'est interroger un élève sur les exercices corrigés en classe.",
+      },
+      {
         kind: "fields",
-        title: "L'erreur en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Évaluer sur l'entraînement, c'est interroger un élève sur les exercices corrigés en classe.",
-          },
-          {
+        title: "L'erreur : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est tentant",
             value:
               "Le score train est toujours disponible et toujours flatteur. Mais il mesure la mémorisation, pas l'apprentissage.",
@@ -2209,15 +2130,13 @@ export const LEARNING_ML: LearningSection[] = [
         text: "Préparer les données avec des appels `pandas` épars dans le notebook, puis entraîner le modèle sur le résultat, crée deux problèmes : à l'entraînement, on risque d'appliquer des transformations fittées sur le mauvais jeu de données ; en production, on doit réécrire toute la préparation à l'identique — et on oublie forcément une étape.",
       },
       {
+        kind: "text",
+        text: "La préparation manuelle éparpillée est une recette non écrite : impossible à reproduire fidèlement.",
+      },
+      {
         kind: "fields",
-        title: "L'erreur en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La préparation manuelle éparpillée est une recette non écrite : impossible à reproduire fidèlement.",
-          },
-          {
+        title: "L'erreur : l'essentiel",
+        fields: [          {
             label: "Symptôme",
             value:
               "Le modèle « marche dans le notebook » mais donne des résultats incohérents dès qu'on l'applique à de nouvelles données.",
@@ -2253,15 +2172,13 @@ export const LEARNING_ML: LearningSection[] = [
         code: "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report\n\n# class_weight=\"balanced\" : les erreurs sur la classe rare coûtent plus cher\nmodele = RandomForestClassifier(class_weight=\"balanced\", random_state=42)\nmodele.fit(X_train, y_train)\nprint(classification_report(y_test, modele.predict(X_test)))",
       },
       {
+        kind: "text",
+        text: "Sur classes déséquilibrées, l'accuracy récompense le modèle paresseux qui ne prédit que la majorité.",
+      },
+      {
         kind: "fields",
-        title: "L'erreur en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Sur classes déséquilibrées, l'accuracy récompense le modèle paresseux qui ne prédit que la majorité.",
-          },
-          {
+        title: "L'erreur : l'essentiel",
+        fields: [          {
             label: "Que faire",
             value:
               "`class_weight=\"balanced\"`, stratification du split, métriques par classe, et seuil de décision réglé selon le coût des erreurs.",
@@ -2296,15 +2213,13 @@ export const LEARNING_ML: LearningSection[] = [
         text: "Le target leak est un cas particulier de fuite : une variable d'entrée contient, directement ou indirectement, la réponse à prédire. Exemple : prédire si un colis arrivera en retard avec une variable « nombre de réclamations client » enregistrée après la livraison. Le modèle atteint des scores parfaits en test… et ne sert à rien en production, où cette variable n'existe pas encore au moment de prédire.",
       },
       {
+        kind: "text",
+        text: "Le target leak = une entrée qui connaît déjà la sortie, parce qu'elle est mesurée après l'événement à prédire.",
+      },
+      {
         kind: "fields",
-        title: "Le target leak en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le target leak = une entrée qui connaît déjà la sortie, parce qu'elle est mesurée après l'événement à prédire.",
-          },
-          {
+        title: "Le target leak : l'essentiel",
+        fields: [          {
             label: "Comment le repérer",
             value:
               "Score « trop beau », ou variable avec un pouvoir prédictif écrasant et suspect : se demander pour chacune « sera-t-elle connue au moment de la prédiction ? »",
@@ -2334,15 +2249,13 @@ export const LEARNING_ML: LearningSection[] = [
         text: "Beaucoup d'étapes du ML sont aléatoires : le découpage train/test, l'initialisation des forêts, l'ordre du brassage. Sans `random_state` fixé, chaque exécution donne des résultats légèrement différents — impossible de savoir si une amélioration vient du modèle ou du hasard. Même problème avec les versions de paquets : un réentraînement six mois plus tard avec des versions différentes peut changer les résultats.",
       },
       {
+        kind: "text",
+        text: "Un résultat qu'on ne peut pas reproduire n'est pas un résultat, c'est une anecdote.",
+      },
+      {
         kind: "fields",
-        title: "La reproductibilité en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un résultat qu'on ne peut pas reproduire n'est pas un résultat, c'est une anecdote.",
-          },
-          {
+        title: "La reproductibilité : l'essentiel",
+        fields: [          {
             label: "Les trois fixations",
             value:
               "`random_state` sur tous les objets aléatoires, `requirements.txt` avec versions figées, et journal des données utilisées (quelle version du dataset).",
@@ -2376,15 +2289,13 @@ export const LEARNING_ML: LearningSection[] = [
         text: "« 87 % d'accuracy » : bien ou pas ? Sans baseline (que donnerait une règle naïve ?), sans comparaison (et la forêt aléatoire ?) et sans variabilité (87 % ± combien en validation croisée ?), ce nombre est décoratif. Pire : optimisé en boucle sur le même jeu de test, il finit par refléter le hasard des découpages plutôt que la qualité du modèle.",
       },
       {
+        kind: "text",
+        text: "Un score n'a de sens que comparé à une baseline, avec sa variabilité, sur des données non touchées pendant le réglage.",
+      },
+      {
         kind: "fields",
-        title: "L'erreur en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un score n'a de sens que comparé à une baseline, avec sa variabilité, sur des données non touchées pendant le réglage.",
-          },
-          {
+        title: "L'erreur : l'essentiel",
+        fields: [          {
             label: "La baseline minimale",
             value:
               "Prédire la classe majoritaire (classification) ou la moyenne (régression) : tout modèle doit battre ça, sinon il n'apprend rien.",
@@ -2414,15 +2325,13 @@ export const LEARNING_ML: LearningSection[] = [
         text: "Avec 50 variables pour 100 exemples, un modèle flexible trouve toujours des coïncidences : il « apprend » des motifs qui n'existent que dans cet échantillon. C'est la malédiction de la dimensionnalité : plus l'espace est vaste, plus les données y sont clairsemées et plus le surapprentissage guette. Les remèdes : sélectionner les variables pertinentes, réduire la dimension (PCA), régulariser, ou — le mieux — collecter plus d'exemples.",
       },
       {
+        kind: "text",
+        text: "Trop de variables pour trop peu d'exemples = le modèle apprend le bruit, pas le signal.",
+      },
+      {
         kind: "fields",
-        title: "L'erreur en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Trop de variables pour trop peu d'exemples = le modèle apprend le bruit, pas le signal.",
-          },
-          {
+        title: "L'erreur : l'essentiel",
+        fields: [          {
             label: "Ordre de grandeur",
             value:
               "Pas de règle absolue, mais avec moins d'une dizaine d'exemples par variable, la prudence s'impose et la validation croisée devient indispensable.",

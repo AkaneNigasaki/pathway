@@ -27,24 +27,21 @@ export const LEARNING_CPP: LearningSection[] = [
         text: "Point essentiel : le programmeur gère la mémoire explicitement. Pas de ramasse-miettes : c'est vous qui décidez quand la mémoire est allouée et libérée. C'est la source de la performance… et de la plupart des bugs (fuites, segfaults). Apprendre C/C++, c'est apprendre à raisonner sur la mémoire.",
       },
       {
+        kind: "text",
+        text: "C et C++ sont des langages compilés bas niveau qui donnent un contrôle total sur le matériel et la mémoire, au prix d'une responsabilité totale.",
+      },
+      {
+        kind: "text",
+        text: "Dans les années 1970, il fallait écrire un système d'exploitation (Unix) dans un langage plus expressif que l'assembleur mais sans sacrifier la performance. C est né de ce besoin ; C++ a ajouté ensuite l'abstraction (classes, génériques) sans coût à l'exécution.",
+      },
+      {
+        kind: "text",
+        text: "Systèmes d'exploitation, embarqué, jeux vidéo, audio temps réel, bases de données, calcul haute performance, pilotes. Pour une API web classique ou un script, d'autres langages sont plus productifs.",
+      },
+      {
         kind: "fields",
-        title: "C/C++ en une phrase, par angle",
+        title: "C/C++ : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "C et C++ sont des langages compilés bas niveau qui donnent un contrôle total sur le matériel et la mémoire, au prix d'une responsabilité totale.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Dans les années 1970, il fallait écrire un système d'exploitation (Unix) dans un langage plus expressif que l'assembleur mais sans sacrifier la performance. C est né de ce besoin ; C++ a ajouté ensuite l'abstraction (classes, génériques) sans coût à l'exécution.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Systèmes d'exploitation, embarqué, jeux vidéo, audio temps réel, bases de données, calcul haute performance, pilotes. Pour une API web classique ou un script, d'autres langages sont plus productifs.",
-          },
           {
             label: "C ou C++ ?",
             value:
@@ -1203,15 +1200,13 @@ export const LEARNING_CPP: LearningSection[] = [
         code: "#include <mutex>\n\nstd::mutex m;\n\nvoid sectionCritique() {\n    std::lock_guard<std::mutex> verrou(m);  // verrouille ici\n    // ... section critique ...\n}  // déverrouille AUTOMATIQUEMENT, même si on sort par exception",
       },
       {
+        kind: "text",
+        text: "Plus jamais de « penser à libérer » : la structure du code garantit le nettoyage.",
+      },
+      {
         kind: "fields",
         title: "Pourquoi c'est fondamental",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Plus jamais de « penser à libérer » : la structure du code garantit le nettoyage.",
-          },
-          {
+        fields: [          {
             label: "Partout dans la STL",
             value:
               "`std::vector`, `std::string`, `std::fstream`, `lock_guard`, smart pointers : tous des RAII.",
@@ -1732,91 +1727,109 @@ export const LEARNING_CPP: LearningSection[] = [
     intro: "Les 9 pièges que tout débutant rencontre — avec le correctif.",
     blocks: [
       {
+        kind: "text",
+        text: "L'adresse 0 est protégée par le système : toute écriture y est interdite.",
+      },
+      {
         kind: "fields",
         title: "1. Segfault : déréférencer un pointeur nul",
-        fields: [
-          { label: "Problème", value: "`int* p = nullptr; *p = 5;` → crash immédiat." },
-          { label: "Pourquoi", value: "L'adresse 0 est protégée par le système : toute écriture y est interdite." },
+        fields: [          { label: "Problème", value: "`int* p = nullptr; *p = 5;` → crash immédiat." },
           { label: "Mauvais", value: "`*p = 5; // « p devrait être valide ici »`" },
           { label: "Mieux", value: "`if (p) *p = 5;` — ou mieux : utilisez une référence si le pointeur ne peut pas être nul." },
         ],
       },
       {
+        kind: "text",
+        text: "Le tas n'est jamais nettoyé automatiquement en C++.",
+      },
+      {
         kind: "fields",
         title: "2. Fuite mémoire : `new` sans `delete`",
-        fields: [
-          { label: "Problème", value: "Chaque `new` sans `delete` correspondant perd de la mémoire jusqu'à épuiser la RAM sur un programme longue durée." },
-          { label: "Pourquoi", value: "Le tas n'est jamais nettoyé automatiquement en C++." },
+        fields: [          { label: "Problème", value: "Chaque `new` sans `delete` correspondant perd de la mémoire jusqu'à épuiser la RAM sur un programme longue durée." },
           { label: "Mauvais", value: "`void f() { int* p = new int[1000]; /* ... */ } // p jamais libéré`" },
           { label: "Mieux", value: "`std::vector<int> v(1000);` ou `auto p = std::make_unique<int[]>(1000);` : libération automatique." },
         ],
       },
       {
+        kind: "text",
+        text: "`delete` ne met pas le pointeur à `nullptr` : il pointe toujours vers l'ancienne adresse.",
+      },
+      {
         kind: "fields",
         title: "3. Dangling pointer : utiliser après `delete`",
-        fields: [
-          { label: "Problème", value: "`delete p; *p = 3;` : la mémoire a été rendue, son contenu est indéterminé." },
-          { label: "Pourquoi", value: "`delete` ne met pas le pointeur à `nullptr` : il pointe toujours vers l'ancienne adresse." },
+        fields: [          { label: "Problème", value: "`delete p; *p = 3;` : la mémoire a été rendue, son contenu est indéterminé." },
           { label: "Mauvais", value: "Réutiliser `p` après `delete p;` « parce que ça marchait en test »." },
           { label: "Mieux", value: "`p = nullptr;` juste après `delete`, ou (mieux) laissez un smart pointer gérer la durée de vie." },
         ],
       },
       {
+        kind: "text",
+        text: "Aucune vérification des bornes sur les tableaux bruts : corruption silencieuse.",
+      },
+      {
         kind: "fields",
         title: "4. Débordement de tableau",
-        fields: [
-          { label: "Problème", value: "`int t[10]; t[10] = 5;` : écrit hors du tableau (indices 0-9)." },
-          { label: "Pourquoi", value: "Aucune vérification des bornes sur les tableaux bruts : corruption silencieuse." },
+        fields: [          { label: "Problème", value: "`int t[10]; t[10] = 5;` : écrit hors du tableau (indices 0-9)." },
           { label: "Mauvais", value: "Boucle `for (i = 0; i <= n; i++)` avec `<=` au lieu de `<`." },
           { label: "Mieux", value: "`std::vector` + `.at(i)` (vérifie les bornes, lance `std::out_of_range`) pendant le développement." },
         ],
       },
       {
+        kind: "text",
+        text: "La division de deux `int` est entière ; la conversion en `double` a lieu *après*.",
+      },
+      {
         kind: "fields",
         title: "5. Division entière surprise",
-        fields: [
-          { label: "Problème", value: "`double m = 7 / 2;` vaut `3.0`, pas `3.5`." },
-          { label: "Pourquoi", value: "La division de deux `int` est entière ; la conversion en `double` a lieu *après*." },
+        fields: [          { label: "Problème", value: "`double m = 7 / 2;` vaut `3.0`, pas `3.5`." },
           { label: "Mauvais", value: "`double ratio = count / total; // 0.0 si count < total`" },
           { label: "Mieux", value: "`double ratio = static_cast<double>(count) / total;`" },
         ],
       },
       {
+        kind: "text",
+        text: "Les flottants sont des approximations : l'égalité exacte est fragile.",
+      },
+      {
         kind: "fields",
         title: "6. Comparer des flottants avec `==`",
-        fields: [
-          { label: "Problème", value: "`0.1 + 0.2 == 0.3` est **faux** en binaire à virgule flottante." },
-          { label: "Pourquoi", value: "Les flottants sont des approximations : l'égalité exacte est fragile." },
+        fields: [          { label: "Problème", value: "`0.1 + 0.2 == 0.3` est **faux** en binaire à virgule flottante." },
           { label: "Mauvais", value: "`if (resultat == 0.3)`" },
           { label: "Mieux", value: "`if (std::abs(resultat - 0.3) < 1e-9)` : comparez avec une tolérance (epsilon)." },
         ],
       },
       {
+        kind: "text",
+        text: "Les variables locales ne sont pas initialisées à zéro : lire avant d'écrire est un UB.",
+      },
+      {
         kind: "fields",
         title: "7. Variable non initialisée",
-        fields: [
-          { label: "Problème", value: "`int x; std::cout << x;` affiche une valeur résiduelle quelconque." },
-          { label: "Pourquoi", value: "Les variables locales ne sont pas initialisées à zéro : lire avant d'écrire est un UB." },
+        fields: [          { label: "Problème", value: "`int x; std::cout << x;` affiche une valeur résiduelle quelconque." },
           { label: "Mauvais", value: "Compter sur « ça sera 0 par défaut »." },
           { label: "Mieux", value: "`int x = 0;` ou `int x{};` systématiquement. `-Wall` prévient dans les cas simples." },
         ],
       },
       {
+        kind: "text",
+        text: "Sans `virtual`, `delete` via le pointeur de base n'appelle pas le destructeur dérivé.",
+      },
+      {
         kind: "fields",
         title: "8. Oublier `virtual` au destructeur",
-        fields: [
-          { label: "Problème", value: "`Forme* f = new Cercle(); delete f;` sans destructeur virtuel : seule la partie `Forme` est détruite." },
-          { label: "Pourquoi", value: "Sans `virtual`, `delete` via le pointeur de base n'appelle pas le destructeur dérivé." },
+        fields: [          { label: "Problème", value: "`Forme* f = new Cercle(); delete f;` sans destructeur virtuel : seule la partie `Forme` est détruite." },
           { label: "Mauvais", value: "Classe avec fonctions virtuelles mais destructeur non virtuel." },
           { label: "Mieux", value: "`virtual ~Forme() = default;` dès qu'il y a une fonction virtuelle." },
         ],
       },
       {
+        kind: "text",
+        text: "La pile est libérée au retour : le pointeur retourné est pendant (dangling).",
+      },
+      {
         kind: "fields",
         title: "9. Retourner l'adresse d'un local",
-        fields: [
-          { label: "Problème", value: "`int* f() { int x = 42; return &x; }` : `x` meurt à la fin de `f`." },
-          { label: "Pourquoi", value: "La pile est libérée au retour : le pointeur retourné est pendant (dangling)." },
+        fields: [          { label: "Problème", value: "`int* f() { int x = 42; return &x; }` : `x` meurt à la fin de `f`." },
           { label: "Mauvais", value: "« Ça marche » en test car la pile n'a pas encore été réutilisée — crash plus tard." },
           { label: "Mieux", value: "Retournez par valeur (`int f()`), ou un `std::unique_ptr` / `std::string` si la donnée doit survivre." },
         ],

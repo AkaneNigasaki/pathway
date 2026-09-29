@@ -26,24 +26,21 @@ export const LEARNING_CI_CD: LearningSection[] = [
         text: "Pourquoi ça existe : la livraison manuelle est lente, stressante et source d'erreurs — on déploie rarement, en gros paquets, le vendredi soir, en croisant les doigts. La CI/CD inverse la logique : des déploiements fréquents, petits et réversibles. Un problème est alors facile à identifier (peu de changements) et à annuler (rollback rapide). C'est la marque des équipes qui livrent vite sans casser.",
       },
       {
+        kind: "text",
+        text: "Un pipeline automatisé qui transforme chaque commit en candidat testé, construit et déployable à la production.",
+      },
+      {
+        kind: "text",
+        text: "Supprimer les étapes manuelles répétitives et risquées entre le code écrit et le code en production : build, tests, packaging, déploiement.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'un projet a plus d'un contributeur ou plus d'un environnement : même un petit projet gagne à avoir tests et build automatiques.",
+      },
+      {
         kind: "fields",
-        title: "CI/CD en une phrase, par angle",
+        title: "CI/CD : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un pipeline automatisé qui transforme chaque commit en candidat testé, construit et déployable à la production.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Supprimer les étapes manuelles répétitives et risquées entre le code écrit et le code en production : build, tests, packaging, déploiement.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'un projet a plus d'un contributeur ou plus d'un environnement : même un petit projet gagne à avoir tests et build automatiques.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:

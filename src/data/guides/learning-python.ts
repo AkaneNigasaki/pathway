@@ -334,15 +334,13 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Les trois environnements les plus utilisés pour Python, présentés factuellement : aucun n'est universellement le meilleur.",
     blocks: [
       {
+        kind: "text",
+        text: "Éditeur léger et gratuit avec l'extension officielle « Python » (Microsoft) qui apporte exécution, debugging, tests et environnements virtuels.",
+      },
+      {
         kind: "fields",
         title: "VS Code",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Éditeur léger et gratuit avec l'extension officielle « Python » (Microsoft) qui apporte exécution, debugging, tests et environnements virtuels.",
-          },
-          {
+        fields: [          {
             label: "Points forts",
             value:
               "Démarrage rapide, énorme écosystème d'extensions, excellent pour le web et les scripts, terminal intégré.",
@@ -360,15 +358,13 @@ export const LEARNING_PYTHON: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "IDE dédié à Python (JetBrains), avec une édition Community gratuite et une édition Professional payante.",
+      },
+      {
         kind: "fields",
         title: "PyCharm",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "IDE dédié à Python (JetBrains), avec une édition Community gratuite et une édition Professional payante.",
-          },
-          {
+        fields: [          {
             label: "Points forts",
             value:
               "Compréhension profonde du code Python, refactoring puissant, debugging visuel avancé, gestion des environnements virtuels intégrée.",
@@ -386,15 +382,13 @@ export const LEARNING_PYTHON: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Éditeurs pilotés au clavier, configurables, appréciés pour travailler directement sur des serveurs ou avec un workflow 100 % clavier.",
+      },
+      {
         kind: "fields",
         title: "Neovim / éditeurs terminaux",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Éditeurs pilotés au clavier, configurables, appréciés pour travailler directement sur des serveurs ou avec un workflow 100 % clavier.",
-          },
-          {
+        fields: [          {
             label: "Points forts",
             value:
               "Rapidité, fonctionnement en SSH sur des machines distantes, personnalisation totale via le serveur de langage Python.",
@@ -522,19 +516,16 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "La règle syntaxique la plus distinctive de Python : les blocs sont délimités par l'indentation, pas par des accolades.",
     blocks: [
       {
+        kind: "text",
+        text: "En Python, c'est le décalage horizontal du code (l'indentation) qui indique quelles instructions appartiennent à un bloc.",
+      },
+      {
+        kind: "text",
+        text: "Pour forcer un code visuellement structuré : puisqu'il faut de toute façon indenter pour que le code soit lisible, Python en a fait une règle du langage plutôt qu'une simple convention. Résultat : le code Python de tout le monde a la même structure visuelle.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "En Python, c'est le décalage horizontal du code (l'indentation) qui indique quelles instructions appartiennent à un bloc.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour forcer un code visuellement structuré : puisqu'il faut de toute façon indenter pour que le code soit lisible, Python en a fait une règle du langage plutôt qu'une simple convention. Résultat : le code Python de tout le monde a la même structure visuelle.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "Après une ligne se terminant par `:` (if, for, def, class...), le bloc suivant doit être indenté — par convention 4 espaces — d'un niveau supplémentaire. Revenir au niveau précédent termine le bloc.",
@@ -572,14 +563,12 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Deux adjectifs qui semblent contradictoires et qui définissent le système de types de Python.",
     blocks: [
       {
+        kind: "text",
+        text: "Python ne vérifie pas les types à l'avance (dynamique), mais refuse les opérations incohérentes entre types (fort).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Python ne vérifie pas les types à l'avance (dynamique), mais refuse les opérations incohérentes entre types (fort).",
-          },
-          {
+        fields: [          {
             label: "Dynamique : qu'est-ce que ça change",
             value:
               "Une variable n'a pas de type déclaré : elle peut contenir un entier, puis une chaîne. Le type est attaché à la valeur, pas à la variable, et n'est connu qu'à l'exécution. Avantage : code concis, prototypage rapide. Coût : une erreur de type n'apparaît qu'au moment où le code fautif s'exécute — d'où l'importance des tests.",
@@ -747,19 +736,16 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "La structure de données la plus utilisée : une séquence ordonnée et modifiable.",
     blocks: [
       {
+        kind: "text",
+        text: "Une liste est une collection ordonnée d'éléments, modifiable, qui peut mélanger les types (même si on évite en pratique).",
+      },
+      {
+        kind: "text",
+        text: "Quand l'ordre compte et que le contenu change : liste de tâches, résultats d'une recherche, lignes d'un fichier. C'est le choix par défaut pour « plusieurs choses ».",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une liste est une collection ordonnée d'éléments, modifiable, qui peut mélanger les types (même si on évite en pratique).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand l'ordre compte et que le contenu change : liste de tâches, résultats d'une recherche, lignes d'un fichier. C'est le choix par défaut pour « plusieurs choses ».",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "Création avec `[]`, ajout avec `.append()`, accès par index (`items[0]`), suppression avec `.remove()` ou `del`. Les listes sont mutables : les modifier ne crée pas une nouvelle liste.",
@@ -802,25 +788,18 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Comme les listes, mais immuables : une fois créés, on ne les modifie plus.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un tuple est une séquence ordonnée et immuable — la version « en lecture seule » de la liste.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pour des données qui ne doivent pas changer : coordonnées `(x, y)`, une ligne de configuration, plusieurs valeurs renvoyées par une fonction. L'immuabilité est une garantie, pas une contrainte.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "L'immuabilité rend le code plus sûr (personne ne modifie le tuple par accident) et permet d'utiliser les tuples comme clés de dictionnaire — impossible avec une liste.",
-          },
-        ],
+        kind: "text",
+        text: "Un tuple est une séquence ordonnée et immuable — la version « en lecture seule » de la liste.",
       },
+      {
+        kind: "text",
+        text: "Pour des données qui ne doivent pas changer : coordonnées `(x, y)`, une ligne de configuration, plusieurs valeurs renvoyées par une fonction. L'immuabilité est une garantie, pas une contrainte.",
+      },
+      {
+        kind: "text",
+        text: "L'immuabilité rend le code plus sûr (personne ne modifie le tuple par accident) et permet d'utiliser les tuples comme clés de dictionnaire — impossible avec une liste.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -852,19 +831,16 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Associer des clés à des valeurs : la structure reine pour les données nommées.",
     blocks: [
       {
+        kind: "text",
+        text: "Un dictionnaire associe des clés uniques à des valeurs, avec un accès quasi instantané par clé.",
+      },
+      {
+        kind: "text",
+        text: "Dès que les données ont des noms : un utilisateur (`{\"nom\": ..., \"age\": ...}`), une configuration, une réponse JSON d'API, un compteur par catégorie.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un dictionnaire associe des clés uniques à des valeurs, avec un accès quasi instantané par clé.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que les données ont des noms : un utilisateur (`{\"nom\": ..., \"age\": ...}`), une configuration, une réponse JSON d'API, un compteur par catégorie.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "Table de hachage sous le capot : `d[\"cle\"]` retrouve la valeur sans parcourir. Les clés doivent être immuables (chaînes, nombres, tuples).",
@@ -907,20 +883,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Des collections sans doublons, optimisées pour les tests d'appartenance et les opérations ensemblistes.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un set est une collection non ordonnée d'éléments uniques, avec des opérations mathématiques (union, intersection, différence).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Supprimer les doublons, tester rapidement « est-ce que X fait partie du groupe », comparer deux collections (qu'est-ce qui est nouveau / a disparu).",
-          },
-        ],
+        kind: "text",
+        text: "Un set est une collection non ordonnée d'éléments uniques, avec des opérations mathématiques (union, intersection, différence).",
       },
+      {
+        kind: "text",
+        text: "Supprimer les doublons, tester rapidement « est-ce que X fait partie du groupe », comparer deux collections (qu'est-ce qui est nouveau / a disparu).",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -952,20 +922,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Construire listes, dictionnaires et sets en une ligne lisible — l'idiome Python par excellence.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une comprehension construit une collection en une expression : `[transformation for élément in séquence if condition]`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Remplacer les boucles de 4 lignes qui ne font que remplir une liste par une ligne qui dit exactement ce qu'elle construit. Plus lisible une fois l'idiome acquis, et souvent plus rapide.",
-          },
-        ],
+        kind: "text",
+        text: "Une comprehension construit une collection en une expression : `[transformation for élément in séquence if condition]`.",
       },
+      {
+        kind: "text",
+        text: "Remplacer les boucles de 4 lignes qui ne font que remplir une liste par une ligne qui dit exactement ce qu'elle construit. Plus lisible une fois l'idiome acquis, et souvent plus rapide.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -973,14 +937,12 @@ export const LEARNING_PYTHON: LearningSection[] = [
         code: "# Liste des carrés\nsquares = [n ** 2 for n in range(10)]\n\n# Avec filtre : carrés des nombres pairs uniquement\neven_squares = [n ** 2 for n in range(10) if n % 2 == 0]\n\n# Dictionnaire : nom -> longueur\nnames = [\"Akane\", \"Dada\"]\nlengths = {name: len(name) for name in names}\n\n# Set : premières lettres uniques\ninitials = {name[0] for name in names}\n\n# Équivalent en boucle classique (plus verbeux)\nresult = []\nfor n in range(10):\n    if n % 2 == 0:\n        result.append(n ** 2)",
       },
       {
+        kind: "text",
+        text: "Transformation simple + filtre optionnel sur une séquence. Si la logique dépasse une condition et une transformation, revenez à une boucle explicite.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Transformation simple + filtre optionnel sur une séquence. Si la logique dépasse une condition et une transformation, revenez à une boucle explicite.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Empiler plusieurs `for` et `if` dans une seule comprehension : elle devient illisible. La règle : si vous devez la relire deux fois pour la comprendre, utilisez une boucle.",
@@ -1002,20 +964,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Découper le code en unités nommées, testables et réutilisables.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une fonction est un bloc de code nommé qui prend des entrées (paramètres), fait un travail, et renvoie un résultat.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Nommer une opération (`calculate_total(...)`) évite de dupliquer sa logique à chaque usage et crée un point unique à tester et à corriger.",
-          },
-        ],
+        kind: "text",
+        text: "Une fonction est un bloc de code nommé qui prend des entrées (paramètres), fait un travail, et renvoie un résultat.",
       },
+      {
+        kind: "text",
+        text: "Nommer une opération (`calculate_total(...)`) évite de dupliquer sa logique à chaque usage et crée un point unique à tester et à corriger.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1023,14 +979,12 @@ export const LEARNING_PYTHON: LearningSection[] = [
         code: "def greet(name, greeting=\"Bonjour\"):\n    \"\"\"Renvoie un message de salutation personnalisé.\"\"\"\n    return f\"{greeting}, {name} !\"\n\nprint(greet(\"Akane\"))              # \"Bonjour, Akane !\"\nprint(greet(\"Akane\", \"Salut\"))     # \"Salut, Akane !\"\n\n# Une fonction sans return renvoie None\ndef log(message):\n    print(f\"[LOG] {message}\")\n\nresult = log(\"démarrage\")  # result vaut None",
       },
       {
+        kind: "text",
+        text: "Dès qu'un bloc de code a un nom sensé, est utilisé deux fois, ou mérite d'être testé isolément. La docstring (chaîne sous `def`) documente l'intention.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'un bloc de code a un nom sensé, est utilisé deux fois, ou mérite d'être testé isolément. La docstring (chaîne sous `def`) documente l'intention.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Oublier `return` : la fonction calcule mais renvoie `None`, et l'appelant reçoit `None` sans erreur explicite. Si une fonction « ne renvoie rien d'utile », c'est un bug silencieux.",
@@ -1052,20 +1006,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Écrire des fonctions qui acceptent un nombre variable d'arguments.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`*args` capture les arguments positionnels excédentaires dans un tuple, `**kwargs` capture les arguments nommés excédentaires dans un dictionnaire.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Fonctions utilitaires génériques (`print` en est l'exemple canonique), décorateurs, ou fonctions qui transmettent des arguments à une autre fonction sans les connaître.",
-          },
-        ],
+        kind: "text",
+        text: "`*args` capture les arguments positionnels excédentaires dans un tuple, `**kwargs` capture les arguments nommés excédentaires dans un dictionnaire.",
       },
+      {
+        kind: "text",
+        text: "Fonctions utilitaires génériques (`print` en est l'exemple canonique), décorateurs, ou fonctions qui transmettent des arguments à une autre fonction sans les connaître.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1097,20 +1045,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Le mécanisme qui permet d'enrichir une fonction sans modifier son code — expliqué simplement.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un décorateur est une fonction qui prend une fonction en entrée et renvoie une version « augmentée » de cette fonction.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certains comportements sont transverses : mesurer le temps d'exécution, vérifier une authentification, mettre en cache. Sans décorateurs, on dupliquerait ce code dans chaque fonction. Avec, on l'écrit une fois et on l'applique avec une ligne `@decorateur`.",
-          },
-        ],
+        kind: "text",
+        text: "Un décorateur est une fonction qui prend une fonction en entrée et renvoie une version « augmentée » de cette fonction.",
       },
+      {
+        kind: "text",
+        text: "Certains comportements sont transverses : mesurer le temps d'exécution, vérifier une authentification, mettre en cache. Sans décorateurs, on dupliquerait ce code dans chaque fonction. Avec, on l'écrit une fois et on l'applique avec une ligne `@decorateur`.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1147,20 +1089,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Regrouper données et comportements : quand un dictionnaire ne suffit plus.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une classe est un modèle qui définit des données (attributs) et des comportements (méthodes) ; un objet est une instance concrète de ce modèle.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand des données ont un comportement associé et des règles de validité : un `CompteBancaire` avec `deposer()`/`retirer()`, un `Utilisateur` avec `est_admin()`. Si ce n'est que des données sans logique, un dictionnaire ou un `dataclass` suffit.",
-          },
-        ],
+        kind: "text",
+        text: "Une classe est un modèle qui définit des données (attributs) et des comportements (méthodes) ; un objet est une instance concrète de ce modèle.",
       },
+      {
+        kind: "text",
+        text: "Quand des données ont un comportement associé et des règles de validité : un `CompteBancaire` avec `deposer()`/`retirer()`, un `Utilisateur` avec `est_admin()`. Si ce n'est que des données sans logique, un dictionnaire ou un `dataclass` suffit.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1197,20 +1133,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Réutiliser et spécialiser des classes existantes.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'héritage permet à une classe de reprendre les attributs et méthodes d'une classe parente, en les spécialisant.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand il existe une vraie relation « est un » : un `Admin` est un `Utilisateur` avec des droits en plus. Si la relation est « a un » (une `Voiture` a un `Moteur`), utilisez la composition (un attribut) plutôt que l'héritage.",
-          },
-        ],
+        kind: "text",
+        text: "L'héritage permet à une classe de reprendre les attributs et méthodes d'une classe parente, en les spécialisant.",
       },
+      {
+        kind: "text",
+        text: "Quand il existe une vraie relation « est un » : un `Admin` est un `Utilisateur` avec des droits en plus. Si la relation est « a un » (une `Voiture` a un `Moteur`), utilisez la composition (un attribut) plutôt que l'héritage.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1242,20 +1172,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Les méthodes entourées de doubles underscores qui donnent à vos objets des super-pouvoirs.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les méthodes « dunder » (double underscore, ex. `__str__`) permettent à vos objets de réagir aux opérations natives de Python : `print()`, `len()`, `==`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour que vos classes se comportent comme les types natifs : `len(mon_panier)` devrait fonctionner aussi naturellement que `len(ma_liste)`, au lieu d'appeler `mon_panier.get_length()`.",
-          },
-        ],
+        kind: "text",
+        text: "Les méthodes « dunder » (double underscore, ex. `__str__`) permettent à vos objets de réagir aux opérations natives de Python : `print()`, `len()`, `==`.",
       },
+      {
+        kind: "text",
+        text: "Pour que vos classes se comportent comme les types natifs : `len(mon_panier)` devrait fonctionner aussi naturellement que `len(ma_liste)`, au lieu d'appeler `mon_panier.get_length()`.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1292,20 +1216,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Organiser le code en fichiers et réutiliser le travail des autres.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un module est simplement un fichier `.py` ; `import` permet d'utiliser son contenu depuis un autre fichier.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Un programme réel fait des milliers de lignes : les modules découpent le code en fichiers cohérents (`database.py`, `api.py`...) et donnent accès à l'immense bibliothèque standard et aux paquets tiers.",
-          },
-        ],
+        kind: "text",
+        text: "Un module est simplement un fichier `.py` ; `import` permet d'utiliser son contenu depuis un autre fichier.",
       },
+      {
+        kind: "text",
+        text: "Un programme réel fait des milliers de lignes : les modules découpent le code en fichiers cohérents (`database.py`, `api.py`...) et donnent accès à l'immense bibliothèque standard et aux paquets tiers.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1356,19 +1274,16 @@ export const LEARNING_PYTHON: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un paquet est un dossier contenant des modules, qui s'importe comme une unité : `from mon_paquet.core import ma_fonction`.",
+      },
+      {
+        kind: "text",
+        text: "Dès que le projet dépasse 2-3 fichiers ou que le code doit être réutilisé ailleurs. En dessous, des modules isolés suffisent.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un paquet est un dossier contenant des modules, qui s'importe comme une unité : `from mon_paquet.core import ma_fonction`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que le projet dépasse 2-3 fichiers ou que le code doit être réutilisé ailleurs. En dessous, des modules isolés suffisent.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Les imports relatifs qui cassent selon le dossier d'exécution (`ModuleNotFoundError`). Règle simple : lancez toujours depuis la racine du projet, et préférez les imports absolus (`from mon_paquet.core import ...`).",
@@ -1390,20 +1305,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Anticiper ce qui peut mal tourner, sans masquer les vrais problèmes.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`try/except` permet d'intercepter une erreur prévisible et d'y réagir proprement au lieu de planter.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certaines erreurs sont normales : un fichier absent, une entrée utilisateur invalide, un réseau coupé. Les gérer, c'est la différence entre un programme qui affiche « Fichier introuvable, vérifiez le chemin » et un qui vomit 20 lignes de traceback.",
-          },
-        ],
+        kind: "text",
+        text: "`try/except` permet d'intercepter une erreur prévisible et d'y réagir proprement au lieu de planter.",
       },
+      {
+        kind: "text",
+        text: "Certaines erreurs sont normales : un fichier absent, une entrée utilisateur invalide, un réseau coupé. Les gérer, c'est la différence entre un programme qui affiche « Fichier introuvable, vérifiez le chemin » et un qui vomit 20 lignes de traceback.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1480,25 +1389,18 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Produire des valeurs à la demande avec `yield` : la clé pour traiter des données immenses.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un générateur est une fonction qui « pause » à chaque `yield` et reprend où elle s'était arrêtée, produisant les valeurs une par une au lieu de tout construire en mémoire.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Traiter un fichier de 10 Go ou un flux infini est impossible si tout doit tenir en mémoire. Les générateurs ne gardent qu'une valeur à la fois : la mémoire reste constante.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pipelines de traitement de données, lecture de gros fichiers, séquences potentiellement infinies, ou quand le consommateur peut s'arrêter tôt (inutile de tout calculer).",
-          },
-        ],
+        kind: "text",
+        text: "Un générateur est une fonction qui « pause » à chaque `yield` et reprend où elle s'était arrêtée, produisant les valeurs une par une au lieu de tout construire en mémoire.",
       },
+      {
+        kind: "text",
+        text: "Traiter un fichier de 10 Go ou un flux infini est impossible si tout doit tenir en mémoire. Les générateurs ne gardent qu'une valeur à la fois : la mémoire reste constante.",
+      },
+      {
+        kind: "text",
+        text: "Pipelines de traitement de données, lecture de gros fichiers, séquences potentiellement infinies, ou quand le consommateur peut s'arrêter tôt (inutile de tout calculer).",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1530,25 +1432,18 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "`async`/`await` : gérer des milliers d'attentes simultanées sans threads.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`asyncio` permet à un seul thread de jongler entre des tâches qui attendent (réseau, disque), en reprenant chacune dès que sa réponse arrive.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Un serveur web passe 99 % de son temps à attendre : la base de données, une API externe, le disque. Avec du code synchrone, chaque attente bloque tout. Avec `async`, pendant qu'une requête attend la base, le programme traite les autres.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Tâches limitées par les entrées/sorties (I/O-bound) : serveurs web, scrapers qui appellent des centaines d'URL, clients d'API. Contre-indiqué pour le calcul pur (CPU-bound) : là, c'est `multiprocessing` qu'il faut (voir la section Performance).",
-          },
-        ],
+        kind: "text",
+        text: "`asyncio` permet à un seul thread de jongler entre des tâches qui attendent (réseau, disque), en reprenant chacune dès que sa réponse arrive.",
       },
+      {
+        kind: "text",
+        text: "Un serveur web passe 99 % de son temps à attendre : la base de données, une API externe, le disque. Avec du code synchrone, chaque attente bloque tout. Avec `async`, pendant qu'une requête attend la base, le programme traite les autres.",
+      },
+      {
+        kind: "text",
+        text: "Tâches limitées par les entrées/sorties (I/O-bound) : serveurs web, scrapers qui appellent des centaines d'URL, clients d'API. Contre-indiqué pour le calcul pur (CPU-bound) : là, c'est `multiprocessing` qu'il faut (voir la section Performance).",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -1730,14 +1625,12 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Écrire des tests qui prouvent que le code fait ce qu'il prétend.",
     blocks: [
       {
+        kind: "text",
+        text: "pytest est le framework de test le plus utilisé en Python : on écrit des fonctions `test_*` avec des `assert`, il les découvre et les exécute.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "pytest est le framework de test le plus utilisé en Python : on écrit des fonctions `test_*` avec des `assert`, il les découvre et les exécute.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi tester",
             value:
               "Le typage dynamique ne détecte les erreurs qu'à l'exécution : les tests sont le filet de sécurité qui les capture avant vos utilisateurs. Un test est aussi une documentation exécutable (« voici ce que cette fonction est censée faire »).",
@@ -1765,14 +1658,12 @@ export const LEARNING_PYTHON: LearningSection[] = [
         verify: "`3 passed` s'affiche si les trois tests ci-dessus réussissent.",
       },
       {
+        kind: "text",
+        text: "Dès qu'une fonction contient une règle métier (calcul, validation, transformation). Pas besoin de tester `print(\"hello\")`, mais tout calcul d'argent, toute validation et toute logique conditionnelle mérite un test.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une fonction contient une règle métier (calcul, validation, transformation). Pas besoin de tester `print(\"hello\")`, mais tout calcul d'argent, toute validation et toute logique conditionnelle mérite un test.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Ne tester que le cas nominal : le bug se cache dans les cas limites (0, valeurs négatives, chaînes vides, `None`). Écrivez au moins un test par branche importante.",
@@ -1794,20 +1685,14 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Lint et formatage automatiques : le style sans les débats.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ruff est un outil unique qui vérifie les erreurs courantes (lint) et reformate le code (format), écrit en Rust donc quasi instantané.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les débats de style (espaces, guillemets, longueur de ligne) font perdre du temps en revue de code. Un formateur automatique tranche une fois pour toutes ; le linter, lui, détecte les vrais problèmes : imports inutilisés, variables non définies, complexité excessive.",
-          },
-        ],
+        kind: "text",
+        text: "Ruff est un outil unique qui vérifie les erreurs courantes (lint) et reformate le code (format), écrit en Rust donc quasi instantané.",
       },
+      {
+        kind: "text",
+        text: "Les débats de style (espaces, guillemets, longueur de ligne) font perdre du temps en revue de code. Un formateur automatique tranche une fois pour toutes ; le linter, lui, détecte les vrais problèmes : imports inutilisés, variables non définies, complexité excessive.",
+      },
+
       {
         kind: "command",
         label: "Installer Ruff",
@@ -1853,23 +1738,21 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Ajouter des annotations de types là où elles apportent vraiment quelque chose.",
     blocks: [
       {
+        kind: "text",
+        text: "Python permet d'annoter les types (`def f(x: int) -> str`), et mypy vérifie statiquement que ces annotations sont cohérentes — sans changer l'exécution.",
+      },
+      {
+        kind: "text",
+        text: "Signatures de fonctions publiques, structures de données échangées entre modules, code manipulé par plusieurs développeurs. Inutile de tout typer : commencez par les frontières.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Python permet d'annoter les types (`def f(x: int) -> str`), et mypy vérifie statiquement que ces annotations sont cohérentes — sans changer l'exécution.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est optionnel",
             value:
               "Contrairement à TypeScript, le typage n'est pas au cœur de l'écosystème Python : beaucoup de projets professionnels s'en passent. Il devient rentable sur les grosses bases de code, les bibliothèques publiques et les zones critiques.",
           },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Signatures de fonctions publiques, structures de données échangées entre modules, code manipulé par plusieurs développeurs. Inutile de tout typer : commencez par les frontières.",
-          },
+          
         ],
       },
       {
@@ -1962,25 +1845,18 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Rendre un projet installable et partageable proprement.",
     blocks: [
       {
-        kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`pyproject.toml` est le fichier qui décrit votre projet : son nom, sa version, ses dépendances et comment le construire.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "`requirements.txt` fige un environnement, mais ne dit pas « quel est ce projet » ni « de quoi il dépend pour fonctionner ». `pyproject.toml` est le standard moderne qui répond à ces questions et permet d'installer le projet lui-même avec `pip`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que le code doit être installé ailleurs (une bibliothèque réutilisée, un outil déployé sur un serveur, un paquet publié). Pour un script personnel unique, `requirements.txt` suffit.",
-          },
-        ],
+        kind: "text",
+        text: "`pyproject.toml` est le fichier qui décrit votre projet : son nom, sa version, ses dépendances et comment le construire.",
       },
+      {
+        kind: "text",
+        text: "`requirements.txt` fige un environnement, mais ne dit pas « quel est ce projet » ni « de quoi il dépend pour fonctionner ». `pyproject.toml` est le standard moderne qui répond à ces questions et permet d'installer le projet lui-même avec `pip`.",
+      },
+      {
+        kind: "text",
+        text: "Dès que le code doit être installé ailleurs (une bibliothèque réutilisée, un outil déployé sur un serveur, un paquet publié). Pour un script personnel unique, `requirements.txt` suffit.",
+      },
+
       {
         kind: "code",
         language: "python",
@@ -2019,14 +1895,12 @@ export const LEARNING_PYTHON: LearningSection[] = [
       "Ce que le GIL change vraiment — et quand vous pouvez l'ignorer.",
     blocks: [
       {
+        kind: "text",
+        text: "Le GIL (Global Interpreter Lock) est un verrou de CPython qui empêche deux threads d'exécuter du bytecode Python en même temps.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le GIL (Global Interpreter Lock) est un verrou de CPython qui empêche deux threads d'exécuter du bytecode Python en même temps.",
-          },
-          {
+        fields: [          {
             label: "Conséquence concrète",
             value:
               "Ajouter des threads n'accélère pas un calcul Python pur : 8 threads de calcul se partagent un seul cœur effectif. En revanche, pour des tâches qui attendent (réseau, disque), les threads restent utiles : pendant qu'un thread attend, le GIL est libéré et un autre avance.",

@@ -25,24 +25,21 @@ export const LEARNING_STATISTICS: LearningSection[] = [
         text: "Les statistiques sont l'art de tirer des conclusions rigoureuses à partir de données imparfaites : résumer des milliers de valeurs en quelques nombres, quantifier l'incertitude, et décider si un effet observé est réel ou un simple hasard. En data science, chaque modèle de machine learning repose dessus ; en analyse, elles séparent l'opinion éclairée de la simple intuition.",
       },
       {
+        kind: "text",
+        text: "Les statistiques transforment des données brutes en réponses fiables à des questions, en mesurant ce qu'on sait et ce qu'on ignore.",
+      },
+      {
+        kind: "text",
+        text: "On ne peut jamais mesurer une population entière (tous les clients, tous les utilisateurs). Les statistiques permettent de généraliser à partir d'un échantillon, en quantifiant le risque de se tromper.",
+      },
+      {
+        kind: "text",
+        text: "Résumer un dataset, comparer deux groupes, valider qu'un changement a un effet réel (test A/B), construire ou évaluer un modèle prédictif, décider sous incertitude.",
+      },
+      {
         kind: "fields",
-        title: "Les statistiques en une phrase, par angle",
+        title: "Les statistiques : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les statistiques transforment des données brutes en réponses fiables à des questions, en mesurant ce qu'on sait et ce qu'on ignore.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "On ne peut jamais mesurer une population entière (tous les clients, tous les utilisateurs). Les statistiques permettent de généraliser à partir d'un échantillon, en quantifiant le risque de se tromper.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Résumer un dataset, comparer deux groupes, valider qu'un changement a un effet réel (test A/B), construire ou évaluer un modèle prédictif, décider sous incertitude.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -428,24 +425,21 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Le résumé le plus utilisé — et le plus trompeur quand on l'utilise seul.",
     blocks: [
       {
+        kind: "text",
+        text: "La moyenne est la somme des valeurs divisée par leur nombre : le « centre de gravité » des données.",
+      },
+      {
+        kind: "text",
+        text: "Elle résume un grand nombre de valeurs en un seul nombre comparable : comparer deux moyennes est plus simple que comparer deux distributions entières.",
+      },
+      {
+        kind: "text",
+        text: "Données à peu près symétriques, sans valeurs extrêmes (tailles, températures, notes d'examen).",
+      },
+      {
         kind: "fields",
         title: "La moyenne, en format pédagogique",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La moyenne est la somme des valeurs divisée par leur nombre : le « centre de gravité » des données.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Elle résume un grand nombre de valeurs en un seul nombre comparable : comparer deux moyennes est plus simple que comparer deux distributions entières.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Données à peu près symétriques, sans valeurs extrêmes (tailles, températures, notes d'examen).",
-          },
           {
             label: "Erreur fréquente",
             value:
@@ -526,20 +520,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Mesurer la dispersion : à quel point les données s'étalent autour du centre.",
     blocks: [
       {
+        kind: "text",
+        text: "La variance est la moyenne des carrés des écarts à la moyenne ; l'écart-type est sa racine carrée, exprimée dans la même unité que les données.",
+      },
+      {
+        kind: "text",
+        text: "Deux groupes peuvent avoir la même moyenne et être radicalement différents : [10, 11, 12] et [0, 11, 22] ont la même moyenne (11) mais pas le même écart-type. Sans dispersion, la moyenne est aveugle.",
+      },
+      {
         kind: "fields",
         title: "Dispersion, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La variance est la moyenne des carrés des écarts à la moyenne ; l'écart-type est sa racine carrée, exprimée dans la même unité que les données.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Deux groupes peuvent avoir la même moyenne et être radicalement différents : [10, 11, 12] et [0, 11, 22] ont la même moyenne (11) mais pas le même écart-type. Sans dispersion, la moyenne est aveugle.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "On mesure pour chaque valeur son écart à la moyenne, on met au carré (pour que les écarts positifs et négatifs ne s'annulent pas), on moyenne. La racine carrée ramène le résultat dans l'unité d'origine : un écart-type de 2 sur des notes /20 se lit directement.",
@@ -575,20 +566,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Découper la distribution en quatre pour voir sa structure.",
     blocks: [
       {
+        kind: "text",
+        text: "Les quartiles découpent les données triées en quatre parts égales : Q1 (25 % en dessous), la médiane Q2 (50 %), Q3 (75 % en dessous).",
+      },
+      {
+        kind: "text",
+        text: "Ils décrivent la forme de la distribution avec 5 nombres (min, Q1, médiane, Q3, max) : on voit où se concentrent les données et s'il y a des valeurs aberrantes, sans aucun graphique.",
+      },
+      {
         kind: "fields",
         title: "Quartiles, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les quartiles découpent les données triées en quatre parts égales : Q1 (25 % en dessous), la médiane Q2 (50 %), Q3 (75 % en dessous).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Ils décrivent la forme de la distribution avec 5 nombres (min, Q1, médiane, Q3, max) : on voit où se concentrent les données et s'il y a des valeurs aberrantes, sans aucun graphique.",
-          },
-          {
+        fields: [          {
             label: "La boîte à moustaches",
             value:
               "Le graphique qui dessine ces 5 nombres : une boîte de Q1 à Q3 (50 % des données), une ligne pour la médiane, des « moustaches » jusqu'aux valeurs non-aberrantes, et les points aberrants isolés. Idéal pour comparer plusieurs groupes d'un coup d'œil.",
@@ -619,15 +607,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Savoir lire si les données penchent d'un côté.",
     blocks: [
       {
+        kind: "text",
+        text: "Une distribution est asymétrique quand une « queue » s'étire d'un côté : à droite (quelques très grandes valeurs, ex. revenus), à gauche (quelques très petites valeurs).",
+      },
+      {
         kind: "fields",
         title: "Asymétrie (skewness)",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une distribution est asymétrique quand une « queue » s'étire d'un côté : à droite (quelques très grandes valeurs, ex. revenus), à gauche (quelques très petites valeurs).",
-          },
-          {
+        fields: [          {
             label: "Pourquoi ça compte",
             value:
               "L'asymétrie décide quel résumé est honnête : distribution très asymétrique à droite → la moyenne dépasse la médiane et surestime le « typique ». C'est le cas des revenus, des prix, des temps d'attente.",
@@ -792,20 +778,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Le langage de l'incertitude : un nombre entre 0 et 1.",
     blocks: [
       {
+        kind: "text",
+        text: "Une probabilité mesure la plausibilité d'un événement : 0 = impossible, 1 = certain, 0,5 = une chance sur deux.",
+      },
+      {
+        kind: "text",
+        text: "Tout le raisonnement statistique est probabiliste : « ce médicament est-il efficace ? » se traduit en « quelle est la probabilité d'observer cet effet par hasard ? ». Sans probabilités, pas de tests, pas d'intervalles de confiance, pas de machine learning.",
+      },
+      {
         kind: "fields",
         title: "Probabilités, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une probabilité mesure la plausibilité d'un événement : 0 = impossible, 1 = certain, 0,5 = une chance sur deux.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Tout le raisonnement statistique est probabiliste : « ce médicament est-il efficace ? » se traduit en « quelle est la probabilité d'observer cet effet par hasard ? ». Sans probabilités, pas de tests, pas d'intervalles de confiance, pas de machine learning.",
-          },
-          {
+        fields: [          {
             label: "Les trois règles de base",
             value:
               "Complément : P(pas A) = 1 − P(A). Addition (événements incompatibles) : P(A ou B) = P(A) + P(B). Multiplication (événements indépendants) : P(A et B) = P(A) × P(B).",
@@ -840,15 +823,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Mettre à jour ses croyances quand de nouvelles informations arrivent.",
     blocks: [
       {
+        kind: "text",
+        text: "P(A sachant B) est la probabilité de A quand on sait déjà que B est arrivé : l'information change la probabilité.",
+      },
+      {
         kind: "fields",
         title: "Conditionnement, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "P(A sachant B) est la probabilité de A quand on sait déjà que B est arrivé : l'information change la probabilité.",
-          },
-          {
+        fields: [          {
             label: "Exemple",
             value:
               "La probabilité qu'un passager ait survécu sachant qu'il voyageait en 1re classe n'est pas le taux de survie global : la classe apporte de l'information. C'est le principe de toute prédiction.",
@@ -884,15 +865,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "La distribution en cloche : la plus célèbre, et la plus sur-utilisée.",
     blocks: [
       {
+        kind: "text",
+        text: "Une distribution symétrique en forme de cloche, entièrement décrite par sa moyenne et son écart-type : tailles, erreurs de mesure, et bien d'autres phénomènes s'en approchent.",
+      },
+      {
         kind: "fields",
         title: "Loi normale, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une distribution symétrique en forme de cloche, entièrement décrite par sa moyenne et son écart-type : tailles, erreurs de mesure, et bien d'autres phénomènes s'en approchent.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi elle est partout",
             value:
               "Le théorème central limite (voir section dédiée) fait que les moyennes d'échantillons suivent approximativement une loi normale même quand les données de base ne la suivent pas. Beaucoup de tests classiques la supposent.",
@@ -928,20 +907,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Compter les succès quand on répète une expérience oui/non.",
     blocks: [
       {
+        kind: "text",
+        text: "Si on répète n fois une expérience avec probabilité de succès p (indépendante à chaque fois), la loi binomiale donne la probabilité d'obtenir exactement k succès.",
+      },
+      {
+        kind: "text",
+        text: "Taux de conversion (« sur 1 000 visiteurs, combien achètent ? »), tests A/B, contrôle qualité, sondages : partout où l'on compte des succès parmi des essais.",
+      },
+      {
         kind: "fields",
         title: "Loi binomiale, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Si on répète n fois une expérience avec probabilité de succès p (indépendante à chaque fois), la loi binomiale donne la probabilité d'obtenir exactement k succès.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Taux de conversion (« sur 1 000 visiteurs, combien achètent ? »), tests A/B, contrôle qualité, sondages : partout où l'on compte des succès parmi des essais.",
-          },
-          {
+        fields: [          {
             label: "Exemple",
             value:
               "Une pièce équilibrée lancée 10 fois : la probabilité d'obtenir exactement 5 piles est ~24,6 % — pas 100 %, pas 50 %. L'intuition sous-estime systématiquement la variabilité des petits échantillons.",
@@ -972,15 +948,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Pourquoi la moyenne est la statistique la mieux comprise.",
     blocks: [
       {
+        kind: "text",
+        text: "La moyenne d'un échantillon assez grand suit approximativement une loi normale, quelle que soit la distribution des données d'origine.",
+      },
+      {
         kind: "fields",
         title: "Théorème central limite, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La moyenne d'un échantillon assez grand suit approximativement une loi normale, quelle que soit la distribution des données d'origine.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est fondamental",
             value:
               "C'est ce théorème qui justifie les intervalles de confiance et la plupart des tests sur les moyennes : même avec des données non normales, la moyenne se comporte « normalement » dès que n est assez grand (en pratique, quelques dizaines d'observations suffisent souvent).",
@@ -1020,20 +994,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Mesurer si deux variables bougent ensemble — et dans quel sens.",
     blocks: [
       {
+        kind: "text",
+        text: "Le coefficient de corrélation (Pearson, noté r) mesure la force et le sens d'une relation linéaire entre deux variables : de −1 (opposées) à +1 (ensemble), 0 signifiant « pas de relation linéaire ».",
+      },
+      {
+        kind: "text",
+        text: "C'est le premier test d'une hypothèse de lien : avant de modéliser, on vérifie si les variables bougent ensemble. Une matrice de corrélation (`df.corr()`) est un réflexe d'exploration.",
+      },
+      {
         kind: "fields",
         title: "Corrélation, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le coefficient de corrélation (Pearson, noté r) mesure la force et le sens d'une relation linéaire entre deux variables : de −1 (opposées) à +1 (ensemble), 0 signifiant « pas de relation linéaire ».",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "C'est le premier test d'une hypothèse de lien : avant de modéliser, on vérifie si les variables bougent ensemble. Une matrice de corrélation (`df.corr()`) est un réflexe d'exploration.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "On compare pour chaque point si les deux variables s'écartent de leur moyenne dans le même sens. Si oui systématiquement, r est proche de 1 ; si c'est aléatoire, r est proche de 0.",
@@ -1154,15 +1125,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "La qualité d'une analyse se joue avant le premier calcul.",
     blocks: [
       {
+        kind: "text",
+        text: "Un échantillon est biaisé quand certains individus ont plus de chances d'y figurer que d'autres : les conclusions ne se généralisent plus à la population.",
+      },
+      {
         kind: "fields",
         title: "Biais d'échantillonnage, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un échantillon est biaisé quand certains individus ont plus de chances d'y figurer que d'autres : les conclusions ne se généralisent plus à la population.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est le point le plus fragile",
             value:
               "Aucune sophistication statistique ne corrige un mauvais échantillon : des calculs parfaits sur des données biaisées donnent des réponses précisément fausses. « Garbage in, garbage out ».",
@@ -1197,20 +1166,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Donner une réponse avec sa marge d'erreur, plutôt qu'un nombre nu.",
     blocks: [
       {
+        kind: "text",
+        text: "Un intervalle de confiance à 95 % est une fourchette calculée sur l'échantillon qui, si on répétait l'étude un grand nombre de fois, contiendrait le vrai paramètre dans ~95 % des cas.",
+      },
+      {
+        kind: "text",
+        text: "« Taux de survie : 38 % » est incomplet ; « 38 %, IC 95 % : [35 %, 41 %] » dit aussi la précision. Deux estimations dont les intervalles se recouvrent largement ne sont probablement pas différentes.",
+      },
+      {
         kind: "fields",
         title: "Intervalles de confiance, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un intervalle de confiance à 95 % est une fourchette calculée sur l'échantillon qui, si on répétait l'étude un grand nombre de fois, contiendrait le vrai paramètre dans ~95 % des cas.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "« Taux de survie : 38 % » est incomplet ; « 38 %, IC 95 % : [35 %, 41 %] » dit aussi la précision. Deux estimations dont les intervalles se recouvrent largement ne sont probablement pas différentes.",
-          },
-          {
+        fields: [          {
             label: "Ce que ce N'EST PAS",
             value:
               "Ce n'est pas « il y a 95 % de chances que le vrai taux soit dans cet intervalle précis » : une fois calculé, l'intervalle contient le paramètre ou non. Le 95 % concerne la méthode, pas cet intervalle particulier. C'est subtil mais c'est l'interprétation correcte.",
@@ -1375,20 +1341,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Un effet « statistiquement significatif » peut être pratiquement négligeable.",
     blocks: [
       {
+        kind: "text",
+        text: "La taille d'effet mesure l'ampleur réelle d'une différence (ex. +0,2 seconde, +2 points), là où la p-value mesure seulement si elle est détectable.",
+      },
+      {
+        kind: "text",
+        text: "Avec 1 million d'observations, une différence de 0,01 % devient « significative » (p minuscule) tout en étant inutile en pratique. La significativité dit « c'est probablement réel », la taille d'effet dit « est-ce que ça compte ? ».",
+      },
+      {
         kind: "fields",
         title: "Taille d'effet, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La taille d'effet mesure l'ampleur réelle d'une différence (ex. +0,2 seconde, +2 points), là où la p-value mesure seulement si elle est détectable.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Avec 1 million d'observations, une différence de 0,01 % devient « significative » (p minuscule) tout en étant inutile en pratique. La significativité dit « c'est probablement réel », la taille d'effet dit « est-ce que ça compte ? ».",
-          },
-          {
+        fields: [          {
             label: "Exemple",
             value:
               "Un test A/B montre +0,1 % de conversion avec p = 0,001 : statistiquement solide, mais si le coût de déploiement dépasse le gain attendu, la décision rationnelle est de ne pas déployer.",
@@ -1417,20 +1380,17 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Prédire une variable à partir d'une autre avec une droite.",
     blocks: [
       {
+        kind: "text",
+        text: "La régression linéaire trouve la droite qui passe « au mieux » au milieu d'un nuage de points, pour prédire y à partir de x.",
+      },
+      {
+        kind: "text",
+        text: "C'est le modèle prédictif le plus simple et le plus interprétable : chaque coefficient se lit (« +1 an d'âge → +tant d'euros »). Il sert de référence avant tout modèle complexe : si une droite fait aussi bien qu'un réseau de neurones, gardez la droite.",
+      },
+      {
         kind: "fields",
         title: "Régression linéaire, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La régression linéaire trouve la droite qui passe « au mieux » au milieu d'un nuage de points, pour prédire y à partir de x.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "C'est le modèle prédictif le plus simple et le plus interprétable : chaque coefficient se lit (« +1 an d'âge → +tant d'euros »). Il sert de référence avant tout modèle complexe : si une droite fait aussi bien qu'un réseau de neurones, gardez la droite.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "La méthode des moindres carrés minimise la somme des carrés des écarts entre les points et la droite. Le R² (entre 0 et 1) indique la part de la variabilité de y expliquée par le modèle.",
@@ -1466,15 +1426,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Le problème le plus courant des datasets réels.",
     blocks: [
       {
+        kind: "text",
+        text: "Les valeurs manquantes (`NaN`) sont inévitables : capteur en panne, question sans réponse, champ non applicable. Les ignorer aveuglément biaise l'analyse.",
+      },
+      {
         kind: "fields",
         title: "Données manquantes, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les valeurs manquantes (`NaN`) sont inévitables : capteur en panne, question sans réponse, champ non applicable. Les ignorer aveuglément biaise l'analyse.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est délicat",
             value:
               "Supprimer les lignes incomplètes ne conserve que les cas « propres », qui ne sont pas représentatifs : les clients qui ne répondent pas au sondage sont justement ceux qu'on connaît le moins.",
@@ -1510,15 +1468,13 @@ export const LEARNING_STATISTICS: LearningSection[] = [
     intro: "Ni à supprimer aveuglément, ni à ignorer.",
     blocks: [
       {
+        kind: "text",
+        text: "Une valeur aberrante est une observation très éloignée des autres : erreur de saisie, cas exceptionnel réel, ou découverte en puissance.",
+      },
+      {
         kind: "fields",
         title: "Outliers, en format pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une valeur aberrante est une observation très éloignée des autres : erreur de saisie, cas exceptionnel réel, ou découverte en puissance.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est un dilemme",
             value:
               "Un outlier peut être une erreur (âge de 250 ans → corriger ou retirer) ou l'information la plus précieuse du dataset (la fraude qu'on cherche à détecter). La statistique ne tranche pas : le contexte métier tranche.",

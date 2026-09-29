@@ -27,24 +27,21 @@ export const LEARNING_NODEJS: LearningSection[] = [
         text: "Conséquence directe : avec le seul JavaScript, vous pouvez écrire une API web, un outil en ligne de commande, un script d'automatisation ou un serveur temps réel. C'est cette unification du langage entre le client et le serveur qui a fait le succès de Node.js, créé par Ryan Dahl en 2009 et aujourd'hui maintenu par la fondation OpenJS.",
       },
       {
+        kind: "text",
+        text: "Node.js exécute du JavaScript côté serveur grâce au moteur V8 et à une boucle d'événements qui gère des milliers de connexions avec un seul fil d'exécution.",
+      },
+      {
+        kind: "text",
+        text: "Avant Node.js, le JavaScript ne vivait que dans le navigateur : pour un backend, il fallait un autre langage (PHP, Java, Python…). Node.js a permis d'utiliser le même langage des deux côtés et d'exploiter le modèle asynchrone de JavaScript pour des serveurs très concurrents.",
+      },
+      {
+        kind: "text",
+        text: "API REST, applications temps réel (chat, tableaux de bord), outils en ligne de commande, scripts d'automatisation, serveurs de fichiers, prototypage rapide. Moins adapté aux calculs lourds et parallèles (traitement d'image, calcul scientifique) : un seul fil JavaScript s'y sature vite.",
+      },
+      {
         kind: "fields",
-        title: "Node.js en une phrase, par angle",
+        title: "Node.js : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Node.js exécute du JavaScript côté serveur grâce au moteur V8 et à une boucle d'événements qui gère des milliers de connexions avec un seul fil d'exécution.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Avant Node.js, le JavaScript ne vivait que dans le navigateur : pour un backend, il fallait un autre langage (PHP, Java, Python…). Node.js a permis d'utiliser le même langage des deux côtés et d'exploiter le modèle asynchrone de JavaScript pour des serveurs très concurrents.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "API REST, applications temps réel (chat, tableaux de bord), outils en ligne de commande, scripts d'automatisation, serveurs de fichiers, prototypage rapide. Moins adapté aux calculs lourds et parallèles (traitement d'image, calcul scientifique) : un seul fil JavaScript s'y sature vite.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -227,19 +224,16 @@ export const LEARNING_NODEJS: LearningSection[] = [
         verify: "La version marquée comme active correspond à celle affichée par `node --version`.",
       },
       {
+        kind: "text",
+        text: "`nvm` est un sélecteur de version : il installe plusieurs Node.js et active celui que le projet demande.",
+      },
+      {
+        kind: "text",
+        text: "Les projets n'évoluent pas au même rythme : figer chaque projet sur « sa » version évite les régressions quand une nouvelle version de Node.js sort.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`nvm` est un sélecteur de version : il installe plusieurs Node.js et active celui que le projet demande.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les projets n'évoluent pas au même rythme : figer chaque projet sur « sa » version évite les régressions quand une nouvelle version de Node.js sort.",
-          },
-          {
+        fields: [          {
             label: "Note Windows",
             value:
               "`nvm` (nvm-sh) est conçu pour macOS et Linux. Sur Windows, l'équivalent usuel est `nvm-windows`, un projet distinct avec des commandes proches.",
@@ -594,14 +588,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "CommonJS est le système historique de Node.js, ESM est le standard du langage : les projets récents utilisent ESM.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "CommonJS est le système historique de Node.js, ESM est le standard du langage : les projets récents utilisent ESM.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi deux systèmes",
             value:
               "Node.js est né en 2009, six ans avant la standardisation des modules JavaScript (2015). Il a fallu inventer une solution en attendant — CommonJS — puis supporter les deux pour ne pas casser des millions de projets existants.",
@@ -798,19 +790,16 @@ export const LEARNING_NODEJS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Node.js ne fait jamais attendre son unique fil : il délègue les opérations lentes et exécute leurs callbacks quand elles se terminent.",
+      },
+      {
+        kind: "text",
+        text: "Le modèle classique (un fil par connexion, comme en Java ou PHP traditionnel) consomme beaucoup de mémoire à grande échelle. Le modèle événementiel traite des dizaines de milliers de connexions simultanées avec des ressources modestes — idéal pour les API et le temps réel.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Node.js ne fait jamais attendre son unique fil : il délègue les opérations lentes et exécute leurs callbacks quand elles se terminent.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le modèle classique (un fil par connexion, comme en Java ou PHP traditionnel) consomme beaucoup de mémoire à grande échelle. Le modèle événementiel traite des dizaines de milliers de connexions simultanées avec des ressources modestes — idéal pour les API et le temps réel.",
-          },
-          {
+        fields: [          {
             label: "Quand ce modèle brille",
             value:
               "Beaucoup d'opérations d'entrée/sortie qui attendent : requêtes HTTP, lectures de fichiers, requêtes base de données. Le fil passe son temps à orchestrer, pas à attendre.",
@@ -895,14 +884,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "console.log(\"1. code synchrone\");\n\nsetTimeout(() => console.log(\"5. setTimeout (phase timers)\"), 0);\nsetImmediate(() => console.log(\"4. setImmediate (phase check)\"));\n\nPromise.resolve().then(() => console.log(\"3. promesse (microtâche)\"));\nprocess.nextTick(() => console.log(\"2. nextTick (avant les microtâches)\"));",
       },
       {
+        kind: "text",
+        text: "Après chaque phase, la boucle vide d'abord les microtâches (promesses, `nextTick`), puis passe à la phase suivante.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Après chaque phase, la boucle vide d'abord les microtâches (promesses, `nextTick`), puis passe à la phase suivante.",
-          },
-          {
+        fields: [          {
             label: "`process.nextTick`",
             value:
               "S'exécute avant tout le reste, dès que le code synchrone en cours se termine — même avant les promesses. Réservé à des cas internes précis (reporter une erreur, laisser un constructeur finir) : en abuser affame la boucle, car les `nextTick` s'exécutent avant que la boucle ne puisse traiter les I/O.",
@@ -944,14 +931,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "import http from \"node:http\";\n\nhttp.createServer((req, res) => {\n  // DANGER : 5 secondes de calcul sur le fil unique\n  const fin = Date.now() + 5000;\n  while (Date.now() < fin) { /* calcul intensif */ }\n  res.end(\"Terminé\");\n}).listen(3000);\n// Pendant ces 5 secondes : AUCUNE autre requête n'est traitée.",
       },
       {
+        kind: "text",
+        text: "Tout code synchrone long bloque le fil unique : pendant son exécution, aucune requête, aucun timer, aucun callback ne peut s'exécuter.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Tout code synchrone long bloque le fil unique : pendant son exécution, aucune requête, aucun timer, aucun callback ne peut s'exécuter.",
-          },
-          {
+        fields: [          {
             label: "Symptômes typiques",
             value:
               "Latence qui explose sous charge, timeouts inexpliqués, `setInterval` qui « saute » des ticks. Le serveur semble lent alors que le CPU n'est même pas saturé — ou au contraire un cœur CPU est à 100 % pendant que les autres dorment.",
@@ -1043,14 +1028,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "import express from \"express\";\n\nconst app = express();\n\napp.get(\"/bonjour\", (req, res) => {\n  const nom = req.query.nom || \"inconnu\";\n  res.json({ message: \"Bonjour \" + nom });\n});\n\napp.listen(3000, () => {\n  console.log(\"API à l'écoute sur http://localhost:3000\");\n});",
       },
       {
+        kind: "text",
+        text: "Express transforme le serveur HTTP brut en routeur : « pour cette méthode et cette URL, exécute cette fonction ».",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Express transforme le serveur HTTP brut en routeur : « pour cette méthode et cette URL, exécute cette fonction ».",
-          },
-          {
+        fields: [          {
             label: "Ce qu'Express fait pour vous",
             value:
               "Le routage (`app.get`, `app.post`…), l'analyse des paramètres (`req.query`, `req.params`), l'envoi simplifié (`res.json`, `res.send`, `res.status`), et la chaîne de middlewares. Le reste — base de données, validation, authentification — vient d'autres paquets.",
@@ -1129,19 +1112,16 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "import express from \"express\";\nconst app = express();\n\n// 1. Journalise chaque requête, puis passe la main\napp.use((req, res, next) => {\n  console.log(new Date().toISOString(), req.method, req.url);\n  next();\n});\n\n// 2. Protège les routes suivantes\napp.use(\"/admin\", (req, res, next) => {\n  if (req.headers[\"x-cle\"] !== process.env.CLE_ADMIN) {\n    return res.status(403).json({ erreur: \"Accès refusé\" });\n  }\n  next();\n});\n\napp.get(\"/admin/stats\", (req, res) => {\n  res.json({ visites: 1234 });\n});",
       },
       {
+        kind: "text",
+        text: "Un middleware est un maillon d'une chaîne : chacun peut inspecter ou modifier la requête, puis décider de continuer ou de répondre.",
+      },
+      {
+        kind: "text",
+        text: "Factoriser les traitements transverses : au lieu de répéter la vérification d'authentification dans chaque route, on l'écrit une fois comme middleware appliqué aux routes concernées.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un middleware est un maillon d'une chaîne : chacun peut inspecter ou modifier la requête, puis décider de continuer ou de répondre.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Factoriser les traitements transverses : au lieu de répéter la vérification d'authentification dans chaque route, on l'écrit une fois comme middleware appliqué aux routes concernées.",
-          },
-          {
+        fields: [          {
             label: "L'ordre compte",
             value:
               "Les middlewares s'exécutent dans l'ordre de déclaration : le journaliseur avant les routes, l'analyseur JSON avant les routes qui lisent `req.body`, le gestionnaire d'erreurs après toutes les routes. Un middleware placé après une route ne la verra jamais.",
@@ -1211,14 +1191,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "import fs from \"node:fs/promises\";\n\n// Lire tout un fichier (petits et moyens fichiers)\nconst contenu = await fs.readFile(\"notes.txt\", \"utf-8\");\nconsole.log(contenu);\n\n// Écrire (crée ou remplace le fichier)\nawait fs.writeFile(\"sortie.txt\", \"Bonjour\\n\", \"utf-8\");\n\n// Ajouter à la fin sans écraser\nawait fs.appendFile(\"journal.log\", \"nouvelle ligne\\n\");\n\n// Lister un dossier\nconst fichiers = await fs.readdir(\".\");",
       },
       {
+        kind: "text",
+        text: "`node:fs/promises` expose les opérations fichiers en promesses : `await fs.readFile(...)` sans bloquer le fil.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`node:fs/promises` expose les opérations fichiers en promesses : `await fs.readFile(...)` sans bloquer le fil.",
-          },
-          {
+        fields: [          {
             label: "Trois formes de `fs`",
             value:
               "Callbacks (`fs.readFile(f, cb)` — historique), promesses (`fs/promises` — moderne, à privilégier), synchrones (`fs.readFileSync` — bloque le fil, réservé au démarrage ou aux scripts).",
@@ -1264,14 +1242,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "import fs from \"node:fs\";\nimport { pipeline } from \"node:stream/promises\";\n\n// pipeline : source → …transformations… → destination,\n// avec gestion d'erreur et fermeture propres\nawait pipeline(\n  fs.createReadStream(\"gros-fichier.iso\"),\n  fs.createWriteStream(\"copie.iso\")\n);\nconsole.log(\"Copie terminée\");",
       },
       {
+        kind: "text",
+        text: "Un stream est un flux de morceaux : on traite chaque chunk dès qu'il arrive au lieu d'attendre l'ensemble.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un stream est un flux de morceaux : on traite chaque chunk dès qu'il arrive au lieu d'attendre l'ensemble.",
-          },
-          {
+        fields: [          {
             label: "Les quatre types",
             value:
               "Readable (on lit : fichier, requête HTTP entrante), Writable (on écrit : fichier, réponse HTTP), Duplex (les deux : socket réseau), Transform (modifie au passage : compression, chiffrement).",
@@ -1308,19 +1284,16 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "// Créer un Buffer depuis du texte (encodage utf-8 par défaut)\nconst buf = Buffer.from(\"Bonjour\", \"utf-8\");\nconsole.log(buf.length); // 7 : nombre d'OCTETS, pas de caractères\n\n// Lire une image en binaire, puis l'encoder en base64\nimport fs from \"node:fs/promises\";\nconst image = await fs.readFile(\"logo.png\"); // Buffer, pas de texte !\nconst base64 = image.toString(\"base64\");",
       },
       {
+        kind: "text",
+        text: "Un `Buffer` est un tableau d'octets : la représentation en mémoire des données binaires (images, fichiers, paquets réseau).",
+      },
+      {
+        kind: "text",
+        text: "Le JavaScript du navigateur manipule du texte ; un serveur manipule des fichiers, des images, du chiffrement — du binaire. `Buffer` comble ce manque, avec une API sûre (pas d'accès mémoire arbitraire).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `Buffer` est un tableau d'octets : la représentation en mémoire des données binaires (images, fichiers, paquets réseau).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le JavaScript du navigateur manipule du texte ; un serveur manipule des fichiers, des images, du chiffrement — du binaire. `Buffer` comble ce manque, avec une API sûre (pas d'accès mémoire arbitraire).",
-          },
-          {
+        fields: [          {
             label: "Piège classique",
             value:
               "`\"café\".length` vaut 4 caractères mais `Buffer.from(\"café\").length` vaut 5 octets (le `é` en prend 2 en UTF-8). Couper un Buffer au milieu d'un caractère multi-octets produit du texte corrompu : utilisez les méthodes d'encodage plutôt que le découpage manuel.",
@@ -1347,14 +1320,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "import fs from \"node:fs/promises\";\n\nasync function main() {\n  const noms = await fs.readdir(\"./donnees\");\n  const contenus = await Promise.all(\n    noms.map((n) => fs.readFile(\"./donnees/\" + n, \"utf-8\"))\n  );\n  console.log(contenus.length + \" fichiers lus\");\n}\n\nmain().catch((erreur) => {\n  console.error(\"Échec :\", erreur.message);\n  process.exit(1);\n});",
       },
       {
+        kind: "text",
+        text: "`async`/`await` écrit l'asynchrone comme du code séquentiel : `await` suspend la fonction (pas le fil) jusqu'au résultat.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`async`/`await` écrit l'asynchrone comme du code séquentiel : `await` suspend la fonction (pas le fil) jusqu'au résultat.",
-          },
-          {
+        fields: [          {
             label: "`Promise.all`",
             value:
               "Lance plusieurs opérations EN PARALLÈLE et attend toutes les fins : lire 100 fichiers prend le temps du plus lent, pas la somme. L'outil de base pour la concurrence en Node.js.",
@@ -1386,14 +1357,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "// 1. Local : try/catch autour de l'opération risquée\nasync function lireConfig() {\n  try {\n    return await fs.readFile(\"config.json\", \"utf-8\");\n  } catch (erreur) {\n    if (erreur.code === \"ENOENT\") return \"{}\"; // fichier absent : défaut\n    throw erreur; // le reste remonte\n  }\n}\n\n// 2. Global : filet de sécurité du processus\nprocess.on(\"unhandledRejection\", (erreur) => {\n  console.error(\"Promesse rejetée non gérée :\", erreur);\n  process.exit(1); // redémarrage par le process manager\n});",
       },
       {
+        kind: "text",
+        text: "`try`/`catch` pour les erreurs attendues localement, un gestionnaire global comme filet de sécurité — jamais l'un sans l'autre.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`try`/`catch` pour les erreurs attendues localement, un gestionnaire global comme filet de sécurité — jamais l'un sans l'autre.",
-          },
-          {
+        fields: [          {
             label: "`erreur.code`",
             value:
               "Les erreurs Node.js portent un code machine (`ENOENT` fichier introuvable, `EADDRINUSE` port occupé, `ECONNREFUSED` connexion refusée) : testez le code plutôt que le message (traduit, variable) pour réagir proprement.",
@@ -1518,14 +1487,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "// --env-file=.env (Node 20.6+) ou dotenv.config()\n\nfunction configRequise(nom) {\n  const valeur = process.env[nom];\n  if (!valeur) {\n    console.error(\"Configuration manquante : \" + nom);\n    process.exit(1);\n  }\n  return valeur;\n}\n\nconst config = {\n  port: Number(process.env.PORT) || 3000,\n  cleApi: configRequise(\"CLE_API\"),\n  urlBase: configRequise(\"URL_BASE_DE_DONNEES\"),\n};\n\nexport default config;",
       },
       {
+        kind: "text",
+        text: "Validez toute la configuration au démarrage : un programme qui échoue vite avec un message clair vaut mieux qu'un programme qui plante à 3h du matin sur une variable oubliée.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Validez toute la configuration au démarrage : un programme qui échoue vite avec un message clair vaut mieux qu'un programme qui plante à 3h du matin sur une variable oubliée.",
-          },
-          {
+        fields: [          {
             label: "Le pattern « config »",
             value:
               "Centraliser la lecture et la validation dans un module `config.js` importé partout : un seul endroit à auditer, des valeurs déjà converties (`Number`), et l'échec rapide si quelque chose manque.",
@@ -1568,14 +1535,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         verify: "Le résumé affiche `# pass 2` et `# fail 0`.",
       },
       {
+        kind: "text",
+        text: "`test()` déclare un cas, `assert` vérifie le résultat, `node --test` exécute : le cycle de test minimal tient en trois lignes.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`test()` déclare un cas, `assert` vérifie le résultat, `node --test` exécute : le cycle de test minimal tient en trois lignes.",
-          },
-          {
+        fields: [          {
             label: "Que tester en priorité",
             value:
               "La logique métier (calculs, validation, transformations) et les routes d'API (statut + corps de réponse). Tester que le framework fonctionne est inutile ; tester VOTRE code est essentiel.",
@@ -1607,14 +1572,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         why: "Démarre le programme en exposant un port de débogage : on peut alors connecter les Chrome DevTools (via `chrome://inspect`) et utiliser points d'arrêt, pas à pas et inspection des variables — le même outillage que pour le JavaScript du navigateur.",
       },
       {
+        kind: "text",
+        text: "`--inspect` transforme votre programme Node.js en page « débogable » dans Chrome : breakpoints et inspection comme dans le navigateur.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`--inspect` transforme votre programme Node.js en page « débogable » dans Chrome : breakpoints et inspection comme dans le navigateur.",
-          },
-          {
+        fields: [          {
             label: "Le mot-clé `debugger`",
             value:
               "Placé dans le code, il agit comme un point d'arrêt programmatique quand le débogueur est attaché (et est ignoré sinon). Pratique pour arrêter exactement à l'endroit suspect sans cliquer dans l'interface.",
@@ -1685,14 +1648,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         verify: "Le rapport indique `found 0 vulnerabilities` ou liste les vulnérabilités restantes avec leurs correctifs.",
       },
       {
+        kind: "text",
+        text: "Chaque dépendance est du code que vous n'avez pas écrit mais que vous exécutez : l'audit régulier est non négociable.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque dépendance est du code que vous n'avez pas écrit mais que vous exécutez : l'audit régulier est non négociable.",
-          },
-          {
+        fields: [          {
             label: "Le risque réel",
             value:
               "Des attaques ont déjà ciblé des paquets populaires (compte de mainteneur compromis, typosquatting : `expresss` au lieu d'`express`). Un paquet malveillant s'exécute avec tous les droits du programme : lecture de fichiers, exfiltration de secrets.",
@@ -1761,14 +1722,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Faire tourner le programme sur un serveur, durablement.",
     blocks: [
       {
+        kind: "text",
+        text: "Déployer = exécuter `node` sur une machine qui ne s'éteint pas, avec la bonne configuration, et le relancer quand il tombe.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Déployer = exécuter `node` sur une machine qui ne s'éteint pas, avec la bonne configuration, et le relancer quand il tombe.",
-          },
-          {
+        fields: [          {
             label: "`NODE_ENV=production`",
             value:
               "La convention universelle : cette variable signale le mode production. Express et de nombreux paquets adaptent leur comportement (moins de logs verbeux, caches activés, messages d'erreur sobres). Toujours la définir sur le serveur.",
@@ -1817,19 +1776,16 @@ export const LEARNING_NODEJS: LearningSection[] = [
         verify: "`pm2 list` affiche `mon-api` avec le statut `online`.",
       },
       {
+        kind: "text",
+        text: "PM2 est un gardien : il lance votre application, la relance si elle tombe, et centralise ses logs.",
+      },
+      {
+        kind: "text",
+        text: "`node app.js` dans un terminal meurt avec le terminal (ou au premier crash). Un serveur a besoin d'un superviseur qui survive à la session et aux erreurs — c'est exactement ce vide que comble un process manager.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "PM2 est un gardien : il lance votre application, la relance si elle tombe, et centralise ses logs.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "`node app.js` dans un terminal meurt avec le terminal (ou au premier crash). Un serveur a besoin d'un superviseur qui survive à la session et aux erreurs — c'est exactement ce vide que comble un process manager.",
-          },
-          {
+        fields: [          {
             label: "Le mode cluster",
             value:
               "`pm2 start app.js -i max` lance une instance par cœur CPU et répartit les requêtes : on exploite toute la machine malgré le fil unique de chaque instance. Le mode de production typique sur un VPS.",
@@ -1856,14 +1812,12 @@ export const LEARNING_NODEJS: LearningSection[] = [
         code: "name: CI\non: [push, pull_request]\njobs:\n  verifier:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: \"lts/*\"\n          cache: \"npm\"\n      - run: npm ci\n      - run: npm run lint\n      - run: npm test\n      - run: npm audit --audit-level=high",
       },
       {
+        kind: "text",
+        text: "La CI rejoue à chaque commit ce que vous faites à la main : installer, linter, tester, auditer — et bloque la fusion si quelque chose échoue.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La CI rejoue à chaque commit ce que vous faites à la main : installer, linter, tester, auditer — et bloque la fusion si quelque chose échoue.",
-          },
-          {
+        fields: [          {
             label: "`npm ci` vs `npm install`",
             value:
               "En CI, on utilise `npm ci` : installation rapide et déterministe à partir du `package-lock.json` (il échoue si le lock est désynchronisé, ce qui est exactement ce qu'on veut détecter).",
@@ -1937,17 +1891,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Le navigateur « charge » indéfiniment : le classique des débuts.",
     blocks: [
       {
+        kind: "text",
+        text: "Chaque requête HTTP doit se terminer par `res.end()`, `res.send()` ou `res.json()`. Si le code oublie cet appel (branche `if` sans `else`, `return` précoce, `next()` oublié dans un middleware), la connexion reste ouverte.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "La requête reste en attente jusqu'au timeout : le client ne reçoit jamais de réponse.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Chaque requête HTTP doit se terminer par `res.end()`, `res.send()` ou `res.json()`. Si le code oublie cet appel (branche `if` sans `else`, `return` précoce, `next()` oublié dans un middleware), la connexion reste ouverte.",
           },
           {
             label: "Mauvais",
@@ -1970,17 +1922,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Pourquoi le `try`/`catch` ne protège pas le code asynchrone à callbacks.",
     blocks: [
       {
+        kind: "text",
+        text: "Le callback s'exécute plus tard, sur un autre tour d'event loop, après que le `try` a terminé. Le `try`/`catch` ne protège que le code synchrone de son bloc. Avec les promesses et `await`, en revanche, le `try`/`catch` fonctionne — d'où l'intérêt de `fs/promises` plutôt que des callbacks.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "L'erreur levée dans un callback n'est pas attrapée par le `try`/`catch` qui l'entoure : le programme plante malgré la protection apparente.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le callback s'exécute plus tard, sur un autre tour d'event loop, après que le `try` a terminé. Le `try`/`catch` ne protège que le code synchrone de son bloc. Avec les promesses et `await`, en revanche, le `try`/`catch` fonctionne — d'où l'intérêt de `fs/promises` plutôt que des callbacks.",
           },
           {
             label: "Mauvais",
@@ -2003,17 +1953,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "`UnhandledPromiseRejection` : le serveur s'arrête sans prévenir.",
     blocks: [
       {
+        kind: "text",
+        text: "Une promesse a rejeté (erreur réseau, fichier absent, bug) sans `.catch()` ni `try`/`catch` autour du `await`. Node.js considère qu'une erreur non gérée laisse le programme dans un état inconnu : il préfère s'arrêter.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "Le processus Node.js se termine brutalement avec `UnhandledPromiseRejectionWarning` (erreur fatale depuis Node 15).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Une promesse a rejeté (erreur réseau, fichier absent, bug) sans `.catch()` ni `try`/`catch` autour du `await`. Node.js considère qu'une erreur non gérée laisse le programme dans un état inconnu : il préfère s'arrêter.",
           },
           {
             label: "Mauvais",
@@ -2036,17 +1984,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Le serveur devient lent « sans raison » : le fil unique est occupé.",
     blocks: [
       {
+        kind: "text",
+        text: "Un traitement synchrone glissé dans une route : `JSON.parse` d'un corps de 50 Mo, tri d'un énorme tableau, `readFileSync` « juste pour cette fois ». Pendant son exécution, aucune autre requête n'avance.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "Latence qui explose, timeouts en cascade, alors que le code « semble » correct.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un traitement synchrone glissé dans une route : `JSON.parse` d'un corps de 50 Mo, tri d'un énorme tableau, `readFileSync` « juste pour cette fois ». Pendant son exécution, aucune autre requête n'avance.",
           },
           {
             label: "Mauvais",
@@ -2069,17 +2015,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Le choc des deux systèmes de modules.",
     blocks: [
       {
+        kind: "text",
+        text: "Un fichier CommonJS fait `require(\"un-paquet\")`, mais ce paquet est distribué uniquement en ESM. `require` ne sait pas charger les modules ESM — c'est une limitation technique, pas un bug de votre code.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "`Error [ERR_REQUIRE_ESM]: require() of ES Module not supported` : le programme refuse de démarrer.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un fichier CommonJS fait `require(\"un-paquet\")`, mais ce paquet est distribué uniquement en ESM. `require` ne sait pas charger les modules ESM — c'est une limitation technique, pas un bug de votre code.",
           },
           {
             label: "Mauvais",
@@ -2102,17 +2046,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Le programme démarre puis échoue loin du vrai problème.",
     blocks: [
       {
+        kind: "text",
+        text: "La variable n'est pas définie (`.env` non chargé, faute de frappe dans le nom, variable oubliée sur le serveur). `process.env.X` vaut alors `undefined`, et l'erreur éclate bien plus tard, loin de sa cause.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "`TypeError: Cannot read properties of undefined` sur `process.env.CLE_API.trim()` — ou pire, une URL de base de données `undefined` qui produit une erreur de connexion cryptique.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "La variable n'est pas définie (`.env` non chargé, faute de frappe dans le nom, variable oubliée sur le serveur). `process.env.X` vaut alors `undefined`, et l'erreur éclate bien plus tard, loin de sa cause.",
           },
           {
             label: "Mauvais",
@@ -2135,17 +2077,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "Le serveur refuse de démarrer : « address already in use ».",
     blocks: [
       {
+        kind: "text",
+        text: "Un autre processus écoute déjà sur ce port : souvent une ancienne instance du même serveur oubliée en arrière-plan (terminal fermé sans arrêter, `--watch` relancé deux fois).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "`Error: listen EADDRINUSE: address already in use :::3000` au lancement.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un autre processus écoute déjà sur ce port : souvent une ancienne instance du même serveur oubliée en arrière-plan (terminal fermé sans arrêter, `--watch` relancé deux fois).",
           },
           {
             label: "Mauvais",
@@ -2168,17 +2108,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "« Ça marche chez moi » : le `node_modules` ne correspond plus au `package.json`.",
     blocks: [
       {
+        kind: "text",
+        text: "Le `package.json` a été modifié (fusion de branche, édition manuelle) sans relancer `npm install` ; ou le `package-lock.json` n'est pas commité, et chacun installe des versions différentes.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "`Cannot find module 'x'` alors que `x` est dans le `package.json`, ou des comportements différents entre deux machines.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le `package.json` a été modifié (fusion de branche, édition manuelle) sans relancer `npm install` ; ou le `package-lock.json` n'est pas commité, et chacun installe des versions différentes.",
           },
           {
             label: "Mauvais",
@@ -2201,17 +2139,15 @@ export const LEARNING_NODEJS: LearningSection[] = [
     intro: "La forme synchrone de `fs`, pratique en script, toxique en serveur.",
     blocks: [
       {
+        kind: "text",
+        text: "`fs.readFileSync`, `execSync` et leurs cousins bloquent le fil unique pendant toute l'opération. Dans un script CLI c'est anodin ; dans une route appelée 100 fois par seconde, c'est un goulot d'étranglement.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "Sous charge, le serveur traite les requêtes l'une après l'autre au lieu d'en parallèle : le débit s'effondre.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "`fs.readFileSync`, `execSync` et leurs cousins bloquent le fil unique pendant toute l'opération. Dans un script CLI c'est anodin ; dans une route appelée 100 fois par seconde, c'est un goulot d'étranglement.",
           },
           {
             label: "Mauvais",

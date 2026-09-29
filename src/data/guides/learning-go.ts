@@ -28,24 +28,21 @@ export const LEARNING_GO: LearningSection[] = [
         text: "Point essentiel : Go fait des choix assumés pour rester simple. Pas d'héritage, pas d'exceptions, pas de génériques pendant ses dix premières années, un formatage imposé par l'outil officiel. Cette simplicité n'est pas un manque : c'est ce qui rend les programmes Go lisibles par toute une équipe et rapides à compiler, même sur de très grosses bases de code.",
       },
       {
+        kind: "text",
+        text: "Go est un langage compilé à typage statique qui produit un binaire unique et rend la programmation concurrente aussi simple qu'écrire `go maFonction()`.",
+      },
+      {
+        kind: "text",
+        text: "Chez Google, les grosses bases de code C++ devenaient lentes à compiler et difficiles à maintenir. Go est né pour combiner la performance d'un langage compilé avec la productivité d'écriture d'un langage moderne — et une gestion native de la concurrence.",
+      },
+      {
+        kind: "text",
+        text: "Serveurs HTTP et API, microservices, outils CLI, automatisation DevOps, systèmes réseau, programmes où le déploiement doit être trivial (un seul fichier binaire).",
+      },
+      {
         kind: "fields",
-        title: "Go en une phrase, par angle",
+        title: "Go : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Go est un langage compilé à typage statique qui produit un binaire unique et rend la programmation concurrente aussi simple qu'écrire `go maFonction()`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Chez Google, les grosses bases de code C++ devenaient lentes à compiler et difficiles à maintenir. Go est né pour combiner la performance d'un langage compilé avec la productivité d'écriture d'un langage moderne — et une gestion native de la concurrence.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Serveurs HTTP et API, microservices, outils CLI, automatisation DevOps, systèmes réseau, programmes où le déploiement doit être trivial (un seul fichier binaire).",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -586,19 +583,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Go est statiquement typé : chaque variable a un type vérifié à la compilation, mais `:=` permet de le laisser inférer dans la plupart des cas.",
+      },
+      {
+        kind: "text",
+        text: "Attraper les erreurs de type à la compilation plutôt qu'en production, tout en gardant une syntaxe légère proche d'un langage dynamique pour le code courant.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Go est statiquement typé : chaque variable a un type vérifié à la compilation, mais `:=` permet de le laisser inférer dans la plupart des cas.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Attraper les erreurs de type à la compilation plutôt qu'en production, tout en gardant une syntaxe légère proche d'un langage dynamique pour le code courant.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Toujours : il n'y a pas de mode « dynamique ». Les conversions entre types sont toujours explicites (`int(x)`), jamais implicites.",
@@ -650,19 +644,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Un slice est une vue sur un tableau sous-jacent : pointeur + longueur + capacité. C'est la structure de séquence à utiliser par défaut.",
+      },
+      {
+        kind: "text",
+        text: "Les tableaux Go ont une taille fixe (partie du type) et sont donc rigides. Le slice apporte la taille dynamique tout en restant efficace (pas de liste chaînée).",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un slice est une vue sur un tableau sous-jacent : pointeur + longueur + capacité. C'est la structure de séquence à utiliser par défaut.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les tableaux Go ont une taille fixe (partie du type) et sont donc rigides. Le slice apporte la taille dynamique tout en restant efficace (pas de liste chaînée).",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Collections ordonnées de taille variable : listes d'utilisateurs, lignes d'un fichier, résultats d'une requête.",
@@ -703,19 +694,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Une `map` associe des clés à des valeurs avec accès en temps quasi constant : `map[string]int`.",
+      },
+      {
+        kind: "text",
+        text: "Rechercher par clé (utilisateur par email, compteur par mot) sans parcourir toute une liste.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une `map` associe des clés à des valeurs avec accès en temps quasi constant : `map[string]int`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Rechercher par clé (utilisateur par email, compteur par mot) sans parcourir toute une liste.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Index, caches, comptages, configurations : dès qu'une clé identifie une valeur.",
@@ -751,19 +739,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Une `struct` regroupe des champs nommés de types éventuellement différents : l'équivalent simple d'une classe sans héritage.",
+      },
+      {
+        kind: "text",
+        text: "Modéliser le domaine (un `Utilisateur` a un nom, un email, un âge) avec un type nommé, vérifié par le compilateur.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une `struct` regroupe des champs nommés de types éventuellement différents : l'équivalent simple d'une classe sans héritage.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Modéliser le domaine (un `Utilisateur` a un nom, un email, un âge) avec un type nommé, vérifié par le compilateur.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Dès qu'une fonction manipule plusieurs valeurs liées : regroupez-les plutôt que de passer 5 paramètres.",
@@ -799,19 +784,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Une méthode est une fonction avec un receveur : `func (u Utilisateur) Bonjour()`. Pas de classes, juste des types et leurs comportements.",
+      },
+      {
+        kind: "text",
+        text: "Attacher le comportement aux données rend le code découvrable (`u.Bonjour()` plutôt que `Bonjour(u)`) sans la complexité de l'héritage.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une méthode est une fonction avec un receveur : `func (u Utilisateur) Bonjour()`. Pas de classes, juste des types et leurs comportements.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Attacher le comportement aux données rend le code découvrable (`u.Bonjour()` plutôt que `Bonjour(u)`) sans la complexité de l'héritage.",
-          },
-          {
+        fields: [          {
             label: "Receveur valeur vs pointeur",
             value:
               "`func (u Utilisateur)` reçoit une copie (lecture seule) ; `func (u *Utilisateur)` reçoit un pointeur (peut modifier). Règle : pointeur dès que la méthode modifie l'objet ou que la struct est grosse.",
@@ -848,19 +830,16 @@ export const LEARNING_GO: LearningSection[] = [
     intro: "Le concept le plus élégant de Go : pas de `implements`, jamais.",
     blocks: [
       {
+        kind: "text",
+        text: "Une interface déclare un ensemble de méthodes ; tout type qui les possède satisfait l'interface automatiquement, sans déclaration explicite.",
+      },
+      {
+        kind: "text",
+        text: "Découpler le code : une fonction qui accepte une interface accepte n'importe quelle implémentation, présente ou future. C'est le polymorphisme sans hiérarchie de classes.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une interface déclare un ensemble de méthodes ; tout type qui les possède satisfait l'interface automatiquement, sans déclaration explicite.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Découpler le code : une fonction qui accepte une interface accepte n'importe quelle implémentation, présente ou future. C'est le polymorphisme sans hiérarchie de classes.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Pour les dépendances d'une fonction (stockage, horloge, notificateur) : dépendez d'une petite interface, pas d'un type concret. Cela rend le code testable (mocks triviaux).",
@@ -928,19 +907,16 @@ export const LEARNING_GO: LearningSection[] = [
     intro: "Pas d'exceptions en Go : les erreurs sont des valeurs.",
     blocks: [
       {
+        kind: "text",
+        text: "Les fonctions qui peuvent échouer retournent une valeur `error` ; l'appelant la teste explicitement avec `if err != nil`.",
+      },
+      {
+        kind: "text",
+        text: "Rendre l'échec visible dans le code : on voit exactement où une erreur peut survenir, au lieu de la découvrir via une exception lancée trois appels plus bas.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les fonctions qui peuvent échouer retournent une valeur `error` ; l'appelant la teste explicitement avec `if err != nil`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Rendre l'échec visible dans le code : on voit exactement où une erreur peut survenir, au lieu de la découvrir via une exception lancée trois appels plus bas.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Toujours : I/O, réseau, parsing, conversions. Une fonction qui retourne `(T, error)` annonce son échec potentiel dans sa signature.",
@@ -986,19 +962,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "`defer f()` programme l'appel de `f` à la fin de la fonction courante, quoi qu'il arrive (même en cas d'erreur ou de panic).",
+      },
+      {
+        kind: "text",
+        text: "Garantir la libération des ressources (fichiers, connexions, verrous) sans dupliquer le code de nettoyage devant chaque `return`.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`defer f()` programme l'appel de `f` à la fin de la fonction courante, quoi qu'il arrive (même en cas d'erreur ou de panic).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Garantir la libération des ressources (fichiers, connexions, verrous) sans dupliquer le code de nettoyage devant chaque `return`.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Juste après l'acquisition d'une ressource : `f, err := os.Open(...); defer f.Close()`. Le nettoyage est écrit à côté de l'acquisition, pas 50 lignes plus bas.",
@@ -1077,19 +1050,16 @@ export const LEARNING_GO: LearningSection[] = [
     intro: "Le cœur du modèle concurrent de Go.",
     blocks: [
       {
+        kind: "text",
+        text: "Préfixer un appel de `go` le lance dans une goroutine : une tâche légère gérée par le runtime Go, pas par le système d'exploitation.",
+      },
+      {
+        kind: "text",
+        text: "Faire plusieurs choses à la fois (servir 10 000 connexions, télécharger en parallèle) sans le coût des threads OS : une goroutine démarre avec quelques kilo-octets de pile et elles sont multiplexées sur les vrais threads.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Préfixer un appel de `go` le lance dans une goroutine : une tâche légère gérée par le runtime Go, pas par le système d'exploitation.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Faire plusieurs choses à la fois (servir 10 000 connexions, télécharger en parallèle) sans le coût des threads OS : une goroutine démarre avec quelques kilo-octets de pile et elles sont multiplexées sur les vrais threads.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Tâches indépendantes et parallélisables : requêtes réseau concurrentes, traitement d'éléments en parallèle, serveurs (chaque connexion = une goroutine).",
@@ -1141,19 +1111,16 @@ export const LEARNING_GO: LearningSection[] = [
     intro: "La devise de Go : partagez la mémoire en communiquant.",
     blocks: [
       {
+        kind: "text",
+        text: "Un channel est un tuyau typé par lequel des goroutines s'envoient des valeurs : `ch := make(chan int)`, envoi `ch <- v`, réception `v := <-ch`.",
+      },
+      {
+        kind: "text",
+        text: "Échanger des données sans mémoire partagée ni verrous : l'envoi et la réception synchronisent les goroutines, ce qui élimine des familles entières de bugs de concurrence.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un channel est un tuyau typé par lequel des goroutines s'envoient des valeurs : `ch := make(chan int)`, envoi `ch <- v`, réception `v := <-ch`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Échanger des données sans mémoire partagée ni verrous : l'envoi et la réception synchronisent les goroutines, ce qui élimine des familles entières de bugs de concurrence.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Pipeline de traitement (étapes reliées par channels), distribution de tâches à des workers, signalement de fin ou d'erreur d'une goroutine.",
@@ -1199,19 +1166,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "`select` attend qu'UNE opération parmi plusieurs channels soit prête, comme un `switch` pour la concurrence.",
+      },
+      {
+        kind: "text",
+        text: "Une goroutine a souvent plusieurs choses à surveiller : nouveaux messages, signal d'annulation, timeout. `select` les gère dans un seul point d'attente.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`select` attend qu'UNE opération parmi plusieurs channels soit prête, comme un `switch` pour la concurrence.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Une goroutine a souvent plusieurs choses à surveiller : nouveaux messages, signal d'annulation, timeout. `select` les gère dans un seul point d'attente.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Boucle d'un worker (tâches + arrêt), timeout sur une opération (`time.After`), multiplexage de plusieurs sources.",
@@ -1289,19 +1253,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Un identifiant commençant par une majuscule est exporté (visible depuis d'autres packages) ; en minuscule, il reste privé au package.",
+      },
+      {
+        kind: "text",
+        text: "Pas de mot-clé `public`/`private` : la casse suffit, ce qui rend l'API d'un package lisible d'un coup d'œil.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un identifiant commençant par une majuscule est exporté (visible depuis d'autres packages) ; en minuscule, il reste privé au package.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Pas de mot-clé `public`/`private` : la casse suffit, ce qui rend l'API d'un package lisible d'un coup d'œil.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Toujours : chaque fonction, type, champ ou constante que vous nommez choisit sa visibilité par sa première lettre.",
@@ -1342,19 +1303,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "`&x` prend l'adresse de `x`, `*p` accède à la valeur pointée. Pas d'arithmétique de pointeurs : leur usage est circonscrit et sûr.",
+      },
+      {
+        kind: "text",
+        text: "Éviter de copier de grosses structs à chaque appel, et permettre à une fonction de modifier la variable de l'appelant.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`&x` prend l'adresse de `x`, `*p` accède à la valeur pointée. Pas d'arithmétique de pointeurs : leur usage est circonscrit et sûr.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Éviter de copier de grosses structs à chaque appel, et permettre à une fonction de modifier la variable de l'appelant.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Receveurs de méthodes qui modifient l'objet, paramètres de structs volumineuses, valeurs optionnelles modifiables (`*Config` pouvant être `nil`).",
@@ -1386,19 +1344,16 @@ export const LEARNING_GO: LearningSection[] = [
     intro: "La façon standard d'écrire des tests lisibles et exhaustifs.",
     blocks: [
       {
+        kind: "text",
+        text: "Un test tabulaire définit une liste de cas (entrée → sortie attendue) et les exécute en boucle avec `t.Run`, un sous-test nommé par cas.",
+      },
+      {
+        kind: "text",
+        text: "Ajouter un cas = ajouter une ligne au tableau, pas une nouvelle fonction. Les échecs indiquent exactement quel cas a cassé.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un test tabulaire définit une liste de cas (entrée → sortie attendue) et les exécute en boucle avec `t.Run`, un sous-test nommé par cas.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Ajouter un cas = ajouter une ligne au tableau, pas une nouvelle fonction. Les échecs indiquent exactement quel cas a cassé.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Fonctions pures, parsing, validation : tout ce qui se résume à « pour cette entrée, j'attends cette sortie ».",
@@ -1569,19 +1524,16 @@ export const LEARNING_GO: LearningSection[] = [
     level: 3,
     blocks: [
       {
+        kind: "text",
+        text: "Un `context.Context` transporte un signal d'annulation (et une deadline) à travers les appels : quand il est annulé, tout le travail en aval doit s'arrêter.",
+      },
+      {
+        kind: "text",
+        text: "Éviter le travail inutile : si le client HTTP a raccroché ou si le timeout est dépassé, inutile de continuer à interroger la base de données.",
+      },
+      {
         kind: "fields",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `context.Context` transporte un signal d'annulation (et une deadline) à travers les appels : quand il est annulé, tout le travail en aval doit s'arrêter.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Éviter le travail inutile : si le client HTTP a raccroché ou si le timeout est dépassé, inutile de continuer à interroger la base de données.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Fonctions d'I/O, requêtes réseau, traitements longs : le `ctx` est conventionalement le PREMIER paramètre (`func Faire(ctx context.Context, ...)`).",

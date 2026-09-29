@@ -602,24 +602,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Déclarer des variables correctement : la base sur laquelle tout repose.",
     blocks: [
       {
+        kind: "text",
+        text: "`let` et `const` déclarent des variables ; `const` interdit la réaffectation, `let` l'autorise ; `var` est la forme historique, à éviter dans le code moderne.",
+      },
+      {
+        kind: "text",
+        text: "Un programme manipule des données : il faut des noms pour les désigner et des règles pour savoir où ces noms sont visibles (la portée). `const` par défaut exprime une intention — « cette variable ne changera pas de valeur » — ce qui rend le code plus prévisible et les erreurs de réaffectation accidentelle impossibles.",
+      },
+      {
+        kind: "text",
+        text: "`const` par défaut, `let` quand la valeur doit vraiment changer (compteur de boucle, accumulateur). `var` : jamais dans le nouveau code — sa portée de fonction et son hoisting surprenant sont une source historique de bugs.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`let` et `const` déclarent des variables ; `const` interdit la réaffectation, `let` l'autorise ; `var` est la forme historique, à éviter dans le code moderne.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Un programme manipule des données : il faut des noms pour les désigner et des règles pour savoir où ces noms sont visibles (la portée). `const` par défaut exprime une intention — « cette variable ne changera pas de valeur » — ce qui rend le code plus prévisible et les erreurs de réaffectation accidentelle impossibles.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "`const` par défaut, `let` quand la valeur doit vraiment changer (compteur de boucle, accumulateur). `var` : jamais dans le nouveau code — sa portée de fonction et son hoisting surprenant sont une source historique de bugs.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -653,24 +650,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Les sept briques de base dont toutes les valeurs JavaScript sont faites.",
     blocks: [
       {
+        kind: "text",
+        text: "JavaScript possède sept types primitifs : `string`, `number`, `bigint`, `boolean`, `undefined`, `null` et `symbol` — tout le reste (objets, tableaux, fonctions) est construit au-dessus.",
+      },
+      {
+        kind: "text",
+        text: "Distinguer les sortes de valeurs permet au langage de définir des opérations sensées : additionner des nombres, concaténer des chaînes, tester des booléens. Chaque type a ses règles, et les connaître évite les surprises de conversion implicite.",
+      },
+      {
+        kind: "text",
+        text: "En permanence : chaque valeur manipulée appartient à l'un de ces types. Le choix conscient du type (par exemple `null` pour « pas de valeur » plutôt qu'une chaîne vide) rend le code plus clair.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "JavaScript possède sept types primitifs : `string`, `number`, `bigint`, `boolean`, `undefined`, `null` et `symbol` — tout le reste (objets, tableaux, fonctions) est construit au-dessus.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Distinguer les sortes de valeurs permet au langage de définir des opérations sensées : additionner des nombres, concaténer des chaînes, tester des booléens. Chaque type a ses règles, et les connaître évite les surprises de conversion implicite.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "En permanence : chaque valeur manipulée appartient à l'un de ces types. Le choix conscient du type (par exemple `null` pour « pas de valeur » plutôt qu'une chaîne vide) rend le code plus clair.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -704,24 +698,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "La source de bugs la plus célèbre du langage, et la règle simple qui l'évite.",
     blocks: [
       {
+        kind: "text",
+        text: "`===` compare valeur ET type sans conversion ; `==` convertit les types avant de comparer, selon des règles complexes et surprenantes.",
+      },
+      {
+        kind: "text",
+        text: "`==` date des débuts du langage, quand la souplesse primait sur la rigueur (comparer un champ de formulaire, toujours une chaîne, à un nombre). `===` a été ajouté pour offrir une comparaison prévisible. L'histoire a tranché : la souplesse de `==` crée plus de bugs qu'elle n'en évite.",
+      },
+      {
+        kind: "text",
+        text: "`===` (et `!==`) systématiquement. La seule exception admise par beaucoup d'équipes : `x == null`, qui teste à la fois `null` et `undefined` en une expression — mais même là, être explicite est souvent préférable.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`===` compare valeur ET type sans conversion ; `==` convertit les types avant de comparer, selon des règles complexes et surprenantes.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "`==` date des débuts du langage, quand la souplesse primait sur la rigueur (comparer un champ de formulaire, toujours une chaîne, à un nombre). `===` a été ajouté pour offrir une comparaison prévisible. L'histoire a tranché : la souplesse de `==` crée plus de bugs qu'elle n'en évite.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "`===` (et `!==`) systématiquement. La seule exception admise par beaucoup d'équipes : `x == null`, qui teste à la fois `null` et `undefined` en une expression — mais même là, être explicite est souvent préférable.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -755,24 +746,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Convertir volontairement, plutôt que de laisser le langage deviner.",
     blocks: [
       {
+        kind: "text",
+        text: "Les fonctions `Number()`, `String()`, `Boolean()` et les méthodes comme `parseInt()` convertissent explicitement une valeur vers un autre type.",
+      },
+      {
+        kind: "text",
+        text: "Les données venues de l'extérieur (formulaires, URL, API, fichiers) arrivent souvent sous forme de chaînes. Il faut les transformer en nombres, booléens ou dates avant de calculer. La conversion explicite rend cette étape visible et contrôlable.",
+      },
+      {
+        kind: "text",
+        text: "À chaque frontière : lecture d'un champ de formulaire, paramètre d'URL, réponse d'API, argument de ligne de commande. Convertir tôt, valider aussitôt.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les fonctions `Number()`, `String()`, `Boolean()` et les méthodes comme `parseInt()` convertissent explicitement une valeur vers un autre type.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les données venues de l'extérieur (formulaires, URL, API, fichiers) arrivent souvent sous forme de chaînes. Il faut les transformer en nombres, booléens ou dates avant de calculer. La conversion explicite rend cette étape visible et contrôlable.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "À chaque frontière : lecture d'un champ de formulaire, paramètre d'URL, réponse d'API, argument de ligne de commande. Convertir tôt, valider aussitôt.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -852,24 +840,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "La brique fondamentale du langage : tout tourne autour des fonctions.",
     blocks: [
       {
+        kind: "text",
+        text: "Une fonction est un bloc de code réutilisable qui prend des paramètres en entrée et peut retourner une valeur ; on la définit par déclaration (`function nom() {}`) ou par expression (`const nom = function() {}`).",
+      },
+      {
+        kind: "text",
+        text: "Sans fonctions, chaque action répétée devrait être recopiée : le code deviendrait immense et toute correction devrait être appliquée à chaque copie. Les fonctions permettent de nommer une action, de la réutiliser et de la tester isolément.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'une action est répétée, ou dès qu'un bloc de code mérite un nom qui explique son intention. En JavaScript, les fonctions servent aussi de callbacks (passées en argument), de méthodes d'objet et de briques des modules.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une fonction est un bloc de code réutilisable qui prend des paramètres en entrée et peut retourner une valeur ; on la définit par déclaration (`function nom() {}`) ou par expression (`const nom = function() {}`).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans fonctions, chaque action répétée devrait être recopiée : le code deviendrait immense et toute correction devrait être appliquée à chaque copie. Les fonctions permettent de nommer une action, de la réutiliser et de la tester isolément.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une action est répétée, ou dès qu'un bloc de code mérite un nom qui explique son intention. En JavaScript, les fonctions servent aussi de callbacks (passées en argument), de méthodes d'objet et de briques des modules.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -903,24 +888,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Des fonctions flexibles sans complexité artificielle.",
     blocks: [
       {
+        kind: "text",
+        text: "Les paramètres par défaut donnent une valeur de repli, `...rest` regroupe les arguments excédentaires en tableau, et la déstructuration extrait directement les propriétés d'un objet passé en argument.",
+      },
+      {
+        kind: "text",
+        text: "Les fonctions réelles ont souvent des options : sans ces mécanismes, il fallait tester manuellement chaque argument manquant (`if (x === undefined) x = ...`), ce qui noyait l'intention sous du code défensif répétitif.",
+      },
+      {
+        kind: "text",
+        text: "Valeurs par défaut pour les options courantes ; `...rest` pour les fonctions à nombre variable d'arguments ; déstructuration quand une fonction prend un « objet d'options » avec plusieurs champs.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les paramètres par défaut donnent une valeur de repli, `...rest` regroupe les arguments excédentaires en tableau, et la déstructuration extrait directement les propriétés d'un objet passé en argument.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les fonctions réelles ont souvent des options : sans ces mécanismes, il fallait tester manuellement chaque argument manquant (`if (x === undefined) x = ...`), ce qui noyait l'intention sous du code défensif répétitif.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Valeurs par défaut pour les options courantes ; `...rest` pour les fonctions à nombre variable d'arguments ; déstructuration quand une fonction prend un « objet d'options » avec plusieurs champs.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -954,24 +936,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "La syntaxe courte omniprésente — et sa vraie différence avec `function`.",
     blocks: [
       {
+        kind: "text",
+        text: "Les fonctions fléchées sont une syntaxe concise pour écrire des fonctions, avec une différence fondamentale : elles ne créent pas leur propre `this`, elles héritent de celui du contexte englobant.",
+      },
+      {
+        kind: "text",
+        text: "Les callbacks courts (`tableau.map(x => x * 2)`) devenaient illisibles avec la syntaxe `function`. La fléchée réduit le bruit. Et le `this` hérité résout le casse-tête historique du `this` perdu dans les callbacks (voir la section `this`).",
+      },
+      {
+        kind: "text",
+        text: "Callbacks courts, fonctions de transformation (`map`, `filter`), fonctions qui n'ont pas besoin de leur propre `this`. Éviter comme méthodes d'objet quand on a besoin du `this` dynamique de l'objet.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les fonctions fléchées sont une syntaxe concise pour écrire des fonctions, avec une différence fondamentale : elles ne créent pas leur propre `this`, elles héritent de celui du contexte englobant.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les callbacks courts (`tableau.map(x => x * 2)`) devenaient illisibles avec la syntaxe `function`. La fléchée réduit le bruit. Et le `this` hérité résout le casse-tête historique du `this` perdu dans les callbacks (voir la section `this`).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Callbacks courts, fonctions de transformation (`map`, `filter`), fonctions qui n'ont pas besoin de leur propre `this`. Éviter comme méthodes d'objet quand on a besoin du `this` dynamique de l'objet.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1005,24 +984,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Le concept le plus puissant — et le plus mal expliqué — du langage.",
     blocks: [
       {
+        kind: "text",
+        text: "Une closure, c'est une fonction qui « se souvient » des variables de l'endroit où elle a été créée, même après que cet endroit a fini de s'exécuter.",
+      },
+      {
+        kind: "text",
+        text: "Pour créer des fonctions avec une mémoire privée : un compteur qui retient sa valeur entre deux appels, un gestionnaire d'événement qui connaît son contexte, une fonction préconfigurée. Sans closures, il faudrait des variables globales — visibles et modifiables par tout le monde.",
+      },
+      {
+        kind: "text",
+        text: "Fabriques de fonctions, callbacks qui ont besoin d'un contexte, encapsulation de données privées, gestionnaires d'événements, programmation fonctionnelle (`map`, `filter` avec paramètres).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une closure, c'est une fonction qui « se souvient » des variables de l'endroit où elle a été créée, même après que cet endroit a fini de s'exécuter.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour créer des fonctions avec une mémoire privée : un compteur qui retient sa valeur entre deux appels, un gestionnaire d'événement qui connaît son contexte, une fonction préconfigurée. Sans closures, il faudrait des variables globales — visibles et modifiables par tout le monde.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Fabriques de fonctions, callbacks qui ont besoin d'un contexte, encapsulation de données privées, gestionnaires d'événements, programmation fonctionnelle (`map`, `filter` avec paramètres).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1062,24 +1038,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Où une variable est visible, et la subtilité du « hissage ».",
     blocks: [
       {
+        kind: "text",
+        text: "La portée (scope) définit où une variable est accessible ; le hoisting (« hissage ») remonte les déclarations en haut de leur portée avant l'exécution — avec des comportements très différents selon `var`, `let`/`const` et `function`.",
+      },
+      {
+        kind: "text",
+        text: "Limiter la visibilité des variables évite les collisions de noms et rend le code modulaire : une variable de boucle ne devrait pas polluer tout le fichier. Le hoisting est un héritage historique qui permettait d'appeler des fonctions avant leur définition.",
+      },
+      {
+        kind: "text",
+        text: "En pratique : déclarer les variables au plus près de leur usage, dans le bloc le plus petit possible. Comprendre le hoisting sert surtout à diagnostiquer des erreurs étranges dans du code ancien.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La portée (scope) définit où une variable est accessible ; le hoisting (« hissage ») remonte les déclarations en haut de leur portée avant l'exécution — avec des comportements très différents selon `var`, `let`/`const` et `function`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Limiter la visibilité des variables évite les collisions de noms et rend le code modulaire : une variable de boucle ne devrait pas polluer tout le fichier. Le hoisting est un héritage historique qui permettait d'appeler des fonctions avant leur définition.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "En pratique : déclarer les variables au plus près de leur usage, dans le bloc le plus petit possible. Comprendre le hoisting sert surtout à diagnostiquer des erreurs étranges dans du code ancien.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1183,24 +1156,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "La structure de données centrale du langage.",
     blocks: [
       {
+        kind: "text",
+        text: "Un objet est une collection de paires clé/valeur — la façon standard de représenter une entité (utilisateur, produit, configuration) avec ses données et ses comportements.",
+      },
+      {
+        kind: "text",
+        text: "Les programmes manipulent des entités complexes, pas des valeurs isolées : un utilisateur a un nom, un âge, une adresse. L'objet regroupe ces informations sous un seul nom, au lieu de jongler avec des dizaines de variables séparées.",
+      },
+      {
+        kind: "text",
+        text: "Pour toute donnée structurée : réponses d'API, configuration, état d'application. Les objets sont aussi la base des classes, des modules et du DOM.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un objet est une collection de paires clé/valeur — la façon standard de représenter une entité (utilisateur, produit, configuration) avec ses données et ses comportements.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les programmes manipulent des entités complexes, pas des valeurs isolées : un utilisateur a un nom, un âge, une adresse. L'objet regroupe ces informations sous un seul nom, au lieu de jongler avec des dizaines de variables séparées.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pour toute donnée structurée : réponses d'API, configuration, état d'application. Les objets sont aussi la base des classes, des modules et du DOM.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1234,24 +1204,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "`map`, `filter`, `reduce` : le trio qui remplace la plupart des boucles.",
     blocks: [
       {
+        kind: "text",
+        text: "Les méthodes de tableau (`map`, `filter`, `find`, `reduce`, `forEach`...) transforment des listes entières en décrivant CE qu'on veut obtenir plutôt que COMMENT boucler.",
+      },
+      {
+        kind: "text",
+        text: "Les boucles `for` manuelles mélangent trois choses : l'itération, la condition et l'action. Séparer ces préoccupations rend le code lisible en une lecture : `utilisateurs.filter(u => u.actif).map(u => u.nom)` se lit comme une phrase.",
+      },
+      {
+        kind: "text",
+        text: "`map` pour transformer chaque élément, `filter` pour sélectionner, `find` pour chercher le premier, `reduce` pour agréger en une valeur, `some`/`every` pour tester, `forEach` pour les effets de bord (affichage, logs).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les méthodes de tableau (`map`, `filter`, `find`, `reduce`, `forEach`...) transforment des listes entières en décrivant CE qu'on veut obtenir plutôt que COMMENT boucler.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les boucles `for` manuelles mélangent trois choses : l'itération, la condition et l'action. Séparer ces préoccupations rend le code lisible en une lecture : `utilisateurs.filter(u => u.actif).map(u => u.nom)` se lit comme une phrase.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "`map` pour transformer chaque élément, `filter` pour sélectionner, `find` pour chercher le premier, `reduce` pour agréger en une valeur, `some`/`every` pour tester, `forEach` pour les effets de bord (affichage, logs).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1285,24 +1252,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Comment les objets partagent des comportements sans classes.",
     blocks: [
       {
+        kind: "text",
+        text: "Chaque objet possède un lien caché vers un autre objet — son prototype — et quand on accède à une propriété absente, JavaScript la cherche automatiquement dans le prototype, puis dans le prototype du prototype.",
+      },
+      {
+        kind: "text",
+        text: "Pour partager des méthodes entre des milliers d'objets sans les dupliquer : tous les tableaux partagent les mêmes `map`, `filter` via le prototype de `Array`. C'est le mécanisme d'héritage originel du langage, antérieur aux classes.",
+      },
+      {
+        kind: "text",
+        text: "Rarement à la main dans le code moderne (les classes couvrent le besoin), mais il faut comprendre le mécanisme pour lire les erreurs (« `x.map is not a function` » = l'objet n'hérite pas de `Array`), debugger, et comprendre le langage en profondeur.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque objet possède un lien caché vers un autre objet — son prototype — et quand on accède à une propriété absente, JavaScript la cherche automatiquement dans le prototype, puis dans le prototype du prototype.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour partager des méthodes entre des milliers d'objets sans les dupliquer : tous les tableaux partagent les mêmes `map`, `filter` via le prototype de `Array`. C'est le mécanisme d'héritage originel du langage, antérieur aux classes.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Rarement à la main dans le code moderne (les classes couvrent le besoin), mais il faut comprendre le mécanisme pour lire les erreurs (« `x.map is not a function` » = l'objet n'hérite pas de `Array`), debugger, et comprendre le langage en profondeur.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1346,24 +1310,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "La syntaxe moderne pour créer des objets sur un même moule.",
     blocks: [
       {
+        kind: "text",
+        text: "Une classe est un moule qui définit les propriétés et méthodes partagées par tous les objets créés avec `new` ; l'héritage (`extends`) permet à une classe de réutiliser et spécialiser une autre classe.",
+      },
+      {
+        kind: "text",
+        text: "Créer des dizaines d'objets similaires à la main (copier les mêmes fonctions sur chacun) est répétitif et source d'incohérences. La classe centralise la définition ; chaque instance reçoit ses propres données mais partage les méthodes via le prototype.",
+      },
+      {
+        kind: "text",
+        text: "Pour modéliser des entités avec comportement : composants d'interface, erreurs personnalisées, services, modèles de données. Inutile pour de simples conteneurs de données (un objet littéral suffit).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une classe est un moule qui définit les propriétés et méthodes partagées par tous les objets créés avec `new` ; l'héritage (`extends`) permet à une classe de réutiliser et spécialiser une autre classe.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Créer des dizaines d'objets similaires à la main (copier les mêmes fonctions sur chacun) est répétitif et source d'incohérences. La classe centralise la définition ; chaque instance reçoit ses propres données mais partage les méthodes via le prototype.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pour modéliser des entités avec comportement : composants d'interface, erreurs personnalisées, services, modèles de données. Inutile pour de simples conteneurs de données (un objet littéral suffit).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1397,24 +1358,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Passer une fonction à une autre fonction : le premier pas vers l'asynchrone.",
     blocks: [
       {
+        kind: "text",
+        text: "Un callback est une fonction passée en argument à une autre fonction, qui l'appellera plus tard — quand une opération se termine, quand un événement survient.",
+      },
+      {
+        kind: "text",
+        text: "Certaines opérations prennent du temps (lire un fichier, attendre un clic). Plutôt que de bloquer le programme, on dit « préviens-moi quand c'est prêt » en donnant la fonction à exécuter à ce moment-là. C'est le mécanisme asynchrone originel de JavaScript.",
+      },
+      {
+        kind: "text",
+        text: "Gestionnaires d'événements (`addEventListener`), timers (`setTimeout`), méthodes de tableau (`map`, `filter`). Pour les opérations asynchrones complexes, les promesses et `async`/`await` sont aujourd'hui préférables.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un callback est une fonction passée en argument à une autre fonction, qui l'appellera plus tard — quand une opération se termine, quand un événement survient.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certaines opérations prennent du temps (lire un fichier, attendre un clic). Plutôt que de bloquer le programme, on dit « préviens-moi quand c'est prêt » en donnant la fonction à exécuter à ce moment-là. C'est le mécanisme asynchrone originel de JavaScript.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Gestionnaires d'événements (`addEventListener`), timers (`setTimeout`), méthodes de tableau (`map`, `filter`). Pour les opérations asynchrones complexes, les promesses et `async`/`await` sont aujourd'hui préférables.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1448,24 +1406,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Représenter une valeur future : la fondation de l'asynchrone moderne.",
     blocks: [
       {
+        kind: "text",
+        text: "Une promesse (`Promise`) est un objet qui représente une valeur qui n'existe pas encore : elle est en attente (pending), puis devient tenue (fulfilled, avec la valeur) ou rompue (rejected, avec l'erreur).",
+      },
+      {
+        kind: "text",
+        text: "Pour sortir du callback hell : au lieu d'imbriquer les fonctions, on enchaîne des `.then()` à plat, et les erreurs se propagent en un seul `.catch()` final. La promesse transforme le temps en valeur manipulable : on peut la retourner, la stocker, la combiner.",
+      },
+      {
+        kind: "text",
+        text: "Toute opération asynchrone : requêtes réseau (`fetch` retourne une promesse), lecture de fichiers, timers. C'est le format standard que `async`/`await` consomme.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une promesse (`Promise`) est un objet qui représente une valeur qui n'existe pas encore : elle est en attente (pending), puis devient tenue (fulfilled, avec la valeur) ou rompue (rejected, avec l'erreur).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Pour sortir du callback hell : au lieu d'imbriquer les fonctions, on enchaîne des `.then()` à plat, et les erreurs se propagent en un seul `.catch()` final. La promesse transforme le temps en valeur manipulable : on peut la retourner, la stocker, la combiner.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toute opération asynchrone : requêtes réseau (`fetch` retourne une promesse), lecture de fichiers, timers. C'est le format standard que `async`/`await` consomme.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1499,24 +1454,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Écrire du code asynchrone qui se lit comme du code synchrone.",
     blocks: [
       {
+        kind: "text",
+        text: "`async`/`await` est une syntaxe par-dessus les promesses : on écrit les opérations asynchrones les unes après les autres, comme si elles étaient instantanées, avec `try`/`catch` pour les erreurs.",
+      },
+      {
+        kind: "text",
+        text: "Les chaînes `.then()` restent verbeuses et inversent la lecture (le résultat est « à l'intérieur »). `await` remet le code à plat : la valeur est directement dans une variable, les erreurs se gèrent avec les `try`/`catch` habituels.",
+      },
+      {
+        kind: "text",
+        text: "Par défaut pour tout code asynchrone moderne : c'est la forme la plus lisible. Garder les promesses nues pour la création de promesses, le parallélisme (`Promise.all`) et les combinateurs.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`async`/`await` est une syntaxe par-dessus les promesses : on écrit les opérations asynchrones les unes après les autres, comme si elles étaient instantanées, avec `try`/`catch` pour les erreurs.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les chaînes `.then()` restent verbeuses et inversent la lecture (le résultat est « à l'intérieur »). `await` remet le code à plat : la valeur est directement dans une variable, les erreurs se gèrent avec les `try`/`catch` habituels.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Par défaut pour tout code asynchrone moderne : c'est la forme la plus lisible. Garder les promesses nues pour la création de promesses, le parallélisme (`Promise.all`) et les combinateurs.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1606,24 +1558,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Organiser le code en fichiers qui s'importent les uns les autres.",
     blocks: [
       {
+        kind: "text",
+        text: "Un module est un fichier JavaScript qui expose (`export`) une partie de son contenu et peut utiliser (`import`) le contenu d'autres fichiers ; il existe deux systèmes : ESM (`import`/`export`, le standard) et CommonJS (`require`/`module.exports`, l'historique de Node.js).",
+      },
+      {
+        kind: "text",
+        text: "Un programme entier dans un seul fichier devient ingérable : les modules découpent le code en unités cohérentes (un module = une responsabilité), rendent les dépendances explicites et permettent de réutiliser du code entre projets.",
+      },
+      {
+        kind: "text",
+        text: "Toujours : chaque fichier est un module. ESM est le standard moderne (navigateurs, et Node.js avec `\"type\": \"module\"` dans `package.json`). CommonJS reste très présent dans l'écosystème Node.js historique.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un module est un fichier JavaScript qui expose (`export`) une partie de son contenu et peut utiliser (`import`) le contenu d'autres fichiers ; il existe deux systèmes : ESM (`import`/`export`, le standard) et CommonJS (`require`/`module.exports`, l'historique de Node.js).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Un programme entier dans un seul fichier devient ingérable : les modules découpent le code en unités cohérentes (un module = une responsabilité), rendent les dépendances explicites et permettent de réutiliser du code entre projets.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toujours : chaque fichier est un module. ESM est le standard moderne (navigateurs, et Node.js avec `\"type\": \"module\"` dans `package.json`). CommonJS reste très présent dans l'écosystème Node.js historique.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1668,24 +1617,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Anticiper l'échec : `try`/`catch`, erreurs personnalisées et erreurs async.",
     blocks: [
       {
+        kind: "text",
+        text: "`try`/`catch` intercepte les erreurs d'un bloc de code pour les traiter au lieu de faire planter le programme ; `throw` signale une erreur ; `finally` exécute un nettoyage dans tous les cas.",
+      },
+      {
+        kind: "text",
+        text: "Les programmes réels échouent : réseau coupé, fichier absent, données invalides. Sans mécanisme dédié, chaque appel devrait tester un code de retour — verbeux et facile d'oublier. Les exceptions séparent le chemin normal du chemin d'erreur.",
+      },
+      {
+        kind: "text",
+        text: "`try`/`catch` autour des opérations qui peuvent échouer pour des raisons externes (réseau, fichiers, parsing de données externes). `throw` pour signaler une condition anormale que l'appelant doit connaître.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`try`/`catch` intercepte les erreurs d'un bloc de code pour les traiter au lieu de faire planter le programme ; `throw` signale une erreur ; `finally` exécute un nettoyage dans tous les cas.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les programmes réels échouent : réseau coupé, fichier absent, données invalides. Sans mécanisme dédié, chaque appel devrait tester un code de retour — verbeux et facile d'oublier. Les exceptions séparent le chemin normal du chemin d'erreur.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "`try`/`catch` autour des opérations qui peuvent échouer pour des raisons externes (réseau, fichiers, parsing de données externes). `throw` pour signaler une condition anormale que l'appelant doit connaître.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1722,24 +1668,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Le pont entre JavaScript et la page web affichée.",
     blocks: [
       {
+        kind: "text",
+        text: "Le DOM (Document Object Model) est la représentation objet de la page HTML : JavaScript le lit et le modifie pour changer ce que l'utilisateur voit, sans recharger la page.",
+      },
+      {
+        kind: "text",
+        text: "HTML est statique : sans DOM, JavaScript ne pourrait pas réagir aux actions (ajouter un élément à une liste, afficher un message d'erreur, mettre à jour un compteur). Le DOM est l'API qui rend les pages interactives.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'on veut changer la page après son chargement : afficher des données, réagir aux formulaires, animer, construire des interfaces. (Les frameworks comme React manipulent le DOM à votre place, mais sur les mêmes primitives.)",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le DOM (Document Object Model) est la représentation objet de la page HTML : JavaScript le lit et le modifie pour changer ce que l'utilisateur voit, sans recharger la page.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "HTML est statique : sans DOM, JavaScript ne pourrait pas réagir aux actions (ajouter un élément à une liste, afficher un message d'erreur, mettre à jour un compteur). Le DOM est l'API qui rend les pages interactives.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'on veut changer la page après son chargement : afficher des données, réagir aux formulaires, animer, construire des interfaces. (Les frameworks comme React manipulent le DOM à votre place, mais sur les mêmes primitives.)",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1773,24 +1716,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Clics, saisie, chargement : comment le navigateur prévient votre code.",
     blocks: [
       {
+        kind: "text",
+        text: "Un événement signale que quelque chose s'est produit (clic, touche, chargement) ; `addEventListener` attache une fonction qui s'exécutera à chaque occurrence, et l'événement se propage du parent vers la cible puis remonte (capture → cible → bubbling).",
+      },
+      {
+        kind: "text",
+        text: "Le programme ne peut pas « attendre » un clic en bloquant tout : les événements inversent le contrôle — c'est le navigateur qui appelle votre code quand quelque chose arrive. C'est le cœur de la programmation interactive.",
+      },
+      {
+        kind: "text",
+        text: "Toute interaction : clics, soumission de formulaire, saisie au clavier, chargement de page, redimensionnement. C'est aussi le mécanisme des frameworks sous le capot.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un événement signale que quelque chose s'est produit (clic, touche, chargement) ; `addEventListener` attache une fonction qui s'exécutera à chaque occurrence, et l'événement se propage du parent vers la cible puis remonte (capture → cible → bubbling).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le programme ne peut pas « attendre » un clic en bloquant tout : les événements inversent le contrôle — c'est le navigateur qui appelle votre code quand quelque chose arrive. C'est le cœur de la programmation interactive.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toute interaction : clics, soumission de formulaire, saisie au clavier, chargement de page, redimensionnement. C'est aussi le mécanisme des frameworks sous le capot.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1824,24 +1764,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Envoyer des requêtes HTTP et exploiter les réponses.",
     blocks: [
       {
+        kind: "text",
+        text: "`fetch(url)` envoie une requête HTTP et retourne une promesse de réponse : c'est la façon standard de charger des données depuis une API sans recharger la page.",
+      },
+      {
+        kind: "text",
+        text: "Les applications modernes affichent des données qui vivent sur des serveurs (profils, articles, météo). `fetch` permet de les récupérer en arrière-plan et de mettre à jour juste la partie concernée de la page — c'est le fondement des applications web dynamiques.",
+      },
+      {
+        kind: "text",
+        text: "Tout échange avec un serveur : charger des données (GET), envoyer un formulaire ou créer une ressource (POST), mettre à jour (PUT/PATCH), supprimer (DELETE).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`fetch(url)` envoie une requête HTTP et retourne une promesse de réponse : c'est la façon standard de charger des données depuis une API sans recharger la page.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les applications modernes affichent des données qui vivent sur des serveurs (profils, articles, météo). `fetch` permet de les récupérer en arrière-plan et de mettre à jour juste la partie concernée de la page — c'est le fondement des applications web dynamiques.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Tout échange avec un serveur : charger des données (GET), envoyer un formulaire ou créer une ressource (POST), mettre à jour (PUT/PATCH), supprimer (DELETE).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1875,24 +1812,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Lire et écrire le format dans lequel presque toutes les APIs parlent.",
     blocks: [
       {
+        kind: "text",
+        text: "JSON (JavaScript Object Notation) est un format texte pour représenter des données structurées ; `JSON.parse` convertit du texte JSON en valeurs JavaScript, `JSON.stringify` fait l'inverse.",
+      },
+      {
+        kind: "text",
+        text: "Les programmes doivent échanger des données par texte (réseau, fichiers, stockage local). JSON est lisible par les humains, léger, et supporté par quasiment tous les langages — c'est devenu la lingua franca des APIs.",
+      },
+      {
+        kind: "text",
+        text: "À chaque échange avec une API, pour stocker des objets dans `localStorage` (qui ne stocke que des chaînes), pour les fichiers de configuration (`package.json` est du JSON).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "JSON (JavaScript Object Notation) est un format texte pour représenter des données structurées ; `JSON.parse` convertit du texte JSON en valeurs JavaScript, `JSON.stringify` fait l'inverse.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les programmes doivent échanger des données par texte (réseau, fichiers, stockage local). JSON est lisible par les humains, léger, et supporté par quasiment tous les langages — c'est devenu la lingua franca des APIs.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "À chaque échange avec une API, pour stocker des objets dans `localStorage` (qui ne stocke que des chaînes), pour les fichiers de configuration (`package.json` est du JSON).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -1926,23 +1860,20 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Manipuler le temps sans se tromper de mois.",
     blocks: [
       {
+        kind: "text",
+        text: "`Date` représente un instant précis (un nombre de millisecondes depuis le 1er janvier 1970) et offre des méthodes pour le lire, le modifier et le formater.",
+      },
+      {
+        kind: "text",
+        text: "Horodatage d'événements, calculs de durées, affichage de dates localisées. Pour des besoins complexes (fuseaux, calendriers), une bibliothèque dédiée est souvent plus sûre que `Date` seul.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`Date` représente un instant précis (un nombre de millisecondes depuis le 1er janvier 1970) et offre des méthodes pour le lire, le modifier et le formater.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est délicat",
             value:
               "`Date` accumule les bizarreries historiques : mois indexés de 0 à 11 (janvier = 0), années sur deux chiffres interprétées bizarrement, fuseaux horaires implicites. C'est l'une des API les plus piégeuses du langage.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Horodatage d'événements, calculs de durées, affichage de dates localisées. Pour des besoins complexes (fuseaux, calendriers), une bibliothèque dédiée est souvent plus sûre que `Date` seul.",
           },
           {
             label: "Comment ça fonctionne",
@@ -1977,24 +1908,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Décrire des motifs de texte pour les chercher et les valider.",
     blocks: [
       {
+        kind: "text",
+        text: "Une expression régulière (regex) est un mini-langage qui décrit un motif de caractères : on s'en sert pour tester si un texte correspond, en extraire des morceaux ou le découper.",
+      },
+      {
+        kind: "text",
+        text: "Valider un email, extraire tous les nombres d'un texte, vérifier un format de téléphone : avec des comparaisons de chaînes classiques, il faudrait des dizaines de lignes. Une regex exprime le motif en une ligne.",
+      },
+      {
+        kind: "text",
+        text: "Validation de formats (email, code postal, mot de passe), recherche et extraction dans du texte, nettoyage de données. À éviter quand un simple `includes`, `startsWith` ou `split` suffit — la lisibilité d'abord.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une expression régulière (regex) est un mini-langage qui décrit un motif de caractères : on s'en sert pour tester si un texte correspond, en extraire des morceaux ou le découper.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Valider un email, extraire tous les nombres d'un texte, vérifier un format de téléphone : avec des comparaisons de chaînes classiques, il faudrait des dizaines de lignes. Une regex exprime le motif en une ligne.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Validation de formats (email, code postal, mot de passe), recherche et extraction dans du texte, nettoyage de données. À éviter quand un simple `includes`, `startsWith` ou `split` suffit — la lisibilité d'abord.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -2028,24 +1956,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Détecter les problèmes pendant que vous écrivez.",
     blocks: [
       {
+        kind: "text",
+        text: "ESLint analyse votre code sans l'exécuter et signale les erreurs probables, les mauvaises pratiques et les incohérences de style, selon des règles configurables.",
+      },
+      {
+        kind: "text",
+        text: "Beaucoup de bugs sont visibles statiquement : variable déclarée mais jamais utilisée, `==` au lieu de `===`, variable utilisée avant déclaration. Un humain les rate en relecture ; un linter les trouve instantanément, à chaque frappe.",
+      },
+      {
+        kind: "text",
+        text: "Dès le premier projet sérieux : intégré à l'éditeur (soulignés en direct) et à la CI (le code qui viole les règles ne fusionne pas). C'est le filet de sécurité entre « ça marche sur ma machine » et « c'est du code propre ».",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "ESLint analyse votre code sans l'exécuter et signale les erreurs probables, les mauvaises pratiques et les incohérences de style, selon des règles configurables.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Beaucoup de bugs sont visibles statiquement : variable déclarée mais jamais utilisée, `==` au lieu de `===`, variable utilisée avant déclaration. Un humain les rate en relecture ; un linter les trouve instantanément, à chaque frappe.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès le premier projet sérieux : intégré à l'éditeur (soulignés en direct) et à la CI (le code qui viole les règles ne fusionne pas). C'est le filet de sécurité entre « ça marche sur ma machine » et « c'est du code propre ».",
-          },
           {
             label: "Rôle / Install / Config / Exemple",
             value:
@@ -2073,24 +1998,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Un style de code uniforme, sans y penser.",
     blocks: [
       {
+        kind: "text",
+        text: "Prettier reformate automatiquement votre code (indentation, guillemets, points-virgules, retours à la ligne) selon des règles fixes : fini les débats de style en revue.",
+      },
+      {
+        kind: "text",
+        text: "Le style (où mettre les accolades, quelle largeur de ligne) n'a aucune valeur fonctionnelle mais coûte un temps fou en discussions et en relectures. Un formateur tranche une fois pour toutes : le style devient un non-sujet.",
+      },
+      {
+        kind: "text",
+        text: "Sur tous les projets : formatage à la sauvegarde dans l'éditeur + vérification en CI (`prettier --check`). Alternative crédible : Biome, qui combine formateur et linter rapide dans un seul outil.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Prettier reformate automatiquement votre code (indentation, guillemets, points-virgules, retours à la ligne) selon des règles fixes : fini les débats de style en revue.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le style (où mettre les accolades, quelle largeur de ligne) n'a aucune valeur fonctionnelle mais coûte un temps fou en discussions et en relectures. Un formateur tranche une fois pour toutes : le style devient un non-sujet.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Sur tous les projets : formatage à la sauvegarde dans l'éditeur + vérification en CI (`prettier --check`). Alternative crédible : Biome, qui combine formateur et linter rapide dans un seul outil.",
-          },
           {
             label: "Rôle / Install / Config / Exemple",
             value:
@@ -2118,24 +2040,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Développer avec rechargement instantané, construire pour la production.",
     blocks: [
       {
+        kind: "text",
+        text: "Vite est un outil qui sert votre projet en développement avec un rechargement quasi instantané, et qui produit les fichiers optimisés (minifiés, découpés) pour la production.",
+      },
+      {
+        kind: "text",
+        text: "Le JavaScript moderne s'écrit en modules, mais servir des centaines de fichiers tels quels au navigateur est lent, et le code doit être optimisé avant mise en ligne. Historiquement, les bundlers recompilaient TOUT à chaque sauvegarde (de plus en plus lent). Vite exploite les modules natifs du navigateur en dev : il ne transforme que le fichier modifié.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'un projet dépasse le « script seul » : applications avec plusieurs modules, frameworks (React, Vue...), besoin d'un build optimisé. Pour un simple script d'apprentissage, `node` suffit.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Vite est un outil qui sert votre projet en développement avec un rechargement quasi instantané, et qui produit les fichiers optimisés (minifiés, découpés) pour la production.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le JavaScript moderne s'écrit en modules, mais servir des centaines de fichiers tels quels au navigateur est lent, et le code doit être optimisé avant mise en ligne. Historiquement, les bundlers recompilaient TOUT à chaque sauvegarde (de plus en plus lent). Vite exploite les modules natifs du navigateur en dev : il ne transforme que le fichier modifié.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'un projet dépasse le « script seul » : applications avec plusieurs modules, frameworks (React, Vue...), besoin d'un build optimisé. Pour un simple script d'apprentissage, `node` suffit.",
-          },
           {
             label: "Rôle / Install / Config / Exemple",
             value:
@@ -2166,15 +2085,13 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Trouver la cause réelle d'un bug au lieu de deviner.",
     blocks: [
       {
+        kind: "text",
+        text: "Déboguer, c'est exécuter le programme pas à pas en inspectant l'état réel (variables, pile d'appels) au moment où ça se passe mal, plutôt que d'ajouter des `console.log` au hasard.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Déboguer, c'est exécuter le programme pas à pas en inspectant l'état réel (variables, pile d'appels) au moment où ça se passe mal, plutôt que d'ajouter des `console.log` au hasard.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi les `console.log` ne suffisent pas",
             value:
               "Les logs montrent des valeurs à des endroits choisis à l'aveugle : on devine où regarder, on relance, on devine à nouveau. Un point d'arrêt stoppe l'exécution exactement sur la ligne suspecte et révèle TOUT l'état — variables locales, pile d'appels, portée. C'est plus rapide dès que le bug n'est pas trivial.",
@@ -2211,24 +2128,21 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Prouver que le code fait ce qu'on croit, automatiquement.",
     blocks: [
       {
+        kind: "text",
+        text: "Un test automatisé exécute une fonction avec des entrées connues et vérifie que la sortie est celle attendue ; le lanceur (Vitest, Jest...) exécute tous les tests et signale les échecs.",
+      },
+      {
+        kind: "text",
+        text: "Tester à la main après chaque modification est lent et on oublie des cas. Les tests rejouent en quelques secondes des dizaines de vérifications — y compris les cas limites — et détectent immédiatement quand un changement casse quelque chose qui marchait.",
+      },
+      {
+        kind: "text",
+        text: "Dès que la logique devient non triviale : fonctions de calcul, validation, transformation de données. Vitest est le choix naturel avec Vite (rapide, même écosystème) ; Jest est l'alternative historique très répandue.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un test automatisé exécute une fonction avec des entrées connues et vérifie que la sortie est celle attendue ; le lanceur (Vitest, Jest...) exécute tous les tests et signale les échecs.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Tester à la main après chaque modification est lent et on oublie des cas. Les tests rejouent en quelques secondes des dizaines de vérifications — y compris les cas limites — et détectent immédiatement quand un changement casse quelque chose qui marchait.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que la logique devient non triviale : fonctions de calcul, validation, transformation de données. Vitest est le choix naturel avec Vite (rapide, même écosystème) ; Jest est l'alternative historique très répandue.",
-          },
           {
             label: "Rôle / Install / Config / Exemple",
             value:
@@ -2262,20 +2176,17 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Versionner son code et le vérifier automatiquement.",
     blocks: [
       {
+        kind: "text",
+        text: "Git enregistre l'historique des modifications du projet ; la CI (intégration continue) rejoue automatiquement les vérifications (lint, tests, build) à chaque push.",
+      },
+      {
+        kind: "text",
+        text: "Sans historique, une modification qui casse tout est irrécupérable et personne ne sait qui a changé quoi. Sans CI, les vérifications dépendent de la bonne volonté de chacun — et sont oubliées sous la pression. Les deux ensemble rendent le projet robuste et l'historique lisible.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Git enregistre l'historique des modifications du projet ; la CI (intégration continue) rejoue automatiquement les vérifications (lint, tests, build) à chaque push.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans historique, une modification qui casse tout est irrécupérable et personne ne sait qui a changé quoi. Sans CI, les vérifications dépendent de la bonne volonté de chacun — et sont oubliées sous la pression. Les deux ensemble rendent le projet robuste et l'historique lisible.",
-          },
-          {
+        fields: [          {
             label: "Commandes Git du quotidien",
             value:
               "`git status` (état des fichiers), `git add` (préparer), `git commit -m \"message\"` (enregistrer), `git push` (publier), `git pull` (récupérer), `git checkout -b nom` (nouvelle branche). Messages de commit : courts, à l'impératif, qui disent POURQUOI.",
@@ -2313,15 +2224,13 @@ export const LEARNING_JAVASCRIPT: LearningSection[] = [
       "Savoir où le temps part vraiment avant d'optimiser.",
     blocks: [
       {
+        kind: "text",
+        text: "La performance, c'est identifier ce qui est lent (mesurer d'abord) puis réduire le travail inutile : moins de calculs, moins d'allers-retours réseau, moins de manipulations du DOM.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La performance, c'est identifier ce qui est lent (mesurer d'abord) puis réduire le travail inutile : moins de calculs, moins d'allers-retours réseau, moins de manipulations du DOM.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi mesurer d'abord",
             value:
               "L'intuition est un mauvais profiler : les développeurs optimisent souvent ce qui est déjà rapide et ratent le vrai goulot. Les DevTools (panneau Performance) montrent précisément où partent les millisecondes.",

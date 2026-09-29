@@ -27,24 +27,21 @@ export const LEARNING_RUST: LearningSection[] = [
         text: "L'idée centrale tient en une phrase : au lieu de détecter les bugs mémoire à l'exécution (comme un ramasse-miettes) ou de les laisser passer (comme en C/C++), Rust les rend impossibles à compiler. Le compilateur vérifie qui possède chaque donnée, qui peut la lire ou la modifier, et pendant combien de temps — avant même que le programme ne s'exécute.",
       },
       {
+        kind: "text",
+        text: "Rust est un langage compilé qui garantit la sécurité mémoire sans ramasse-miettes, grâce à un système de possession (ownership) vérifié à la compilation.",
+      },
+      {
+        kind: "text",
+        text: "Les bugs mémoire (déréférencement nul, dépassements de tampon, courses aux données) sont la première source de vulnérabilités critiques dans les logiciels système. Rust les élimine par construction : si ça compile, ces catégories de bugs n'existent pas.",
+      },
+      {
+        kind: "text",
+        text: "Systèmes d'exploitation, moteurs de jeu, navigateurs, outils en ligne de commande, serveurs réseau à haute performance, WebAssembly, embarqué, et partout où la fiabilité et la performance comptent simultanément.",
+      },
+      {
         kind: "fields",
-        title: "Rust en une phrase, par angle",
+        title: "Rust : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Rust est un langage compilé qui garantit la sécurité mémoire sans ramasse-miettes, grâce à un système de possession (ownership) vérifié à la compilation.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les bugs mémoire (déréférencement nul, dépassements de tampon, courses aux données) sont la première source de vulnérabilités critiques dans les logiciels système. Rust les élimine par construction : si ça compile, ces catégories de bugs n'existent pas.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Systèmes d'exploitation, moteurs de jeu, navigateurs, outils en ligne de commande, serveurs réseau à haute performance, WebAssembly, embarqué, et partout où la fiabilité et la performance comptent simultanément.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -567,20 +564,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Le concept central de Rust : chaque valeur a un propriétaire, et le compilateur suit ce propriétaire à la compilation.",
     blocks: [
       {
+        kind: "text",
+        text: "Chaque valeur en Rust a un unique propriétaire ; quand le propriétaire sort de son bloc, la valeur est libérée automatiquement.",
+      },
+      {
+        kind: "text",
+        text: "C'est le mécanisme qui remplace le ramasse-miettes : la libération mémoire est déterministe (elle a lieu à un point précis et connu) et sans coût à l'exécution, tout en évitant les doubles libérations et les fuites.",
+      },
+      {
         kind: "fields",
         title: "L'ownership, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque valeur en Rust a un unique propriétaire ; quand le propriétaire sort de son bloc, la valeur est libérée automatiquement.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "C'est le mécanisme qui remplace le ramasse-miettes : la libération mémoire est déterministe (elle a lieu à un point précis et connu) et sans coût à l'exécution, tout en évitant les doubles libérations et les fuites.",
-          },
-          {
+        fields: [          {
             label: "Les trois règles (du Rust Book)",
             value:
               "1. Chaque valeur a un propriétaire. 2. Il n'y a qu'un seul propriétaire à la fois. 3. Quand le propriétaire sort de portée, la valeur est abandonnée (`drop`).",
@@ -633,20 +627,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Transférer la propriété à chaque appel de fonction serait impraticable : l'emprunt permet d'utiliser une valeur sans en devenir propriétaire.",
     blocks: [
       {
+        kind: "text",
+        text: "Une référence `&T` permet d'utiliser une valeur sans en prendre possession : on l'emprunte, le propriétaire la récupère ensuite intacte.",
+      },
+      {
+        kind: "text",
+        text: "Sans emprunt, chaque fonction qui lit une `String` devrait en devenir propriétaire puis la rendre — impraticable. L'emprunt rend le partage de lecture sûr et gratuit.",
+      },
+      {
         kind: "fields",
         title: "La référence `&T`, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une référence `&T` permet d'utiliser une valeur sans en prendre possession : on l'emprunte, le propriétaire la récupère ensuite intacte.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Sans emprunt, chaque fonction qui lit une `String` devrait en devenir propriétaire puis la rendre — impraticable. L'emprunt rend le partage de lecture sûr et gratuit.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Passer des données en lecture seule aux fonctions : c'est le cas le plus fréquent en Rust (`&String`, `&Vec<T>`, `&str`).",
@@ -690,20 +681,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Lire à plusieurs est sûr ; modifier à plusieurs ne l'est pas. D'où la règle la plus célèbre de Rust.",
     blocks: [
       {
+        kind: "text",
+        text: "Une référence mutable `&mut T` permet de modifier une valeur empruntée, mais il ne peut en exister qu'une seule à la fois.",
+      },
+      {
+        kind: "text",
+        text: "Les courses aux données (deux codes qui modifient la même mémoire simultanément) sont une source majeure de bugs critiques et quasi impossibles à reproduire. En interdisant le partage mutable, Rust les rend impossibles à compiler.",
+      },
+      {
         kind: "fields",
         title: "La référence `&mut T`, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une référence mutable `&mut T` permet de modifier une valeur empruntée, mais il ne peut en exister qu'une seule à la fois.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les courses aux données (deux codes qui modifient la même mémoire simultanément) sont une source majeure de bugs critiques et quasi impossibles à reproduire. En interdisant le partage mutable, Rust les rend impossibles à compiler.",
-          },
-          {
+        fields: [          {
             label: "La règle XOR",
             value:
               "À un instant donné : SOIT un nombre quelconque de références immuables (`&T`), SOIT exactement une référence mutable (`&mut T`). Jamais les deux mélangés.",
@@ -735,20 +723,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Comment « découper » une chaîne ou un tableau sans le copier — et sans risquer de pointeur invalide.",
     blocks: [
       {
+        kind: "text",
+        text: "Un slice (`&str`, `&[T]`) est une vue en lecture seule sur une portion de données possédées ailleurs : pas de copie, pas de propriété.",
+      },
+      {
+        kind: "text",
+        text: "Retourner un indice (position du premier mot) plutôt que le mot lui-même crée un risque : si la chaîne est modifiée, l'indice devient faux. Le slice lie la vue aux données — le compilateur empêche toute modification tant que la vue existe.",
+      },
+      {
         kind: "fields",
         title: "Les slices, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un slice (`&str`, `&[T]`) est une vue en lecture seule sur une portion de données possédées ailleurs : pas de copie, pas de propriété.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Retourner un indice (position du premier mot) plutôt que le mot lui-même crée un risque : si la chaîne est modifiée, l'indice devient faux. Le slice lie la vue aux données — le compilateur empêche toute modification tant que la vue existe.",
-          },
-          {
+        fields: [          {
             label: "`&str` vs `String`",
             value:
               "`String` = chaîne possédée, modifiable, allouée sur le tas. `&str` = tranche de chaîne empruntée (souvent un littéral comme `\"bonjour\"`, qui est un `&'static str`). En paramètre de fonction, préférez `&str` : il accepte les deux.",
@@ -831,17 +816,15 @@ export const LEARNING_RUST: LearningSection[] = [
       "Les quatre erreurs d'emprunt que tout débutant rencontre : le problème, la cause, le code fautif et sa correction.",
     blocks: [
       {
+        kind: "text",
+        text: "La propriété a été transférée : l'ancienne variable n'existe plus logiquement. L'utiliser serait un use-after-free.",
+      },
+      {
         kind: "fields",
         title: "Erreur 1 — utilisation après déplacement (E0382)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`borrow of moved value` : on utilise une variable après l'avoir donnée.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "La propriété a été transférée : l'ancienne variable n'existe plus logiquement. L'utiliser serait un use-after-free.",
           },
           {
             label: "Mauvais",
@@ -855,17 +838,15 @@ export const LEARNING_RUST: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Deux modificateurs simultanés = course aux données potentielle. La règle XOR l'interdit.",
+      },
+      {
         kind: "fields",
         title: "Erreur 2 — double emprunt mutable (E0499)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`cannot borrow as mutable more than once at a time` : deux `&mut` simultanés.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Deux modificateurs simultanés = course aux données potentielle. La règle XOR l'interdit.",
           },
           {
             label: "Mauvais",
@@ -879,18 +860,16 @@ export const LEARNING_RUST: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un lecteur (`&`) s'attend à ce que la donnée ne change pas sous ses yeux. Modifier pendant une lecture casse cette garantie.",
+      },
+      {
         kind: "fields",
         title: "Erreur 3 — mutable + immuable mélangés (E0502)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value:
               "`cannot borrow as mutable because it is also borrowed as immutable` : on modifie pendant qu'on lit.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un lecteur (`&`) s'attend à ce que la donnée ne change pas sous ses yeux. Modifier pendant une lecture casse cette garantie.",
           },
           {
             label: "Mauvais",
@@ -905,17 +884,15 @@ export const LEARNING_RUST: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La variable locale est libérée à la fin de la fonction : la référence retournerait un pointeur pendouillant.",
+      },
+      {
         kind: "fields",
         title: "Erreur 4 — référence vers une variable locale (E0515)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`cannot return reference to local variable` : retourner un emprunt sur une donnée qui va mourir.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "La variable locale est libérée à la fin de la fonction : la référence retournerait un pointeur pendouillant.",
           },
           {
             label: "Mauvais",
@@ -938,17 +915,15 @@ export const LEARNING_RUST: LearningSection[] = [
       "Quatre autres erreurs classiques : types, durées de vie et mutabilité oubliée.",
     blocks: [
       {
+        kind: "text",
+        text: "On ne peut pas voler la propriété d'une donnée qu'on a seulement empruntée : le propriétaire d'origine s'attend à la récupérer intacte.",
+      },
+      {
         kind: "fields",
         title: "Erreur 5 — déplacer hors d'un emprunt (E0507)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`cannot move out of borrowed content` : extraire une valeur possédée depuis derrière une référence.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "On ne peut pas voler la propriété d'une donnée qu'on a seulement empruntée : le propriétaire d'origine s'attend à la récupérer intacte.",
           },
           {
             label: "Mauvais",
@@ -962,17 +937,15 @@ export const LEARNING_RUST: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Ce sont deux types distincts : `String` (possédée, sur le tas) et `&str` (vue empruntée). Le compilateur ne convertit jamais implicitement.",
+      },
+      {
         kind: "fields",
         title: "Erreur 6 — `String` vs `&str` (E0308)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`mismatched types: expected &str, found String` : confusion entre chaîne possédée et tranche.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Ce sont deux types distincts : `String` (possédée, sur le tas) et `&str` (vue empruntée). Le compilateur ne convertit jamais implicitement.",
           },
           {
             label: "Mauvais",
@@ -986,17 +959,15 @@ export const LEARNING_RUST: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Le compilateur doit garantir que la référence retournée ne survit pas aux données. Avec deux paramètres références, il ne peut pas deviner laquelle survit.",
+      },
+      {
         kind: "fields",
         title: "Erreur 7 — durée de vie manquante (E0106)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`missing lifetime specifier` : une fonction retourne une référence sans préciser sa durée de validité.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le compilateur doit garantir que la référence retournée ne survit pas aux données. Avec deux paramètres références, il ne peut pas deviner laquelle survit.",
           },
           {
             label: "Mauvais",
@@ -1010,17 +981,15 @@ export const LEARNING_RUST: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La mutabilité se déclare à la source : une variable `let` (immuable) ne peut pas être empruntée en `&mut`, même via une référence.",
+      },
+      {
         kind: "fields",
         title: "Erreur 8 — `mut` oublié (E0596)",
-        fields: [
-          {
+        fields: [          {
             label: "Problème",
             value: "`cannot borrow as mutable, as it is not declared as mutable` : emprunt mutable d'une variable immuable.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "La mutabilité se déclare à la source : une variable `let` (immuable) ne peut pas être empruntée en `&mut`, même via une référence.",
           },
           {
             label: "Mauvais",
@@ -1151,20 +1120,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "L'équivalent des classes de données (sans héritage) : un struct regroupe des champs nommés sous un type.",
     blocks: [
       {
+        kind: "text",
+        text: "Un `struct` définit un type composé de champs nommés, avec des méthodes associées via des blocs `impl`.",
+      },
+      {
+        kind: "text",
+        text: "Regrouper des données qui vont ensemble sous un nom explicite, avec un comportement attaché — sans la complexité de l'héritage.",
+      },
+      {
         kind: "fields",
         title: "Les structs, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `struct` définit un type composé de champs nommés, avec des méthodes associées via des blocs `impl`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Regrouper des données qui vont ensemble sous un nom explicite, avec un comportement attaché — sans la complexité de l'héritage.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Modéliser une entité du domaine : utilisateur, configuration, point géométrique, résultat d'analyse.",
@@ -1196,20 +1162,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Bien plus que les enums du C : en Rust, chaque variante peut transporter des données différentes.",
     blocks: [
       {
+        kind: "text",
+        text: "Une `enum` définit un type qui peut être exactement l'une de ses variantes, chacune pouvant embarquer des données.",
+      },
+      {
+        kind: "text",
+        text: "Modéliser des états exclusifs (un message est SOIT du texte SOIT une image, jamais les deux) : le compilateur garantit qu'on traite tous les cas.",
+      },
+      {
         kind: "fields",
         title: "Les enums, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une `enum` définit un type qui peut être exactement l'une de ses variantes, chacune pouvant embarquer des données.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Modéliser des états exclusifs (un message est SOIT du texte SOIT une image, jamais les deux) : le compilateur garantit qu'on traite tous les cas.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "États d'une machine, types de messages, résultats d'opérations, erreurs métier — partout où « soit l'un, soit l'autre ».",
@@ -1287,20 +1250,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Rust n'a pas de `null` : l'absence éventuelle de valeur est un type ordinaire, `Option<T>`, que le compilateur force à traiter.",
     blocks: [
       {
+        kind: "text",
+        text: "`Option<T>` vaut soit `Some(valeur)`, soit `None` : c'est une enum qui rend l'absence de valeur explicite dans le type.",
+      },
+      {
+        kind: "text",
+        text: "Le déréférencement de `null` est l'erreur la plus coûteuse de l'histoire du logiciel (« l'erreur à un milliard de dollars »). En Rust, une valeur est présente ou son type dit qu'elle peut manquer — jamais les deux en silence.",
+      },
+      {
         kind: "fields",
         title: "`Option`, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`Option<T>` vaut soit `Some(valeur)`, soit `None` : c'est une enum qui rend l'absence de valeur explicite dans le type.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le déréférencement de `null` est l'erreur la plus coûteuse de l'histoire du logiciel (« l'erreur à un milliard de dollars »). En Rust, une valeur est présente ou son type dit qu'elle peut manquer — jamais les deux en silence.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Recherche dans une collection (trouvé / pas trouvé), configuration optionnelle, tout résultat « peut-être absent ».",
@@ -1332,20 +1292,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Rust n'a pas d'exceptions : les opérations qui peuvent échouer retournent `Result<T, E>`, et l'opérateur `?` propage l'erreur proprement.",
     blocks: [
       {
+        kind: "text",
+        text: "`Result<T, E>` vaut soit `Ok(valeur)` en cas de succès, soit `Err(erreur)` en cas d'échec : l'échec fait partie du type retourné.",
+      },
+      {
+        kind: "text",
+        text: "Les exceptions créent des chemins d'erreur invisibles : on ne sait pas quelles fonctions peuvent échouer sans lire leur code. Avec `Result`, l'échec est visible dans la signature et le compilateur force son traitement.",
+      },
+      {
         kind: "fields",
         title: "`Result`, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`Result<T, E>` vaut soit `Ok(valeur)` en cas de succès, soit `Err(erreur)` en cas d'échec : l'échec fait partie du type retourné.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les exceptions créent des chemins d'erreur invisibles : on ne sait pas quelles fonctions peuvent échouer sans lire leur code. Avec `Result`, l'échec est visible dans la signature et le compilateur force son traitement.",
-          },
-          {
+        fields: [          {
             label: "L'opérateur `?`",
             value:
               "Placé après un `Result`, il retourne la valeur si `Ok`, ou retourne immédiatement l'erreur à l'appelant si `Err`. C'est la propagation d'erreur en un caractère.",
@@ -1394,15 +1351,13 @@ export const LEARNING_RUST: LearningSection[] = [
       "Le `panic` arrête le programme avec un message : c'est l'outil des erreurs irrécupérables, pas de la gestion d'erreurs courante.",
     blocks: [
       {
+        kind: "text",
+        text: "Un `panic!` déroule la pile (`unwinding`), exécute les destructeurs, puis termine le programme avec un message d'erreur.",
+      },
+      {
         kind: "fields",
         title: "Le panic, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un `panic!` déroule la pile (`unwinding`), exécute les destructeurs, puis termine le programme avec un message d'erreur.",
-          },
-          {
+        fields: [          {
             label: "Quand c'est légitime",
             value:
               "Bugs du programmeur (indice hors limites, invariant violé), prototypes, exemples de documentation, tests (`assert!` panique en cas d'échec — c'est voulu).",
@@ -1440,20 +1395,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Écrire du code qui fonctionne pour plusieurs types, sans duplication et sans coût à l'exécution.",
     blocks: [
       {
+        kind: "text",
+        text: "Un type ou une fonction générique (`<T>`) est un modèle : le compilateur génère une version spécialisée pour chaque type concret utilisé.",
+      },
+      {
+        kind: "text",
+        text: "Éviter de dupliquer la même logique pour `i32`, `f64`, `String`… tout en gardant la vérification statique des types (contrairement aux `void*` du C).",
+      },
+      {
         kind: "fields",
         title: "Les génériques, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un type ou une fonction générique (`<T>`) est un modèle : le compilateur génère une version spécialisée pour chaque type concret utilisé.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Éviter de dupliquer la même logique pour `i32`, `f64`, `String`… tout en gardant la vérification statique des types (contrairement aux `void*` du C).",
-          },
-          {
+        fields: [          {
             label: "La monomorphisation",
             value:
               "À la compilation, Rust crée une copie du code générique par type concret : zéro coût à l'exécution (pas de dispatch dynamique), au prix d'un binaire un peu plus gros.",
@@ -1485,20 +1437,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "L'équivalent des interfaces : un trait définit un comportement que des types peuvent implémenter.",
     blocks: [
       {
+        kind: "text",
+        text: "Un trait déclare un ensemble de méthodes ; tout type qui l'implémente garantit ce comportement.",
+      },
+      {
+        kind: "text",
+        text: "Partager du comportement entre types sans héritage : on compose des capacités (`Affichable + Clonable`) au lieu de construire des hiérarchies de classes.",
+      },
+      {
         kind: "fields",
         title: "Les traits, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un trait déclare un ensemble de méthodes ; tout type qui l'implémente garantit ce comportement.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Partager du comportement entre types sans héritage : on compose des capacités (`Affichable + Clonable`) au lieu de construire des hiérarchies de classes.",
-          },
-          {
+        fields: [          {
             label: "`derive`",
             value:
               "Pour les traits courants, le compilateur génère l'implémentation : `#[derive(Debug, Clone, PartialEq)]` sur un struct, et c'est réglé.",
@@ -1547,20 +1496,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Le concept réputé le plus difficile — en pratique, le compilateur les infère presque toujours. Comprenez l'idée avant la syntaxe.",
     blocks: [
       {
+        kind: "text",
+        text: "Une lifetime (`'a`) nomme la durée pendant laquelle une référence est valide : elle garantit qu'on n'utilise jamais une référence après la mort de sa donnée.",
+      },
+      {
+        kind: "text",
+        text: "C'est le mécanisme qui rend l'erreur E0515 (référence vers une variable locale) impossible : le compilateur suit les durées de vie et refuse les incohérences.",
+      },
+      {
         kind: "fields",
         title: "Les lifetimes, en progressif",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une lifetime (`'a`) nomme la durée pendant laquelle une référence est valide : elle garantit qu'on n'utilise jamais une référence après la mort de sa donnée.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "C'est le mécanisme qui rend l'erreur E0515 (référence vers une variable locale) impossible : le compilateur suit les durées de vie et refuse les incohérences.",
-          },
-          {
+        fields: [          {
             label: "L'élision : vous n'écrirez presque rien",
             value:
               "Dans la plupart des cas (une seule référence en entrée, méthodes sur `&self`), le compilateur déduit les lifetimes seul. On ne les écrit que quand il y a ambiguïté — typiquement plusieurs références en entrée et une référence en sortie.",
@@ -1966,10 +1912,13 @@ export const LEARNING_RUST: LearningSection[] = [
       "Deux outils officiels qui relisent votre code : l'un pour le style (formatage), l'autre pour les maladresses (lints).",
     blocks: [
       {
+        kind: "text",
+        text: "`rustfmt` s'occupe de la forme, Clippy s'occupe du fond : ensemble, ils maintiennent une base de code homogène et idiomatique.",
+      },
+      {
         kind: "fields",
         title: "Deux rôles distincts",
-        fields: [
-          {
+        fields: [          {
             label: "rustfmt (`cargo fmt`)",
             value:
               "Le formateur officiel : indentation, retours à la ligne, espaces. Il n'y a qu'un seul style Rust valide — celui de `rustfmt`. Zéro débat d'équipe.",
@@ -1978,11 +1927,6 @@ export const LEARNING_RUST: LearningSection[] = [
             label: "Clippy (`cargo clippy`)",
             value:
               "Le linter pédagogique : des centaines de vérifications (comparer une longueur à zéro au lieu d'utiliser `is_empty()`, emprunts inutiles, boucles simplifiables…) avec explications et corrections suggérées.",
-          },
-          {
-            label: "En une phrase",
-            value:
-              "`rustfmt` s'occupe de la forme, Clippy s'occupe du fond : ensemble, ils maintiennent une base de code homogène et idiomatique.",
           },
           {
             label: "En CI",
@@ -2012,15 +1956,13 @@ export const LEARNING_RUST: LearningSection[] = [
       "Rust permet de contourner certaines garanties dans des blocs `unsafe` : comprenez quand c'est nécessaire et ce que ça implique.",
     blocks: [
       {
+        kind: "text",
+        text: "Un bloc `unsafe` autorise cinq opérations interdites ailleurs : le programmeur reprend alors à son compte la responsabilité de la sécurité mémoire.",
+      },
+      {
         kind: "fields",
         title: "`unsafe`, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un bloc `unsafe` autorise cinq opérations interdites ailleurs : le programmeur reprend alors à son compte la responsabilité de la sécurité mémoire.",
-          },
-          {
+        fields: [          {
             label: "Quand c'est nécessaire",
             value:
               "Interopérabilité avec le C (FFI), structures de données bas niveau impossibles à exprimer avec l'ownership (certaines listes chaînées), accès matériel en embarqué.",
@@ -2062,20 +2004,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Rust gère la concurrence I/O avec `async`/`await` sans runtime imposé : les concepts avant l'outillage.",
     blocks: [
       {
+        kind: "text",
+        text: "Une fonction `async` ne s'exécute pas immédiatement : elle retourne un `Future`, une valeur paresseuse qui ne progresse que lorsqu'un exécuteur la pilote et qu'on l'attend avec `.await`.",
+      },
+      {
+        kind: "text",
+        text: "Gérer des milliers de connexions réseau simultanées sans payer un thread OS par connexion : pendant qu'une tâche attend le réseau, d'autres s'exécutent.",
+      },
+      {
         kind: "fields",
         title: "L'async Rust, méthode pédagogique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une fonction `async` ne s'exécute pas immédiatement : elle retourne un `Future`, une valeur paresseuse qui ne progresse que lorsqu'un exécuteur la pilote et qu'on l'attend avec `.await`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Gérer des milliers de connexions réseau simultanées sans payer un thread OS par connexion : pendant qu'une tâche attend le réseau, d'autres s'exécutent.",
-          },
-          {
+        fields: [          {
             label: "Futures paresseuses",
             value:
               "Créer un `Future` ne fait RIEN : sans `.await` (ou un exécuteur), le code ne s'exécute jamais. C'est la source n°1 d'incompréhension des débutants.",
@@ -2112,20 +2051,17 @@ export const LEARNING_RUST: LearningSection[] = [
       "Rust peut appeler du code C et être appelé depuis le C : la porte vers des décennies de bibliothèques existantes.",
     blocks: [
       {
+        kind: "text",
+        text: "La FFI (Foreign Function Interface) permet d'appeler des fonctions C depuis Rust via des blocs `extern \"C\"`, et d'exposer des fonctions Rust au C.",
+      },
+      {
+        kind: "text",
+        text: "Réutiliser des bibliothèques C éprouvées (système, crypto, multimédia) sans les réécrire, ou intégrer Rust progressivement dans un projet C existant.",
+      },
+      {
         kind: "fields",
         title: "L'interopérabilité, en bref",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La FFI (Foreign Function Interface) permet d'appeler des fonctions C depuis Rust via des blocs `extern \"C\"`, et d'exposer des fonctions Rust au C.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Réutiliser des bibliothèques C éprouvées (système, crypto, multimédia) sans les réécrire, ou intégrer Rust progressivement dans un projet C existant.",
-          },
-          {
+        fields: [          {
             label: "La frontière est `unsafe`",
             value:
               "Le C ne respecte pas les règles de Rust : tout appel FFI se fait en `unsafe`, et c'est à vous de garantir la validité des pointeurs échangés.",

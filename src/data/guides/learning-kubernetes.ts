@@ -23,24 +23,21 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
         text: "Kubernetes (souvent abrégé K8s) est un orchestrateur de conteneurs open source, maintenu par la CNCF et issu de l'expérience de Google (Borg/Omega). Là où Docker exécute des conteneurs sur une machine, Kubernetes pilote des centaines de conteneurs répartis sur un parc de machines : il décide où les placer, les redémarre quand ils meurent, les met à jour sans interruption et les expose sur le réseau.",
       },
       {
+        kind: "text",
+        text: "Kubernetes maintient l'état réel d'un parc de conteneurs conforme à un état désiré que vous déclarez en YAML.",
+      },
+      {
+        kind: "text",
+        text: "Faire tourner des conteneurs « à la main » ne passe pas l'échelle : une machine tombe, un conteneur plante à 3h du matin, un déploiement doit se faire sans couper le service, le trafic double soudainement. L'orchestration automatise le placement, la réparation, les mises à jour et la montée en charge.",
+      },
+      {
+        kind: "text",
+        text: "Applications en production composées de plusieurs services, besoin de haute disponibilité, déploiements fréquents sans interruption, équipes qui veulent un socle standard entre le développement local et le cloud.",
+      },
+      {
         kind: "fields",
-        title: "Kubernetes en une phrase, par angle",
+        title: "Kubernetes : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Kubernetes maintient l'état réel d'un parc de conteneurs conforme à un état désiré que vous déclarez en YAML.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Faire tourner des conteneurs « à la main » ne passe pas l'échelle : une machine tombe, un conteneur plante à 3h du matin, un déploiement doit se faire sans couper le service, le trafic double soudainement. L'orchestration automatise le placement, la réparation, les mises à jour et la montée en charge.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Applications en production composées de plusieurs services, besoin de haute disponibilité, déploiements fréquents sans interruption, équipes qui veulent un socle standard entre le développement local et le cloud.",
-          },
           {
             label: "Quand ne pas l'utiliser",
             value:
@@ -485,20 +482,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "La seule porte d'entrée du cluster : tout — kubectl, kubelet, scheduler — passe par lui.",
     blocks: [
       {
+        kind: "text",
+        text: "L'API Server expose l'API REST de Kubernetes et est l'unique composant autorisé à parler à `etcd`.",
+      },
+      {
+        kind: "text",
+        text: "Centraliser tous les accès permet d'appliquer uniformément l'authentification, l'autorisation (RBAC) et la validation avant toute modification de l'état du cluster.",
+      },
+      {
         kind: "fields",
         title: "kube-apiserver, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'API Server expose l'API REST de Kubernetes et est l'unique composant autorisé à parler à `etcd`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Centraliser tous les accès permet d'appliquer uniformément l'authentification, l'autorisation (RBAC) et la validation avant toute modification de l'état du cluster.",
-          },
-          {
+        fields: [          {
             label: "Comment",
             value:
               "Il écoute par défaut sur le port 6443 en HTTPS. Chaque requête est authentifiée, autorisée, admise (admission controllers), puis l'objet est validé et persisté dans etcd.",
@@ -525,20 +519,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "La mémoire du cluster : une base clé-valeur distribuée où dort tout l'état.",
     blocks: [
       {
+        kind: "text",
+        text: "etcd stocke de façon fiable et distribuée l'intégralité de l'état du cluster : Pods, Services, Secrets, tout y est.",
+      },
+      {
+        kind: "text",
+        text: "Si le plan de contrôle redémarre, il doit retrouver exactement où il en était. etcd garantit cette persistance avec un consensus (Raft) entre ses membres : la majorité doit être d'accord avant toute écriture.",
+      },
+      {
         kind: "fields",
         title: "etcd, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "etcd stocke de façon fiable et distribuée l'intégralité de l'état du cluster : Pods, Services, Secrets, tout y est.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Si le plan de contrôle redémarre, il doit retrouver exactement où il en était. etcd garantit cette persistance avec un consensus (Raft) entre ses membres : la majorité doit être d'accord avant toute écriture.",
-          },
-          {
+        fields: [          {
             label: "Conséquence pratique",
             value:
               "Sauvegardez etcd régulièrement en production (`etcdctl snapshot save`) : perdre etcd, c'est perdre la description de tout le cluster. Les données applicatives, elles, vivent dans vos volumes persistants — pas dans etcd.",
@@ -635,20 +626,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Comment une adresse de Service stable peut pointer vers des Pods qui naissent et meurent.",
     blocks: [
       {
+        kind: "text",
+        text: "kube-proxy est le proxy réseau présent sur chaque nœud : il implémente la redirection des Services vers les Pods (via iptables ou IPVS).",
+      },
+      {
+        kind: "text",
+        text: "Les Pods sont éphémères et changent d'IP à chaque redémarrage. Le Service offre une IP virtuelle stable ; kube-proxy maintient les règles qui distribuent le trafic vers les Pods sains du moment.",
+      },
+      {
         kind: "fields",
         title: "kube-proxy, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "kube-proxy est le proxy réseau présent sur chaque nœud : il implémente la redirection des Services vers les Pods (via iptables ou IPVS).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les Pods sont éphémères et changent d'IP à chaque redémarrage. Le Service offre une IP virtuelle stable ; kube-proxy maintient les règles qui distribuent le trafic vers les Pods sains du moment.",
-          },
-          {
+        fields: [          {
             label: "Modèle réseau à retenir",
             value:
               "Dans Kubernetes, chaque Pod a sa propre IP et tous les Pods peuvent se parler directement, sans NAT. C'est le plugin réseau (CNI : Calico, Cilium, Flannel…) qui réalise ce réseau plat — kube-proxy ne s'occupe que des Services.",
@@ -698,20 +686,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Des conteneurs qui s'exécutent — et se terminent — avant les conteneurs applicatifs.",
     blocks: [
       {
+        kind: "text",
+        text: "Ils préparent le terrain (attendre une base de données, lancer des migrations, générer une configuration) puis s'arrêtent ; l'application ne démarre qu'après leur succès.",
+      },
+      {
+        kind: "text",
+        text: "Attendre qu'un service dépendant soit joignable, initialiser un volume partagé, ou exécuter un script de setup qui ne doit tourner qu'une fois par démarrage.",
+      },
+      {
         kind: "fields",
         title: "Init containers, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ils préparent le terrain (attendre une base de données, lancer des migrations, générer une configuration) puis s'arrêtent ; l'application ne démarre qu'après leur succès.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Attendre qu'un service dépendant soit joignable, initialiser un volume partagé, ou exécuter un script de setup qui ne doit tourner qu'une fois par démarrage.",
-          },
-          {
+        fields: [          {
             label: "Exemple réel",
             value:
               "Un init container qui boucle avec `nslookup` ou un petit script jusqu'à ce que le Service `postgres` réponde, évitant à l'application de crasher en boucle au démarrage du cluster.",
@@ -903,20 +888,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Le type par défaut : une adresse stable pour parler à des Pods instables, à l'intérieur du cluster.",
     blocks: [
       {
+        kind: "text",
+        text: "Un Service ClusterIP expose un ensemble de Pods via une IP virtuelle stable, accessible uniquement depuis l'intérieur du cluster.",
+      },
+      {
+        kind: "text",
+        text: "Communication interne entre services : votre API appelle la base de données, le frontend appelle l'API. C'est le type le plus courant — commencez toujours par lui.",
+      },
+      {
         kind: "fields",
         title: "ClusterIP, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un Service ClusterIP expose un ensemble de Pods via une IP virtuelle stable, accessible uniquement depuis l'intérieur du cluster.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Communication interne entre services : votre API appelle la base de données, le frontend appelle l'API. C'est le type le plus courant — commencez toujours par lui.",
-          },
-          {
+        fields: [          {
             label: "Comment ça marche",
             value:
               "Le Service sélectionne les Pods via son `selector`, surveille en continu les endpoints sains, et kube-proxy répartit le trafic (round-robin par défaut) entre eux.",
@@ -978,15 +960,13 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Pourquoi `http://mon-service` fonctionne depuis n'importe quel Pod.",
     blocks: [
       {
+        kind: "text",
+        text: "CoreDNS (le serveur DNS du cluster) résout automatiquement chaque Service en son IP : `<nom-service>` suffit dans le même namespace.",
+      },
+      {
         kind: "fields",
         title: "Le DNS interne, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "CoreDNS (le serveur DNS du cluster) résout automatiquement chaque Service en son IP : `<nom-service>` suffit dans le même namespace.",
-          },
-          {
+        fields: [          {
             label: "Nom complet",
             value:
               "`<service>.<namespace>.svc.cluster.local` : utilisez cette forme longue pour appeler un service d'un autre namespace sans ambiguïté.",
@@ -1018,23 +998,20 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Un seul point d'entrée pour router le trafic HTTP vers vos services selon l'hôte et le chemin.",
     blocks: [
       {
+        kind: "text",
+        text: "L'Ingress expose les Services HTTP(S) vers l'extérieur avec un routage de niveau 7 : `app.example.com` → service A, `app.example.com/api` → service B.",
+      },
+      {
+        kind: "text",
+        text: "Dès que plusieurs services doivent être exposés proprement : un seul LoadBalancer devant l'Ingress, TLS centralisé, routage par nom d'hôte.",
+      },
+      {
         kind: "fields",
         title: "Ingress, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'Ingress expose les Services HTTP(S) vers l'extérieur avec un routage de niveau 7 : `app.example.com` → service A, `app.example.com/api` → service B.",
-          },
-          {
+        fields: [          {
             label: "Point crucial",
             value:
               "La ressource Ingress seule ne fait rien : il faut un contrôleur d'Ingress qui l'implémente (par exemple `ingress-nginx`). Sans contrôleur installé, vos règles sont ignorées silencieusement.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que plusieurs services doivent être exposés proprement : un seul LoadBalancer devant l'Ingress, TLS centralisé, routage par nom d'hôte.",
           },
           {
             label: "IngressClass",
@@ -1113,15 +1090,13 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
         verify: "`kubectl get secret db-credentials -o yaml` montre les valeurs en base64.",
       },
       {
+        kind: "text",
+        text: "Un Secret est une ConfigMap dont les valeurs sont encodées en base64 et dont l'accès est un peu mieux contrôlé — ce n'est PAS du chiffrement.",
+      },
+      {
         kind: "fields",
         title: "Secrets, en toute honnêteté",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un Secret est une ConfigMap dont les valeurs sont encodées en base64 et dont l'accès est un peu mieux contrôlé — ce n'est PAS du chiffrement.",
-          },
-          {
+        fields: [          {
             label: "Limite réelle",
             value:
               "Par défaut, les Secrets sont stockés en clair (base64 = encodage, pas chiffrement) dans etcd. Le chiffrement au repos s'active explicitement côté API Server, et en production on utilise un gestionnaire externe (HashiCorp Vault, gestionnaires cloud).",
@@ -1215,20 +1190,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Quand les réplicas ne sont pas interchangeables : bases de données et systèmes distribués.",
     blocks: [
       {
+        kind: "text",
+        text: "Comme un Deployment, mais chaque Pod reçoit une identité stable (`db-0`, `db-1`) et un stockage stable, créés et supprimés dans l'ordre.",
+      },
+      {
+        kind: "text",
+        text: "Bases de données, files de messages, tout système où « le réplica n°2 » a un sens (réplication maître/esclave, quorum).",
+      },
+      {
         kind: "fields",
         title: "StatefulSet, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Comme un Deployment, mais chaque Pod reçoit une identité stable (`db-0`, `db-1`) et un stockage stable, créés et supprimés dans l'ordre.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Bases de données, files de messages, tout système où « le réplica n°2 » a un sens (réplication maître/esclave, quorum).",
-          },
-          {
+        fields: [          {
             label: "Différence clé avec Deployment",
             value:
               "Les Pods ne sont pas interchangeables : `db-0` retrouvera toujours son volume, même après recréation. Le déploiement se fait dans l'ordre, un Pod à la fois.",
@@ -1317,15 +1289,13 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Faire varier le nombre de réplicas automatiquement selon la charge.",
     blocks: [
       {
+        kind: "text",
+        text: "Le HPA ajuste le nombre de réplicas d'un Deployment en fonction de métriques (CPU, mémoire, ou métriques personnalisées).",
+      },
+      {
         kind: "fields",
         title: "HorizontalPodAutoscaler, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le HPA ajuste le nombre de réplicas d'un Deployment en fonction de métriques (CPU, mémoire, ou métriques personnalisées).",
-          },
-          {
+        fields: [          {
             label: "Prérequis",
             value:
               "Le metrics-server doit être installé dans le cluster (addon minikube : `minikube addons enable metrics-server`), et les Pods doivent déclarer des requests CPU pour que le pourcentage ait un sens.",
@@ -1352,15 +1322,13 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Le contrôle d'accès du cluster : indispensable dès qu'on n'est plus seul.",
     blocks: [
       {
+        kind: "text",
+        text: "RBAC associe des identités (utilisateurs, ServiceAccounts) à des permissions (verbes sur ressources) dans un périmètre (namespace ou cluster).",
+      },
+      {
         kind: "fields",
         title: "RBAC, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "RBAC associe des identités (utilisateurs, ServiceAccounts) à des permissions (verbes sur ressources) dans un périmètre (namespace ou cluster).",
-          },
-          {
+        fields: [          {
             label: "Les quatre objets",
             value:
               "`Role` (permissions dans un namespace) et `ClusterRole` (cluster entier ou ressources non namespacées), liés aux identités via `RoleBinding` et `ClusterRoleBinding`.",
@@ -1392,15 +1360,13 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Par défaut, tout Pod peut parler à tout Pod. Les NetworkPolicies changent la donne.",
     blocks: [
       {
+        kind: "text",
+        text: "Une NetworkPolicy déclare quel trafic est autorisé vers/depuis un ensemble de Pods sélectionnés par labels.",
+      },
+      {
         kind: "fields",
         title: "NetworkPolicies, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une NetworkPolicy déclare quel trafic est autorisé vers/depuis un ensemble de Pods sélectionnés par labels.",
-          },
-          {
+        fields: [          {
             label: "Point crucial",
             value:
               "Par défaut, tout est autorisé. Dès qu'une policy sélectionne un Pod, celui-ci devient « isolé » : seul le trafic explicitement autorisé passe. C'est un changement de comportement radical à tester prudemment.",
@@ -1427,23 +1393,20 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Installer des applications complexes en une commande, avec des valeurs paramétrables.",
     blocks: [
       {
+        kind: "text",
+        text: "Helm package des manifests Kubernetes en « charts » paramétrables : on installe PostgreSQL, Redis ou Prometheus avec leurs dizaines de ressources en une commande.",
+      },
+      {
+        kind: "text",
+        text: "Éviter de copier-coller 500 lignes de YAML pour chaque base de données, et bénéficier des mises à jour du chart maintenu par la communauté.",
+      },
+      {
         kind: "fields",
         title: "Helm, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Helm package des manifests Kubernetes en « charts » paramétrables : on installe PostgreSQL, Redis ou Prometheus avec leurs dizaines de ressources en une commande.",
-          },
-          {
+        fields: [          {
             label: "Vocabulaire",
             value:
               "Chart = le paquet (templates + valeurs par défaut). Release = une instance installée d'un chart. `values.yaml` = le fichier qui personnalise l'installation.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Éviter de copier-coller 500 lignes de YAML pour chaque base de données, et bénéficier des mises à jour du chart maintenu par la communauté.",
           },
           {
             label: "Limite honnête",
@@ -1482,15 +1445,17 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
       "Personnaliser des manifests sans les dupliquer ni apprendre un langage de templating.",
     blocks: [
       {
+        kind: "text",
+        text: "Kustomize part d'une base de manifests et applique des surcharges par environnement (dev/staging/prod) : même base, paramètres différents.",
+      },
+      {
+        kind: "text",
+        text: "Vos propres applications déployées en plusieurs environnements, quand Helm serait disproportionné.",
+      },
+      {
         kind: "fields",
         title: "Kustomize, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Kustomize part d'une base de manifests et applique des surcharges par environnement (dev/staging/prod) : même base, paramètres différents.",
-          },
-          {
+        fields: [          {
             label: "Différence avec Helm",
             value:
               "Pas de templates ni de langage : on écrit du YAML pur, et Kustomize le patch. Intégré directement à kubectl (`kubectl apply -k`).",
@@ -1500,11 +1465,7 @@ export const LEARNING_KUBERNETES: LearningSection[] = [
             value:
               "Un dossier `base/` avec les manifests communs et un `kustomization.yaml` par environnement dans `overlays/dev`, `overlays/prod` (suffixes de noms, nombre de réplicas, images différentes).",
           },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Vos propres applications déployées en plusieurs environnements, quand Helm serait disproportionné.",
-          },
+          
         ],
       },
       {

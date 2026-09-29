@@ -25,20 +25,17 @@ export const LEARNING_CYBERSECURITY: LearningSection[] = [
         text: "La cybersécurité est l'ensemble des pratiques, technologies et processus qui protègent les systèmes informatiques, les réseaux, les logiciels et les données contre les accès non autorisés, les altérations, les vols et les interruptions de service. Elle ne se résume pas au « piratage » : la majeure partie du travail consiste à configurer correctement, mettre à jour, surveiller et réagir vite quand quelque chose tourne mal.",
       },
       {
+        kind: "text",
+        text: "Protéger la confidentialité, l'intégrité et la disponibilité des systèmes et des données — la triade « CIA ».",
+      },
+      {
+        kind: "text",
+        text: "Tout système connecté est exposé : rançongiciels, vol de données, usurpation d'identité, sabotage. Une seule faille (mot de passe faible, logiciel non patché, pièce jointe piégée) suffit à compromettre une organisation entière.",
+      },
+      {
         kind: "fields",
-        title: "La cybersécurité en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Protéger la confidentialité, l'intégrité et la disponibilité des systèmes et des données — la triade « CIA ».",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Tout système connecté est exposé : rançongiciels, vol de données, usurpation d'identité, sabotage. Une seule faille (mot de passe faible, logiciel non patché, pièce jointe piégée) suffit à compromettre une organisation entière.",
-          },
-          {
+        title: "La cybersécurité : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Toujours, dès le premier serveur ou la première application : la sécurité se construit en amont, pas après l'incident. Pour un développeur, elle fait partie du métier au même titre que les tests.",
@@ -144,20 +141,17 @@ export const LEARNING_CYBERSECURITY: LearningSection[] = [
       "La première ligne de défense, et la plus négligée : des mots de passe longs, uniques, gérés par un outil.",
     blocks: [
       {
+        kind: "text",
+        text: "Un mot de passe doit être long et unique par service ; la complexité alambiquée compte moins que la longueur.",
+      },
+      {
+        kind: "text",
+        text: "Les attaquants ne « devinent » pas : ils rejouent automatiquement des millions de paires identifiant/mot de passe volées ailleurs (« credential stuffing »). Un mot de passe réutilisé sur deux sites tombe dès que l'un des deux fuite.",
+      },
+      {
         kind: "fields",
         title: "Les règles qui comptent vraiment",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un mot de passe doit être long et unique par service ; la complexité alambiquée compte moins que la longueur.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les attaquants ne « devinent » pas : ils rejouent automatiquement des millions de paires identifiant/mot de passe volées ailleurs (« credential stuffing »). Un mot de passe réutilisé sur deux sites tombe dès que l'un des deux fuite.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Partout, sans exception — et en priorité : messagerie (la clé de toutes les réinitialisations), banque, hébergeur, registrar de domaine.",
@@ -288,19 +282,17 @@ export const LEARNING_CYBERSECURITY: LearningSection[] = [
       "Le dernier rempart : quand tout le reste échoue (rançongiciel, erreur humaine), la sauvegarde décide de l'issue.",
     blocks: [
       {
+        kind: "text",
+        text: "3 copies des données, sur 2 supports différents, dont 1 hors site (déconnectée ou distante).",
+      },
+      {
+        kind: "text",
+        text: "Un rançongiciel chiffre aussi les sauvegardes accessibles depuis la machine compromise. Seule une copie hors d'atteinte (disque débranché, stockage distant immuable) garantit la restauration.",
+      },
+      {
         kind: "fields",
         title: "La règle 3-2-1",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "3 copies des données, sur 2 supports différents, dont 1 hors site (déconnectée ou distante).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un rançongiciel chiffre aussi les sauvegardes accessibles depuis la machine compromise. Seule une copie hors d'atteinte (disque débranché, stockage distant immuable) garantit la restauration.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Avant tout changement risqué, et automatiquement pour les données critiques (quotidien minimum).",
@@ -761,15 +753,13 @@ export const LEARNING_CYBERSECURITY: LearningSection[] = [
         verify: "Clé privée en `600`, dossier en `700`, `authorized_keys` en `600`.",
       },
       {
+        kind: "text",
+        text: "Chaque utilisateur, service et fichier ne reçoit que les droits strictement nécessaires — ni plus.",
+      },
+      {
         kind: "fields",
         title: "Le principe du moindre privilège",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque utilisateur, service et fichier ne reçoit que les droits strictement nécessaires — ni plus.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "`chmod 777` « pour que ça marche » : on ouvre en écriture à tout le monde au lieu de comprendre quel utilisateur a besoin d'accéder.",

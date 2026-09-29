@@ -25,20 +25,17 @@ export const LEARNING_GOVERNANCE: LearningSection[] = [
         text: "La gouvernance de la sécurité de l'information, c'est l'ensemble des processus par lesquels une organisation décide de son niveau de sécurité, l'organise, le vérifie et en rend compte : gestion des risques, politiques écrites, conformité réglementaire, audits. Là où la technique répond à « comment on se protège », la gouvernance répond à « sommes-nous suffisamment protégés, et qui en décide ? ».",
       },
       {
+        kind: "text",
+        text: "Décider rationnellement où investir en sécurité, l'écrire, le faire appliquer, puis le vérifier — en boucle.",
+      },
+      {
+        kind: "text",
+        text: "La technique seule ne passe pas à l'échelle : sans arbitrage, on sécurise au hasard (trop ici, rien là) ; sans écrit, rien n'est vérifiable ; sans conformité, l'amende ou l'interdiction d'exercer frappe — NIS2 et DORA l'ont rendu obligatoire pour des pans entiers de l'économie.",
+      },
+      {
         kind: "fields",
-        title: "La gouvernance en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Décider rationnellement où investir en sécurité, l'écrire, le faire appliquer, puis le vérifier — en boucle.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "La technique seule ne passe pas à l'échelle : sans arbitrage, on sécurise au hasard (trop ici, rien là) ; sans écrit, rien n'est vérifiable ; sans conformité, l'amende ou l'interdiction d'exercer frappe — NIS2 et DORA l'ont rendu obligatoire pour des pans entiers de l'économie.",
-          },
-          {
+        title: "La gouvernance : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès qu'une organisation dépasse quelques personnes ou traite des données sensibles : même une petite structure a besoin d'un minimum écrit (qui décide, que protège-t-on, que fait-on en cas d'incident).",

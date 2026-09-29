@@ -414,24 +414,21 @@ export const LEARNING_CSS_ANIMATIONS: LearningSection[] = [
       "Ce qui déclenche vraiment une transition — et ses limites.",
     blocks: [
       {
+        kind: "text",
+        text: "Une transition anime le changement d'une propriété entre deux valeurs calculées, quand ce changement est déclenché par un nouvel état (`:hover`, classe ajoutée/retirée, media query).",
+      },
+      {
+        kind: "text",
+        text: "Sans transition, tout changement d'état est instantané et brutal : l'œil perd le fil (« où est passé ce panneau ? »). La transition préserve la continuité visuelle avec une seule déclaration.",
+      },
+      {
+        kind: "text",
+        text: "Changements d'état binaires : survol, focus, ouverture/fermeture, sélection, validation. Dès qu'il faut une séquence multi-étapes ou une boucle, passez aux keyframes.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une transition anime le changement d'une propriété entre deux valeurs calculées, quand ce changement est déclenché par un nouvel état (`:hover`, classe ajoutée/retirée, media query).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans transition, tout changement d'état est instantané et brutal : l'œil perd le fil (« où est passé ce panneau ? »). La transition préserve la continuité visuelle avec une seule déclaration.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Changements d'état binaires : survol, focus, ouverture/fermeture, sélection, validation. Dès qu'il faut une séquence multi-étapes ou une boucle, passez aux keyframes.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -459,24 +456,21 @@ export const LEARNING_CSS_ANIMATIONS: LearningSection[] = [
       "Séquences multi-étapes, boucles et chorégraphies.",
     blocks: [
       {
+        kind: "text",
+        text: "`@keyframes` décrit les valeurs d'une ou plusieurs propriétés à des pourcentages de progression, que le navigateur interpole dans l'ordre.",
+      },
+      {
+        kind: "text",
+        text: "Certains mouvements ne sont pas des allers-retours A→B : rebond, vague, séquence d'apparition en plusieurs temps, boucle continue. Les keyframes expriment ces chorégraphies.",
+      },
+      {
+        kind: "text",
+        text: "Loaders, pulsations, animations d'entrée complexes, effets en boucle, séquences à plus de deux étapes.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`@keyframes` décrit les valeurs d'une ou plusieurs propriétés à des pourcentages de progression, que le navigateur interpole dans l'ordre.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certains mouvements ne sont pas des allers-retours A→B : rebond, vague, séquence d'apparition en plusieurs temps, boucle continue. Les keyframes expriment ces chorégraphies.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Loaders, pulsations, animations d'entrée complexes, effets en boucle, séquences à plus de deux étapes.",
-          },
           {
             label: "Comment ça fonctionne",
             value:

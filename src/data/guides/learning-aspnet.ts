@@ -28,24 +28,21 @@ export const LEARNING_ASPNET: LearningSection[] = [
         text: "Point essentiel : ASP.NET Core est la réécriture moderne et multiplateforme de l'ancien ASP.NET (lié à Windows et au .NET Framework). Le « Core » signale cette rupture : un framework modulaire, léger, où vous n'embarquez que ce dont vous avez besoin, servi par le serveur web intégré Kestrel.",
       },
       {
+        kind: "text",
+        text: "ASP.NET Core reçoit des requêtes HTTP, les fait passer dans un pipeline de middlewares, puis les confie à votre code (un endpoint ou un contrôleur) qui produit une réponse.",
+      },
+      {
+        kind: "text",
+        text: "L'ancien ASP.NET était lié à Windows et à IIS, lourd et difficile à tester. ASP.NET Core répond au besoin d'un framework web .NET rapide, multiplateforme, modulaire et adapté au cloud et aux conteneurs.",
+      },
+      {
+        kind: "text",
+        text: "API REST, backends d'applications web et mobiles, applications métier, microservices, applications temps réel. Pour un site vitrine statique, un générateur de site statique suffit.",
+      },
+      {
         kind: "fields",
-        title: "ASP.NET Core en une phrase, par angle",
+        title: "ASP.NET Core : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "ASP.NET Core reçoit des requêtes HTTP, les fait passer dans un pipeline de middlewares, puis les confie à votre code (un endpoint ou un contrôleur) qui produit une réponse.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "L'ancien ASP.NET était lié à Windows et à IIS, lourd et difficile à tester. ASP.NET Core répond au besoin d'un framework web .NET rapide, multiplateforme, modulaire et adapté au cloud et aux conteneurs.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "API REST, backends d'applications web et mobiles, applications métier, microservices, applications temps réel. Pour un site vitrine statique, un générateur de site statique suffit.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -596,15 +593,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Les deux styles s'exécutent sur le même pipeline et offrent les mêmes capacités ; ils diffèrent par l'organisation du code, pas par la puissance.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les deux styles s'exécutent sur le même pipeline et offrent les mêmes capacités ; ils diffèrent par l'organisation du code, pas par la puissance.",
-          },
-          {
+        fields: [          {
             label: "Quand choisir les Minimal APIs",
             value:
               "Petite API, microservice, prototype à livrer vite, équipe réduite. Exemple : un webhook qui reçoit un événement et l'enregistre — dix lignes suffisent.",
@@ -631,15 +626,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
       "Le routing associe une URL à votre code : modèles de route, paramètres et contraintes.",
     blocks: [
       {
+        kind: "text",
+        text: "Le routing compare l'URL entrante aux modèles déclarés (`/produits/{id}`) et extrait les valeurs des segments entre accolades pour les passer à votre code.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le routing compare l'URL entrante aux modèles déclarés (`/produits/{id}`) et extrait les valeurs des segments entre accolades pour les passer à votre code.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "Chaque `MapGet`/`MapPost` (ou attribut `[HttpGet]`) enregistre un modèle. À la réception d'une requête, le routeur trouve le premier modèle compatible, convertit les segments au type des paramètres, et exécute le code associé.",
@@ -726,15 +719,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
       "Le framework convertit automatiquement les données de la requête en objets C# : d'où vient chaque valeur, et comment la valider.",
     blocks: [
       {
+        kind: "text",
+        text: "Le model binding cherche chaque paramètre d'action dans la route, la query string, les en-têtes puis le corps, et le convertit au type C# attendu.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le model binding cherche chaque paramètre d'action dans la route, la query string, les en-têtes puis le corps, et le convertit au type C# attendu.",
-          },
-          {
+        fields: [          {
             label: "Les sources explicites",
             value:
               "`[FromRoute]` (segment d'URL), `[FromQuery]` (`?page=2`), `[FromBody]` (JSON du corps), `[FromHeader]`, `[FromForm]` (formulaire). À préciser quand l'inférence automatique ne suffit pas.",
@@ -868,15 +859,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "app.Use(async (context, next) =>\n{\n    var debut = DateTime.UtcNow; // avant : la requête arrive\n    await next(context);          // passe au maillon suivant\n    var duree = DateTime.UtcNow - debut; // après : la réponse repart\n    Console.WriteLine($\"{context.Request.Path} → {duree.TotalMilliseconds:F0} ms\");\n});",
       },
       {
+        kind: "text",
+        text: "Un middleware est une fonction qui reçoit le contexte HTTP et un délégué `next` : elle agit avant, appelle `next` pour continuer, puis agit après.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un middleware est une fonction qui reçoit le contexte HTTP et un délégué `next` : elle agit avant, appelle `next` pour continuer, puis agit après.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est puissant",
             value:
               "Tout ce qui est transversal (logs, erreurs, sécurité, CORS) s'écrit une fois comme middleware au lieu d'être dupliqué dans chaque endpoint.",
@@ -924,15 +913,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "if (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage(); // page détaillée, réservée au développeur\n}\nelse\n{\n    app.UseExceptionHandler(\"/erreur\"); // en prod : réponse générique + log serveur\n}\n\n// L'endpoint /erreur renvoie un ProblemDetails standard :\napp.Map(\"/erreur\", () => Results.Problem(\n    title: \"Une erreur inattendue est survenue.\",\n    statusCode: 500));",
       },
       {
+        kind: "text",
+        text: "Une exception non gérée est interceptée par le middleware d'exceptions, journalisée côté serveur, et transformée en réponse HTTP sûre pour le client.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une exception non gérée est interceptée par le middleware d'exceptions, journalisée côté serveur, et transformée en réponse HTTP sûre pour le client.",
-          },
-          {
+        fields: [          {
             label: "ProblemDetails, le standard",
             value:
               "Format JSON normalisé (RFC 7807) : `title`, `status`, `detail`, `instance`. Les clients savent le parser ; préférez-le aux messages d'erreur artisanaux.",
@@ -975,15 +962,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "{\n  \"Logging\": {\n    \"LogLevel\": { \"Default\": \"Information\", \"Microsoft.AspNetCore\": \"Warning\" }\n  },\n  \"AllowedHosts\": \"*\",\n  \"ConnectionStrings\": {\n    \"Boutique\": \"Data Source=boutique.db\"\n  },\n  \"Expedition\": { \"DelaiJours\": 3 }\n}",
       },
       {
+        kind: "text",
+        text: "La configuration est une superposition de sources : `appsettings.json`, puis `appsettings.{Environnement}.json`, puis variables d'environnement, puis secrets — chaque couche surcharge la précédente.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La configuration est une superposition de sources : `appsettings.json`, puis `appsettings.{Environnement}.json`, puis variables d'environnement, puis secrets — chaque couche surcharge la précédente.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi cette superposition",
             value:
               "Le même code tourne en local, en test et en production avec des réglages différents (base locale vs base managée). Sans ce système, il faudrait recompiler pour changer d'environnement.",
@@ -1039,15 +1024,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "public class ProduitsController : ControllerBase\n{\n    private readonly ILogger<ProduitsController> _logger;\n    public ProduitsController(ILogger<ProduitsController> log) => _logger = log;\n\n    [HttpGet(\"{id:int}\")]\n    public async Task<ActionResult<Produit>> Un(int id)\n    {\n        _logger.LogInformation(\"Lecture du produit {ProduitId}\", id);\n        var produit = await _db.Produits.FindAsync(id);\n        if (produit is null)\n        {\n            _logger.LogWarning(\"Produit {ProduitId} introuvable\", id);\n            return NotFound();\n        }\n        return Ok(produit);\n    }\n}",
       },
       {
+        kind: "text",
+        text: "`ILogger<T>` écrit des événements horodatés et structurés (placeholders `{ProduitId}` interrogeables) vers la console, des fichiers ou un service centralisé.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`ILogger<T>` écrit des événements horodatés et structurés (placeholders `{ProduitId}` interrogeables) vers la console, des fichiers ou un service centralisé.",
-          },
-          {
+        fields: [          {
             label: "Les niveaux, du plus verbeux au plus grave",
             value:
               "`Trace` → `Debug` → `Information` → `Warning` → `Error` → `Critical`. On règle le seuil par environnement : `Information` en prod, `Debug` en local.",
@@ -1089,15 +1072,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
       "Parler aux bases de données en C# plutôt qu'en SQL brut : le rôle d'EF Core et son vocabulaire.",
     blocks: [
       {
+        kind: "text",
+        text: "Entity Framework Core est l'ORM officiel de .NET : il traduit vos classes C# en tables et vos requêtes LINQ en SQL, et suit les modifications pour les enregistrer.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Entity Framework Core est l'ORM officiel de .NET : il traduit vos classes C# en tables et vos requêtes LINQ en SQL, et suit les modifications pour les enregistrer.",
-          },
-          {
+        fields: [          {
             label: "Le vocabulaire",
             value:
               "`DbContext` = la session de travail avec la base (requêtes + suivi des changements). `DbSet<Produit>` = la table des produits vue depuis C#. Entité = une classe persistée. Migration = un script versionné qui fait évoluer le schéma.",
@@ -1214,15 +1195,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "// Filtre + tri exécutés CÔTÉ BASE (un seul aller-retour SQL) :\nvar page = await db.Produits\n    .Where(p => p.Prix < 100)\n    .OrderBy(p => p.Nom)\n    .Skip(20).Take(10)\n    .AsNoTracking() // lecture seule : pas de suivi, moins de mémoire\n    .ToListAsync();\n\n// Chargement d'une entité SUIVIE pour la modifier :\nvar produit = await db.Produits.FindAsync(id);\nproduit.Prix = 99; // le contexte a détecté le changement\nawait db.SaveChangesAsync(); // génère l'UPDATE",
       },
       {
+        kind: "text",
+        text: "LINQ construit la requête en mémoire, mais rien ne part vers la base tant que vous n'appelez pas `ToListAsync()`, `FirstAsync()` ou `SaveChangesAsync()` (exécution différée).",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "LINQ construit la requête en mémoire, mais rien ne part vers la base tant que vous n'appelez pas `ToListAsync()`, `FirstAsync()` ou `SaveChangesAsync()` (exécution différée).",
-          },
-          {
+        fields: [          {
             label: "Le suivi des changements",
             value:
               "Par défaut, EF Core « suit » les entités chargées pour détecter les modifications au `SaveChanges`. En lecture seule (listes, rapports), `AsNoTracking()` désactive ce suivi : moins de mémoire, plus rapide.",
@@ -1259,15 +1238,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
       "Qui êtes-vous ? Les mécanismes pour identifier l'appelant d'une API.",
     blocks: [
       {
+        kind: "text",
+        text: "L'authentification vérifie l'identité de l'appelant (via un token, un cookie, une clé) et construit un « principal » (utilisateur + revendications) que le reste du pipeline peut consulter.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'authentification vérifie l'identité de l'appelant (via un token, un cookie, une clé) et construit un « principal » (utilisateur + revendications) que le reste du pipeline peut consulter.",
-          },
-          {
+        fields: [          {
             label: "Les mécanismes courants",
             value:
               "JWT (jeton signé, standard pour les API consommées par mobile/SPA), cookies (applications web classiques avec pages), clés d'API (intégrations machine-à-machine simples).",
@@ -1315,15 +1292,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "[ApiController]\n[Route(\"api/[controller]\")]\n[Authorize] // tout le contrôleur exige un utilisateur authentifié\npublic class CommandesController : ControllerBase\n{\n    [HttpGet]\n    public IActionResult MesCommandes()\n    {\n        // L'identité de l'appelant :\n        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);\n        // … retourne les commandes de cet utilisateur\n        return Ok(/* … */);\n    }\n\n    [AllowAnonymous] // exception : cette action reste publique\n    [HttpGet(\"publiques\")]\n    public IActionResult Catalogue() => Ok(/* … */);\n\n    [Authorize(Roles = \"Admin\")] // seuls les admins\n    [HttpDelete(\"{id:int}\")]\n    public IActionResult Supprimer(int id) => NoContent();\n}",
       },
       {
+        kind: "text",
+        text: "L'autorisation évalue des règles (authentifié ? rôle requis ? condition métier ?) sur l'identité construite par l'authentification, et répond `401` (non authentifié) ou `403` (interdit).",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'autorisation évalue des règles (authentifié ? rôle requis ? condition métier ?) sur l'identité construite par l'authentification, et répond `401` (non authentifié) ou `403` (interdit).",
-          },
-          {
+        fields: [          {
             label: "Rôles vs policies",
             value:
               "Les rôles (`Admin`, `Vendeur`) sont simples et suffisent souvent. Les policies (`RequireClaim`, exigences personnalisées) expriment des règles métier fines : « l'auteur de la commande ou un admin ».",
@@ -1364,20 +1339,17 @@ export const LEARNING_ASPNET: LearningSection[] = [
         text: "ASP.NET Core Identity est la brique officielle pour gérer des comptes utilisateurs : inscription, hachage des mots de passe, confirmation d'e-mail, réinitialisation, double authentification, rôles. Il s'appuie sur Entity Framework Core pour stocker utilisateurs et rôles.",
       },
       {
+        kind: "text",
+        text: "Identity fournit les tables (`AspNetUsers`, `AspNetRoles`…), les API (`UserManager`, `SignInManager`) et les pages par défaut pour tout le cycle de vie d'un compte.",
+      },
+      {
+        kind: "text",
+        text: "Application avec inscription/connexion d'utilisateurs, gestion des rôles, récupération de mot de passe : tout ce qui est fastidieux et risqué à réinventer.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Identity fournit les tables (`AspNetUsers`, `AspNetRoles`…), les API (`UserManager`, `SignInManager`) et les pages par défaut pour tout le cycle de vie d'un compte.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Application avec inscription/connexion d'utilisateurs, gestion des rôles, récupération de mot de passe : tout ce qui est fastidieux et risqué à réinventer.",
-          },
-          {
+        fields: [          {
             label: "Quand s'en passer",
             value:
               "API pure consommée par un frontend qui délègue l'authentification (fournisseur externe, JWT émis par un autre service) : un simple bearer JWT suffit.",
@@ -1540,15 +1512,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
           "`./publish` contient `BoutiqueApi.dll` : le serveur lancera `dotnet BoutiqueApi.dll`.",
       },
       {
+        kind: "text",
+        text: "Déployer, c'est copier l'artefact publié sur un serveur (ou dans un conteneur) qui possède le runtime .NET, avec la bonne configuration d'environnement.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Déployer, c'est copier l'artefact publié sur un serveur (ou dans un conteneur) qui possède le runtime .NET, avec la bonne configuration d'environnement.",
-          },
-          {
+        fields: [          {
             label: "Les environnements",
             value:
               "`ASPNETCORE_ENVIRONMENT=Production` active `appsettings.Production.json` et désactive la page d'exception détaillée. Trois environnements minimum : Development, Staging, Production.",
@@ -1601,15 +1571,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "var produits = app.MapGroup(\"/api/produits\"); // préfixe commun\n\nproduits.MapGet(\"/\", async (BoutiqueContext db) =>\n    TypedResults.Ok(await db.Produits.AsNoTracking().ToListAsync()));\n\nproduits.MapGet(\"/{id:int}\", async (int id, BoutiqueContext db) =>\n    await db.Produits.FindAsync(id) is Produit p\n        ? Results<Ok<Produit>, NotFound>.Ok(p)   // 200 typé\n        : Results<Ok<Produit>, NotFound>.NotFound()); // 404 typé\n\nproduits.MapPost(\"/\", async (CreerProduitDto dto, BoutiqueContext db) =>\n{\n    var produit = new Produit { Nom = dto.Nom, Prix = dto.Prix };\n    db.Produits.Add(produit);\n    await db.SaveChangesAsync();\n    return TypedResults.Created($\"/api/produits/{produit.Id}\", produit);\n}).AddEndpointFilter(async (context, next) =>\n{\n    // Filtre : s'exécute autour de l'endpoint (validation, logging…).\n    return await next(context);\n});",
       },
       {
+        kind: "text",
+        text: "`MapGroup` factorise préfixes et conventions, `TypedResults` déclare les réponses possibles (utile pour la documentation OpenAPI), les filtres ajoutent un comportement transversal.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`MapGroup` factorise préfixes et conventions, `TypedResults` déclare les réponses possibles (utile pour la documentation OpenAPI), les filtres ajoutent un comportement transversal.",
-          },
-          {
+        fields: [          {
             label: "L'injection dans les endpoints",
             value:
               "Un paramètre typé `BoutiqueContext db` ou `ILogger` est résolu automatiquement par l'injection de dépendances : pas de constructeur à écrire en Minimal API.",
@@ -1641,15 +1609,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
       "Le `async` partout, le cache là où ça compte : les réflexes de performance d'une API .NET.",
     blocks: [
       {
+        kind: "text",
+        text: "ASP.NET Core est conçu pour l'asynchrone : `async`/`await` libère les threads pendant les attentes (base, réseau), et le cache évite de recalculer ce qui change peu.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "ASP.NET Core est conçu pour l'asynchrone : `async`/`await` libère les threads pendant les attentes (base, réseau), et le cache évite de recalculer ce qui change peu.",
-          },
-          {
+        fields: [          {
             label: "`async` tout le long",
             value:
               "Une action `async` qui `await` une requête base ne bloque aucun thread en attendant : le serveur traite d'autres requêtes entre-temps. `.Result` ou `.Wait()` cassent ce modèle (risque d'interblocage).",
@@ -1708,20 +1674,17 @@ export const LEARNING_ASPNET: LearningSection[] = [
         code: "public class NettoyageService : BackgroundService\n{\n    protected override async Task ExecuteAsync(CancellationToken stoppingToken)\n    {\n        // Tourne jusqu'à l'arrêt de l'application.\n        while (!stoppingToken.IsCancellationRequested)\n        {\n            await PurgerLesPaniersAbandonnesAsync(stoppingToken);\n            // Attente annulable : l'arrêt reste propre.\n            await Task.Delay(TimeSpan.FromHours(1), stoppingToken);\n        }\n    }\n}\n\n// Enregistrement (Program.cs) — un Singleton géré par l'hôte :\nbuilder.Services.AddHostedService<NettoyageService>();",
       },
       {
+        kind: "text",
+        text: "`BackgroundService` (via `IHostedService`) exécute une boucle de travail en parallèle du serveur web, démarrée et arrêtée proprement avec l'application.",
+      },
+      {
+        kind: "text",
+        text: "Tâches périodiques (purge, rapports), consommation d'une file de messages, pré-chargement de cache. Pour du « fire and forget » depuis une requête, préférez une vraie file d'attente.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`BackgroundService` (via `IHostedService`) exécute une boucle de travail en parallèle du serveur web, démarrée et arrêtée proprement avec l'application.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Tâches périodiques (purge, rapports), consommation d'une file de messages, pré-chargement de cache. Pour du « fire and forget » depuis une requête, préférez une vraie file d'attente.",
-          },
-          {
+        fields: [          {
             label: "Le piège du scope",
             value:
               "Le service est un Singleton : il ne peut pas injecter directement un `DbContext` (Scoped). Better : injecter `IServiceScopeFactory` et créer un scope à chaque itération.",
@@ -1748,15 +1711,13 @@ export const LEARNING_ASPNET: LearningSection[] = [
       "Écrire l'interface web en C# plutôt qu'en JavaScript : ce que Blazor propose, et quand c'est pertinent.",
     blocks: [
       {
+        kind: "text",
+        text: "Blazor est le framework frontend d'ASP.NET Core : des composants UI écrits en C# (syntaxe Razor), exécutés soit sur le serveur, soit dans le navigateur via WebAssembly.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Blazor est le framework frontend d'ASP.NET Core : des composants UI écrits en C# (syntaxe Razor), exécutés soit sur le serveur, soit dans le navigateur via WebAssembly.",
-          },
-          {
+        fields: [          {
             label: "Les modèles d'hébergement",
             value:
               "Blazor Server : l'UI tourne sur le serveur, les interactions transitent par SignalR — démarrage instantané, mais une connexion permanente. Blazor WebAssembly : l'app tourne dans le navigateur — fonctionne hors-ligne, mais téléchargement initial plus lourd.",
@@ -1797,20 +1758,17 @@ export const LEARNING_ASPNET: LearningSection[] = [
         text: "Razor Pages (`dotnet new webapp`) est le modèle recommandé par Microsoft pour les applications web classiques rendues côté serveur : chaque page est un fichier `.cshtml` (markup + code C#) avec sa classe associée. Moins de cérémonie que le trio Controllers/Views du MVC historique, mais le même moteur de rendu.",
       },
       {
+        kind: "text",
+        text: "Une page = une URL : le fichier `Pages/Contact.cshtml` répond sur `/Contact`, avec son code dans `Contact.cshtml.cs` (le « page model »).",
+      },
+      {
+        kind: "text",
+        text: "Sites à contenu avec formulaires (intranet, back-office, sites vitrines dynamiques), SEO naturel grâce au rendu serveur, équipe qui préfère le C# au JavaScript.",
+      },
+      {
         kind: "fields",
         title: "En une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une page = une URL : le fichier `Pages/Contact.cshtml` répond sur `/Contact`, avec son code dans `Contact.cshtml.cs` (le « page model »).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Sites à contenu avec formulaires (intranet, back-office, sites vitrines dynamiques), SEO naturel grâce au rendu serveur, équipe qui préfère le C# au JavaScript.",
-          },
-          {
+        fields: [          {
             label: "Par rapport à une API + SPA",
             value:
               "Rendu serveur : HTML complet dès la première réponse (bon pour le SEO et les connexions lentes), mais chaque interaction recharge ou nécessite du JavaScript complémentaire. L'API + SPA inverse le compromis.",

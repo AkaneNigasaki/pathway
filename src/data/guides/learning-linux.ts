@@ -28,24 +28,21 @@ export const LEARNING_LINUX: LearningSection[] = [
         text: "Une distribution Linux (ou « distro ») est un assemblage prêt à l'emploi : le noyau Linux + les outils GNU + un gestionnaire de paquets + un environnement (serveur sans interface ou bureau graphique). Quand on dit « j'utilise Ubuntu » ou « le serveur tourne sous Debian », on parle de la distribution, pas du noyau seul.",
       },
       {
+        kind: "text",
+        text: "Linux est un noyau open source autour duquel des distributions construisent des systèmes complets, du serveur au bureau.",
+      },
+      {
+        kind: "text",
+        text: "Offrir un système de type Unix libre, stable et modifiable : les serveurs du web, les supercalculateurs et les systèmes embarqués en avaient besoin sans dépendre d'un éditeur propriétaire.",
+      },
+      {
+        kind: "text",
+        text: "Serveurs web et applicatifs, développement (conteneurs, CI/CD), administration système, cybersécurité, systèmes embarqués. Pour un usage bureautique classique, n'importe quel OS fait l'affaire.",
+      },
+      {
         kind: "fields",
-        title: "Linux en une phrase, par angle",
+        title: "Linux : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Linux est un noyau open source autour duquel des distributions construisent des systèmes complets, du serveur au bureau.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Offrir un système de type Unix libre, stable et modifiable : les serveurs du web, les supercalculateurs et les systèmes embarqués en avaient besoin sans dépendre d'un éditeur propriétaire.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Serveurs web et applicatifs, développement (conteneurs, CI/CD), administration système, cybersécurité, systèmes embarqués. Pour un usage bureautique classique, n'importe quel OS fait l'affaire.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -87,24 +84,21 @@ export const LEARNING_LINUX: LearningSection[] = [
         text: "Le terminal (ou console) est une fenêtre où vous dialoguez avec le système en tapant des commandes textuelles, interprétées par un programme appelé le shell (souvent `bash` ou `zsh`). Sur un serveur, il n'y a généralement pas d'interface graphique : le terminal est la seule interface disponible. C'est aussi pour cela que les développeurs l'utilisent au quotidien, même sur leur poste.",
       },
       {
+        kind: "text",
+        text: "Le terminal permet de contrôler le système au clavier, commande par commande, avec une précision que le clic ne permet pas.",
+      },
+      {
+        kind: "text",
+        text: "Les interfaces graphiques ne montrent qu'une fraction des possibilités et ne s'automatisent pas. Une commande se répète, se combine avec d'autres et s'exécute à distance sur des centaines de serveurs.",
+      },
+      {
+        kind: "text",
+        text: "Administration de serveurs, déploiement, scripts, Git, Docker, traitement de fichiers en masse, diagnostic réseau. Pour renommer un fichier isolé, l'explorateur graphique reste parfait.",
+      },
+      {
         kind: "fields",
-        title: "Le terminal en une phrase, par angle",
+        title: "Le terminal : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le terminal permet de contrôler le système au clavier, commande par commande, avec une précision que le clic ne permet pas.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les interfaces graphiques ne montrent qu'une fraction des possibilités et ne s'automatisent pas. Une commande se répète, se combine avec d'autres et s'exécute à distance sur des centaines de serveurs.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Administration de serveurs, déploiement, scripts, Git, Docker, traitement de fichiers en masse, diagnostic réseau. Pour renommer un fichier isolé, l'explorateur graphique reste parfait.",
-          },
           {
             label: "Erreur fréquente",
             value:
@@ -215,15 +209,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Prenez la distribution que votre entourage ou votre hébergeur utilise : l'aide disponible compte plus que les différences techniques.",
+      },
+      {
         kind: "fields",
         title: "Choisir sans se tromper",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Prenez la distribution que votre entourage ou votre hébergeur utilise : l'aide disponible compte plus que les différences techniques.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi ces trois familles",
             value:
               "Elles couvrent la quasi-totalité des serveurs et postes Linux. Apprendre `apt` vous servira sur Debian et Ubuntu ; `dnf` sur toute la famille Red Hat.",
@@ -336,15 +328,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "`pwd` affiche le dossier parent du précédent.",
       },
       {
+        kind: "text",
+        text: "`pwd` dit où vous êtes, `ls` montre ce qu'il y a, `cd` vous y emmène.",
+      },
+      {
         kind: "fields",
-        title: "Navigation en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`pwd` dit où vous êtes, `ls` montre ce qu'il y a, `cd` vous y emmène.",
-          },
-          {
+        title: "Navigation : l'essentiel",
+        fields: [          {
             label: "Pourquoi trois commandes",
             value:
               "Parce que le shell a une « position » : chaque commande s'exécute relativement au dossier courant. Savoir où l'on est évite de créer ou supprimer des fichiers au mauvais endroit.",
@@ -404,15 +394,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "`ls` ne montre plus `notes.txt` ici ; `ls archives/` le montre.",
       },
       {
+        kind: "text",
+        text: "`mkdir` crée, `touch` initialise, `cp` duplique, `mv` déplace ou renomme.",
+      },
+      {
         kind: "fields",
         title: "Copie et déplacement, points d'attention",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`mkdir` crée, `touch` initialise, `cp` duplique, `mv` déplace ou renomme.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "`cp` sans `-r` sur un dossier échoue ou copie partiellement selon les systèmes. Réflexe : dossier → toujours `-r`.",
@@ -459,15 +447,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         why: "`-f` (force) supprime les demandes de confirmation, utile dans les scripts. Combiné à `-r`, c'est l'arme la plus puissante du shell — à manier avec une prudence extrême.",
       },
       {
+        kind: "text",
+        text: "`rm` efface sans corbeille : vérifiez toujours le chemin avant d'appuyer sur Entrée.",
+      },
+      {
         kind: "fields",
-        title: "rm en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`rm` efface sans corbeille : vérifiez toujours le chemin avant d'appuyer sur Entrée.",
-          },
-          {
+        title: "rm : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est irréversible",
             value:
               "Le shell ne déplace rien vers une corbeille : il demande au système de libérer les blocs du fichier. La récupération exige des outils spécialisés et n'est jamais garantie.",
@@ -618,15 +604,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Seules les lignes contenant `.txt` s'affichent.",
       },
       {
+        kind: "text",
+        text: "`>` écrit dans un fichier, `>>` ajoute, `|` connecte des commandes entre elles.",
+      },
+      {
         kind: "fields",
-        title: "Redirection et pipes en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`>` écrit dans un fichier, `>>` ajoute, `|` connecte des commandes entre elles.",
-          },
-          {
+        title: "Redirection et pipes : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est puissant",
             value:
               "Chaque outil Unix fait une chose simple ; les pipes les assemblent en traitements complexes sans écrire de programme. C'est la philosophie Unix : petits outils composables.",
@@ -672,20 +656,17 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Des chemins comme `/etc/ssh` apparaissent.",
       },
       {
+        kind: "text",
+        text: "`find` explore une arborescence et filtre par nom, type, date ou taille.",
+      },
+      {
+        kind: "text",
+        text: "Fichier égaré, nettoyage (« tous les `.tmp` de plus de 30 jours »), audit (« fichiers modifiés cette semaine »). Pour chercher dans le contenu des fichiers, c'est `grep -r` (niveau 3).",
+      },
+      {
         kind: "fields",
-        title: "find en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`find` explore une arborescence et filtre par nom, type, date ou taille.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Fichier égaré, nettoyage (« tous les `.tmp` de plus de 30 jours »), audit (« fichiers modifiés cette semaine »). Pour chercher dans le contenu des fichiers, c'est `grep -r` (niveau 3).",
-          },
-          {
+        title: "find : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Oublier les guillemets autour de `*.pdf` : le shell étend le motif avant que `find` ne le voie, et la recherche ne porte que sur le dossier courant.",
@@ -726,15 +707,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "La liste des options de `cp` s'affiche en quelques lignes.",
       },
       {
+        kind: "text",
+        text: "`--help` pour un rappel rapide, `man` pour la documentation complète.",
+      },
+      {
         kind: "fields",
-        title: "Se documenter en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`--help` pour un rappel rapide, `man` pour la documentation complète.",
-          },
-          {
+        title: "Se documenter : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est fiable",
             value:
               "Ces aides sont écrites par les auteurs des outils et installées avec eux : elles correspondent toujours à la version que vous utilisez, contrairement à un article de blog de 2016.",
@@ -811,20 +790,17 @@ export const LEARNING_LINUX: LearningSection[] = [
         text: "Le noyau s'exécute en « mode noyau » : il a tous les droits sur le matériel. Vos programmes (navigateur, serveur web, shell) tournent en « mode utilisateur » avec des droits limités, et demandent des services au noyau via des appels système (ouvrir un fichier, envoyer un paquet réseau). Cette séparation protège le système : un programme qui plante ne fait pas planter la machine.",
       },
       {
+        kind: "text",
+        text: "Le noyau arbitre l'accès au matériel ; les programmes lui demandent des services au lieu d'y toucher directement.",
+      },
+      {
+        kind: "text",
+        text: "Sans arbitre, n'importe quel programme pourrait lire la mémoire d'un autre ou monopoliser le processeur. La séparation garantit stabilité et sécurité sur les systèmes multi-utilisateurs.",
+      },
+      {
         kind: "fields",
         title: "La frontière noyau/utilisateur, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le noyau arbitre l'accès au matériel ; les programmes lui demandent des services au lieu d'y toucher directement.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans arbitre, n'importe quel programme pourrait lire la mémoire d'un autre ou monopoliser le processeur. La séparation garantit stabilité et sécurité sur les systèmes multi-utilisateurs.",
-          },
-          {
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "Votre programme appelle par exemple `open()` : le processeur bascule en mode noyau, le noyau vérifie les permissions, accède au disque, puis rend la main. Des millions de ces allers-retours ont lieu chaque seconde.",
@@ -890,15 +866,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Les caractéristiques du processeur s'affichent.",
       },
       {
+        kind: "text",
+        text: "`/etc` configure, `/var` journalise, `/home` héberge les utilisateurs, `/usr` fournit les programmes.",
+      },
+      {
         kind: "fields",
-        title: "L'arborescence en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`/etc` configure, `/var` journalise, `/home` héberge les utilisateurs, `/usr` fournit les programmes.",
-          },
-          {
+        title: "L'arborescence : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Modifier un fichier sous `/usr` à la main : il appartient au gestionnaire de paquets et sera écrasé à la prochaine mise à jour. Les réglages vont dans `/etc`.",
@@ -929,15 +903,17 @@ export const LEARNING_LINUX: LearningSection[] = [
         text: "Sur un système de fichiers Linux (ext4, btrfs…), un fichier = un inode (numéro unique contenant métadonnées : taille, permissions, blocs disque) + une ou plusieurs entrées de dossier qui associent un nom à cet inode. Supprimer un nom avec `rm` ne libère l'espace que si c'était le dernier nom pointant vers l'inode.",
       },
       {
+        kind: "text",
+        text: "Le nom pointe vers l'inode, l'inode pointe vers les données : plusieurs noms peuvent partager les mêmes données.",
+      },
+      {
+        kind: "text",
+        text: "Liens symboliques partout : pointer `/usr/bin/python` vers `python3.11`, exposer une config, versionner des déploiements. Liens physiques : rares, surtout pour économiser l'espace sur des sauvegardes.",
+      },
+      {
         kind: "fields",
         title: "Inodes et liens, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le nom pointe vers l'inode, l'inode pointe vers les données : plusieurs noms peuvent partager les mêmes données.",
-          },
-          {
+        fields: [          {
             label: "Lien physique",
             value:
               "`ln original copie` crée un second nom vers le même inode : les deux noms sont équivalents, les données ne sont pas dupliquées. Ne fonctionne que sur le même système de fichiers.",
@@ -946,11 +922,6 @@ export const LEARNING_LINUX: LearningSection[] = [
             label: "Lien symbolique",
             value:
               "`ln -s cible raccourci` crée un petit fichier spécial contenant le chemin de la cible : c'est un raccourci, qui peut pointer vers un dossier ou un autre disque, et qui « casse » si la cible est supprimée.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Liens symboliques partout : pointer `/usr/bin/python` vers `python3.11`, exposer une config, versionner des déploiements. Liens physiques : rares, surtout pour économiser l'espace sur des sauvegardes.",
           },
           {
             label: "Exemple réel",
@@ -995,15 +966,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Restez sur le shell par défaut de votre système pour apprendre ; changez quand vous saurez pourquoi.",
+      },
+      {
         kind: "fields",
         title: "Choisir son shell, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Restez sur le shell par défaut de votre système pour apprendre ; changez quand vous saurez pourquoi.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Écrire un script avec des fonctionnalités `bash` (tableaux, `[[ ]]`) mais un shebang `#!/bin/sh` : sur les systèmes où `sh` = `dash`, le script échoue mystérieusement.",
@@ -1133,15 +1102,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Le résultat s'affiche à l'écran ET `cat resultats.txt` le montre.",
       },
       {
+        kind: "text",
+        text: "`0` reçoit, `1` produit, `2` se plaint : redirigez chacun indépendamment.",
+      },
+      {
         kind: "fields",
-        title: "Les trois flux en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`0` reçoit, `1` produit, `2` se plaint : redirigez chacun indépendamment.",
-          },
-          {
+        title: "Les trois flux : l'essentiel",
+        fields: [          {
             label: "Pourquoi séparer erreurs et sortie",
             value:
               "Un script qui enchaîne `programme | traitement` ne doit recevoir que des données propres sur stdout : si les erreurs s'y mélangeaient, le traitement les avalerait comme des données.",
@@ -1196,15 +1163,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "`ls -ld public/` affiche `drwxr-xr-x`.",
       },
       {
+        kind: "text",
+        text: "Symbolique (`u+x`) pour raisonner, octal (`755`) pour appliquer vite les réglages courants.",
+      },
+      {
         kind: "fields",
-        title: "chmod en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Symbolique (`u+x`) pour raisonner, octal (`755`) pour appliquer vite les réglages courants.",
-          },
-          {
+        title: "chmod : l'essentiel",
+        fields: [          {
             label: "Mémo octal",
             value:
               "`7`=rwx, `6`=rw-, `5`=r-x, `4`=r--, `0`=aucun. Les combinaisons courantes : `755` dossiers/scripts publics, `644` fichiers publics, `600` secrets personnels (clés SSH).",
@@ -1257,15 +1222,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "La liste des groupes s'affiche (`marie`, `dev`, `compta`…).",
       },
       {
+        kind: "text",
+        text: "Chaque fichier a un propriétaire et un groupe : `chown` change l'un ou l'autre, les groupes organisent la collaboration.",
+      },
+      {
         kind: "fields",
-        title: "Propriété et groupes en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque fichier a un propriétaire et un groupe : `chown` change l'un ou l'autre, les groupes organisent la collaboration.",
-          },
-          {
+        title: "Propriété et groupes : l'essentiel",
+        fields: [          {
             label: "Pourquoi deux niveaux",
             value:
               "Le propriétaire garde le contrôle fin de ses fichiers ; le groupe exprime une équipe ou un rôle (développeurs, comptables) sans multiplier les comptes.",
@@ -1315,15 +1278,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "La liste de vos autorisations s'affiche.",
       },
       {
+        kind: "text",
+        text: "`sudo` = emprunter les pouvoirs de root pour une commande, avec votre mot de passe et une trace dans les logs.",
+      },
+      {
         kind: "fields",
-        title: "sudo en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`sudo` = emprunter les pouvoirs de root pour une commande, avec votre mot de passe et une trace dans les logs.",
-          },
-          {
+        title: "sudo : l'essentiel",
+        fields: [          {
             label: "Pourquoi pas root en permanence",
             value:
               "Chaque commande en root contourne toutes les protections. Avec `sudo`, seules les commandes préfixées sont privilégiées : la surface d'erreur est réduite au minimum.",
@@ -1371,15 +1332,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Le shell remplace les motifs par les noms réels avant l'exécution : la commande ne voit jamais le `*`.",
+      },
+      {
         kind: "fields",
-        title: "Le globbing en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le shell remplace les motifs par les noms réels avant l'exécution : la commande ne voit jamais le `*`.",
-          },
-          {
+        title: "Le globbing : l'essentiel",
+        fields: [          {
             label: "Pourquoi c'est le shell qui s'en charge",
             value:
               "Ainsi tous les programmes bénéficient des jokers sans les réimplémenter : `rm`, `cp`, `ls` reçoivent simplement des listes de fichiers.",
@@ -1439,20 +1398,17 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Chaque occurrence apparaît entourée de ses voisines.",
       },
       {
+        kind: "text",
+        text: "`grep` = filtre de lignes par motif, partout : fichiers, logs, sortie d'autres commandes via pipe.",
+      },
+      {
+        kind: "text",
+        text: "Logs (« quelles erreurs ce matin ? »), code (« où est appelée cette fonction ? »), diagnostic (`dmesg | grep -i usb`). Pour des motifs complexes, passez aux expressions régulières avec `grep -E`.",
+      },
+      {
         kind: "fields",
-        title: "grep en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`grep` = filtre de lignes par motif, partout : fichiers, logs, sortie d'autres commandes via pipe.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Logs (« quelles erreurs ce matin ? »), code (« où est appelée cette fonction ? »), diagnostic (`dmesg | grep -i usb`). Pour des motifs complexes, passez aux expressions régulières avec `grep -E`.",
-          },
-          {
+        title: "grep : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Oublier `-r` et s'étonner de ne rien trouver dans les sous-dossiers, ou chercher dans un dépôt Git sans exclure `.git` (préférez alors `grep -rn --exclude-dir=.git`).",
@@ -1497,15 +1453,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Deux colonnes s'affichent : PID et nom du programme.",
       },
       {
+        kind: "text",
+        text: "`sed` transforme du texte en flux, `awk` raisonne en colonnes : deux lectures différentes des mêmes lignes.",
+      },
+      {
         kind: "fields",
-        title: "sed et awk en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`sed` transforme du texte en flux, `awk` raisonne en colonnes : deux lectures différentes des mêmes lignes.",
-          },
-          {
+        title: "sed et awk : l'essentiel",
+        fields: [          {
             label: "Quand les rencontrer",
             value:
               "Scripts d'administration, pipelines de logs, migrations de configuration en masse. Pour des transformations complexes et lisibles, un script Python est souvent préférable.",
@@ -1558,15 +1512,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Les `.tmp` ont disparu (`find . -name \"*.tmp\"` ne retourne plus rien).",
       },
       {
+        kind: "text",
+        text: "`find` filtre par nom, type, âge, taille… puis exécute une action sur chaque match.",
+      },
+      {
         kind: "fields",
-        title: "find avancé en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`find` filtre par nom, type, âge, taille… puis exécute une action sur chaque match.",
-          },
-          {
+        title: "find avancé : l'essentiel",
+        fields: [          {
             label: "Pourquoi `-exec` plutôt qu'un pipe",
             value:
               "Les noms de fichiers peuvent contenir espaces et retours à la ligne : `-exec` les transmet sans les découper, là où un pipe vers `xargs` exige des précautions (`-print0 | xargs -0`).",
@@ -1612,15 +1564,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Vos 20 dernières commandes numérotées s'affichent.",
       },
       {
+        kind: "text",
+        text: "Flèche haut pour la dernière commande, `Ctrl+R` pour retrouver n'importe quelle ancienne commande.",
+      },
+      {
         kind: "fields",
-        title: "L'historique en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Flèche haut pour la dernière commande, `Ctrl+R` pour retrouver n'importe quelle ancienne commande.",
-          },
-          {
+        title: "L'historique : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Taper un mot de passe ou un secret directement dans une commande (`curl -u user:motdepasse`) : il reste en clair dans `~/.bash_history`. Utilisez des variables d'environnement ou des fichiers de configuration.",
@@ -1670,15 +1620,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Le système liste les paquets mis à jour ; un redémarrage peut être suggéré si le noyau a changé.",
       },
       {
+        kind: "text",
+        text: "Le gestionnaire installe depuis des dépôts de confiance et gère dépendances et mises à jour.",
+      },
+      {
         kind: "fields",
-        title: "Les paquets en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le gestionnaire installe depuis des dépôts de confiance et gère dépendances et mises à jour.",
-          },
-          {
+        title: "Les paquets : l'essentiel",
+        fields: [          {
             label: "Pourquoi des dépôts plutôt que des téléchargements",
             value:
               "Les paquets des dépôts officiels sont signés et testés pour votre distribution : pas de malware déguisé, pas de DLL manquante, désinstallation propre.",
@@ -1754,15 +1702,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Le tableau se rafraîchit toutes les quelques secondes.",
       },
       {
+        kind: "text",
+        text: "`ps` observe, `kill` signale, `top` surveille : trois vues du même monde vivant.",
+      },
+      {
         kind: "fields",
-        title: "Les processus en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`ps` observe, `kill` signale, `top` surveille : trois vues du même monde vivant.",
-          },
-          {
+        title: "Les processus : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "`kill -9` en premier réflexe : les fichiers temporaires et verrous ne sont pas nettoyés, les bases de données peuvent corrompre des écritures en cours. Toujours TERM d'abord, KILL ensuite si nécessaire.",
@@ -1817,15 +1763,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Les signaux parlent aux processus, les jobs organisent vos commandes dans le terminal.",
+      },
+      {
         kind: "fields",
-        title: "Signaux et jobs en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les signaux parlent aux processus, les jobs organisent vos commandes dans le terminal.",
-          },
-          {
+        title: "Signaux et jobs : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Fermer le terminal en pensant que les jobs continuent : par défaut, ils reçoivent SIGHUP et meurent. Pour un programme qui survit à la déconnexion, utilisez `nohup`, `tmux` ou un service `systemd`.",
@@ -1877,15 +1821,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "`systemctl status nginx` montre une heure de démarrage récente.",
       },
       {
+        kind: "text",
+        text: "`systemctl` pilote les services : `status` diagnostique, `start/stop/restart` agit, `enable/disable` persiste au boot.",
+      },
+      {
         kind: "fields",
-        title: "systemd en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`systemctl` pilote les services : `status` diagnostique, `start/stop/restart` agit, `enable/disable` persiste au boot.",
-          },
-          {
+        title: "systemd : l'essentiel",
+        fields: [          {
             label: "Pourquoi un superviseur",
             value:
               "Un serveur doit redémarrer ses services après un crash ou un reboot, dans le bon ordre, avec les bonnes dépendances : c'est le travail de `systemd`, pas le vôtre à 3h du matin.",
@@ -1938,20 +1880,17 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Seules les lignes d'erreur du boot actuel s'affichent.",
       },
       {
+        kind: "text",
+        text: "`journalctl` interroge le journal système comme une base de données : par service, par temps, par gravité.",
+      },
+      {
+        kind: "text",
+        text: "Service qui ne démarre pas, comportement bizarre après une mise à jour, audit post-incident. Premier réflexe avant de modifier une configuration au hasard.",
+      },
+      {
         kind: "fields",
-        title: "journalctl en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`journalctl` interroge le journal système comme une base de données : par service, par temps, par gravité.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Service qui ne démarre pas, comportement bizarre après une mise à jour, audit post-incident. Premier réflexe avant de modifier une configuration au hasard.",
-          },
-          {
+        title: "journalctl : l'essentiel",
+        fields: [          {
             label: "Bonne pratique",
             value:
               "Lisez les logs avant d'agir : 80 % des pannes de service s'expliquent dans les 20 dernières lignes (`journalctl -u <service> -n 20`).",
@@ -1987,15 +1926,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Les 10 plus gros dossiers de la racine s'affichent, le plus lourd en premier.",
       },
       {
+        kind: "text",
+        text: "`df` dit s'il reste de la place, `du` dit qui la consomme.",
+      },
+      {
         kind: "fields",
-        title: "Le disque en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`df` dit s'il reste de la place, `du` dit qui la consomme.",
-          },
-          {
+        title: "Le disque : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Supprimer un fichier de log encore ouvert par un programme : `df` ne libère rien tant que le processus le garde ouvert. Redémarrez le service ou tronquez avec `: > /var/log/gros.log`.",
@@ -2047,15 +1984,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "La connexion s'établit sur le port indiqué.",
       },
       {
+        kind: "text",
+        text: "SSH = un terminal distant chiffré, la télécommande universelle des serveurs Linux.",
+      },
+      {
         kind: "fields",
-        title: "SSH en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "SSH = un terminal distant chiffré, la télécommande universelle des serveurs Linux.",
-          },
-          {
+        title: "SSH : l'essentiel",
+        fields: [          {
             label: "Pourquoi chiffré",
             value:
               "Tout transite (identifiants, commandes, données) dans un tunnel chiffré vérifié par clés d'hôte : à la première connexion, vérifiez l'empreinte affichée par votre hébergeur avant d'accepter.",
@@ -2112,15 +2047,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "`ls -l ~/.ssh/id_ed25519` affiche `-rw-------`.",
       },
       {
+        kind: "text",
+        text: "Privée chez vous, publique sur les serveurs : l'asymétrie cryptographique remplace les mots de passe.",
+      },
+      {
         kind: "fields",
-        title: "Les clés SSH en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Privée chez vous, publique sur les serveurs : l'asymétrie cryptographique remplace les mots de passe.",
-          },
-          {
+        title: "Les clés SSH : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Partager ou copier la clé privée sur plusieurs machines (ou pire, par email/messagerie). Une clé privée = une machine. Pour un nouvel appareil, générez une nouvelle paire.",
@@ -2168,15 +2101,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Relancez la commande : presque rien n'est transféré (« tout est à jour »).",
       },
       {
+        kind: "text",
+        text: "`scp` copie simplement via SSH ; `rsync` synchronise intelligemment et reprend là où ça s'était arrêté.",
+      },
+      {
         kind: "fields",
-        title: "Transferts en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`scp` copie simplement via SSH ; `rsync` synchronise intelligemment et reprend là où ça s'était arrêté.",
-          },
-          {
+        title: "Transferts : l'essentiel",
+        fields: [          {
             label: "Quand choisir rsync",
             value:
               "Déploiements, sauvegardes, gros dossiers : reprise sur échec, transfert différentiel, exclusion de motifs (`--exclude='.git'`). Pour un fichier isolé, `scp` suffit.",
@@ -2229,15 +2160,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Les en-têtes HTTP s'affichent, avec `HTTP/2 200` en première ligne.",
       },
       {
+        kind: "text",
+        text: "`ip` décrit la configuration, `ping` teste la route, `curl` interroge le service : du bas vers le haut.",
+      },
+      {
         kind: "fields",
-        title: "Le diagnostic réseau en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`ip` décrit la configuration, `ping` teste la route, `curl` interroge le service : du bas vers le haut.",
-          },
-          {
+        title: "Le diagnostic réseau : l'essentiel",
+        fields: [          {
             label: "Pourquoi cet ordre",
             value:
               "On isole la couche en panne : pas d'IP → config locale ; ping OK mais curl KO → le service est en cause, pas le réseau. C'est la méthode qui évite de chercher au mauvais endroit.",
@@ -2292,15 +2221,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "`nano` : l'éditeur terminal qui affiche ses raccourcis — impossible de rester coincé.",
+      },
+      {
         kind: "fields",
-        title: "nano en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`nano` : l'éditeur terminal qui affiche ses raccourcis — impossible de rester coincé.",
-          },
-          {
+        title: "nano : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Éditer un fichier système sans `sudo` puis ne pas comprendre pourquoi l'enregistrement échoue : `nano` seul ouvre en lecture seule effective. Relancez avec `sudo nano /etc/...`.",
@@ -2346,15 +2273,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Deux modes (Normal/Insertion), `:q!` pour fuir : le kit de survie tient en cinq commandes.",
+      },
+      {
         kind: "fields",
-        title: "vim en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Deux modes (Normal/Insertion), `:q!` pour fuir : le kit de survie tient en cinq commandes.",
-          },
-          {
+        title: "vim : l'essentiel",
+        fields: [          {
             label: "Pourquoi il est partout",
             value:
               "Installé par défaut sur quasiment tous les Unix, utilisable sur les connexions les plus lentes, et ouvreur par défaut de `git`, `crontab` et `visudo` : on ne peut pas l'éviter, autant le connaître.",
@@ -2418,20 +2343,17 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Le contenu de la session réapparaît tel quel.",
       },
       {
+        kind: "text",
+        text: "`tmux` découple votre travail de votre connexion : le serveur garde tout, vous partez et revenez.",
+      },
+      {
+        kind: "text",
+        text: "Déploiements longs, compilations, surveillance de logs sur serveur distant, travail réparti en plusieurs panneaux (`Ctrl+B %` divise verticalement, `Ctrl+B \"` horizontalement).",
+      },
+      {
         kind: "fields",
-        title: "tmux en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`tmux` découple votre travail de votre connexion : le serveur garde tout, vous partez et revenez.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Déploiements longs, compilations, surveillance de logs sur serveur distant, travail réparti en plusieurs panneaux (`Ctrl+B %` divise verticalement, `Ctrl+B \"` horizontalement).",
-          },
-          {
+        title: "tmux : l'essentiel",
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Multiplier les sessions sans les fermer (`tmux ls` révèle l'amas) : chacune consomme de la mémoire. Nettoyez avec `tmux kill-session -t nom`.",
@@ -2475,15 +2397,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         verify: "Le message de confirmation s'affiche et `/tmp/sauvegarde-<date>/` existe.",
       },
       {
+        kind: "text",
+        text: "Shebang + variables + commandes + `chmod +x` : un script est une session terminal rejouable.",
+      },
+      {
         kind: "fields",
-        title: "Le premier script en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Shebang + variables + commandes + `chmod +x` : un script est une session terminal rejouable.",
-          },
-          {
+        title: "Le premier script : l'essentiel",
+        fields: [          {
             label: "Pourquoi des guillemets autour des variables",
             value:
               "`\"$SOURCE\"` protège les espaces et caractères spéciaux des chemins. Sans guillemets, un dossier nommé « mes docs » serait découpé en deux arguments.",
@@ -2527,15 +2447,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         code: "#!/usr/bin/env bash\nset -euo pipefail\n\nfor img in ~/Images/*.jpg; do\n  echo \"Conversion de $img\"\n  convert \"$img\" \"${img%.jpg}.png\"\ndone\necho \"Terminé\"",
       },
       {
+        kind: "text",
+        text: "`if [ test ]` décide, `for x in liste` répète : les deux structures couvrent 90 % des scripts d'administration.",
+      },
+      {
         kind: "fields",
-        title: "Conditions et boucles en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`if [ test ]` décide, `for x in liste` répète : les deux structures couvrent 90 % des scripts d'administration.",
-          },
-          {
+        title: "Conditions et boucles : l'essentiel",
+        fields: [          {
             label: "Tests courants",
             value:
               "`-f` fichier existe, `-d` dossier existe, `-z` chaîne vide, `=` égalité de chaînes, `-eq` égalité de nombres. Toujours des espaces après `[` et avant `]` : ce sont des commandes, pas de la ponctuation.",
@@ -2573,15 +2491,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         code: "#!/usr/bin/env bash\nset -euo pipefail\n\n# $1 = premier argument, $# = nombre d'arguments\nDOSSIER=\"${1:-}\"\n\nusage() {\n  echo \"Usage: $0 <dossier>\"\n  exit 1\n}\n\n[ -z \"$DOSSIER\" ] && usage\n[ -d \"$DOSSIER\" ] || { echo \"Dossier introuvable\" >&2; exit 1; }\n\nsauvegarder() {\n  local src=\"$1\"\n  local dest=\"/tmp/$(basename \"$src\")-$(date +%Y%m%d).tar.gz\"\n  tar -czf \"$dest\" \"$src\"\n  echo \"Archive créée : $dest\"\n}\n\nsauvegarder \"$DOSSIER\"",
       },
       {
+        kind: "text",
+        text: "`$1`, `$2` reçoivent les arguments, les fonctions découpent la logique, `exit N` signale le résultat.",
+      },
+      {
         kind: "fields",
-        title: "Arguments et fonctions en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`$1`, `$2` reçoivent les arguments, les fonctions découpent la logique, `exit N` signale le résultat.",
-          },
-          {
+        title: "Arguments et fonctions : l'essentiel",
+        fields: [          {
             label: "Variables spéciales",
             value:
               "`$0` nom du script, `$1…$9` arguments, `$#` leur nombre, `$@` tous les arguments, `$?` code de sortie de la dernière commande (0 = succès).",
@@ -2646,15 +2562,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Cinq champs temporels + une commande = une tâche qui se répète sans vous.",
+      },
+      {
         kind: "fields",
-        title: "cron en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Cinq champs temporels + une commande = une tâche qui se répète sans vous.",
-          },
-          {
+        title: "cron : l'essentiel",
+        fields: [          {
             label: "Les cinq champs",
             value:
               "Minute (0-59), heure (0-23), jour du mois (1-31), mois (1-12), jour de semaine (0-7, 0 et 7 = dimanche). `*` = toutes les valeurs, `*/15` = tous les quarts d'heure.",
@@ -3081,15 +2995,13 @@ export const LEARNING_LINUX: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "`man` d'abord (toujours à jour), wiki Arch pour la profondeur, TLCL pour l'apprentissage structuré.",
+      },
+      {
         kind: "fields",
         title: "Bien utiliser les ressources",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`man` d'abord (toujours à jour), wiki Arch pour la profondeur, TLCL pour l'apprentissage structuré.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value:
               "Face à une commande inconnue trouvée en ligne : `explainshell.com` pour la décrypter, `man` pour vérifier sur votre version, jamais d'exécution aveugle avec `sudo`.",

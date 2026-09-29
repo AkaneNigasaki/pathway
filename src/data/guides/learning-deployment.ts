@@ -27,20 +27,17 @@ export const LEARNING_DEPLOYMENT: LearningSection[] = [
         text: "Pourquoi ça existe : un modèle qui reste dans un notebook ne crée aucune valeur. Le déploiement est le pont entre la data science et le produit — et c'est là que les vrais problèmes apparaissent : les données de production diffèrent de l'entraînement (dérive), la latence compte, les versions doivent coexister, et le modèle doit être surveillé comme n'importe quel service.",
       },
       {
+        kind: "text",
+        text: "Packager un modèle entraîné, l'exposer comme service, le déployer de façon sûre et surveiller sa qualité en production.",
+      },
+      {
+        kind: "text",
+        text: "Transformer une expérience de data science en valeur produit : prédictions fiables, disponibles et mesurées.",
+      },
+      {
         kind: "fields",
-        title: "Le déploiement ML en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Packager un modèle entraîné, l'exposer comme service, le déployer de façon sûre et surveiller sa qualité en production.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Transformer une expérience de data science en valeur produit : prédictions fiables, disponibles et mesurées.",
-          },
-          {
+        title: "Le déploiement ML : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès qu'un modèle doit servir hors du notebook : prototype, API interne, ou produit à grande échelle.",

@@ -28,24 +28,21 @@ export const LEARNING_VUE: LearningSection[] = [
         text: "Le mot clé de Vue est « progressif » : le framework s'adopte par incréments. On peut l'utiliser pour dynamiser une simple portion de page existante via un script CDN, ou construire une application complète avec routage, gestion d'état centralisée et rendu côté serveur. Entre les deux, tous les paliers sont possibles, sans réécriture.",
       },
       {
+        kind: "text",
+        text: "Vue lie un template déclaratif à un état réactif : `état → template → DOM synchronisé`.",
+      },
+      {
+        kind: "text",
+        text: "Manipuler le DOM à la main devient vite ingérable : l'état et l'affichage se désynchronisent. Vue centralise la source de vérité dans un état réactif et se charge des mises à jour du DOM, avec une courbe d'apprentissage volontairement douce.",
+      },
+      {
+        kind: "text",
+        text: "Interfaces interactives : tableaux de bord, applications métier, e-commerce, sites de contenu dynamiques. Son adoption incrémentale en fait aussi un bon choix pour moderniser progressivement un site existant.",
+      },
+      {
         kind: "fields",
-        title: "Vue en une phrase, par angle",
+        title: "Vue : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Vue lie un template déclaratif à un état réactif : `état → template → DOM synchronisé`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Manipuler le DOM à la main devient vite ingérable : l'état et l'affichage se désynchronisent. Vue centralise la source de vérité dans un état réactif et se charge des mises à jour du DOM, avec une courbe d'apprentissage volontairement douce.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Interfaces interactives : tableaux de bord, applications métier, e-commerce, sites de contenu dynamiques. Son adoption incrémentale en fait aussi un bon choix pour moderniser progressivement un site existant.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -442,20 +439,17 @@ export const LEARNING_VUE: LearningSection[] = [
         code: "<script setup>\n// Logique du composant : imports, état réactif, fonctions.\n// Le code ici s'exécute une fois à la création du composant.\n</script>\n\n<template>\n  <!-- Interface : HTML enrichi de directives Vue. -->\n  <!-- Un seul élément racine n'est plus obligatoire depuis Vue 3. -->\n</template>\n\n<style scoped>\n/* Style du composant. `scoped` limite le CSS à ce composant. */\n</style>",
       },
       {
+        kind: "text",
+        text: "Un SFC regroupe le template (quoi afficher), le script (les données et la logique) et le style (l'apparence) d'un composant dans un seul fichier `.vue`.",
+      },
+      {
+        kind: "text",
+        text: "Regrouper par composant plutôt que par type de fichier : tout ce qui concerne un bouton vit au même endroit, ce qui facilite la lecture, le déplacement et la suppression.",
+      },
+      {
         kind: "fields",
         title: "Les trois blocs",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un SFC regroupe le template (quoi afficher), le script (les données et la logique) et le style (l'apparence) d'un composant dans un seul fichier `.vue`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Regrouper par composant plutôt que par type de fichier : tout ce qui concerne un bouton vit au même endroit, ce qui facilite la lecture, le déplacement et la suppression.",
-          },
-          {
+        fields: [          {
             label: "scoped",
             value:
               "L'attribut `scoped` sur `<style>` ajoute un identifiant unique aux sélecteurs : le CSS ne fuit pas vers les autres composants. Sans `scoped`, le style est global.",
@@ -542,24 +536,21 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Rendre n'importe quelle valeur réactive.",
     blocks: [
       {
+        kind: "text",
+        text: "`ref()` enveloppe une valeur dans un objet réactif : on lit et modifie la valeur via la propriété `.value` dans le script, et directement par son nom dans le template.",
+      },
+      {
+        kind: "text",
+        text: "JavaScript ne permet pas d'intercepter la réaffectation d'une variable primitive (`let x = 0`) : l'objet conteneur donne à Vue un point d'observation.",
+      },
+      {
+        kind: "text",
+        text: "Pour les valeurs primitives (nombres, chaînes, booléens) et partout où l'on réaffecte la variable. C'est le choix par défaut recommandé.",
+      },
+      {
         kind: "fields",
         title: "ref() en détail",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`ref()` enveloppe une valeur dans un objet réactif : on lit et modifie la valeur via la propriété `.value` dans le script, et directement par son nom dans le template.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "JavaScript ne permet pas d'intercepter la réaffectation d'une variable primitive (`let x = 0`) : l'objet conteneur donne à Vue un point d'observation.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pour les valeurs primitives (nombres, chaînes, booléens) et partout où l'on réaffecte la variable. C'est le choix par défaut recommandé.",
-          },
           {
             label: "Exemple simple",
             value: "`const nom = ref('Ada')` puis `nom.value = 'Grace'` dans le script ; `{{ nom }}` dans le template (sans `.value`).",
@@ -591,20 +582,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "L'alternative à `ref` pour les objets — et leurs différences réelles.",
     blocks: [
       {
+        kind: "text",
+        text: "`reactive()` rend un objet (ou tableau) profondément réactif via un Proxy : on accède directement à `etat.compteur`, sans `.value`.",
+      },
+      {
+        kind: "text",
+        text: "Pour regrouper plusieurs valeurs liées (`const formulaire = reactive({ nom: '', email: '' })`). Pratique quand on ne réaffecte jamais l'objet entier.",
+      },
+      {
         kind: "fields",
         title: "reactive() en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`reactive()` rend un objet (ou tableau) profondément réactif via un Proxy : on accède directement à `etat.compteur`, sans `.value`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Pour regrouper plusieurs valeurs liées (`const formulaire = reactive({ nom: '', email: '' })`). Pratique quand on ne réaffecte jamais l'objet entier.",
-          },
-          {
+        fields: [          {
             label: "Limite importante",
             value:
               "On ne peut pas remplacer l'objet entier (`etat = {...}` casse la réactivité) ni déstructurer (`const { compteur } = etat` perd la réactivité). `ref` n'a pas ces limites.",
@@ -636,24 +624,21 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Calculer à partir de l'état, sans recalcul inutile.",
     blocks: [
       {
+        kind: "text",
+        text: "`computed()` définit une valeur calculée à partir de données réactives : elle se recalcule uniquement quand ses dépendances changent, et le résultat est mis en cache entre-temps.",
+      },
+      {
+        kind: "text",
+        text: "Éviter de dupliquer une logique de dérivation dans le template ou de la recalculer à chaque rendu. Le cache rend les calculs coûteux (filtrage, tri) gratuits quand rien n'a changé.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'une valeur affichée dérive d'autres valeurs : totaux, listes filtrées, chaînes formatées, classes conditionnelles complexes.",
+      },
+      {
         kind: "fields",
         title: "computed() en détail",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`computed()` définit une valeur calculée à partir de données réactives : elle se recalcule uniquement quand ses dépendances changent, et le résultat est mis en cache entre-temps.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Éviter de dupliquer une logique de dérivation dans le template ou de la recalculer à chaque rendu. Le cache rend les calculs coûteux (filtrage, tri) gratuits quand rien n'a changé.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une valeur affichée dérive d'autres valeurs : totaux, listes filtrées, chaînes formatées, classes conditionnelles complexes.",
-          },
           {
             label: "Exemple réel",
             value:
@@ -686,20 +671,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Exécuter du code quand une donnée change : la contrepartie impérative de `computed`.",
     blocks: [
       {
+        kind: "text",
+        text: "`watch(source, callback)` exécute le callback chaque fois que la source réactive change, en donnant l'ancienne et la nouvelle valeur.",
+      },
+      {
+        kind: "text",
+        text: "Effets de bord liés à un changement : appel API après une recherche, sauvegarde en `localStorage`, réinitialisation d'un formulaire, journalisation.",
+      },
+      {
         kind: "fields",
         title: "watch() en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`watch(source, callback)` exécute le callback chaque fois que la source réactive change, en donnant l'ancienne et la nouvelle valeur.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Effets de bord liés à un changement : appel API après une recherche, sauvegarde en `localStorage`, réinitialisation d'un formulaire, journalisation.",
-          },
-          {
+        fields: [          {
             label: "watch vs watchEffect",
             value:
               "`watch` observe des sources explicites (plus précis, paresseux par défaut). `watchEffect` exécute immédiatement et suit automatiquement les dépendances utilisées (plus concis, moins explicite).",
@@ -763,23 +745,20 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Rendre des listes correctement : la directive la plus source de bugs subtils.",
     blocks: [
       {
+        kind: "text",
+        text: "`v-for=\"element in liste\"` répète un élément pour chaque entrée ; `:key` fournit à Vue un identifiant stable pour suivre chaque élément entre les rendus.",
+      },
+      {
+        kind: "text",
+        text: "Toute liste dynamique : résultats de recherche, commentaires, lignes de tableau, options de formulaire.",
+      },
+      {
         kind: "fields",
         title: "v-for en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`v-for=\"element in liste\"` répète un élément pour chaque entrée ; `:key` fournit à Vue un identifiant stable pour suivre chaque élément entre les rendus.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi :key",
             value:
               "Sans clé stable, Vue réutilise les nœuds par position : après un tri ou une suppression, les états locaux (champ saisi, case cochée) se retrouvent sur le mauvais élément.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toute liste dynamique : résultats de recherche, commentaires, lignes de tableau, options de formulaire.",
           },
           {
             label: "Exemple réel",
@@ -813,20 +792,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Rendre n'importe quel attribut HTML dynamique.",
     blocks: [
       {
+        kind: "text",
+        text: "`v-bind` (raccourci `:`) lie un attribut HTML à une expression JavaScript : `:src=\"url\"`, `:disabled=\"enCours\"`, `:class=\"...\"`.",
+      },
+      {
+        kind: "text",
+        text: "Les attributs HTML sont statiques par nature ; `v-bind` les rend réactifs : l'attribut suit la donnée sans manipulation du DOM.",
+      },
+      {
         kind: "fields",
         title: "v-bind en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`v-bind` (raccourci `:`) lie un attribut HTML à une expression JavaScript : `:src=\"url\"`, `:disabled=\"enCours\"`, `:class=\"...\"`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les attributs HTML sont statiques par nature ; `v-bind` les rend réactifs : l'attribut suit la donnée sans manipulation du DOM.",
-          },
-          {
+        fields: [          {
             label: "Cas particulier",
             value:
               "Les attributs booléens (`disabled`, `checked`) : Vue retire l'attribut quand la valeur est fausse, ce qui est le comportement HTML correct.",
@@ -858,15 +834,13 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Réagir aux interactions utilisateur.",
     blocks: [
       {
+        kind: "text",
+        text: "`v-on` (raccourci `@`) attache un gestionnaire à un événement DOM : `@click=\"incrementer\"`, `@submit.prevent=\"envoyer\"`.",
+      },
+      {
         kind: "fields",
         title: "v-on en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`v-on` (raccourci `@`) attache un gestionnaire à un événement DOM : `@click=\"incrementer\"`, `@submit.prevent=\"envoyer\"`.",
-          },
-          {
+        fields: [          {
             label: "Modificateurs",
             value:
               "Des suffixes qui remplacent le code répétitif : `.prevent` (empêche le comportement par défaut), `.stop` (stoppe la propagation), `.once`, `.enter` / `.esc` pour le clavier.",
@@ -925,20 +899,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "La communication descendante : du parent vers l'enfant.",
     blocks: [
       {
+        kind: "text",
+        text: "Les props sont les paramètres d'un composant : le parent passe des données via des attributs (`<Carte titre=\"Bonjour\" />`), l'enfant les déclare avec `defineProps` et les lit en lecture seule.",
+      },
+      {
+        kind: "text",
+        text: "Rendre les composants réutilisables : le même composant `Carte` affiche des contenus différents selon les props reçues, sans dupliquer de code.",
+      },
+      {
         kind: "fields",
         title: "Les props en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les props sont les paramètres d'un composant : le parent passe des données via des attributs (`<Carte titre=\"Bonjour\" />`), l'enfant les déclare avec `defineProps` et les lit en lecture seule.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Rendre les composants réutilisables : le même composant `Carte` affiche des contenus différents selon les props reçues, sans dupliquer de code.",
-          },
-          {
+        fields: [          {
             label: "Validation",
             value:
               "Déclarez le type de chaque prop (`String`, `Number`, objet de validation) : Vue avertit en console si le parent passe un mauvais type. Avec TypeScript, la validation est statique.",
@@ -975,20 +946,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "La communication ascendante : de l'enfant vers le parent.",
     blocks: [
       {
+        kind: "text",
+        text: "L'enfant signale quelque chose au parent en émettant un événement (`emit('supprimer', id)`) ; le parent l'écoute comme un événement DOM (`@supprimer=\"retirer\"`).",
+      },
+      {
+        kind: "text",
+        text: "Le pendant des props : l'enfant ne modifie jamais directement l'état du parent, il annonce une intention (« l'utilisateur a cliqué supprimer ») et le parent décide quoi faire.",
+      },
+      {
         kind: "fields",
         title: "defineEmits en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'enfant signale quelque chose au parent en émettant un événement (`emit('supprimer', id)`) ; le parent l'écoute comme un événement DOM (`@supprimer=\"retirer\"`).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le pendant des props : l'enfant ne modifie jamais directement l'état du parent, il annonce une intention (« l'utilisateur a cliqué supprimer ») et le parent décide quoi faire.",
-          },
-          {
+        fields: [          {
             label: "Validation",
             value:
               "Déclarez les événements émis avec `defineEmits` (tableau de noms ou objet de validation) : la documentation du composant est explicite et les fautes de frappe sont détectées.",
@@ -1030,10 +998,13 @@ export const LEARNING_VUE: LearningSection[] = [
         code: "<!-- Enfant : ChampTexte.vue -->\n<script setup>\ndefineProps(['modelValue'])\nconst emit = defineEmits(['update:modelValue'])\n</script>\n\n<template>\n  <input\n    :value=\"modelValue\"\n    @input=\"emit('update:modelValue', $event.target.value)\"\n  />\n</template>\n\n<!-- Parent : <ChampTexte v-model=\"nom\" /> -->",
       },
       {
+        kind: "text",
+        text: "Composants de formulaire réutilisables (champs, sélecteurs, interrupteurs) : le parent garde la source de vérité, l'enfant reste simple.",
+      },
+      {
         kind: "fields",
         title: "À savoir",
-        fields: [
-          {
+        fields: [          {
             label: "Arguments multiples",
             value:
               "`v-model:titre=\"titre\"` : on peut lier plusieurs valeurs en nommant l'argument. La prop devient `titre` et l'événement `update:titre`.",
@@ -1043,11 +1014,7 @@ export const LEARNING_VUE: LearningSection[] = [
             value:
               "Les modificateurs (`.trim`, `.number`, `.lazy`) sont transmis via la prop `modelModifiers` : le composant peut les honorer lui-même.",
           },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Composants de formulaire réutilisables (champs, sélecteurs, interrupteurs) : le parent garde la source de vérité, l'enfant reste simple.",
-          },
+          
         ],
       },
     ],
@@ -1059,20 +1026,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Passer du HTML aux composants enfants, pas seulement des données.",
     blocks: [
       {
+        kind: "text",
+        text: "Un slot est un emplacement dans le template de l'enfant où le parent injecte son propre contenu : `<Modale><p>Contenu</p></Modale>` remplit le `<slot />` de `Modale`.",
+      },
+      {
+        kind: "text",
+        text: "Les props transmettent des données ; les slots transmettent de la structure. C'est ce qui permet des composants conteneurs génériques (modale, carte, layout) au contenu variable.",
+      },
+      {
         kind: "fields",
         title: "Les slots en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un slot est un emplacement dans le template de l'enfant où le parent injecte son propre contenu : `<Modale><p>Contenu</p></Modale>` remplit le `<slot />` de `Modale`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les props transmettent des données ; les slots transmettent de la structure. C'est ce qui permet des composants conteneurs génériques (modale, carte, layout) au contenu variable.",
-          },
-          {
+        fields: [          {
             label: "Slots nommés",
             value:
               "`<slot name=\"entete\" />` et `<template #entete>...` : plusieurs emplacements distincts dans le même composant (en-tête, corps, pied de page).",
@@ -1133,20 +1097,17 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Extraire la logique réactive dans des fonctions partageables.",
     blocks: [
       {
+        kind: "text",
+        text: "Un composable est une fonction (convention de nom `use...`) qui encapsule de la logique avec état réactif : `useSouris()`, `useFetch()`, `useLocalStorage()`.",
+      },
+      {
+        kind: "text",
+        text: "Le remède à la duplication : la même logique (suivre la souris, charger des données, gérer un formulaire) sert dans plusieurs composants sans copier-coller et sans héritage.",
+      },
+      {
         kind: "fields",
         title: "Les composables en détail",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un composable est une fonction (convention de nom `use...`) qui encapsule de la logique avec état réactif : `useSouris()`, `useFetch()`, `useLocalStorage()`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le remède à la duplication : la même logique (suivre la souris, charger des données, gérer un formulaire) sert dans plusieurs composants sans copier-coller et sans héritage.",
-          },
-          {
+        fields: [          {
             label: "Comment ça marche",
             value:
               "La fonction appelle `ref`/`computed`/`watch` et les crochets de cycle de vie, puis retourne ce que le composant doit utiliser. Chaque appel crée un état indépendant.",
@@ -1384,24 +1345,21 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Quand l'état dépasse le composant : la gestion d'état centralisée.",
     blocks: [
       {
+        kind: "text",
+        text: "Pinia est le store officiel de Vue : il centralise l'état partagé de l'application dans des « stores » composés d'état, de getters et d'actions.",
+      },
+      {
+        kind: "text",
+        text: "Faire transiter une donnée par dix niveaux de props est fragile ; dupliquer l'état entre composants crée des incohérences. Un store offre une source de vérité unique, accessible partout.",
+      },
+      {
+        kind: "text",
+        text: "Utilisateur connecté, panier d'achat, préférences, notifications : toute donnée utilisée par plusieurs pages. Pour l'état local d'un composant, `ref` suffit.",
+      },
+      {
         kind: "fields",
-        title: "Pinia en une phrase, par angle",
+        title: "Pinia : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Pinia est le store officiel de Vue : il centralise l'état partagé de l'application dans des « stores » composés d'état, de getters et d'actions.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Faire transiter une donnée par dix niveaux de props est fragile ; dupliquer l'état entre composants crée des incohérences. Un store offre une source de vérité unique, accessible partout.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Utilisateur connecté, panier d'achat, préférences, notifications : toute donnée utilisée par plusieurs pages. Pour l'état local d'un composant, `ref` suffit.",
-          },
           {
             label: "Par rapport à Vuex",
             value:
@@ -1713,24 +1671,21 @@ export const LEARNING_VUE: LearningSection[] = [
     intro: "Le framework au-dessus de Vue : ce qu'il apporte et quand l'adopter.",
     blocks: [
       {
+        kind: "text",
+        text: "Nuxt est un framework construit sur Vue qui ajoute le rendu côté serveur (SSR), le routage basé sur les fichiers, et des conventions de projet — l'équivalent de ce que Next.js est à React.",
+      },
+      {
+        kind: "text",
+        text: "Le SSR améliore le référencement et le premier affichage pour les sites de contenu ; le routage par fichiers supprime la configuration manuelle des routes.",
+      },
+      {
+        kind: "text",
+        text: "Sites de contenu, e-commerce, blogs : quand le SEO et la performance du premier chargement comptent. Pour une application métier derrière authentification, Vue + Vite suffit souvent.",
+      },
+      {
         kind: "fields",
         title: "Nuxt en bref",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Nuxt est un framework construit sur Vue qui ajoute le rendu côté serveur (SSR), le routage basé sur les fichiers, et des conventions de projet — l'équivalent de ce que Next.js est à React.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le SSR améliore le référencement et le premier affichage pour les sites de contenu ; le routage par fichiers supprime la configuration manuelle des routes.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Sites de contenu, e-commerce, blogs : quand le SEO et la performance du premier chargement comptent. Pour une application métier derrière authentification, Vue + Vite suffit souvent.",
-          },
           {
             label: "Quand s'en passer",
             value:

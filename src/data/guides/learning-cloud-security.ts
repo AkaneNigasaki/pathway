@@ -24,20 +24,17 @@ export const LEARNING_CLOUD_SECURITY: LearningSection[] = [
         text: "La sécurité du cloud protège des infrastructures pilotées par API, éphémères et partagées : machines qui naissent et meurent en minutes, stockage objet, fonctions serverless, conteneurs. Il n'y a plus de « salle serveur » à verrouiller : le périmètre est devenu l'identité (qui peut faire quoi) et la configuration (qu'est-ce qui est exposé).",
       },
       {
+        kind: "text",
+        text: "Contrôler les identités (IAM), verrouiller les configurations et surveiller les appels d'API sur des infrastructures que l'on ne possède pas physiquement.",
+      },
+      {
+        kind: "text",
+        text: "La majorité des fuites de données dans le cloud viennent de mauvaises configurations — bucket de stockage public, clé d'accès exposée, rôle trop permissif — pas de failles techniques sophistiquées. Ce sont des erreurs humaines, donc évitables.",
+      },
+      {
         kind: "fields",
-        title: "La sécurité cloud en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Contrôler les identités (IAM), verrouiller les configurations et surveiller les appels d'API sur des infrastructures que l'on ne possède pas physiquement.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "La majorité des fuites de données dans le cloud viennent de mauvaises configurations — bucket de stockage public, clé d'accès exposée, rôle trop permissif — pas de failles techniques sophistiquées. Ce sont des erreurs humaines, donc évitables.",
-          },
-          {
+        title: "La sécurité cloud : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès le premier compte cloud : créer un utilisateur admin avec clé d'accès permanente et tout laisser par défaut, c'est déjà une faille. La sécurité cloud commence à la création du compte.",

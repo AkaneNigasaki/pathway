@@ -27,20 +27,17 @@ export const LEARNING_MONITORING: LearningSection[] = [
         text: "Pourquoi ça existe : sans observabilité, on pilote à l'aveugle — les incidents se découvrent par les tickets utilisateurs, les causes restent mystérieuses, et chaque panne devient une enquête. Avec une observabilité bien conçue, une alerte se déclenche sur un symptôme mesuré, le dashboard montre où ça coince, les traces désignent le service fautif et les logs racontent l'histoire. Le temps de détection passe d'heures à minutes.",
       },
       {
+        kind: "text",
+        text: "Collecter métriques, logs et traces pour comprendre l'état d'un système et réagir vite quand il dérive.",
+      },
+      {
+        kind: "text",
+        text: "Détecter les problèmes avant les utilisateurs, diagnostiquer vite, et prouver que « ça marche » avec des chiffres plutôt qu'une impression.",
+      },
+      {
         kind: "fields",
-        title: "L'observabilité en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Collecter métriques, logs et traces pour comprendre l'état d'un système et réagir vite quand il dérive.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Détecter les problèmes avant les utilisateurs, diagnostiquer vite, et prouver que « ça marche » avec des chiffres plutôt qu'une impression.",
-          },
-          {
+        title: "L'observabilité : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès le premier service en production : même une seule application gagne à exposer sa santé et ses métriques de base.",

@@ -30,20 +30,17 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "Point essentiel : DevOps n'est ni un outil, ni un poste, ni une certification. On n'« installe » pas DevOps comme on installe Docker. C'est une façon de travailler : livrer des changements petits et fréquents, automatiser tout ce qui est répétitif, mesurer ce qui compte, et apprendre de chaque incident sans chercher un coupable. Les outils (CI, conteneurs, IaC, monitoring) ne sont que les moyens de cette culture.",
       },
       {
+        kind: "text",
+        text: "DevOps, c'est livrer du logiciel fiable et souvent, en rapprochant développement et exploitation par la culture, l'automatisation et la mesure.",
+      },
+      {
+        kind: "text",
+        text: "Les déploiements « big bang » rares et douloureux : des semaines de préparation, des nuits de mise en production, des pannes mystérieuses que personne ne sait d'où viennent. DevOps répond par des changements petits, testés et réversibles.",
+      },
+      {
         kind: "fields",
-        title: "DevOps en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "DevOps, c'est livrer du logiciel fiable et souvent, en rapprochant développement et exploitation par la culture, l'automatisation et la mesure.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les déploiements « big bang » rares et douloureux : des semaines de préparation, des nuits de mise en production, des pannes mystérieuses que personne ne sait d'où viennent. DevOps répond par des changements petits, testés et réversibles.",
-          },
-          {
+        title: "DevOps : l'essentiel",
+        fields: [          {
             label: "Quand l'adopter",
             value:
               "Dès qu'une équipe livre un logiciel utilisé par d'autres : startup comme grande entreprise. Les pratiques s'adaptent à l'échelle — un solo peut faire du DevOps « léger » (CI + déploiement automatisé), une équipe de 50 aura besoin d'une plateforme complète.",
@@ -513,24 +510,21 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "Un feature flag (ou feature toggle) est un simple interrupteur dans le code : `if (flagNouveauPanier) { … } else { … }`. Le code de la nouvelle fonctionnalité est déployé en production mais DORMANT, puis activé progressivement : 1 % des utilisateurs, puis 10 %, puis tout le monde. Si un problème survient, on coupe le flag — sans redéployer.",
       },
       {
+        kind: "text",
+        text: "Séparer « le code est en production » de « la fonctionnalité est visible » pour pouvoir déployer souvent et activer prudemment.",
+      },
+      {
+        kind: "text",
+        text: "Parce que le risque n'est pas dans le déploiement, il est dans l'activation. Les flags transforment un déploiement risqué en activation réversible en un clic.",
+      },
+      {
+        kind: "text",
+        text: "Nouvelles fonctionnalités à risque, tests A/B, migrations progressives, kill switch d'urgence. Inutile pour un simple correctif de bug.",
+      },
+      {
         kind: "fields",
         title: "Feature flags en pratique",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Séparer « le code est en production » de « la fonctionnalité est visible » pour pouvoir déployer souvent et activer prudemment.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Parce que le risque n'est pas dans le déploiement, il est dans l'activation. Les flags transforment un déploiement risqué en activation réversible en un clic.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Nouvelles fonctionnalités à risque, tests A/B, migrations progressives, kill switch d'urgence. Inutile pour un simple correctif de bug.",
-          },
           {
             label: "Exemple simple",
             value:
@@ -645,20 +639,17 @@ export const LEARNING_DEVOPS: LearningSection[] = [
       "Clés API, mots de passe, tokens : les règles non négociables pour ne pas les fuiter.",
     blocks: [
       {
+        kind: "text",
+        text: "Un secret n'est jamais dans le code, jamais dans Git, jamais dans les logs : il est injecté au moment de l'exécution par un mécanisme dédié.",
+      },
+      {
+        kind: "text",
+        text: "Un secret commité dans Git est compromis pour toujours : l'historique le garde, les clones le propagent, les robots le trouvent en quelques minutes sur les dépôts publics.",
+      },
+      {
         kind: "fields",
         title: "Les règles des secrets",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un secret n'est jamais dans le code, jamais dans Git, jamais dans les logs : il est injecté au moment de l'exécution par un mécanisme dédié.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Un secret commité dans Git est compromis pour toujours : l'historique le garde, les clones le propagent, les robots le trouvent en quelques minutes sur les dépôts publics.",
-          },
-          {
+        fields: [          {
             label: "Comment (CI)",
             value:
               "GitHub : `Settings → Secrets → Actions`, puis `${{ secrets.NOM }}` dans le workflow. GitLab : variables CI/CD masquées et protégées. Jamais de secret en clair dans le YAML.",
@@ -835,20 +826,17 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "Le postmortem sans blâme (blameless postmortem) part d'un constat : dans un système complexe, un incident résulte presque toujours d'une combinaison de facteurs, jamais de la seule « faute » d'une personne. Blâmer pousse à cacher les erreurs ; comprendre pousse à les révéler tôt. Or en exploitation, une erreur révélée tôt est une erreur peu coûteuse.",
       },
       {
+        kind: "text",
+        text: "Après chaque incident significatif, l'équipe écrit ensemble ce qui s'est passé, pourquoi le système l'a permis, et ce qu'on change — sans nommer de coupable.",
+      },
+      {
+        kind: "text",
+        text: "Parce que « qui a cassé » n'apprend rien, alors que « comment le système a-t-il permis que ça casse » apprend tout. Les organisations qui punissent obtiennent le silence ; celles qui apprennent obtiennent la résilience.",
+      },
+      {
         kind: "fields",
         title: "Le postmortem sans blâme en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Après chaque incident significatif, l'équipe écrit ensemble ce qui s'est passé, pourquoi le système l'a permis, et ce qu'on change — sans nommer de coupable.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Parce que « qui a cassé » n'apprend rien, alors que « comment le système a-t-il permis que ça casse » apprend tout. Les organisations qui punissent obtiennent le silence ; celles qui apprennent obtiennent la résilience.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Après tout incident ayant impacté les utilisateurs ou failli le faire (near-miss). Pas après chaque micro-alerte : il faut garder le rituel précieux.",
@@ -1176,15 +1164,13 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "Un artefact est le résultat versionné du build : image Docker, archive, binaire. Le principe « build once » dit : on construit l'artefact UNE fois, on le stocke dans un REGISTRE (Docker Hub, GitHub Container Registry, Artifact Registry…), puis chaque environnement déploie LE MÊME artefact. Recompiler pour la prod, c'est tester autre chose que ce qu'on livre.",
       },
       {
+        kind: "text",
+        text: "L'artefact immuable est l'unité de déploiement : ce qui a passé les tests en staging est bit à bit ce qui part en production.",
+      },
+      {
         kind: "fields",
         title: "Artefacts et registres en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'artefact immuable est l'unité de déploiement : ce qui a passé les tests en staging est bit à bit ce qui part en production.",
-          },
-          {
+        fields: [          {
             label: "Versionnement",
             value:
               "Chaque artefact porte un identifiant unique : tag Git, hash de commit, ou version sémantique. `mon-app:1.4.2` ou `mon-app:abc1234` — jamais seulement `latest` en production.",
@@ -1244,20 +1230,17 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "L'Infrastructure as Code (IaC) consiste à décrire l'infrastructure (machines virtuelles, réseaux, bases de données, DNS…) dans des fichiers texte versionnés en Git, plutôt qu'en cliquant dans une console. Avantages décisifs : l'environnement se recrée à l'identique en une commande, chaque changement est relu en pull request, et l'historique Git dit qui a changé quoi et quand.",
       },
       {
+        kind: "text",
+        text: "L'infrastructure devient du code : déclarative, versionnée, reproductible, au lieu d'une configuration manuelle fragile.",
+      },
+      {
+        kind: "text",
+        text: "Parce que « le serveur configuré à la main il y a 2 ans par quelqu'un qui est parti » est un cauchemar classique : impossible à reproduire, impossible à auditer, dangereux à toucher.",
+      },
+      {
         kind: "fields",
-        title: "L'IaC en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'infrastructure devient du code : déclarative, versionnée, reproductible, au lieu d'une configuration manuelle fragile.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Parce que « le serveur configuré à la main il y a 2 ans par quelqu'un qui est parti » est un cauchemar classique : impossible à reproduire, impossible à auditer, dangereux à toucher.",
-          },
-          {
+        title: "L'IaC : l'essentiel",
+        fields: [          {
             label: "Quand",
             value:
               "Dès qu'une infrastructure doit exister plus d'une fois (dev/staging/prod) ou survivre au départ de son créateur. Même pour un projet perso, c'est un excellent exercice.",
@@ -1448,15 +1431,13 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         verify: "Le récapitulatif final affiche `ok`, `changed`, `failed` par machine : zéro `failed`, et `changed=0` à la seconde exécution (idempotence).",
       },
       {
+        kind: "text",
+        text: "Configuration fine des OS, déploiements applicatifs sur machines existantes, tâches d'administration répétées sur un parc. Complément naturel de Terraform, pas concurrent.",
+      },
+      {
         kind: "fields",
         title: "Ansible : quand et comment",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Configuration fine des OS, déploiements applicatifs sur machines existantes, tâches d'administration répétées sur un parc. Complément naturel de Terraform, pas concurrent.",
-          },
-          {
+        fields: [          {
             label: "Inventaire",
             value:
               "Le fichier qui liste les machines par groupe (`[web]`, `[db]`) : c'est lui qui dit OÙ le playbook s'applique. Versionné comme le reste.",
@@ -1535,15 +1516,13 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "Le rollback, c'est la capacité à revenir à la version précédente rapidement quand un déploiement tourne mal. L'erreur classique : n'y penser qu'au moment où tout est en feu. Un bon plan de rollback se prépare AVANT : artefact précédent conservé et identifié, procédure testée (au moins en staging), décision claire sur qui peut le déclencher.",
       },
       {
+        kind: "text",
+        text: "Savoir, avant chaque déploiement, comment revenir en arrière en quelques minutes si les métriques se dégradent.",
+      },
+      {
         kind: "fields",
         title: "Un plan de rollback solide",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Savoir, avant chaque déploiement, comment revenir en arrière en quelques minutes si les métriques se dégradent.",
-          },
-          {
+        fields: [          {
             label: "Mécanismes",
             value:
               "Redéployer le tag précédent (rolling), rebascule du trafic (blue/green), couper le feature flag — le flag est souvent le rollback le plus rapide.",
@@ -1876,15 +1855,13 @@ export const LEARNING_DEVOPS: LearningSection[] = [
         text: "Un runbook est une procédure pas à pas pour une situation opérationnelle : « l'alerte X sonne », « redémarrer le service Y », « restaurer la base ». Il existe parce qu'à 3h du matin, sous stress, personne ne réfléchit bien — mais tout le monde peut suivre une checklist. C'est le « Sharing » de CALMS appliqué à l'exploitation.",
       },
       {
+        kind: "text",
+        text: "La procédure écrite qui permet à quelqu'un qui n'a jamais vu l'incident de réagir correctement du premier coup.",
+      },
+      {
         kind: "fields",
         title: "Un bon runbook",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La procédure écrite qui permet à quelqu'un qui n'a jamais vu l'incident de réagir correctement du premier coup.",
-          },
-          {
+        fields: [          {
             label: "Contenu type",
             value:
               "Symptômes et comment les confirmer, diagnostic pas à pas (commandes copiables), actions correctives dans l'ordre, critères d'escalade (« si ça ne marche pas après X, appeler Y »).",

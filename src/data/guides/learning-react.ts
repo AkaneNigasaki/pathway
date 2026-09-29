@@ -27,24 +27,21 @@ export const LEARNING_REACT: LearningSection[] = [
         text: "Point essentiel : React est une bibliothèque, pas un framework. Il ne s'occupe que de la couche « vue » : comment décrire l'interface et la garder synchronisée avec les données. Le routing, la récupération de données, le build ou le rendu côté serveur sont confiés à d'autres outils (React Router, Vite, Next.js…). C'est une force — vous assemblez la pile adaptée à votre besoin — mais cela signifie aussi qu'apprendre React, c'est apprendre un écosystème, pas un seul outil.",
       },
       {
+        kind: "text",
+        text: "React permet de décrire l'interface comme une fonction de l'état : `UI = f(état)`.",
+      },
+      {
+        kind: "text",
+        text: "Manipuler le DOM à la main devient vite ingérable : l'état et l'affichage se désynchronisent, le code devient fragile. React centralise la source de vérité dans l'état et se charge des mises à jour du DOM.",
+      },
+      {
+        kind: "text",
+        text: "Interfaces interactives et dynamiques : tableaux de bord, applications métier, réseaux sociaux, e-commerce. Pour une page statique simple, du HTML/CSS suffit.",
+      },
+      {
         kind: "fields",
-        title: "React en une phrase, par angle",
+        title: "React : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "React permet de décrire l'interface comme une fonction de l'état : `UI = f(état)`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Manipuler le DOM à la main devient vite ingérable : l'état et l'affichage se désynchronisent, le code devient fragile. React centralise la source de vérité dans l'état et se charge des mises à jour du DOM.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Interfaces interactives et dynamiques : tableaux de bord, applications métier, réseaux sociaux, e-commerce. Pour une page statique simple, du HTML/CSS suffit.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -397,20 +394,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "La syntaxe qui ressemble à du HTML mais n'en est pas : comprendre ce qu'elle devient vraiment.",
     blocks: [
       {
+        kind: "text",
+        text: "JSX est une extension de syntaxe qui permet d'écrire une description d'interface proche du HTML directement dans le JavaScript (TSX = JSX + TypeScript).",
+      },
+      {
+        kind: "text",
+        text: "Décrire une interface avec des appels de fonctions imbriqués est illisible. JSX rend la structure visuelle : l'imbrication du code reflète l'imbrication de l'interface.",
+      },
+      {
         kind: "fields",
-        title: "JSX, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "JSX est une extension de syntaxe qui permet d'écrire une description d'interface proche du HTML directement dans le JavaScript (TSX = JSX + TypeScript).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Décrire une interface avec des appels de fonctions imbriqués est illisible. JSX rend la structure visuelle : l'imbrication du code reflète l'imbrication de l'interface.",
-          },
-          {
+        title: "JSX : les points clés",
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "Le JSX est compilé avant l'exécution : `<h1>Bonjour</h1>` devient un appel qui crée un objet décrivant l'élément (type, props, enfants). Avec le transformateur moderne, aucune importation de React n'est nécessaire dans chaque fichier.",
@@ -442,24 +436,21 @@ export const LEARNING_REACT: LearningSection[] = [
       "Les briques de toute application React : des fonctions qui reçoivent des données et décrivent une interface.",
     blocks: [
       {
+        kind: "text",
+        text: "Un composant est une fonction qui reçoit des `props` (données en entrée) et retourne du JSX (interface en sortie).",
+      },
+      {
+        kind: "text",
+        text: "Découper l'interface en composants rend le code réutilisable, testable et compréhensible : chaque composant a une responsabilité claire.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'un morceau d'interface se répète ou mérite un nom : bouton, carte, champ de formulaire, mise en page.",
+      },
+      {
         kind: "fields",
-        title: "Composants et props, point par point",
+        title: "Composants et props : les points clés",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un composant est une fonction qui reçoit des `props` (données en entrée) et retourne du JSX (interface en sortie).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Découper l'interface en composants rend le code réutilisable, testable et compréhensible : chaque composant a une responsabilité claire.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'un morceau d'interface se répète ou mérite un nom : bouton, carte, champ de formulaire, mise en page.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -491,26 +482,18 @@ export const LEARNING_REACT: LearningSection[] = [
       "Le mécanisme central pour assembler des composants : passer des composants à des composants.",
     blocks: [
       {
-        kind: "fields",
-        title: "La composition, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La composition consiste à imbriquer des composants via la prop spéciale `children` plutôt que de les configurer avec des dizaines de props.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Un composant `Boite` qui accepte `children` peut contenir n'importe quoi — texte, boutons, autres composants — sans connaître leur nature. C'est plus flexible que de prévoir une prop pour chaque cas.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Conteneurs génériques : mise en page, carte, modale, panneau. Dès qu'un composant « enveloppe » du contenu, pensez `children`.",
-          },
-        ],
+        kind: "text",
+        text: "La composition consiste à imbriquer des composants via la prop spéciale `children` plutôt que de les configurer avec des dizaines de props.",
       },
+      {
+        kind: "text",
+        text: "Un composant `Boite` qui accepte `children` peut contenir n'importe quoi — texte, boutons, autres composants — sans connaître leur nature. C'est plus flexible que de prévoir une prop pour chaque cas.",
+      },
+      {
+        kind: "text",
+        text: "Conteneurs génériques : mise en page, carte, modale, panneau. Dès qu'un composant « enveloppe » du contenu, pensez `children`.",
+      },
+
       {
         kind: "code",
         language: "tsx",
@@ -571,26 +554,18 @@ export const LEARNING_REACT: LearningSection[] = [
       "Afficher des collections et aider React à suivre chaque élément avec la prop `key`.",
     blocks: [
       {
-        kind: "fields",
-        title: "Listes et clés, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On affiche une liste avec `.map()`, et chaque élément reçoit une prop `key` stable et unique qui permet à React de l'identifier entre deux rendus.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans clé, React ne sait pas quel élément a été ajouté, supprimé ou déplacé : il peut détruire et recréer des éléments inutilement, perdre l'état local (focus, saisie) ou animer le mauvais élément.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toujours, dès qu'on rend un tableau d'éléments. La clé doit être stable (même valeur entre les rendus) et unique parmi ses frères et sœurs.",
-          },
-        ],
+        kind: "text",
+        text: "On affiche une liste avec `.map()`, et chaque élément reçoit une prop `key` stable et unique qui permet à React de l'identifier entre deux rendus.",
       },
+      {
+        kind: "text",
+        text: "Sans clé, React ne sait pas quel élément a été ajouté, supprimé ou déplacé : il peut détruire et recréer des éléments inutilement, perdre l'état local (focus, saisie) ou animer le mauvais élément.",
+      },
+      {
+        kind: "text",
+        text: "Toujours, dès qu'on rend un tableau d'éléments. La clé doit être stable (même valeur entre les rendus) et unique parmi ses frères et sœurs.",
+      },
+
       {
         kind: "code",
         language: "tsx",
@@ -615,15 +590,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Réagir aux clics, saisies et soumissions : la syntaxe et les pièges.",
     blocks: [
       {
+        kind: "text",
+        text: "On attache un gestionnaire avec une prop `onQuelqueChose` (`onClick`, `onChange`, `onSubmit`) qui reçoit une fonction.",
+      },
+      {
         kind: "fields",
-        title: "Les événements, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On attache un gestionnaire avec une prop `onQuelqueChose` (`onClick`, `onChange`, `onSubmit`) qui reçoit une fonction.",
-          },
-          {
+        title: "Les événements : les points clés",
+        fields: [          {
             label: "Comment ça fonctionne",
             value:
               "React normalise les événements du navigateur : `onClick={maFonction}` passe la fonction (elle sera appelée au clic), tandis que `onClick={maFonction()}` l'appelle immédiatement pendant le rendu — une erreur classique.",
@@ -655,24 +628,21 @@ export const LEARNING_REACT: LearningSection[] = [
       "Le hook fondamental : mémoriser une valeur entre les rendus et déclencher un ré-affichage quand elle change.",
     blocks: [
       {
+        kind: "text",
+        text: "`useState` déclare une valeur persistante : `const [valeur, setValeur] = useState(initial)` — modifier la valeur via `setValeur` demande à React de ré-afficher le composant.",
+      },
+      {
+        kind: "text",
+        text: "Une variable locale est réinitialisée à chaque rendu. L'état survit aux rendus : c'est la mémoire du composant.",
+      },
+      {
+        kind: "text",
+        text: "Toute donnée qui change avec l'interaction et influence l'affichage : champ de saisie, onglet actif, élément sélectionné, ouverture d'un panneau.",
+      },
+      {
         kind: "fields",
-        title: "useState, point par point",
+        title: "useState : les points clés",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`useState` déclare une valeur persistante : `const [valeur, setValeur] = useState(initial)` — modifier la valeur via `setValeur` demande à React de ré-afficher le composant.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Une variable locale est réinitialisée à chaque rendu. L'état survit aux rendus : c'est la mémoire du composant.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Toute donnée qui change avec l'interaction et influence l'affichage : champ de saisie, onglet actif, élément sélectionné, ouverture d'un panneau.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -704,18 +674,16 @@ export const LEARNING_REACT: LearningSection[] = [
       "Trois règles simples qui expliquent 80 % des erreurs de débutants avec les hooks.",
     blocks: [
       {
+        kind: "text",
+        text: "React associe chaque hook à sa position dans l'ordre d'appel. Si un `useState` est parfois appelé et parfois non (à cause d'un `if`), tous les hooks suivants sont décalés et reçoivent le mauvais état.",
+      },
+      {
         kind: "fields",
         title: "Les règles et leur raison",
-        fields: [
-          {
+        fields: [          {
             label: "Règle 1 : au niveau racine uniquement",
             value:
               "Appelez les hooks au niveau racine du composant ou d'un hook personnalisé — jamais dans des conditions, des boucles ou des fonctions imbriquées.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "React associe chaque hook à sa position dans l'ordre d'appel. Si un `useState` est parfois appelé et parfois non (à cause d'un `if`), tous les hooks suivants sont décalés et reçoivent le mauvais état.",
           },
           {
             label: "Règle 2 : dans les composants ou hooks customs",
@@ -745,26 +713,18 @@ export const LEARNING_REACT: LearningSection[] = [
       "Quand plusieurs valeurs d'état évoluent ensemble selon des règles, `useReducer` structure les transitions.",
     blocks: [
       {
-        kind: "fields",
-        title: "useReducer, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`useReducer` centralise les mises à jour d'un état complexe dans une fonction `reducer` qui reçoit l'état actuel et une action, et retourne le nouvel état.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Avec plusieurs `useState` liés (ex. chargement + données + erreur), les mises à jour s'éparpillent et des états incohérents apparaissent. Le reducer regroupe les transitions valides en un seul endroit.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "État avec plusieurs sous-valeurs interdépendantes, transitions nommées (panier, formulaire multi-étapes, machine à états simple). Pour un compteur isolé, `useState` suffit.",
-          },
-        ],
+        kind: "text",
+        text: "`useReducer` centralise les mises à jour d'un état complexe dans une fonction `reducer` qui reçoit l'état actuel et une action, et retourne le nouvel état.",
       },
+      {
+        kind: "text",
+        text: "Avec plusieurs `useState` liés (ex. chargement + données + erreur), les mises à jour s'éparpillent et des états incohérents apparaissent. Le reducer regroupe les transitions valides en un seul endroit.",
+      },
+      {
+        kind: "text",
+        text: "État avec plusieurs sous-valeurs interdépendantes, transitions nommées (panier, formulaire multi-étapes, machine à états simple). Pour un compteur isolé, `useState` suffit.",
+      },
+
       {
         kind: "code",
         language: "tsx",
@@ -785,20 +745,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "Le hook le plus puissant et le plus mal compris : synchroniser le composant avec le monde extérieur.",
     blocks: [
       {
+        kind: "text",
+        text: "`useEffect` exécute du code après le rendu pour synchroniser le composant avec un système externe : réseau, DOM manuel, minuteur, abonnement.",
+      },
+      {
+        kind: "text",
+        text: "Le rendu doit rester pur (même entrées → même sortie). Tout ce qui a un effet de bord — charger des données, s'abonner, manipuler le DOM — doit se faire à part, après le rendu.",
+      },
+      {
         kind: "fields",
-        title: "useEffect, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`useEffect` exécute du code après le rendu pour synchroniser le composant avec un système externe : réseau, DOM manuel, minuteur, abonnement.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le rendu doit rester pur (même entrées → même sortie). Tout ce qui a un effet de bord — charger des données, s'abonner, manipuler le DOM — doit se faire à part, après le rendu.",
-          },
-          {
+        title: "useEffect : les points clés",
+        fields: [          {
             label: "Le modèle mental",
             value:
               "Ne pensez pas « au montage / à la mise à jour », pensez synchronisation : « quand ces valeurs changent, resynchronise cet effet ». Le tableau de dépendances liste tout ce que l'effet utilise et qui peut changer.",
@@ -834,15 +791,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Une « boîte » mutable qui survit aux rendus sans en déclencher : pour le DOM et les valeurs persistantes.",
     blocks: [
       {
+        kind: "text",
+        text: "`useRef` retourne un objet `{ current }` persistant entre les rendus ; modifier `.current` ne déclenche pas de ré-affichage.",
+      },
+      {
         kind: "fields",
-        title: "useRef, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`useRef` retourne un objet `{ current }` persistant entre les rendus ; modifier `.current` ne déclenche pas de ré-affichage.",
-          },
-          {
+        title: "useRef : les points clés",
+        fields: [          {
             label: "Cas d'usage 1 : accéder au DOM",
             value:
               "`<input ref={champRef} />` puis `champRef.current.focus()` : donner le focus, mesurer un élément, contrôler une vidéo.",
@@ -874,24 +829,21 @@ export const LEARNING_REACT: LearningSection[] = [
       "Transmettre une donnée à toute une sous-arborescence sans la faire transiter par chaque composant intermédiaire.",
     blocks: [
       {
+        kind: "text",
+        text: "`createContext` + `Provider` + `useContext` permettent à un composant profond de lire une valeur fournie en haut de l'arbre, sans props intermédiaires.",
+      },
+      {
+        kind: "text",
+        text: "Faire passer `utilisateur` ou `theme` par 5 niveaux de props pollue chaque composant intermédiaire avec des données qui ne le concernent pas (prop drilling).",
+      },
+      {
+        kind: "text",
+        text: "Données stables et globales : utilisateur connecté, thème, langue, configuration. Idéal quand la valeur change rarement.",
+      },
+      {
         kind: "fields",
-        title: "Context, point par point",
+        title: "Context : les points clés",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`createContext` + `Provider` + `useContext` permettent à un composant profond de lire une valeur fournie en haut de l'arbre, sans props intermédiaires.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Faire passer `utilisateur` ou `theme` par 5 niveaux de props pollue chaque composant intermédiaire avec des données qui ne le concernent pas (prop drilling).",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Données stables et globales : utilisateur connecté, thème, langue, configuration. Idéal quand la valeur change rarement.",
-          },
           {
             label: "Quand l'éviter",
             value:
@@ -969,26 +921,18 @@ export const LEARNING_REACT: LearningSection[] = [
       "Extraire la logique réutilisable des composants dans des fonctions `useQuelqueChose`.",
     blocks: [
       {
-        kind: "fields",
-        title: "Les hooks customs, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un hook personnalisé est une fonction dont le nom commence par `use` et qui peut appeler d'autres hooks : elle encapsule une logique avec état pour la réutiliser.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans eux, la même logique (charger des données, suivre la taille d'une fenêtre, gérer un formulaire) serait dupliquée dans chaque composant.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une logique avec état ou effet sert dans deux composants — ou même dans un seul, pour clarifier le composant en séparant la logique de l'affichage.",
-          },
-        ],
+        kind: "text",
+        text: "Un hook personnalisé est une fonction dont le nom commence par `use` et qui peut appeler d'autres hooks : elle encapsule une logique avec état pour la réutiliser.",
       },
+      {
+        kind: "text",
+        text: "Sans eux, la même logique (charger des données, suivre la taille d'une fenêtre, gérer un formulaire) serait dupliquée dans chaque composant.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'une logique avec état ou effet sert dans deux composants — ou même dans un seul, pour clarifier le composant en séparant la logique de l'affichage.",
+      },
+
       {
         kind: "code",
         language: "tsx",
@@ -1009,20 +953,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "La manière idiomatique de gérer les saisies en React : l'état est la source de vérité.",
     blocks: [
       {
+        kind: "text",
+        text: "Un champ contrôlé tire sa valeur de l'état React (`value={...}`) et la met à jour via `onChange` : React possède la donnée, pas le DOM.",
+      },
+      {
+        kind: "text",
+        text: "Valider en direct, désactiver le bouton tant que le formulaire est invalide, formater la saisie, réinitialiser : tout devient trivial quand la valeur vit dans l'état.",
+      },
+      {
         kind: "fields",
-        title: "Formulaires contrôlés, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un champ contrôlé tire sa valeur de l'état React (`value={...}`) et la met à jour via `onChange` : React possède la donnée, pas le DOM.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Valider en direct, désactiver le bouton tant que le formulaire est invalide, formater la saisie, réinitialiser : tout devient trivial quand la valeur vit dans l'état.",
-          },
-          {
+        title: "Formulaires contrôlés : les points clés",
+        fields: [          {
             label: "L'alternative",
             value:
               "Les champs non contrôlés laissent le DOM gérer la valeur (`defaultValue` + `ref` pour la lire). Plus simple pour un champ isolé, moins adapté aux formulaires riches.",
@@ -1083,15 +1024,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Éviter les calculs et rendus inutiles — mais seulement quand c'est justifié, jamais par défaut.",
     blocks: [
       {
+        kind: "text",
+        text: "La mémoïsation met en cache un résultat et ne le recalcule que si ses dépendances changent.",
+      },
+      {
         kind: "fields",
         title: "Les trois outils et leur rôle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La mémoïsation met en cache un résultat et ne le recalcule que si ses dépendances changent.",
-          },
-          {
+        fields: [          {
             label: "`useMemo` — mémoriser une valeur",
             value:
               "`const total = useMemo(() => calculCouteux(items), [items])`. Justifié pour un calcul réellement coûteux (filtrage/tri de milliers d'éléments).",
@@ -1126,24 +1065,22 @@ export const LEARNING_REACT: LearningSection[] = [
       "Afficher un état de chargement pendant qu'une partie de l'application se charge.",
     blocks: [
       {
+        kind: "text",
+        text: "`<Suspense fallback={<Chargement />}>` affiche un contenu de remplacement tant que ses enfants ne sont pas prêts.",
+      },
+      {
+        kind: "text",
+        text: "Sans découpage, l'utilisateur télécharge toute l'application avant d'afficher quoi que ce soit. Le chargement différé réduit le bundle initial et accélère le premier affichage.",
+      },
+      {
         kind: "fields",
-        title: "Suspense, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`<Suspense fallback={<Chargement />}>` affiche un contenu de remplacement tant que ses enfants ne sont pas prêts.",
-          },
-          {
+        title: "Suspense : les points clés",
+        fields: [          {
             label: "Cas d'usage principal : le code-splitting",
             value:
               "`React.lazy(() => import(\"./GrosComposant\"))` charge le code d'une page uniquement quand on en a besoin. Suspense affiche le fallback pendant le téléchargement.",
           },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans découpage, l'utilisateur télécharge toute l'application avant d'afficher quoi que ce soit. Le chargement différé réduit le bundle initial et accélère le premier affichage.",
-          },
+          
         ],
       },
       {
@@ -1166,15 +1103,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Charger des données d'une API : les trois états à gérer et les outils qui simplifient.",
     blocks: [
       {
+        kind: "text",
+        text: "Charger des données, c'est gérer trois états : en cours (`loading`), échec (`error`) et succès (`data`) — jamais un seul.",
+      },
+      {
         kind: "fields",
         title: "Les fondamentaux",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Charger des données, c'est gérer trois états : en cours (`loading`), échec (`error`) et succès (`data`) — jamais un seul.",
-          },
-          {
+        fields: [          {
             label: "La base : `useEffect` + `fetch`",
             value:
               "Un effet déclenche l'appel au montage, les états suivent la progression. Suffisant pour un appel isolé, mais le cache, la revalidation et la déduplication deviennent vite manuels et fragiles.",
@@ -1213,20 +1148,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "Naviguer entre les pages d'une application monopage sans rechargement.",
     blocks: [
       {
+        kind: "text",
+        text: "React Router associe des URL à des composants : `/utilisateurs/42` affiche le composant `Profil` avec le paramètre `42`.",
+      },
+      {
+        kind: "text",
+        text: "React seul ne gère pas les URL. Sans routing, impossible d'avoir des pages partageables, un bouton retour fonctionnel ou des liens profonds.",
+      },
+      {
         kind: "fields",
-        title: "React Router, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "React Router associe des URL à des composants : `/utilisateurs/42` affiche le composant `Profil` avec le paramètre `42`.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "React seul ne gère pas les URL. Sans routing, impossible d'avoir des pages partageables, un bouton retour fonctionnel ou des liens profonds.",
-          },
-          {
+        title: "React Router : les points clés",
+        fields: [          {
             label: "Les briques",
             value:
               "`BrowserRouter` (contexte), `Routes` + `Route path=\"...\" element={...}` (association), `Link` (navigation sans rechargement), `useParams` (paramètres d'URL), `useNavigate` (navigation programmatique).",
@@ -1310,7 +1242,7 @@ export const LEARNING_REACT: LearningSection[] = [
     blocks: [
       {
         kind: "fields",
-        title: "Fragments et portails, point par point",
+        title: "Fragments et portails : les points clés",
         fields: [
           {
             label: "Fragment — en une phrase",
@@ -1349,20 +1281,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "Empêcher une erreur dans un composant de faire écran blanc sur toute l'application.",
     blocks: [
       {
+        kind: "text",
+        text: "Une error boundary capture les erreurs JavaScript de ses composants enfants et affiche une interface de secours au lieu de planter toute la page.",
+      },
+      {
+        kind: "text",
+        text: "Sans boundary, une erreur de rendu (donnée inattendue, bug) démonte toute l'application : écran blanc. Avec, seule la zone fautive affiche un message et un bouton « réessayer ».",
+      },
+      {
         kind: "fields",
-        title: "Error boundaries, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une error boundary capture les erreurs JavaScript de ses composants enfants et affiche une interface de secours au lieu de planter toute la page.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans boundary, une erreur de rendu (donnée inattendue, bug) démonte toute l'application : écran blanc. Avec, seule la zone fautive affiche un message et un bouton « réessayer ».",
-          },
-          {
+        title: "Error boundaries : les points clés",
+        fields: [          {
             label: "La particularité",
             value:
               "C'est le seul concept moderne qui nécessite encore un composant classe (`componentDidCatch`) — ou une bibliothèque comme `react-error-boundary`, qui encapsule cette logique.",
@@ -1396,26 +1325,18 @@ export const LEARNING_REACT: LearningSection[] = [
       "Garder l'interface réactive pendant une mise à jour coûteuse.",
     blocks: [
       {
-        kind: "fields",
-        title: "useTransition, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`useTransition` marque une mise à jour d'état comme « non urgente » : React garde l'ancienne interface affichée et interactive pendant qu'il prépare la nouvelle.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Taper dans un champ de recherche qui filtre 10 000 éléments bloque la saisie : chaque frappe déclenche un rendu coûteux synchrone. La transition laisse la saisie fluide et affiche un indicateur `isPending` pendant le calcul.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Mises à jour déclenchées par l'utilisateur qui entraînent un gros rendu : recherche instantanée, changement d'onglet lourd, filtres complexes. Pas pour le code urgent (saisie elle-même, clic).",
-          },
-        ],
+        kind: "text",
+        text: "`useTransition` marque une mise à jour d'état comme « non urgente » : React garde l'ancienne interface affichée et interactive pendant qu'il prépare la nouvelle.",
       },
+      {
+        kind: "text",
+        text: "Taper dans un champ de recherche qui filtre 10 000 éléments bloque la saisie : chaque frappe déclenche un rendu coûteux synchrone. La transition laisse la saisie fluide et affiche un indicateur `isPending` pendant le calcul.",
+      },
+      {
+        kind: "text",
+        text: "Mises à jour déclenchées par l'utilisateur qui entraînent un gros rendu : recherche instantanée, changement d'onglet lourd, filtres complexes. Pas pour le code urgent (saisie elle-même, clic).",
+      },
+
       {
         kind: "code",
         language: "tsx",
@@ -1481,20 +1402,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "Tester ce que fait le composant du point de vue de l'utilisateur, pas son implémentation.",
     blocks: [
       {
+        kind: "text",
+        text: "On rend le composant, on simule les interactions (clic, saisie) et on vérifie ce qui s'affiche — comme le ferait un utilisateur.",
+      },
+      {
+        kind: "text",
+        text: "Les tests qui vérifient l'état interne cassent à chaque refactoring. Les tests comportementaux protègent contre les régressions tout en laissant le code évoluer.",
+      },
+      {
         kind: "fields",
         title: "La philosophie du test React moderne",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On rend le composant, on simule les interactions (clic, saisie) et on vérifie ce qui s'affiche — comme le ferait un utilisateur.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les tests qui vérifient l'état interne cassent à chaque refactoring. Les tests comportementaux protègent contre les régressions tout en laissant le code évoluer.",
-          },
-          {
+        fields: [          {
             label: "Les outils",
             value:
               "Vitest : exécuteur de tests rapide, intégré à l'écosystème Vite. Testing Library (`@testing-library/react`) : rend les composants et interroge le DOM par rôle/texte accessible. Mention factuelle : Jest est l'alternative historique.",
@@ -1608,15 +1526,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "Le framework React le plus répandu : quand une simple SPA ne suffit plus.",
     blocks: [
       {
+        kind: "text",
+        text: "Next.js est un framework React (développé par Vercel) qui ajoute le rendu côté serveur, le routing par fichiers et des optimisations prêtes à l'emploi.",
+      },
+      {
+        kind: "text",
+        text: "SEO important, performance du premier chargement critique, pages publiques. Pour une application interne derrière un login sans enjeu SEO, une SPA Vite reste souvent plus simple.",
+      },
+      {
         kind: "fields",
-        title: "Next.js, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Next.js est un framework React (développé par Vercel) qui ajoute le rendu côté serveur, le routing par fichiers et des optimisations prêtes à l'emploi.",
-          },
-          {
+        title: "Next.js : les points clés",
+        fields: [          {
             label: "SSR — Server-Side Rendering",
             value:
               "La page est générée sur le serveur à chaque requête : le navigateur reçoit du HTML complet immédiatement. Idéal pour le contenu dynamique qui doit être à jour et indexable.",
@@ -1626,11 +1546,7 @@ export const LEARNING_REACT: LearningSection[] = [
             value:
               "Les pages sont générées une fois au build en HTML statique : rapidité maximale, coût d'hébergement minimal. Idéal pour blogs, documentation, landing pages.",
           },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "SEO important, performance du premier chargement critique, pages publiques. Pour une application interne derrière un login sans enjeu SEO, une SPA Vite reste souvent plus simple.",
-          },
+          
         ],
       },
       {
@@ -1692,7 +1608,7 @@ export const LEARNING_REACT: LearningSection[] = [
     blocks: [
       {
         kind: "fields",
-        title: "Sécurité en React, point par point",
+        title: "Sécurité en React : les points clés",
         fields: [
           {
             label: "XSS — protégé par défaut",
@@ -1730,15 +1646,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Une interface utilisable par tous : ce que React ne fait pas à votre place.",
     blocks: [
       {
+        kind: "text",
+        text: "L'accessibilité, c'est permettre l'usage au clavier, aux lecteurs d'écran et dans de bonnes conditions de contraste — React ne l'apporte pas automatiquement.",
+      },
+      {
         kind: "fields",
         title: "Les fondamentaux",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'accessibilité, c'est permettre l'usage au clavier, aux lecteurs d'écran et dans de bonnes conditions de contraste — React ne l'apporte pas automatiquement.",
-          },
-          {
+        fields: [          {
             label: "HTML sémantique d'abord",
             value:
               "Un vrai `<button>` plutôt qu'un `<div onClick>` : focus clavier, activation à Entrée/Espace et annonce par le lecteur d'écran sont gratuits avec les bons éléments.",
@@ -1774,26 +1688,18 @@ export const LEARNING_REACT: LearningSection[] = [
       "Travailler sur un composant seul, dans tous ses états, sans lancer toute l'application.",
     blocks: [
       {
-        kind: "fields",
-        title: "Storybook, point par point",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Storybook est un atelier qui affiche chaque composant isolément, avec ses variantes (chargement, vide, erreur, données longues).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Tester visuellement l'état « erreur » d'une carte exige normalement de reproduire tout le parcours qui y mène. En isolation, on l'affiche en un clic.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Design systems, bibliothèques de composants, équipes où designers et développeurs collaborent sur les mêmes briques.",
-          },
-        ],
+        kind: "text",
+        text: "Storybook est un atelier qui affiche chaque composant isolément, avec ses variantes (chargement, vide, erreur, données longues).",
       },
+      {
+        kind: "text",
+        text: "Tester visuellement l'état « erreur » d'une carte exige normalement de reproduire tout le parcours qui y mène. En isolation, on l'affiche en un clic.",
+      },
+      {
+        kind: "text",
+        text: "Design systems, bibliothèques de composants, équipes où designers et développeurs collaborent sur les mêmes briques.",
+      },
+
       {
         kind: "text",
         text: "Mention factuelle : c'est un outil répandu mais pas obligatoire — pour un petit projet, une page de démonstration maison suffit. Son vrai apport est organisationnel : un catalogue vivant des composants disponibles et de leurs usages.",
@@ -1808,20 +1714,17 @@ export const LEARNING_REACT: LearningSection[] = [
       "Automatiser les vérifications et le déploiement à chaque modification.",
     blocks: [
       {
+        kind: "text",
+        text: "À chaque push et pull request, un serveur rejoue automatiquement : installation, lint, vérification des types, tests, build.",
+      },
+      {
+        kind: "text",
+        text: "« Ça marchait sur ma machine » : la CI garantit que le code fonctionne aussi sur une machine neutre, et bloque la fusion si le build casse.",
+      },
+      {
         kind: "fields",
         title: "Le pipeline typique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "À chaque push et pull request, un serveur rejoue automatiquement : installation, lint, vérification des types, tests, build.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "« Ça marchait sur ma machine » : la CI garantit que le code fonctionne aussi sur une machine neutre, et bloque la fusion si le build casse.",
-          },
-          {
+        fields: [          {
             label: "Les étapes",
             value:
               "`npm ci` (installation reproductible via le lockfile) → `npx tsc --noEmit` → `npx eslint` → `npx vitest run` → `npm run build`. Chaque étape doit passer pour que la suivante s'exécute.",
@@ -1847,15 +1750,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Mettre l'application en ligne : ce qu'on déploie et où.",
     blocks: [
       {
+        kind: "text",
+        text: "On déploie le contenu de `dist/` — des fichiers statiques — sur n'importe quel hébergeur de fichiers statiques.",
+      },
+      {
         kind: "fields",
         title: "Déployer une SPA React",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On déploie le contenu de `dist/` — des fichiers statiques — sur n'importe quel hébergeur de fichiers statiques.",
-          },
-          {
+        fields: [          {
             label: "Le point critique : le routing",
             value:
               "En SPA, `/profil/42` n'existe pas comme fichier : le serveur doit renvoyer `index.html` pour toutes les routes (fallback), sinon le rafraîchissement sur une page interne donne une erreur 404. Les bons hébergeurs le configurent en une option.",
@@ -1889,15 +1790,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Organiser les fichiers pour qu'un nouveau développeur s'y retrouve en une heure.",
     blocks: [
       {
+        kind: "text",
+        text: "Regroupez par fonctionnalité quand le projet grandit, par type quand il est petit — et colocalisez ce qui change ensemble.",
+      },
+      {
         kind: "fields",
         title: "Les principes d'organisation",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Regroupez par fonctionnalité quand le projet grandit, par type quand il est petit — et colocalisez ce qui change ensemble.",
-          },
-          {
+        fields: [          {
             label: "Par type (petit projet)",
             value:
               "`components/`, `pages/`, `hooks/`, `lib/` : simple et suffisant tant que chaque dossier reste lisible.",
@@ -1949,15 +1848,13 @@ export const LEARNING_REACT: LearningSection[] = [
       "Comprendre le code React écrit avant 2019 — sans apprendre à en écrire.",
     blocks: [
       {
+        kind: "text",
+        text: "Avant les hooks (2019), les composants avec état s'écrivaient comme des classes JavaScript avec `this.state` et des méthodes de cycle de vie.",
+      },
+      {
         kind: "fields",
         title: "Les classes, en bref",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Avant les hooks (2019), les composants avec état s'écrivaient comme des classes JavaScript avec `this.state` et des méthodes de cycle de vie.",
-          },
-          {
+        fields: [          {
             label: "À quoi ça ressemblait",
             value:
               "`class Compteur extends React.Component` avec `this.state = { n: 0 }`, `this.setState({ n: 1 })`, `componentDidMount` pour les effets.",

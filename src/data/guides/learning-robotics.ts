@@ -45,20 +45,17 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La robotique fait interagir un programme avec le monde physique : des capteurs lisent l'environnement, un contrôleur décide, des actionneurs agissent.",
+      },
+      {
+        kind: "text",
+        text: "Automatiser des tâches répétitives, dangereuses ou impossibles pour un humain : chaînes de montage, exploration spatiale, chirurgie assistée, entrepôts logistiques.",
+      },
+      {
         kind: "fields",
-        title: "La robotique en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La robotique fait interagir un programme avec le monde physique : des capteurs lisent l'environnement, un contrôleur décide, des actionneurs agissent.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Automatiser des tâches répétitives, dangereuses ou impossibles pour un humain : chaînes de montage, exploration spatiale, chirurgie assistée, entrepôts logistiques.",
-          },
-          {
+        title: "La robotique : l'essentiel",
+        fields: [          {
             label: "Quand s'y mettre",
             value:
               "Quand on veut que du code ait un effet physique : allumer, déplacer, mesurer, réagir. C'est aussi une excellente porte d'entrée vers l'électronique et les systèmes embarqués.",
@@ -265,15 +262,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "void setup() {\n  pinMode(LED_BUILTIN, OUTPUT); // la LED intégrée devient une sortie\n}\n\nvoid loop() {\n  digitalWrite(LED_BUILTIN, HIGH); // allume la LED (5 V)\n  delay(1000);                    // attend 1000 ms\n  digitalWrite(LED_BUILTIN, LOW);  // éteint la LED (0 V)\n  delay(1000);                    // attend 1000 ms\n}",
       },
       {
+        kind: "text",
+        text: "`pinMode` déclare le rôle d'une broche, `digitalWrite` impose un niveau haut ou bas, `delay` fait une pause.",
+      },
+      {
         kind: "fields",
         title: "Anatomie du sketch",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`pinMode` déclare le rôle d'une broche, `digitalWrite` impose un niveau haut ou bas, `delay` fait une pause.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi deux fonctions",
             value:
               "Le matériel doit être configuré une fois (sens des broches), puis le comportement se répète : cette séparation rend le cycle de vie explicite.",
@@ -310,15 +305,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "const int BOUTON = 2;\nconst int LED = 13;\n\nvoid setup() {\n  pinMode(BOUTON, INPUT_PULLUP); // entrée avec résistance de rappel interne\n  pinMode(LED, OUTPUT);\n}\n\nvoid loop() {\n  if (digitalRead(BOUTON) == LOW) { // bouton pressé = broche à 0 V\n    digitalWrite(LED, HIGH);\n  } else {\n    digitalWrite(LED, LOW);\n  }\n}",
       },
       {
+        kind: "text",
+        text: "Une entrée « flotte » si rien ne la tire vers un niveau : `INPUT_PULLUP` active une résistance interne qui la maintient à `HIGH` au repos.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les entrées",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une entrée « flotte » si rien ne la tire vers un niveau : `INPUT_PULLUP` active une résistance interne qui la maintient à `HIGH` au repos.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi INPUT_PULLUP",
             value:
               "Sans résistance de rappel, la broche capte les parasites et lit des valeurs aléatoires. La résistance interne évite un composant externe.",
@@ -355,20 +348,17 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "void setup() {\n  Serial.begin(9600); // ouvre le port série pour afficher les valeurs\n}\n\nvoid loop() {\n  int valeur = analogRead(A0); // 0 (0 V) à 1023 (5 V)\n  Serial.println(valeur);      // affiche dans le moniteur série\n  delay(200);\n}",
       },
       {
+        kind: "text",
+        text: "`analogRead` échantillonne une tension et la rend sous forme d'entier : 1023 pas pour 5 V, soit environ 4,9 mV par pas.",
+      },
+      {
+        kind: "text",
+        text: "Capteurs à sortie variable : lumière, position, température, distance analogique. Pour du tout-ou-rien, préférez les broches numériques.",
+      },
+      {
         kind: "fields",
         title: "Comprendre l'ADC",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`analogRead` échantillonne une tension et la rend sous forme d'entier : 1023 pas pour 5 V, soit environ 4,9 mV par pas.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Capteurs à sortie variable : lumière, position, température, distance analogique. Pour du tout-ou-rien, préférez les broches numériques.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Laisser une entrée analogique non branchée et s'étonner des valeurs qui dérivent : une entrée flottante capte le bruit ambiant.",
@@ -400,15 +390,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "const int LED = 9; // broche marquée ~ : capable de PWM\n\nvoid setup() {\n  pinMode(LED, OUTPUT);\n}\n\nvoid loop() {\n  for (int i = 0; i <= 255; i++) {\n    analogWrite(LED, i); // 0 = éteint, 255 = plein\n    delay(10);\n  }\n  for (int i = 255; i >= 0; i--) {\n    analogWrite(LED, i);\n    delay(10);\n  }\n}",
       },
       {
+        kind: "text",
+        text: "La PWM simule une tension variable en jouant sur le temps passé à l'état haut, à fréquence fixe.",
+      },
+      {
         kind: "fields",
         title: "Comprendre la PWM",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La PWM simule une tension variable en jouant sur le temps passé à l'état haut, à fréquence fixe.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est partout",
             value:
               "Vitesse des moteurs, luminosité des LED, position des servos, puissance de chauffe : un seul mécanisme pour tous les actionneurs.",
@@ -490,15 +478,17 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "#include <Servo.h>\n\nServo monServo;\n\nvoid setup() {\n  monServo.attach(9); // broche de commande du servo\n}\n\nvoid loop() {\n  for (int angle = 0; angle <= 180; angle++) {\n    monServo.write(angle); // ordonne l'angle\n    delay(15);             // laisse le temps de bouger\n  }\n  for (int angle = 180; angle >= 0; angle--) {\n    monServo.write(angle);\n    delay(15);\n  }\n}",
       },
       {
+        kind: "text",
+        text: "On commande une position angulaire, pas une vitesse : l'électronique interne asservit le moteur pour atteindre l'angle demandé.",
+      },
+      {
+        kind: "text",
+        text: "Direction d'un robot roulant, pince, volet, tête orientable : partout où un angle précis suffit.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le servo",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On commande une position angulaire, pas une vitesse : l'électronique interne asservit le moteur pour atteindre l'angle demandé.",
-          },
-          {
+        fields: [          {
             label: "Alimentation",
             value:
               "Un servo tire plus de courant qu'une broche ne peut fournir : alimentez-le en 5 V externe (ou via la broche 5V pour UN petit servo), jamais depuis une broche GPIO.",
@@ -508,11 +498,7 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
             value:
               "Le servo tremble ou redémarre la carte : alimentation insuffisante. Ajoutez une alimentation 5 V dédiée avec masse commune.",
           },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Direction d'un robot roulant, pince, volet, tête orientable : partout où un angle précis suffit.",
-          },
+          
         ],
       },
     ],
@@ -612,15 +598,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La tension pousse, le courant circule, la résistance limite : dimensionner un circuit, c'est équilibrer les trois.",
+      },
+      {
         kind: "fields",
         title: "Les trois grandeurs",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La tension pousse, le courant circule, la résistance limite : dimensionner un circuit, c'est équilibrer les trois.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est fondamental",
             value:
               "Chaque capteur et actionneur a des limites (tension max, courant max). Les respecter, c'est la différence entre un circuit qui dure et un composant fumant.",
@@ -667,20 +651,17 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Séparez l'alimentation « logique » (carte, capteurs) de l'alimentation « puissance » (moteurs), en reliant leurs masses.",
+      },
+      {
+        kind: "text",
+        text: "Les moteurs créent des pics de courant qui font chuter la tension : la carte redémarre en boucle si elle partage la même source sans découplage.",
+      },
+      {
         kind: "fields",
         title: "Les règles d'alimentation",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Séparez l'alimentation « logique » (carte, capteurs) de l'alimentation « puissance » (moteurs), en reliant leurs masses.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les moteurs créent des pics de courant qui font chuter la tension : la carte redémarre en boucle si elle partage la même source sans découplage.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Alimenter deux moteurs depuis la broche 5V de l'Arduino : surcharge, redémarrages aléatoires, voire régulateur grillé.",
@@ -716,20 +697,17 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Deux fils, un débit convenu : la liaison série la plus simple, idéale pour le debug et les modules lents.",
+      },
+      {
+        kind: "text",
+        text: "Modules GPS, Bluetooth HC-05, liaison entre deux cartes, debug vers le PC. Débits modestes (9600 à 115200 baud).",
+      },
+      {
         kind: "fields",
         title: "L'UART en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Deux fils, un débit convenu : la liaison série la plus simple, idéale pour le debug et les modules lents.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Modules GPS, Bluetooth HC-05, liaison entre deux cartes, debug vers le PC. Débits modestes (9600 à 115200 baud).",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Relier TX à TX et RX à RX : rien ne transite. Croisez toujours les fils.",
@@ -766,15 +744,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "#include <Wire.h>\n\nvoid setup() {\n  Serial.begin(9600);\n  Wire.begin();\n  Serial.println(\"Scan I2C...\");\n  for (byte addr = 1; addr < 127; addr++) {\n    Wire.beginTransmission(addr);\n    if (Wire.endTransmission() == 0) {\n      Serial.print(\"Composant trouvé à 0x\");\n      Serial.println(addr, HEX);\n    }\n  }\n}",
       },
       {
+        kind: "text",
+        text: "Un bus partagé à deux fils où chaque périphérique répond à sa propre adresse.",
+      },
+      {
         kind: "fields",
         title: "L'I2C en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un bus partagé à deux fils où chaque périphérique répond à sa propre adresse.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est puissant",
             value:
               "Un écran + une centrale inertielle + un capteur de pression sur 2 broches seulement, contre 6+ en liaisons dédiées.",
@@ -837,23 +813,20 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "volatile unsigned long impulsions = 0; // volatile : modifiée hors du flux normal\n\nvoid compteur() {\n  impulsions++;\n}\n\nvoid setup() {\n  Serial.begin(9600);\n  attachInterrupt(digitalPinToInterrupt(2), compteur, RISING);\n}\n\nvoid loop() {\n  Serial.println(impulsions);\n  delay(1000);\n}",
       },
       {
+        kind: "text",
+        text: "Le matériel appelle votre fonction au moment exact de l'événement, sans attendre la fin de `loop()`.",
+      },
+      {
+        kind: "text",
+        text: "Encodeurs de roues, boutons d'arrêt d'urgence, signaux rapides. Pour un simple bouton, `digitalRead` suffit.",
+      },
+      {
         kind: "fields",
         title: "Les interruptions, mode d'emploi",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le matériel appelle votre fonction au moment exact de l'événement, sans attendre la fin de `loop()`.",
-          },
-          {
+        fields: [          {
             label: "Règles d'or",
             value:
               "ISR courte (pas de `delay`, pas de `Serial.print`), variables partagées déclarées `volatile`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Encodeurs de roues, boutons d'arrêt d'urgence, signaux rapides. Pour un simple bouton, `digitalRead` suffit.",
           },
           {
             label: "Erreur fréquente",
@@ -882,15 +855,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "const int LED = 13;\nunsigned long dernierChangement = 0;\nbool etat = false;\n\nvoid setup() {\n  pinMode(LED, OUTPUT);\n}\n\nvoid loop() {\n  if (millis() - dernierChangement >= 500) { // 500 ms écoulées ?\n    dernierChangement = millis();\n    etat = !etat;\n    digitalWrite(LED, etat);\n  }\n  // ici, le reste du programme continue de tourner librement\n}",
       },
       {
+        kind: "text",
+        text: "Au lieu d'attendre, on vérifie l'horloge : chaque tâche périodique devient un « si le moment est venu, agir ».",
+      },
+      {
         kind: "fields",
         title: "Programmer sans bloquer",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Au lieu d'attendre, on vérifie l'horloge : chaque tâche périodique devient un « si le moment est venu, agir ».",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est crucial",
             value:
               "Un robot qui `delay(2000)` pendant 2 secondes ne lit plus ses capteurs : il fonce dans le mur en toute ignorance.",
@@ -954,15 +925,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "const int ENA = 5;  // vitesse moteur A (PWM)\nconst int IN1 = 6;  // sens moteur A\nconst int IN2 = 7;\n\nvoid setup() {\n  pinMode(ENA, OUTPUT);\n  pinMode(IN1, OUTPUT);\n  pinMode(IN2, OUTPUT);\n}\n\nvoid avancer(int vitesse) { // vitesse : 0 à 255\n  digitalWrite(IN1, HIGH);\n  digitalWrite(IN2, LOW);\n  analogWrite(ENA, vitesse); // PWM = vitesse\n}\n\nvoid reculer(int vitesse) {\n  digitalWrite(IN1, LOW);\n  digitalWrite(IN2, HIGH);\n  analogWrite(ENA, vitesse);\n}\n\nvoid stop() {\n  analogWrite(ENA, 0);\n}",
       },
       {
+        kind: "text",
+        text: "Quatre interrupteurs en H inversent le courant dans le moteur : le sens de rotation suit le sens du courant.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le pont en H",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Quatre interrupteurs en H inversent le courant dans le moteur : le sens de rotation suit le sens du courant.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi un driver",
             value:
               "Un moteur DC tire 500 mA à plusieurs ampères au démarrage : 25 fois ce qu'une broche peut fournir. Le driver est l'intermédiaire de puissance.",
@@ -1025,15 +994,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "const int TRIG = 9;\nconst int ECHO = 10;\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(TRIG, OUTPUT);\n  pinMode(ECHO, INPUT);\n}\n\nlong lireDistanceCm() {\n  digitalWrite(TRIG, LOW);\n  delayMicroseconds(2);\n  digitalWrite(TRIG, HIGH);   // salve de 10 µs\n  delayMicroseconds(10);\n  digitalWrite(TRIG, LOW);\n  long duree = pulseIn(ECHO, HIGH, 30000); // écho, timeout 30 ms\n  return duree / 58; // conversion µs -> cm\n}\n\nvoid loop() {\n  Serial.print(lireDistanceCm());\n  Serial.println(\" cm\");\n  delay(200);\n}",
       },
       {
+        kind: "text",
+        text: "On chronomètre un écho ultrasonore : le temps de vol divisé par deux, multiplié par la vitesse du son, donne la distance.",
+      },
+      {
         kind: "fields",
         title: "Le télémètre à ultrasons",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On chronomètre un écho ultrasonore : le temps de vol divisé par deux, multiplié par la vitesse du son, donne la distance.",
-          },
-          {
+        fields: [          {
             label: "Limites physiques",
             value:
               "Les surfaces molles ou inclinées absorbent ou dévient l'onde : lectures instables sur rideaux, murs en biais. Le timeout de `pulseIn` évite le blocage sans écho.",
@@ -1080,15 +1047,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "On intègre les rotations des roues pour estimer le déplacement — simple, mais l'erreur s'accumule.",
+      },
+      {
         kind: "fields",
         title: "L'odométrie en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On intègre les rotations des roues pour estimer le déplacement — simple, mais l'erreur s'accumule.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est central",
             value:
               "Sans odométrie, impossible de dire « avance de 50 cm » ou « tourne de 90° » : tout déplacement précis en dépend.",
@@ -1130,15 +1095,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Arduino = réflexes temps réel et basse consommation ; Raspberry Pi = puissance de calcul et écosystème Linux.",
+      },
+      {
         kind: "fields",
         title: "Bien choisir sa plateforme",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Arduino = réflexes temps réel et basse consommation ; Raspberry Pi = puissance de calcul et écosystème Linux.",
-          },
-          {
+        fields: [          {
             label: "L'architecture gagnante",
             value:
               "Les deux ensemble : l'Arduino gère moteurs et capteurs en temps réel, le Pi décide (vision, planification) et dialogue en série avec l'Arduino.",
@@ -1182,20 +1145,17 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "from gpiozero import LED, Button\nfrom signal import pause\n\nled = LED(17)\nbouton = Button(2)\n\nbouton.when_pressed = led.on    # appui  -> allume\nbouton.when_released = led.off  # relâche -> éteint\n\npause()  # garde le programme en vie",
       },
       {
+        kind: "text",
+        text: "Les mêmes GPIO qu'Arduino, pilotés depuis un vrai OS avec toute la richesse de Python.",
+      },
+      {
+        kind: "text",
+        text: "Dès que le projet dépasse le temps réel pur : logger des données, servir une page web de contrôle, traiter une image.",
+      },
+      {
         kind: "fields",
         title: "Python côté matériel",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les mêmes GPIO qu'Arduino, pilotés depuis un vrai OS avec toute la richesse de Python.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès que le projet dépasse le temps réel pur : logger des données, servir une page web de contrôle, traiter une image.",
-          },
-          {
+        fields: [          {
             label: "Attention",
             value:
               "Les GPIO du Pi sont en 3,3 V et fragiles : jamais de 5 V en entrée, contrairement à l'Uno qui tolère le 5 V.",
@@ -1232,15 +1192,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "P pousse proportionnellement à l'erreur, I corrige l'écart persistant, D freine les variations brusques.",
+      },
+      {
         kind: "fields",
         title: "Comprendre chaque terme",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "P pousse proportionnellement à l'erreur, I corrige l'écart persistant, D freine les variations brusques.",
-          },
-          {
+        fields: [          {
             label: "P seul",
             value:
               "Réactif mais laisse une erreur résiduelle (jamais assez de force près de la cible) et oscille si trop fort.",
@@ -1384,15 +1342,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Des processus modulaires qui publient et souscrivent à des flux de messages nommés.",
+      },
+      {
         kind: "fields",
         title: "Le vocabulaire ROS 2",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Des processus modulaires qui publient et souscrivent à des flux de messages nommés.",
-          },
-          {
+        fields: [          {
             label: "Node (nœud)",
             value:
               "Un programme : driver de capteur, algorithme, contrôleur. Inspectez-les avec `ros2 node list`.",
@@ -1448,15 +1404,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         code: "import rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\nclass Bonjour(Node):\n    def __init__(self):\n        super().__init__('bonjour')\n        self.pub = self.create_publisher(String, 'bonjour', 10)\n        self.create_timer(0.5, self.publier)  # toutes les 0,5 s\n\n    def publier(self):\n        msg = String()\n        msg.data = 'ping'\n        self.pub.publish(msg)\n\nrclpy.init()\nnode = Bonjour()\nrclpy.spin(node)  # boucle d'événements ROS",
       },
       {
+        kind: "text",
+        text: "On déclare un nœud, un publisher et un timer : ROS s'occupe du transport des messages.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le nœud",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On déclare un nœud, un publisher et un timer : ROS s'occupe du transport des messages.",
-          },
-          {
+        fields: [          {
             label: "`rclpy.spin`",
             value:
               "La boucle d'événements : elle traite timers et messages entrants. L'équivalent ROS du `loop()` Arduino.",
@@ -1487,15 +1441,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         text: "Gazebo est le simulateur open source de référence en robotique : il simule la physique (collisions, gravité, frottements), les capteurs (lidar, caméra, IMU avec bruit réaliste) et publie tout cela sur des topics ROS 2. On développe l'algorithme de navigation dans le simulateur, puis on le transfère sur le vrai robot avec souvent peu de changements.",
       },
       {
+        kind: "text",
+        text: "Un robot virtuel indiscernable (pour le logiciel) du robot réel : mêmes topics, mêmes messages.",
+      },
+      {
         kind: "fields",
         title: "La simulation en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un robot virtuel indiscernable (pour le logiciel) du robot réel : mêmes topics, mêmes messages.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi simuler",
             value:
               "Itérer en minutes au lieu d'heures, tester les cas dangereux (chute, collision) sans casse, travailler sans le matériel sous la main.",
@@ -1526,15 +1478,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         text: "Webots (open source, maintenu par Cyberbotics) propose une bibliothèque de robots et d'environnements prêts à l'emploi : on programme un robot existant en Python ou C sans construire le modèle 3D soi-même. C'est une excellente porte d'entrée vers la simulation avant Gazebo, plus exigeant.",
       },
       {
+        kind: "text",
+        text: "Un simulateur clé en main : choisissez un robot, écrivez le contrôleur, lancez.",
+      },
+      {
         kind: "fields",
         title: "Webots en bref",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un simulateur clé en main : choisissez un robot, écrivez le contrôleur, lancez.",
-          },
-          {
+        fields: [          {
             label: "Quand le choisir",
             value:
               "Découverte de la simulation, prototypage d'algorithmes (suivi, évitement), enseignement. Pour l'intégration ROS 2 poussée, Gazebo reste la référence.",
@@ -1575,15 +1525,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Dessiner la carte en même temps qu'on s'y déplace, en fusionnant lidar/caméra et odométrie.",
+      },
+      {
         kind: "fields",
         title: "Le SLAM en pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Dessiner la carte en même temps qu'on s'y déplace, en fusionnant lidar/caméra et odométrie.",
-          },
-          {
+        fields: [          {
             label: "Quand s'y frotter",
             value:
               "Navigation autonome en intérieur : après avoir maîtrisé odométrie, ROS 2 et la simulation. Pas un sujet de débutant.",
@@ -1609,15 +1557,13 @@ export const LEARNING_ROBOTICS: LearningSection[] = [
         text: "Une caméra est un capteur comme un autre : une matrice de pixels qu'on traite par logiciel. Les usages progressifs : suivre une ligne colorée (simple seuillage), détecter un objet par sa couleur (espace HSV), puis reconnaître des formes avec OpenCV, la bibliothèque open source de référence en vision.",
       },
       {
+        kind: "text",
+        text: "Transformer des pixels en mesures exploitables : position d'une ligne, d'une balle, d'un visage.",
+      },
+      {
         kind: "fields",
         title: "La vision en robotique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Transformer des pixels en mesures exploitables : position d'une ligne, d'une balle, d'un visage.",
-          },
-          {
+        fields: [          {
             label: "Par où commencer",
             value:
               "Suivi de couleur avec une caméra Pi : quelques dizaines de lignes Python + OpenCV, effet spectaculaire immédiat.",

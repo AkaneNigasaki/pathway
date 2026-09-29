@@ -28,20 +28,17 @@ export const LEARNING_AI_SAFETY: LearningSection[] = [
         text: "L'évaluation et la fiabilité des systèmes IA (AI Safety au sens opérationnel) consistent à mesurer rigoureusement comment un modèle se comporte — y compris quand on essaie de le faire échouer — puis à mettre en place des garde-fous : benchmarks, tests adversariaux sur ses propres modèles, filtres d'entrée/sortie, traçabilité, supervision humaine. Un modèle non évalué est un système dont on ignore les modes d'échec.",
       },
       {
+        kind: "text",
+        text: "Mesurer avant de déployer : ce que le modèle sait faire, où il se trompe, comment il peut être détourné — puis verrouiller.",
+      },
+      {
+        kind: "text",
+        text: "Les modèles actuels hallucinent (affirment du faux avec aplomb), reproduisent des biais de leurs données, et peuvent être manipulés par des entrées adversariales (prompt injection). Déployés sans évaluation, ces défauts deviennent des incidents : décision injuste, fuite de données, désinformation.",
+      },
+      {
         kind: "fields",
-        title: "L'AI Safety opérationnelle en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Mesurer avant de déployer : ce que le modèle sait faire, où il se trompe, comment il peut être détourné — puis verrouiller.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les modèles actuels hallucinent (affirment du faux avec aplomb), reproduisent des biais de leurs données, et peuvent être manipulés par des entrées adversariales (prompt injection). Déployés sans évaluation, ces défauts deviennent des incidents : décision injuste, fuite de données, désinformation.",
-          },
-          {
+        title: "L'AI Safety opérationnelle : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Avant toute mise en production qui touche des utilisateurs, des décisions ou des données sensibles : l'évaluation fait partie du cycle de développement, pas un contrôle après coup.",

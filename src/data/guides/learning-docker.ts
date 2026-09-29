@@ -27,24 +27,21 @@ export const LEARNING_DOCKER: LearningSection[] = [
         text: "Le problème que Docker résout s'appelle le « ça marche sur ma machine » : une application qui fonctionne en développement mais échoue en production parce que les environnements diffèrent (version de Python, de Node, bibliothèque système manquante, variable d'environnement oubliée). En figeant l'environnement dans une image, Docker supprime toute une classe de bugs liés aux différences entre machines.",
       },
       {
+        kind: "text",
+        text: "Docker emballe une application avec son environnement dans un conteneur portable qui tourne partout à l'identique.",
+      },
+      {
+        kind: "text",
+        text: "Les environnements de développement, de test et de production divergeaient sans cesse, causant des bugs impossibles à reproduire. Les machines virtuelles résolvaient cela mais au prix d'un coût énorme en ressources. Docker offre l'isolation avec la légèreté d'un processus.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'une application doit tourner ailleurs que sur votre machine : déploiement, CI/CD, partage avec une équipe, microservices, environnements de test reproductibles. Pour un simple script local, c'est inutile.",
+      },
+      {
         kind: "fields",
-        title: "Docker en une phrase, par angle",
+        title: "Docker : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Docker emballe une application avec son environnement dans un conteneur portable qui tourne partout à l'identique.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les environnements de développement, de test et de production divergeaient sans cesse, causant des bugs impossibles à reproduire. Les machines virtuelles résolvaient cela mais au prix d'un coût énorme en ressources. Docker offre l'isolation avec la légèreté d'un processus.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une application doit tourner ailleurs que sur votre machine : déploiement, CI/CD, partage avec une équipe, microservices, environnements de test reproductibles. Pour un simple script local, c'est inutile.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -107,15 +104,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Une VM virtualise le matériel et fait tourner un OS complet ; un conteneur virtualise l'OS et partage le noyau de l'hôte.",
+      },
+      {
         kind: "fields",
         title: "Comprendre la différence",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une VM virtualise le matériel et fait tourner un OS complet ; un conteneur virtualise l'OS et partage le noyau de l'hôte.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi ça compte",
             value:
               "Partager le noyau supprime la duplication : pas de second OS à démarrer, à patcher, à stocker. C'est ce qui rend les conteneurs rapides, légers et adaptés au déploiement massif.",
@@ -399,15 +394,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         why: "Affiche le dépôt (repository), le tag (version), l'identifiant, la date de création et la taille de chaque image locale. Permet de voir ce qui occupe de l'espace disque.",
       },
       {
+        kind: "text",
+        text: "Une image est un empilement de couches en lecture seule ; chaque instruction d'un Dockerfile ajoute une couche.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les images",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une image est un empilement de couches en lecture seule ; chaque instruction d'un Dockerfile ajoute une couche.",
-          },
-          {
+        fields: [          {
             label: "Le tag",
             value:
               "`nginx:1.27` = l'image `nginx`, version `1.27`. Sans tag, Docker utilise implicitement `latest`, qui est une étiquette mouvante : elle pointe vers « la plus récente au moment du pull », jamais une garantie de version.",
@@ -465,15 +458,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         why: "`-f` (force) arrête le conteneur s'il tourne puis le supprime. Pratique en développement pour repartir de zéro, à éviter en production où l'on préfère un arrêt gracieux.",
       },
       {
+        kind: "text",
+        text: "`run` = créer + démarrer ; `start`/`stop`/`restart` = piloter l'existant ; `rm` = détruire. Créer est coûteux, piloter est instantané.",
+      },
+      {
         kind: "fields",
         title: "Le modèle mental du cycle de vie",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`run` = créer + démarrer ; `start`/`stop`/`restart` = piloter l'existant ; `rm` = détruire. Créer est coûteux, piloter est instantané.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Relancer `docker run` à chaque test au lieu de `docker restart` : on accumule des dizaines de conteneurs arrêtés qui occupent du disque et créent des conflits de noms.",
@@ -513,15 +504,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         why: "`--tail 50` n'affiche que les 50 dernières lignes (évite de noyer le terminal quand les logs sont volumineux) et `-t` ajoute l'horodatage de chaque ligne, précieux pour corréler avec un incident.",
       },
       {
+        kind: "text",
+        text: "Docker capture la sortie standard du processus principal : si votre application logue sur la console, `docker logs` la montre.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les logs Docker",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Docker capture la sortie standard du processus principal : si votre application logue sur la console, `docker logs` la montre.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est conçu ainsi",
             value:
               "Écrire les logs sur la console (plutôt que dans des fichiers internes) rend le conteneur observable de l'extérieur sans y entrer. C'est un principe des applications « twelve-factor ».",
@@ -550,23 +539,20 @@ export const LEARNING_DOCKER: LearningSection[] = [
         verify: "Votre prompt change : `ls`, `cat`, `env` s'exécutent maintenant dans le conteneur, pas sur votre machine.",
       },
       {
+        kind: "text",
+        text: "`docker run` crée un NOUVEAU conteneur ; `docker exec` entre dans un conteneur EXISTANT qui tourne déjà.",
+      },
+      {
+        kind: "text",
+        text: "Debugging ponctuel, vérification de fichiers, test de connectivité réseau depuis le conteneur. Pas pour modifier l'application : tout changement dans le conteneur est éphémère.",
+      },
+      {
         kind: "fields",
         title: "exec vs run : ne pas confondre",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`docker run` crée un NOUVEAU conteneur ; `docker exec` entre dans un conteneur EXISTANT qui tourne déjà.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Utiliser `docker run -it mon-image sh` pour « inspecter » puis s'étonner que les fichiers créés par l'application n'y sont pas : vous avez créé un second conteneur vierge, pas ouvert le premier.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Debugging ponctuel, vérification de fichiers, test de connectivité réseau depuis le conteneur. Pas pour modifier l'application : tout changement dans le conteneur est éphémère.",
           },
           {
             label: "Bonne pratique",
@@ -686,15 +672,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Le CLI envoie des ordres, le démon les exécute, le registre stocke les images : le CLI ne touche jamais directement aux conteneurs.",
+      },
+      {
         kind: "fields",
         title: "Chaque acteur, précisément",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le CLI envoie des ordres, le démon les exécute, le registre stocke les images : le CLI ne touche jamais directement aux conteneurs.",
-          },
-          {
+        fields: [          {
             label: "Le démon (dockerd)",
             value:
               "Le processus qui fait le vrai travail : construire les images, créer et superviser les conteneurs, gérer réseaux et volumes. Il tourne en arrière-plan en permanence, même sans terminal ouvert.",
@@ -744,15 +728,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "L'image est immuable et partagée ; chaque conteneur ajoute une fine couche éphémère par-dessus pour ses propres écritures.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le modèle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'image est immuable et partagée ; chaque conteneur ajoute une fine couche éphémère par-dessus pour ses propres écritures.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est ingénieux",
             value:
               "Télécharger dix images basées sur le même OS ne télécharge les couches communes qu'une fois. Démarrer un conteneur est instantané : aucune copie de l'image, juste une couche vide par-dessus.",
@@ -785,15 +767,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "# Image de base : le point de départ (OS + runtime)\nFROM node:20-alpine\n\n# Dossier de travail dans le conteneur\nWORKDIR /app\n\n# D'abord les fichiers de dépendances seuls (optimise le cache)\nCOPY package.json package-lock.json ./\nRUN npm ci --only=production\n\n# Puis le code source\nCOPY . .\n\n# Documentation : le port sur lequel l'app écoute\nEXPOSE 3000\n\n# Commande lancée au démarrage du conteneur\nCMD [\"node\", \"server.js\"]",
       },
       {
+        kind: "text",
+        text: "Chaque instruction du Dockerfile crée une couche d'image ; l'ordre des instructions détermine l'efficacité du cache de build.",
+      },
+      {
         kind: "fields",
         title: "Lecture ligne par ligne",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque instruction du Dockerfile crée une couche d'image ; l'ordre des instructions détermine l'efficacité du cache de build.",
-          },
-          {
+        fields: [          {
             label: "`FROM`",
             value:
               "Toujours en premier : choisit l'image de base. `node:20-alpine` = Node.js 20 sur un Linux Alpine minimal. Tout le reste s'empile par-dessus.",
@@ -825,15 +805,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
       "Tout part de `FROM` : bien choisir son image de base conditionne la taille, la sécurité et la maintenabilité.",
     blocks: [
       {
+        kind: "text",
+        text: "`FROM` définit l'OS et le runtime de départ ; préférez une image officielle, épinglée en version, et minimale.",
+      },
+      {
         kind: "fields",
         title: "Bien choisir sa base",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`FROM` définit l'OS et le runtime de départ ; préférez une image officielle, épinglée en version, et minimale.",
-          },
-          {
+        fields: [          {
             label: "Images officielles",
             value:
               "Les images marquées « Official Image » sur Docker Hub (`node`, `python`, `nginx`, `postgres`) sont maintenues et auditées. En cas de doute, partez de celles-là plutôt que d'une image d'un inconnu.",
@@ -871,15 +849,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "RUN apt-get update && apt-get install -y --no-install-recommends \\\n    curl ca-certificates \\\n    && rm -rf /var/lib/apt/lists/*",
       },
       {
+        kind: "text",
+        text: "Chaque `RUN` crée une couche : regroupez les commandes liées avec `&&` et nettoyez dans la même instruction, sinon les fichiers « supprimés » restent dans les couches précédentes.",
+      },
+      {
         kind: "fields",
         title: "Maîtriser RUN",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque `RUN` crée une couche : regroupez les commandes liées avec `&&` et nettoyez dans la même instruction, sinon les fichiers « supprimés » restent dans les couches précédentes.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi le nettoyage compte",
             value:
               "Les couches sont additives : un `RUN rm` dans une couche ultérieure masque le fichier sans le supprimer des couches précédentes — l'image garde le poids. Seul un nettoyage dans la même couche que la création allège vraiment.",
@@ -912,15 +888,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "# Copie package.json et package-lock.json dans /app/\nCOPY package.json package-lock.json ./\n\n# Copie tout le contexte (filtré par .dockerignore)\nCOPY . .",
       },
       {
+        kind: "text",
+        text: "`COPY` copie des fichiers locaux, simplement ; `ADD` fait pareil mais avec des pouvoirs magiques (décompression auto, URLs distantes) qui créent des surprises.",
+      },
+      {
         kind: "fields",
         title: "Trancher entre COPY et ADD",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`COPY` copie des fichiers locaux, simplement ; `ADD` fait pareil mais avec des pouvoirs magiques (décompression auto, URLs distantes) qui créent des surprises.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi préférer COPY",
             value:
               "La documentation officielle recommande `COPY` par défaut : son comportement est transparent. `ADD` décompresse silencieusement les archives et télécharge des URLs sans vérification — deux sources de builds non reproductibles.",
@@ -947,15 +921,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
       "Les deux instructions définissent le processus de démarrage — leur interaction est subtile mais essentielle.",
     blocks: [
       {
+        kind: "text",
+        text: "`ENTRYPOINT` définit le programme fixe du conteneur, `CMD` ses arguments par défaut : les arguments de `docker run` remplacent `CMD`, pas `ENTRYPOINT`.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le duo",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`ENTRYPOINT` définit le programme fixe du conteneur, `CMD` ses arguments par défaut : les arguments de `docker run` remplacent `CMD`, pas `ENTRYPOINT`.",
-          },
-          {
+        fields: [          {
             label: "Le cas simple (90 % des usages)",
             value:
               "Un seul `CMD [\"node\", \"server.js\"]` suffit. Le conteneur lance cette commande au démarrage, et `docker run mon-image autre-commande` permet de la remplacer pour du debug.",
@@ -1034,15 +1006,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "node_modules\n.git\n.env\n*.log\ndist\ncoverage\n.DS_Store",
       },
       {
+        kind: "text",
+        text: "Le `.dockerignore` exclut des fichiers du contexte de build : sans lui, `COPY . .` embarque tout, y compris ce qui ne devrait jamais quitter votre machine.",
+      },
+      {
         kind: "fields",
         title: "Pourquoi c'est indispensable",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le `.dockerignore` exclut des fichiers du contexte de build : sans lui, `COPY . .` embarque tout, y compris ce qui ne devrait jamais quitter votre machine.",
-          },
-          {
+        fields: [          {
             label: "Trois raisons",
             value:
               "Sécurité : un `.env` copié par accident expose vos secrets dans l'image. Poids : `node_modules` local ou `.git` gonflent le contexte pour rien. Cache : un fichier qui change à chaque build (logs) invalide inutilement le cache des couches.",
@@ -1076,15 +1046,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         verify: "`docker images` affiche désormais `mon-app` avec le tag `1.0`.",
       },
       {
+        kind: "text",
+        text: "Le build exécute chaque instruction du Dockerfile dans l'ordre, met en cache chaque couche, et produit une image immuable identifiée par son tag.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le build",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le build exécute chaque instruction du Dockerfile dans l'ordre, met en cache chaque couche, et produit une image immuable identifiée par son tag.",
-          },
-          {
+        fields: [          {
             label: "Le tag, c'est la version",
             value:
               "Adoptez une convention : `1.0`, `1.0.3`, ou le hash de commit Git. `docker build -t mon-app:latest .` seul est un anti-pattern en équipe : impossible de savoir ce que contient « latest ».",
@@ -1117,15 +1085,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "docker build -t mon-app:1.0 .\n# [+] Building...\n# [2/5] WORKDIR /app\n# [3/5] COPY package.json package-lock.json ./\n# [4/5] RUN npm ci --only=production\n# [5/5] COPY . .",
       },
       {
+        kind: "text",
+        text: "Docker réutilise une couche si l'instruction et ses fichiers d'entrée sont inchangés ; dès qu'une couche change, toutes les suivantes sont reconstruites.",
+      },
+      {
         kind: "fields",
         title: "Maîtriser le cache",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Docker réutilise une couche si l'instruction et ses fichiers d'entrée sont inchangés ; dès qu'une couche change, toutes les suivantes sont reconstruites.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi l'ordre compte",
             value:
               "Mettez en premier ce qui change rarement (installation des dépendances), en dernier ce qui change souvent (le code). L'inverse invalide le cache à chaque build et transforme 10 secondes en 5 minutes.",
@@ -1163,15 +1129,17 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "# Étape 1 : construction (image complète avec toolchain)\nFROM node:20 AS build\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\n# Étape 2 : exécution (image minimale, sans les outils de build)\nFROM node:20-alpine\nWORKDIR /app\nCOPY --from=build /app/dist ./dist\nCOPY package*.json ./\nRUN npm ci --only=production\nCMD [\"node\", \"dist/server.js\"]",
       },
       {
+        kind: "text",
+        text: "Plusieurs `FROM` dans un même Dockerfile : chaque étape est un environnement temporaire, et seule la dernière devient l'image finale — on n'y copie que l'essentiel via `COPY --from=`.",
+      },
+      {
+        kind: "text",
+        text: "Langages compilés (Go, Rust, Java), frontend avec étape de build (Vite, Next), toute image de production. Pour un script Python simple, c'est superflu.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le multi-étapes",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Plusieurs `FROM` dans un même Dockerfile : chaque étape est un environnement temporaire, et seule la dernière devient l'image finale — on n'y copie que l'essentiel via `COPY --from=`.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est puissant",
             value:
               "L'étape de build peut contenir compilateurs, SDK et dépendances de dev (lourds) ; l'image finale ne contient que le runtime et les artefacts compilés. Résultat typique : de 1 Go à 150 Mo.",
@@ -1180,11 +1148,6 @@ export const LEARNING_DOCKER: LearningSection[] = [
             label: "Nommage des étapes",
             value:
               "`AS build` nomme l'étape pour y faire référence. Sans nom, on utilise l'index (`--from=0`), moins lisible. Nommez toujours vos étapes.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Langages compilés (Go, Rust, Java), frontend avec étape de build (Vite, Next), toute image de production. Pour un script Python simple, c'est superflu.",
           },
           {
             label: "Erreur fréquente",
@@ -1210,23 +1173,20 @@ export const LEARNING_DOCKER: LearningSection[] = [
         verify: "`docker volume ls` affiche `donnees`. Supprimez puis recréez le conteneur avec le même volume : les données sont toujours là.",
       },
       {
+        kind: "text",
+        text: "Un volume nommé est un espace de stockage géré par Docker, indépendant du cycle de vie des conteneurs.",
+      },
+      {
+        kind: "text",
+        text: "Bases de données, files d'attente, tout état qui doit survivre aux redéploiements. C'est LE choix par défaut pour la persistance en production.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les volumes",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un volume nommé est un espace de stockage géré par Docker, indépendant du cycle de vie des conteneurs.",
-          },
-          {
+        fields: [          {
             label: "Où sont les données",
             value:
               "Docker les stocke dans son espace interne (`/var/lib/docker/volumes` sur Linux). Vous n'avez pas à connaître le chemin : Docker gère tout, y compris les permissions.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Bases de données, files d'attente, tout état qui doit survivre aux redéploiements. C'est LE choix par défaut pour la persistance en production.",
           },
           {
             label: "Cycle de vie",
@@ -1257,20 +1217,17 @@ export const LEARNING_DOCKER: LearningSection[] = [
         verify: "Modifiez un fichier localement, rechargez l'application : le changement est pris en compte (si l'app supporte le rechargement à chaud).",
       },
       {
+        kind: "text",
+        text: "Un bind mount relie un chemin précis de l'hôte à un chemin du conteneur, en lecture-écriture et en temps réel.",
+      },
+      {
+        kind: "text",
+        text: "Développement local : édition du code sur l'hôte, exécution dans le conteneur. Jamais en production : cela casse la portabilité (l'image dépend d'un dossier local).",
+      },
+      {
         kind: "fields",
         title: "Comprendre les bind mounts",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un bind mount relie un chemin précis de l'hôte à un chemin du conteneur, en lecture-écriture et en temps réel.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Développement local : édition du code sur l'hôte, exécution dans le conteneur. Jamais en production : cela casse la portabilité (l'image dépend d'un dossier local).",
-          },
-          {
+        fields: [          {
             label: "Lecture seule",
             value:
               "Ajoutez `:ro` pour un montage en lecture seule (`-v $(pwd)/config:/app/config:ro`) : le conteneur ne peut pas modifier vos fichiers, protection utile contre les bugs.",
@@ -1332,15 +1289,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un réseau Docker est un segment isolé où les conteneurs communiquent entre eux par leur nom, sans exposer leurs ports sur l'hôte.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les réseaux Docker",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un réseau Docker est un segment isolé où les conteneurs communiquent entre eux par leur nom, sans exposer leurs ports sur l'hôte.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi un réseau personnalisé",
             value:
               "Le réseau `bridge` par défaut ne fournit pas la résolution DNS par nom. Créez toujours votre réseau (`docker network create`) : vos services se trouvent via `http://nom-du-service:port`, simplement et sans IP en dur.",
@@ -1399,24 +1354,21 @@ export const LEARNING_DOCKER: LearningSection[] = [
         text: "Docker Compose est l'outil officiel pour définir et piloter des applications multi-conteneurs. Au lieu d'enchaîner de longues commandes `docker run` (réseau à créer, volumes à monter, variables à passer), vous décrivez l'ensemble dans un fichier `compose.yaml` : une commande (`docker compose up`) démarre tout, dans le bon ordre, sur un réseau dédié créé automatiquement.",
       },
       {
+        kind: "text",
+        text: "Compose transforme une série de `docker run` en un fichier déclaratif versionnable : la stack entière devient reproductible en une commande.",
+      },
+      {
+        kind: "text",
+        text: "Une application réelle = app + base + cache + reverse proxy. Retenir et retaper 4 commandes `docker run` avec leurs options est fragile ; un fichier les rend explicites, partageables et relançables à l'identique.",
+      },
+      {
+        kind: "text",
+        text: "Développement local multi-services, environnements de test, petites productions mono-machine. Pour du multi-machines ou de l'auto-scaling, c'est Kubernetes qui prend le relais.",
+      },
+      {
         kind: "fields",
         title: "Comprendre Compose",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Compose transforme une série de `docker run` en un fichier déclaratif versionnable : la stack entière devient reproductible en une commande.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Une application réelle = app + base + cache + reverse proxy. Retenir et retaper 4 commandes `docker run` avec leurs options est fragile ; un fichier les rend explicites, partageables et relançables à l'identique.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Développement local multi-services, environnements de test, petites productions mono-machine. Pour du multi-machines ou de l'auto-scaling, c'est Kubernetes qui prend le relais.",
-          },
           {
             label: "`docker compose` vs `docker-compose`",
             value:
@@ -1505,15 +1457,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         why: "Arrête les conteneurs, les supprime, ainsi que le réseau créé. Les volumes nommés sont CONSERVÉS par défaut (vos données survivent) ; ajoutez `-v` pour tout raser, volumes inclus — destructif.",
       },
       {
+        kind: "text",
+        text: "`up` = construire + créer + démarrer ; `down` = arrêter + supprimer (réseau et conteneurs, pas les volumes).",
+      },
+      {
         kind: "fields",
         title: "Le cycle de vie Compose",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`up` = construire + créer + démarrer ; `down` = arrêter + supprimer (réseau et conteneurs, pas les volumes).",
-          },
-          {
+        fields: [          {
             label: "Reconstruire après modification",
             value:
               "`docker compose up -d --build` force la reconstruction des images avant de redémarrer. Sans `--build`, Compose réutilise l'image existante même si le Dockerfile a changé.",
@@ -1535,15 +1485,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
       "Où vivent les images : comprendre les registres publics et privés.",
     blocks: [
       {
+        kind: "text",
+        text: "Un registre est un serveur qui stocke et distribue les images ; `docker pull` télécharge depuis un registre, `docker push` y publie.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les registres",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un registre est un serveur qui stocke et distribue les images ; `docker pull` télécharge depuis un registre, `docker push` y publie.",
-          },
-          {
+        fields: [          {
             label: "Docker Hub",
             value:
               "Le registre public par défaut (`docker.io`). Héberge les images officielles et des millions d'images communautaires. Compte gratuit avec dépôts publics illimités ; les pulls anonymes sont soumis à des quotas.",
@@ -1609,15 +1557,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
       "Choisir des images de confiance et des tags qui ne vous trahiront pas dans six mois.",
     blocks: [
       {
+        kind: "text",
+        text: "Préférez les images officielles épinglées à une version explicite ; `latest` est un alias mouvant, pas une version.",
+      },
+      {
         kind: "fields",
         title: "Choisir ses images comme un pro",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Préférez les images officielles épinglées à une version explicite ; `latest` est un alias mouvant, pas une version.",
-          },
-          {
+        fields: [          {
             label: "Images officielles",
             value:
               "Badge « Official Image » sur Docker Hub : maintenues par Docker en partenariat avec les éditeurs, scannées pour les vulnérabilités, documentées. Le point de départ par défaut pour `node`, `python`, `postgres`, `redis`, `nginx`…",
@@ -1658,15 +1604,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Chaque mégaoctet d'image se paie en temps de `pull`, d'espace disque et de surface d'attaque : le minimalisme est une qualité.",
+      },
+      {
         kind: "fields",
         title: "Comprendre l'enjeu du poids",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque mégaoctet d'image se paie en temps de `pull`, d'espace disque et de surface d'attaque : le minimalisme est une qualité.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi alpine est si léger",
             value:
               "Alpine Linux utilise `musl` au lieu de `glibc` et n'embarque que l'essentiel : l'image de base fait ~5 Mo. La contrepartie : certains paquets compilés pour `glibc` (quelques modules natifs Node/Python) peuvent dysfonctionner — à tester.",
@@ -1699,15 +1643,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production && \\\n    addgroup -S appgroup && adduser -S appuser -G appgroup\nCOPY --chown=appuser:appgroup . .\nUSER appuser\nCMD [\"node\", \"server.js\"]",
       },
       {
+        kind: "text",
+        text: "Sans instruction `USER`, le processus du conteneur est root : en cas de faille (évasion de conteneur), l'attaquant hérite de privilèges maximaux.",
+      },
+      {
         kind: "fields",
         title: "Comprendre le risque",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Sans instruction `USER`, le processus du conteneur est root : en cas de faille (évasion de conteneur), l'attaquant hérite de privilèges maximaux.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est le défaut",
             value:
               "Historique et simplicité : root évite les problèmes de permissions pendant le build. Mais en production, le principe du moindre privilège s'applique aussi aux conteneurs.",
@@ -1739,15 +1681,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
       "Mots de passe, clés API, certificats : la règle d'or et les mécanismes prévus pour.",
     blocks: [
       {
+        kind: "text",
+        text: "Un secret écrit dans un Dockerfile ou un `ENV` reste lisible à vie dans l'historique de l'image : injectez-le au runtime, jamais au build.",
+      },
+      {
         kind: "fields",
         title: "Gérer les secrets proprement",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un secret écrit dans un Dockerfile ou un `ENV` reste lisible à vie dans l'historique de l'image : injectez-le au runtime, jamais au build.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est irréversible",
             value:
               "Même supprimé dans une couche ultérieure, le secret persiste dans les couches précédentes. Et une image poussée sur un registre est potentiellement copiée partout : on ne « rappelle » pas une image publiée.",
@@ -1790,15 +1730,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         code: "HEALTHCHECK --interval=30s --timeout=3s --retries=3 \\\n  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1",
       },
       {
+        kind: "text",
+        text: "Un healthcheck est une commande testée périodiquement par Docker : son succès ou échec fait passer le conteneur à l'état `healthy` ou `unhealthy`.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les healthchecks",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un healthcheck est une commande testée périodiquement par Docker : son succès ou échec fait passer le conteneur à l'état `healthy` ou `unhealthy`.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est nécessaire",
             value:
               "Une application peut mettre 20 secondes à charger ses données avant de répondre. Sans healthcheck, Docker la croit « up » dès le lancement du processus — et un orchestrateur peut y envoyer du trafic trop tôt.",
@@ -1843,15 +1781,13 @@ export const LEARNING_DOCKER: LearningSection[] = [
         why: "Affiche en temps réel CPU, mémoire, réseau et I/O disque de chaque conteneur. Le premier outil pour diagnostiquer « quel conteneur mange mes ressources ».",
       },
       {
+        kind: "text",
+        text: "Sans limite, un conteneur peut consommer toute la RAM de l'hôte : fixez toujours un plafond mémoire en production.",
+      },
+      {
         kind: "fields",
         title: "Comprendre les limites",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Sans limite, un conteneur peut consommer toute la RAM de l'hôte : fixez toujours un plafond mémoire en production.",
-          },
-          {
+        fields: [          {
             label: "`--memory` vs `--cpus`",
             value:
               "La mémoire est une limite dure (dépassement = mort du processus). Le CPU est une part relative (`--cpus=1.5`) : le conteneur est ralenti, pas tué. Les deux se combinent.",

@@ -61,24 +61,21 @@ export const LEARNING_CLOUD: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Le cloud transforme l'infrastructure informatique en service à la demande : des ressources provisionnées en minutes, accessibles par API, facturées au compteur.",
+      },
+      {
+        kind: "text",
+        text: "Acheter des serveurs impose de prévoir la capacité maximale à l'avance, d'immobiliser du capital et d'entretenir du matériel. Le cloud convertit ce coût fixe en coût variable et déplace l'exploitation vers le fournisseur.",
+      },
+      {
+        kind: "text",
+        text: "Charge variable ou imprévisible, besoin de démarrer vite, équipe petite sans administrateurs système, portée mondiale (déployer près des utilisateurs).",
+      },
+      {
         kind: "fields",
-        title: "Le cloud en une phrase, par angle",
+        title: "Le cloud : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le cloud transforme l'infrastructure informatique en service à la demande : des ressources provisionnées en minutes, accessibles par API, facturées au compteur.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Acheter des serveurs impose de prévoir la capacité maximale à l'avance, d'immobiliser du capital et d'entretenir du matériel. Le cloud convertit ce coût fixe en coût variable et déplace l'exploitation vers le fournisseur.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Charge variable ou imprévisible, besoin de démarrer vite, équipe petite sans administrateurs système, portée mondiale (déployer près des utilisateurs).",
-          },
           {
             label: "Quand réfléchir à deux fois",
             value:
@@ -221,15 +218,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "IaaS = vous louez des machines ; PaaS = vous louez une plateforme prête ; SaaS = vous louez un logiciel fini ; FaaS = vous louez de l'exécution à l'événement.",
+      },
+      {
         kind: "fields",
         title: "Choisir son modèle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "IaaS = vous louez des machines ; PaaS = vous louez une plateforme prête ; SaaS = vous louez un logiciel fini ; FaaS = vous louez de l'exécution à l'événement.",
-          },
-          {
+        fields: [          {
             label: "Quand choisir IaaS",
             value:
               "Besoin de contrôle total (OS spécifique, réseau sur mesure, conformité), ou migration d'applications existantes telles quelles vers des VM.",
@@ -266,10 +261,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
       "Cloud public, privé, hybride, multi-cloud : où tournent vos ressources et pourquoi ce choix compte.",
     blocks: [
       {
+        kind: "text",
+        text: "Public par défaut pour démarrer. Hybride quand la réglementation ou l'existant l'impose. Multi-cloud comme stratégie d'entreprise mûrie, pas comme défaut d'architecture.",
+      },
+      {
         kind: "fields",
         title: "Les quatre modèles (terminologie NIST)",
-        fields: [
-          {
+        fields: [          {
             label: "Cloud public",
             value:
               "Ressources partagées entre clients, accessibles via Internet. Le modèle dominant : AWS, Azure, Google Cloud. Coût d'entrée nul, élasticité maximale.",
@@ -288,11 +286,6 @@ export const LEARNING_CLOUD: LearningSection[] = [
             label: "Multi-cloud",
             value:
               "Utiliser plusieurs fournisseurs publics (ex. AWS + GCP). Évite la dépendance à un seul acteur, mais multiplie la complexité : deux consoles, deux facturations, deux IAM.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Public par défaut pour démarrer. Hybride quand la réglementation ou l'existant l'impose. Multi-cloud comme stratégie d'entreprise mûrie, pas comme défaut d'architecture.",
           },
           {
             label: "Erreur fréquente",
@@ -531,15 +524,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         why: "Liste les VM Compute Engine du projet actif, toutes zones confondues. Vide au début, c'est normal.",
       },
       {
+        kind: "text",
+        text: "Chez Google Cloud, le projet est l'unité d'organisation : facturation, droits d'accès et ressources sont rattachés à un projet.",
+      },
+      {
         kind: "fields",
         title: "Le concept de « projet »",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chez Google Cloud, le projet est l'unité d'organisation : facturation, droits d'accès et ressources sont rattachés à un projet.",
-          },
-          {
+        fields: [          {
             label: "Bonne pratique",
             value:
               "Un projet par environnement (`mon-app-dev`, `mon-app-prod`) : séparation nette des droits et de la facturation, suppression propre en fin de vie.",
@@ -645,24 +636,21 @@ export const LEARNING_CLOUD: LearningSection[] = [
         text: "Une machine virtuelle est un serveur complet (OS, CPU, RAM, disque) virtualisé sur le matériel du fournisseur. Vous choisissez la taille, l'image système, le réseau ; vous administrez tout le reste : mises à jour, pare-feu, sauvegardes, applications.",
       },
       {
+        kind: "text",
+        text: "Une VM est un ordinateur distant que vous louez à l'heure, avec un accès administrateur complet.",
+      },
+      {
+        kind: "text",
+        text: "Premier service cloud historique (EC2, 2006) : reproduire le serveur physique en mieux — provisionné en minutes, redimensionnable, sans matériel.",
+      },
+      {
+        kind: "text",
+        text: "Migration d'applications existantes sans les modifier, besoin d'un OS ou d'un noyau spécifique, contrôle total du réseau et de la sécurité.",
+      },
+      {
         kind: "fields",
-        title: "La VM en une phrase, par angle",
+        title: "La VM : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une VM est un ordinateur distant que vous louez à l'heure, avec un accès administrateur complet.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Premier service cloud historique (EC2, 2006) : reproduire le serveur physique en mieux — provisionné en minutes, redimensionnable, sans matériel.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Migration d'applications existantes sans les modifier, besoin d'un OS ou d'un noyau spécifique, contrôle total du réseau et de la sécurité.",
-          },
           {
             label: "Exemple réel",
             value:
@@ -698,10 +686,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         text: "Le conteneur (Docker) embarque l'application et ses dépendances dans une image portable. Les services managés exécutent ces images sans que vous gériez les VM sous-jacentes : vous décrivez le service (image, CPU, mémoire, réplicas), la plateforme s'occupe du placement, du redémarrage et de la mise à l'échelle.",
       },
       {
+        kind: "text",
+        text: "Applications packagées en images Docker, besoin de portabilité entre environnements, microservices, ou équipe déjà à l'aise avec les conteneurs.",
+      },
+      {
         kind: "fields",
         title: "Panorama factuel",
-        fields: [
-          {
+        fields: [          {
             label: "Sans orchestrateur (simple)",
             value:
               "AWS Fargate, Google Cloud Run, Azure Container Instances : vous fournissez l'image, la plateforme l'exécute. Idéal pour des services stateless et des tâches planifiées.",
@@ -710,11 +701,6 @@ export const LEARNING_CLOUD: LearningSection[] = [
             label: "Avec Kubernetes managé",
             value:
               "EKS (AWS), AKS (Azure), GKE (Google Cloud) : un cluster Kubernetes dont le fournisseur gère le plan de contrôle. Puissant mais avec une courbe d'apprentissage réelle.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Applications packagées en images Docker, besoin de portabilité entre environnements, microservices, ou équipe déjà à l'aise avec les conteneurs.",
           },
           {
             label: "Erreur fréquente",
@@ -748,20 +734,17 @@ export const LEARNING_CLOUD: LearningSection[] = [
         code: "zip function.zip index.js\naws lambda create-function --function-name hello \\\n  --runtime nodejs22.x --role arn:aws:iam::123456789012:role/lambda-role \\\n  --handler index.handler --zip-file fileb://function.zip\naws lambda invoke --function-name hello /tmp/out.json && cat /tmp/out.json",
       },
       {
+        kind: "text",
+        text: "Le serverless exécute votre code uniquement quand un événement survient, avec une mise à l'échelle automatique et une facturation à l'usage réel.",
+      },
+      {
+        kind: "text",
+        text: "Traitements événementiels (redimensionner une image uploadée, réagir à un webhook), API à trafic irrégulier, tâches planifiées, prototypes.",
+      },
+      {
         kind: "fields",
-        title: "Le serverless en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le serverless exécute votre code uniquement quand un événement survient, avec une mise à l'échelle automatique et une facturation à l'usage réel.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Traitements événementiels (redimensionner une image uploadée, réagir à un webhook), API à trafic irrégulier, tâches planifiées, prototypes.",
-          },
-          {
+        title: "Le serverless : l'essentiel",
+        fields: [          {
             label: "Quand l'éviter",
             value:
               "Traitements longs (limites de durée d'exécution), besoin de connexions persistantes nombreuses (chaque exécution rouvre ses connexions), latence critique au premier appel (cold start).",
@@ -837,20 +820,17 @@ export const LEARNING_CLOUD: LearningSection[] = [
         verify: "`aws s3 ls s3://mon-bucket-demo-12345/` liste le fichier.",
       },
       {
+        kind: "text",
+        text: "Le stockage objet est un disque dur infini accessible par API, où chaque fichier a une URL et des métadonnées.",
+      },
+      {
+        kind: "text",
+        text: "Fichiers statiques (images, vidéos, assets), sauvegardes, hébergement de sites statiques, data lakes, archives.",
+      },
+      {
         kind: "fields",
-        title: "Le stockage objet en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le stockage objet est un disque dur infini accessible par API, où chaque fichier a une URL et des métadonnées.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Fichiers statiques (images, vidéos, assets), sauvegardes, hébergement de sites statiques, data lakes, archives.",
-          },
-          {
+        title: "Le stockage objet : l'essentiel",
+        fields: [          {
             label: "Quand ne pas l'utiliser",
             value:
               "Base de données transactionnelle, système de fichiers partagé entre serveurs avec verrous, accès nécessitant une faible latence au niveau bloc.",
@@ -881,18 +861,17 @@ export const LEARNING_CLOUD: LearningSection[] = [
         text: "Le stockage bloc fournit un volume brut (comme un disque dur) que l'on attache à une VM et que l'on formate avec un système de fichiers classique. Faible latence, idéal pour les systèmes d'exploitation et les bases de données. Contrairement au stockage objet, il est lié à une zone de disponibilité : un volume ne se partage pas entre VM de zones différentes.",
       },
       {
+        kind: "text",
+        text: "Le stockage bloc est le disque dur virtuel d'une VM : rapide, formaté en ext4/NTFS, attaché à une seule machine.",
+      },
+      {
+        kind: "text",
+        text: "Disque système des VM, volumes de bases de données, tout besoin d'accès bloc à faible latence.",
+      },
+      {
         kind: "fields",
         title: "Points clés",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Le stockage bloc est le disque dur virtuel d'une VM : rapide, formaté en ext4/NTFS, attaché à une seule machine.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value: "Disque système des VM, volumes de bases de données, tout besoin d'accès bloc à faible latence.",
-          },
-          {
+        fields: [          {
             label: "Sauvegarde",
             value: "Via des snapshots (instantanés) : copies incrémentales du volume, stockées de façon redondante, restaurables en un nouveau volume.",
           },
@@ -920,15 +899,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         text: "Le stockage fichier expose un partage réseau (NFS ou SMB) monté simultanément par plusieurs VM ou conteneurs. C'est le chaînon manquant entre le disque local (une seule machine) et l'objet (pas de système de fichiers) : plusieurs serveurs lisent et écrivent les mêmes fichiers.",
       },
       {
+        kind: "text",
+        text: "Contenus partagés entre serveurs (ex. uploads d'un CMS derrière plusieurs VM), répertoires home partagés, migration d'applications qui attendent un système de fichiers.",
+      },
+      {
         kind: "fields",
         title: "Points clés",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Contenus partagés entre serveurs (ex. uploads d'un CMS derrière plusieurs VM), répertoires home partagés, migration d'applications qui attendent un système de fichiers.",
-          },
-          {
+        fields: [          {
             label: "Quand ne pas l'utiliser",
             value:
               "Haute performance en écritures concurrentes intenses, ou cas où le stockage objet avec une couche d'abstraction suffit et coûte moins.",
@@ -1048,15 +1025,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "L'équilibreur répartit les requêtes sur des instances saines et rend la panne d'un serveur invisible aux utilisateurs.",
+      },
+      {
         kind: "fields",
         title: "Points clés",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'équilibreur répartit les requêtes sur des instances saines et rend la panne d'un serveur invisible aux utilisateurs.",
-          },
-          {
+        fields: [          {
             label: "Health checks",
             value:
               "La plateforme interroge régulièrement un endpoint de santé (`/health`) ; une instance qui ne répond plus est retirée de la rotation.",
@@ -1087,10 +1062,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         text: "Le DNS traduit les noms de domaine en adresses IP ; les fournisseurs proposent un DNS managé avec routage intelligent (géographique, par latence, avec bascule en cas de panne). Le CDN (Content Delivery Network) met en cache vos contenus statiques sur des serveurs répartis dans le monde (points de présence) pour les servir depuis le point le plus proche de l'utilisateur.",
       },
       {
+        kind: "text",
+        text: "CDN dès que vous servez du contenu statique à une audience géographiquement dispersée — c'est aussi une protection basique contre les pics de trafic.",
+      },
+      {
         kind: "fields",
         title: "DNS managé vs CDN",
-        fields: [
-          {
+        fields: [          {
             label: "DNS managé",
             value:
               "Route 53 (AWS), Azure DNS, Cloud DNS (GCP) : haute disponibilité garantie par le fournisseur, enregistrements classiques (A, CNAME, MX…) plus routages avancés (bascule automatique vers une région saine).",
@@ -1099,11 +1077,6 @@ export const LEARNING_CLOUD: LearningSection[] = [
             label: "CDN",
             value:
               "CloudFront (AWS), Azure CDN / Front Door, Cloud CDN (GCP) : cache des images, vidéos, assets statiques au plus près des utilisateurs. Réduit la latence et la charge sur vos serveurs d'origine.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "CDN dès que vous servez du contenu statique à une audience géographiquement dispersée — c'est aussi une protection basique contre les pics de trafic.",
           },
           {
             label: "Bonne pratique",
@@ -1221,15 +1194,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         text: "Mots de passe de bases, clés d'API, certificats : ces secrets ne doivent jamais figurer dans le code, les images Docker ou les dépôts Git. Les fournisseurs proposent des coffres dédiés (Secrets Manager / Key Vault / Secret Manager) avec chiffrement, contrôle d'accès fin et rotation automatique. Le chiffrement des données au repos est proposé — souvent activé par défaut — via un service de gestion de clés (KMS / Key Vault / Cloud KMS).",
       },
       {
+        kind: "text",
+        text: "Les secrets vivent dans un coffre chiffré avec contrôle d'accès, jamais dans le code ; l'application les récupère à l'exécution via son rôle IAM.",
+      },
+      {
         kind: "fields",
         title: "Points clés",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les secrets vivent dans un coffre chiffré avec contrôle d'accès, jamais dans le code ; l'application les récupère à l'exécution via son rôle IAM.",
-          },
-          {
+        fields: [          {
             label: "Rotation",
             value:
               "Les coffres peuvent changer automatiquement les mots de passe à intervalle régulier, sans intervention humaine — ce qu'aucun fichier `.env` ne fait.",
@@ -1524,10 +1495,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
     intro: "RPO, RTO et les outils du cloud pour revenir en arrière après un incident.",
     blocks: [
       {
+        kind: "text",
+        text: "RPO répond à « combien de données puis-je perdre ? », RTO à « combien de temps puis-je être en panne ? ». Tout le plan de sauvegarde en découle.",
+      },
+      {
         kind: "fields",
         title: "Les deux indicateurs",
-        fields: [
-          {
+        fields: [          {
             label: "RPO (Recovery Point Objective)",
             value:
               "Quantité maximale de données que l'on accepte de perdre, exprimée en temps. RPO d'une heure = sauvegardes au moins horaires.",
@@ -1536,11 +1510,6 @@ export const LEARNING_CLOUD: LearningSection[] = [
             label: "RTO (Recovery Time Objective)",
             value:
               "Durée maximale acceptable pour restaurer le service après un incident. RTO de 4 h = le service doit être revenu en 4 h.",
-          },
-          {
-            label: "En une phrase",
-            value:
-              "RPO répond à « combien de données puis-je perdre ? », RTO à « combien de temps puis-je être en panne ? ». Tout le plan de sauvegarde en découle.",
           },
           {
             label: "Outils cloud",
@@ -1589,15 +1558,13 @@ export const LEARNING_CLOUD: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Dès qu'une infrastructure doit durer : tout ce qui est créé à la main en console devient impossible à reproduire ou à auditer.",
+      },
+      {
         kind: "fields",
         title: "Points clés",
-        fields: [
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une infrastructure doit durer : tout ce qui est créé à la main en console devient impossible à reproduire ou à auditer.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Mélanger console et IaC sur les mêmes ressources : l'outil écrase les changements manuels (ou l'inverse), et plus personne ne sait quel est l'état réel.",

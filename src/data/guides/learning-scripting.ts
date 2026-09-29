@@ -26,24 +26,21 @@ export const LEARNING_SCRIPTING: LearningSection[] = [
         text: "Pourquoi ça existe : tout ce qu'on fait plus de deux fois à la main mérite un script — la main se trompe, oublie des étapes, et ne laisse aucune trace. Un script s'exécute à l'identique, se planifie (cron), se versionne (Git) et se partage. La différence entre un administrateur et un bon administrateur se mesure souvent au nombre de tâches qu'il a automatisées.",
       },
       {
+        kind: "text",
+        text: "Écrire des programmes Bash qui enchaînent des commandes pour automatiser le système de façon fiable.",
+      },
+      {
+        kind: "text",
+        text: "Éliminer les tâches répétitives manuelles : plus rapides, sans erreur, planifiables et traçables.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'une séquence de commandes dépasse 2-3 étapes, se répète, ou doit tourner sans surveillance (sauvegarde nocturne, vérification périodique).",
+      },
+      {
         kind: "fields",
-        title: "Le scripting en une phrase, par angle",
+        title: "Le scripting : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Écrire des programmes Bash qui enchaînent des commandes pour automatiser le système de façon fiable.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Éliminer les tâches répétitives manuelles : plus rapides, sans erreur, planifiables et traçables.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une séquence de commandes dépasse 2-3 étapes, se répète, ou doit tourner sans surveillance (sauvegarde nocturne, vérification périodique).",
-          },
           {
             label: "Ce que ce n'est pas",
             value:

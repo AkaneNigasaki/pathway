@@ -25,20 +25,17 @@ export const LEARNING_SOC: LearningSection[] = [
         text: "Un SOC (Security Operations Center) est l'équipe — et ses outils — qui surveille en continu les systèmes d'une organisation pour détecter les activités malveillantes, qualifier les alertes et coordonner la réponse. Là où le pentest vérifie ponctuellement, le SOC regarde tout le temps : journaux, réseau, postes de travail.",
       },
       {
+        kind: "text",
+        text: "Collecter les signaux, détecter l'anormal, trier le vrai du faux, escalader vite quand c'est grave.",
+      },
+      {
+        kind: "text",
+        text: "Les attaques modernes sont discrètes et rapides : sans surveillance continue, une intrusion se découvre des mois plus tard — quand les dégâts sont faits. Le SOC réduit ce délai de mois à minutes.",
+      },
+      {
         kind: "fields",
-        title: "Le SOC en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Collecter les signaux, détecter l'anormal, trier le vrai du faux, escalader vite quand c'est grave.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les attaques modernes sont discrètes et rapides : sans surveillance continue, une intrusion se découvre des mois plus tard — quand les dégâts sont faits. Le SOC réduit ce délai de mois à minutes.",
-          },
-          {
+        title: "Le SOC : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès qu'on exploite des systèmes exposés : même sans SOC formel, tout administrateur fait du « mini-SOC » (surveiller les logs, réagir aux anomalies).",

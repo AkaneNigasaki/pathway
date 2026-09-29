@@ -449,24 +449,21 @@ export const LEARNING_ACCESSIBILITY: LearningSection[] = [
       "Le référentiel international décrypté : ce que signifient les trois niveaux de conformité.",
     blocks: [
       {
+        kind: "text",
+        text: "Les WCAG (Web Content Accessibility Guidelines) du W3C définissent des critères de succès classés en trois niveaux : A (minimum vital), AA (cible standard) et AAA (exigence renforcée, rarement atteignable sur tout un site).",
+      },
+      {
+        kind: "text",
+        text: "Sans référentiel commun, « accessible » ne veut rien dire : les WCAG donnent des critères testables (contraste mesuré, présence d'alternatives, ordre du focus) sur lesquels équipes, clients et législateurs peuvent s'aligner.",
+      },
+      {
+        kind: "text",
+        text: "Visez AA sur l'ensemble du site : c'est le niveau exigé par la plupart des réglementations et des appels d'offres. AAA se vise critère par critère (ex. contraste renforcé 7:1) là où c'est pertinent.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les WCAG (Web Content Accessibility Guidelines) du W3C définissent des critères de succès classés en trois niveaux : A (minimum vital), AA (cible standard) et AAA (exigence renforcée, rarement atteignable sur tout un site).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Sans référentiel commun, « accessible » ne veut rien dire : les WCAG donnent des critères testables (contraste mesuré, présence d'alternatives, ordre du focus) sur lesquels équipes, clients et législateurs peuvent s'aligner.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Visez AA sur l'ensemble du site : c'est le niveau exigé par la plupart des réglementations et des appels d'offres. AAA se vise critère par critère (ex. contraste renforcé 7:1) là où c'est pertinent.",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -680,24 +677,21 @@ export const LEARNING_ACCESSIBILITY: LearningSection[] = [
       "L'ordre du focus suit le DOM. Le manipuler est presque toujours une erreur.",
     blocks: [
       {
+        kind: "text",
+        text: "Par défaut, `Tab` suit l'ordre du DOM ; `tabindex` permet d'ajuster ce comportement, mais seules les valeurs `0` et `-1` sont saines.",
+      },
+      {
+        kind: "text",
+        text: "Certains composants (dialogues, menus, widgets) doivent recevoir le focus par script sans pour autant entrer dans l'ordre naturel de tabulation. `tabindex` offre ce contrôle fin.",
+      },
+      {
+        kind: "text",
+        text: "`tabindex=\"0\"` : rendre focusable un élément qui ne l'est pas nativement (rare, ex. conteneur de dialogue). `tabindex=\"-1\"` : rendre focusable par script uniquement (cible de lien d'évitement, élément restauré après fermeture).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Par défaut, `Tab` suit l'ordre du DOM ; `tabindex` permet d'ajuster ce comportement, mais seules les valeurs `0` et `-1` sont saines.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certains composants (dialogues, menus, widgets) doivent recevoir le focus par script sans pour autant entrer dans l'ordre naturel de tabulation. `tabindex` offre ce contrôle fin.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "`tabindex=\"0\"` : rendre focusable un élément qui ne l'est pas nativement (rare, ex. conteneur de dialogue). `tabindex=\"-1\"` : rendre focusable par script uniquement (cible de lien d'évitement, élément restauré après fermeture).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
@@ -752,24 +746,21 @@ export const LEARNING_ACCESSIBILITY: LearningSection[] = [
       "Les lecteurs d'écran ne relisent pas la page toute seule : il faut leur signaler les mises à jour.",
     blocks: [
       {
+        kind: "text",
+        text: "`aria-live` désigne une zone dont les changements sont annoncés automatiquement : `polite` (à la fin de la lecture en cours) ou `assertive` (interruption immédiate, réservé aux urgences).",
+      },
+      {
+        kind: "text",
+        text: "Un utilisateur voyant remarque qu'un « 3 résultats trouvés » s'affiche après sa recherche ; un utilisateur de lecteur d'écran, non — sauf si la zone est live. Sans cela, les interfaces dynamiques sont silencieuses.",
+      },
+      {
+        kind: "text",
+        text: "Notifications toast, compteurs de résultats, progression d'upload, messages de validation de formulaire, minuteur. `polite` par défaut ; `assertive` uniquement pour les erreurs bloquantes (session expirée).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`aria-live` désigne une zone dont les changements sont annoncés automatiquement : `polite` (à la fin de la lecture en cours) ou `assertive` (interruption immédiate, réservé aux urgences).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Un utilisateur voyant remarque qu'un « 3 résultats trouvés » s'affiche après sa recherche ; un utilisateur de lecteur d'écran, non — sauf si la zone est live. Sans cela, les interfaces dynamiques sont silencieuses.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Notifications toast, compteurs de résultats, progression d'upload, messages de validation de formulaire, minuteur. `polite` par défaut ; `assertive` uniquement pour les erreurs bloquantes (session expirée).",
-          },
           {
             label: "Comment ça fonctionne",
             value:

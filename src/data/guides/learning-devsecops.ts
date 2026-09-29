@@ -26,20 +26,17 @@ export const LEARNING_DEVSECOPS: LearningSection[] = [
         text: "Pourquoi ça existe : une vulnérabilité découverte en production coûte beaucoup plus cher à corriger qu'en développement — il faut un correctif urgent, un déploiement hors cycle, parfois une communication de crise. Le modèle classique (« on développera, la sécurité auditera à la fin ») produit des rapports que personne ne lit et des mises en production bloquées au dernier moment. Le DevSecOps déplace les contrôles vers la gauche du pipeline, là où corriger est rapide et bon marché.",
       },
       {
+        kind: "text",
+        text: "La sécurité intégrée au pipeline CI/CD : chaque commit est scanné, chaque build est vérifié, chaque déploiement respecte des règles automatiques.",
+      },
+      {
+        kind: "text",
+        text: "Corriger tôt coûte peu ; corriger tard coûte cher. Les contrôles automatiques rendent la sécurité continue sans ralentir les livraisons.",
+      },
+      {
         kind: "fields",
-        title: "Le DevSecOps en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La sécurité intégrée au pipeline CI/CD : chaque commit est scanné, chaque build est vérifié, chaque déploiement respecte des règles automatiques.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Corriger tôt coûte peu ; corriger tard coûte cher. Les contrôles automatiques rendent la sécurité continue sans ralentir les livraisons.",
-          },
-          {
+        title: "Le DevSecOps : l'essentiel",
+        fields: [          {
             label: "Quand l'appliquer",
             value:
               "Dès qu'un pipeline CI/CD existe : on y ajoute les contrôles de sécurité comme des jobs, avec des seuils qui bloquent quand le risque est réel.",

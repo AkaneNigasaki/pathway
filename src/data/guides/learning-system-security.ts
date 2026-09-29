@@ -28,20 +28,17 @@ export const LEARNING_SYSTEM_SECURITY: LearningSection[] = [
         text: "Pourquoi ça existe : la majorité des compromissions n'utilisent pas des techniques sophistiquées — elles exploitent des systèmes non patchés, des mots de passe faibles, des services exposés inutilement et des sauvegardes absentes. Les bases défensives éliminent l'essentiel du risque, avec des moyens à la portée de tous.",
       },
       {
+        kind: "text",
+        text: "Durcir ses propres systèmes, surveiller leur état, et savoir réagir quand quelque chose cloche.",
+      },
+      {
+        kind: "text",
+        text: "Parce que les attaquants automatisent la recherche de systèmes négligés : un système maintenu n'est pas une cible rentable.",
+      },
+      {
         kind: "fields",
-        title: "La sécurité système en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Durcir ses propres systèmes, surveiller leur état, et savoir réagir quand quelque chose cloche.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Parce que les attaquants automatisent la recherche de systèmes négligés : un système maintenu n'est pas une cible rentable.",
-          },
-          {
+        title: "La sécurité système : l'essentiel",
+        fields: [          {
             label: "Périmètre strict",
             value:
               "Uniquement vos propres systèmes, ou ceux que vous auditez avec une autorisation écrite explicite. Tout le reste est hors sujet — et illégal.",

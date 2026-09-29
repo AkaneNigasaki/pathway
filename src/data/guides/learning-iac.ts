@@ -26,24 +26,21 @@ export const LEARNING_IAC: LearningSection[] = [
         text: "Pourquoi ça existe : une infrastructure cliquée à la main ne se relit pas, ne se teste pas, ne se reproduit pas — et personne ne sait exactement ce qui tourne après six mois de modifications. L'IaC apporte au provisionnement ce que Git a apporté au code : historique, revue par les pairs, reproductibilité. C'est le passage de l'infrastructure artisanale à l'infrastructure d'équipe.",
       },
       {
+        kind: "text",
+        text: "Décrire l'infrastructure voulue dans du code versionné, et laisser un outil la créer, la maintenir et la faire évoluer.",
+      },
+      {
+        kind: "text",
+        text: "Rendre l'infrastructure relisible, testable, reproductible et auditable — comme le code applicatif.",
+      },
+      {
+        kind: "text",
+        text: "Dès qu'une infrastructure dépasse une machine : même un petit projet gagne à pouvoir reconstruire son environnement en une commande.",
+      },
+      {
         kind: "fields",
-        title: "L'IaC en une phrase, par angle",
+        title: "L'IaC : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Décrire l'infrastructure voulue dans du code versionné, et laisser un outil la créer, la maintenir et la faire évoluer.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Rendre l'infrastructure relisible, testable, reproductible et auditable — comme le code applicatif.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Dès qu'une infrastructure dépasse une machine : même un petit projet gagne à pouvoir reconstruire son environnement en une commande.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:

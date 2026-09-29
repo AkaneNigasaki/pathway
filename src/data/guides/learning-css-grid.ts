@@ -354,24 +354,21 @@ export const LEARNING_CSS_GRID: LearningSection[] = [
       "Ce qui se passe quand le contenu dépasse la grille déclarée.",
     blocks: [
       {
+        kind: "text",
+        text: "La grille explicite est celle que vous déclarez (`grid-template-*`) ; la grille implicite est créée automatiquement quand des éléments sont placés hors de la grille déclarée.",
+      },
+      {
+        kind: "text",
+        text: "Le contenu est souvent dynamique (nombre de cartes inconnu) : plutôt que d'échouer, Grid crée les pistes manquantes à la volée, dimensionnées par `grid-auto-rows` / `grid-auto-columns`.",
+      },
+      {
+        kind: "text",
+        text: "Listes de longueur inconnue, placement explicite qui dépasse volontairement, galeries auto-générées.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La grille explicite est celle que vous déclarez (`grid-template-*`) ; la grille implicite est créée automatiquement quand des éléments sont placés hors de la grille déclarée.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Le contenu est souvent dynamique (nombre de cartes inconnu) : plutôt que d'échouer, Grid crée les pistes manquantes à la volée, dimensionnées par `grid-auto-rows` / `grid-auto-columns`.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Listes de longueur inconnue, placement explicite qui dépasse volontairement, galeries auto-générées.",
-          },
           {
             label: "Comment ça fonctionne",
             value:

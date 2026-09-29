@@ -27,24 +27,21 @@ export const LEARNING_ANGULAR: LearningSection[] = [
         text: "Point essentiel : Angular est un framework « tout inclus » (batteries included), là où d'autres écosystèmes assemblent plusieurs bibliothèques indépendantes. Cette complétude a un prix : une courbe d'apprentissage plus raide au début (beaucoup de concepts à découvrir), mais une cohérence forte sur le long terme — les choix d'architecture sont déjà faits, les mises à jour sont guidées, et deux projets Angular se ressemblent.",
       },
       {
+        kind: "text",
+        text: "Angular est un framework TypeScript complet qui structure les applications web autour de composants, de services injectables et d'un outillage officiel (CLI, router, formulaires, tests).",
+      },
+      {
+        kind: "text",
+        text: "Les grandes applications web souffrent du désordre architectural : chaque équipe réinvente le routing, la gestion des formulaires, les appels HTTP. Angular impose une structure éprouvée et un outillage commun pour que le code reste maintenable à l'échelle d'une équipe.",
+      },
+      {
+        kind: "text",
+        text: "Applications métier complexes, projets d'équipe de taille moyenne à grande, contextes où la cohérence et la maintenabilité priment. Pour un site vitrine statique ou un widget isolé, c'est disproportionné.",
+      },
+      {
         kind: "fields",
-        title: "Angular en une phrase, par angle",
+        title: "Angular : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Angular est un framework TypeScript complet qui structure les applications web autour de composants, de services injectables et d'un outillage officiel (CLI, router, formulaires, tests).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les grandes applications web souffrent du désordre architectural : chaque équipe réinvente le routing, la gestion des formulaires, les appels HTTP. Angular impose une structure éprouvée et un outillage commun pour que le code reste maintenable à l'échelle d'une équipe.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Applications métier complexes, projets d'équipe de taille moyenne à grande, contextes où la cohérence et la maintenabilité priment. Pour un site vitrine statique ou un widget isolé, c'est disproportionné.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -499,20 +496,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Tout ce qui s'affiche est un composant : une classe TypeScript décorée, un template, des styles scopés.",
     blocks: [
       {
+        kind: "text",
+        text: "Un composant est une classe TypeScript marquée par le décorateur `@Component`, qui lui associe un template HTML et des styles CSS.",
+      },
+      {
+        kind: "text",
+        text: "Découper l'interface en composants rend chaque morceau compréhensible, réutilisable et testable isolément, au lieu d'une page monolithique.",
+      },
+      {
         kind: "fields",
         title: "Anatomie d'un composant",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un composant est une classe TypeScript marquée par le décorateur `@Component`, qui lui associe un template HTML et des styles CSS.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Découper l'interface en composants rend chaque morceau compréhensible, réutilisable et testable isolément, au lieu d'une page monolithique.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Toujours : même la page d'accueil est un composant. On crée un composant par « chose » de l'interface (en-tête, carte produit, formulaire…).",
@@ -606,20 +600,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Le template est du HTML enrichi : on y affiche des données avec la syntaxe `{{ }}`.",
     blocks: [
       {
+        kind: "text",
+        text: "L'interpolation insère la valeur d'une expression TypeScript dans le template : `{{ titre }}` affiche le contenu de la propriété `titre`.",
+      },
+      {
+        kind: "text",
+        text: "C'est le pont entre la classe et l'affichage : les données vivent dans le TypeScript, le template les présente sans logique complexe.",
+      },
+      {
         kind: "fields",
         title: "L'interpolation `{{ }}`",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'interpolation insère la valeur d'une expression TypeScript dans le template : `{{ titre }}` affiche le contenu de la propriété `titre`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "C'est le pont entre la classe et l'affichage : les données vivent dans le TypeScript, le template les présente sans logique complexe.",
-          },
-          {
+        fields: [          {
             label: "Exemple simple",
             value:
               "`<p>Bonjour {{ prenom }} {{ nom }}</p>` affiche « Bonjour Ada Lovelace » si les propriétés valent 'Ada' et 'Lovelace'.",
@@ -651,20 +642,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Lier une propriété du DOM à une expression : la base des interfaces dynamiques.",
     blocks: [
       {
+        kind: "text",
+        text: "`[src]=\"urlImage\"` assigne à la propriété DOM `src` la valeur de l'expression `urlImage`, et la met à jour quand elle change.",
+      },
+      {
+        kind: "text",
+        text: "Sans binding, les attributs HTML sont statiques. Le property binding rend l'interface réactive aux données : image, état désactivé, classe, style…",
+      },
+      {
         kind: "fields",
         title: "Le binding de propriété",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`[src]=\"urlImage\"` assigne à la propriété DOM `src` la valeur de l'expression `urlImage`, et la met à jour quand elle change.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Sans binding, les attributs HTML sont statiques. Le property binding rend l'interface réactive aux données : image, état désactivé, classe, style…",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Dès qu'une valeur du template dépend des données : `<button [disabled]=\"!formulaireValide\">`, `<img [src]=\"photo\">`.",
@@ -701,20 +689,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Réagir aux actions de l'utilisateur : clics, saisie, soumission de formulaire.",
     blocks: [
       {
+        kind: "text",
+        text: "`(click)=\"ajouter()\"` exécute la méthode `ajouter()` de la classe quand l'utilisateur clique sur l'élément.",
+      },
+      {
+        kind: "text",
+        text: "Une interface est interactive : il faut un pont entre les événements du navigateur et le code applicatif.",
+      },
+      {
         kind: "fields",
         title: "Le binding d'événement",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`(click)=\"ajouter()\"` exécute la méthode `ajouter()` de la classe quand l'utilisateur clique sur l'élément.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Une interface est interactive : il faut un pont entre les événements du navigateur et le code applicatif.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Clics, saisie clavier, soumission de formulaire, survol… tout événement DOM standard, plus les événements personnalisés des composants.",
@@ -751,20 +736,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Synchroniser un champ de formulaire et une propriété dans les deux sens.",
     blocks: [
       {
+        kind: "text",
+        text: "`[(ngModel)]=\"nom\"` affiche la valeur de `nom` dans le champ ET met à jour `nom` quand l'utilisateur tape : la « boîte dans une boîte » (banana in a box).",
+      },
+      {
+        kind: "text",
+        text: "Pour les formulaires simples, écrire le binding dans les deux sens à la main (`[value]` + `(input)`) est verbeux ; `ngModel` le fait en une syntaxe.",
+      },
+      {
         kind: "fields",
         title: "La liaison bidirectionnelle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`[(ngModel)]=\"nom\"` affiche la valeur de `nom` dans le champ ET met à jour `nom` quand l'utilisateur tape : la « boîte dans une boîte » (banana in a box).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Pour les formulaires simples, écrire le binding dans les deux sens à la main (`[value]` + `(input)`) est verbeux ; `ngModel` le fait en une syntaxe.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Formulaires simples et prototypes rapides (approche template-driven). Pour les formulaires complexes et validés, préférez les formulaires réactifs.",
@@ -847,20 +829,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Formater les données dans le template sans polluer la classe : dates, prix, texte.",
     blocks: [
       {
+        kind: "text",
+        text: "Un pipe transforme une valeur pour l'affichage : `{{ prix | currency:'EUR' }}` affiche « 42,00 € ».",
+      },
+      {
+        kind: "text",
+        text: "Le formatage est une préoccupation d'affichage, pas de logique métier : les pipes l'isolent dans le template, de façon réutilisable.",
+      },
+      {
         kind: "fields",
         title: "Les pipes",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un pipe transforme une valeur pour l'affichage : `{{ prix | currency:'EUR' }}` affiche « 42,00 € ».",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le formatage est une préoccupation d'affichage, pas de logique métier : les pipes l'isolent dans le template, de façon réutilisable.",
-          },
-          {
+        fields: [          {
             label: "Pipes intégrés courants",
             value:
               "`date` (formatage de dates), `currency` (monnaies), `number`/`percent`, `uppercase`/`lowercase`/`titlecase`, `json` (debug : affiche un objet), `async` (déballe un Observable — voir la section dédiée).",
@@ -897,20 +876,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Les composants s'échangent des données : le parent donne (`@Input`), l'enfant notifie (`@Output`).",
     blocks: [
       {
+        kind: "text",
+        text: "`@Input()` reçoit des données du parent, `@Output()` émet des événements vers le parent : un flux de données descendant, des événements remontants.",
+      },
+      {
+        kind: "text",
+        text: "Les composants sont isolés par design : sans ce mécanisme, ils ne pourraient ni se paramétrer ni se coordonner. C'est le contrat explicite entre un composant et son parent.",
+      },
+      {
         kind: "fields",
         title: "La communication parent → enfant → parent",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`@Input()` reçoit des données du parent, `@Output()` émet des événements vers le parent : un flux de données descendant, des événements remontants.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les composants sont isolés par design : sans ce mécanisme, ils ne pourraient ni se paramétrer ni se coordonner. C'est le contrat explicite entre un composant et son parent.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "`@Input` pour configurer un composant réutilisable (une carte produit reçoit `produit`) ; `@Output` pour signaler une action (un bouton « ajouter » émet `ajoute`).",
@@ -992,20 +968,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Tout ce qui n'est pas de l'affichage vit dans des services : appels API, règles métier, état partagé.",
     blocks: [
       {
+        kind: "text",
+        text: "Un service est une classe décorée par `@Injectable()` qui encapsule une responsabilité : récupérer des données, appliquer des règles, partager un état.",
+      },
+      {
+        kind: "text",
+        text: "Mettre les appels HTTP dans les composants les rend intestables et dupliqués. Un service centralise la logique : un seul endroit à tester, à corriger, à réutiliser.",
+      },
+      {
         kind: "fields",
         title: "Les services",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un service est une classe décorée par `@Injectable()` qui encapsule une responsabilité : récupérer des données, appliquer des règles, partager un état.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Mettre les appels HTTP dans les composants les rend intestables et dupliqués. Un service centralise la logique : un seul endroit à tester, à corriger, à réutiliser.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Dès qu'une logique est utilisée par deux composants, fait un appel réseau, ou doit survivre à la navigation : c'est un service.",
@@ -1048,20 +1021,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Le mécanisme central d'Angular : déclarer ce dont on a besoin, le framework le fournit.",
     blocks: [
       {
+        kind: "text",
+        text: "Au lieu de créer ses dépendances (`new ProduitService()`), une classe les déclare dans son constructeur et Angular les lui injecte automatiquement.",
+      },
+      {
+        kind: "text",
+        text: "Le découplage : un composant ne sait pas comment son service est construit. En test, on peut injecter un faux service (mock) sans toucher au composant.",
+      },
+      {
         kind: "fields",
         title: "L'injection de dépendances",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Au lieu de créer ses dépendances (`new ProduitService()`), une classe les déclare dans son constructeur et Angular les lui injecte automatiquement.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Le découplage : un composant ne sait pas comment son service est construit. En test, on peut injecter un faux service (mock) sans toucher au composant.",
-          },
-          {
+        fields: [          {
             label: "Comment",
             value:
               "`constructor(private produitService: ProduitService)` : le type sert de clé, l'injecteur fournit l'instance. La fonction moderne `inject(ProduitService)` fait la même chose hors constructeur.",
@@ -1098,20 +1068,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Le concept le plus déroutant d'Angular — et l'un des plus puissants : les données asynchrones comme des flux.",
     blocks: [
       {
+        kind: "text",
+        text: "Un Observable est un flux de valeurs dans le temps : zéro, une ou plusieurs valeurs, puis éventuellement une fin ou une erreur.",
+      },
+      {
+        kind: "text",
+        text: "Les promesses ne gèrent qu'une valeur unique ; les callbacks s'emboîtent mal. Un Observable unifie clics, saisie clavier, réponses HTTP et timers sous un même modèle composable.",
+      },
+      {
         kind: "fields",
         title: "Les Observables",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un Observable est un flux de valeurs dans le temps : zéro, une ou plusieurs valeurs, puis éventuellement une fin ou une erreur.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Les promesses ne gèrent qu'une valeur unique ; les callbacks s'emboîtent mal. Un Observable unifie clics, saisie clavier, réponses HTTP et timers sous un même modèle composable.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "`HttpClient` retourne des Observables, les formulaires réactifs exposent les changements de valeur en Observable, le router expose les paramètres d'URL en Observable.",
@@ -1209,20 +1176,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "La façon idiomatique d'afficher un Observable : souscription et désabonnement gérés par Angular.",
     blocks: [
       {
+        kind: "text",
+        text: "`{{ produits$ | async }}` souscrit à l'Observable, affiche chaque valeur émise, et se désabonne automatiquement à la destruction du composant.",
+      },
+      {
+        kind: "text",
+        text: "Il élimine les deux erreurs les plus fréquentes des débutants RxJS : oublier de se désabonner (fuite mémoire) et gérer manuellement les états de chargement.",
+      },
+      {
         kind: "fields",
         title: "Le pipe `async`",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`{{ produits$ | async }}` souscrit à l'Observable, affiche chaque valeur émise, et se désabonne automatiquement à la destruction du composant.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Il élimine les deux erreurs les plus fréquentes des débutants RxJS : oublier de se désabonner (fuite mémoire) et gérer manuellement les états de chargement.",
-          },
-          {
+        fields: [          {
             label: "Combiné à `@if`",
             value:
               "`@if (produits$ | async; as produits)` : déballe le flux et expose `produits` utilisable dans le bloc. Élégant et sûr contre les valeurs nulles.",
@@ -1305,20 +1269,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Des formulaires simples pilotés par le template, avec `ngModel` et la validation HTML.",
     blocks: [
       {
+        kind: "text",
+        text: "Le formulaire est décrit dans le template avec `ngModel`, et Angular construit le modèle de formulaire en arrière-plan.",
+      },
+      {
+        kind: "text",
+        text: "Pour un formulaire de contact ou d'inscription simple, c'est la voie la plus courte : peu de TypeScript, validation via les attributs HTML (`required`, `minlength`…).",
+      },
+      {
         kind: "fields",
         title: "L'approche template-driven",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le formulaire est décrit dans le template avec `ngModel`, et Angular construit le modèle de formulaire en arrière-plan.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Pour un formulaire de contact ou d'inscription simple, c'est la voie la plus courte : peu de TypeScript, validation via les attributs HTML (`required`, `minlength`…).",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Formulaires simples, champs indépendants, validation basique. Dès que les champs interagissent ou que la validation devient métier, passez aux formulaires réactifs.",
@@ -1350,20 +1311,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Des formulaires complexes pilotés par le TypeScript : le standard des applications métier.",
     blocks: [
       {
+        kind: "text",
+        text: "Le formulaire est construit en TypeScript avec `FormGroup` / `FormControl`, le template ne fait que s'y lier : la source de vérité est le code.",
+      },
+      {
+        kind: "text",
+        text: "Validation dynamique, champs conditionnels, formulaires imbriqués, tests unitaires : tout ce qui est pénible en template-driven devient explicite et testable.",
+      },
+      {
         kind: "fields",
         title: "L'approche réactive",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le formulaire est construit en TypeScript avec `FormGroup` / `FormControl`, le template ne fait que s'y lier : la source de vérité est le code.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Validation dynamique, champs conditionnels, formulaires imbriqués, tests unitaires : tout ce qui est pénible en template-driven devient explicite et testable.",
-          },
-          {
+        fields: [          {
             label: "Les trois classes",
             value:
               "`FormControl` (un champ : valeur + validateurs + état), `FormGroup` (un groupe de contrôles, ex. tout le formulaire), `FormArray` (une liste dynamique de contrôles, ex. lignes d'une commande).",
@@ -1401,20 +1359,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Quand `required` et `email` ne suffisent plus : écrire ses propres règles de validation.",
     blocks: [
       {
+        kind: "text",
+        text: "Un validateur est une fonction qui reçoit un contrôle et retourne `null` (valide) ou un objet d'erreur (`{ motDePasseFaible: true }`).",
+      },
+      {
+        kind: "text",
+        text: "Les règles métier (format de référence interne, mot de passe robuste, dates cohérentes entre deux champs) n'existent pas dans les validateurs intégrés.",
+      },
+      {
         kind: "fields",
         title: "Les validateurs sur mesure",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un validateur est une fonction qui reçoit un contrôle et retourne `null` (valide) ou un objet d'erreur (`{ motDePasseFaible: true }`).",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les règles métier (format de référence interne, mot de passe robuste, dates cohérentes entre deux champs) n'existent pas dans les validateurs intégrés.",
-          },
-          {
+        fields: [          {
             label: "Validateur synchrone",
             value:
               "Fonction pure et immédiate : la majorité des cas (formats, plages, comparaisons entre champs via un validateur de groupe).",
@@ -1447,20 +1402,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Le router associe chaque URL à un composant : la navigation d'une vraie application.",
     blocks: [
       {
+        kind: "text",
+        text: "Le router lit l'URL, trouve la route correspondante dans `app.routes.ts` et affiche le composant associé dans `<router-outlet>`.",
+      },
+      {
+        kind: "text",
+        text: "Une application a plusieurs écrans (liste, détail, administration) : le routing donne à chacun une URL partageable, avec historique du navigateur et boutons précédent/suivant fonctionnels.",
+      },
+      {
         kind: "fields",
         title: "Le router Angular",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le router lit l'URL, trouve la route correspondante dans `app.routes.ts` et affiche le composant associé dans `<router-outlet>`.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Une application a plusieurs écrans (liste, détail, administration) : le routing donne à chacun une URL partageable, avec historique du navigateur et boutons précédent/suivant fonctionnels.",
-          },
-          {
+        fields: [          {
             label: "Les trois pièces",
             value:
               "`Routes` (le tableau de routes : `path` + `component`), `routerLink` (la directive de navigation dans les templates : `<a routerLink=\"/panier\">`), `router-outlet` (l'emplacement où le composant de la route s'affiche).",
@@ -1503,20 +1455,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Restreindre l'accès à certaines pages : authentification, rôles, données non sauvegardées.",
     blocks: [
       {
+        kind: "text",
+        text: "Un guard est une fonction exécutée avant l'activation d'une route : elle autorise ou bloque la navigation en retournant `true`, `false` ou une redirection.",
+      },
+      {
+        kind: "text",
+        text: "Certaines pages exigent d'être connecté (`/admin`, `/profil`) : le guard centralise ce contrôle au lieu de le répéter dans chaque composant.",
+      },
+      {
         kind: "fields",
         title: "Les guards",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un guard est une fonction exécutée avant l'activation d'une route : elle autorise ou bloque la navigation en retournant `true`, `false` ou une redirection.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Certaines pages exigent d'être connecté (`/admin`, `/profil`) : le guard centralise ce contrôle au lieu de le répéter dans chaque composant.",
-          },
-          {
+        fields: [          {
             label: "`canActivate`",
             value:
               "Le guard le plus courant : `canActivate: [authGuard]` sur la route. Si l'utilisateur n'est pas connecté, on le redirige vers `/connexion`.",
@@ -1553,20 +1502,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Ne charger que ce que l'utilisateur visite : la technique n°1 pour un démarrage rapide.",
     blocks: [
       {
+        kind: "text",
+        text: "`loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent)` : le code de la route n'est téléchargé que lors de la première visite.",
+      },
+      {
+        kind: "text",
+        text: "Sans lazy loading, tout le code part dans le bundle initial : l'utilisateur qui ne visite que l'accueil télécharge aussi l'administration. Le lazy loading découpe le bundle par route.",
+      },
+      {
         kind: "fields",
         title: "Le chargement différé",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent)` : le code de la route n'est téléchargé que lors de la première visite.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Sans lazy loading, tout le code part dans le bundle initial : l'utilisateur qui ne visite que l'accueil télécharge aussi l'administration. Le lazy loading découpe le bundle par route.",
-          },
-          {
+        fields: [          {
             label: "Quand",
             value:
               "Toutes les routes sauf les plus critiques : l'administration, les pages rarement visitées et les fonctionnalités lourdes sont des candidates évidentes.",
@@ -1598,20 +1544,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Le client HTTP officiel : requêtes typées, intercepteurs, gestion d'erreurs centralisée.",
     blocks: [
       {
+        kind: "text",
+        text: "`HttpClient` (fourni via `provideHttpClient()`) expose `get`, `post`, `put`, `delete` typés qui retournent des Observables.",
+      },
+      {
+        kind: "text",
+        text: "Plutôt que `fetch` brut : typage de bout en bout, intercepteurs globaux (token d'authentification, logs), gestion d'erreur unifiée, testabilité via `HttpTestingController`.",
+      },
+      {
         kind: "fields",
         title: "HttpClient",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`HttpClient` (fourni via `provideHttpClient()`) expose `get`, `post`, `put`, `delete` typés qui retournent des Observables.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Plutôt que `fetch` brut : typage de bout en bout, intercepteurs globaux (token d'authentification, logs), gestion d'erreur unifiée, testabilité via `HttpTestingController`.",
-          },
-          {
+        fields: [          {
             label: "Typage",
             value:
               "`this.http.get<Produit[]>('/api/produits')` : la réponse est typée `Produit[]`, l'autocomplétion et le compilateur vérifient son usage.",
@@ -1749,20 +1692,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Vérifier le rendu et les interactions : ce que l'utilisateur voit et fait.",
     blocks: [
       {
+        kind: "text",
+        text: "On crée le composant via `TestBed`, on simule les `@Input`, on déclenche les événements et on vérifie le DOM produit.",
+      },
+      {
+        kind: "text",
+        text: "Les tests unitaires purs ne voient pas le template : un binding cassé ou un `@if` inversé ne se détecte qu'en testant le composant rendu.",
+      },
+      {
         kind: "fields",
         title: "Les tests de composants",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "On crée le composant via `TestBed`, on simule les `@Input`, on déclenche les événements et on vérifie le DOM produit.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les tests unitaires purs ne voient pas le template : un binding cassé ou un `@if` inversé ne se détecte qu'en testant le composant rendu.",
-          },
-          {
+        fields: [          {
             label: "Ce qu'on vérifie",
             value:
               "Le texte affiché pour un état donné, l'émission des `@Output` au clic, l'affichage conditionnel (`@if`), la présence/absence d'éléments selon les données.",
@@ -1794,20 +1734,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Tester l'application comme un utilisateur : navigateur piloté, parcours complets.",
     blocks: [
       {
+        kind: "text",
+        text: "Un navigateur réel (ou émulé) exécute des scénarios utilisateur — connexion, ajout au panier, commande — contre l'application compilée.",
+      },
+      {
+        kind: "text",
+        text: "Seuls les tests E2E vérifient l'assemblage complet : routing, guards, appels API réels, formulaires. Ils attrapent les bugs d'intégration que les tests unitaires ne voient pas.",
+      },
+      {
         kind: "fields",
         title: "Les tests E2E",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un navigateur réel (ou émulé) exécute des scénarios utilisateur — connexion, ajout au panier, commande — contre l'application compilée.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Seuls les tests E2E vérifient l'assemblage complet : routing, guards, appels API réels, formulaires. Ils attrapent les bugs d'intégration que les tests unitaires ne voient pas.",
-          },
-          {
+        fields: [          {
             label: "Outils",
             value:
               "Playwright et Cypress sont les deux références actuelles pour piloter les navigateurs (le Protractor historique d'Angular est arrêté depuis 2023). Les deux s'intègrent à un projet Angular sans configuration spécifique au framework.",
@@ -1920,20 +1857,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Quand le HTML doit arriver déjà rempli : SEO, premier affichage, partage sur les réseaux.",
     blocks: [
       {
+        kind: "text",
+        text: "Le SSR (Server-Side Rendering) génère le HTML sur le serveur à chaque requête au lieu de laisser le navigateur construire la page à partir d'un JavaScript vide.",
+      },
+      {
+        kind: "text",
+        text: "Trois motifs : le SEO (les robots voient le contenu sans exécuter de JS), le premier affichage perçu (l'utilisateur voit du contenu plus vite) et les aperçus de partage (Open Graph a besoin d'un HTML complet).",
+      },
+      {
         kind: "fields",
         title: "Le SSR en Angular",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le SSR (Server-Side Rendering) génère le HTML sur le serveur à chaque requête au lieu de laisser le navigateur construire la page à partir d'un JavaScript vide.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Trois motifs : le SEO (les robots voient le contenu sans exécuter de JS), le premier affichage perçu (l'utilisateur voit du contenu plus vite) et les aperçus de partage (Open Graph a besoin d'un HTML complet).",
-          },
-          {
+        fields: [          {
             label: "En Angular",
             value:
               "Le paquet officiel `@angular/ssr` ajoute le rendu serveur au projet (`ng add @angular/ssr`). L'hydratation réconcilie ensuite le HTML serveur avec l'application cliente sans reconstruire le DOM.",
@@ -1965,20 +1899,17 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Préparer l'application à parler plusieurs langues : le système officiel d'Angular.",
     blocks: [
       {
+        kind: "text",
+        text: "Le système i18n d'Angular marque les textes traduisibles dans les templates (`i18n`), extrait un catalogue, et produit un build par langue.",
+      },
+      {
+        kind: "text",
+        text: "Coder les textes en dur dans deux langues avec des `@if` est ingérable dès la troisième langue. L'i18n sépare les textes du code et confie la traduction à des fichiers dédiés.",
+      },
+      {
         kind: "fields",
         title: "L'i18n Angular",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le système i18n d'Angular marque les textes traduisibles dans les templates (`i18n`), extrait un catalogue, et produit un build par langue.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Coder les textes en dur dans deux langues avec des `@if` est ingérable dès la troisième langue. L'i18n sépare les textes du code et confie la traduction à des fichiers dédiés.",
-          },
-          {
+        fields: [          {
             label: "Le flux",
             value:
               "Marquer (`i18n` sur les éléments) → extraire (`ng extract-i18n` produit un fichier XLIFF) → traduire (traducteurs/outils externes) → builder par locale (`ng build --localize`).",
@@ -2005,15 +1936,13 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Une application utilisable par tous : clavier, lecteurs d'écran, contrastes.",
     blocks: [
       {
+        kind: "text",
+        text: "Obligation légale dans de nombreux contextes (secteur public, grandes entreprises) et simple qualité : une partie des utilisateurs navigue au clavier ou avec un lecteur d'écran.",
+      },
+      {
         kind: "fields",
         title: "L'accessibilité en Angular",
-        fields: [
-          {
-            label: "Pourquoi",
-            value:
-              "Obligation légale dans de nombreux contextes (secteur public, grandes entreprises) et simple qualité : une partie des utilisateurs navigue au clavier ou avec un lecteur d'écran.",
-          },
-          {
+        fields: [          {
             label: "Les bases HTML d'abord",
             value:
               "80 % de l'accessibilité est du HTML sémantique : vrais `<button>`, vrais `<label>`, hiérarchie de titres correcte. Angular ne dispense pas de ces fondamentaux.",
@@ -2090,100 +2019,120 @@ export const LEARNING_ANGULAR: LearningSection[] = [
       "Les dix pièges que presque tous les débutants Angular rencontrent — et comment les éviter.",
     blocks: [
       {
+        kind: "text",
+        text: "Avec les composants standalone, chaque composant utilisé doit être importé dans le `imports` du composant parent.",
+      },
+      {
         kind: "fields",
         title: "Erreur 1 — `NG8001` : composant inconnu",
-        fields: [
-          { label: "Problème", value: "`'app-panier' is not a known element` : le template utilise un composant qu'Angular ne connaît pas." },
-          { label: "Pourquoi", value: "Avec les composants standalone, chaque composant utilisé doit être importé dans le `imports` du composant parent." },
+        fields: [          { label: "Problème", value: "`'app-panier' is not a known element` : le template utilise un composant qu'Angular ne connaît pas." },
           { label: "Mauvais", value: "Utiliser `<app-panier>` sans l'avoir importé." },
           { label: "Mieux", value: "Ajouter `PanierComponent` au tableau `imports` du composant qui l'utilise." },
         ],
       },
       {
+        kind: "text",
+        text: "`ngModel` appartient au `FormsModule`, qui n'est pas importé par défaut.",
+      },
+      {
         kind: "fields",
         title: "Erreur 2 — `NG8002` : impossible de binder",
-        fields: [
-          { label: "Problème", value: "`Can't bind to 'ngModel' since it isn't a known property`." },
-          { label: "Pourquoi", value: "`ngModel` appartient au `FormsModule`, qui n'est pas importé par défaut." },
+        fields: [          { label: "Problème", value: "`Can't bind to 'ngModel' since it isn't a known property`." },
           { label: "Mauvais", value: "Utiliser `[(ngModel)]` en espérant qu'il soit disponible partout." },
           { label: "Mieux", value: "Importer `FormsModule` dans le `imports` du composant (ou utiliser les formulaires réactifs avec `ReactiveFormsModule`)." },
         ],
       },
       {
+        kind: "text",
+        text: "`HttpClient` n'est fourni que si `provideHttpClient()` est déclaré dans la configuration de l'application (`app.config.ts`).",
+      },
+      {
         kind: "fields",
         title: "Erreur 3 — « No provider for HttpClient »",
-        fields: [
-          { label: "Problème", value: "L'injection de `HttpClient` échoue au démarrage." },
-          { label: "Pourquoi", value: "`HttpClient` n'est fourni que si `provideHttpClient()` est déclaré dans la configuration de l'application (`app.config.ts`)." },
+        fields: [          { label: "Problème", value: "L'injection de `HttpClient` échoue au démarrage." },
           { label: "Mauvais", value: "Injecter `HttpClient` dans un service sans jamais l'avoir fourni." },
           { label: "Mieux", value: "Ajouter `provideHttpClient()` aux `providers` de `app.config.ts`." },
         ],
       },
       {
+        kind: "text",
+        text: "Chaque `.subscribe()` dans `ngOnInit` sans désabonnement dans `ngOnDestroy` laisse un écouteur fantôme à chaque visite du composant.",
+      },
+      {
         kind: "fields",
         title: "Erreur 4 — Abonnement sans désabonnement",
-        fields: [
-          { label: "Problème", value: "L'application ralentit au fil de la navigation ; les requêtes se multiplient." },
-          { label: "Pourquoi", value: "Chaque `.subscribe()` dans `ngOnInit` sans désabonnement dans `ngOnDestroy` laisse un écouteur fantôme à chaque visite du composant." },
+        fields: [          { label: "Problème", value: "L'application ralentit au fil de la navigation ; les requêtes se multiplient." },
           { label: "Mauvais", value: "`this.service.donnees().subscribe(d => this.donnees = d)` sans gestion de la destruction." },
           { label: "Mieux", value: "Exposer `donnees$` et utiliser le pipe `async` dans le template : désabonnement automatique." },
         ],
       },
       {
+        kind: "text",
+        text: "L'enfant a modifié directement l'objet reçu du parent, court-circuitant le flux de données descendant.",
+      },
+      {
         kind: "fields",
         title: "Erreur 5 — Muter un `@Input`",
-        fields: [
-          { label: "Problème", value: "L'interface affiche des données incohérentes après interaction avec un composant enfant." },
-          { label: "Pourquoi", value: "L'enfant a modifié directement l'objet reçu du parent, court-circuitant le flux de données descendant." },
+        fields: [          { label: "Problème", value: "L'interface affiche des données incohérentes après interaction avec un composant enfant." },
           { label: "Mauvais", value: "`this.produit.prix = nouveauPrix` dans l'enfant." },
           { label: "Mieux", value: "L'enfant émet `prixChange.emit(nouveauPrix)` via `@Output` ; le parent décide et met à jour." },
         ],
       },
       {
+        kind: "text",
+        text: "Les expressions du template (`{{ filtrer(items) }}`, appels de méthodes) s'exécutent à chaque cycle de détection des changements.",
+      },
+      {
         kind: "fields",
         title: "Erreur 6 — Logique lourde dans le template",
-        fields: [
-          { label: "Problème", value: "L'application rame alors que les données sont peu nombreuses." },
-          { label: "Pourquoi", value: "Les expressions du template (`{{ filtrer(items) }}`, appels de méthodes) s'exécutent à chaque cycle de détection des changements." },
+        fields: [          { label: "Problème", value: "L'application rame alors que les données sont peu nombreuses." },
           { label: "Mauvais", value: "`@for (item of trier(items); track item.id)` avec `trier()` recalculé en permanence." },
           { label: "Mieux", value: "Calculer une fois dans la classe (ou `computed()` avec les signaux) et exposer le résultat." },
         ],
       },
       {
+        kind: "text",
+        text: "Typiquement, un enfant modifie une valeur liée du parent pendant le cycle de rendu (effet de bord dans un hook ou un getter).",
+      },
+      {
         kind: "fields",
         title: "Erreur 7 — `ExpressionChangedAfterItHasBeenCheckedError`",
-        fields: [
-          { label: "Problème", value: "Erreur en mode développement : une valeur a changé après que la détection des changements l'a vérifiée." },
-          { label: "Pourquoi", value: "Typiquement, un enfant modifie une valeur liée du parent pendant le cycle de rendu (effet de bord dans un hook ou un getter)." },
+        fields: [          { label: "Problème", value: "Erreur en mode développement : une valeur a changé après que la détection des changements l'a vérifiée." },
           { label: "Mauvais", value: "Modifier un état lié dans `ngAfterViewInit` ou dans un getter appelé par le template." },
           { label: "Mieux", value: "Déplacer la modification avant le rendu (dans `ngOnInit`) ou la rendre asynchrone ; repenser le flux de données pour qu'il soit unidirectionnel." },
         ],
       },
       {
+        kind: "text",
+        text: "Sans identifiant stable, Angular ne peut pas associer les éléments avant/après : il reconstruit tout.",
+      },
+      {
         kind: "fields",
         title: "Erreur 8 — Oublier le `track` dans `@for`",
-        fields: [
-          { label: "Problème", value: "Les listes se comportent bizarrement lors des mises à jour (focus perdu, animations rejouées, contre-performance)." },
-          { label: "Pourquoi", value: "Sans identifiant stable, Angular ne peut pas associer les éléments avant/après : il reconstruit tout." },
+        fields: [          { label: "Problème", value: "Les listes se comportent bizarrement lors des mises à jour (focus perdu, animations rejouées, contre-performance)." },
           { label: "Mieux", value: "`@for (item of items; track item.id)` systématiquement, avec un identifiant métier stable." },
         ],
       },
       {
+        kind: "text",
+        text: "`<a href=\"/panier\">` provoque une navigation complète du navigateur, pas une navigation du router Angular.",
+      },
+      {
         kind: "fields",
         title: "Erreur 9 — Naviguer avec `href`",
-        fields: [
-          { label: "Problème", value: "Chaque clic sur un lien recharge toute l'application : l'état est perdu, c'est lent." },
-          { label: "Pourquoi", value: "`<a href=\"/panier\">` provoque une navigation complète du navigateur, pas une navigation du router Angular." },
+        fields: [          { label: "Problème", value: "Chaque clic sur un lien recharge toute l'application : l'état est perdu, c'est lent." },
           { label: "Mauvais", value: "`<a href=\"/panier\">Panier</a>`." },
           { label: "Mieux", value: "`<a routerLink=\"/panier\">Panier</a>` : navigation interne, instantanée, sans rechargement." },
         ],
       },
       {
+        kind: "text",
+        text: "Tout le code Angular est téléchargé dans le navigateur : visible et modifiable par l'utilisateur. Un guard n'est pas une sécurité.",
+      },
+      {
         kind: "fields",
         title: "Erreur 10 — Secrets et logique sensible côté client",
-        fields: [
-          { label: "Problème", value: "Clé d'API ou règle d'autorisation contournée en lisant le code." },
-          { label: "Pourquoi", value: "Tout le code Angular est téléchargé dans le navigateur : visible et modifiable par l'utilisateur. Un guard n'est pas une sécurité." },
+        fields: [          { label: "Problème", value: "Clé d'API ou règle d'autorisation contournée en lisant le code." },
           { label: "Mauvais", value: "Stocker un token d'administration ou une clé privée dans `environment.ts` en pensant qu'elle est cachée." },
           { label: "Mieux", value: "Les secrets restent sur le serveur ; le backend vérifie les droits à chaque requête, le frontend ne fait que refléter l'UX." },
         ],

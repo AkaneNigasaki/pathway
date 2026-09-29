@@ -28,24 +28,21 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         text: "L'idée remonte aux années 1940-1980 (perceptron, rétropropagation), mais trois ingrédients l'ont rendue réellement puissante à partir des années 2010 : des jeux de données massifs, des processeurs graphiques (GPU) capables de calculs parallèles intensifs, et des architectures plus profondes et mieux entraînées. Résultat : des performances inédites en reconnaissance d'images, en traduction, en synthèse vocale et en génération de texte.",
       },
       {
+        kind: "text",
+        text: "Le deep learning apprend des représentations hiérarchiques des données grâce à des réseaux de neurones profonds entraînés sur de nombreux exemples.",
+      },
+      {
+        kind: "text",
+        text: "Certaines tâches (reconnaître un chat sur une photo, comprendre une phrase) sont impossibles à coder avec des règles explicites : il y a trop de cas particuliers. Plutôt que d'écrire les règles, on fait apprendre le comportement à partir d'exemples.",
+      },
+      {
+        kind: "text",
+        text: "Données brutes et complexes (images, audio, texte naturel), beaucoup d'exemples étiquetés disponibles, et objectif de performance élevé. Inutile pour des données tabulaires simples ou des problèmes à règles claires.",
+      },
+      {
         kind: "fields",
-        title: "Le deep learning en une phrase, par angle",
+        title: "Le deep learning : l'essentiel",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le deep learning apprend des représentations hiérarchiques des données grâce à des réseaux de neurones profonds entraînés sur de nombreux exemples.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Certaines tâches (reconnaître un chat sur une photo, comprendre une phrase) sont impossibles à coder avec des règles explicites : il y a trop de cas particuliers. Plutôt que d'écrire les règles, on fait apprendre le comportement à partir d'exemples.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Données brutes et complexes (images, audio, texte naturel), beaucoup d'exemples étiquetés disponibles, et objectif de performance élevé. Inutile pour des données tabulaires simples ou des problèmes à règles claires.",
-          },
           {
             label: "Ce que ce n'est pas",
             value:
@@ -110,15 +107,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Choisissez le ML classique par défaut ; passez au deep learning quand les données sont brutes/complexes et nombreuses.",
+      },
+      {
         kind: "fields",
         title: "Fiche décision",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Choisissez le ML classique par défaut ; passez au deep learning quand les données sont brutes/complexes et nombreuses.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Lancer un réseau de neurones sur un tableau de 500 lignes : un modèle classique fera aussi bien, en quelques secondes, avec un modèle explicable.",
@@ -330,15 +325,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Les deux frameworks font la même chose ; le choix dépend de votre contexte (équipe, existant, cible de déploiement).",
+      },
+      {
         kind: "fields",
         title: "Fiche de choix",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les deux frameworks font la même chose ; le choix dépend de votre contexte (équipe, existant, cible de déploiement).",
-          },
-          {
+        fields: [          {
             label: "Pourquoi deux frameworks",
             value:
               "Histoire et philosophie différentes : PyTorch est né d'une approche « Python d'abord » appréciée en recherche, TensorFlow d'une approche « production d'abord » chez Google. Leurs capacités se sont largement rejointes.",
@@ -426,20 +419,17 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         code: "import torch\n\n# Scalaire, vecteur, matrice\ns = torch.tensor(3.0)\nv = torch.tensor([1.0, 2.0, 3.0])\nm = torch.tensor([[1.0, 2.0], [3.0, 4.0]])\n\nprint(s.shape)  # torch.Size([])  -> dimension 0\nprint(v.shape)  # torch.Size([3]) -> dimension 1\nprint(m.shape)  # torch.Size([2, 2]) -> dimension 2\n\n# Un \"lot\" de 32 images 28x28 en niveaux de gris : tenseur 4D\nimages = torch.randn(32, 1, 28, 28)\nprint(images.shape)  # torch.Size([32, 1, 28, 28])\n\n# Opérations élément par élément, comme NumPy\nprint((v * 2).tolist())  # [2.0, 4.0, 6.0]",
       },
       {
+        kind: "text",
+        text: "Un tableau de nombres à N dimensions ; la brique de base des données et des poids.",
+      },
+      {
+        kind: "text",
+        text: "Les GPU sont optimisés pour appliquer la même opération à des milliers de nombres en parallèle : le tenseur est le format qui exploite ce parallélisme.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept : tenseur",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un tableau de nombres à N dimensions ; la brique de base des données et des poids.",
-          },
-          {
-            label: "Pourquoi",
-            value:
-              "Les GPU sont optimisés pour appliquer la même opération à des milliers de nombres en parallèle : le tenseur est le format qui exploite ce parallélisme.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Se tromper de dimensions (`shape`) : la cause n°1 des erreurs de taille en deep learning. Affichez `tensor.shape` dès qu'un doute apparaît.",
@@ -557,15 +547,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "L'ensemble des exemples étiquetés sur lesquels le réseau apprend, validé et testé.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept : dataset",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'ensemble des exemples étiquetés sur lesquels le réseau apprend, validé et testé.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Évaluer le modèle sur les données d'entraînement et croire à une performance excellente : c'est de la mémorisation, pas de l'apprentissage (voir train/val/test).",
@@ -687,15 +675,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un neurone calcule une combinaison linéaire de ses entrées puis la transforme de façon non linéaire.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un neurone calcule une combinaison linéaire de ses entrées puis la transforme de façon non linéaire.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi la fonction d'activation",
             value:
               "Sans elle, tout le réseau s'effondrerait en une simple fonction linéaire, incapable de modéliser des frontières complexes (un cercle, par exemple).",
@@ -737,15 +723,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Les couches cachées transforment progressivement les données brutes en représentations de plus en plus abstraites et utiles.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Les couches cachées transforment progressivement les données brutes en représentations de plus en plus abstraites et utiles.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi la profondeur",
             value:
               "Chaque couche réutilise les motifs détectés par la précédente : en vision, pixels → contours → formes → objets. Cette hiérarchie est la force du « profond ».",
@@ -825,15 +809,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         text: "Le forward pass (propagation avant) est le calcul qui transforme une entrée en prédiction : les données traversent les couches une par une, chaque couche appliquant ses poids puis son activation. C'est ce calcul qui s'exécute aussi bien pendant l'entraînement que pendant l'inférence — la seule différence est qu'en entraînement, PyTorch mémorise les étapes intermédiaires pour pouvoir calculer les gradients ensuite.",
       },
       {
+        kind: "text",
+        text: "Faire passer les données à travers le réseau, de l'entrée à la sortie, pour obtenir une prédiction.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Faire passer les données à travers le réseau, de l'entrée à la sortie, pour obtenir une prédiction.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est important",
             value:
               "C'est l'opération la plus fréquente : chaque lot d'entraînement et chaque prédiction en production est un forward pass. Sa vitesse détermine le coût d'inférence.",
@@ -894,15 +876,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "La loss traduit « se tromper » en un nombre différentiable que l'optimiseur peut réduire.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "La loss traduit « se tromper » en un nombre différentiable que l'optimiseur peut réduire.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Utiliser la MSE pour de la classification : elle fonctionne parfois, mais la cross-entropy est conçue pour ce cas et converge mieux.",
@@ -945,15 +925,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Ajuster les poids petit à petit dans le sens qui fait diminuer l'erreur.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ajuster les poids petit à petit dans le sens qui fait diminuer l'erreur.",
-          },
-          {
+        fields: [          {
             label: "Le gradient",
             value:
               "Pour chaque poids, un nombre qui dit : « si tu augmentes ce poids un peu, l'erreur augmente ou diminue, et de combien ». C'est la pente locale.",
@@ -986,15 +964,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         text: "Bonne nouvelle : vous n'aurez (presque) jamais à coder la rétropropagation vous-même. PyTorch la fait automatiquement dès que vous appelez `loss.backward()` : il a enregistré toutes les opérations du forward pass et en déduit les gradients. Comprendre l'idée suffit : l'erreur remonte, chaque couche apprend sa part de responsabilité.",
       },
       {
+        kind: "text",
+        text: "Calculer, pour chaque poids du réseau, comment le modifier pour réduire l'erreur, en remontant de la sortie vers l'entrée.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Calculer, pour chaque poids du réseau, comment le modifier pour réduire l'erreur, en remontant de la sortie vers l'entrée.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est une prouesse",
             value:
               "Avant la backprop (popularisée dans les années 1980), on ne savait pas entraîner efficacement les réseaux à plusieurs couches : c'est elle qui a rendu le « profond » possible.",
@@ -1040,15 +1016,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "L'optimiseur décide comment appliquer les gradients : taille des pas, inertie, adaptation par poids.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "L'optimiseur décide comment appliquer les gradients : taille des pas, inertie, adaptation par poids.",
-          },
-          {
+        fields: [          {
             label: "Quand s'en soucier",
             value:
               "Au début : utilisez Adam avec les paramètres par défaut, cela suffit. Quand l'entraînement plafonne, l'optimiseur et le taux d'apprentissage deviennent des leviers.",
@@ -1178,15 +1152,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Overfitting = mémorise (écart train/val) ; underfitting = trop simple (les deux mauvais).",
+      },
+      {
         kind: "fields",
         title: "Fiche diagnostic",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Overfitting = mémorise (écart train/val) ; underfitting = trop simple (les deux mauvais).",
-          },
-          {
+        fields: [          {
             label: "Contre l'overfitting",
             value:
               "Plus de données, augmentation de données, dropout, early stopping, régularisation, modèle plus petit.",
@@ -1222,23 +1194,20 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         code: "import torch.nn as nn\n\nmodele = nn.Sequential(\n    nn.Linear(784, 256),\n    nn.ReLU(),\n    nn.Dropout(p=0.3),   # désactive 30 % des neurones à l'entraînement\n    nn.Linear(256, 10),\n)\n\nmodele.train()  # dropout ACTIF\n# ... entraînement ...\nmodele.eval()   # dropout DÉSACTIVÉ pour l'évaluation/l'inférence",
       },
       {
+        kind: "text",
+        text: "Brouiller le réseau pendant l'entraînement pour l'empêcher de mémoriser.",
+      },
+      {
+        kind: "text",
+        text: "Quand les courbes montrent du surapprentissage, surtout sur les couches denses. Moins crucial si vous avez déjà beaucoup de données.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Brouiller le réseau pendant l'entraînement pour l'empêcher de mémoriser.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Oublier `modele.eval()` à l'inférence : le dropout reste actif, les prédictions deviennent aléatoires et non reproductibles.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Quand les courbes montrent du surapprentissage, surtout sur les couches denses. Moins crucial si vous avez déjà beaucoup de données.",
           },
           {
             label: "Concepts liés",
@@ -1259,15 +1228,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         text: "L'early stopping (arrêt précoce) surveille la loss de validation à chaque époque et sauvegarde les meilleurs poids. Si la validation ne s'améliore plus pendant N époques consécutives (la « patience »), on arrête l'entraînement et on restaure les meilleurs poids. C'est la régularisation la plus simple : elle ne demande aucun changement d'architecture.",
       },
       {
+        kind: "text",
+        text: "Garder les poids du meilleur moment au lieu de ceux de la fin.",
+      },
+      {
         kind: "fields",
         title: "Fiche pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Garder les poids du meilleur moment au lieu de ceux de la fin.",
-          },
-          {
+        fields: [          {
             label: "La patience",
             value:
               "Nombre d'époques sans amélioration avant d'arrêter (5 à 10 en général). Trop courte : on s'arrête sur un plateau temporaire. Trop longue : on perd du temps.",
@@ -1307,15 +1274,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         code: "# Pixels 0-255 -> 0-1 : simple division\nimages = images / 255.0\n\n# Ou standardisation avec torchvision (moyenne/écart-type)\nfrom torchvision import transforms\ntransfo = transforms.Compose([\n    transforms.ToTensor(),  # 0-255 -> 0-1 + (H, W, C) -> (C, H, W)\n    transforms.Normalize(mean=[0.5], std=[0.5]),  # -> environ [-1, 1]\n])",
       },
       {
+        kind: "text",
+        text: "Mettre les entrées à la même échelle pour un entraînement stable et rapide.",
+      },
+      {
         kind: "fields",
         title: "Fiche pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Mettre les entrées à la même échelle pour un entraînement stable et rapide.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Calculer moyenne et écart-type sur tout le dataset (train + test) : c'est une fuite d'information. Calculez-les sur le train uniquement, puis appliquez au test.",
@@ -1457,15 +1422,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         code: "import torch.nn as nn\n\nconv = nn.Sequential(\n    nn.Conv2d(1, 16, kernel_size=3, padding=1),  # 1 canal -> 16 filtres 3x3\n    nn.ReLU(),\n    nn.MaxPool2d(2),  # réduit la taille de moitié (garde le max)\n)\n# Entrée (lot, 1, 28, 28) -> sortie (lot, 16, 14, 14)",
       },
       {
+        kind: "text",
+        text: "Détecter des motifs locaux partout dans l'image avec des filtres appris.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Détecter des motifs locaux partout dans l'image avec des filtres appris.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi ça marche",
             value:
               "Un contour est un contour, qu'il soit en haut à gauche ou en bas à droite : partager les mêmes filtres sur toute l'image (invariance par translation) divise le nombre de paramètres.",
@@ -1541,15 +1504,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Un réseau avec mémoire, qui traite les séquences pas à pas.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Un réseau avec mémoire, qui traite les séquences pas à pas.",
-          },
-          {
+        fields: [          {
             label: "Limite",
             value:
               "Le traitement est séquentiel (pas de parallélisation) et la mémoire s'estompe sur les très longues séquences : c'est pourquoi les Transformers les ont largement remplacés en langage naturel.",
@@ -1578,15 +1539,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         text: "Le Transformer (article « Attention Is All You Need », 2017) traite toute la séquence en parallèle au lieu de pas à pas. Son mécanisme central, l'attention, permet à chaque élément (chaque mot) de « regarder » tous les autres et de décider lesquels sont pertinents pour lui. Dans « le chat chasse la souris parce qu'il a faim », l'attention apprend que « il » se réfère au chat, pas à la souris.",
       },
       {
+        kind: "text",
+        text: "Chaque élément de la séquence pondère l'importance de tous les autres pour construire sa représentation.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Chaque élément de la séquence pondère l'importance de tous les autres pour construire sa représentation.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est puissant",
             value:
               "Parallélisable (contrairement aux RNN) et capable de lier des éléments très éloignés dans la séquence : deux propriétés qui ont permis d'entraîner des modèles sur des quantités de texte inédites.",
@@ -1624,23 +1583,20 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         text: "Un réseau ne manipule que des nombres : pour lui donner des mots, on les convertit en vecteurs denses appelés embeddings. L'astuce est que ces vecteurs sont appris : des mots de sens proche obtiennent des vecteurs proches. « Roi » et « reine » finissent voisins dans l'espace, loin de « tracteur ». En PyTorch : `nn.Embedding(taille_vocabulaire, dimension)`.",
       },
       {
+        kind: "text",
+        text: "Une table de correspondance apprenable : chaque symbole (mot, catégorie) devient un vecteur de nombres.",
+      },
+      {
+        kind: "text",
+        text: "Texte bien sûr, mais aussi toute variable catégorielle (identifiant produit, jour de semaine) : l'embedding apprend les similarités utiles à la tâche.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une table de correspondance apprenable : chaque symbole (mot, catégorie) devient un vecteur de nombres.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi pas du one-hot",
             value:
               "Coder chaque mot par un vecteur de 50 000 zéros et un seul 1 (one-hot) est creux et ne capture aucune similarité. L'embedding dense et appris est compact et sémantique.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Texte bien sûr, mais aussi toute variable catégorielle (identifiant produit, jour de semaine) : l'embedding apprend les similarités utiles à la tâche.",
           },
           {
             label: "Concepts liés",
@@ -1667,23 +1623,20 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         code: "from torchvision import models\nimport torch.nn as nn\n\n# 1. Charger le modèle pré-entraîné\nmodele = models.resnet18(weights=\"DEFAULT\")\n\n# 2. Geler les couches existantes (on garde leurs poids)\nfor param in modele.parameters():\n    param.requires_grad = False\n\n# 3. Remplacer la dernière couche par la nôtre (ex. 5 classes)\nmodele.fc = nn.Linear(modele.fc.in_features, 5)\n\n# 4. N'entraîner que la nouvelle couche (beaucoup plus rapide)\noptimizer = torch.optim.Adam(modele.fc.parameters(), lr=0.001)",
       },
       {
+        kind: "text",
+        text: "Ne pas repartir de zéro : adapter un modèle déjà entraîné à votre tâche.",
+      },
+      {
+        kind: "text",
+        text: "Presque toujours en vision et en NLP, surtout avec peu de données. Contre-indication : domaine très éloigné des données d'origine (ex. images médicales vs photos naturelles — ça marche quand même souvent, mais à vérifier).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ne pas repartir de zéro : adapter un modèle déjà entraîné à votre tâche.",
-          },
-          {
+        fields: [          {
             label: "Pourquoi c'est crucial",
             value:
               "Entraîner un grand modèle de zéro demande des données et du calcul considérables. Le transfert learning donne souvent 90 % du résultat avec 10 % des ressources.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Presque toujours en vision et en NLP, surtout avec peu de données. Contre-indication : domaine très éloigné des données d'origine (ex. images médicales vs photos naturelles — ça marche quand même souvent, mais à vérifier).",
           },
           {
             label: "Erreur fréquente",
@@ -1722,15 +1675,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         code: "import torch\n\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(\"Appareil utilisé :\", device)\n\nmodele = PetitReseau().to(device)  # envoie les poids sur le GPU\nfor images, etiquettes in chargeur_train:\n    images = images.to(device)        # chaque lot doit suivre sur le GPU\n    etiquettes = etiquettes.to(device)\n    # ... boucle d'entraînement inchangée ...",
       },
       {
+        kind: "text",
+        text: "Le GPU parallélise les calculs tensoriels ; indispensable au-delà des petits modèles.",
+      },
+      {
         kind: "fields",
         title: "Fiche pratique",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Le GPU parallélise les calculs tensoriels ; indispensable au-delà des petits modèles.",
-          },
-          {
+        fields: [          {
             label: "Quand le CPU suffit",
             value:
               "Apprentissage, petits réseaux, inférence de modèles légers : le CPU est plus simple (aucune installation CUDA).",
@@ -1931,14 +1882,13 @@ export const LEARNING_DEEP_LEARNING: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Rendre le modèle utilisable en production, avec des contraintes de vitesse, de coût et de fiabilité.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value: "Rendre le modèle utilisable en production, avec des contraintes de vitesse, de coût et de fiabilité.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value: "Déployer le notebook d'entraînement tel quel : dépendances non figées, pas de gestion d'erreur, performances imprévisibles.",
           },

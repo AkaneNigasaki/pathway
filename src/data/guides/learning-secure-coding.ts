@@ -26,20 +26,17 @@ export const LEARNING_SECURE_CODING: LearningSection[] = [
         text: "Le secure coding consiste à écrire du code qui ne crée pas de vulnérabilités : valider les entrées, ne jamais faire confiance aux données externes, gérer les secrets hors du code, maîtriser ses dépendances, relire avec une grille sécurité. La plupart des failles exploitées (injections, XSS, fuites de secrets) naissent d'une ligne de code ordinaire écrite sans ces réflexes.",
       },
       {
+        kind: "text",
+        text: "Ne jamais faire confiance aux entrées, coder les contrôles par défaut, et vérifier (revues, analyse statique, tests).",
+      },
+      {
+        kind: "text",
+        text: "Corriger une faille en production coûte 10 à 100 fois plus cher que l'éviter à l'écriture — et certaines failles (fuite de données) ne se « corrigent » jamais vraiment une fois exploitées.",
+      },
+      {
         kind: "fields",
-        title: "Le secure coding en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Ne jamais faire confiance aux entrées, coder les contrôles par défaut, et vérifier (revues, analyse statique, tests).",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Corriger une faille en production coûte 10 à 100 fois plus cher que l'éviter à l'écriture — et certaines failles (fuite de données) ne se « corrigent » jamais vraiment une fois exploitées.",
-          },
-          {
+        title: "Le secure coding : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès la première ligne : la sécurité « shift left » — intégrée au développement via revues et analyse statique — est le levier le plus rentable de toute la cybersécurité.",

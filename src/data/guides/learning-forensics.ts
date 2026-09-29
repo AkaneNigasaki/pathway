@@ -25,20 +25,17 @@ export const LEARNING_FORENSICS: LearningSection[] = [
         text: "La forensique numérique (ou investigation numérique) consiste à collecter, préserver et analyser des traces numériques — disque, mémoire, journaux, réseau — pour répondre à une question factuelle : que s'est-il réellement passé sur ce système ? Elle intervient après un incident de sécurité, mais aussi dans des contextes judiciaires, disciplinaires ou de simple diagnostic.",
       },
       {
+        kind: "text",
+        text: "Acquérir des copies fidèles, les analyser sans les altérer, et produire des conclusions traçables et vérifiables.",
+      },
+      {
+        kind: "text",
+        text: "Après une compromission, les questions sont factuelles : quand l'attaquant est-il entré, par où, qu'a-t-il touché, qu'a-t-il pris ? Sans méthode, on détruit les preuves en cherchant — et on accuse à tort.",
+      },
+      {
         kind: "fields",
-        title: "La forensique en une phrase, par angle",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Acquérir des copies fidèles, les analyser sans les altérer, et produire des conclusions traçables et vérifiables.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Après une compromission, les questions sont factuelles : quand l'attaquant est-il entré, par où, qu'a-t-il touché, qu'a-t-il pris ? Sans méthode, on détruit les preuves en cherchant — et on accuse à tort.",
-          },
-          {
+        title: "La forensique : l'essentiel",
+        fields: [          {
             label: "Quand s'en préoccuper",
             value:
               "Dès qu'un incident dépasse le « je réinstalle » : toute organisation qui veut comprendre, prouver ou poursuivre a besoin d'une capacité forensique minimale.",

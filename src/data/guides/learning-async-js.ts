@@ -511,20 +511,17 @@ export const LEARNING_ASYNC_JS: LearningSection[] = [
         ],
       },
       {
+        kind: "text",
+        text: "Une promesse naît `pending`, puis devient définitivement `fulfilled` (avec une valeur) ou `rejected` (avec une erreur) : on dit qu'elle est alors « settled ».",
+      },
+      {
+        kind: "text",
+        text: "Modéliser explicitement l'attente permet de composer les opérations (chaîner, paralléliser, gérer les erreurs) au lieu d'imbriquer des callbacks.",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
-        fields: [
-          {
-            label: "En une phrase",
-            value:
-              "Une promesse naît `pending`, puis devient définitivement `fulfilled` (avec une valeur) ou `rejected` (avec une erreur) : on dit qu'elle est alors « settled ».",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Modéliser explicitement l'attente permet de composer les opérations (chaîner, paralléliser, gérer les erreurs) au lieu d'imbriquer des callbacks.",
-          },
-          {
+        fields: [          {
             label: "Erreur fréquente",
             value:
               "Croire qu'une promesse « s'annule » : une fois lancée, l'opération sous-jacente continue même si on ignore la promesse. L'annulation passe par `AbortController` (voir niveau fetch-api).",
@@ -643,24 +640,21 @@ export const LEARNING_ASYNC_JS: LearningSection[] = [
       "Le combinateur le plus utilisé : tout lancer, tout attendre.",
     blocks: [
       {
+        kind: "text",
+        text: "`Promise.all([p1, p2, ...])` retourne une promesse qui se résout avec le tableau des résultats quand toutes les promesses ont réussi, ou rejette dès que l'une d'elles échoue.",
+      },
+      {
+        kind: "text",
+        text: "Charger plusieurs ressources indépendantes (profil + dépôts + organisations) en une fois au lieu de les enchaîner : c'est le gain de performance le plus simple de l'asynchrone.",
+      },
+      {
+        kind: "text",
+        text: "Opérations indépendantes dont on a besoin de tous les résultats pour continuer (rendu d'un dashboard, initialisation d'une page).",
+      },
+      {
         kind: "fields",
         title: "Fiche concept",
         fields: [
-          {
-            label: "En une phrase",
-            value:
-              "`Promise.all([p1, p2, ...])` retourne une promesse qui se résout avec le tableau des résultats quand toutes les promesses ont réussi, ou rejette dès que l'une d'elles échoue.",
-          },
-          {
-            label: "Pourquoi ça existe",
-            value:
-              "Charger plusieurs ressources indépendantes (profil + dépôts + organisations) en une fois au lieu de les enchaîner : c'est le gain de performance le plus simple de l'asynchrone.",
-          },
-          {
-            label: "Quand l'utiliser",
-            value:
-              "Opérations indépendantes dont on a besoin de tous les résultats pour continuer (rendu d'un dashboard, initialisation d'une page).",
-          },
           {
             label: "Comment ça fonctionne",
             value:
