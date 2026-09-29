@@ -554,7 +554,7 @@
 
   .toc {
     position: static;
-    order: 2;
+    order: -1;
   }
 
   .table tbody th {

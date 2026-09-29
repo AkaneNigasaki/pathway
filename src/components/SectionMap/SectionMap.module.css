@@ -1,156 +1,273 @@
-/* Graphe de nœuds du sommaire : colonne vertébrale + un vrai nœud par section. */
+/* Sommaire en graphe de nœuds, façon vue « Colonne » :
+   nœuds catégorie (pilules) + nœuds sections (cartes),
+   reliés par des courbes SVG calculées en JS. */
 
-.spine {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.graph {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  /* Défilement interne avec scrollbar fine quand le graphe dépasse. */
+  max-height: calc(100dvh - var(--nav-height-scrolled, 64px) - 160px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+  padding: 0.35rem 0.15rem;
 }
 
-/* La colonne vertébrale : passe par le centre des disques (36px) */
-.spine::before {
-  content: "";
+/* Overlay SVG des connexions : pas d'animation (prefers-reduced-motion). */
+.wires {
   position: absolute;
-  left: 17px;
-  top: 22px;
-  bottom: 22px;
-  width: 2px;
-  background: var(--border);
-  border-radius: 2px;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
 }
 
-/* Palier de niveau, façon étape de roadmap */
-.stage {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  padding: 0.85rem 0 0.35rem 2.9rem;
+.spinePath {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
-.stageName {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
+.branchPath {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 40%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  stroke-linecap: round;
 }
 
-.stageHint {
-  font-size: 0.72rem;
-  color: var(--faint);
-}
-
-.node {
-  position: relative;
-}
-
-.node a {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  min-height: 44px;
-  padding: 0.3rem 0.6rem 0.3rem 0;
-  border-radius: 10px;
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.35;
-  transition: color var(--dur-short) var(--ease-standard),
-    background-color var(--dur-short) var(--ease-standard);
-}
-
-.node a:hover {
-  color: var(--foreground);
-  background: var(--surface-soft);
-}
-
-/* Le vrai nœud : disque avec icône, posé sur la colonne */
-.disc {
+/* ── Nœud catégorie : pilule pleine accent ── */
+.catNode {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  margin: 0 0 0.9rem;
+}
+
+.catNum {
   flex: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.catText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.catName {
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.catHint {
+  font-size: 0.72rem;
+  opacity: 0.78;
+}
+
+.catCount {
+  flex: none;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--on-accent);
+  color: var(--accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid var(--border-strong);
-  background: var(--surface);
-  color: var(--muted);
-  transition: border-color var(--dur-short) var(--ease-standard),
-    background-color var(--dur-short) var(--ease-standard),
-    color var(--dur-short) var(--ease-standard),
-    box-shadow var(--dur-short) var(--ease-standard);
-}
-
-.discNum {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 700;
 }
 
-.node a:hover .disc {
-  border-color: var(--accent);
+/* ── Nœuds sections : cartes enfants ── */
+.children {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.children:last-child {
+  margin-bottom: 0;
+}
+
+.child a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--foreground);
+  font-size: 0.87rem;
+  line-height: 1.35;
+  transition:
+    border-color 150ms ease,
+    transform 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease;
 }
 
-/* Nœud de départ : l'ampoule, disque sobrement teinté d'or */
-.start .disc {
-  border-color: color-mix(in srgb, var(--accent-gold) 45%, var(--border));
-  background: color-mix(in srgb, var(--accent-gold) 10%, var(--surface));
-  color: var(--accent-gold);
+.child a:hover {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  transform: translateY(-1px);
 }
 
-.start a:hover .disc {
-  border-color: var(--accent-gold);
-  color: var(--accent-gold);
+.child a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.num {
+.childIcon {
   flex: none;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--faint);
-  min-width: 1.6rem;
-}
-
-.label {
-  flex: 1;
-}
-
-/* Sections des niveaux supérieurs : estompées, comme la suite du parcours */
-.future {
-  opacity: 0.5;
-}
-
-.future a:hover {
-  opacity: 1;
-}
-
-/* Section actuellement visible : disque rempli + anneau doré */
-.active a {
-  color: var(--foreground);
-  font-weight: 700;
-}
-
-.active .disc {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--accent-ink);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-gold) 38%, transparent);
-}
-
-.active .num {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--accent);
 }
 
+.childNum {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* Titre sur 2 lignes max, jamais coupé par ellipsis monoligne. */
+.childLabel {
+  flex: 1;
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+
+/* Petit cercle de statut à droite. */
+.dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--faint);
+}
+
+.dotDone {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Section actuellement visible. */
+.childActive a {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  font-weight: 600;
+}
+
+.childActive .dot {
+  border-color: var(--accent);
+}
+
+/* Sections des niveaux supérieurs : estompées. */
+.childFuture {
+  opacity: 0.55;
+}
+
+.childFuture a:hover {
+  opacity: 1;
+}
+
+/* ── Panneau repliable sur mobile ── */
+.mobilePanel {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.mobileSummary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobileSummary::-webkit-details-marker {
+  display: none;
+}
+
+.mobileSummary::marker {
+  content: "";
+}
+
+.mobileSummary::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-left: auto;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 150ms ease;
+}
+
+.mobilePanel[open] .mobileSummary::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+.mobilePanel[open] .mobileSummary {
+  border-bottom: 1px solid var(--border);
+}
+
+.mobileBody {
+  padding: 0.9rem 0.8rem;
+}
+
+.mobileBody .graph {
+  /* Dans le panneau, pas de hauteur max figée : le details gère le repli. */
+  max-height: none;
+  overflow-y: visible;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .node a,
-  .disc {
+  .child a,
+  .mobileSummary::after {
     transition: none;
+  }
+
+  .child a:hover {
+    transform: none;
   }
 }

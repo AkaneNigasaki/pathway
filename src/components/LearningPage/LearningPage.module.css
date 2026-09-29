@@ -1,5 +1,10 @@
 .page {
   margin-top: 0.5rem;
+  /* Accent de la page de leçon : or sobre centralisé (remplace le jaune vif global) */
+  --accent: #c9a96e;
+  --accent-soft: #3a2f1a;
+  --accent-border: color-mix(in srgb, var(--accent) 45%, transparent);
+  --on-accent: #141414;
 }
 
 /* ---------- Barre d'outils : niveaux + marquer comme appris ---------- */
@@ -45,7 +50,7 @@
 
 .levelActive {
   background: var(--accent);
-  color: #0c0c0c;
+  color: var(--on-accent);
 }
 
 .levelName {
@@ -84,7 +89,7 @@
 .learnedDone {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0c0c0c;
+  color: var(--on-accent);
 }
 
 .count {
@@ -487,7 +492,7 @@
   height: 1.5rem;
   border-radius: 50%;
   background: var(--accent);
-  color: #0c0c0c;
+  color: var(--on-accent);
   font-size: 0.75rem;
   font-weight: 800;
   display: flex;

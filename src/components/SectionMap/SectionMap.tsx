@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import {
   LuLightbulb,
   LuBookOpen,
@@ -41,6 +41,7 @@ import {
   LuAccessibility,
   LuKeyRound,
   LuActivity,
+  LuCheck,
 } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import type { LearningLevel } from "../../data/skill-guides";
@@ -159,15 +160,51 @@ function iconFor(section: MapSection, index: number): IconType | null {
   return null;
 }
 
+interface StageGroup {
+  level: LearningLevel;
+  sections: MapSection[];
+}
+
+interface WirePaths {
+  spine: string;
+  branches: string[];
+  w: number;
+  h: number;
+}
+
 /**
  * Sommaire d'une page documentation sous forme de graphe de nœuds,
- * façon roadmap : une colonne vertébrale verticale, un vrai nœud
- * (disque + icône) par section, des paliers par niveau d'information,
- * la section visible mise en évidence.
+ * façon vue « Colonne » : les niveaux sont des nœuds catégorie (pilules),
+ * les sections des nœuds enfants (cartes), reliés par des courbes SVG
+ * calculées depuis les positions réelles des nœuds.
  */
 export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Regroupe les sections par niveau, dans l'ordre.
+  const stages: StageGroup[] = useMemo(() => {
+    const map = new Map<LearningLevel, MapSection[]>();
+    for (const s of sections) {
+      const lv = (s.level ?? 1) as LearningLevel;
+      if (!map.has(lv)) map.set(lv, []);
+      map.get(lv)!.push(s);
+    }
+    return [...map.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([lv, secs]) => ({ level: lv, sections: secs }));
+  }, [sections]);
+
+  // Panneau repliable sur mobile.
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 900px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Suit la section visible (scroll-spy).
   useEffect(() => {
     const targets = sections
       .map((s) => document.getElementById(s.id))
@@ -185,6 +222,87 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
     return () => observer.disconnect();
   }, [sections, level]);
 
+  // Refs des nœuds pour le calcul des courbes SVG.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const nodeRefs = useRef(new Map<string, HTMLElement>());
+  const [paths, setPaths] = useState<WirePaths>({ spine: "", branches: [], w: 0, h: 0 });
+
+  const setNodeRef = (key: string) => (el: HTMLElement | null) => {
+    if (el) nodeRefs.current.set(key, el);
+    else nodeRefs.current.delete(key);
+  };
+
+  // Calcule les courbes depuis les positions réelles (getBoundingClientRect
+  // relatif au conteneur + scrollTop pour l'espace de défilement).
+  // Pas de coordonnées fixes, pas d'animation du SVG.
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const compute = () => {
+      const cRect = container.getBoundingClientRect();
+      const scrollTop = container.scrollTop;
+      const box = (key: string) => {
+        const el = nodeRefs.current.get(key);
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return {
+          cx: r.left - cRect.left + r.width / 2,
+          top: r.top - cRect.top + scrollTop,
+          bottom: r.top - cRect.top + scrollTop + r.height,
+        };
+      };
+      // Courbe cubique douce entre deux points verticaux.
+      const curve = (x1: number, y1: number, x2: number, y2: number) => {
+        if (y2 <= y1) return "";
+        const dy = Math.max(18, (y2 - y1) * 0.5);
+        const f = (n: number) => n.toFixed(1);
+        return `M ${f(x1)} ${f(y1)} C ${f(x1)} ${f(y1 + dy)}, ${f(x2)} ${f(y2 - dy)}, ${f(x2)} ${f(y2)}`;
+      };
+
+      const spine: string[] = [];
+      for (let i = 0; i < stages.length - 1; i++) {
+        const a = box(`cat-${stages[i].level}`);
+        const b = box(`cat-${stages[i + 1].level}`);
+        if (a && b) {
+          const d = curve(a.cx, a.bottom, b.cx, b.top);
+          if (d) spine.push(d);
+        }
+      }
+
+      const branches: string[] = [];
+      for (const g of stages) {
+        const cat = box(`cat-${g.level}`);
+        if (!cat) continue;
+        for (const s of g.sections) {
+          const child = box(s.id);
+          if (!child) continue;
+          const d = curve(cat.cx, cat.bottom, child.cx, child.top);
+          if (d) branches.push(d);
+        }
+      }
+
+      setPaths({
+        spine: spine.join(" "),
+        branches,
+        w: Math.ceil(container.scrollWidth),
+        h: Math.ceil(container.scrollHeight),
+      });
+    };
+
+    compute();
+    let raf = 0;
+    const ro = new ResizeObserver(() => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(compute);
+    });
+    ro.observe(container);
+    return () => {
+      ro.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [sections, level, isMobile, stages]);
+
   const go = (e: React.MouseEvent, section: MapSection) => {
     e.preventDefault();
     // Le parent met le hash à jour : le niveau bascule si besoin,
@@ -192,49 +310,95 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
     onSelect(section);
   };
 
-  let lastStage = 0;
+  // Heuristique de progression : les sections situées avant la section
+  // visible sont considérées comme lues (icône coche, statut rempli).
+  const activeIndex = activeId ? sections.findIndex((s) => s.id === activeId) : -1;
+  let cursor = -1;
 
-  return (
-    <ol className={styles.spine}>
-      {sections.map((s, i) => {
-        const stage = s.level ?? 0;
-        const showStage = stage !== 0 && stage !== lastStage;
-        lastStage = stage;
-        const future = (s.level ?? 1) > level;
-        const active = activeId === s.id;
-        const isStart = i === 0;
-        const Icon = iconFor(s, i);
-        const num = String(i + 1).padStart(2, "0");
-        return (
-          <Fragment key={s.id}>
-            {showStage && (
-              <li className={styles.stage} aria-hidden="true">
-                <span className={styles.stageName}>{STAGE[stage as LearningLevel].name}</span>
-                <span className={styles.stageHint}>{STAGE[stage as LearningLevel].hint}</span>
-              </li>
-            )}
-            <li
-              className={`${styles.node}${future ? ` ${styles.future}` : ""}${
-                active ? ` ${styles.active}` : ""
-              }${isStart ? ` ${styles.start}` : ""}`}
-            >
-              <a
-                href={`#${s.id}`}
-                onClick={(e) => go(e, s)}
-                aria-current={active ? "true" : undefined}
-              >
-                <span className={styles.disc} aria-hidden="true">
-                  {Icon ? <Icon size={17} /> : <span className={styles.discNum}>{num}</span>}
-                </span>
-                <span className={styles.num} aria-hidden="true">
-                  {num}
-                </span>
-                <span className={styles.label}>{s.label}</span>
-              </a>
-            </li>
-          </Fragment>
-        );
-      })}
-    </ol>
+  const graph = (
+    <div className={styles.graph} ref={containerRef}>
+      <svg
+        className={styles.wires}
+        width={paths.w > 0 ? paths.w : undefined}
+        height={paths.h > 0 ? paths.h : undefined}
+        aria-hidden="true"
+        focusable="false"
+      >
+        {paths.spine && <path d={paths.spine} className={styles.spinePath} />}
+        {paths.branches.map((d, i) => (
+          <path key={i} d={d} className={styles.branchPath} />
+        ))}
+      </svg>
+
+      {stages.map((g, ci) => (
+        <Fragment key={g.level}>
+          <div ref={setNodeRef(`cat-${g.level}`)} className={styles.catNode}>
+            <span className={`${styles.catNum} mono`} aria-hidden="true">
+              {String(ci + 1).padStart(2, "0")}
+            </span>
+            <span className={styles.catText}>
+              <span className={styles.catName}>{STAGE[g.level].name}</span>
+              <span className={styles.catHint}>{STAGE[g.level].hint}</span>
+            </span>
+            <span className={styles.catCount} aria-label={`${g.sections.length} sections`}>
+              {g.sections.length}
+            </span>
+          </div>
+
+          <ol className={styles.children}>
+            {g.sections.map((s) => {
+              cursor += 1;
+              const i = cursor;
+              const future = (s.level ?? 1) > level;
+              const active = activeId === s.id;
+              const done = activeIndex >= 0 && i < activeIndex;
+              const Icon = iconFor(s, i);
+              const num = String(i + 1).padStart(2, "0");
+              return (
+                <li
+                  key={s.id}
+                  ref={setNodeRef(s.id)}
+                  className={`${styles.child}${future ? ` ${styles.childFuture}` : ""}${
+                    active ? ` ${styles.childActive}` : ""
+                  }${done ? ` ${styles.childDone}` : ""}`}
+                >
+                  <a
+                    href={`#${s.id}`}
+                    onClick={(e) => go(e, s)}
+                    aria-current={active ? "step" : undefined}
+                  >
+                    <span className={styles.childIcon} aria-hidden="true">
+                      {done ? (
+                        <LuCheck size={15} />
+                      ) : Icon ? (
+                        <Icon size={15} />
+                      ) : (
+                        <span className={styles.childNum}>{num}</span>
+                      )}
+                    </span>
+                    <span className={styles.childLabel}>{s.label}</span>
+                    <span
+                      className={`${styles.dot}${done ? ` ${styles.dotDone}` : ""}`}
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </Fragment>
+      ))}
+    </div>
   );
+
+  if (isMobile) {
+    return (
+      <details className={styles.mobilePanel}>
+        <summary className={styles.mobileSummary}>Sommaire</summary>
+        <div className={styles.mobileBody}>{graph}</div>
+      </details>
+    );
+  }
+
+  return graph;
 }
