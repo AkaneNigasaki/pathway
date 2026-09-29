@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { LuArrowUpRight as ArrowUpRight, LuClock as Clock, LuLayers as Layers } from "react-icons/lu";
 import type { Roadmap } from "../../types";
 import { getField } from "../../data/fields";
+import { getRoadmapIcon } from "./roadmapIcons";
 import styles from "./RoadmapCard.module.css";
 
 interface RoadmapCardProps {
@@ -11,6 +12,7 @@ interface RoadmapCardProps {
 
 export function RoadmapCard({ roadmap, progress = 0 }: RoadmapCardProps) {
   const field = getField(roadmap.fieldId);
+  const icon = getRoadmapIcon(roadmap.slug);
 
   return (
     <Link
@@ -24,6 +26,9 @@ export function RoadmapCard({ roadmap, progress = 0 }: RoadmapCardProps) {
         </span>
         <ArrowUpRight size={17} className={styles.arrow} aria-hidden="true" />
       </div>
+      {icon && (
+        <img src={icon} alt="" aria-hidden="true" className={styles.icon} loading="lazy" />
+      )}
       <h3 className={styles.title}>{roadmap.title}</h3>
       <p className={styles.tagline}>{roadmap.tagline}</p>
       <div className={styles.meta}>
