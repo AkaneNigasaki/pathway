@@ -248,26 +248,16 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
         const r = el.getBoundingClientRect();
         return {
           cx: r.left - cRect.left + r.width / 2,
-          left: r.left - cRect.left,
-          right: r.left - cRect.left + r.width,
-          cy: r.top - cRect.top + scrollTop + r.height / 2,
           top: r.top - cRect.top + scrollTop,
           bottom: r.top - cRect.top + scrollTop + r.height,
         };
       };
-      // Courbe verticale douce entre deux points (colonne vertébrale).
+      // Courbe verticale douce entre deux pilules (colonne vertébrale).
       const vcurve = (x1: number, y1: number, x2: number, y2: number) => {
         if (y2 <= y1) return "";
         const dy = Math.max(18, (y2 - y1) * 0.5);
         const f = (n: number) => n.toFixed(1);
         return `M ${f(x1)} ${f(y1)} C ${f(x1)} ${f(y1 + dy)}, ${f(x2)} ${f(y2 - dy)}, ${f(x2)} ${f(y2)}`;
-      };
-      // Courbe horizontale douce (branche vers la gauche, façon Softaims).
-      const hcurve = (x1: number, y1: number, x2: number, y2: number) => {
-        const dx = Math.max(12, Math.abs(x2 - x1) * 0.5);
-        const f = (n: number) => n.toFixed(1);
-        const dir = x2 > x1 ? 1 : -1;
-        return `M ${f(x1)} ${f(y1)} C ${f(x1 + dir * dx)} ${f(y1)}, ${f(x2 - dir * dx)} ${f(y2)}, ${f(x2)} ${f(y2)}`;
       };
 
       const spine: string[] = [];
@@ -280,22 +270,9 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
         }
       }
 
-      const branches: string[] = [];
-      for (const g of stages) {
-        const cat = box(`cat-${g.level}`);
-        if (!cat) continue;
-        for (const s of g.sections) {
-          const child = box(s.id);
-          if (!child) continue;
-          // De la droite de l'enfant vers la gauche de la catégorie.
-          const d = hcurve(child.right, child.cy, cat.left, cat.cy);
-          if (d) branches.push(d);
-        }
-      }
-
       setPaths({
         spine: spine.join(" "),
-        branches,
+        branches: [],
         w: Math.ceil(container.scrollWidth),
         h: Math.ceil(container.scrollHeight),
       });
@@ -324,7 +301,24 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
   // Heuristique de progression : les sections situées avant la section
   // visible sont considérées comme lues (icône coche, statut rempli).
   const activeIndex = activeId ? sections.findIndex((s) => s.id === activeId) : -1;
-  let cursor = -1;
+
+  // Panneau overlay : quelle catégorie est ouverte (ses sections à gauche).
+  const [openLevel, setOpenLevel] = useState<LearningLevel | null>(null);
+  const openStage = openLevel != null ? stages.find((g) => g.level === openLevel) : null;
+
+  // Ferme le panneau à Échap.
+  useEffect(() => {
+    if (openLevel == null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenLevel(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [openLevel]);
+
+  const toggle = (lv: LearningLevel) => {
+    setOpenLevel((cur) => (cur === lv ? null : lv));
+  };
 
   const graph = (
     <div className={styles.graph} ref={containerRef}>
@@ -336,33 +330,74 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
         focusable="false"
       >
         {paths.spine && <path d={paths.spine} className={styles.spinePath} />}
-        {paths.branches.map((d, i) => (
-          <path key={i} d={d} className={styles.branchPath} />
-        ))}
       </svg>
 
-      {stages.map((g, ci) => (
-        <div key={g.level} className={styles.stageBlock}>
+      <div className={styles.pills}>
+        {stages.map((g, ci) => {
+          const isOpen = openLevel === g.level;
+          // Le niveau actif = celui qui contient la section visible.
+          const hasActive = activeId != null && g.sections.some((s) => s.id === activeId);
+          return (
+            <button
+              key={g.level}
+              ref={setNodeRef(`cat-${g.level}`)}
+              type="button"
+              className={`${styles.catNode}${isOpen ? ` ${styles.catOpen}` : ""}${
+                hasActive ? ` ${styles.catHasActive}` : ""
+              }`}
+              onClick={() => toggle(g.level)}
+              aria-expanded={isOpen}
+              aria-current={hasActive ? "step" : undefined}
+            >
+              <span className={`${styles.catNum} mono`} aria-hidden="true">
+                {String(ci + 1).padStart(2, "0")}
+              </span>
+              <span className={styles.catText}>
+                <span className={styles.catName}>{STAGE[g.level].name}</span>
+                <span className={styles.catHint}>{STAGE[g.level].hint}</span>
+              </span>
+              <span className={styles.catCount} aria-label={`${g.sections.length} sections`}>
+                {g.sections.length}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {openStage && (
+        <div className={styles.overlay} role="dialog" aria-label={`Sections ${STAGE[openStage.level].name}`}>
+          <div className={styles.overlayHead}>
+            <span className={styles.overlayTitle}>{STAGE[openStage.level].name}</span>
+            <button
+              type="button"
+              className={styles.overlayClose}
+              onClick={() => setOpenLevel(null)}
+              aria-label="Fermer le panneau"
+            >
+              ×
+            </button>
+          </div>
           <ol className={styles.children}>
-            {g.sections.map((s) => {
-              cursor += 1;
-              const i = cursor;
+            {openStage.sections.map((s, idx) => {
+              const i = sections.findIndex((x) => x.id === s.id);
               const future = (s.level ?? 1) > level;
               const active = activeId === s.id;
-              const done = activeIndex >= 0 && i < activeIndex;
-              const Icon = iconFor(s, i);
-              const num = String(i + 1).padStart(2, "0");
+              const done = activeIndex >= 0 && i < activeIndex && i >= 0;
+              const Icon = iconFor(s, i >= 0 ? i : idx);
+              const num = String((i >= 0 ? i : idx) + 1).padStart(2, "0");
               return (
                 <li
                   key={s.id}
-                  ref={setNodeRef(s.id)}
                   className={`${styles.child}${future ? ` ${styles.childFuture}` : ""}${
                     active ? ` ${styles.childActive}` : ""
                   }${done ? ` ${styles.childDone}` : ""}`}
                 >
                   <a
                     href={`#${s.id}`}
-                    onClick={(e) => go(e, s)}
+                    onClick={(e) => {
+                      go(e, s);
+                      setOpenLevel(null);
+                    }}
                     aria-current={active ? "step" : undefined}
                   >
                     <span className={styles.childIcon} aria-hidden="true">
@@ -384,21 +419,8 @@ export function SectionMap({ sections, level, onSelect }: SectionMapProps) {
               );
             })}
           </ol>
-
-          <div ref={setNodeRef(`cat-${g.level}`)} className={styles.catNode}>
-            <span className={`${styles.catNum} mono`} aria-hidden="true">
-              {String(ci + 1).padStart(2, "0")}
-            </span>
-            <span className={styles.catText}>
-              <span className={styles.catName}>{STAGE[g.level].name}</span>
-              <span className={styles.catHint}>{STAGE[g.level].hint}</span>
-            </span>
-            <span className={styles.catCount} aria-label={`${g.sections.length} sections`}>
-              {g.sections.length}
-            </span>
-          </div>
         </div>
-      ))}
+      )}
     </div>
   );
 

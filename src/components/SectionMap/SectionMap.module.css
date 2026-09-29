@@ -39,60 +39,59 @@
   stroke-linecap: round;
 }
 
-/* ── Bloc étape : enfants à gauche, nœud catégorie à droite (façon Softaims) ── */
-.stageBlock {
+/* ── Pilules catégorie : colonne verticale uniquement ── */
+.pills {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.6rem;
-  align-items: start;
-  margin-bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
 }
 
-.stageBlock:last-child {
-  margin-bottom: 0;
-}
-
-/* Sur écran étroit : empilement vertical (la grille latérale écrase les cartes). */
-@media (max-width: 480px) {
-  .stageBlock {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .catNode {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
-    margin-bottom: 0.6rem;
-  }
-
-  .children {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  /* Le chemin vertical et les branches horizontales n'ont plus de sens
-     en empilement : on les masque pour éviter les traits orphelins. */
-  .wires {
-    display: none;
-  }
-}
-
-/* ── Nœud catégorie : pilule pleine accent, sur le chemin ── */
+/* ── Nœud catégorie : pilule pleine accent, cliquable ── */
 .catNode {
-  grid-column: 2;
-  grid-row: 1;
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  width: 100%;
   background: var(--accent);
   color: var(--on-accent);
+  border: none;
   border-radius: 999px;
   padding: 0.55rem 0.8rem;
   white-space: nowrap;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.catNode:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.catNode:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Pilule ouverte (panneau affiché) : anneau accentué. */
+.catOpen {
+  box-shadow:
+    0 0 0 3px var(--accent-soft),
+    0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Pilule contenant la section visible : halo. */
+.catHasActive {
+  box-shadow:
+    0 0 0 4px var(--accent-soft),
+    0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .catNum {
@@ -136,18 +135,82 @@
   font-weight: 700;
 }
 
-/* ── Nœuds sections : cartes enfants à gauche ── */
+/* ── Panneau overlay : sections de la catégorie, à gauche en absolute ── */
+.overlay {
+  position: absolute;
+  top: 0;
+  right: calc(100% + 0.75rem);
+  z-index: 10;
+  /* Largeur suffisante pour que les cartes ne se cassent pas. */
+  width: 320px;
+  min-width: 280px;
+  max-width: min(340px, calc(100vw - 3rem));
+  max-height: min(100%, 70dvh);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+  background: #0d0d0d;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  padding: 0.9rem;
+}
+
+.overlayHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.overlayTitle {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.overlayClose {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.overlayClose:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.overlayClose:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Nœuds sections : cartes enfants dans le panneau ── */
 .children {
-  grid-column: 1;
-  grid-row: 1;
   list-style: none;
   margin: 0;
   padding: 0;
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-top: 0.2rem;
 }
 
 .child a {
