@@ -7,7 +7,6 @@ import {
 } from "react-icons/lu";
 import { Reveal } from "../../components/Reveal/Reveal";
 import { CustomSelect } from "../../components/CustomSelect/CustomSelect";
-import { FieldCard } from "../../components/FieldCard/FieldCard";
 import { CareerCard } from "../../components/CareerCard/CareerCard";
 import { RoadmapCard } from "../../components/RoadmapCard/RoadmapCard";
 import { SkillIcon } from "../../components/SkillIcon/SkillIcon";
@@ -17,7 +16,6 @@ import {
   getExploreRoadmaps,
   getExploreCareers,
   getExploreFields,
-  getFieldStats,
   searchExplore,
   skillMatchesCareer,
   type ExploreHit,
@@ -34,7 +32,6 @@ type Tab = "all" | ExploreKind;
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "all", label: "Tout" },
-  { id: "field", label: "Filières" },
   { id: "career", label: "Métiers" },
   { id: "skill", label: "Compétences" },
   { id: "technology", label: "Technologies" },
@@ -42,7 +39,6 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 const KIND_SECTION: Record<ExploreKind, string> = {
-  field: "Filières",
   career: "Métiers",
   skill: "Compétences",
   technology: "Technologies",
@@ -212,15 +208,13 @@ export function Explore() {
               const count =
                 t.id === "all"
                   ? null
-                  : t.id === "field"
-                    ? fields.length
-                    : t.id === "career"
-                      ? careers.length
-                      : t.id === "skill"
-                        ? skills.length
-                        : t.id === "technology"
-                          ? technologies.length
-                          : roadmaps.length;
+                  : t.id === "career"
+                    ? careers.length
+                    : t.id === "skill"
+                      ? skills.length
+                      : t.id === "technology"
+                        ? technologies.length
+                        : roadmaps.length;
               return (
                 <button
                   key={t.id}
@@ -294,29 +288,7 @@ export function Explore() {
               skillById={skillById}
             />
           ) : tab === "all" ? (
-            <HubView fields={fields} careers={careers} roadmaps={roadmaps} />
-          ) : tab === "field" ? (
-            <section aria-label="Filières">
-              <SectionHead
-                title="Filières"
-                count={fields.length}
-                hint="Les grands domaines couverts par Pathway."
-              />
-              <div className={styles.grid}>
-                {fields.map((f) => {
-                  const stats = getFieldStats(f.id);
-                  return (
-                    <FieldCard
-                      key={f.id}
-                      field={f}
-                      roadmapCount={stats.roadmaps}
-                      skillCount={stats.skills}
-                      careerCount={stats.careers}
-                    />
-                  );
-                })}
-              </div>
-            </section>
+            <HubView careers={careers} roadmaps={roadmaps} />
           ) : tab === "career" ? (
             <section aria-label="Métiers">
               <SectionHead
@@ -428,38 +400,14 @@ function EmptyState({ onReset }: { onReset: () => void }) {
 /* ------------------------- Vue « hub » ------------------------- */
 
 function HubView({
-  fields,
   careers,
   roadmaps,
 }: {
-  fields: ReturnType<typeof getExploreFields>;
   careers: ReturnType<typeof getExploreCareers>;
   roadmaps: ReturnType<typeof getExploreRoadmaps>;
 }) {
   return (
     <>
-      <section aria-label="Filières">
-        <SectionHead
-          title="Filières"
-          count={fields.length}
-          hint="Les grands domaines couverts par Pathway."
-        />
-        <div className={styles.grid}>
-          {fields.map((f) => {
-            const stats = getFieldStats(f.id);
-            return (
-              <FieldCard
-                key={f.id}
-                field={f}
-                roadmapCount={stats.roadmaps}
-                skillCount={stats.skills}
-                careerCount={stats.careers}
-              />
-            );
-          })}
-        </div>
-      </section>
-
       <section aria-label="Métiers">
         <SectionHead
           title="Métiers"
@@ -491,10 +439,9 @@ function HubView({
 
 /* ------------------------- Résultats de recherche ------------------------- */
 
-const KIND_ORDER: ExploreKind[] = ["field", "career", "skill", "technology", "roadmap"];
+const KIND_ORDER: ExploreKind[] = ["career", "skill", "technology", "roadmap"];
 
 const KIND_KEY: Record<ExploreKind, keyof ReturnType<typeof searchExplore>> = {
-  field: "fields",
   career: "careers",
   skill: "skills",
   technology: "technologies",
@@ -542,13 +489,7 @@ function SearchResultsView({
       {groups.map(({ kind, hits }) => (
         <section key={kind} aria-label={KIND_SECTION[kind]}>
           <SectionHead title={KIND_SECTION[kind]} count={hits.length} hint="" />
-          {kind === "field" ? (
-            <div className={styles.grid}>
-              {hits.map((h) => (
-                <FieldHit key={h.url} hit={h} />
-              ))}
-            </div>
-          ) : kind === "career" ? (
+          {kind === "career" ? (
             <div className={styles.grid}>
               {hits.map((h) => (
                 <CareerHit key={h.url} hit={h} />
@@ -581,20 +522,6 @@ function SearchResultsView({
 function skillIdFromUrl(url: string): string {
   const m = url.match(/skill=([^&]+)/);
   return m ? decodeURIComponent(m[1]) : "";
-}
-
-function FieldHit({ hit }: { hit: ExploreHit }) {
-  const field = getExploreFields().find((f) => `/fields/${f.id}` === hit.url);
-  if (!field) return <HitRow hit={hit} />;
-  const stats = getFieldStats(field.id);
-  return (
-    <FieldCard
-      field={field}
-      roadmapCount={stats.roadmaps}
-      skillCount={stats.skills}
-      careerCount={stats.careers}
-    />
-  );
 }
 
 function CareerHit({ hit }: { hit: ExploreHit }) {

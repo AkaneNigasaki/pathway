@@ -148,7 +148,7 @@ export function getCareersForSkill(skill: ExploreSkill): Career[] {
 // Recherche plein texte au niveau entités (sans l'index des micro-guides).
 // ---------------------------------------------------------------------------
 
-export type ExploreKind = "field" | "career" | "skill" | "technology" | "roadmap";
+export type ExploreKind = "career" | "skill" | "technology" | "roadmap";
 
 export interface ExploreHit {
   kind: ExploreKind;
@@ -160,7 +160,6 @@ export interface ExploreHit {
 }
 
 export interface ExploreSearchResults {
-  fields: ExploreHit[];
   careers: ExploreHit[];
   skills: ExploreHit[];
   technologies: ExploreHit[];
@@ -198,7 +197,6 @@ function skillUrl(s: ExploreSkill): string {
 export function searchExplore(query: string, limit = 8): ExploreSearchResults {
   const q = query.trim();
   const empty: ExploreSearchResults = {
-    fields: [],
     careers: [],
     skills: [],
     technologies: [],
@@ -219,17 +217,6 @@ export function searchExplore(query: string, limit = 8): ExploreSearchResults {
   const technologies = getTechnologies();
 
   return {
-    fields: pick(
-      FIELDS.map((f) => ({
-        hit: {
-          kind: "field" as const,
-          title: f.name,
-          subtitle: f.tagline,
-          url: `/fields/${f.id}`,
-        },
-        score: scoreText(q, f.name, `${f.tagline} ${f.description}`),
-      }))
-    ),
     careers: pick(
       CAREERS.map((c) => ({
         hit: {

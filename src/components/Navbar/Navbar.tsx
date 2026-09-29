@@ -16,7 +16,6 @@ const LINKS = [
   { to: "/explore", label: "Explore" },
   { to: "/roadmaps", label: "Roadmaps" },
   { to: "/skills", label: "Skills" },
-  { to: "/fields", label: "Filières" },
   { to: "/careers", label: "Métiers" },
   { to: "/progression", label: "Progression" },
 ];
