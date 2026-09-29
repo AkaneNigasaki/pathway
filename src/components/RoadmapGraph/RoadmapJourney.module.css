@@ -1,11 +1,11 @@
-/* Carte « voyage » : route sinueuse sur fond marine, jalons crème, chips navy. */
+/* Carte « voyage » : route sinueuse, jalons et chips aux couleurs du thème. */
 
 .journey {
-  background: #1a1860;
-  border: 1px solid rgba(249, 244, 219, 0.14);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: clamp(1rem, 3vw, 1.75rem);
-  color: #f9f4db;
+  color: var(--foreground);
   overflow: hidden;
 }
 
@@ -24,13 +24,13 @@
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(249, 244, 219, 0.65);
+  color: var(--muted);
 }
 
 .dirToggle {
   display: inline-flex;
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(249, 244, 219, 0.18);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 3px;
 }
@@ -38,7 +38,7 @@
 .dirBtn {
   border: 0;
   background: transparent;
-  color: rgba(249, 244, 219, 0.7);
+  color: var(--muted);
   font: inherit;
   font-size: 0.85rem;
   font-weight: 600;
@@ -49,12 +49,12 @@
 }
 
 .dirBtn:hover {
-  color: #f9f4db;
+  color: var(--foreground);
 }
 
 .dirOn {
-  background: #f9f4db;
-  color: #1a1860;
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* ── Mode colonne : canvas + route ── */
@@ -71,14 +71,15 @@
 
 .roadPath {
   fill: none;
-  stroke: #f9f4db;
+  stroke: var(--accent);
   stroke-width: 14;
   stroke-linecap: round;
+  opacity: 0.9;
 }
 
 .branch {
   fill: none;
-  stroke: #f9f4db;
+  stroke: var(--accent);
   stroke-width: 2;
   stroke-dasharray: 5 6;
   opacity: 0.45;
@@ -91,12 +92,12 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: #f9f4db;
-  color: #1a1860;
+  background: var(--accent);
+  color: var(--accent-ink);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 6px rgba(249, 244, 219, 0.15);
+  box-shadow: 0 0 0 6px var(--accent-faint);
 }
 
 .milestone {
@@ -104,20 +105,20 @@
   transform: translate(-50%, -50%);
   width: 200px;
   min-height: 58px;
-  background: #f9f4db;
-  color: #1a1860;
+  background: var(--accent);
+  color: var(--accent-ink);
   border-radius: 14px;
   display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 0.9rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-lift);
 }
 
 .mileNum {
   font-size: 0.72rem;
   font-weight: 700;
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 .mileLabel {
@@ -130,7 +131,7 @@
 .mileCount {
   font-size: 0.72rem;
   font-weight: 700;
-  background: rgba(26, 24, 96, 0.1);
+  background: rgb(0 0 0 / 0.12);
   border-radius: 999px;
   padding: 0.15rem 0.5rem;
 }
@@ -147,10 +148,10 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  background: #26236e;
-  border: 1px solid rgba(249, 244, 219, 0.2);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
   border-radius: 12px;
-  color: #f9f4db;
+  color: var(--foreground);
   font: inherit;
   font-size: 0.88rem;
   font-weight: 600;
@@ -161,8 +162,7 @@
 }
 
 .chip:hover {
-  border-color: rgba(249, 244, 219, 0.55);
-  background: #2d2a7d;
+  border-color: var(--accent);
 }
 
 .chipName {
@@ -177,7 +177,7 @@
   height: 10px;
   border-radius: 50%;
   flex: none;
-  border: 1.5px solid rgba(249, 244, 219, 0.5);
+  border: 1.5px solid var(--faint);
 }
 
 .dotTodo {
@@ -185,25 +185,27 @@
 }
 
 .dotActive {
-  background: #7da2ff;
-  border-color: #7da2ff;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-faint);
 }
 
 .dotDone {
-  background: #efbd0b;
-  border-color: #efbd0b;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .chipActive {
-  border-color: rgba(125, 162, 255, 0.7);
+  border-color: var(--accent);
 }
 
 .chipDone {
-  border-color: rgba(239, 189, 11, 0.65);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
 }
 
 .chipSelected {
-  outline: 2px solid #efbd0b;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -220,8 +222,8 @@
 }
 
 .rowStage {
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(249, 244, 219, 0.12);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 0.9rem 1rem 1rem;
 }
@@ -236,7 +238,7 @@
 .rowNum {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #efbd0b;
+  color: var(--accent);
 }
 
 .rowMileLabel {
@@ -248,7 +250,8 @@
 .rowCount {
   font-size: 0.72rem;
   font-weight: 700;
-  background: rgba(249, 244, 219, 0.14);
+  background: var(--accent-soft);
+  color: var(--foreground);
   border-radius: 999px;
   padding: 0.15rem 0.55rem;
 }
@@ -276,9 +279,9 @@
   gap: 1rem;
   margin-top: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(249, 244, 219, 0.14);
+  border-top: 1px solid var(--border);
   font-size: 0.8rem;
-  color: rgba(249, 244, 219, 0.75);
+  color: var(--muted);
 }
 
 .legendItem {
@@ -291,7 +294,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1.5px solid rgba(249, 244, 219, 0.5);
+  border: 1.5px solid var(--faint);
 }
 
 @media (max-width: 560px) {
