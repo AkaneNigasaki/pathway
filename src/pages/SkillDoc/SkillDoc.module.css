@@ -1,12 +1,11 @@
 .page {
   padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(4rem, 8vw, 6rem);
   scroll-margin-top: 0;
-  /* Accent de la page de leçon : or sobre centralisé (remplace le jaune vif
-     global). Défini ici pour couvrir le sommaire (aside) ET le contenu. */
-  --accent: #c9a96e;
-  --accent-soft: #3a2f1a;
+  /* Le jaune de la marque reste l'accent unique du sommaire et du contenu. */
+  --accent: var(--accent-gold);
+  --accent-soft: color-mix(in srgb, var(--accent) 18%, transparent);
   --accent-border: color-mix(in srgb, var(--accent) 45%, transparent);
-  --on-accent: #141414;
+  --on-accent: var(--accent-ink);
 }
 
 .crumb {
@@ -595,7 +594,7 @@
   padding: 0.55rem 1.1rem;
   border-radius: var(--radius-full);
   background: var(--accent);
-  color: #0c0c0c;
+  color: var(--on-accent);
   font-weight: 700;
   font-size: var(--text-small);
   text-decoration: none;
