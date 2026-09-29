@@ -1,4 +1,4 @@
-/* Graphe de nœuds du sommaire : colonne vertébrale + un nœud par section. */
+/* Graphe de nœuds du sommaire : colonne vertébrale + un vrai nœud par section. */
 
 .spine {
   list-style: none;
@@ -9,13 +9,13 @@
   flex-direction: column;
 }
 
-/* La colonne vertébrale */
+/* La colonne vertébrale : passe par le centre des disques (36px) */
 .spine::before {
   content: "";
   position: absolute;
-  left: 7px;
-  top: 14px;
-  bottom: 14px;
+  left: 17px;
+  top: 22px;
+  bottom: 22px;
   width: 2px;
   background: var(--border);
   border-radius: 2px;
@@ -27,7 +27,7 @@
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  padding: 0.85rem 0 0.35rem 1.6rem;
+  padding: 0.85rem 0 0.35rem 2.9rem;
 }
 
 .stageName {
@@ -52,9 +52,9 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  min-height: 40px;
-  padding: 0.45rem 0.6rem 0.45rem 0;
-  border-radius: 8px;
+  min-height: 44px;
+  padding: 0.3rem 0.6rem 0.3rem 0;
+  border-radius: 10px;
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.35;
@@ -67,23 +67,47 @@
   background: var(--surface-soft);
 }
 
-/* Le nœud sur la colonne */
-.dot {
+/* Le vrai nœud : disque avec icône, posé sur la colonne */
+.disc {
   position: relative;
   z-index: 1;
   flex: none;
-  width: 16px;
-  height: 16px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 2px solid var(--faint);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border-strong);
   background: var(--surface);
+  color: var(--muted);
   transition: border-color var(--dur-short) var(--ease-standard),
     background-color var(--dur-short) var(--ease-standard),
+    color var(--dur-short) var(--ease-standard),
     box-shadow var(--dur-short) var(--ease-standard);
 }
 
-.node a:hover .dot {
+.discNum {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.node a:hover .disc {
   border-color: var(--accent);
+  color: var(--foreground);
+}
+
+/* Nœud de départ : l'ampoule, disque sobrement teinté d'or */
+.start .disc {
+  border-color: color-mix(in srgb, var(--accent-gold) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent-gold) 10%, var(--surface));
+  color: var(--accent-gold);
+}
+
+.start a:hover .disc {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
 }
 
 .num {
@@ -107,16 +131,17 @@
   opacity: 1;
 }
 
-/* Section actuellement visible : nœud doré, façon roadmap.sh */
+/* Section actuellement visible : disque rempli + anneau doré */
 .active a {
   color: var(--foreground);
   font-weight: 700;
 }
 
-.active .dot {
+.active .disc {
   border-color: var(--accent);
   background: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--accent-ink);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-gold) 38%, transparent);
 }
 
 .active .num {
@@ -125,7 +150,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .node a,
-  .dot {
+  .disc {
     transition: none;
   }
 }
